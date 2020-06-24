@@ -1,0 +1,36 @@
+name: Lint and analyse files
+
+on: [push]
+
+jobs:
+    lint-php:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - name: Validate composer.json and composer.lock
+              run: composer validate
+            - name: Cache module
+              uses: actions/cache@v1.0.3
+              with:
+                  path: ~/.composer/cache/
+                  key: composer-cache
+            - name: Install dependencies
+              run: composer install --no-interaction --prefer-dist --no-progress --no-suggest
+            - name: Lint files
+              run: composer run phpcs
+
+    analyse-php:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - name: Validate composer.json and composer.lock
+              run: composer validate
+            - name: Cache module
+              uses: actions/cache@v1.0.3
+              with:
+                  path: ~/.composer/cache/
+                  key: composer-cache
+            - name: Install dependencies
+              run: composer install --no-interaction --prefer-dist --no-progress --no-suggest
+            - name: Lint files
+              run: composer run phpstan
