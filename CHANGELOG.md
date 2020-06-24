@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Move source files to src directory
 - Rename Sami to Doctum
 - Move the binary to bin/doctum.php
+- Add phpstan
+- Fix some issues reported by phpstan
+- Upgrade nikic/php-parser from ~3.0 to ~4.5
 
 ## [4.1.0] - 2018-06-25
 
