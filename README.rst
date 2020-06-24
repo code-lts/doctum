@@ -1,36 +1,14 @@
-Sami: an API documentation generator
-====================================
+Doctum, a PHP API documentation generator. Fork of Doctum
+=========================================================
 
-**WARNING**: Sami is not supported nor maintained anymore. Feel free to fork.
-
-Curious about what Sami generates? Have a look at the `Symfony API`_.
+Curious about what Doctum generates? Have a look at the `Mariadb Mysql Kbs`_.
 
 Installation
 ------------
 
 .. caution::
 
-    Sami requires **PHP 7**.
-
-Get Sami as a `phar file`_:
-
-.. code-block:: bash
-
-    $ curl -O http://get.sensiolabs.org/sami.phar
-
-Check that everything worked as expected by executing the ``sami.phar`` file
-without any arguments:
-
-.. code-block:: bash
-
-    $ php sami.phar
-
-.. note::
-
-    Installing Sami as a regular Composer dependency is NOT supported. Sami is
-    a tool, not a library. As such, it should be installed as a standalone
-    package, so that Sami's dependencies do not interfere with your project's
-    dependencies.
+    Doctum requires **PHP 7**.
 
 Configuration
 -------------
@@ -42,9 +20,9 @@ the simplest possible one:
 
     <?php
 
-    return new Sami\Sami('/path/to/symfony/src');
+    return new Doctum\Doctum('/path/to/symfony/src');
 
-The configuration file must return an instance of ``Sami\Sami`` and the first
+The configuration file must return an instance of ``Doctum\Doctum`` and the first
 argument of the constructor is the path to the code you want to generate
 documentation for.
 
@@ -55,7 +33,7 @@ that matter any instance of the Symfony `Finder`_ class):
 
     <?php
 
-    use Sami\Sami;
+    use Doctum\Doctum;
     use Symfony\Component\Finder\Finder;
 
     $iterator = Finder::create()
@@ -66,21 +44,21 @@ that matter any instance of the Symfony `Finder`_ class):
         ->in('/path/to/symfony/src')
     ;
 
-    return new Sami($iterator);
+    return new Doctum($iterator);
 
-The ``Sami`` constructor optionally takes an array of options as a second
+The ``Doctum`` constructor optionally takes an array of options as a second
 argument:
 
 .. code-block:: php
 
-    return new Sami($iterator, array(
+    return new Doctum($iterator, [
         'theme'                => 'symfony',
         'title'                => 'Symfony2 API',
-        'build_dir'            => __DIR__.'/build',
-        'cache_dir'            => __DIR__.'/cache',
+        'build_dir'            => __DIR__ . '/build',
+        'cache_dir'            => __DIR__ . '/cache',
         'remote_repository'    => new GitHubRemoteRepository('username/repository', '/path/to/repository'),
         'default_opened_level' => 2,
-    ));
+    ]);
 
 And here is how you can configure different versions:
 
@@ -88,9 +66,9 @@ And here is how you can configure different versions:
 
     <?php
 
-    use Sami\Sami;
-    use Sami\RemoteRepository\GitHubRemoteRepository;
-    use Sami\Version\GitVersionCollection;
+    use Doctum\Doctum;
+    use Doctum\RemoteRepository\GitHubRemoteRepository;
+    use Doctum\Version\GitVersionCollection;
     use Symfony\Component\Finder\Finder;
 
     $iterator = Finder::create()
@@ -108,7 +86,7 @@ And here is how you can configure different versions:
         ->add('master', 'master branch')
     ;
 
-    return new Sami($iterator, array(
+    return new Doctum($iterator, [
         'theme'                => 'symfony',
         'versions'             => $versions,
         'title'                => 'Symfony2 API',
@@ -116,7 +94,7 @@ And here is how you can configure different versions:
         'cache_dir'            => __DIR__.'/../cache/sf2/%version%',
         'remote_repository'    => new GitHubRemoteRepository('symfony/symfony', dirname($dir)),
         'default_opened_level' => 2,
-    ));
+    ]);
 
 To generate documentation for a PHP 5.2 project, simply set the
 ``simulate_namespaces`` option to ``true``.
@@ -124,18 +102,18 @@ To generate documentation for a PHP 5.2 project, simply set the
 You can find more configuration examples under the ``examples/`` directory of
 the source code.
 
-Sami only documents the public API (public properties and methods); override
+Doctum only documents the public API (public properties and methods); override
 the default configured ``filter`` to change this behavior:
 
 .. code-block:: php
 
     <?php
 
-    use Sami\Parser\Filter\TrueFilter;
+    use Doctum\Parser\Filter\TrueFilter;
 
-    $sami = new Sami(...);
+    $doctum = new Doctum(...);
     // document all methods and properties
-    $sami['filter'] = function () {
+    $doctum['filter'] = function () {
         return new TrueFilter();
     };
 
@@ -146,23 +124,23 @@ Now that we have a configuration file, let's generate the API documentation:
 
 .. code-block:: bash
 
-    $ php sami.phar update /path/to/config.php
+    $ php doctum.phar update /path/to/config.php
 
 The generated documentation can be found under the configured ``build/``
 directory (note that the client side search engine does not work on Chrome due
 to JavaScript execution restriction, unless Chrome is started with the
 "--allow-file-access-from-files" option -- it works fine in Firefox).
 
-By default, Sami is configured to run in "incremental" mode. It means that when
-running the ``update`` command, Sami only re-generates the files that needs to
+By default, Doctum is configured to run in "incremental" mode. It means that when
+running the ``update`` command, Doctum only re-generates the files that needs to
 be updated based on what has changed in your code since the last execution.
 
-Sami also detects problems in your phpdoc and can tell you what you need to fix
+Doctum also detects problems in your phpdoc and can tell you what you need to fix
 if you add the ``-v`` option:
 
 .. code-block:: bash
 
-    $ php sami.phar update /path/to/config.php -v
+    $ php doctum.phar update /path/to/config.php -v
 
 Creating a Theme
 ----------------
@@ -184,7 +162,7 @@ the same name as the original one. For instance, here is how you can extend the
 default class template to prefix the class name with "Class " in the class page
 title:
 
-.. code-block:: jinja
+.. code-block:: twig
 
     {# pages/class.twig #}
 
@@ -204,7 +182,7 @@ the default theme:
     name: default
 
     static:
-        'css/sami.css': 'css/sami.css'
+        'css/doctum.css': 'css/doctum.css'
         'css/bootstrap.min.css': 'css/bootstrap.min.css'
         'css/bootstrap-theme.min.css': 'css/bootstrap-theme.min.css'
         'fonts/glyphicons-halflings-regular.eot': 'fonts/glyphicons-halflings-regular.eot'
@@ -225,7 +203,7 @@ the default theme:
         'traits.twig':     'traits.html'
         'opensearch.twig': 'opensearch.xml'
         'search.twig':     'search.html'
-        'sami.js.twig':    'sami.js'
+        'doctum.js.twig':    'doctum.js'
 
     namespace:
         'namespace.twig': '%s.html'
@@ -234,7 +212,7 @@ the default theme:
         'class.twig': '%s.html'
 
 
-Files are contained into sections, depending on how Sami needs to treat them:
+Files are contained into sections, depending on how Doctum needs to treat them:
 
 * ``static``: Files are copied as is (for assets like images, stylesheets, or
   JavaScript files);
@@ -245,17 +223,16 @@ Files are contained into sections, depending on how Sami needs to treat them:
 
 * ``class``: Templates that should be generated for every class.
 
-.. _Symfony API: http://api.symfony.com/
-.. _phar file:   http://get.sensiolabs.org/sami.phar
 .. _Finder:      http://symfony.com/doc/current/components/finder.html
+.. _Mariadb Mysql Kbs: https://williamdes.github.io/mariadb-mysql-kbs/
 
 Search Index
 ~~~~~~~~~~~~
 
-The autocomplete and search functionality of Sami is provided through a
+The autocomplete and search functionality of Doctum is provided through a
 search index that is generated based on the classes, namespaces, interfaces,
 and traits of a project. You can customize the search index by overriding the
-``search_index_extra`` block of ``sami.js.twig``.
+``search_index_extra`` block of ``doctum.js.twig``.
 
 The ``search_index_extra`` allows you to extend the default theme and add more
 entries to the index. For example, some projects implement magic methods that
@@ -293,9 +270,9 @@ dynamically generated API operations of a web service client. Here's a simple
 example that adds dynamically generated API operations for a web service client
 to the search index:
 
-.. code-block:: jinja
+.. code-block:: twig
 
-    {% extends "default/sami.js.twig" %}
+    {% extends "default/doctum.js.twig" %}
 
     {% block search_index_extra %}
         {% for operation in operations -%}
@@ -308,5 +285,5 @@ which contains an array of operations.
 
 .. note::
 
-    Always include a trailing comma for each entry you add to the index. Sami
+    Always include a trailing comma for each entry you add to the index. Doctum
     will take care of ensuring that trailing commas are handled properly.
