@@ -15,8 +15,11 @@ use Michelf\MarkdownExtra;
 use Doctum\Reflection\ClassReflection;
 use Doctum\Reflection\MethodReflection;
 use Doctum\Reflection\PropertyReflection;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
+use Twig\TwigFilter;
 
-class TwigExtension extends \Twig_Extension
+class TwigExtension extends AbstractExtension
 {
     protected $markdown;
     protected $project;
@@ -30,8 +33,8 @@ class TwigExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            new \Twig_SimpleFilter('desc', array($this, 'parseDesc'), array('needs_context' => true, 'is_safe' => array('html'))),
-            new \Twig_SimpleFilter('snippet', array($this, 'getSnippet')),
+            new TwigFilter('desc', array($this, 'parseDesc'), array('needs_context' => true, 'is_safe' => array('html'))),
+            new TwigFilter('snippet', array($this, 'getSnippet')),
         );
     }
 
@@ -43,12 +46,12 @@ class TwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('namespace_path', array($this, 'pathForNamespace'), array('needs_context' => true, 'is_safe' => array('all'))),
-            new \Twig_SimpleFunction('class_path', array($this, 'pathForClass'), array('needs_context' => true, 'is_safe' => array('all'))),
-            new \Twig_SimpleFunction('method_path', array($this, 'pathForMethod'), array('needs_context' => true, 'is_safe' => array('all'))),
-            new \Twig_SimpleFunction('property_path', array($this, 'pathForProperty'), array('needs_context' => true, 'is_safe' => array('all'))),
-            new \Twig_SimpleFunction('path', array($this, 'pathForStaticFile'), array('needs_context' => true)),
-            new \Twig_SimpleFunction('abbr_class', array($this, 'abbrClass'), array('is_safe' => array('all'))),
+            new TwigFunction('namespace_path', array($this, 'pathForNamespace'), array('needs_context' => true, 'is_safe' => array('all'))),
+            new TwigFunction('class_path', array($this, 'pathForClass'), array('needs_context' => true, 'is_safe' => array('all'))),
+            new TwigFunction('method_path', array($this, 'pathForMethod'), array('needs_context' => true, 'is_safe' => array('all'))),
+            new TwigFunction('property_path', array($this, 'pathForProperty'), array('needs_context' => true, 'is_safe' => array('all'))),
+            new TwigFunction('path', array($this, 'pathForStaticFile'), array('needs_context' => true)),
+            new TwigFunction('abbr_class', array($this, 'abbrClass'), array('is_safe' => array('all'))),
         );
     }
 

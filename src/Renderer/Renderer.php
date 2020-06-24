@@ -30,7 +30,7 @@ class Renderer
     protected $indexer;
     protected $cachedTree;
 
-    public function __construct(\Twig_Environment $twig, ThemeSet $themes, Tree $tree, Indexer $indexer)
+    public function __construct(\Twig\Environment $twig, ThemeSet $themes, Tree $tree, Indexer $indexer)
     {
         $this->twig = $twig;
         $this->themes = $themes;

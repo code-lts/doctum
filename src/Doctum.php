@@ -31,6 +31,8 @@ use Doctum\Renderer\TwigExtension;
 use Doctum\Store\JsonStore;
 use Doctum\Version\SingleVersionCollection;
 use Doctum\Version\Version;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 class Doctum extends Container
 {
@@ -159,7 +161,7 @@ class Doctum extends Container
         };
 
         $this['twig'] = function () {
-            $twig = new \Twig_Environment(new \Twig_Loader_Filesystem(array('/')), array(
+            $twig = new Environment(new FilesystemLoader(array('/')), array(
                 'strict_variables' => true,
                 'debug' => true,
                 'auto_reload' => true,
