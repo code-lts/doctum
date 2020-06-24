@@ -37,7 +37,7 @@ class NodeVisitorTest extends TestCase
         $traverser->traverse(array($method));
 
         /** @var MethodReflection $method */
-        $reflMethod = $classReflection->getMethod($method->name);
+        $reflMethod = $classReflection->getMethod($method->name->__toString());
 
         $this->assertCount(count($expectedHints), $reflMethod->getParameters());
         foreach ($reflMethod->getParameters() as $paramKey => $parameter) {
@@ -63,7 +63,7 @@ class NodeVisitorTest extends TestCase
         $traverser->traverse(array($method));
 
         /** @var MethodReflection $method */
-        $reflMethod = $classReflection->getMethod($method->name);
+        $reflMethod = $classReflection->getMethod($method->name->__toString());
 
         $this->assertEquals($expectedReturnType, $reflMethod->getHintAsString());
     }

@@ -119,7 +119,6 @@ class NodeVisitor extends NodeVisitorAbstract
 
     protected function addClassOrInterface(ClassLikeNode $node)
     {
-        // @phpstan-ignore-next-line
         $class = new ClassReflection((string) $node->namespacedName, $node->getLine());
         if ($node instanceof ClassNode) {
             $class->setModifiers($node->flags);
@@ -152,12 +151,12 @@ class NodeVisitor extends NodeVisitorAbstract
 
     protected function addMethod(ClassMethodNode $node)
     {
-        $method = new MethodReflection($node->name, $node->getLine());
+        $method = new MethodReflection($node->name->__toString(), $node->getLine());
         $method->setModifiers($node->flags);
         $method->setByRef((string) $node->byRef);
 
         foreach ($node->params as $param) {
-            $parameter = new ParameterReflection($param->name, $param->getLine());
+            $parameter = new ParameterReflection($param->var, $param->getLine());
             $parameter->setModifiers($param->type);
             $parameter->setByRef($param->byRef);
             if ($param->default) {
@@ -169,14 +168,11 @@ class NodeVisitor extends NodeVisitorAbstract
             $type = $param->type;
             $typeStr = null;
 
-            if (is_string($param->type)) {
-                $type = $param->type;
+            if ($param->type !== null && ! $param->type instanceof NullableType) {
                 $typeStr = (string) $param->type;
             } elseif ($param->type instanceof NullableType) {
                 $type = $param->type->type;
                 $typeStr = (string) $param->type->type;
-            } elseif (null !== $param->type) {
-                $typeStr = (string) $param->type;
             }
 
             if ($type instanceof FullyQualified && 0 !== strpos($typeStr, '\\')) {
@@ -218,12 +214,10 @@ class NodeVisitor extends NodeVisitorAbstract
         $returnType = $node->getReturnType();
         $returnTypeStr = null;
 
-        if (is_string($returnType)) {
+        if ($returnType !== null && ! $returnType instanceof NullableType) {
             $returnTypeStr = (string) $returnType;
         } elseif ($returnType instanceof NullableType) {
             $returnTypeStr = (string) $returnType->type;
-        } elseif (null !== $returnType) {
-            $returnTypeStr = (string) $returnType;
         }
 
         if ($returnType instanceof FullyQualified && 0 !== strpos($returnTypeStr, '\\')) {
