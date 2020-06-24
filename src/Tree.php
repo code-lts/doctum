@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami;
+namespace Doctum;
 
 class Tree
 {

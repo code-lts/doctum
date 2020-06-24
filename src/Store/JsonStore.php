@@ -9,10 +9,10 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Store;
+namespace Doctum\Store;
 
-use Sami\Project;
-use Sami\Reflection\ClassReflection;
+use Doctum\Project;
+use Doctum\Reflection\ClassReflection;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 

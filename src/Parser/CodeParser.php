@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Parser;
+namespace Doctum\Parser;
 
 use PhpParser\Error;
 use PhpParser\NodeTraverser;

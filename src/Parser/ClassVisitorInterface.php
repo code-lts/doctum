@@ -9,9 +9,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Parser;
+namespace Doctum\Parser;
 
-use Sami\Reflection\ClassReflection;
+use Doctum\Reflection\ClassReflection;
 
 interface ClassVisitorInterface
 {

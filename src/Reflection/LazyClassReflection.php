@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Reflection;
+namespace Doctum\Reflection;
 
 class LazyClassReflection extends ClassReflection
 {
@@ -227,7 +227,7 @@ class LazyClassReflection extends ClassReflection
         if (null === $class) {
             $this->projectClass = false;
         } else {
-            foreach (array_keys(get_class_vars('Sami\Reflection\ClassReflection')) as $property) {
+            foreach (array_keys(get_class_vars('Doctum\Reflection\ClassReflection')) as $property) {
                 $this->$property = $class->$property;
             }
         }

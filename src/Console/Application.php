@@ -9,13 +9,13 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Console;
+namespace Doctum\Console;
 
-use Sami\Console\Command\ParseCommand;
-use Sami\Console\Command\RenderCommand;
-use Sami\Console\Command\UpdateCommand;
-use Sami\ErrorHandler;
-use Sami\Sami;
+use Doctum\Console\Command\ParseCommand;
+use Doctum\Console\Command\RenderCommand;
+use Doctum\Console\Command\UpdateCommand;
+use Doctum\ErrorHandler;
+use Doctum\Doctum;
 use Symfony\Component\Console\Application as BaseApplication;
 
 class Application extends BaseApplication
@@ -28,7 +28,7 @@ class Application extends BaseApplication
         error_reporting(-1);
         ErrorHandler::register();
 
-        parent::__construct('Sami', Sami::VERSION);
+        parent::__construct('Doctum', Doctum::VERSION);
 
         $this->add(new UpdateCommand());
         $this->add(new ParseCommand());

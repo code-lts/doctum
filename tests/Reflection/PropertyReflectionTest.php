@@ -1,9 +1,9 @@
 <?php
 
-namespace Sami\Tests\Reflection;
+namespace Doctum\Tests\Reflection;
 
 use PHPUnit\Framework\TestCase;
-use Sami\Reflection\PropertyReflection;
+use Doctum\Reflection\PropertyReflection;
 
 class PropertyReflectionTest extends TestCase
 {

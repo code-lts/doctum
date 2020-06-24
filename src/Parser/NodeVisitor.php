@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Parser;
+namespace Doctum\Parser;
 
 use PhpParser\Node as AbstractNode;
 use PhpParser\Node\Name\FullyQualified;
@@ -25,12 +25,12 @@ use PhpParser\Node\Stmt\TraitUse as TraitUseNode;
 use PhpParser\Node\Stmt\Trait_ as TraitNode;
 use PhpParser\Node\Stmt\Use_ as UseNode;
 use PhpParser\Node\NullableType;
-use Sami\Project;
-use Sami\Reflection\ClassReflection;
-use Sami\Reflection\ConstantReflection;
-use Sami\Reflection\MethodReflection;
-use Sami\Reflection\ParameterReflection;
-use Sami\Reflection\PropertyReflection;
+use Doctum\Project;
+use Doctum\Reflection\ClassReflection;
+use Doctum\Reflection\ConstantReflection;
+use Doctum\Reflection\MethodReflection;
+use Doctum\Reflection\ParameterReflection;
+use Doctum\Reflection\PropertyReflection;
 
 class NodeVisitor extends NodeVisitorAbstract
 {

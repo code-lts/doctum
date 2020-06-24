@@ -1,6 +1,6 @@
 <?php
 
-use Sami\Sami;
+use Doctum\Doctum;
 use Symfony\Component\Finder\Finder;
 
 $iterator = Finder::create()
@@ -9,7 +9,7 @@ $iterator = Finder::create()
     ->in('/path/to/zf2/library')
 ;
 
-return new Sami($iterator, array(
+return new Doctum($iterator, array(
     'title'               => 'ZF2 API (for master)',
     'theme'               => 'default',
     'build_dir'           => __DIR__.'/../build/zf2',

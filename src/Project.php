@@ -9,17 +9,17 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami;
+namespace Doctum;
 
-use Sami\Parser\Parser;
-use Sami\Reflection\ClassReflection;
-use Sami\Reflection\LazyClassReflection;
-use Sami\Renderer\Renderer;
-use Sami\RemoteRepository\AbstractRemoteRepository;
-use Sami\Store\StoreInterface;
-use Sami\Version\SingleVersionCollection;
-use Sami\Version\Version;
-use Sami\Version\VersionCollection;
+use Doctum\Parser\Parser;
+use Doctum\Reflection\ClassReflection;
+use Doctum\Reflection\LazyClassReflection;
+use Doctum\Renderer\Renderer;
+use Doctum\RemoteRepository\AbstractRemoteRepository;
+use Doctum\Store\StoreInterface;
+use Doctum\Version\SingleVersionCollection;
+use Doctum\Version\Version;
+use Doctum\Version\VersionCollection;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
@@ -58,8 +58,8 @@ class Project
         $this->versions = $versions;
         $this->store = $store;
         $this->config = array_merge(array(
-            'build_dir' => sys_get_temp_dir().'sami/build',
-            'cache_dir' => sys_get_temp_dir().'sami/cache',
+            'build_dir' => sys_get_temp_dir().'doctum/build',
+            'cache_dir' => sys_get_temp_dir().'doctum/cache',
             'simulate_namespaces' => false,
             'include_parent_data' => true,
             'theme' => 'default',
@@ -359,7 +359,7 @@ class Project
     {
         $this->filesystem->remove($dir);
         $this->filesystem->mkdir($dir);
-        file_put_contents($dir.'/SAMI_VERSION', Sami::VERSION);
+        file_put_contents($dir.'/DOCTUM_VERSION', Doctum::VERSION);
         file_put_contents($dir.'/PROJECT_VERSION', $this->version);
     }
 
@@ -428,12 +428,12 @@ class Project
             return $dir;
         }
 
-        $samiVersion = null;
-        if (file_exists($dir.'/SAMI_VERSION')) {
-            $samiVersion = file_get_contents($dir.'/SAMI_VERSION');
+        $doctumVersion = null;
+        if (file_exists($dir.'/DOCTUM_VERSION')) {
+            $doctumVersion = file_get_contents($dir.'/DOCTUM_VERSION');
         }
 
-        if (Sami::VERSION !== $samiVersion) {
+        if (Doctum::VERSION !== $doctumVersion) {
             $this->flushDir($dir);
         }
 

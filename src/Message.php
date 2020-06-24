@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami;
+namespace Doctum;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>

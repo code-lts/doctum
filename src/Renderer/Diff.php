@@ -9,9 +9,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Renderer;
+namespace Doctum\Renderer;
 
-use Sami\Project;
+use Doctum\Project;
 
 class Diff
 {

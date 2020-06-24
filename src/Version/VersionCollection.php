@@ -9,9 +9,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Version;
+namespace Doctum\Version;
 
-use Sami\Project;
+use Doctum\Project;
 
 abstract class VersionCollection implements \Iterator, \Countable
 {

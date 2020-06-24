@@ -1,9 +1,9 @@
 <?php
 
-namespace Sami\Tests\Reflection;
+namespace Doctum\Tests\Reflection;
 
 use PHPUnit\Framework\TestCase;
-use Sami\Reflection\ClassReflection;
+use Doctum\Reflection\ClassReflection;
 
 class ClassReflectionTest extends TestCase
 {
@@ -22,11 +22,11 @@ class ClassReflectionTest extends TestCase
         $this->assertFalse($class->isPhpClass());
 
         // a class that is already loaded
-        $class = new ClassReflection('Sami\Tests\Reflection\ClassReflectionTest', 1);
+        $class = new ClassReflection('Doctum\Tests\Reflection\ClassReflectionTest', 1);
         $this->assertFalse($class->isPhpClass());
 
         // a class that exists but is not already loaded
-        $class = new ClassReflection('Sami\Console\Application', 1);
+        $class = new ClassReflection('Doctum\Console\Application', 1);
         $this->assertFalse($class->isPhpClass());
     }
 }

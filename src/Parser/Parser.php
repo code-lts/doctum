@@ -9,12 +9,12 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Parser;
+namespace Doctum\Parser;
 
-use Sami\Message;
-use Sami\Project;
-use Sami\Reflection\LazyClassReflection;
-use Sami\Store\StoreInterface;
+use Doctum\Message;
+use Doctum\Project;
+use Doctum\Reflection\LazyClassReflection;
+use Doctum\Store\StoreInterface;
 use Symfony\Component\Finder\Finder;
 
 class Parser

@@ -1,13 +1,13 @@
 <?php
 
-namespace Sami\Tests\Parser;
+namespace Doctum\Tests\Parser;
 
 use PhpParser\PrettyPrinter\Standard as PrettyPrinter;
 use PHPUnit\Framework\TestCase;
-use Sami\Parser\DocBlockParser;
-use Sami\Parser\Filter\TrueFilter;
-use Sami\Parser\ParserContext;
-use Sami\Reflection\ClassReflection;
+use Doctum\Parser\DocBlockParser;
+use Doctum\Parser\Filter\TrueFilter;
+use Doctum\Parser\ParserContext;
+use Doctum\Reflection\ClassReflection;
 
 class ParserContextTest extends TestCase
 {
@@ -31,6 +31,6 @@ class ParserContextTest extends TestCase
 
         $classes = $context->leaveFile();
 
-        $this->assertContainsOnlyInstancesOf('Sami\Reflection\ClassReflection', $classes);
+        $this->assertContainsOnlyInstancesOf('Doctum\Reflection\ClassReflection', $classes);
     }
 }

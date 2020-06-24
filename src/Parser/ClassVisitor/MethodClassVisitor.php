@@ -9,12 +9,12 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Parser\ClassVisitor;
+namespace Doctum\Parser\ClassVisitor;
 
-use Sami\Parser\ClassVisitorInterface;
-use Sami\Reflection\ClassReflection;
-use Sami\Reflection\MethodReflection;
-use Sami\Reflection\ParameterReflection;
+use Doctum\Parser\ClassVisitorInterface;
+use Doctum\Reflection\ClassReflection;
+use Doctum\Reflection\MethodReflection;
+use Doctum\Reflection\ParameterReflection;
 
 /**
  * Looks for @method tags on classes in the format of:

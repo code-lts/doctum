@@ -1,6 +1,6 @@
 <?php
 
-namespace Sami\Tests\Parser;
+namespace Doctum\Tests\Parser;
 
 use PhpParser\Node\Name\FullyQualified;
 use PhpParser\Node\Name\Relative;
@@ -10,15 +10,15 @@ use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\NodeTraverser;
 use PhpParser\PrettyPrinter\Standard;
 use PHPUnit\Framework\TestCase;
-use Sami\Parser\DocBlockParser;
-use Sami\Parser\Filter\TrueFilter;
-use Sami\Parser\NodeVisitor;
-use Sami\Parser\ParserContext;
-use Sami\Project;
-use Sami\Reflection\ClassReflection;
-use Sami\Reflection\MethodReflection;
-use Sami\Reflection\ParameterReflection;
-use Sami\Store\ArrayStore;
+use Doctum\Parser\DocBlockParser;
+use Doctum\Parser\Filter\TrueFilter;
+use Doctum\Parser\NodeVisitor;
+use Doctum\Parser\ParserContext;
+use Doctum\Project;
+use Doctum\Reflection\ClassReflection;
+use Doctum\Reflection\MethodReflection;
+use Doctum\Reflection\ParameterReflection;
+use Doctum\Store\ArrayStore;
 
 /**
  * @author Tomasz Struczyński <t.struczynski@gmail.com>

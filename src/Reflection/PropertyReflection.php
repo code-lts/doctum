@@ -9,9 +9,9 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Reflection;
+namespace Doctum\Reflection;
 
-use Sami\Project;
+use Doctum\Project;
 
 class PropertyReflection extends Reflection
 {

@@ -9,12 +9,12 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Parser\ClassVisitor;
+namespace Doctum\Parser\ClassVisitor;
 
-use Sami\Parser\ClassVisitorInterface;
-use Sami\Parser\ParserContext;
-use Sami\Reflection\ClassReflection;
-use Sami\Reflection\PropertyReflection;
+use Doctum\Parser\ClassVisitorInterface;
+use Doctum\Parser\ParserContext;
+use Doctum\Reflection\ClassReflection;
+use Doctum\Reflection\PropertyReflection;
 
 /**
  * Looks for @property tags on classes in the format of:.

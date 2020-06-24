@@ -1,6 +1,6 @@
 <?php
 
-use Sami\Version\GitVersionCollection;
+use Doctum\Version\GitVersionCollection;
 
 $dir = '/Users/fabien/Code/github/twigphp/Twig/lib';
 
@@ -9,7 +9,7 @@ $versions = GitVersionCollection::create($dir)
     ->add('master', 'master branch')
 ;
 
-return new Sami\Sami($dir, array(
+return new Doctum\Doctum($dir, array(
     'theme'                => 'default',
     'title'                => 'Twig 1.6 API',
     'build_dir'            => __DIR__.'/../build/twig/%version%',

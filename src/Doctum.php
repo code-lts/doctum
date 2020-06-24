@@ -9,30 +9,30 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami;
+namespace Doctum;
 
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitor\NameResolver;
 use PhpParser\ParserFactory;
 use PhpParser\PrettyPrinter\Standard as PrettyPrinter;
 use Pimple\Container;
-use Sami\Parser\ClassTraverser;
-use Sami\Parser\ClassVisitor;
-use Sami\Parser\CodeParser;
-use Sami\Parser\DocBlockParser;
-use Sami\Parser\Filter\DefaultFilter;
-use Sami\Parser\NodeVisitor;
-use Sami\Parser\Parser;
-use Sami\Parser\ParserContext;
-use Sami\RemoteRepository\AbstractRemoteRepository;
-use Sami\Renderer\Renderer;
-use Sami\Renderer\ThemeSet;
-use Sami\Renderer\TwigExtension;
-use Sami\Store\JsonStore;
-use Sami\Version\SingleVersionCollection;
-use Sami\Version\Version;
+use Doctum\Parser\ClassTraverser;
+use Doctum\Parser\ClassVisitor;
+use Doctum\Parser\CodeParser;
+use Doctum\Parser\DocBlockParser;
+use Doctum\Parser\Filter\DefaultFilter;
+use Doctum\Parser\NodeVisitor;
+use Doctum\Parser\Parser;
+use Doctum\Parser\ParserContext;
+use Doctum\RemoteRepository\AbstractRemoteRepository;
+use Doctum\Renderer\Renderer;
+use Doctum\Renderer\ThemeSet;
+use Doctum\Renderer\TwigExtension;
+use Doctum\Store\JsonStore;
+use Doctum\Version\SingleVersionCollection;
+use Doctum\Version\Version;
 
-class Sami extends Container
+class Doctum extends Container
 {
     const VERSION = '4.0.14-DEV';
 

@@ -9,12 +9,12 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Renderer;
+namespace Doctum\Renderer;
 
 use Michelf\MarkdownExtra;
-use Sami\Reflection\ClassReflection;
-use Sami\Reflection\MethodReflection;
-use Sami\Reflection\PropertyReflection;
+use Doctum\Reflection\ClassReflection;
+use Doctum\Reflection\MethodReflection;
+use Doctum\Reflection\PropertyReflection;
 
 class TwigExtension extends \Twig_Extension
 {

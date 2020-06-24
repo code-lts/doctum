@@ -9,11 +9,11 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Tests\Parser;
+namespace Doctum\Tests\Parser;
 
 use PHPUnit\Framework\TestCase;
-use Sami\Parser\DocBlockParser;
-use Sami\Parser\Node\DocBlockNode;
+use Doctum\Parser\DocBlockParser;
+use Doctum\Parser\Node\DocBlockNode;
 
 class DocBlockParserTest extends TestCase
 {
@@ -280,7 +280,7 @@ class DocBlockParserTest extends TestCase
 
     private function getContextMock()
     {
-        $contextMock = $this->getMockBuilder('Sami\Parser\ParserContext')->disableOriginalConstructor()->getMock();
+        $contextMock = $this->getMockBuilder('Doctum\Parser\ParserContext')->disableOriginalConstructor()->getMock();
         $contextMock->expects($this->once())->method('getNamespace')->will($this->returnValue(''));
         $contextMock->expects($this->once())->method('getAliases')->will($this->returnValue(array()));
 

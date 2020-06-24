@@ -9,16 +9,16 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Tests\Parser\ClassVisitor;
+namespace Doctum\Tests\Parser\ClassVisitor;
 
 use PHPUnit\Framework\TestCase;
-use Sami\Parser\ClassVisitor\MethodClassVisitor;
+use Doctum\Parser\ClassVisitor\MethodClassVisitor;
 
 class MethodClassVisitorTest extends TestCase
 {
     public function testAddsMethods()
     {
-        $class = $this->getMockBuilder('Sami\Reflection\ClassReflection')
+        $class = $this->getMockBuilder('Doctum\Reflection\ClassReflection')
             ->setMethods(array('getTags'))
             ->setConstructorArgs(array('Mock', 1))
             ->getMock();

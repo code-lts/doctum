@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Parser\Node;
+namespace Doctum\Parser\Node;
 
 class DocBlockNode
 {

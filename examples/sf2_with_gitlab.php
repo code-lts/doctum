@@ -1,8 +1,8 @@
 <?php
 
-use Sami\Sami;
-use Sami\RemoteRepository\GitLabRemoteRepository;
-use Sami\Version\GitVersionCollection;
+use Doctum\Doctum;
+use Doctum\RemoteRepository\GitLabRemoteRepository;
+use Doctum\Version\GitVersionCollection;
 use Symfony\Component\Finder\Finder;
 
 $iterator = Finder::create()
@@ -19,7 +19,7 @@ $versions = GitVersionCollection::create($dir)
     ->add('master', 'master branch')
 ;
 
-return new Sami($iterator, array(
+return new Doctum($iterator, array(
     'theme' => 'symfony',
     'versions' => $versions,
     'title' => 'Symfony2 API',

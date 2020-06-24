@@ -9,11 +9,11 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Parser\ClassVisitor;
+namespace Doctum\Parser\ClassVisitor;
 
-use Sami\Reflection\ClassReflection;
-use Sami\Parser\ClassVisitorInterface;
-use Sami\RemoteRepository\AbstractRemoteRepository;
+use Doctum\Reflection\ClassReflection;
+use Doctum\Parser\ClassVisitorInterface;
+use Doctum\RemoteRepository\AbstractRemoteRepository;
 
 class ViewSourceClassVisitor implements ClassVisitorInterface
 {

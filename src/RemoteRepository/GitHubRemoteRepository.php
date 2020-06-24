@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\RemoteRepository;
+namespace Doctum\RemoteRepository;
 
 class GitHubRemoteRepository extends AbstractRemoteRepository
 {

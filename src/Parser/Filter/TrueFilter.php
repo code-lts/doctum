@@ -9,11 +9,11 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Parser\Filter;
+namespace Doctum\Parser\Filter;
 
-use Sami\Reflection\ClassReflection;
-use Sami\Reflection\MethodReflection;
-use Sami\Reflection\PropertyReflection;
+use Doctum\Reflection\ClassReflection;
+use Doctum\Reflection\MethodReflection;
+use Doctum\Reflection\PropertyReflection;
 
 class TrueFilter implements FilterInterface
 {

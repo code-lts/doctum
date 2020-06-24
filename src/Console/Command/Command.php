@@ -9,13 +9,13 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Console\Command;
+namespace Doctum\Console\Command;
 
-use Sami\Message;
-use Sami\Parser\Transaction;
-use Sami\Project;
-use Sami\Renderer\Diff;
-use Sami\Sami;
+use Doctum\Message;
+use Doctum\Parser\Transaction;
+use Doctum\Project;
+use Doctum\Renderer\Diff;
+use Doctum\Doctum;
 use Symfony\Component\Console\Command\Command as BaseCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -61,13 +61,13 @@ abstract class Command extends BaseCommand
             throw new \InvalidArgumentException(sprintf('Configuration file "%s" does not exist.', $config));
         }
 
-        $this->sami = $this->loadSami($config);
+        $this->sami = $this->loadDoctum($config);
 
         if ($input->getOption('only-version')) {
             $this->sami['versions'] = $input->getOption('only-version');
         }
 
-        if (!$this->sami instanceof Sami) {
+        if (!$this->sami instanceof Doctum) {
             throw new \RuntimeException(sprintf('Configuration file "%s" must return a Sami instance.', $config));
         }
     }
@@ -243,7 +243,7 @@ abstract class Command extends BaseCommand
         $this->output->writeln(sprintf("\n<fg=cyan>Version %s</>", $this->version));
     }
 
-    private function loadSami(string $config)
+    private function loadDoctum(string $config)
     {
         return require $config;
     }

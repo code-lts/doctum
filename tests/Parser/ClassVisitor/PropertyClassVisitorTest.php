@@ -9,16 +9,16 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Tests\Parser\ClassVisitor;
+namespace Doctum\Tests\Parser\ClassVisitor;
 
 use PHPUnit\Framework\TestCase;
-use Sami\Parser\ClassVisitor\PropertyClassVisitor;
+use Doctum\Parser\ClassVisitor\PropertyClassVisitor;
 
 class PropertyClassVisitorTest extends TestCase
 {
     public function testAddsProperties()
     {
-        $class = $this->getMockBuilder('Sami\Reflection\ClassReflection')
+        $class = $this->getMockBuilder('Doctum\Reflection\ClassReflection')
             ->setMethods(array('getTags'))
             ->setConstructorArgs(array('Mock', 1))
             ->getMock();
@@ -45,7 +45,7 @@ class PropertyClassVisitorTest extends TestCase
         );
         $class->expects($this->any())->method('getTags')->with($this->equalTo('property'))->will($this->returnValue($property));
 
-        $context = $this->getMockBuilder('Sami\Parser\ParserContext')->disableOriginalConstructor()->getMock();
+        $context = $this->getMockBuilder('Doctum\Parser\ParserContext')->disableOriginalConstructor()->getMock();
 
         $visitor = new PropertyClassVisitor($context);
         $visitor->visit($class);

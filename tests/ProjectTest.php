@@ -1,12 +1,12 @@
 <?php
 
-namespace Sami\Tests;
+namespace Doctum\Tests;
 
 use PHPUnit\Framework\TestCase;
-use Sami\Project;
-use Sami\Reflection\ClassReflection;
-use Sami\Store\ArrayStore;
-use Sami\Version\Version;
+use Doctum\Project;
+use Doctum\Reflection\ClassReflection;
+use Doctum\Store\ArrayStore;
+use Doctum\Version\Version;
 
 class ProjectTest extends TestCase
 {

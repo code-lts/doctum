@@ -1,9 +1,9 @@
 <?php
 
-namespace Sami\Tests\Reflection;
+namespace Doctum\Tests\Reflection;
 
 use PHPUnit\Framework\TestCase;
-use Sami\Reflection\MethodReflection;
+use Doctum\Reflection\MethodReflection;
 
 class MethodReflectionTest extends TestCase
 {

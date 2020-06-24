@@ -9,10 +9,10 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Parser\ClassVisitor;
+namespace Doctum\Parser\ClassVisitor;
 
-use Sami\Parser\ClassVisitorInterface;
-use Sami\Reflection\ClassReflection;
+use Doctum\Parser\ClassVisitorInterface;
+use Doctum\Reflection\ClassReflection;
 
 class InheritdocClassVisitor implements ClassVisitorInterface
 {

@@ -9,10 +9,10 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Parser;
+namespace Doctum\Parser;
 
-use Sami\Project;
-use Sami\Reflection\ClassReflection;
+use Doctum\Project;
+use Doctum\Reflection\ClassReflection;
 
 class Transaction
 {

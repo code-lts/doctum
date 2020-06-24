@@ -9,10 +9,10 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Parser;
+namespace Doctum\Parser;
 
-use Sami\Parser\Filter\FilterInterface;
-use Sami\Reflection\ClassReflection;
+use Doctum\Parser\Filter\FilterInterface;
+use Doctum\Reflection\ClassReflection;
 
 class ParserContext
 {

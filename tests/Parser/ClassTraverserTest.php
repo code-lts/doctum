@@ -9,13 +9,13 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Tests\Parser;
+namespace Doctum\Tests\Parser;
 
 use PHPUnit\Framework\TestCase;
-use Sami\Parser\ClassTraverser;
-use Sami\Project;
-use Sami\Reflection\ClassReflection;
-use Sami\Store\ArrayStore;
+use Doctum\Parser\ClassTraverser;
+use Doctum\Project;
+use Doctum\Reflection\ClassReflection;
+use Doctum\Store\ArrayStore;
 
 class ClassTraverserTest extends TestCase
 {
@@ -29,7 +29,7 @@ class ClassTraverserTest extends TestCase
 
         $project = new Project($store);
 
-        $visitor = $this->getMockBuilder('Sami\Parser\ClassVisitorInterface')->getMock();
+        $visitor = $this->getMockBuilder('Doctum\Parser\ClassVisitorInterface')->getMock();
         $visitor->expects($this->at(0))->method('visit')->with($project->loadClass($interfaceName));
         $visitor->expects($this->at(1))->method('visit')->with($project->loadClass($parentName));
         $visitor->expects($this->at(2))->method('visit')->with($project->loadClass($className));

@@ -9,12 +9,12 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Sami\Renderer;
+namespace Doctum\Renderer;
 
-use Sami\Indexer;
-use Sami\Message;
-use Sami\Project;
-use Sami\Tree;
+use Doctum\Indexer;
+use Doctum\Message;
+use Doctum\Project;
+use Doctum\Tree;
 use Symfony\Component\Filesystem\Filesystem;
 
 class Renderer
@@ -227,7 +227,7 @@ class Renderer
     protected function save(Project $project, $uri, $template, $variables)
     {
         $depth = substr_count($uri, '/');
-        $this->twig->getExtension('Sami\Renderer\TwigExtension')->setCurrentDepth($depth);
+        $this->twig->getExtension('Doctum\Renderer\TwigExtension')->setCurrentDepth($depth);
         $this->twig->addGlobal('root_path', str_repeat('../', $depth));
 
         $file = $project->getBuildDir().'/'.$uri;
