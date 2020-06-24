@@ -11,7 +11,7 @@
 
 namespace Doctum;
 
-class ErrorHandler
+final class ErrorHandler
 {
     private $levels = array(
         E_WARNING => 'Warning',

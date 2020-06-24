@@ -182,7 +182,9 @@ abstract class Command extends BaseCommand
             return;
         }
 
-        $this->output->isDecorated() and $this->output->write(sprintf("\033[2A<info>  Parsing   done</info>\033[K\n\033[K\n\033[1A", count($this->errors) ? ' <fg=red>'.count($this->errors).' errors</>' : ''));
+        $this->output->isDecorated() and $this->output->write(
+            "\033[2A<info>  Parsing   done</info>\033[K\n\033[K\n\033[1A"
+        );
 
         if ($this->input->getOption('verbose') && count($this->errors)) {
             foreach ($this->errors as $error) {

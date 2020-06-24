@@ -49,6 +49,7 @@ class Project
     protected $config;
     protected $version;
     protected $filesystem;
+    protected $interfaces;
 
     public function __construct(StoreInterface $store, VersionCollection $versions = null, array $config = array())
     {

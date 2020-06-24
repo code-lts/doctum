@@ -115,8 +115,7 @@ class TwigExtension extends \Twig_Extension
         }
 
         // FIXME: the @see argument is more complex than just a class (Class::Method, local method directly, ...)
-        $that = $this;
-        $desc = preg_replace_callback('/@see ([^ ]+)/', function ($match) use ($that, $context, $class) {
+        $desc = preg_replace_callback('/@see ([^ ]+)/', function ($match) {
             return 'see '.$match[1];
         }, $desc);
 
