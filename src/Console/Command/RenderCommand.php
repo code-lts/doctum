@@ -57,6 +57,6 @@ EOF
     {
         $output->writeln('<bg=cyan;fg=white> Rendering project </>');
 
-        return $this->render($this->sami['project']);
+        return $this->render($this->doctum['project']);
     }
 }

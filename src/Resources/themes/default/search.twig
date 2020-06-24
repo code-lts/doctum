@@ -36,7 +36,7 @@
     <script type="text/javascript">
 
         (function() {
-            var term = Sami.cleanSearchTerm();
+            var term = Doctum.cleanSearchTerm();
 
             if (!term) {
                 $('h2').hide();
@@ -45,7 +45,7 @@
 
             $('#search').val(term);
             var container = $('.search-results');
-            var results = Sami.search(term);
+            var results = Doctum.search(term);
             var len = results.length;
 
             if (len == 0) {
@@ -57,7 +57,7 @@
 
                 var ele = results[i];
                 var contents = '<li><h2 class="clearfix">';
-                var class_name = Sami.getSearchClass(ele.type);
+                var class_name = Doctum.getSearchClass(ele.type);
                 contents += '<a href="' + ele.link + '">' + ele.name + '</a>';
                 contents += '<div class="search-type type-' + ele.type + '"><span class="pull-right label ' + class_name + '">' + ele.type + '</span></div>';
                 contents += '</h2>';

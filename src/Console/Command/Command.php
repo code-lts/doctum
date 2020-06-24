@@ -27,7 +27,7 @@ abstract class Command extends BaseCommand
 {
     const PARSE_ERROR = 64;
 
-    protected $sami;
+    protected $doctum;
     protected $version;
     protected $started;
     protected $diffs = array();
@@ -61,14 +61,14 @@ abstract class Command extends BaseCommand
             throw new \InvalidArgumentException(sprintf('Configuration file "%s" does not exist.', $config));
         }
 
-        $this->sami = $this->loadDoctum($config);
+        $this->doctum = $this->loadDoctum($config);
 
         if ($input->getOption('only-version')) {
-            $this->sami['versions'] = $input->getOption('only-version');
+            $this->doctum['versions'] = $input->getOption('only-version');
         }
 
-        if (!$this->sami instanceof Doctum) {
-            throw new \RuntimeException(sprintf('Configuration file "%s" must return a Sami instance.', $config));
+        if (!$this->doctum instanceof Doctum) {
+            throw new \RuntimeException(sprintf('Configuration file "%s" must return a Doctum instance.', $config));
         }
     }
 
