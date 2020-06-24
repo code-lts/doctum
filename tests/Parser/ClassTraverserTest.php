@@ -25,7 +25,7 @@ class ClassTraverserTest extends TestCase
     public function testTraverseOrder($interfaceName, $parentName, $className, $class, $parent, $interface)
     {
         $store = new ArrayStore();
-        $store->setClasses(array($class, $parent, $interface));
+        $store->setClasses([$class, $parent, $interface]);
 
         $project = new Project($store);
 
@@ -46,7 +46,7 @@ class ClassTraverserTest extends TestCase
     public function testNamespaceDetection($interfaceName, $parentName, $className, $class, $parent, $interface, $expectedNamespaces)
     {
         $store = new ArrayStore();
-        $store->setClasses(array($class, $parent, $interface));
+        $store->setClasses([$class, $parent, $interface]);
 
         $project = new Project($store);
 
@@ -61,23 +61,23 @@ class ClassTraverserTest extends TestCase
     {
         // as classes are sorted by name in Project, we try all combinaison
         // by giving different names to the classes
-        return array(
+        return [
             $this->createClasses('C1', 'C2', 'C3'),
             $this->createClasses('C1', 'C3', 'C2'),
             $this->createClasses('C2', 'C1', 'C3'),
             $this->createClasses('C2', 'C3', 'C1'),
             $this->createClasses('C3', 'C1', 'C2'),
             $this->createClasses('C3', 'C2', 'C1'),
-        );
+        ];
     }
 
     public function getNamespaceDetectionClasses()
     {
-        return array(
-            array_merge($this->createClasses('C1', 'C2', 'C3'), array(array(''))),
-            array_merge($this->createClasses('C1', 'C2', 'C3', 'Ns1'), array(array('', 'Ns1'))),
-            array_merge($this->createClasses('C1', 'C2', 'C3', "Ns1\Ns2\Ns3"), array(array('', 'Ns1', "Ns1\Ns2", "Ns1\Ns2\Ns3"))),
-        );
+        return [
+            array_merge($this->createClasses('C1', 'C2', 'C3'), [['']]),
+            array_merge($this->createClasses('C1', 'C2', 'C3', 'Ns1'), [['', 'Ns1']]),
+            array_merge($this->createClasses('C1', 'C2', 'C3', "Ns1\Ns2\Ns3"), [['', 'Ns1', "Ns1\Ns2", "Ns1\Ns2\Ns3"]]),
+        ];
     }
 
     protected function createClasses($interfaceName, $parentName, $className, $namespaceName = null)
@@ -93,6 +93,6 @@ class ClassTraverserTest extends TestCase
             $class->setNamespace($namespaceName);
         }
 
-        return array($interfaceName, $parentName, $className, $class, $parent, $interface);
+        return [$interfaceName, $parentName, $className, $class, $parent, $interface];
     }
 }

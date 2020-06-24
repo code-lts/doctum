@@ -15,8 +15,8 @@ class DocBlockNode
 {
     protected $shortDesc;
     protected $longDesc;
-    protected $tags = array();
-    protected $errors = array();
+    protected $tags = [];
+    protected $errors = [];
 
     public function addTag($key, $value)
     {
@@ -50,7 +50,7 @@ class DocBlockNode
 
     public function getTag($key)
     {
-        return $this->tags[$key] ?? array();
+        return $this->tags[$key] ?? [];
     }
 
     public function getShortDesc()

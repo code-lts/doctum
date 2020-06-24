@@ -35,7 +35,7 @@ class NodeVisitorTest extends TestCase
         $parserContext->enterClass($classReflection);
         $traverser = new NodeTraverser();
         $traverser->addVisitor(new NodeVisitor($parserContext));
-        $traverser->traverse(array($method));
+        $traverser->traverse([$method]);
 
         /** @var MethodReflection $method */
         $reflMethod = $classReflection->getMethod($method->name->__toString());
@@ -61,7 +61,7 @@ class NodeVisitorTest extends TestCase
         $parserContext->enterClass($classReflection);
         $traverser = new NodeTraverser();
         $traverser->addVisitor(new NodeVisitor($parserContext));
-        $traverser->traverse(array($method));
+        $traverser->traverse([$method]);
 
         /** @var MethodReflection $method */
         $reflMethod = $classReflection->getMethod($method->name->__toString());
@@ -74,13 +74,13 @@ class NodeVisitorTest extends TestCase
      */
     public function getMethodTypehints()
     {
-        return array(
+        return [
             'primitive' => $this->getMethodTypehintsPrimiteveParameters(),
             'class' => $this->getMethodTypehintsClassParameters(),
             'subnamespacedclass' => $this->getMethodTypehintsSubNamespacedClassParameters(),
             'docblockclass' => $this->getMethodTypehintsDocblockClassParameters(),
             'docblockmixedclass' => $this->getMethodTypehintsDocblockMixedClassParameters(),
-        );
+        ];
     }
 
     /**
@@ -88,88 +88,88 @@ class NodeVisitorTest extends TestCase
      */
     public function getMethodReturnTypeHints()
     {
-        return array(
+        return [
             'primitive' => $this->getPrimitiveMethodReturnType(),
             'class' => $this->getClassMethodReturnType(),
             'nullableType' => $this->getNullableMethodReturnType(),
-        );
+        ];
     }
 
     private function getPrimitiveMethodReturnType()
     {
         $expectedReturnType = 'string';
         $classReflection = new ClassReflection('C1', 1);
-        $method = new ClassMethod('testMethod', array(
+        $method = new ClassMethod('testMethod', [
             'returnType' => 'string'
-        ));
+        ]);
 
-        $classReflection->setMethods(array($method));
+        $classReflection->setMethods([$method]);
 
         $store = new ArrayStore();
-        $store->setClasses(array($classReflection));
+        $store->setClasses([$classReflection]);
 
         $project = new Project($store);
         $project->loadClass('C1');
 
-        return array(
+        return [
             $classReflection,
             $method,
             $expectedReturnType,
-        );
+        ];
     }
 
     private function getClassMethodReturnType()
     {
         $expectedReturnType = 'Class';
         $classReflection = new ClassReflection('C1', 1);
-        $method = new ClassMethod('testMethod', array(
+        $method = new ClassMethod('testMethod', [
             'returnType' => new FullyQualified('Test\\Class'),
-        ));
+        ]);
 
-        $classReflection->setMethods(array($method));
+        $classReflection->setMethods([$method]);
 
         $store = new ArrayStore();
-        $store->setClasses(array($classReflection));
+        $store->setClasses([$classReflection]);
 
         $project = new Project($store);
         $project->loadClass('C1');
 
-        return array(
+        return [
             $classReflection,
             $method,
             $expectedReturnType
-        );
+        ];
     }
 
     private function getNullableMethodReturnType()
     {
         $expectedReturnType = 'Class|null';
         $classReflection = new ClassReflection('C1', 1);
-        $method = new ClassMethod('testMethod', array(
+        $method = new ClassMethod('testMethod', [
             'returnType' => new NullableType('Test\\Class'),
-        ));
+        ]);
 
-        $classReflection->setMethods(array($method));
+        $classReflection->setMethods([$method]);
 
         $store = new ArrayStore();
-        $store->setClasses(array($classReflection));
+        $store->setClasses([$classReflection]);
 
         $project = new Project($store);
         $project->loadClass('C1');
 
-        return array(
+        return [
             $classReflection,
             $method,
             $expectedReturnType
-        );
+        ];
     }
 
 
     private function getMethodTypehintsPrimiteveParameters()
     {
         $classReflection = new ClassReflection('C1', 1);
-        $method = new ClassMethod('testMethod', array(
-            'params' => array(
+        $method = new ClassMethod('testMethod', [
+            'params' => [
                 new Param(
                     new Variable('param1'),
                     null,
@@ -180,150 +180,150 @@ class NodeVisitorTest extends TestCase
                     null,
                     'string'
                 ),
-            ),
-        ));
+            ],
+        ]);
 
-        $classReflection->setMethods(array($method));
+        $classReflection->setMethods([$method]);
         $store = new ArrayStore();
-        $store->setClasses(array($classReflection));
+        $store->setClasses([$classReflection]);
 
         $project = new Project($store);
 
         $project->loadClass('C1');
 
-        return array(
+        return [
             $classReflection,
             $method,
-            array(
-                'param1' => array('int'),
-                'param2' => array('string'),
-            ),
-        );
+            [
+                'param1' => ['int'],
+                'param2' => ['string'],
+            ],
+        ];
     }
 
     private function getMethodTypehintsClassParameters()
     {
         $classReflection = new ClassReflection('C1', 1);
         $paramClassReflection = new ClassReflection("Test\Class", 1);
-        $method = new ClassMethod('testMethod', array(
-            'params' => array(
+        $method = new ClassMethod('testMethod', [
+            'params' => [
                 new Param(
                     new Variable('param1'),
                     null,
                     new FullyQualified('Test\\Class')
                 ),
-            ),
-        ));
+            ],
+        ]);
 
-        $classReflection->setMethods(array($method));
+        $classReflection->setMethods([$method]);
         $store = new ArrayStore();
-        $store->setClasses(array($classReflection, $paramClassReflection));
+        $store->setClasses([$classReflection, $paramClassReflection]);
 
         $project = new Project($store);
 
         $project->loadClass('C1');
         $project->loadClass('Test\\Class');
 
-        return array(
+        return [
             $classReflection,
             $method,
-            array(
-                'param1' => array('Test\Class'),
-            ),
-        );
+            [
+                'param1' => ['Test\Class'],
+            ],
+        ];
     }
 
     private function getMethodTypehintsSubNamespacedClassParameters()
     {
         $classReflection = new ClassReflection("Test\Class", 1);
         $paramClassReflection = new ClassReflection("Test\Sub\Class", 1);
-        $method = new ClassMethod('testMethod', array(
-            'params' => array(
+        $method = new ClassMethod('testMethod', [
+            'params' => [
                 new Param(
                     new Variable('param1'),
                     null,
                     new Relative('Sub\\Class')
                 ),
-            ),
-        ));
+            ],
+        ]);
 
-        $classReflection->setMethods(array($method));
+        $classReflection->setMethods([$method]);
         $store = new ArrayStore();
-        $store->setClasses(array($classReflection, $paramClassReflection));
+        $store->setClasses([$classReflection, $paramClassReflection]);
 
         $project = new Project($store);
 
         $project->loadClass('Test\\Class');
         $project->loadClass('Test\\Sub\\Class');
 
-        return array(
+        return [
             $classReflection,
             $method,
-            array(
-                'param1' => array('Sub\Class'),
-            ),
-        );
+            [
+                'param1' => ['Sub\Class'],
+            ],
+        ];
     }
 
     private function getMethodTypehintsDocblockClassParameters()
     {
         $classReflection = new ClassReflection('C1', 1);
         $paramClassReflection = new ClassReflection("Test\Class", 1);
-        $method = new ClassMethod('testMethod', array(
-            'params' => array(
+        $method = new ClassMethod('testMethod', [
+            'params' => [
                 new Param(
                     new Variable('param1')
                 ),
-            ),
-        ));
+            ],
+        ]);
         $method->setDocComment(new \PhpParser\Comment\Doc('/** @param Test\\Class $param1 */'));
 
-        $classReflection->setMethods(array($method));
+        $classReflection->setMethods([$method]);
         $store = new ArrayStore();
-        $store->setClasses(array($classReflection, $paramClassReflection));
+        $store->setClasses([$classReflection, $paramClassReflection]);
 
         $project = new Project($store);
 
         $project->loadClass('C1');
         $project->loadClass('Test\\Class');
 
-        return array(
+        return [
             $classReflection,
             $method,
-            array(
-                'param1' => array('Test\Class'),
-            ),
-        );
+            [
+                'param1' => ['Test\Class'],
+            ],
+        ];
     }
 
     private function getMethodTypehintsDocblockMixedClassParameters()
     {
         $classReflection = new ClassReflection('C1', 1);
         $paramClassReflection = new ClassReflection("Test\Class", 1);
-        $method = new ClassMethod('testMethod', array(
-            'params' => array(
+        $method = new ClassMethod('testMethod', [
+            'params' => [
                 new Param(
                     new Variable('param1')
                 ),
-            ),
-        ));
+            ],
+        ]);
         $method->setDocComment(new \PhpParser\Comment\Doc('/** @param Test\\Class|string $param1 */'));
 
-        $classReflection->setMethods(array($method));
+        $classReflection->setMethods([$method]);
         $store = new ArrayStore();
-        $store->setClasses(array($classReflection, $paramClassReflection));
+        $store->setClasses([$classReflection, $paramClassReflection]);
 
         $project = new Project($store);
 
         $project->loadClass('C1');
         $project->loadClass('Test\\Class');
 
-        return array(
+        return [
             $classReflection,
             $method,
-            array(
-                'param1' => array('Test\Class', 'string'),
-            ),
-        );
+            [
+                'param1' => ['Test\Class', 'string'],
+            ],
+        ];
     }
 }

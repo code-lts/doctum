@@ -22,7 +22,7 @@ class TreeTest extends TestCase
         $class3->setNamespace('C31\C32');
 
         $store = new ArrayStore();
-        $store->setClasses(array($class1, $class2, $class3));
+        $store->setClasses([$class1, $class2, $class3]);
 
         $project = new Project($store);
         $project->loadClass($class1);

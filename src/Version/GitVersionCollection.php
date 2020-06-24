@@ -25,7 +25,7 @@ class GitVersionCollection extends VersionCollection
     {
         $this->repo = $repo;
         $this->filter = function ($version) {
-            foreach (array('PR', 'RC', 'BETA', 'ALPHA') as $str) {
+            foreach (['PR', 'RC', 'BETA', 'ALPHA'] as $str) {
                 if (strpos($version, $str)) {
                     return false;
                 }
@@ -47,7 +47,7 @@ class GitVersionCollection extends VersionCollection
             throw new \RuntimeException(sprintf('Unable to switch to version "%s" as the repository is not clean.', $version));
         }
 
-        $this->execute(array('checkout', '-qf', (string) $version));
+        $this->execute(['checkout', '-qf', (string) $version]);
     }
 
     public function setGitPath($path)
@@ -67,12 +67,12 @@ class GitVersionCollection extends VersionCollection
 
     public function addFromTags($filter = null)
     {
-        $tags = array_filter(explode("\n", $this->execute(array('tag'))));
+        $tags = array_filter(explode("\n", $this->execute(['tag'])));
 
         $versions = array_filter($tags, $this->filter);
         if (null !== $filter) {
             if (!$filter instanceof \Closure) {
-                $regexes = array();
+                $regexes = [];
                 foreach ((array) $filter as $f) {
                     $regexes[] = Glob::toRegex($f);
                 }

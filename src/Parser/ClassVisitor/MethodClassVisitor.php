@@ -54,7 +54,7 @@ class MethodClassVisitor implements ClassVisitorInterface
         // Account for default array syntax
         $tag = str_replace('array()', 'array', $tag);
 
-        $matches = array();
+        $matches = [];
         // 1. none or more whitespace
         // 2. optionally a word with underscores followed by whitespace : as
         //    type for the return value
@@ -69,30 +69,30 @@ class MethodClassVisitor implements ClassVisitorInterface
         }
 
         // Parse arguments
-        $args = array();
+        $args = [];
         if (isset($matches['args'])) {
             foreach (explode(',', $matches['args']) as $arg) {
-                $parts = array();
+                $parts = [];
                 if (preg_match('/^[\s]*(?P<hint>([\w\|_\\\\]+)[\s]+)*[\s]*\$(?P<name>[\w\|_\\\\]+)?(?:[\s]*=[\s]*)?(?P<default>.*)/', $arg, $parts)) {
                     // Fix array default values
                     if ($parts['default'] == 'array') {
                         $parts['default'] = 'array()';
                     }
-                    $args[$parts['name']] = array(
+                    $args[$parts['name']] = [
                         'hint' => $parts['hint'],
                         'name' => $parts['name'],
                         'default' => $parts['default'],
-                    );
+                    ];
                 }
             }
         }
 
-        return array(
+        return [
             'hint' => trim($matches['hint']),
             'name' => $matches['method'],
             'args' => $args,
             'description' => $matches['description'],
-        );
+        ];
     }
 
     /**
@@ -117,14 +117,14 @@ class MethodClassVisitor implements ClassVisitorInterface
         $method->setShortDesc($data['description']);
 
         if ($data['hint']) {
-            $method->setHint(array(array($data['hint'], null)));
+            $method->setHint([[$data['hint'], null]]);
         }
 
         // Add arguments to the method
         foreach ($data['args'] as $name => $arg) {
             $param = new ParameterReflection($name, $class->getLine());
             if (!empty($arg['hint'])) {
-                $param->setHint(array(array($arg['hint'], null)));
+                $param->setHint([[$arg['hint'], null]]);
             }
             if (!empty($arg['default'])) {
                 $param->setDefault($arg['default']);

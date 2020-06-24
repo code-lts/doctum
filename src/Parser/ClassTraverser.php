@@ -17,9 +17,9 @@ class ClassTraverser
 {
     protected $visitors;
 
-    public function __construct(array $visitors = array())
+    public function __construct(array $visitors = [])
     {
-        $this->visitors = array();
+        $this->visitors = [];
         foreach ($visitors as $visitor) {
             $this->addVisitor($visitor);
         }

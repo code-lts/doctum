@@ -50,7 +50,7 @@ class JsonStore implements StoreInterface
 
     public function readProject(Project $project)
     {
-        $classes = array();
+        $classes = [];
         foreach (Finder::create()->name('c_*.json')->in($this->getStoreDir($project)) as $file) {
             $classes[] = ClassReflection::fromArray($project, json_decode(file_get_contents($file), true));
         }

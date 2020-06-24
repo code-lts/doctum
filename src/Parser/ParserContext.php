@@ -66,15 +66,15 @@ class ParserContext
     {
         $this->file = $file;
         $this->hash = $hash;
-        $this->errors = array();
-        $this->classes = array();
+        $this->errors = [];
+        $this->classes = [];
     }
 
     public function leaveFile()
     {
         $this->hash = null;
         $this->file = null;
-        $this->errors = array();
+        $this->errors = [];
 
         return $this->classes;
     }
@@ -129,13 +129,13 @@ class ParserContext
     public function enterNamespace($namespace): void
     {
         $this->namespace = $namespace;
-        $this->aliases = array();
+        $this->aliases = [];
     }
 
     public function leaveNamespace(): void
     {
         $this->namespace = null;
-        $this->aliases = array();
+        $this->aliases = [];
     }
 
     public function getNamespace()

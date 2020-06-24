@@ -35,7 +35,7 @@ class Renderer
         $this->twig = $twig;
         $this->themes = $themes;
         $this->tree = $tree;
-        $this->cachedTree = array();
+        $this->cachedTree = [];
         $this->indexer = $indexer;
         $this->filesystem = new Filesystem();
     }
@@ -96,7 +96,7 @@ class Renderer
     protected function renderStaticTemplates(Project $project, $callback = null)
     {
         if (null !== $callback) {
-            call_user_func($callback, Message::RENDER_PROGRESS, array('Static', 'Rendering files', $this->getProgression()));
+            call_user_func($callback, Message::RENDER_PROGRESS, ['Static', 'Rendering files', $this->getProgression()]);
         }
 
         $dirs = $this->theme->getTemplateDirs();
@@ -113,18 +113,18 @@ class Renderer
 
     protected function renderGlobalTemplates(Project $project, $callback = null)
     {
-        $variables = array(
+        $variables = [
             'namespaces' => $project->getNamespaces(),
             'interfaces' => $project->getProjectInterfaces(),
             'classes' => $project->getProjectClasses(),
             'items' => $this->getIndex($project),
             'index' => $this->indexer->getIndex($project),
             'tree' => $this->getTree($project),
-        );
+        ];
 
         foreach ($this->theme->getTemplates('global') as $template => $target) {
             if (null !== $callback) {
-                call_user_func($callback, Message::RENDER_PROGRESS, array('Global', $target, $this->getProgression()));
+                call_user_func($callback, Message::RENDER_PROGRESS, ['Global', $target, $this->getProgression()]);
             }
 
             $this->save($project, $target, $template, $variables);
@@ -135,17 +135,17 @@ class Renderer
     {
         foreach ($namespaces as $namespace) {
             if (null !== $callback) {
-                call_user_func($callback, Message::RENDER_PROGRESS, array('Namespace', $namespace, $this->getProgression()));
+                call_user_func($callback, Message::RENDER_PROGRESS, ['Namespace', $namespace, $this->getProgression()]);
             }
 
-            $variables = array(
+            $variables = [
                 'namespace' => $namespace,
                 'subnamespaces' => $project->getNamespaceSubNamespaces($namespace),
                 'classes' => $project->getNamespaceClasses($namespace),
                 'interfaces' => $project->getNamespaceInterfaces($namespace),
                 'exceptions' => $project->getNamespaceExceptions($namespace),
                 'tree' => $this->getTree($project),
-            );
+            ];
 
             foreach ($this->theme->getTemplates('namespace') as $template => $target) {
                 $this->save($project, sprintf($target, str_replace('\\', '/', $namespace)), $template, $variables);
@@ -157,7 +157,7 @@ class Renderer
     {
         foreach ($classes as $class) {
             if (null !== $callback) {
-                call_user_func($callback, Message::RENDER_PROGRESS, array('Class', $class->getName(), $this->getProgression()));
+                call_user_func($callback, Message::RENDER_PROGRESS, ['Class', $class->getName(), $this->getProgression()]);
             }
 
             $properties = $class->getProperties($project->getConfig('include_parent_data'));
@@ -209,14 +209,14 @@ class Renderer
                 $class->sortInterfaces($sortInterfaces);
             }
 
-            $variables = array(
+            $variables = [
                 'class' => $class,
                 'properties' => $properties,
                 'methods' => $methods,
                 'constants' => $constants,
                 'traits' => $traits,
                 'tree' => $this->getTree($project),
-            );
+            ];
 
             foreach ($this->theme->getTemplates('class') as $template => $target) {
                 $this->save($project, sprintf($target, str_replace('\\', '/', $class->getName())), $template, $variables);
@@ -241,19 +241,19 @@ class Renderer
 
     protected function getIndex(Project $project)
     {
-        $items = array();
+        $items = [];
         foreach ($project->getProjectClasses() as $class) {
             $letter = strtoupper(substr($class->getShortName(), 0, 1));
-            $items[$letter][] = array('class', $class);
+            $items[$letter][] = ['class', $class];
 
             foreach ($class->getProperties() as $property) {
                 $letter = strtoupper(substr($property->getName(), 0, 1));
-                $items[$letter][] = array('property', $property);
+                $items[$letter][] = ['property', $property];
             }
 
             foreach ($class->getMethods() as $method) {
                 $letter = strtoupper(substr($method->getName(), 0, 1));
-                $items[$letter][] = array('method', $method);
+                $items[$letter][] = ['method', $method];
             }
         }
         ksort($items);

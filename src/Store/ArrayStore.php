@@ -21,7 +21,7 @@ use Doctum\Reflection\ClassReflection;
  */
 class ArrayStore implements StoreInterface
 {
-    private $classes = array();
+    private $classes = [];
 
     public function setClasses($classes)
     {
@@ -60,6 +60,6 @@ class ArrayStore implements StoreInterface
 
     public function flushProject(Project $project)
     {
-        $this->classes = array();
+        $this->classes = [];
     }
 }

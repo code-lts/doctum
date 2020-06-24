@@ -78,7 +78,7 @@ class ParameterReflection extends Reflection
 
     public function toArray()
     {
-        return array(
+        return [
             'name' => $this->name,
             'line' => $this->line,
             'short_desc' => $this->shortDesc,
@@ -89,7 +89,7 @@ class ParameterReflection extends Reflection
             'default' => $this->default,
             'variadic' => $this->variadic,
             'is_by_ref' => $this->byRef,
-        );
+        ];
     }
 
     public static function fromArray(Project $project, $array)

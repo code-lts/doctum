@@ -37,7 +37,7 @@ class DocBlockParser
         $errorMessage = '';
 
         try {
-            $docBlockContext = new DocBlock\Context($context->getNamespace(), $context->getAliases() ?: array());
+            $docBlockContext = new DocBlock\Context($context->getNamespace(), $context->getAliases() ?: []);
             $docBlock = new DocBlock((string) $comment, $docBlockContext);
         } catch (\Exception $e) {
             $errorMessage = $e->getMessage();
@@ -73,36 +73,36 @@ class DocBlockParser
             case VarTag::class:
             case ReturnTag::class:
                 /** @var \phpDocumentor\Reflection\DocBlock\Tag\ReturnTag $tag */
-                return array(
+                return [
                     $this->parseHint($tag->getTypes()),
                     $tag->getDescription(),
-                );
+                ];
             case PropertyTag::class:
             case PropertyReadTag::class:
             case PropertyWriteTag::class:
             case ParamTag::class:
                 /** @var \phpDocumentor\Reflection\DocBlock\Tag\ParamTag $tag */
-                return array(
+                return [
                     $this->parseHint($tag->getTypes()),
                     ltrim($tag->getVariableName(), '$'),
                     $tag->getDescription(),
-                );
+                ];
             case ThrowsTag::class:
                 /** @var \phpDocumentor\Reflection\DocBlock\Tag\ThrowsTag $tag */
-                return array(
+                return [
                     $tag->getType(),
                     $tag->getDescription(),
-                );
+                ];
             case SeeTag::class:
                 // For backwards compatibility, in first cell we store content.
                 // In second - only a referer for further parsing.
                 // In docblock node we handle this in getOtherTags() method.
                 /** @var \phpDocumentor\Reflection\DocBlock\Tag\SeeTag $tag */
-                return array(
+                return [
                     $tag->getContent(),
                     $tag->getReference(),
                     $tag->getDescription(),
-                );
+                ];
             default:
                 return $tag->getContent();
         }
@@ -110,12 +110,12 @@ class DocBlockParser
 
     protected function parseHint($rawHints)
     {
-        $hints = array();
+        $hints = [];
         foreach ($rawHints as $hint) {
             if ('[]' == substr($hint, -2)) {
-                $hints[] = array(substr($hint, 0, -2), true);
+                $hints[] = [substr($hint, 0, -2), true];
             } else {
-                $hints[] = array($hint, false);
+                $hints[] = [$hint, false];
             }
         }
 

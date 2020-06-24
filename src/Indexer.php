@@ -19,25 +19,25 @@ class Indexer
 
     public function getIndex(Project $project)
     {
-        $index = array(
-            'searchIndex' => array(),
-            'info' => array(),
-        );
+        $index = [
+            'searchIndex' => [],
+            'info' => [],
+        ];
 
         foreach ($project->getNamespaces() as $namespace) {
             $index['searchIndex'][] = $this->getSearchString($namespace);
-            $index['info'][] = array(self::TYPE_NAMESPACE, $namespace);
+            $index['info'][] = [self::TYPE_NAMESPACE, $namespace];
         }
 
         foreach ($project->getProjectClasses() as $class) {
             $index['searchIndex'][] = $this->getSearchString((string) $class);
-            $index['info'][] = array(self::TYPE_CLASS, $class);
+            $index['info'][] = [self::TYPE_CLASS, $class];
         }
 
         foreach ($project->getProjectClasses() as $class) {
             foreach ($class->getMethods() as $method) {
                 $index['searchIndex'][] = $this->getSearchString((string) $method);
-                $index['info'][] = array(self::TYPE_METHOD, $method);
+                $index['info'][] = [self::TYPE_METHOD, $method];
             }
         }
 

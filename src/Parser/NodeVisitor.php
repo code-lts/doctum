@@ -180,10 +180,10 @@ class NodeVisitor extends NodeVisitorAbstract
             }
 
             if (null !== $typeStr) {
-                $typeArr = array(array($typeStr, false));
+                $typeArr = [[$typeStr, false]];
 
                 if ($param->type instanceof NullableType) {
-                    $typeArr[] = array('null', false);
+                    $typeArr[] = ['null', false];
                 }
 
                 $parameter->setHint($this->resolveHint($typeArr));
@@ -225,10 +225,10 @@ class NodeVisitor extends NodeVisitorAbstract
         }
 
         if (null !== $returnTypeStr) {
-            $returnTypeArr = array(array($returnTypeStr, false));
+            $returnTypeArr = [[$returnTypeStr, false]];
 
             if ($returnType instanceof NullableType) {
-                $returnTypeArr[] = array('null', false);
+                $returnTypeArr[] = ['null', false];
             }
 
             $method->setHint($this->resolveHint($returnTypeArr));
@@ -301,14 +301,14 @@ class NodeVisitor extends NodeVisitorAbstract
     {
         // bypass if there is no @param tags defined (@param tags are optional)
         if (!count($tags)) {
-            return array();
+            return [];
         }
 
         if (count($method->getParameters()) != count($tags)) {
-            return array(sprintf('"%d" @param tags are expected but only "%d" found', count($method->getParameters()), count($tags)));
+            return [sprintf('"%d" @param tags are expected but only "%d" found', count($method->getParameters()), count($tags))];
         }
 
-        $errors = array();
+        $errors = [];
         foreach (array_keys($method->getParameters()) as $i => $name) {
             if ($tags[$i][1] && $tags[$i][1] != $name) {
                 $errors[] = sprintf('The "%s" @param tag variable name is wrong (should be "%s")', $tags[$i][1], $name);
@@ -327,13 +327,13 @@ class NodeVisitor extends NodeVisitorAbstract
             }
         }
 
-        return array();
+        return [];
     }
 
     protected function resolveHint($hints)
     {
         foreach ($hints as $i => $hint) {
-            $hints[$i] = array($this->resolveAlias($hint[0]), $hint[1]);
+            $hints[$i] = [$this->resolveAlias($hint[0]), $hint[1]];
         }
 
         return $hints;
@@ -378,36 +378,36 @@ class NodeVisitor extends NodeVisitorAbstract
 
     protected function resolveSee(array $see)
     {
-        $return = array();
-        $matches = array();
+        $return = [];
+        $matches = [];
 
         foreach ($see as $seeEntry) {
             $reference = $seeEntry[1];
             $description = $seeEntry[2];
             if ((bool) preg_match('/^[\w]+:\/\/.+$/', $reference)) { //URL
-                $return[] = array(
+                $return[] = [
                     $reference,
                     $description,
                     false,
                     false,
                     $reference,
-                );
+                ];
             } elseif ((bool) preg_match('/(.+)\:\:(.+)\(.*\)/', $reference, $matches)) { //Method
-                $return[] = array(
+                $return[] = [
                     $reference,
                     $description,
                     $this->resolveAlias($matches[1]),
                     $matches[2],
                     false,
-                );
+                ];
             } else { // We assume, that this is a class reference.
-                $return[] = array(
+                $return[] = [
                     $reference,
                     $description,
                     $this->resolveAlias($reference),
                     false,
                     false,
-                );
+                ];
             }
         }
 

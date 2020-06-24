@@ -26,7 +26,7 @@ class Theme
 
     public function getTemplateDirs()
     {
-        $dirs = array();
+        $dirs = [];
         if ($this->parent) {
             $dirs = $this->parent->getTemplateDirs();
         }
@@ -53,7 +53,7 @@ class Theme
 
     public function getTemplates($type)
     {
-        $templates = array();
+        $templates = [];
         if ($this->parent) {
             $templates = $this->parent->getTemplates($type);
         }

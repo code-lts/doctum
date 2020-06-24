@@ -19,7 +19,7 @@ class ProjectTest extends TestCase
         $class2->setNamespace('C21');
         $class3->setNamespace('C31\\C32');
         $store = new ArrayStore();
-        $store->setClasses(array($class1, $class2, $class3));
+        $store->setClasses([$class1, $class2, $class3]);
         $project = new Project($store);
 
         // Load version 1
@@ -29,10 +29,10 @@ class ProjectTest extends TestCase
         $project->loadClass('C21\\C2');
 
         $this->assertEquals(
-            array(
+            [
                 'C1' => $class1,
                 'C21\\C2' => $class2,
-            ),
+            ],
             $project->getProjectClasses()
         );
 
@@ -42,10 +42,10 @@ class ProjectTest extends TestCase
         $project->loadClass($class3);
 
         $this->assertEquals(
-            array(
+            [
                 'C21\\C2' => $class2,
                 'C31\\C32\\C3' => $class3,
-             ),
+             ],
             $project->getProjectClasses()
         );
     }

@@ -15,7 +15,7 @@ class Tree
 {
     public function getTree(Project $project)
     {
-        $namespaces = array();
+        $namespaces = [];
         $ns = $project->getConfig('simulate_namespaces') ? $project->getSimulatedNamespaces() : $project->getNamespaces();
         foreach ($ns as $namespace) {
             if (false !== $pos = strpos($namespace, '\\')) {
@@ -25,14 +25,14 @@ class Tree
             }
         }
 
-        return $this->generateClassTreeLevel($project, 1, $namespaces, array());
+        return $this->generateClassTreeLevel($project, 1, $namespaces, []);
     }
 
     protected function generateClassTreeLevel(Project $project, $level, array $namespaces, array $classes)
     {
         ++$level;
 
-        $tree = array();
+        $tree = [];
         foreach ($namespaces as $namespace => $subnamespaces) {
             // classes
             if ($project->getConfig('simulate_namespaces')) {
@@ -42,7 +42,7 @@ class Tree
             }
 
             // subnamespaces
-            $ns = array();
+            $ns = [];
             foreach ($subnamespaces as $subnamespace) {
                 $parts = explode('\\', $subnamespace);
                 if (!isset($parts[$level - 1])) {
@@ -61,7 +61,7 @@ class Tree
             }
             $short = $parts[count($parts) - 1] ? $parts[count($parts) - 1] : '[Global Namespace]';
 
-            $tree[] = array($short, $url, $this->generateClassTreeLevel($project, $level, $ns, $cl));
+            $tree[] = [$short, $url, $this->generateClassTreeLevel($project, $level, $ns, $cl)];
         }
 
         foreach ($classes as $class) {
@@ -72,7 +72,7 @@ class Tree
                 $short = $class->getShortName();
             }
 
-            $tree[] = array($short, $class, array());
+            $tree[] = [$short, $class, []];
         }
 
         return $tree;

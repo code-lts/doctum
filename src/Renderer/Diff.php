@@ -63,7 +63,7 @@ class Diff
 
     public function areVersionsModified()
     {
-        $versions = array();
+        $versions = [];
         foreach ($this->project->getVersions() as $version) {
             $versions[] = (string) $version;
         }
@@ -83,7 +83,7 @@ class Diff
 
     public function getModifiedClasses()
     {
-        $classes = array();
+        $classes = [];
         foreach ($this->current->getClasses() as $class => $hash) {
             if ($hash !== $this->previous->getHash($class)) {
                 $classes[] = $this->project->getClass($class);

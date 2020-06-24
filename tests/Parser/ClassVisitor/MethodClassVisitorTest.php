@@ -19,12 +19,12 @@ class MethodClassVisitorTest extends TestCase
     public function testAddsMethods()
     {
         $class = $this->getMockBuilder('Doctum\Reflection\ClassReflection')
-            ->setMethods(array('getTags'))
-            ->setConstructorArgs(array('Mock', 1))
+            ->setMethods(['getTags'])
+            ->setConstructorArgs(['Mock', 1])
             ->getMock();
-        $property = array(
+        $property = [
             explode(' ', 'string askQuestion() Ask 3 questions'),
-        );
+        ];
         $class->expects($this->any())
                 ->method('getTags')
                 ->with($this->equalTo('method'))

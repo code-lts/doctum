@@ -9,12 +9,12 @@ $versions = GitVersionCollection::create($dir)
     ->add('master', 'master branch')
 ;
 
-return new Doctum\Doctum($dir, array(
+return new Doctum\Doctum($dir, [
     'theme'                => 'default',
     'title'                => 'Twig 1.6 API',
-    'build_dir'            => __DIR__.'/../build/twig/%version%',
-    'cache_dir'            => __DIR__.'/../cache/twig/%version%',
+    'build_dir'            => __DIR__ . '/../build/twig/%version%',
+    'cache_dir'            => __DIR__ . '/../cache/twig/%version%',
     'simulate_namespaces'  => true,
     'default_opened_level' => 1,
     'versions' => $versions,
-));
+]);

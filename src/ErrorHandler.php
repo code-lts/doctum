@@ -13,7 +13,7 @@ namespace Doctum;
 
 final class ErrorHandler
 {
-    private $levels = array(
+    private $levels = [
         E_WARNING => 'Warning',
         E_NOTICE => 'Notice',
         E_USER_ERROR => 'User Error',
@@ -21,20 +21,20 @@ final class ErrorHandler
         E_USER_NOTICE => 'User Notice',
         E_STRICT => 'Runtime Notice',
         E_RECOVERABLE_ERROR => 'Catchable Fatal Error',
-    );
+    ];
 
     /**
      * Registers the error handler.
      */
     public static function register(): void
     {
-        set_error_handler(array(new static(), 'handle'));
+        set_error_handler([new static(), 'handle']);
     }
 
     /**
      * @throws \ErrorException When error_reporting returns error
      */
-    public function handle($level, $message, $file = 'unknown', $line = 0, $context = array()): bool
+    public function handle($level, $message, $file = 'unknown', $line = 0, $context = []): bool
     {
         if (error_reporting() & $level) {
             throw new \ErrorException(sprintf('%s: %s in %s line %d', $this->levels[$level] ?? $level, $message, $file, $line));

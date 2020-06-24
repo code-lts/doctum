@@ -34,12 +34,12 @@ class ConstantReflection extends Reflection
 
     public function toArray()
     {
-        return array(
+        return [
             'name' => $this->name,
             'line' => $this->line,
             'short_desc' => $this->shortDesc,
             'long_desc' => $this->longDesc,
-        );
+        ];
     }
 
     public static function fromArray(Project $project, $array)

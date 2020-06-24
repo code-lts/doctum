@@ -30,9 +30,9 @@ abstract class Command extends BaseCommand
     protected $doctum;
     protected $version;
     protected $started;
-    protected $diffs = array();
-    protected $transactions = array();
-    protected $errors = array();
+    protected $diffs = [];
+    protected $transactions = [];
+    protected $errors = [];
     protected $input;
     protected $output;
 
@@ -74,7 +74,7 @@ abstract class Command extends BaseCommand
 
     public function update(Project $project)
     {
-        $callback = $this->output->isDecorated() ? array($this, 'messageCallback') : null;
+        $callback = $this->output->isDecorated() ? [$this, 'messageCallback'] : null;
 
         $project->update($callback, $this->input->getOption('force'));
 
@@ -86,7 +86,7 @@ abstract class Command extends BaseCommand
 
     public function parse(Project $project)
     {
-        $project->parse(array($this, 'messageCallback'), $this->input->getOption('force'));
+        $project->parse([$this, 'messageCallback'], $this->input->getOption('force'));
 
         $this->displayParseSummary();
 
@@ -95,7 +95,7 @@ abstract class Command extends BaseCommand
 
     public function render(Project $project)
     {
-        $project->render(array($this, 'messageCallback'), $this->input->getOption('force'));
+        $project->render([$this, 'messageCallback'], $this->input->getOption('force'));
 
         $this->displayRenderSummary();
 
@@ -114,7 +114,7 @@ abstract class Command extends BaseCommand
                 break;
             case Message::SWITCH_VERSION:
                 $this->version = $data;
-                $this->errors = array();
+                $this->errors = [];
                 $this->started = false;
                 $this->displaySwitch();
                 break;

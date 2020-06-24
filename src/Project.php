@@ -51,24 +51,24 @@ class Project
     protected $filesystem;
     protected $interfaces;
 
-    public function __construct(StoreInterface $store, VersionCollection $versions = null, array $config = array())
+    public function __construct(StoreInterface $store, VersionCollection $versions = null, array $config = [])
     {
         if (null === $versions) {
             $versions = new SingleVersionCollection(new Version('master'));
         }
         $this->versions = $versions;
         $this->store = $store;
-        $this->config = array_merge(array(
+        $this->config = array_merge([
             'build_dir' => sys_get_temp_dir() . 'doctum/build',
             'cache_dir' => sys_get_temp_dir() . 'doctum/cache',
             'simulate_namespaces' => false,
             'include_parent_data' => true,
             'theme' => 'default',
-        ), $config);
+        ], $config);
         $this->filesystem = new Filesystem();
 
         if (count($this->versions) > 1) {
-            foreach (array('build_dir', 'cache_dir') as $dir) {
+            foreach (['build_dir', 'cache_dir'] as $dir) {
                 if (false === strpos($this->config[$dir], '%version%')) {
                     throw new \LogicException(sprintf('The "%s" setting must have the "%%version%%" placeholder as the project has more than one version.', $dir));
                 }
@@ -155,7 +155,7 @@ class Project
     public function hasNamespaces()
     {
         // if there is only one namespace and this is the global one, it means that there is no namespace in the project
-        return array('') != array_keys($this->namespaces);
+        return [''] != array_keys($this->namespaces);
     }
 
     public function hasNamespace($namespace)
@@ -180,7 +180,7 @@ class Project
     public function getSimulatedNamespaceAllClasses($namespace)
     {
         if (!isset($this->simulatedNamespaces[$namespace])) {
-            return array();
+            return [];
         }
 
         ksort($this->simulatedNamespaces[$namespace]);
@@ -204,7 +204,7 @@ class Project
     public function getNamespaceExceptions($namespace)
     {
         if (!isset($this->namespaceExceptions[$namespace])) {
-            return array();
+            return [];
         }
 
         ksort($this->namespaceExceptions[$namespace]);
@@ -215,7 +215,7 @@ class Project
     public function getNamespaceClasses($namespace)
     {
         if (!isset($this->namespaceClasses[$namespace])) {
-            return array();
+            return [];
         }
 
         ksort($this->namespaceClasses[$namespace]);
@@ -226,7 +226,7 @@ class Project
     public function getNamespaceInterfaces($namespace)
     {
         if (!isset($this->namespaceInterfaces[$namespace])) {
-            return array();
+            return [];
         }
 
         ksort($this->namespaceInterfaces[$namespace]);
@@ -238,7 +238,7 @@ class Project
     {
         $prefix = strlen($parent) ? ($parent . '\\') : '';
         $len = strlen($prefix);
-        $namespaces = array();
+        $namespaces = [];
 
         foreach ($this->namespaces as $sub) {
             $prefixMatch = substr($sub, 0, $len) === $prefix;
@@ -271,7 +271,7 @@ class Project
 
     public function getProjectInterfaces()
     {
-        $interfaces = array();
+        $interfaces = [];
         foreach ($this->interfaces as $interface) {
             if ($interface->isProjectClass()) {
                 $interfaces[$interface->getName()] = $interface;
@@ -284,7 +284,7 @@ class Project
 
     public function getProjectClasses()
     {
-        $classes = array();
+        $classes = [];
         foreach ($this->classes as $name => $class) {
             if ($class->isProjectClass()) {
                 $classes[$name] = $class;
@@ -327,13 +327,13 @@ class Project
 
     public function initialize()
     {
-        $this->namespaces = array();
-        $this->simulatedNamespaces = array();
-        $this->interfaces = array();
-        $this->classes = array();
-        $this->namespaceClasses = array();
-        $this->namespaceInterfaces = array();
-        $this->namespaceExceptions = array();
+        $this->namespaces = [];
+        $this->simulatedNamespaces = [];
+        $this->interfaces = [];
+        $this->classes = [];
+        $this->namespaceClasses = [];
+        $this->namespaceInterfaces = [];
+        $this->namespaceExceptions = [];
     }
 
     public function read()
@@ -372,7 +372,7 @@ class Project
 
     public static function isPhpTypeHint($hint)
     {
-        return in_array(strtolower($hint), array('', 'scalar', 'object', 'boolean', 'bool', 'true', 'false', 'int', 'integer', 'array', 'string', 'mixed', 'void', 'null', 'resource', 'double', 'float', 'callable', '$this'));
+        return in_array(strtolower($hint), ['', 'scalar', 'object', 'boolean', 'bool', 'true', 'false', 'int', 'integer', 'array', 'string', 'mixed', 'void', 'null', 'resource', 'double', 'float', 'callable', '$this']);
     }
 
     protected function updateCache(ClassReflection $class)
@@ -401,7 +401,7 @@ class Project
                 // add sub-namespaces
                 while ($namespace = substr($namespace, 0, strrpos($namespace, '\\'))) {
                     if (!isset($this->simulatedNamespaces[$namespace])) {
-                        $this->simulatedNamespaces[$namespace] = array();
+                        $this->simulatedNamespaces[$namespace] = [];
                     }
                 }
             } else {
@@ -412,7 +412,7 @@ class Project
 
     protected function prepareDir($dir)
     {
-        static $prepared = array();
+        static $prepared = [];
 
         $dir = $this->replaceVars($dir);
 

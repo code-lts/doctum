@@ -18,7 +18,7 @@ class PropertyReflection extends Reflection
     protected $class;
     protected $modifiers;
     protected $default;
-    protected $errors = array();
+    protected $errors = [];
 
     public function __toString()
     {
@@ -92,7 +92,7 @@ class PropertyReflection extends Reflection
 
     public function toArray()
     {
-        return array(
+        return [
             'name' => $this->name,
             'line' => $this->line,
             'short_desc' => $this->shortDesc,
@@ -103,7 +103,7 @@ class PropertyReflection extends Reflection
             'modifiers' => $this->modifiers,
             'default' => $this->default,
             'errors' => $this->errors,
-        );
+        ];
     }
 
     public static function fromArray(Project $project, $array)

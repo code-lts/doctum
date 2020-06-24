@@ -23,15 +23,15 @@ class Transaction
 
     public function __construct(Project $project)
     {
-        $this->hashes = array();
-        $this->classes = array();
+        $this->hashes = [];
+        $this->classes = [];
 
         foreach ($project->getProjectClasses() as $class) {
             $this->addClass($class);
         }
 
-        $this->visited = array();
-        $this->modified = array();
+        $this->visited = [];
+        $this->modified = [];
     }
 
     public function hasHash($hash)
@@ -52,7 +52,7 @@ class Transaction
 
     public function getRemovedClasses()
     {
-        $classes = array();
+        $classes = [];
         foreach ($this->hashes as $hash => $c) {
             if (!isset($this->visited[$hash])) {
                 $classes = array_merge($classes, $c);

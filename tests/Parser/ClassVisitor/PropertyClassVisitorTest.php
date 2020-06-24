@@ -19,30 +19,30 @@ class PropertyClassVisitorTest extends TestCase
     public function testAddsProperties()
     {
         $class = $this->getMockBuilder('Doctum\Reflection\ClassReflection')
-            ->setMethods(array('getTags'))
-            ->setConstructorArgs(array('Mock', 1))
+            ->setMethods(['getTags'])
+            ->setConstructorArgs(['Mock', 1])
             ->getMock();
 
-        $property = array(
-            array(
-                array(),
+        $property = [
+            [
+                [],
                 'animal',
                 'Your favourite animal',
-            ),
-            array(
-                array(
+            ],
+            [
+                [
                     'string',
                     null,
-                ),
+                ],
                 'color',
                 'Your favourite color',
-            ),
-            array(
-                array(),
+            ],
+            [
+                [],
                 'enigma',
                 null,
-            ),
-        );
+            ],
+        ];
         $class->expects($this->any())->method('getTags')->with($this->equalTo('property'))->will($this->returnValue($property));
 
         $context = $this->getMockBuilder('Doctum\Parser\ParserContext')->disableOriginalConstructor()->getMock();

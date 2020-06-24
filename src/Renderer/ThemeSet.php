@@ -34,8 +34,8 @@ class ThemeSet
 
     protected function discover(array $dirs)
     {
-        $this->themes = array();
-        $parents = array();
+        $this->themes = [];
+        $parents = [];
         foreach (Finder::create()->name('manifest.yml')->in($dirs) as $manifest) {
             $text = file_get_contents($manifest);
             $config = Yaml::parse($text);
@@ -49,7 +49,7 @@ class ThemeSet
                 $parents[$config['name']] = $config['parent'];
             }
 
-            foreach (array('static', 'global', 'namespace', 'class') as $type) {
+            foreach (['static', 'global', 'namespace', 'class'] as $type) {
                 if (isset($config[$type])) {
                     $theme->setTemplates($type, $config[$type]);
                 }

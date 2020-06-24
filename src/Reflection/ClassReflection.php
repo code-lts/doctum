@@ -19,13 +19,13 @@ class ClassReflection extends Reflection
     private const CATEGORY_INTERFACE = 2;
     private const CATEGORY_TRAIT = 3;
 
-    private static $categoryName = array(
+    private static $categoryName = [
         1 => 'class',
         2 => 'interface',
         3 => 'trait',
-    );
+    ];
 
-    private static $phpInternalClasses = array(
+    private static $phpInternalClasses = [
         'stdclass' => true,
         'exception' => true,
         'errorexception' => true,
@@ -196,7 +196,7 @@ class ClassReflection extends Reflection
         'sessionidinterface' => true,
         'sessionupdatetimestamphandlerinterface' => true,
         'reflector' => true,
-    );
+    ];
 
     /** @var Project */
     protected $project;
@@ -204,18 +204,18 @@ class ClassReflection extends Reflection
     protected $hash;
     protected $namespace;
     protected $modifiers;
-    protected $properties = array();
-    protected $methods = array();
-    protected $interfaces = array();
-    protected $constants = array();
-    protected $traits = array();
+    protected $properties = [];
+    protected $methods = [];
+    protected $interfaces = [];
+    protected $constants = [];
+    protected $traits = [];
     protected $parent;
     protected $file;
     protected $relativeFilePath;
     protected $category = self::CATEGORY_CLASS;
     protected $projectClass = true;
-    protected $aliases = array();
-    protected $errors = array();
+    protected $aliases = [];
+    protected $errors = [];
     protected $fromCache = false;
 
     public function __toString()
@@ -341,7 +341,7 @@ class ClassReflection extends Reflection
             return $this->properties;
         }
 
-        $properties = array();
+        $properties = [];
         if ($this->getParent()) {
             foreach ($this->getParent()->getProperties(true) as $name => $property) {
                 $properties[$name] = $property;
@@ -381,7 +381,7 @@ class ClassReflection extends Reflection
             return $this->constants;
         }
 
-        $constants = array();
+        $constants = [];
         if ($this->getParent()) {
             foreach ($this->getParent()->getConstants(true) as $name => $constant) {
                 $constants[$name] = $constant;
@@ -436,7 +436,7 @@ class ClassReflection extends Reflection
             return $this->methods;
         }
 
-        $methods = array();
+        $methods = [];
         if ($this->isInterface()) {
             foreach ($this->getInterfaces(true) as $interface) {
                 foreach ($interface->getMethods(true) as $name => $method) {
@@ -476,7 +476,7 @@ class ClassReflection extends Reflection
 
     public function getInterfaces($deep = false)
     {
-        $interfaces = array();
+        $interfaces = [];
         foreach ($this->interfaces as $interface) {
             $interfaces[] = $this->project->getClass($interface);
         }
@@ -504,7 +504,7 @@ class ClassReflection extends Reflection
 
     public function getTraits($deep = false)
     {
-        $traits = array();
+        $traits = [];
         foreach ($this->traits as $trait) {
             $traits[] = $this->project->getClass($trait);
         }
@@ -538,7 +538,7 @@ class ClassReflection extends Reflection
     public function getParent($deep = false)
     {
         if (!$this->parent) {
-            return $deep ? array() : null;
+            return $deep ? [] : null;
         }
 
         $parent = $this->project->getClass($this->parent);
@@ -547,7 +547,7 @@ class ClassReflection extends Reflection
             return $parent;
         }
 
-        return array_merge(array($parent), $parent->getParent(true));
+        return array_merge([$parent], $parent->getParent(true));
     }
 
     public function setInterface($boolean)
@@ -619,7 +619,7 @@ class ClassReflection extends Reflection
 
     public function toArray()
     {
-        return array(
+        return [
             'name' => $this->name,
             'line' => $this->line,
             'short_desc' => $this->shortDesc,
@@ -647,7 +647,7 @@ class ClassReflection extends Reflection
             'constants' => array_map(function ($constant) {
                 return $constant->toArray();
             }, $this->constants),
-        );
+        ];
     }
 
     public static function fromArray(Project $project, $array)

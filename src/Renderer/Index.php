@@ -21,21 +21,21 @@ class Index implements \Serializable
 
     public function __construct(Project $project = null)
     {
-        $this->classes = array();
+        $this->classes = [];
         if (null !== $project) {
             foreach ($project->getProjectClasses() as $class) {
                 $this->classes[$class->getName()] = $class->getHash();
             }
         }
 
-        $this->versions = array();
+        $this->versions = [];
         if (null !== $project) {
             foreach ($project->getVersions() as $version) {
                 $this->versions[] = (string) $version;
             }
         }
 
-        $this->namespaces = array();
+        $this->namespaces = [];
         if (null !== $project) {
             $this->namespaces = $project->getConfig('simulate_namespaces') ? $project->getSimulatedNamespaces() : $project->getNamespaces();
         }
@@ -63,7 +63,7 @@ class Index implements \Serializable
 
     public function serialize()
     {
-        return serialize(array($this->classes, $this->versions, $this->namespaces));
+        return serialize([$this->classes, $this->versions, $this->namespaces]);
     }
 
     public function unserialize($data)

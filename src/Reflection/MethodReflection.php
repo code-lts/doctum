@@ -16,11 +16,11 @@ use Doctum\Project;
 class MethodReflection extends Reflection
 {
     protected $class;
-    protected $parameters = array();
+    protected $parameters = [];
     protected $byRef;
     protected $modifiers;
-    protected $exceptions = array();
-    protected $errors = array();
+    protected $exceptions = [];
+    protected $errors = [];
 
     public function __toString()
     {
@@ -124,7 +124,7 @@ class MethodReflection extends Reflection
 
     public function getExceptions()
     {
-        $exceptions = array();
+        $exceptions = [];
         foreach ($this->exceptions as $exception) {
             $exception[0] = $this->class->getProject()->getClass($exception[0]);
             $exceptions[] = $exception;
@@ -155,7 +155,7 @@ class MethodReflection extends Reflection
 
     public function toArray()
     {
-        return array(
+        return [
             'name' => $this->name,
             'line' => $this->line,
             'short_desc' => $this->shortDesc,
@@ -170,7 +170,7 @@ class MethodReflection extends Reflection
             'parameters' => array_map(function ($parameter) {
                 return $parameter->toArray();
             }, $this->parameters),
-        );
+        ];
     }
 
     public static function fromArray(Project $project, $array)
