@@ -62,27 +62,27 @@ class TwigExtension extends AbstractExtension
 
     public function pathForClass(array $context, ClassReflection $class)
     {
-        return $this->relativeUri($this->currentDepth).str_replace('\\', '/', $class).'.html';
+        return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $class) . '.html';
     }
 
     public function pathForNamespace(array $context, $namespace)
     {
-        return $this->relativeUri($this->currentDepth).str_replace('\\', '/', $namespace).'.html';
+        return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $namespace) . '.html';
     }
 
     public function pathForMethod(array $context, MethodReflection $method)
     {
-        return $this->relativeUri($this->currentDepth).str_replace('\\', '/', $method->getClass()->getName()).'.html#method_'.$method->getName();
+        return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $method->getClass()->getName()) . '.html#method_' . $method->getName();
     }
 
     public function pathForProperty(array $context, PropertyReflection $property)
     {
-        return $this->relativeUri($this->currentDepth).str_replace('\\', '/', $property->getClass()->getName()).'.html#property_'.$property->getName();
+        return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $property->getClass()->getName()) . '.html#property_' . $property->getName();
     }
 
     public function pathForStaticFile(array $context, $file)
     {
-        return $this->relativeUri($this->currentDepth).$file;
+        return $this->relativeUri($this->currentDepth) . $file;
     }
 
     public function abbrClass($class, $absolute = false)
@@ -119,7 +119,7 @@ class TwigExtension extends AbstractExtension
 
         // FIXME: the @see argument is more complex than just a class (Class::Method, local method directly, ...)
         $desc = preg_replace_callback('/@see ([^ ]+)/', function ($match) {
-            return 'see '.$match[1];
+            return 'see ' . $match[1];
         }, $desc);
 
         return preg_replace(array('#^<p>\s*#s', '#\s*</p>\s*$#s'), '', $this->markdown->transform($desc));
@@ -140,6 +140,6 @@ class TwigExtension extends AbstractExtension
             return '';
         }
 
-        return rtrim(str_repeat('../', $value), '/').'/';
+        return rtrim(str_repeat('../', $value), '/') . '/';
     }
 }

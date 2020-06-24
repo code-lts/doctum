@@ -75,7 +75,7 @@ class DocBlockNode
 
     public function getDesc()
     {
-        return $this->shortDesc."\n\n".$this->longDesc;
+        return $this->shortDesc . "\n\n" . $this->longDesc;
     }
 
     public function addError($error)

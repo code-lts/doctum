@@ -26,10 +26,10 @@ class GitLabRemoteRepository extends AbstractRemoteRepository
 
     public function getFileUrl($projectVersion, $relativePath, $line)
     {
-        $url = $this->url.$this->name.'/blob/'.str_replace('\\', '/', $projectVersion.$relativePath);
+        $url = $this->url . $this->name . '/blob/' . str_replace('\\', '/', $projectVersion . $relativePath);
 
         if (null !== $line) {
-            $url .= '#L'.(int) $line;
+            $url .= '#L' . (int) $line;
         }
 
         return $url;

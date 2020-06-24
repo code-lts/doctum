@@ -23,7 +23,7 @@ class ParameterReflection extends Reflection
 
     public function __toString()
     {
-        return $this->method.'#'.$this->name;
+        return $this->method . '#' . $this->name;
     }
 
     public function getClass()

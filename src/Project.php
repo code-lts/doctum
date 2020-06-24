@@ -59,8 +59,8 @@ class Project
         $this->versions = $versions;
         $this->store = $store;
         $this->config = array_merge(array(
-            'build_dir' => sys_get_temp_dir().'doctum/build',
-            'cache_dir' => sys_get_temp_dir().'doctum/cache',
+            'build_dir' => sys_get_temp_dir() . 'doctum/build',
+            'cache_dir' => sys_get_temp_dir() . 'doctum/cache',
             'simulate_namespaces' => false,
             'include_parent_data' => true,
             'theme' => 'default',
@@ -236,14 +236,13 @@ class Project
 
     public function getNamespaceSubNamespaces($parent)
     {
-        $prefix = strlen($parent) ? ($parent.'\\') : '';
+        $prefix = strlen($parent) ? ($parent . '\\') : '';
         $len = strlen($prefix);
         $namespaces = array();
 
         foreach ($this->namespaces as $sub) {
-            if (substr($sub, 0, $len) == $prefix
-                && false === strpos(substr($sub, $len), '\\')
-            ) {
+            $prefixMatch = substr($sub, 0, $len) === $prefix;
+            if ($prefixMatch && strpos(substr($sub, $len), '\\') === false) {
                 $namespaces[] = $sub;
             }
         }
@@ -360,8 +359,8 @@ class Project
     {
         $this->filesystem->remove($dir);
         $this->filesystem->mkdir($dir);
-        file_put_contents($dir.'/DOCTUM_VERSION', Doctum::VERSION);
-        file_put_contents($dir.'/PROJECT_VERSION', $this->version);
+        file_put_contents($dir . '/DOCTUM_VERSION', Doctum::VERSION);
+        file_put_contents($dir . '/PROJECT_VERSION', $this->version);
     }
 
     public function seedCache($previous, $current)
@@ -430,8 +429,8 @@ class Project
         }
 
         $doctumVersion = null;
-        if (file_exists($dir.'/DOCTUM_VERSION')) {
-            $doctumVersion = file_get_contents($dir.'/DOCTUM_VERSION');
+        if (file_exists($dir . '/DOCTUM_VERSION')) {
+            $doctumVersion = file_get_contents($dir . '/DOCTUM_VERSION');
         }
 
         if (Doctum::VERSION !== $doctumVersion) {
@@ -477,7 +476,7 @@ class Project
             throw new \LogicException('You must set a renderer.');
         }
 
-        $frozen = $version->isFrozen() && $this->renderer->isRendered($this) && $this->version === file_get_contents($this->getBuildDir().'/PROJECT_VERSION');
+        $frozen = $version->isFrozen() && $this->renderer->isRendered($this) && $this->version === file_get_contents($this->getBuildDir() . '/PROJECT_VERSION');
 
         if ($force && !$frozen) {
             $this->flushDir($this->getBuildDir());
@@ -501,7 +500,7 @@ class Project
         }
 
         if (false !== strpos($root, 'github')) {
-            return $root.'/tree/'.$this->version;
+            return $root . '/tree/' . $this->version;
         }
     }
 

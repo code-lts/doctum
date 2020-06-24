@@ -270,7 +270,7 @@ class DocBlockParserTest extends TestCase
                     }
                     break;
                 default:
-                    $method = 'set'.$key;
+                    $method = 'set' . $key;
                     $docblock->$method($value);
             }
         }

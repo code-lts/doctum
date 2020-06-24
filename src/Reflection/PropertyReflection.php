@@ -22,7 +22,7 @@ class PropertyReflection extends Reflection
 
     public function __toString()
     {
-        return $this->class.'::$'.$this->name;
+        return $this->class . '::$' . $this->name;
     }
 
     public function setModifiers($modifiers)

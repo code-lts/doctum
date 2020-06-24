@@ -176,7 +176,7 @@ class NodeVisitor extends NodeVisitorAbstract
             }
 
             if ($type instanceof FullyQualified && 0 !== strpos($typeStr, '\\')) {
-                $typeStr = '\\'.$typeStr;
+                $typeStr = '\\' . $typeStr;
             }
 
             if (null !== $typeStr) {
@@ -221,7 +221,7 @@ class NodeVisitor extends NodeVisitorAbstract
         }
 
         if ($returnType instanceof FullyQualified && 0 !== strpos($returnTypeStr, '\\')) {
-            $returnTypeStr = '\\'.$returnTypeStr;
+            $returnTypeStr = '\\' . $returnTypeStr;
         }
 
         if (null !== $returnTypeStr) {
@@ -370,7 +370,7 @@ class NodeVisitor extends NodeVisitorAbstract
             }
 
             // a class in the current class namespace
-            return $class->getNamespace().'\\'.$alias;
+            return $class->getNamespace() . '\\' . $alias;
         }
 
         return $alias;

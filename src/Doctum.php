@@ -155,7 +155,7 @@ class Doctum extends Container
 
         $this['themes'] = function ($sc) {
             $templates = $sc['template_dirs'];
-            $templates[] = __DIR__.'/Resources/themes';
+            $templates[] = __DIR__ . '/Resources/themes';
 
             return new ThemeSet($templates);
         };
@@ -176,8 +176,8 @@ class Doctum extends Container
         $this['title'] = 'API';
         $this['version'] = 'master';
         $this['template_dirs'] = array();
-        $this['build_dir'] = getcwd().'/build';
-        $this['cache_dir'] = getcwd().'/cache';
+        $this['build_dir'] = getcwd() . '/build';
+        $this['cache_dir'] = getcwd() . '/cache';
         $this['remote_repository'] = null;
         $this['source_dir'] = '';
         $this['source_url'] = '';

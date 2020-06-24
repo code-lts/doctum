@@ -54,7 +54,7 @@ abstract class Command extends BaseCommand
         $filesystem = new Filesystem();
 
         if (!$filesystem->isAbsolutePath($config)) {
-            $config = getcwd().'/'.$config;
+            $config = getcwd() . '/' . $config;
         }
 
         if (!is_file($config)) {
@@ -139,8 +139,8 @@ abstract class Command extends BaseCommand
     {
         return
             str_repeat('#', (int) floor($percent / 100 * $length))
-            .sprintf(' %d%%', $percent)
-            .str_repeat(' ', $length - ((int) floor($percent / 100 * $length)))
+            . sprintf(' %d%%', $percent)
+            . str_repeat(' ', $length - ((int) floor($percent / 100 * $length)))
         ;
     }
 
@@ -153,11 +153,11 @@ abstract class Command extends BaseCommand
 
         $this->output->isDecorated() and $this->output->write(
             sprintf(
-            "  Parsing <comment>%s</comment>%s\033[K\n          %s\033[K\n",
-            $this->renderProgressBar($progress, 50),
-            count($this->errors) ? ' <fg=red>'.count($this->errors).' error'.(1 == count($this->errors) ? '' : 's').'</>' : '',
-            $class->getName()
-        )
+                "  Parsing <comment>%s</comment>%s\033[K\n          %s\033[K\n",
+                $this->renderProgressBar($progress, 50),
+                count($this->errors) ? ' <fg=red>' . count($this->errors) . ' error' . (1 == count($this->errors) ? '' : 's') . '</>' : '',
+                $class->getName()
+            )
         );
     }
 

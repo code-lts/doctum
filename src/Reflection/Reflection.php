@@ -102,7 +102,7 @@ abstract class Reflection
     {
         $str = array();
         foreach ($this->getHint() as $hint) {
-            $str[] = ($hint->isClass() ? $hint->getName()->getShortName() : $hint->getName()).($hint->isArray() ? '[]' : '');
+            $str[] = ($hint->isClass() ? $hint->getName()->getShortName() : $hint->getName()) . ($hint->isArray() ? '[]' : '');
         }
 
         return implode('|', $str);

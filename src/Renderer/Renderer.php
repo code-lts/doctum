@@ -47,7 +47,7 @@ class Renderer
 
     public function render(Project $project, $callback = null, $force = false)
     {
-        $this->twig->setCache($cacheDir = $project->getCacheDir().'/twig');
+        $this->twig->setCache($cacheDir = $project->getCacheDir() . '/twig');
 
         if ($force) {
             $project->flushDir($cacheDir);
@@ -102,8 +102,8 @@ class Renderer
         $dirs = $this->theme->getTemplateDirs();
         foreach ($this->theme->getTemplates('static') as $template => $target) {
             foreach (array_reverse($dirs) as $dir) {
-                if (file_exists($dir.'/'.$template)) {
-                    $this->filesystem->copy($dir.'/'.$template, $project->getBuildDir().'/'.$target);
+                if (file_exists($dir . '/' . $template)) {
+                    $this->filesystem->copy($dir . '/' . $template, $project->getBuildDir() . '/' . $target);
 
                     continue 2;
                 }
@@ -230,7 +230,7 @@ class Renderer
         $this->twig->getExtension('Doctum\Renderer\TwigExtension')->setCurrentDepth($depth);
         $this->twig->addGlobal('root_path', str_repeat('../', $depth));
 
-        $file = $project->getBuildDir().'/'.$uri;
+        $file = $project->getBuildDir() . '/' . $uri;
 
         if (!is_dir($dir = dirname($file))) {
             $this->filesystem->mkdir($dir);
@@ -263,7 +263,7 @@ class Renderer
 
     protected function getDiff(Project $project)
     {
-        return new Diff($project, $project->getBuildDir().'/renderer.index');
+        return new Diff($project, $project->getBuildDir() . '/renderer.index');
     }
 
     protected function getTheme(Project $project)

@@ -68,12 +68,12 @@ class JsonStore implements StoreInterface
     {
         $dir = $this->getStoreDir($project);
 
-        return $dir.'/c_'.md5($name).'.json';
+        return $dir . '/c_' . md5($name) . '.json';
     }
 
     protected function getStoreDir(Project $project)
     {
-        $dir = $project->getCacheDir().'/store';
+        $dir = $project->getCacheDir() . '/store';
 
         if (!is_dir($dir)) {
             $filesystem = new Filesystem();
