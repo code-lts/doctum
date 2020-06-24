@@ -44,7 +44,7 @@ class NodeVisitor extends NodeVisitorAbstract
     public function enterNode(AbstractNode $node)
     {
         if ($node instanceof NamespaceNode) {
-            $this->context->enterNamespace((string) $node->name);
+            $this->context->enterNamespace($node->name->__toString());
         } elseif ($node instanceof UseNode) {
             $this->addAliases($node);
         } elseif ($node instanceof InterfaceNode) {
@@ -78,7 +78,7 @@ class NodeVisitor extends NodeVisitorAbstract
     protected function addAliases(UseNode $node)
     {
         foreach ($node->uses as $use) {
-            $this->context->addAlias($use->alias, (string) $use->name);
+            $this->context->addAlias($use->alias !== null ? $use->alias->__toString() : null, $use->name->__toString());
         }
     }
 
@@ -156,7 +156,7 @@ class NodeVisitor extends NodeVisitorAbstract
         $method->setByRef((string) $node->byRef);
 
         foreach ($node->params as $param) {
-            $parameter = new ParameterReflection($param->var, $param->getLine());
+            $parameter = new ParameterReflection($param->var->name, $param->getLine());
             $parameter->setModifiers($param->type);
             $parameter->setByRef($param->byRef);
             if ($param->default) {
