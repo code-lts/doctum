@@ -169,7 +169,7 @@ abstract class Reflection
     public function getSee()
     {
         $see = array();
-        /* @var $project Project */
+        /** @var Project $project */
         $project = $this->getClass()->getProject();
 
         foreach ($this->see as $seeElem) {
@@ -185,9 +185,6 @@ abstract class Reflection
         return $see;
     }
 
-    /**
-     * @param array $see
-     */
     public function setSee(array $see)
     {
         $this->see = $see;
@@ -195,7 +192,7 @@ abstract class Reflection
 
     private function prepareMethodSee(array $seeElem)
     {
-        /* @var $project Project */
+        /** @var Project $project */
         $project = $this->getClass()->getProject();
 
         $class = $project->getClass($seeElem[2]);
