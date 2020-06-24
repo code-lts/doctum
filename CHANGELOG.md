@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Removed symfony/phpunit-bridge in favor of phpunit/phpunit
 - Removed blackfire testing
 - Updated composer.json
+- Move source files to src directory
+- Rename Sami to Doctum
+- Move the binary to bin/doctum.php
 
 ## [4.1.0] - 2018-06-25
 
