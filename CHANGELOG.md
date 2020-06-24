@@ -21,6 +21,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add phpstan
 - Fix some issues reported by phpstan
 - Upgrade nikic/php-parser from ~3.0 to ~4.5
+- Upgrade twig/twig from ~2.0 to ~2.12
+- Apply some coding standard rules on the code-base
+- Add PHP constants visibility
 
 ## [4.1.0] - 2018-06-25
 
