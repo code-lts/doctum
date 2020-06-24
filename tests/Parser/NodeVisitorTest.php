@@ -19,6 +19,7 @@ use Doctum\Reflection\ClassReflection;
 use Doctum\Reflection\MethodReflection;
 use Doctum\Reflection\ParameterReflection;
 use Doctum\Store\ArrayStore;
+use PhpParser\Node\Expr\Variable;
 
 /**
  * @author Tomasz Struczyński <t.struczynski@gmail.com>
@@ -169,8 +170,16 @@ class NodeVisitorTest extends TestCase
         $classReflection = new ClassReflection('C1', 1);
         $method = new ClassMethod('testMethod', array(
             'params' => array(
-                new Param('param1', null, 'int'),
-                new Param('param2', null, 'string'),
+                new Param(
+                    new Variable('param1'),
+                    null,
+                    'int'
+                ),
+                new Param(
+                    new Variable('param2'),
+                    null,
+                    'string'
+                ),
             ),
         ));
 
@@ -198,7 +207,11 @@ class NodeVisitorTest extends TestCase
         $paramClassReflection = new ClassReflection("Test\Class", 1);
         $method = new ClassMethod('testMethod', array(
             'params' => array(
-                new Param('param1', null, new FullyQualified('Test\\Class')),
+                new Param(
+                    new Variable('param1'),
+                    null,
+                    new FullyQualified('Test\\Class')
+                ),
             ),
         ));
 
@@ -226,7 +239,11 @@ class NodeVisitorTest extends TestCase
         $paramClassReflection = new ClassReflection("Test\Sub\Class", 1);
         $method = new ClassMethod('testMethod', array(
             'params' => array(
-                new Param('param1', null, new Relative('Sub\\Class')),
+                new Param(
+                    new Variable('param1'),
+                    null,
+                    new Relative('Sub\\Class')
+                ),
             ),
         ));
 
@@ -254,7 +271,9 @@ class NodeVisitorTest extends TestCase
         $paramClassReflection = new ClassReflection("Test\Class", 1);
         $method = new ClassMethod('testMethod', array(
             'params' => array(
-                new Param('param1'),
+                new Param(
+                    new Variable('param1')
+                ),
             ),
         ));
         $method->setDocComment(new \PhpParser\Comment\Doc('/** @param Test\\Class $param1 */'));
@@ -283,7 +302,9 @@ class NodeVisitorTest extends TestCase
         $paramClassReflection = new ClassReflection("Test\Class", 1);
         $method = new ClassMethod('testMethod', array(
             'params' => array(
-                new Param('param1'),
+                new Param(
+                    new Variable('param1')
+                ),
             ),
         ));
         $method->setDocComment(new \PhpParser\Comment\Doc('/** @param Test\\Class|string $param1 */'));
