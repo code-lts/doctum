@@ -52,7 +52,7 @@ class ParserContext
         return $this->prettyPrinter;
     }
 
-    public function addAlias($alias, $name): void
+    public function addAlias(?string $alias, string $name): void
     {
         $this->aliases[$alias] = $name;
     }

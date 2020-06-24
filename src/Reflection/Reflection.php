@@ -23,6 +23,7 @@ abstract class Reflection
     const MODIFIER_FINAL = 32;
     const VISIBILITY_MODIFER_MASK = 7; // 1 | 2 | 4
 
+    /** @var string */
     protected $name;
     protected $line;
     protected $shortDesc;
@@ -33,7 +34,7 @@ abstract class Reflection
     protected $docComment;
     protected $see = array();
 
-    public function __construct($name, $line)
+    public function __construct(string $name, $line)
     {
         $this->name = $name;
         $this->line = $line;
@@ -42,12 +43,12 @@ abstract class Reflection
 
     abstract public function getClass();
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
     }
