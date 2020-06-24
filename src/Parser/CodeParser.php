@@ -29,7 +29,7 @@ class CodeParser
 
         // with big fluent interfaces it can happen that PHP-Parser's Traverser
         // exceeds the 100 recursions limit; we set it to 10000 to be sure.
-        ini_set('xdebug.max_nesting_level', 10000);
+        ini_set('xdebug.max_nesting_level', '10000');
     }
 
     public function getContext()

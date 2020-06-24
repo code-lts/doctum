@@ -41,7 +41,7 @@ class GitVersionCollection extends VersionCollection
 
     protected function switchVersion(Version $version)
     {
-        $process = new Process('git status --porcelain --untracked-files=no', $this->repo);
+        $process = new Process(['git', 'status', '--porcelain', '--untracked-files=no'], $this->repo);
         $process->run();
         if (!$process->isSuccessful() || trim($process->getOutput())) {
             throw new \RuntimeException(sprintf('Unable to switch to version "%s" as the repository is not clean.', $version));

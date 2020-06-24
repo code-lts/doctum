@@ -47,7 +47,7 @@ class MethodClassVisitor implements ClassVisitorInterface
      *
      * @param string $tag Method tag contents
      *
-     * @return array
+     * @return array|false
      */
     protected function parseMethod($tag)
     {

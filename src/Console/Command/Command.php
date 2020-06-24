@@ -138,9 +138,9 @@ abstract class Command extends BaseCommand
     public function renderProgressBar($percent, $length)
     {
         return
-            str_repeat('#', floor($percent / 100 * $length))
+            str_repeat('#', (int) floor($percent / 100 * $length))
             .sprintf(' %d%%', $percent)
-            .str_repeat(' ', $length - floor($percent / 100 * $length))
+            .str_repeat(' ', $length - ((int) floor($percent / 100 * $length)))
         ;
     }
 
