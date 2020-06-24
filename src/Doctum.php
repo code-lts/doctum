@@ -36,7 +36,7 @@ use Twig\Loader\FilesystemLoader;
 
 class Doctum extends Container
 {
-    const VERSION = '4.0.14-DEV';
+    public const VERSION = '4.0.14-DEV';
 
     public function __construct($iterator = null, array $config = array())
     {

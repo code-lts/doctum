@@ -18,7 +18,7 @@ use Symfony\Component\Finder\Finder;
 
 class JsonStore implements StoreInterface
 {
-    const JSON_PRETTY_PRINT = 128;
+    private const JSON_PRETTY_PRINT = 128;
 
     /**
      * @return ClassReflection A ClassReflection instance

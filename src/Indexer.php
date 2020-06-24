@@ -13,9 +13,9 @@ namespace Doctum;
 
 class Indexer
 {
-    const TYPE_CLASS = 1;
-    const TYPE_METHOD = 2;
-    const TYPE_NAMESPACE = 3;
+    private const TYPE_CLASS = 1;
+    private const TYPE_METHOD = 2;
+    private const TYPE_NAMESPACE = 3;
 
     public function getIndex(Project $project)
     {

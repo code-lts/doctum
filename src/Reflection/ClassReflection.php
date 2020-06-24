@@ -15,9 +15,9 @@ use Doctum\Project;
 
 class ClassReflection extends Reflection
 {
-    const CATEGORY_CLASS = 1;
-    const CATEGORY_INTERFACE = 2;
-    const CATEGORY_TRAIT = 3;
+    private const CATEGORY_CLASS = 1;
+    private const CATEGORY_INTERFACE = 2;
+    private const CATEGORY_TRAIT = 3;
 
     private static $categoryName = array(
         1 => 'class',

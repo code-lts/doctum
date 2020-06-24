@@ -25,7 +25,7 @@ use Symfony\Component\Filesystem\Filesystem;
 
 abstract class Command extends BaseCommand
 {
-    const PARSE_ERROR = 64;
+    private const PARSE_ERROR = 64;
 
     protected $doctum;
     protected $version;
