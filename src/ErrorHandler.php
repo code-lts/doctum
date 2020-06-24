@@ -25,10 +25,8 @@ final class ErrorHandler
 
     /**
      * Registers the error handler.
-     *
-     * @return The registered error handler
      */
-    public static function register()
+    public static function register(): void
     {
         set_error_handler(array(new static(), 'handle'));
     }
@@ -36,7 +34,7 @@ final class ErrorHandler
     /**
      * @throws \ErrorException When error_reporting returns error
      */
-    public function handle($level, $message, $file = 'unknown', $line = 0, $context = array())
+    public function handle($level, $message, $file = 'unknown', $line = 0, $context = array()): bool
     {
         if (error_reporting() & $level) {
             throw new \ErrorException(sprintf('%s: %s in %s line %d', $this->levels[$level] ?? $level, $message, $file, $line));

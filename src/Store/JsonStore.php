@@ -21,11 +21,11 @@ class JsonStore implements StoreInterface
     const JSON_PRETTY_PRINT = 128;
 
     /**
-     * @return ReflectionClass A ReflectionClass instance
+     * @return ClassReflection A ClassReflection instance
      *
      * @throws \InvalidArgumentException if the class does not exist in the store
      */
-    public function readClass(Project $project, $name)
+    public function readClass(Project $project, $name): ClassReflection
     {
         if (!file_exists($this->getFilename($project, $name))) {
             throw new \InvalidArgumentException(sprintf('File "%s" for class "%s" does not exist.', $this->getFilename($project, $name), $name));

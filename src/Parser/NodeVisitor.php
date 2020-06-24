@@ -62,6 +62,7 @@ class NodeVisitor extends NodeVisitorAbstract
         } elseif ($this->context->getClass() && $node instanceof ClassConstNode) {
             $this->addConstant($node);
         }
+        return null;
     }
 
     public function leaveNode(AbstractNode $node)
@@ -71,6 +72,7 @@ class NodeVisitor extends NodeVisitorAbstract
         } elseif ($node instanceof ClassNode || $node instanceof InterfaceNode || $node instanceof TraitNode) {
             $this->context->leaveClass();
         }
+        return null;
     }
 
     protected function addAliases(UseNode $node)
@@ -117,6 +119,7 @@ class NodeVisitor extends NodeVisitorAbstract
 
     protected function addClassOrInterface(ClassLikeNode $node)
     {
+        // @phpstan-ignore-next-line
         $class = new ClassReflection((string) $node->namespacedName, $node->getLine());
         if ($node instanceof ClassNode) {
             $class->setModifiers($node->flags);

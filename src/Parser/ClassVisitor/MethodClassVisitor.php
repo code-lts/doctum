@@ -19,6 +19,7 @@ use Doctum\Reflection\ParameterReflection;
 /**
  * Looks for @method tags on classes in the format of:
  *
+ * @phpstan-ignore-next-line
  * @method [return type] [name]([type] [parameter], [...]) [<description>]
  */
 class MethodClassVisitor implements ClassVisitorInterface

@@ -52,7 +52,7 @@ class ParserContext
         return $this->prettyPrinter;
     }
 
-    public function addAlias($alias, $name)
+    public function addAlias($alias, $name): void
     {
         $this->aliases[$alias] = $name;
     }
@@ -62,7 +62,7 @@ class ParserContext
         return $this->aliases;
     }
 
-    public function enterFile($file, $hash)
+    public function enterFile($file, $hash): void
     {
         $this->file = $file;
         $this->hash = $hash;
@@ -89,14 +89,14 @@ class ParserContext
         return $this->file;
     }
 
-    public function addErrors($name, $line, array $errors)
+    public function addErrors($name, $line, array $errors): void
     {
         foreach ($errors as $error) {
             $this->addError($name, $line, $error);
         }
     }
 
-    public function addError($name, $line, $error)
+    public function addError($name, $line, $error): void
     {
         $this->errors[] = sprintf('%s on "%s" in %s:%d', $error, $name, $this->file, $line);
     }
@@ -106,12 +106,12 @@ class ParserContext
         return $this->errors;
     }
 
-    public function enterClass(ClassReflection $class)
+    public function enterClass(ClassReflection $class): void
     {
         $this->class = $class;
     }
 
-    public function leaveClass()
+    public function leaveClass(): void
     {
         if (null === $this->class) {
             return;
@@ -126,13 +126,13 @@ class ParserContext
         return $this->class;
     }
 
-    public function enterNamespace($namespace)
+    public function enterNamespace($namespace): void
     {
         $this->namespace = $namespace;
         $this->aliases = array();
     }
 
-    public function leaveNamespace()
+    public function leaveNamespace(): void
     {
         $this->namespace = null;
         $this->aliases = array();

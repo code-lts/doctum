@@ -14,6 +14,14 @@ namespace Doctum\Parser;
 use phpDocumentor\Reflection\DocBlock;
 use phpDocumentor\Reflection\DocBlock\Tag;
 use Doctum\Parser\Node\DocBlockNode;
+use phpDocumentor\Reflection\DocBlock\Tag\ParamTag;
+use phpDocumentor\Reflection\DocBlock\Tag\PropertyReadTag;
+use phpDocumentor\Reflection\DocBlock\Tag\PropertyTag;
+use phpDocumentor\Reflection\DocBlock\Tag\PropertyWriteTag;
+use phpDocumentor\Reflection\DocBlock\Tag\ReturnTag;
+use phpDocumentor\Reflection\DocBlock\Tag\SeeTag;
+use phpDocumentor\Reflection\DocBlock\Tag\ThrowsTag;
+use phpDocumentor\Reflection\DocBlock\Tag\VarTag;
 
 class DocBlockParser
 {
@@ -60,31 +68,36 @@ class DocBlockParser
 
     protected function parseTag(DocBlock\Tag $tag)
     {
-        switch (substr(get_class($tag), 38)) {
-            case 'VarTag':
-            case 'ReturnTag':
+        $class = get_class($tag);
+        switch ($class) {
+            case VarTag::class:
+            case ReturnTag::class:
+                /** @var \phpDocumentor\Reflection\DocBlock\Tag\ReturnTag $tag */
                 return array(
                     $this->parseHint($tag->getTypes()),
                     $tag->getDescription(),
                 );
-            case 'PropertyTag':
-            case 'PropertyReadTag':
-            case 'PropertyWriteTag':
-            case 'ParamTag':
+            case PropertyTag::class:
+            case PropertyReadTag::class:
+            case PropertyWriteTag::class:
+            case ParamTag::class:
+                /** @var \phpDocumentor\Reflection\DocBlock\Tag\ParamTag $tag */
                 return array(
                     $this->parseHint($tag->getTypes()),
                     ltrim($tag->getVariableName(), '$'),
                     $tag->getDescription(),
                 );
-            case 'ThrowsTag':
+            case ThrowsTag::class:
+                /** @var \phpDocumentor\Reflection\DocBlock\Tag\ThrowsTag $tag */
                 return array(
                     $tag->getType(),
                     $tag->getDescription(),
                 );
-            case 'SeeTag':
+            case SeeTag::class:
                 // For backwards compatibility, in first cell we store content.
                 // In second - only a referer for further parsing.
                 // In docblock node we handle this in getOtherTags() method.
+                /** @var \phpDocumentor\Reflection\DocBlock\Tag\SeeTag $tag */
                 return array(
                     $tag->getContent(),
                     $tag->getReference(),
