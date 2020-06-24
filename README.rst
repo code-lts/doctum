@@ -1,4 +1,4 @@
-Doctum, a PHP API documentation generator. Fork of Doctum
+Doctum, a PHP API documentation generator. Fork of Sami
 =========================================================
 
 Curious about what Doctum generates? Have a look at the `Mariadb Mysql Kbs`_.
@@ -8,7 +8,7 @@ Installation
 
 .. caution::
 
-    Doctum requires **PHP 7**.
+    Doctum requires **PHP 7.1**.
 
 Configuration
 -------------
@@ -20,7 +20,7 @@ the simplest possible one:
 
     <?php
 
-    return new Doctum\Doctum('/path/to/symfony/src');
+    return new Doctum\Doctum('/path/to/yourlib/src');
 
 The configuration file must return an instance of ``Doctum\Doctum`` and the first
 argument of the constructor is the path to the code you want to generate
@@ -41,7 +41,7 @@ that matter any instance of the Symfony `Finder`_ class):
         ->name('*.php')
         ->exclude('Resources')
         ->exclude('Tests')
-        ->in('/path/to/symfony/src')
+        ->in('/path/to/yourlib/src')
     ;
 
     return new Doctum($iterator);
@@ -53,7 +53,7 @@ argument:
 
     return new Doctum($iterator, [
         'theme'                => 'symfony',
-        'title'                => 'Symfony2 API',
+        'title'                => 'yourlib API',
         'build_dir'            => __DIR__ . '/build',
         'cache_dir'            => __DIR__ . '/cache',
         'remote_repository'    => new GitHubRemoteRepository('username/repository', '/path/to/repository'),
@@ -76,7 +76,7 @@ And here is how you can configure different versions:
         ->name('*.php')
         ->exclude('Resources')
         ->exclude('Tests')
-        ->in($dir = '/path/to/symfony/src')
+        ->in($dir = '/path/to/yourlib/src')
     ;
 
     // generate documentation for all v2.0.* tags, the 2.0 branch, and the master one
@@ -89,10 +89,10 @@ And here is how you can configure different versions:
     return new Doctum($iterator, [
         'theme'                => 'symfony',
         'versions'             => $versions,
-        'title'                => 'Symfony2 API',
+        'title'                => 'yourlib API',
         'build_dir'            => __DIR__.'/../build/sf2/%version%',
         'cache_dir'            => __DIR__.'/../cache/sf2/%version%',
-        'remote_repository'    => new GitHubRemoteRepository('symfony/symfony', dirname($dir)),
+        'remote_repository'    => new GitHubRemoteRepository('yourorg/yourlib', dirname($dir)),
         'default_opened_level' => 2,
     ]);
 
@@ -223,7 +223,7 @@ Files are contained into sections, depending on how Doctum needs to treat them:
 
 * ``class``: Templates that should be generated for every class.
 
-.. _Finder:      http://symfony.com/doc/current/components/finder.html
+.. _Finder: https://symfony.com/doc/current/components/finder.html
 .. _Mariadb Mysql Kbs: https://williamdes.github.io/mariadb-mysql-kbs/
 
 Search Index
