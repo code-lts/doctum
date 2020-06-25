@@ -13,15 +13,15 @@
 {%- endmacro %}
 
 {% macro method_link(method, absolute, classonly) -%}
-    <a href="{{ method_path(method) }}">
-        {{- abbr_class(method.class) }}{% if not classonly|default(false) %}::{{ method.name|raw }}{% endif -%}
-    </a>
+{#  #}<a href="{{ method_path(method) }}">
+{#    #}{{- abbr_class(method.class) }}{% if not classonly|default(false) %}::{{ method.name|raw }}{% endif -%}
+{#  #}</a>
 {%- endmacro %}
 
 {% macro property_link(property, absolute, classonly) -%}
-    <a href="{{ property_path(property) }}">
-        {{- abbr_class(property.class) }}{% if not classonly|default(false) %}#{{ property.name|raw }}{% endif -%}
-    </a>
+{#  #}<a href="{{ property_path(property) }}">
+{#    #}{{- abbr_class(property.class) }}{% if not classonly|default(false) %}#{{ property.name|raw }}{% endif -%}
+{#  #}</a>
 {%- endmacro %}
 
 {% macro hint_link(hints) -%}
@@ -55,7 +55,7 @@
 {%- endmacro %}
 
 {% macro abbr_class(class, absolute) -%}
-    <abbr title="{{ class }}">{{ absolute|default(false) ? class : class.shortname }}</abbr>
+{# #}<abbr title="{{ class }}">{{ absolute|default(false) ? class : class.shortname }}</abbr>
 {%- endmacro %}
 
 {% macro method_parameters_signature(method) -%}
@@ -78,14 +78,14 @@
             <div class="row">
                 <div class="col-md-6">
                     {% if class.isInterface %}
-                        <em>{{ class_link(class, true) }}</em>
+                        <em>{{- class_link(class, true) -}}</em>
                     {% else %}
-                        {{ class_link(class, true) }}
+                        {{- class_link(class, true) -}}
                     {% endif %}
-                    {{ deprecated(class) }}
+                    {{- deprecated(class) -}}
                 </div>
                 <div class="col-md-6">
-                    {{ class.shortdesc|desc(class) }}
+                    {{- class.shortdesc|desc(class) -}}
                 </div>
             </div>
         {% endfor %}
