@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Sami library.
+ * This file is part of the Doctum utility.
  *
  * (c) Fabien Potencier <fabien@symfony.com>
  *
