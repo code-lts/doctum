@@ -96,9 +96,6 @@ And here is how you can configure different versions:
         'default_opened_level' => 2,
     ]);
 
-To generate documentation for a PHP 5.2 project, simply set the
-``simulate_namespaces`` option to ``true``.
-
 You can find more configuration examples under the ``examples/`` directory of
 the source code.
 

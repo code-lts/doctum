@@ -25,7 +25,7 @@ class Diff
 
     private $previous;
 
-    public function __construct(Project $project, $filename)
+    public function __construct(Project $project, string $filename)
     {
         $this->project = $project;
         $this->current = new Index($project);

@@ -37,7 +37,7 @@ class Index implements \Serializable
 
         $this->namespaces = [];
         if (null !== $project) {
-            $this->namespaces = $project->getConfig('simulate_namespaces') ? $project->getSimulatedNamespaces() : $project->getNamespaces();
+            $this->namespaces = $project->getNamespaces();
         }
     }
 

@@ -45,7 +45,6 @@ class Project
     protected $namespaceInterfaces;
     protected $namespaceExceptions;
     protected $namespaces;
-    protected $simulatedNamespaces;
     protected $config;
     protected $version;
     protected $filesystem;
@@ -61,7 +60,6 @@ class Project
         $this->config = array_merge([
             'build_dir' => sys_get_temp_dir() . 'doctum/build',
             'cache_dir' => sys_get_temp_dir() . 'doctum/cache',
-            'simulate_namespaces' => false,
             'include_parent_data' => true,
             'theme' => 'default',
         ], $config);
@@ -168,24 +166,6 @@ class Project
         ksort($this->namespaces);
 
         return array_keys($this->namespaces);
-    }
-
-    public function getSimulatedNamespaces()
-    {
-        ksort($this->simulatedNamespaces);
-
-        return array_keys($this->simulatedNamespaces);
-    }
-
-    public function getSimulatedNamespaceAllClasses($namespace)
-    {
-        if (!isset($this->simulatedNamespaces[$namespace])) {
-            return [];
-        }
-
-        ksort($this->simulatedNamespaces[$namespace]);
-
-        return $this->simulatedNamespaces[$namespace];
     }
 
     public function getNamespaceAllClasses($namespace)
@@ -328,7 +308,6 @@ class Project
     public function initialize()
     {
         $this->namespaces = [];
-        $this->simulatedNamespaces = [];
         $this->interfaces = [];
         $this->classes = [];
         $this->namespaceClasses = [];
@@ -393,20 +372,6 @@ class Project
             $this->interfaces[$name] = $class;
         } else {
             $this->namespaceClasses[$class->getNamespace()][$name] = $class;
-        }
-
-        if ($this->getConfig('simulate_namespaces')) {
-            if (false !== $pos = strrpos($name, '_')) {
-                $this->simulatedNamespaces[$namespace = str_replace('_', '\\', substr($name, 0, $pos))][$name] = $class;
-                // add sub-namespaces
-                while ($namespace = substr($namespace, 0, strrpos($namespace, '\\'))) {
-                    if (!isset($this->simulatedNamespaces[$namespace])) {
-                        $this->simulatedNamespaces[$namespace] = [];
-                    }
-                }
-            } else {
-                $this->simulatedNamespaces[''][$name] = $class;
-            }
         }
     }
 

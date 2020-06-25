@@ -71,7 +71,6 @@ class Doctum extends Container
                 'build_dir' => $sc['build_dir'],
                 'cache_dir' => $sc['cache_dir'],
                 'remote_repository' => $sc['remote_repository'],
-                'simulate_namespaces' => $sc['simulate_namespaces'],
                 'include_parent_data' => $sc['include_parent_data'],
                 'default_opened_level' => $sc['default_opened_level'],
                 'theme' => $sc['theme'],
@@ -192,9 +191,6 @@ class Doctum extends Container
         $this['sort_class_constants'] = false;
         $this['sort_class_traits'] = false;
         $this['sort_class_interfaces'] = false;
-
-        // simulate namespaces for projects based on the PEAR naming conventions
-        $this['simulate_namespaces'] = false;
 
         // include parent properties and methods on class pages
         $this['include_parent_data'] = true;

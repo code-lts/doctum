@@ -23,6 +23,5 @@ return new Doctum($iterator, [
     'title'                => 'Swiftmailer API',
     'build_dir'            => __DIR__ . '/../build/swiftmailer/%version%',
     'cache_dir'            => __DIR__ . '/../cache/swiftmailer/%version%',
-    'simulate_namespaces'  => true,
     'default_opened_level' => 1,
 ]);
