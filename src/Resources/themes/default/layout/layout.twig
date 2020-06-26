@@ -52,7 +52,7 @@
 {% block control_panel %}
     <div id="control-panel">
         {% if project.versions|length > 1 %}
-            <form action="#" method="GET">
+            <form action="#">
                 <select id="version-switcher" name="version">
                     {% for version in project.versions %}
                         <option value="{{ path('../' ~ version ~ '/index.html') }}" data-version="{{ version }}">{{ version.longname }}</option>
@@ -61,7 +61,7 @@
             </form>
         {% endif %}
         <script>$('option[data-version="'+window.projectVersion+'"]').prop('selected', true);</script>
-        <form id="search-form" action="{{ path('search.html') }}" method="GET">
+        <form id="search-form" action="{{ path('search.html') }}">
             <span class="glyphicon glyphicon-search"></span>
             <input name="search"
                    class="typeahead form-control"
