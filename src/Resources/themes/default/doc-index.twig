@@ -1,12 +1,12 @@
 {% extends "layout/layout.twig" %}
 {% from "macros.twig" import class_link, namespace_link, method_link, property_link %}
-{% block title %}Index | {{ parent() }}{% endblock %}
+{% block title %}{% trans 'Index' %} | {{ parent() }}{% endblock %}
 {% block body_class 'doc-index' %}
 
 {% block page_content %}
 
     <div class="page-header">
-        <h1>Index</h1>
+        <h1>{% trans 'Index' %}</h1>
     </div>
 
     <ul class="pagination">
@@ -26,7 +26,9 @@
                 {%- set type = element[0] %}
                 {%- set value = element[1] %}
                 {%- if 'class' == type -%}
-                    <dt>{{ class_link(value) }}{% if has_namespaces %} &mdash; <em>Class in namespace {{ namespace_link(value.namespace) }}{% endif %}</em></dt>
+                    <dt>{{ class_link(value) }}{% if has_namespaces %} &mdash; <em>{{'Class in namespace %s'|trans|format(
+                        namespace_link(value.namespace)
+                    )}}{% endif %}</em></dt>
                     <dd>{{ value.shortdesc|desc(value) }}</dd>
                 {%- elseif 'method' == type -%}
                     <dt>{{ method_link(value) }}() &mdash; <em>Method in class {{ class_link(value.class) }}</em></dt>
