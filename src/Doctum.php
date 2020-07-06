@@ -51,13 +51,6 @@ class Doctum extends Container
 
         $sc = $this;
 
-        $dataDir  = __DIR__ . '/../locale/';
-        $moReader = new MoReader(
-            ['localeDir' => $dataDir]
-        );
-        $moReader->readFile($dataDir . 'en.mo'); // Load the file you want (a sepecific language for example)
-        Launcher::$plugin = $moReader;
-
         if (null !== $iterator) {
             $this['files'] = $iterator;
         }
@@ -174,6 +167,12 @@ class Doctum extends Container
         };
 
         $this['twig'] = function () {
+            $dataDir  = __DIR__ . '/../locale/';
+            $moReader = new MoReader(
+                ['localeDir' => $dataDir]
+            );
+            $moReader->readFile($dataDir . 'en.mo');
+            Launcher::$plugin = $moReader;
             $twig = new Environment(new FilesystemLoader(['/']), [
                 'strict_variables' => true,
                 'debug' => true,

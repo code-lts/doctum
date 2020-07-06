@@ -19,7 +19,7 @@ $ME/update-po-files.php \
     --po-dir="$ROOTDIR/locale" \
     --po-template="$ROOTDIR/locale/Doctum.pot" \
     --json-mapping="$ROOTDIR/locale/replace.json"
-#rm -rf $ROOTDIR/build/twigcache
+rm -rf $ROOTDIR/build/twigcache
 rm $ROOTDIR/locale/replace.json
 
 msgfmt --directory="$ROOTDIR/locale" --check -o "$ROOTDIR/locale/fr.mo" "$ROOTDIR/locale/fr.po"
