@@ -33,6 +33,7 @@ use Doctum\Version\SingleVersionCollection;
 use Doctum\Version\Version;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
+use PhpMyAdmin\Twig\Extensions\I18nExtension;
 
 class Doctum extends Container
 {
@@ -171,6 +172,7 @@ class Doctum extends Container
                 'cache' => false,
             ]);
             $twig->addExtension(new TwigExtension());
+            $twig->addExtension(new I18nExtension());
 
             return $twig;
         };
