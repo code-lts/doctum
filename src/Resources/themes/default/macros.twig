@@ -48,13 +48,15 @@
 
 {% macro method_source_link(method) -%}
     {% if method.sourcepath %}
-        <a href="{{ method.sourcepath }}">{{'line %s'|trans|format(
+        {#- l10n: Method at line %s -#}
+        <a href="{{ method.sourcepath }}">{{'at line %s'|trans|format(
             method.line
         )|raw }}</a>
     {%- else %}
-        {{ 'line %s'|trans|format(
+        {#- l10n: Method at line %s -#}
+        {{- 'at line %s'|trans|format(
             method.line
-        )|raw }}
+        )|raw -}}
     {%- endif %}
 {%- endmacro %}
 
