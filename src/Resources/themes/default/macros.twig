@@ -42,15 +42,19 @@
 
 {% macro source_link(project, class) -%}
     {% if class.sourcepath %}
-        (<a href="{{ class.sourcepath }}">View source</a>)
+        (<a href="{{ class.sourcepath }}">{% trans 'View source'%}</a>)
     {%- endif %}
 {%- endmacro %}
 
 {% macro method_source_link(method) -%}
     {% if method.sourcepath %}
-        <a href="{{ method.sourcepath }}">line {{ method.line|raw }}</a>
+        <a href="{{ method.sourcepath }}">{{'line %s'|trans|format(
+            method.line
+        )|raw }}</a>
     {%- else %}
-        line {{ method.line|raw }}
+        {{ 'line %s'|trans|format(
+            method.line
+        )|raw }}
     {%- endif %}
 {%- endmacro %}
 
@@ -105,7 +109,7 @@
 {% endmacro %}
 
 {% macro deprecated(reflection) %}
-    {% if reflection.deprecated %}<small><sup><span class="label label-danger">deprecated</span></sup></small>{% endif %}
+    {% if reflection.deprecated %}<small><sup><span class="label label-danger">{% trans 'deprecated' %}</span></sup></small>{% endif %}
 {% endmacro %}
 
 {% macro deprecations(reflection) %}
@@ -125,7 +129,7 @@
 {% endmacro %}
 
 {% macro todo(reflection) %}
-        {% if reflection.todo %}<small><sup><span class="label label-info">todo</span></sup></small>{% endif %}
+        {% if reflection.todo %}<small><sup><span class="label label-info">{% trans 'todo' %}</span></sup></small>{% endif %}
 {% endmacro %}
 
 {% macro todos(reflection) %}
