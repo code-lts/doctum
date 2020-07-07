@@ -33,6 +33,9 @@ use Doctum\Version\SingleVersionCollection;
 use Doctum\Version\Version;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
+use Wdes\phpI18nL10n\Twig\Extension\I18n as I18nExtension;
+use Wdes\phpI18nL10n\plugins\MoReader;
+use Wdes\phpI18nL10n\Launcher;
 
 class Doctum extends Container
 {
@@ -164,6 +167,12 @@ class Doctum extends Container
         };
 
         $this['twig'] = function () {
+            $dataDir  = __DIR__ . '/../locale/';
+            $moReader = new MoReader(
+                ['localeDir' => $dataDir]
+            );
+            $moReader->readFile($dataDir . 'en.mo');
+            Launcher::$plugin = $moReader;
             $twig = new Environment(new FilesystemLoader(['/']), [
                 'strict_variables' => true,
                 'debug' => true,
@@ -171,6 +180,7 @@ class Doctum extends Container
                 'cache' => false,
             ]);
             $twig->addExtension(new TwigExtension());
+            $twig->addExtension(new I18nExtension());
 
             return $twig;
         };
