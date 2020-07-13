@@ -166,12 +166,12 @@ class Doctum extends Container
             return new ThemeSet($templates);
         };
 
-        $this['twig'] = function () {
+        $this['twig'] = function () use ($config) {
             $dataDir  = __DIR__ . '/../locale/';
             $moReader = new MoReader(
                 ['localeDir' => $dataDir]
             );
-            $moReader->readFile($dataDir . 'en.mo');
+            $moReader->readFile($dataDir . ($config['language'] ?? 'en' ) . '.mo');
             Launcher::$plugin = $moReader;
             $twig = new Environment(new FilesystemLoader(['/']), [
                 'strict_variables' => true,

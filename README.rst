@@ -54,6 +54,7 @@ argument:
     return new Doctum($iterator, [
         'theme'                => 'symfony',
         'title'                => 'yourlib API',
+        'language'             => 'en', // Could be 'fr'
         'build_dir'            => __DIR__ . '/build',
         'cache_dir'            => __DIR__ . '/cache',
         'remote_repository'    => new GitHubRemoteRepository('username/repository', '/path/to/repository'),
@@ -90,6 +91,7 @@ And here is how you can configure different versions:
         'theme'                => 'symfony',
         'versions'             => $versions,
         'title'                => 'yourlib API',
+        'language'             => 'en', // Could be 'fr'
         'build_dir'            => __DIR__.'/../build/sf2/%version%',
         'cache_dir'            => __DIR__.'/../cache/sf2/%version%',
         'remote_repository'    => new GitHubRemoteRepository('yourorg/yourlib', dirname($dir)),

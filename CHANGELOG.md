@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add PHP constants visibility
 - Drop `simulate_namespaces` config option
 - #7 - Translate Doctum, thank you @Guileas
+- Support 'language' in the configuration block, available languages are ('fr' and 'en') for now, default 'en'.
 
 ## [4.1.0] - 2018-06-25
 
