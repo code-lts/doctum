@@ -19,12 +19,6 @@ class ClassReflection extends Reflection
     private const CATEGORY_INTERFACE = 2;
     private const CATEGORY_TRAIT = 3;
 
-    private static $categoryName = [
-        1 => 'class',
-        2 => 'interface',
-        3 => 'trait',
-    ];
-
     private static $phpInternalClasses = [
         'stdclass' => true,
         'exception' => true,
@@ -226,6 +220,11 @@ class ClassReflection extends Reflection
     public function getClass()
     {
         return $this;
+    }
+
+    public function getCategoryId(): int
+    {
+        return $this->category;
     }
 
     public function isProjectClass()
@@ -691,11 +690,6 @@ class ClassReflection extends Reflection
         }
 
         return $class;
-    }
-
-    public function getCategoryName()
-    {
-        return self::$categoryName[$this->category];
     }
 
     public function sortInterfaces($sort)
