@@ -18,8 +18,6 @@
     {% endif %}
 {% endmacro %}
 
-window.projectVersion = '{{ project.version }}';
-
 (function(root) {
 
     var bhIndex = null;
@@ -210,6 +208,18 @@ $(function() {
     $('#version-switcher').change(function() {
         window.location = $(this).val()
     });
+
+    var versionToSelect = document.evaluate(
+        '//option[@data-version="{{ project.version|escape('js') }}"]',
+        document.getElementById('version-switcher'),
+        null,
+        XPathResult.FIRST_ORDERED_NODE_TYPE,
+        null
+    ).singleNodeValue;
+
+    if (versionToSelect && versionToSelect.selected) {
+        versionToSelect.selected = true;
+    }
 
     {% block treejs %}
 
