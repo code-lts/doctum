@@ -6,7 +6,7 @@
         {% for meth in class.methods %}
             {{-
                 {
-                    type: 'Method',
+                    type: 'Method'|trans,
                     fromName: class.name,
                     fromLink: from_link,
                     link: method_path(meth),
@@ -27,11 +27,11 @@ window.projectVersion = '{{ project.version }}';
     var treeHtml = '{{ element(tree, project.config('default_opened_level'), 0)|replace({"'": "\\'", "\n": ''})|spaceless|raw }}';
 
     var searchTypeClasses = {
-        'Namespace': 'label-default',
-        'Class': 'label-info',
-        'Interface': 'label-primary',
-        'Trait': 'label-success',
-        'Method': 'label-danger',
+        '{{ 'Namespace'|trans|escape('js') }}': 'label-default',
+        '{{ 'Class'|trans|escape('js') }}': 'label-info',
+        '{{ 'Interface'|trans|escape('js') }}': 'label-primary',
+        '{{ 'Trait'|trans|escape('js') }}': 'label-success',
+        '{{ 'Method'|trans|escape('js') }}': 'label-danger',
         '_': 'label-warning'
     };
 
@@ -41,16 +41,16 @@ window.projectVersion = '{{ project.version }}';
         {% for ns in namespaces -%}
             {{-
                 {
-                    type: 'Namespace',
+                    type: 'Namespace'|trans,
                     link: namespace_path(ns),
                     name: ns,
-                    doc: 'Namespace ' ~ ns,
+                    doc: 'Namespace %s'|format(ns),
                 }|json_encode(prettyJsonOptions)|raw
             -}},
         {%- endfor %}
         {% for class in interfaces -%}
             {% set interface = {
-                        type: 'Interface',
+                        type: 'Interface'|trans,
                         link: class_path(class),
                         name: class.name,
                         doc: class.shortdesc|desc(class),
@@ -72,7 +72,7 @@ window.projectVersion = '{{ project.version }}';
         {% endfor %}
         {% for class in classes -%}
             {% set classOrTrait = {
-                        type: class.isTrait ? 'Trait' : 'Class',
+                        type: class.isTrait ? 'Trait'|trans : 'Class'|trans,
                         link: class_path(class),
                         name: class.name,
                         doc: class.shortdesc|desc(class),
