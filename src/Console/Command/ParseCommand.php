@@ -44,7 +44,7 @@ incremental parsing algorithm):
 The <comment>--version</comment> option overrides the version specified
 in the configuration:
 
-    <info>php %command.full_name% config/symfony.php --version=master</info>
+    <info>php %command.full_name% config/symfony.php --version=main</info>
 EOF
             );
     }

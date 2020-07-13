@@ -80,11 +80,11 @@ And here is how you can configure different versions:
         ->in($dir = '/path/to/yourlib/src')
     ;
 
-    // generate documentation for all v2.0.* tags, the 2.0 branch, and the master one
+    // generate documentation for all v2.0.* tags, the 2.0 branch, and the main one
     $versions = GitVersionCollection::create($dir)
         ->addFromTags('v2.0.*')
         ->add('2.0', '2.0 branch')
-        ->add('master', 'master branch')
+        ->add('main', 'main branch')
     ;
 
     return new Doctum($iterator, [

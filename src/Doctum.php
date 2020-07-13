@@ -187,7 +187,7 @@ class Doctum extends Container
 
         $this['theme'] = 'default';
         $this['title'] = 'API';
-        $this['version'] = 'master';
+        $this['version'] = 'main';
         $this['template_dirs'] = [];
         $this['build_dir'] = getcwd() . '/build';
         $this['cache_dir'] = getcwd() . '/cache';
