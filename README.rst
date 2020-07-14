@@ -72,20 +72,19 @@ And here is how you can configure different versions:
     use Doctum\Version\GitVersionCollection;
     use Symfony\Component\Finder\Finder;
 
+    $dir = '/path/to/yourlib/src';
     $iterator = Finder::create()
         ->files()
         ->name('*.php')
         ->exclude('Resources')
         ->exclude('Tests')
-        ->in($dir = '/path/to/yourlib/src')
-    ;
+        ->in($dir);
 
     // generate documentation for all v2.0.* tags, the 2.0 branch, and the main one
     $versions = GitVersionCollection::create($dir)
         ->addFromTags('v2.0.*')
         ->add('2.0', '2.0 branch')
-        ->add('main', 'main branch')
-    ;
+        ->add('main', 'main branch');
 
     return new Doctum($iterator, [
         'theme'                => 'symfony',
@@ -275,7 +274,12 @@ to the search index:
 
     {% block search_index_extra %}
         {% for operation in operations -%}
-            {"type": "Operation", "link": "{{ operation.path }}", "name": "{{ operation.name }}", "doc": "{{ operation.doc }}"},
+            {
+                type: 'Operation'|trans,
+                link: operation.path,
+                name: operation.name,
+                doc: operation.doc,
+            }|json_encode|raw
         {%- endfor %}
     {% endblock %}
 
