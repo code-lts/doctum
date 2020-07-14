@@ -1,13 +1,16 @@
 #!/usr/bin/env php
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
+
 /**
  * @license http://unlicense.org/UNLICENSE The UNLICENSE
  * @author William Desportes <williamdes@wdes.fr>
  */
 
 $options = getopt(
-    "", [
+    "",
+    [
         "po-dir:",
         "po-template:",
         "json-mapping::",
@@ -41,8 +44,8 @@ $poTemplate  = $options["po-template"];
 $template    = file_get_contents($poTemplate);
 
 $mappings               = new stdClass();
-$mappings->mappings     = array();
-$mappings->replacements = array();
+$mappings->mappings     = [];
+$mappings->replacements = [];
 
 if (isset($options["json-mapping"])) {
     $mappings = json_decode(file_get_contents($options["json-mapping"]));
