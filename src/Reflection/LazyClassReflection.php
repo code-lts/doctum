@@ -227,7 +227,7 @@ class LazyClassReflection extends ClassReflection
         if (null === $class) {
             $this->projectClass = false;
         } else {
-            foreach (array_keys(get_class_vars('Doctum\Reflection\ClassReflection')) as $property) {
+            foreach (array_keys(get_class_vars(ClassReflection::class)) as $property) {
                 $this->$property = $class->$property;
             }
         }

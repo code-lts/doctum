@@ -13,12 +13,13 @@ namespace Doctum\Tests\Parser\ClassVisitor;
 
 use PHPUnit\Framework\TestCase;
 use Doctum\Parser\ClassVisitor\MethodClassVisitor;
+use Doctum\Reflection\ClassReflection;
 
 class MethodClassVisitorTest extends TestCase
 {
     public function testAddsMethods()
     {
-        $class = $this->getMockBuilder('Doctum\Reflection\ClassReflection')
+        $class = $this->getMockBuilder(ClassReflection::class)
             ->setMethods(['getTags'])
             ->setConstructorArgs(['Mock', 1])
             ->getMock();

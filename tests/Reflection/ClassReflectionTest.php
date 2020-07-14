@@ -2,6 +2,7 @@
 
 namespace Doctum\Tests\Reflection;
 
+use Doctum\Console\Application;
 use PHPUnit\Framework\TestCase;
 use Doctum\Reflection\ClassReflection;
 
@@ -22,11 +23,11 @@ class ClassReflectionTest extends TestCase
         $this->assertFalse($class->isPhpClass());
 
         // a class that is already loaded
-        $class = new ClassReflection('Doctum\Tests\Reflection\ClassReflectionTest', 1);
+        $class = new ClassReflection(ClassReflectionTest::class, 1);
         $this->assertFalse($class->isPhpClass());
 
         // a class that exists but is not already loaded
-        $class = new ClassReflection('Doctum\Console\Application', 1);
+        $class = new ClassReflection(Application::class, 1);
         $this->assertFalse($class->isPhpClass());
     }
 }

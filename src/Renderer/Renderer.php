@@ -227,7 +227,7 @@ class Renderer
     protected function save(Project $project, $uri, $template, $variables)
     {
         $depth = substr_count($uri, '/');
-        $this->twig->getExtension('Doctum\Renderer\TwigExtension')->setCurrentDepth($depth);
+        $this->twig->getExtension(TwigExtension::class)->setCurrentDepth($depth);
         $this->twig->addGlobal('root_path', str_repeat('../', $depth));
 
         $file = $project->getBuildDir() . '/' . $uri;

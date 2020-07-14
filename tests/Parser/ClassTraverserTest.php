@@ -13,6 +13,7 @@ namespace Doctum\Tests\Parser;
 
 use PHPUnit\Framework\TestCase;
 use Doctum\Parser\ClassTraverser;
+use Doctum\Parser\ClassVisitorInterface;
 use Doctum\Project;
 use Doctum\Reflection\ClassReflection;
 use Doctum\Store\ArrayStore;
@@ -29,7 +30,7 @@ class ClassTraverserTest extends TestCase
 
         $project = new Project($store);
 
-        $visitor = $this->getMockBuilder('Doctum\Parser\ClassVisitorInterface')->getMock();
+        $visitor = $this->getMockBuilder(ClassVisitorInterface::class)->getMock();
         $visitor->expects($this->at(0))->method('visit')->with($project->loadClass($interfaceName));
         $visitor->expects($this->at(1))->method('visit')->with($project->loadClass($parentName));
         $visitor->expects($this->at(2))->method('visit')->with($project->loadClass($className));

@@ -31,6 +31,6 @@ class ParserContextTest extends TestCase
 
         $classes = $context->leaveFile();
 
-        $this->assertContainsOnlyInstancesOf('Doctum\Reflection\ClassReflection', $classes);
+        $this->assertContainsOnlyInstancesOf(ClassReflection::class, $classes);
     }
 }

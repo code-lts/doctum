@@ -13,12 +13,14 @@ namespace Doctum\Tests\Parser\ClassVisitor;
 
 use PHPUnit\Framework\TestCase;
 use Doctum\Parser\ClassVisitor\PropertyClassVisitor;
+use Doctum\Parser\ParserContext;
+use Doctum\Reflection\ClassReflection;
 
 class PropertyClassVisitorTest extends TestCase
 {
     public function testAddsProperties()
     {
-        $class = $this->getMockBuilder('Doctum\Reflection\ClassReflection')
+        $class = $this->getMockBuilder(ClassReflection::class)
             ->setMethods(['getTags'])
             ->setConstructorArgs(['Mock', 1])
             ->getMock();
@@ -45,7 +47,7 @@ class PropertyClassVisitorTest extends TestCase
         ];
         $class->expects($this->any())->method('getTags')->with($this->equalTo('property'))->will($this->returnValue($property));
 
-        $context = $this->getMockBuilder('Doctum\Parser\ParserContext')->disableOriginalConstructor()->getMock();
+        $context = $this->getMockBuilder(ParserContext::class)->disableOriginalConstructor()->getMock();
 
         $visitor = new PropertyClassVisitor($context);
         $visitor->visit($class);
