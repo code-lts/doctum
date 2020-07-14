@@ -237,7 +237,7 @@ class ClassReflection extends Reflection
         return isset(self::$phpInternalClasses[strtolower($this->name)]);
     }
 
-    public function setName($name)
+    public function setName(string $name): void
     {
         parent::setName(ltrim($name, '\\'));
     }
