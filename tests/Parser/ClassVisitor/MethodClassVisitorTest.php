@@ -17,6 +17,9 @@ use Doctum\Reflection\ClassReflection;
 
 class MethodClassVisitorTest extends TestCase
 {
+    /**
+     * @requires PHP <8
+     */
     public function testAddsMethods()
     {
         $class = $this->getMockBuilder(ClassReflection::class)

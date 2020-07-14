@@ -22,6 +22,7 @@ class ClassTraverserTest extends TestCase
 {
     /**
      * @dataProvider getTraverseOrderClasses
+     * @requires PHP <8
      */
     public function testTraverseOrder($interfaceName, $parentName, $className, $class, $parent, $interface)
     {

@@ -18,6 +18,9 @@ use Doctum\Reflection\ClassReflection;
 
 class PropertyClassVisitorTest extends TestCase
 {
+    /**
+     * @requires PHP <8
+     */
     public function testAddsProperties()
     {
         $class = $this->getMockBuilder(ClassReflection::class)
