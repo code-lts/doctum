@@ -11,34 +11,28 @@
 
 namespace Doctum\Parser;
 
-use phpDocumentor\Reflection\DocBlock;
-use phpDocumentor\Reflection\DocBlock\Tag;
 use Doctum\Parser\Node\DocBlockNode;
-use phpDocumentor\Reflection\DocBlock\Tag\ParamTag;
-use phpDocumentor\Reflection\DocBlock\Tag\PropertyReadTag;
-use phpDocumentor\Reflection\DocBlock\Tag\PropertyTag;
-use phpDocumentor\Reflection\DocBlock\Tag\PropertyWriteTag;
-use phpDocumentor\Reflection\DocBlock\Tag\ReturnTag;
-use phpDocumentor\Reflection\DocBlock\Tag\SeeTag;
-use phpDocumentor\Reflection\DocBlock\Tag\ThrowsTag;
-use phpDocumentor\Reflection\DocBlock\Tag\VarTag;
+use phpDocumentor\Reflection\DocBlock;
+use phpDocumentor\Reflection\DocBlock\Tags\Param;
+use phpDocumentor\Reflection\DocBlock\Tags\PropertyRead;
+use phpDocumentor\Reflection\DocBlock\Tags\Property;
+use phpDocumentor\Reflection\DocBlock\Tags\PropertyWrite;
+use phpDocumentor\Reflection\DocBlock\Tags\Return_;
+use phpDocumentor\Reflection\DocBlock\Tags\See;
+use phpDocumentor\Reflection\DocBlock\Tags\Throws;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
+use phpDocumentor\Reflection\DocBlockFactory;
 
 class DocBlockParser
 {
-    /**
-     * @param mixed         $comment
-     * @param ParserContext $context
-     *
-     * @return DocBlockNode
-     */
-    public function parse($comment, ParserContext $context)
+    public function parse(?string $comment): DocBlockNode
     {
         $docBlock = null;
         $errorMessage = '';
 
         try {
-            $docBlockContext = new DocBlock\Context($context->getNamespace(), $context->getAliases() ?: []);
-            $docBlock = new DocBlock((string) $comment, $docBlockContext);
+            $factory  = DocBlockFactory::createInstance();
+            $docBlock = $factory->create($comment);
         } catch (\Exception $e) {
             $errorMessage = $e->getMessage();
         }
@@ -51,8 +45,8 @@ class DocBlockParser
             return $result;
         }
 
-        $result->setShortDesc($docBlock->getShortDescription());
-        $result->setLongDesc((string) $docBlock->getLongDescription());
+        $result->setShortDesc($docBlock->getSummary());
+        $result->setLongDesc($docBlock->getDescription()->__toString());
 
         foreach ($docBlock->getTags() as $tag) {
             $result->addTag($tag->getName(), $this->parseTag($tag));
@@ -61,50 +55,46 @@ class DocBlockParser
         return $result;
     }
 
-    public function getTag($string)
-    {
-        return Tag::createInstance($string);
-    }
-
     protected function parseTag(DocBlock\Tag $tag)
     {
+
         $class = get_class($tag);
         switch ($class) {
-            case VarTag::class:
-            case ReturnTag::class:
-                /** @var \phpDocumentor\Reflection\DocBlock\Tag\ReturnTag $tag */
+            case Var_::class:
+            case Return_::class:
+                /** @var \phpDocumentor\Reflection\DocBlock\Tags\Return_ $tag */
                 return [
-                    $this->parseHint($tag->getTypes()),
-                    $tag->getDescription(),
+                    $this->parseHint($tag->getType()),
+                    $tag->getDescription() ? $tag->getDescription()->__toString() : '',
                 ];
-            case PropertyTag::class:
-            case PropertyReadTag::class:
-            case PropertyWriteTag::class:
-            case ParamTag::class:
-                /** @var \phpDocumentor\Reflection\DocBlock\Tag\ParamTag $tag */
+            case Property::class:
+            case PropertyRead::class:
+            case PropertyWrite::class:
+            case Param::class:
+                /** @var \phpDocumentor\Reflection\DocBlock\Tags\Param $tag */
                 return [
-                    $this->parseHint($tag->getTypes()),
+                    $this->parseHint($tag->getType() ? explode('|', $tag->getType()->__toString()) : []),
                     ltrim($tag->getVariableName(), '$'),
-                    $tag->getDescription(),
+                    $tag->getDescription() ? $tag->getDescription()->__toString() : '',
                 ];
-            case ThrowsTag::class:
-                /** @var \phpDocumentor\Reflection\DocBlock\Tag\ThrowsTag $tag */
+            case Throws::class:
+                /** @var \phpDocumentor\Reflection\DocBlock\Tags\Throws $tag */
                 return [
-                    $tag->getType(),
-                    $tag->getDescription(),
+                    $tag->getType() ? $tag->getType()->__toString() : '',
+                    $tag->getDescription() ? $tag->getDescription()->__toString() : '',
                 ];
-            case SeeTag::class:
+            case See::class:
                 // For backwards compatibility, in first cell we store content.
                 // In second - only a referer for further parsing.
                 // In docblock node we handle this in getOtherTags() method.
-                /** @var \phpDocumentor\Reflection\DocBlock\Tag\SeeTag $tag */
+                /** @var \phpDocumentor\Reflection\DocBlock\Tags\See $tag */
                 return [
-                    $tag->getContent(),
-                    $tag->getReference(),
-                    $tag->getDescription(),
+                    $tag->__toString(),
+                    $tag->getReference()->__toString(),
+                    $tag->getDescription() ? $tag->getDescription()->__toString() : '',
                 ];
             default:
-                return $tag->getContent();
+                return $tag->__toString();
         }
     }
 
