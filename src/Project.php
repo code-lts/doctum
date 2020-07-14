@@ -53,7 +53,7 @@ class Project
     public function __construct(StoreInterface $store, VersionCollection $versions = null, array $config = [])
     {
         if (null === $versions) {
-            $versions = new SingleVersionCollection(new Version('master'));
+            $versions = new SingleVersionCollection(new Version('main'));
         }
         $this->versions = $versions;
         $this->store = $store;

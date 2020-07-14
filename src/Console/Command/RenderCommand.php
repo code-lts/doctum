@@ -33,17 +33,17 @@ class RenderCommand extends Command
                 <<<EOF
 The <info>%command.name%</info> command renders a project as a static set of HTML files:
 
-    <info>php %command.full_name% render config/symfony.php</info>
+    <info>php %command.full_name% render config/doctum.php</info>
 
 The <comment>--force</comment> option forces a rebuild (it disables the
 incremental rendering algorithm):
 
-    <info>php %command.full_name% render config/symfony.php --force</info>
+    <info>php %command.full_name% render config/doctum.php --force</info>
 
 The <comment>--version</comment> option overrides the version specified
 in the configuration:
 
-    <info>php %command.full_name% render config/symfony.php --version=master</info>
+    <info>php %command.full_name% render config/doctum.php --version=main</info>
 EOF
             );
     }
