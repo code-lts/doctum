@@ -3,6 +3,7 @@
 
 declare(strict_types=1);
 
+// phpcs:disable PSR12.Files.FileHeader.IncorrectOrder
 /**
  * @license http://unlicense.org/UNLICENSE The UNLICENSE
  * @author William Desportes <williamdes@wdes.fr>
@@ -113,11 +114,11 @@ $templates->to            = "";
 $mappings->replacements[] = $templates;
 
 // iterate over all templates
-foreach (    new RecursiveIteratorIterator(
+$files = new RecursiveIteratorIterator(
     new RecursiveDirectoryIterator($templateDir),
     RecursiveIteratorIterator::LEAVES_ONLY
-) as $file
-) {
+);
+foreach ($files as $file) {
     // force twig to generate cache
     if ($file->isFile() && $file->getExtension() === 'twig') {
         $shortName = str_replace($templateDir, '', $file);

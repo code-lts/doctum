@@ -3,6 +3,7 @@
 
 declare(strict_types=1);
 
+// phpcs:disable PSR12.Files.FileHeader.IncorrectOrder
 /**
  * @license http://unlicense.org/UNLICENSE The UNLICENSE
  * @author William Desportes <williamdes@wdes.fr>
