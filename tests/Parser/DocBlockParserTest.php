@@ -24,29 +24,33 @@ class DocBlockParserTest extends TestCase
     {
         $parser = new DocBlockParser();
 
-        $this->assertEquals($this->createDocblock($expected), $parser->parse($comment, $this->getContextMock()));
+        $this->assertEquals($this->createDocblock($expected), $parser->parse($comment));
     }
 
     public function getParseTests()
     {
         return [
-            ['
+            [
+                '
                 /**
                  */
                 ',
                 [],
             ],
-            ['
+            [
+                '
                 /**
                  * The short desc.
                  */
                 ',
                 ['shortdesc' => 'The short desc.'],
             ],
-            ['/** The short desc. */',
+            [
+                '/** The short desc. */',
                 ['shortdesc' => 'The short desc.'],
             ],
-            ['
+            [
+                '
                 /**
                  * The short desc on two
                  * lines.
@@ -54,7 +58,8 @@ class DocBlockParserTest extends TestCase
                 ',
                 ['shortdesc' => "The short desc on two\nlines."],
             ],
-            ['
+            [
+                '
                 /**
                  * The short desc.
                  *
@@ -63,7 +68,8 @@ class DocBlockParserTest extends TestCase
                 ',
                 ['shortdesc' => 'The short desc.', 'longdesc' => 'And a long desc.'],
             ],
-            ['
+            [
+                '
                 /**
                  * The short desc on two
                  * lines.
@@ -76,28 +82,32 @@ class DocBlockParserTest extends TestCase
                 ',
                 ['shortdesc' => "The short desc on two\nlines.", 'longdesc' => "And a long desc on\nseveral lines too.\n\nWith another paragraph."],
             ],
-            ['
+            [
+                '
                 /**
                  * The short desc with a @tag embedded. And the short desc continues after dot on same line.
                  */
                 ',
                 ['shortdesc' => 'The short desc with a @tag embedded. And the short desc continues after dot on same line.'],
             ],
-            ['
+            [
+                '
                 /**
                  * @see http://symfony.com/ This is a link description.
                  */
                 ',
                 ['tags' => ['see' => [['http://symfony.com/ This is a link description.', 'http://symfony.com/', 'This is a link description.']]]],
             ],
-            ['
+            [
+                '
                 /**
                  * @author fabien@example.com
                  */
                 ',
                 ['tags' => ['author' => 'fabien@example.com']],
             ],
-            ['
+            [
+                '
                 /**
                  * @author Fabien <fabien@example.com>
                  * @author Thomas <thomas@example.com>
@@ -105,7 +115,8 @@ class DocBlockParserTest extends TestCase
                 ',
                 ['tags' => ['author' => ['Fabien <fabien@example.com>', 'Thomas <thomas@example.com>']]],
             ],
-            ['
+            [
+                '
                 /**
                  * @var SingleClass|\MultipleClass[] Property Description
                  */
@@ -121,12 +132,15 @@ class DocBlockParserTest extends TestCase
                     ],
                 ],
             ],
-            ['
+            [
+                '
                 /**
                  * @param SingleClass|\MultipleClass[] $paramName Param Description
                  */
                 ',
                 [
+                    'shortDesc' => '',
+                    'longDesc' => '',
                     'tags' => [
                         'param' => [ // Array from found tags.
                             [ // First found tag.
@@ -138,21 +152,22 @@ class DocBlockParserTest extends TestCase
                     ],
                 ],
             ],
-            ['
+            [
+                '
                 /**
-                 * @throw SingleClass1 Exception Description One
+                 * @throws SingleClass1 Exception Description One
                  * @throws SingleClass2 Exception Description Two
                  */
                 ',
                 [
+                    'shortDesc' => '',
+                    'longDesc' => '',
                     'tags' => [
-                        'throw' => [ // Array from found tags.
+                        'throws' => [ // Array from found tags.
                             [ // First found tag.
                                 '\SingleClass1',
                                 'Exception Description One',
                             ],
-                        ],
-                        'throws' => [ // Array from found tags.
                             [ // Second found tag.
                                 '\SingleClass2',
                                 'Exception Description Two',
@@ -161,7 +176,8 @@ class DocBlockParserTest extends TestCase
                     ],
                 ],
             ],
-            ['
+            [
+                '
                 /**
                  * @return SingleClass|\MultipleClass[] Return Description
                  */
@@ -177,7 +193,8 @@ class DocBlockParserTest extends TestCase
                     ],
                 ],
             ],
-            ['
+            [
+                '
                /**
                 * @author Author Name
                 * @covers SomeClass::SomeMethod
@@ -198,14 +215,16 @@ class DocBlockParserTest extends TestCase
                 */
                ',
                 [
+                    'shortDesc' => '',
+                    'longDesc' => '',
                     'tags' => [
                         'author' => ['Author Name'],
-                        'covers' => ['SomeClass::SomeMethod'],
+                        'covers' => ['\SomeClass::SomeMethod '],
                         'deprecated' => ['1.0 for ever'],
                         'todo' => ['Something needs to be done'],
                         'example' => ['Description'],
                         'link' => ['http://www.google.com'],
-                        'method' => ['void setInteger(integer $integer)'],
+                        'method' => ['void setInteger(int $integer)'],
                         'property-read' => [   // array of all properties
                             [                  // array of one property
                                 [              // array of all typehints of one property
@@ -242,11 +261,11 @@ class DocBlockParserTest extends TestCase
                                 '',
                             ],
                         ],
-                        'see' => [['SomeClass::SomeMethod This is a description.', 'SomeClass::SomeMethod', 'This is a description.']],
+                        'see' => [['\SomeClass::SomeMethod This is a description.', '\SomeClass::SomeMethod', 'This is a description.']],
                         'since' => ['1.0.1 First time this was introduced.'],
                         'source' => ['2 1 Check that ensures lazy counting.'],
-                        'uses' => ['MyClass::$items to retrieve the count from.'],
-                        'version' => ['1.0.1'],
+                        'uses' => ['\MyClass::$items to retrieve the count from.'],
+                        'version' => ['1.0.1 '],
                         'unknown' => ['any text'],
                     ],
                 ],
@@ -276,14 +295,5 @@ class DocBlockParserTest extends TestCase
         }
 
         return $docblock;
-    }
-
-    private function getContextMock()
-    {
-        $contextMock = $this->getMockBuilder('Doctum\Parser\ParserContext')->disableOriginalConstructor()->getMock();
-        $contextMock->expects($this->once())->method('getNamespace')->will($this->returnValue(''));
-        $contextMock->expects($this->once())->method('getAliases')->will($this->returnValue([]));
-
-        return $contextMock;
     }
 }
