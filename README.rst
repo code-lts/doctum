@@ -188,7 +188,7 @@ the default theme:
         'fonts/glyphicons-halflings-regular.ttf': 'fonts/glyphicons-halflings-regular.ttf'
         'fonts/glyphicons-halflings-regular.woff': 'fonts/glyphicons-halflings-regular.woff'
         'js/bootstrap.min.js': 'js/bootstrap.min.js'
-        'js/jquery-1.11.1.min.js': 'js/jquery-1.11.1.min.js'
+        'js/jquery-3.5.1.slim.min.js': 'js/jquery-3.5.1.slim.min.js'
         'js/handlebars.min.js': 'js/handlebars.min.js'
         'js/typeahead.min.js': 'js/typeahead.min.js'
 
