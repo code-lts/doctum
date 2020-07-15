@@ -85,7 +85,7 @@ abstract class Reflection
 
     public function getHint()
     {
-        if (!$this->hint) {
+        if (! is_array($this->hint)) {
             return [];
         }
 

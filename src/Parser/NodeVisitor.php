@@ -201,7 +201,7 @@ class NodeVisitor extends NodeVisitorAbstract
             $errors = $this->updateMethodParametersFromTags($method, $comment->getTag('param'));
 
             if ($tag = $comment->getTag('return')) {
-                $method->setHint($this->resolveHint($tag[0][0]));
+                $method->setHint(is_array($tag[0][0]) ? $this->resolveHint($tag[0][0]) : $tag[0][0]);
                 $method->setHintDesc($tag[0][1]);
             }
 
@@ -297,7 +297,7 @@ class NodeVisitor extends NodeVisitorAbstract
         }
     }
 
-    protected function updateMethodParametersFromTags(MethodReflection $method, array $tags)
+    protected function updateMethodParametersFromTags(MethodReflection $method, array $tags): array
     {
         // bypass if there is no @param tags defined (@param tags are optional)
         if (!count($tags)) {
@@ -330,7 +330,7 @@ class NodeVisitor extends NodeVisitorAbstract
         return [];
     }
 
-    protected function resolveHint($hints)
+    protected function resolveHint(array $hints): array
     {
         foreach ($hints as $i => $hint) {
             $hints[$i] = [$this->resolveAlias($hint[0]), $hint[1]];

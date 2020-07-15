@@ -21,6 +21,7 @@ use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 use phpDocumentor\Reflection\DocBlock\Tags\See;
 use phpDocumentor\Reflection\DocBlock\Tags\Throws;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
+use phpDocumentor\Reflection\DocBlock\Tags\InvalidTag;
 use phpDocumentor\Reflection\DocBlockFactory;
 
 class DocBlockParser
@@ -68,7 +69,7 @@ class DocBlockParser
             case Return_::class:
                 /** @var \phpDocumentor\Reflection\DocBlock\Tags\Return_ $tag */
                 return [
-                    $this->parseHint($tag->getType()),
+                    $this->parseHint($tag->getType() ? explode('|', $tag->getType()->__toString()) : []),
                     $tag->getDescription() ? $tag->getDescription()->__toString() : '',
                 ];
             case Property::class:
@@ -97,12 +98,15 @@ class DocBlockParser
                     $tag->getReference()->__toString(),
                     $tag->getDescription() ? $tag->getDescription()->__toString() : '',
                 ];
+            case InvalidTag::class:
+                /** @var \phpDocumentor\Reflection\DocBlock\Tags\InvalidTag $tag */
+                return $tag->__toString();
             default:
                 return $tag->__toString();
         }
     }
 
-    protected function parseHint($rawHints)
+    protected function parseHint(array $rawHints): array
     {
         $hints = [];
         foreach ($rawHints as $hint) {
