@@ -270,6 +270,87 @@ class DocBlockParserTest extends TestCase
                     ],
                 ],
             ],
+            [
+                '/**
+                 * Prepares queries for adding users and
+                 * also create database and return query and message
+                 *
+                 * @param boolean $_error               whether user create or not
+                 * @param string  $real_sql_query       SQL query for add a user
+                 *
+                 * @return array, $message
+                 */',
+                [
+                    'shortDesc' => "Prepares queries for adding users and\nalso create database and return query and message",
+                    'longDesc' => '',
+                    'tags' => [
+                        'param' => [
+                            [
+                                [
+                                    [
+                                        'bool',
+                                        false
+                                    ]
+                                ],
+                                '_error',
+                                'whether user create or not',
+                            ],
+                            [
+                                [
+                                    [
+                                        'string',
+                                        false
+                                    ]
+                                ],
+                                'real_sql_query',
+                                'SQL query for add a user',
+                            ],
+                        ],
+                        'return' => [
+                            'array, $message',
+                        ]
+                    ],
+                ],
+            ],
+            [
+                '
+              /**
+                * Saves the display field for a table.
+                *
+                * @param string $db    database name
+                *
+                * @return array<int,string>
+                */',
+                [
+                    'shortDesc' => 'Saves the display field for a table.',
+                    'longDesc' => '',
+                    'tags' => [
+                        'param' => [
+                            [
+                                [
+                                    [
+                                        'string',
+                                        false
+                                    ]
+                                ],
+                                'db',
+                                'database name',
+                            ],
+                        ],
+                        'return' => [
+                            [
+                                [
+                                    [
+                                        'array<int,string>',
+                                        false,
+                                    ],
+                                ],
+                                ''
+                            ],
+                        ]
+                    ],
+                ]
+            ]
         ];
     }
 
