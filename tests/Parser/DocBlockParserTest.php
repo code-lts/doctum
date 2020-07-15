@@ -27,6 +27,17 @@ class DocBlockParserTest extends TestCase
         $this->assertEquals($this->createDocblock($expected), $parser->parse($comment));
     }
 
+    /**
+     * @dataProvider getParseTestsphp7dot1plus
+     * @requires PHP >7.1
+     */
+    public function testParse7dot1plus(string $comment, array $expected): void
+    {
+        $parser = new DocBlockParser();
+
+        $this->assertEquals($this->createDocblock($expected), $parser->parse($comment));
+    }
+
     public function getParseTests()
     {
         return [
@@ -271,48 +282,6 @@ class DocBlockParserTest extends TestCase
                 ],
             ],
             [
-                '/**
-                 * Prepares queries for adding users and
-                 * also create database and return query and message
-                 *
-                 * @param boolean $_error               whether user create or not
-                 * @param string  $real_sql_query       SQL query for add a user
-                 *
-                 * @return array, $message
-                 */',
-                [
-                    'shortDesc' => "Prepares queries for adding users and\nalso create database and return query and message",
-                    'longDesc' => '',
-                    'tags' => [
-                        'param' => [
-                            [
-                                [
-                                    [
-                                        'bool',
-                                        false
-                                    ]
-                                ],
-                                '_error',
-                                'whether user create or not',
-                            ],
-                            [
-                                [
-                                    [
-                                        'string',
-                                        false
-                                    ]
-                                ],
-                                'real_sql_query',
-                                'SQL query for add a user',
-                            ],
-                        ],
-                        'return' => [
-                            'array, $message',
-                        ]
-                    ],
-                ],
-            ],
-            [
                 '
               /**
                 * Saves the display field for a table.
@@ -351,6 +320,54 @@ class DocBlockParserTest extends TestCase
                     ],
                 ]
             ]
+        ];
+    }
+
+    public function getParseTestsphp7dot1plus(): array
+    {
+        return [
+            [
+                '/**
+         * Prepares queries for adding users and
+         * also create database and return query and message
+         *
+         * @param boolean $_error               whether user create or not
+         * @param string  $real_sql_query       SQL query for add a user
+         *
+         * @return array, $message
+         */',
+                [
+                    'shortDesc' => "Prepares queries for adding users and\nalso create database and return query and message",
+                    'longDesc' => '',
+                    'tags' => [
+                        'param' => [
+                            [
+                                [
+                                    [
+                                        'bool',
+                                        false
+                                    ]
+                                ],
+                                '_error',
+                                'whether user create or not',
+                            ],
+                            [
+                                [
+                                    [
+                                        'string',
+                                        false
+                                    ]
+                                ],
+                                'real_sql_query',
+                                'SQL query for add a user',
+                            ],
+                        ],
+                        'return' => [
+                            'array, $message',
+                        ]
+                    ],
+                ],
+            ],
         ];
     }
 
