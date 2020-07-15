@@ -104,7 +104,7 @@ class TwigExtension extends AbstractExtension
             $short = array_pop($parts);
         }
 
-        return sprintf('<abbr title="%s">%s</abbr>', $class, $short);
+        return sprintf('<abbr title="%s">%s</abbr>', htmlentities($class, ENT_QUOTES), htmlspecialchars($short));
     }
 
     public function parseDesc(array $context, $desc, ClassReflection $class)
