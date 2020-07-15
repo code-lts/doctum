@@ -20,9 +20,6 @@ use Symfony\Component\Console\Application as BaseApplication;
 
 class Application extends BaseApplication
 {
-    /**
-     * Constructor.
-     */
     public function __construct()
     {
         error_reporting(-1);
