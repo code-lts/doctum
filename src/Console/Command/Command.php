@@ -53,7 +53,7 @@ abstract class Command extends BaseCommand
         $config = $input->getArgument('config');
         $filesystem = new Filesystem();
 
-        if (!$filesystem->isAbsolutePath($config)) {
+        if ($config && !$filesystem->isAbsolutePath($config)) {
             $config = getcwd() . '/' . $config;
         }
 
