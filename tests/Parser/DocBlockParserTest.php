@@ -29,7 +29,7 @@ class DocBlockParserTest extends TestCase
 
     /**
      * @dataProvider getParseTestsphp7dot1plus
-     * @requires PHP >7.1
+     * @requires PHP >=7.2
      */
     public function testParse7dot1plus(string $comment, array $expected): void
     {
