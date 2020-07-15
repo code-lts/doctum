@@ -29,6 +29,11 @@ class DocBlockParser
     {
         $docBlock = null;
         $errorMessage = '';
+        $result = new DocBlockNode();
+
+        if ($comment === null) {
+            return $result;
+        }
 
         try {
             $factory  = DocBlockFactory::createInstance();
@@ -37,7 +42,6 @@ class DocBlockParser
             $errorMessage = $e->getMessage();
         }
 
-        $result = new DocBlockNode();
 
         if ($errorMessage) {
             $result->addError($errorMessage);
