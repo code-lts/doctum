@@ -10,13 +10,25 @@ if (file_exists($buildRoot . '/doctum.phar')) {
     exit(1);
 }
 
+if (! is_dir($buildRoot)) {
+    mkdir($buildRoot);
+}
+
 $phar = new Phar(
     $buildRoot . '/doctum.phar',
     FilesystemIterator::CURRENT_AS_FILEINFO | FilesystemIterator::KEY_AS_FILENAME,
     'doctum.phar'
 );
 
-$pharFilesList = $phar->buildFromDirectory($srcRoot, '/(src|bin|vendor)\/.*\.php$/');
+// Include src/*
+// Include vendor/*.php
+// Exclude vendor/*/*/tests
+// Exclude vendor/*/*/test
+// Include bin/*.php
+// Exclude src/Resources/themes/default/data
+
+$pharFilesList = $phar->buildFromDirectory($srcRoot, '/((?!vendor\/[a-z-]+\/[a-z-]+\/(tests|test))(bin|vendor)\/.*\.php)|((?!src\/Resources\/themes\/default\/data)src\/.*)$/');
+
 $phar->setStub($phar->createDefaultStub(__DIR__ . '/../bin/doctum.php'));
 $phar->setSignatureAlgorithm(Phar::SHA256);
 
