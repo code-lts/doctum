@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.0.0] - 2020-07-xx
+
 - Forked the project
 - Removed all GIT tags
 - Migrated from TravisCI to GitHub actions
@@ -27,7 +29,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Drop `simulate_namespaces` config option
 - #7 - Translate Doctum, thank you @Guileas
 - Support 'language' in the configuration block, available languages are ('fr' and 'en') for now, default 'en'.
-- Upgrade phpdocumentor/reflection-docblock from ~2.0 to ~5.1
+- #6 - Upgrade phpdocumentor/reflection-docblock from ~2.0 to ~5.1
+- Clean the .css .js vendor files
+- Re-build the font using https://fontello.com/
+- #4 - build a release process and phar bundling
 
 ## [4.1.0] - 2018-06-25
 
