@@ -10,6 +10,19 @@ Installation
 
     Doctum requires **PHP 7.1**.
 
+Get Sami as a `phar file`_:
+
+.. code-block:: bash
+
+    $ curl -O https://doctum.long-term.support/releases/latest/doctum.phar
+
+Check that everything worked as expected by executing the ``doctum.phar`` file
+without any arguments:
+
+.. code-block:: bash
+
+    $ php doctum.phar
+
 Configuration
 -------------
 
@@ -223,6 +236,7 @@ Files are contained into sections, depending on how Doctum needs to treat them:
 * ``class``: Templates that should be generated for every class.
 
 .. _Finder: https://symfony.com/doc/current/components/finder.html
+.. _phar file: https://doctum.long-term.support/releases/latest/doctum.phar
 .. _Mariadb Mysql Kbs: https://williamdes.github.io/mariadb-mysql-kbs/
 
 Search Index
