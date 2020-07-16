@@ -25,9 +25,10 @@ $phar = new Phar(
 // Exclude vendor/*/*/tests
 // Exclude vendor/*/*/test
 // Include bin/*.php
+// Exclude a lot of useless files
 // Exclude src/Resources/themes/default/data
 
-$pharFilesList = $phar->buildFromDirectory($srcRoot, '/((?!vendor\/[a-z-]+\/[a-z-]+\/(tests|test))(bin|vendor)\/.*\.php)|((?!src\/Resources\/themes\/default\/data)src\/.*)$/');
+$pharFilesList = $phar->buildFromDirectory($srcRoot, '/((?!vendor\/[0-9A-Za-z-]+\/[0-9A-Za-z-]+\/(tests|test|CHANGELOG|\.travis\.yml|.*\.md|.*\.rst|\.editorconfig|phpunit\.xml|Makefile|phpbench\.json|\.php_cs\.dist|phive\.xml|phpstan\.neon|phpcs\.xml\.dist|phpunit\.xml\.dist|\.scrutinizer\.yml|drupal_test\.sh|\.gitattributes|\.gitignore|psalm\.xml|\.dependabot|\.github|psalm\.xml))(bin|vendor)\/.*)|((?!src\/Resources\/themes\/default\/data)src\/.*)$/');
 
 $phar->setStub($phar->createDefaultStub(__DIR__ . '/../bin/doctum.php'));
 $phar->setSignatureAlgorithm(Phar::SHA256);
