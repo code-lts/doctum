@@ -34,6 +34,6 @@ class Application extends BaseApplication
 
     public function getLongVersion()
     {
-        return parent::getLongVersion() . ' by <comment>Fabien Potencier</comment>';
+        return parent::getLongVersion() . ' by <comment>Fabien Potencier and William Desportes</comment>';
     }
 }
