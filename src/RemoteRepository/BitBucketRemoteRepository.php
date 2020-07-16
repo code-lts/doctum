@@ -15,7 +15,7 @@ class BitBucketRemoteRepository extends AbstractRemoteRepository
 {
     public function getFileUrl($projectVersion, $relativePath, $line)
     {
-        $url = 'https://bitbucket.org/' . $this->name . '/src/' . str_replace('\\', '/', $projectVersion . $relativePath);
+        $url = 'https://bitbucket.org/' . $this->name . '/src/' . $this->buildProjectPath($projectVersion, $relativePath);
 
         if (null !== $line) {
             $filename = basename($relativePath);

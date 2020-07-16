@@ -35,4 +35,9 @@ abstract class AbstractRemoteRepository
 
         return '';
     }
+
+    protected function buildProjectPath(string $projectVersion, string $relativePath): string
+    {
+        return str_replace('\\', '/', $projectVersion . '/' . ltrim($relativePath, '/'));
+    }
 }
