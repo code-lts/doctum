@@ -76,12 +76,12 @@ class Project
         $this->initialize();
     }
 
-    public function setRenderer(Renderer $renderer)
+    public function setRenderer(Renderer $renderer): void
     {
         $this->renderer = $renderer;
     }
 
-    public function setParser(Parser $parser)
+    public function setParser(Parser $parser): void
     {
         $this->parser = $parser;
     }
@@ -91,17 +91,17 @@ class Project
         return $this->config[$name] ?? $default;
     }
 
-    public function getVersion()
+    public function getVersion(): string
     {
         return $this->version;
     }
 
-    public function getVersions()
+    public function getVersions(): array
     {
         return $this->versions->getVersions();
     }
 
-    public function update($callback = null, $force = false)
+    public function update($callback = null, $force = false): void
     {
         foreach ($this->versions as $version) {
             $this->switchVersion($version, $callback, $force);
@@ -110,7 +110,7 @@ class Project
         }
     }
 
-    public function parse($callback = null, $force = false)
+    public function parse($callback = null, $force = false): void
     {
         $previous = null;
         foreach ($this->versions as $version) {
@@ -122,7 +122,7 @@ class Project
         }
     }
 
-    public function render($callback = null, $force = false)
+    public function render($callback = null, $force = false): void
     {
         $previous = null;
         foreach ($this->versions as $version) {
@@ -135,7 +135,7 @@ class Project
         }
     }
 
-    public function switchVersion(Version $version, $callback = null, $force = false)
+    public function switchVersion(Version $version, $callback = null, $force = false): void
     {
         if (null !== $callback) {
             call_user_func($callback, Message::SWITCH_VERSION, $version);
@@ -150,18 +150,18 @@ class Project
         }
     }
 
-    public function hasNamespaces()
+    public function hasNamespaces(): bool
     {
         // if there is only one namespace and this is the global one, it means that there is no namespace in the project
         return [''] != array_keys($this->namespaces);
     }
 
-    public function hasNamespace($namespace)
+    public function hasNamespace(string $namespace): bool
     {
         return array_key_exists($namespace, $this->namespaces);
     }
 
-    public function getNamespaces()
+    public function getNamespaces(): array
     {
         ksort($this->namespaces);
 
@@ -214,7 +214,7 @@ class Project
         return $this->namespaceInterfaces[$namespace];
     }
 
-    public function getNamespaceSubNamespaces($parent)
+    public function getNamespaceSubNamespaces($parent): array
     {
         $prefix = strlen($parent) ? ($parent . '\\') : '';
         $len = strlen($prefix);
@@ -230,7 +230,7 @@ class Project
         return $namespaces;
     }
 
-    public function addClass(ClassReflection $class)
+    public function addClass(ClassReflection $class): void
     {
         $this->classes[$class->getName()] = $class;
         $class->setProject($this);
@@ -240,7 +240,7 @@ class Project
         }
     }
 
-    public function removeClass(ClassReflection $class)
+    public function removeClass(ClassReflection $class): void
     {
         unset($this->classes[$class->getName()]);
         unset($this->interfaces[$class->getName()]);
@@ -249,7 +249,7 @@ class Project
         unset($this->namespaceExceptions[$class->getNamespace()][$class->getName()]);
     }
 
-    public function getProjectInterfaces()
+    public function getProjectInterfaces(): array
     {
         $interfaces = [];
         foreach ($this->interfaces as $interface) {
@@ -262,7 +262,7 @@ class Project
         return $interfaces;
     }
 
-    public function getProjectClasses()
+    public function getProjectClasses(): array
     {
         $classes = [];
         foreach ($this->classes as $name => $class) {
@@ -275,7 +275,7 @@ class Project
         return $classes;
     }
 
-    public function getClass($name)
+    public function getClass(string $name): ClassReflection
     {
         $name = ltrim($name, '\\');
 
@@ -283,13 +283,16 @@ class Project
             return $this->classes[$name];
         }
 
-        $this->addClass($class = new LazyClassReflection($name));
+        $class = new LazyClassReflection($name);
+        $this->addClass($class);
 
         return $class;
     }
 
-    // this must only be used in LazyClassReflection to get the right values
-    public function loadClass($name)
+    /**
+     * this must only be used in LazyClassReflection to get the right values
+     */
+    public function loadClass(string $name): ?ClassReflection
     {
         $name = ltrim($name, '\\');
 
@@ -298,7 +301,7 @@ class Project
                 $this->addClass($this->store->readClass($this, $name));
             } catch (\InvalidArgumentException $e) {
                 // probably a PHP built-in class
-                return;
+                return null;
             }
         }
 
@@ -315,7 +318,7 @@ class Project
         $this->namespaceExceptions = [];
     }
 
-    public function read()
+    public function read(): void
     {
         $this->initialize();
 
@@ -334,7 +337,7 @@ class Project
         return $this->prepareDir($this->config['cache_dir']);
     }
 
-    public function flushDir($dir)
+    public function flushDir(string $dir): void
     {
         $this->filesystem->remove($dir);
         $this->filesystem->mkdir($dir);
@@ -342,14 +345,14 @@ class Project
         file_put_contents($dir . '/PROJECT_VERSION', $this->version);
     }
 
-    public function seedCache($previous, $current)
+    public function seedCache(string $previous, string $current): void
     {
         $this->filesystem->remove($current);
         $this->filesystem->mirror($previous, $current);
         $this->read();
     }
 
-    public static function isPhpTypeHint($hint)
+    public static function isPhpTypeHint($hint): bool
     {
         return in_array(strtolower($hint), ['', 'scalar', 'object', 'boolean', 'bool', 'true', 'false', 'int', 'integer', 'array', 'string', 'mixed', 'void', 'null', 'resource', 'double', 'float', 'callable', '$this']);
     }
@@ -405,12 +408,12 @@ class Project
         return $dir;
     }
 
-    protected function replaceVars($pattern)
+    protected function replaceVars(string $pattern): string
     {
         return str_replace('%version%', $this->version, $pattern);
     }
 
-    protected function parseVersion(Version $version, $previous, $callback = null, $force = false)
+    protected function parseVersion(Version $version, $previous, $callback = null, $force = false): void
     {
         if (null === $this->parser) {
             throw new \LogicException('You must set a parser.');
@@ -435,7 +438,7 @@ class Project
         }
     }
 
-    protected function renderVersion(Version $version, $previous, $callback = null, $force = false)
+    protected function renderVersion(Version $version, $previous, $callback = null, $force = false): void
     {
         if (null === $this->renderer) {
             throw new \LogicException('You must set a renderer.');
@@ -460,11 +463,12 @@ class Project
 
     public function getSourceRoot()
     {
-        if (!$root = $this->getConfig('source_url')) {
+        $root = $this->getConfig('source_url');
+        if (! $root) {
             return;
         }
 
-        if (false !== strpos($root, 'github')) {
+        if (strpos($root, 'github') !== false) {
             return $root . '/tree/' . $this->version;
         }
     }
