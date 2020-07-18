@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [5.0.0] - 2020-07-xx
+## [5.0.0] - 2020-07-18
 
 - Forked the project
 - Removed all GIT tags
