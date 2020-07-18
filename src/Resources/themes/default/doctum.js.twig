@@ -204,22 +204,26 @@
 
 $(function() {
 
+    {% if project.versions|length > 1 %}
     // Enable the version switcher
     $('#version-switcher').on('change', function() {
         window.location = $(this).val()
     });
+    var versionSwitcher = document.getElementById('version-switcher');
+    if (versionSwitcher) {
+        var versionToSelect = document.evaluate(
+            '//option[@data-version="{{ project.version|escape('js') }}"]',
+            versionSwitcher,
+            null,
+            XPathResult.FIRST_ORDERED_NODE_TYPE,
+            null
+        ).singleNodeValue;
 
-    var versionToSelect = document.evaluate(
-        '//option[@data-version="{{ project.version|escape('js') }}"]',
-        document.getElementById('version-switcher'),
-        null,
-        XPathResult.FIRST_ORDERED_NODE_TYPE,
-        null
-    ).singleNodeValue;
-
-    if (versionToSelect && typeof versionToSelect.selected === 'boolean') {
-        versionToSelect.selected = true;
+        if (versionToSelect && typeof versionToSelect.selected === 'boolean') {
+            versionToSelect.selected = true;
+        }
     }
+    {% endif %}
 
     {% block treejs %}
 
