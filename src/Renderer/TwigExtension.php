@@ -51,7 +51,9 @@ class TwigExtension extends AbstractExtension
             new TwigFunction('method_path', [$this, 'pathForMethod'], ['needs_context' => true, 'is_safe' => ['all']]),
             new TwigFunction('property_path', [$this, 'pathForProperty'], ['needs_context' => true, 'is_safe' => ['all']]),
             new TwigFunction('path', [$this, 'pathForStaticFile'], ['needs_context' => true]),
-            new TwigFunction('abbr_class', [$this, 'abbrClass'], ['is_safe' => ['all']]),
+            new TwigFunction('abbr_class', function ($class, bool $absolute = false) {
+                return self::abbrClass($class, $absolute);
+            }, ['is_safe' => ['all']]),
         ];
     }
 
@@ -85,7 +87,12 @@ class TwigExtension extends AbstractExtension
         return $this->relativeUri($this->currentDepth) . $file;
     }
 
-    public function abbrClass($class, $absolute = false)
+    /**
+     * Generate the abbreviation of a class
+     *
+     * @param ClassReflection|string $class The class
+     */
+    public static function abbrClass($class, bool $absolute = false): string
     {
         if ($class instanceof ClassReflection) {
             $short = $class->getShortName();
@@ -97,7 +104,7 @@ class TwigExtension extends AbstractExtension
         } else {
             $parts = explode('\\', $class);
 
-            if (1 == count($parts) && !$absolute) {
+            if (count($parts) === 1 && !$absolute) {
                 return $class;
             }
 

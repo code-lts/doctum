@@ -227,12 +227,12 @@ class ClassReflection extends Reflection
         return $this->category;
     }
 
-    public function isProjectClass()
+    public function isProjectClass(): bool
     {
         return $this->projectClass;
     }
 
-    public function isPhpClass()
+    public function isPhpClass(): bool
     {
         return isset(self::$phpInternalClasses[strtolower($this->name)]);
     }
@@ -244,7 +244,8 @@ class ClassReflection extends Reflection
 
     public function getShortName()
     {
-        if (false !== $pos = strrpos($this->name, '\\')) {
+        $pos = strrpos($this->name, '\\');
+        if ($pos !== false) {
             return substr($this->name, $pos + 1);
         }
 

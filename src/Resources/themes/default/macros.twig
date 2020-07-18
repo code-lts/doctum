@@ -10,13 +10,13 @@
 {%- endmacro %}
 
 {% macro class_link(class, absolute) -%}
-    {%- if class.projectclass -%}
+    {%- if class.isProjectClass() -%}
         <a href="{{ class_path(class) }}">
-    {%- elseif class.phpclass -%}
+    {%- elseif class.isPhpClass() -%}
         <a target="_blank" rel="noopener" href="https://www.php.net/{{ class|raw }}">
     {%- endif %}
     {{- abbr_class(class, absolute|default(false)) }}
-    {%- if class.projectclass or class.phpclass %}</a>{% endif %}
+    {%- if class.isProjectClass() or class.isPhpClass() %}</a>{% endif %}
 {%- endmacro %}
 
 {% macro method_link(method, absolute, classonly) -%}
@@ -65,10 +65,6 @@
             method.line
         )|raw -}}
     {%- endif %}
-{%- endmacro %}
-
-{% macro abbr_class(class, absolute) -%}
-{# #}<abbr title="{{ class }}">{{ absolute|default(false) ? class : class.shortname }}</abbr>
 {%- endmacro %}
 
 {% macro method_parameters_signature(method) -%}

@@ -20,7 +20,7 @@ class LazyClassReflection extends ClassReflection
         parent::__construct($name, -1);
     }
 
-    public function isProjectClass()
+    public function isProjectClass(): bool
     {
         if (false === $this->loaded) {
             $this->load();
