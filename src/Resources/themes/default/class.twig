@@ -213,7 +213,7 @@
                 </div>
                 <div class="col-md-2">
                     {%- if method.class is not same as(class) -%}
-                        <small>from&nbsp;{{ method_link(method, false, true) }}</small>
+                        <small>{{ 'from&nbsp;%s'|trans|format(method_link(method, false, true))|raw }}</small>
                     {%- endif -%}
                 </div>
             </div>
@@ -233,7 +233,7 @@
 
 {% block method %}
     <h3 id="method_{{ method.name|raw }}">
-        <div class="location">{% if method.class is not same as(class) %}in {{ method_link(method, false, true) }} {% endif %}{{ method_source_link(method) }}</div>
+        <div class="location">{% if method.class is not same as(class) %}{{ 'in %s'|trans|format(method_link(method, false, true))|raw }} {% endif %}{{ method_source_link(method) }}</div>
         <code>{{ block('method_signature') }}</code>
     </h3>
     <div class="details">
