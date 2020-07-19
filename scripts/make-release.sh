@@ -20,6 +20,7 @@ composer update --no-dev
 php -dphar.readonly=0 ./scripts/phar-generator-script.php
 composer update
 cp CHANGELOG.md ./build/
+cp composer.lock ./build/
 sha256sum ./build/doctum.phar > ./build/doctum.phar.sha256
 sha256sum ./build/* > ./build/files.sha256
 gpg --detach-sig --local-user "${GPG_KEY}" --armor ./build/doctum.phar
