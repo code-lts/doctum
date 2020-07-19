@@ -260,7 +260,7 @@ class NodeVisitor extends NodeVisitorAbstract
                 $property->setErrors($errors);
             } else {
                 if ($tag = $comment->getTag('var')) {
-                    $property->setHint($this->resolveHint($tag[0][0]));
+                    $property->setHint(is_array($tag[0][0]) ? $this->resolveHint($tag[0][0]) : $tag[0][0]);
                     $property->setHintDesc($tag[0][1]);
                 }
 
