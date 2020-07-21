@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-if (PHP_VERSION_ID <= 70100) {
+if (PHP_VERSION_ID < 70100) {
     echo 'You need to use PHP 7.1 to run Doctum.' . PHP_EOL;
     $majorVersion = (int) (PHP_VERSION_ID / 10000);
     $minorVersion = (int) substr((string) PHP_VERSION_ID, -4, 2);
