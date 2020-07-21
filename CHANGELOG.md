@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [5.0.2] - 2020-xx-xx
 - Upgrade nikic/php-parser from 4.5.x to 4.6.x
+- Add an error for PHP versions below 7.1
 
 ## [5.0.1] - 2020-07-19
 - Fix a parsing error on "src/Parser/NodeVisitor"
