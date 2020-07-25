@@ -1,11 +1,9 @@
 #!/usr/bin/env php
 <?php
 
-if (PHP_VERSION_ID < 70100) {
-    echo 'You need to use PHP 7.1 to run Doctum.' . PHP_EOL;
-    $majorVersion = (int) (PHP_VERSION_ID / 10000);
-    $minorVersion = (int) substr((string) PHP_VERSION_ID, -4, 2);
-    echo 'Current detected version: (' . $majorVersion . '.' . $minorVersion . ') (' . PHP_VERSION_ID . ').' . PHP_EOL;
+if (PHP_MAJOR_VERSION <= 7 && PHP_MINOR_VERSION < 1) {
+    echo 'You need to use PHP 7.1 or above to run Doctum.' . PHP_EOL;
+    echo 'Current detected version: (' . PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION . ') (' . PHP_VERSION_ID . ').' . PHP_EOL;
     exit(1);
 }
 
