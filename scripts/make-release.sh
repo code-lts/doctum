@@ -21,12 +21,12 @@ echo "Release for : ${VERSION}"
 GPG_KEY=${GPG_KEY:-C4D91FDFCEF6B4A3C653FD7890A0EF1B8251A889}
 
 echo "Remove dev-deps"
-composer update --no-dev --quiet
+${COMPOSER_BIN:-composer} update --no-dev --quiet
 echo "Generate phar"
 php -dphar.readonly=0 ./scripts/phar-generator-script.php
 chmod +x ./build/doctum.phar
 echo "Update deps"
-composer update --quiet
+${COMPOSER_BIN:-composer} update --quiet
 echo "Copy build files"
 cp CHANGELOG.md ./build/
 cp composer.lock ./build/
