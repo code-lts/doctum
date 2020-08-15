@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [5.0.2] - 2020-xx-xx
+## [5.0.2] - 2020-08-15
 - Upgrade nikic/php-parser from 4.5.x to 4.6.x
 - Add an error for PHP versions below 7.1
 - Fixed an error due to [#249 on phpdocumentor/reflection-docblock](https://github.com/phpDocumentor/ReflectionDocBlock/issues/249)
