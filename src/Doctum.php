@@ -41,8 +41,8 @@ class Doctum extends Container
 {
     public const VERSION_MAJOR = 5;
     public const VERSION_MINOR = 0;
-    public const VERSION_PATCH = 3;
-    public const IS_DEV = false;
+    public const VERSION_PATCH = 4;
+    public const IS_DEV = true;
 
     //@phpstan-ignore-next-line
     public const VERSION = self::VERSION_MAJOR . '.' . self::VERSION_MINOR . '.' . self::VERSION_PATCH . (self::IS_DEV ? '-dev' : '');
