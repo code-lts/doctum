@@ -62,12 +62,12 @@ class TwigExtension extends AbstractExtension
         $this->currentDepth = $depth;
     }
 
-    public function pathForClass(array $context, ClassReflection $class)
+    public function pathForClass(array $context, string $class): string
     {
         return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $class) . '.html';
     }
 
-    public function pathForNamespace(array $context, $namespace)
+    public function pathForNamespace(array $context, string $namespace): string
     {
         return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $namespace) . '.html';
     }
