@@ -6,8 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [5.0.3] - 2020-xx-xx
-
+## [5.0.3] - 2020-08-19
+- Some fixes for project classes
 
 ## [5.0.2] - 2020-08-15
 - Upgrade nikic/php-parser from 4.5.x to 4.6.x
