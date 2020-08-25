@@ -41,8 +41,13 @@ abstract class Command extends BaseCommand
      */
     protected function configure()
     {
-        $this->getDefinition()->addArgument(new InputArgument('config', InputArgument::REQUIRED, 'The configuration'));
+        $this->getDefinition()->addArgument(new InputArgument('config', InputArgument::REQUIRED, 'The configuration file'));
         $this->getDefinition()->addOption(new InputOption('only-version', '', InputOption::VALUE_REQUIRED, 'The version to build'));
+    }
+
+    protected function addForceOption(): void
+    {
+        $this->getDefinition()->addOption(new InputOption('force', '', InputOption::VALUE_NONE, 'Forces to rebuild from scratch', null));
     }
 
     protected function initialize(InputInterface $input, OutputInterface $output)
@@ -72,7 +77,7 @@ abstract class Command extends BaseCommand
         }
     }
 
-    public function update(Project $project)
+    public function update(Project $project): int
     {
         $callback = $this->output->isDecorated() ? [$this, 'messageCallback'] : null;
 
@@ -84,7 +89,7 @@ abstract class Command extends BaseCommand
         return count($this->errors) ? self::PARSE_ERROR : 0;
     }
 
-    public function parse(Project $project)
+    public function parse(Project $project): int
     {
         $project->parse([$this, 'messageCallback'], $this->input->getOption('force'));
 
@@ -93,7 +98,7 @@ abstract class Command extends BaseCommand
         return count($this->errors) ? self::PARSE_ERROR : 0;
     }
 
-    public function render(Project $project)
+    public function render(Project $project): int
     {
         $project->render([$this, 'messageCallback'], $this->input->getOption('force'));
 
@@ -102,7 +107,7 @@ abstract class Command extends BaseCommand
         return count($this->errors) ? self::PARSE_ERROR : 0;
     }
 
-    public function messageCallback($message, $data)
+    public function messageCallback($message, $data): void
     {
         switch ($message) {
             case Message::PARSE_CLASS:
@@ -129,13 +134,13 @@ abstract class Command extends BaseCommand
                 $this->started = false;
                 break;
             case Message::RENDER_PROGRESS:
-                list($section, $message, $progression) = $data;
+                [$section, $message, $progression] = $data;
                 $this->displayRenderProgress($section, $message, $progression);
                 break;
         }
     }
 
-    public function renderProgressBar($percent, $length)
+    public function renderProgressBar(float $percent, int $length): string
     {
         return
             str_repeat('#', (int) floor($percent / 100 * $length))
@@ -144,31 +149,31 @@ abstract class Command extends BaseCommand
         ;
     }
 
-    public function displayParseProgress($progress, $class)
+    public function displayParseProgress(float $progress, $class): void
     {
         if ($this->started) {
-            $this->output->isDecorated() and $this->output->write("\033[2A");
+            $this->output->isDecorated() && $this->output->write("\033[2A");
         }
         $this->started = true;
 
-        $this->output->isDecorated() and $this->output->write(
+        $this->output->isDecorated() && $this->output->write(
             sprintf(
                 "  Parsing <comment>%s</comment>%s\033[K\n          %s\033[K\n",
                 $this->renderProgressBar($progress, 50),
-                count($this->errors) ? ' <fg=red>' . count($this->errors) . ' error' . (1 == count($this->errors) ? '' : 's') . '</>' : '',
+                count($this->errors) ? ' <fg=red>' . count($this->errors) . ' error' . (1 === count($this->errors) ? '' : 's') . '</>' : '',
                 $class->getName()
             )
         );
     }
 
-    public function displayRenderProgress($section, $message, $progression)
+    public function displayRenderProgress(string $section, string $message, float $progression): void
     {
         if ($this->started) {
-            $this->output->isDecorated() and $this->output->write("\033[2A");
+            $this->output->isDecorated() && $this->output->write("\033[2A");
         }
         $this->started = true;
 
-        $this->output->isDecorated() and $this->output->write(sprintf(
+        $this->output->isDecorated() && $this->output->write(sprintf(
             "  Rendering <comment>%s</comment>\033[K\n            <info>%s</info> %s\033[K\n",
             $this->renderProgressBar($progression, 50),
             $section,
@@ -182,7 +187,7 @@ abstract class Command extends BaseCommand
             return;
         }
 
-        $this->output->isDecorated() and $this->output->write(
+        $this->output->isDecorated() && $this->output->write(
             "\033[2A<info>  Parsing   done</info>\033[K\n\033[K\n\033[1A"
         );
 
@@ -201,10 +206,10 @@ abstract class Command extends BaseCommand
             return;
         }
 
-        $this->output->isDecorated() and $this->output->write("\033[2A<info>  Rendering done</info>\033[K\n\033[K\n\033[1A");
+        $this->output->isDecorated() && $this->output->write("\033[2A<info>  Rendering done</info>\033[K\n\033[K\n\033[1A");
     }
 
-    public function displayParseSummary()
+    public function displayParseSummary(): void
     {
         if (count($this->transactions) <= 0) {
             return;
@@ -219,7 +224,7 @@ abstract class Command extends BaseCommand
         $this->output->writeln('');
     }
 
-    public function displayRenderSummary()
+    public function displayRenderSummary(): void
     {
         if (count($this->diffs) <= 0) {
             return;
@@ -240,7 +245,7 @@ abstract class Command extends BaseCommand
         $this->output->writeln('');
     }
 
-    public function displaySwitch()
+    public function displaySwitch(): void
     {
         $this->output->writeln(sprintf("\n<fg=cyan>Version %s</>", $this->version));
     }

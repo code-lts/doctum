@@ -12,7 +12,6 @@
 namespace Doctum\Console\Command;
 
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class RenderCommand extends Command
@@ -24,7 +23,7 @@ class RenderCommand extends Command
     {
         parent::configure();
 
-        $this->getDefinition()->addOption(new InputOption('force', '', InputOption::VALUE_NONE, 'Forces to rebuild from scratch', null));
+        $this->addForceOption();
 
         $this
             ->setName('render')
