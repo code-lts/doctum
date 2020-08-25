@@ -40,8 +40,8 @@ use Wdes\phpI18nL10n\Launcher;
 class Doctum extends Container
 {
     public const VERSION_MAJOR = 5;
-    public const VERSION_MINOR = 0;
-    public const VERSION_PATCH = 4;
+    public const VERSION_MINOR = 1;
+    public const VERSION_PATCH = 0;
     public const IS_DEV = true;
 
     //@phpstan-ignore-next-line
