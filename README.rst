@@ -10,7 +10,7 @@ Installation
 
     Doctum requires **PHP 7.1**.
 
-Get Sami as a `phar file`_:
+Get Doctum as a `phar file`_:
 
 .. code-block:: bash
 
