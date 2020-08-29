@@ -54,8 +54,7 @@ that matter any instance of the Symfony `Finder`_ class):
         ->name('*.php')
         ->exclude('Resources')
         ->exclude('Tests')
-        ->in('/path/to/yourlib/src')
-    ;
+        ->in('/path/to/yourlib/src');
 
     return new Doctum($iterator);
 
