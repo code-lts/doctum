@@ -22,6 +22,8 @@ class SingleVersionCollection extends VersionCollection
         }
 
         parent::add($version, $longname);
+
+        return $this;
     }
 
     protected function switchVersion(Version $version)

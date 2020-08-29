@@ -16,12 +16,27 @@ use Symfony\Component\Process\Process;
 
 class GitVersionCollection extends VersionCollection
 {
+    /**
+     * @var \Closure
+     */
     protected $sorter;
+
+    /**
+     * @var \Closure
+     */
     protected $filter;
+
+    /**
+     * @var string
+     */
     protected $repo;
+
+    /**
+     * @var string
+     */
     protected $gitPath;
 
-    public function __construct($repo)
+    public function __construct(string $repo)
     {
         $this->repo = $repo;
         $this->filter = function ($version) {
@@ -39,6 +54,9 @@ class GitVersionCollection extends VersionCollection
         $this->gitPath = 'git';
     }
 
+    /**
+     * @phpstan-return void
+     */
     protected function switchVersion(Version $version)
     {
         $process = new Process(['git', 'status', '--porcelain', '--untracked-files=no'], $this->repo);
@@ -50,22 +68,25 @@ class GitVersionCollection extends VersionCollection
         $this->execute(['checkout', '-qf', (string) $version]);
     }
 
-    public function setGitPath($path)
+    public function setGitPath(string $path): void
     {
         $this->gitPath = $path;
     }
 
-    public function setFilter(\Closure $filter)
+    public function setFilter(\Closure $filter): void
     {
         $this->filter = $filter;
     }
 
-    public function setSorter(\Closure $sorter)
+    public function setSorter(\Closure $sorter): void
     {
         $this->sorter = $sorter;
     }
 
-    public function addFromTags($filter = null)
+    /**
+     * @param \Closure|null $filter
+     */
+    public function addFromTags($filter = null): self
     {
         $tags = array_filter(explode("\n", $this->execute(['tag'])));
 
@@ -100,7 +121,7 @@ class GitVersionCollection extends VersionCollection
         return $this;
     }
 
-    protected function execute($arguments)
+    protected function execute(array $arguments): string
     {
         array_unshift($arguments, $this->gitPath);
 

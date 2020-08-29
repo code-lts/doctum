@@ -13,11 +13,23 @@ namespace Doctum\Version;
 
 class Version
 {
+
+    /**
+     * @var bool
+     */
     protected $isFrozen;
+
+    /**
+     * @var string
+     */
     protected $name;
+
+    /**
+     * @var string
+     */
     protected $longname;
 
-    public function __construct($name, $longname = null)
+    public function __construct(string $name, ?string $longname = null)
     {
         $this->name = $name;
         $this->longname = null === $longname ? $name : $longname;
@@ -34,22 +46,22 @@ class Version
         $this->name = $name;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getLongName()
+    public function getLongName(): ?string
     {
         return $this->longname;
     }
 
-    public function setFrozen($isFrozen)
+    public function setFrozen(bool $isFrozen): void
     {
-        $this->isFrozen = (bool) $isFrozen;
+        $this->isFrozen = $isFrozen;
     }
 
-    public function isFrozen()
+    public function isFrozen(): bool
     {
         return $this->isFrozen;
     }

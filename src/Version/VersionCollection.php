@@ -15,17 +15,34 @@ use Doctum\Project;
 
 abstract class VersionCollection implements \Iterator, \Countable
 {
+    /**
+     * @var Version[]
+     */
     protected $versions = [];
+
+    /**
+     * @var int
+     */
     protected $indice;
+
+    /**
+     * @var Project
+     */
     protected $project;
 
-    public function __construct($versions)
+    public function __construct(array $versions)
     {
         $this->add($versions);
     }
 
+    /**
+     * @phpstan-return void
+     */
     abstract protected function switchVersion(Version $version);
 
+    /**
+     * @phpstan-return mixed
+     */
     public static function create()
     {
         $r = new \ReflectionClass(get_called_class());
@@ -33,11 +50,16 @@ abstract class VersionCollection implements \Iterator, \Countable
         return $r->newInstanceArgs(func_get_args());
     }
 
-    public function setProject(Project $project)
+    public function setProject(Project $project): void
     {
         $this->project = $project;
     }
 
+    /**
+     * @param array|string|Version $version
+     * @param string $longname
+     * @phpstan-return self
+     */
     public function add($version, $longname = null)
     {
         if (is_array($version)) {
@@ -55,32 +77,32 @@ abstract class VersionCollection implements \Iterator, \Countable
         return $this;
     }
 
-    public function getVersions()
+    public function getVersions(): array
     {
         return $this->versions;
     }
 
-    public function key()
+    public function key(): int
     {
         return $this->indice;
     }
 
-    public function current()
+    public function current(): Version
     {
         return $this->versions[$this->indice];
     }
 
-    public function next()
+    public function next(): void
     {
         ++$this->indice;
     }
 
-    public function rewind()
+    public function rewind(): void
     {
         $this->indice = 0;
     }
 
-    public function valid()
+    public function valid(): bool
     {
         if ($this->indice < count($this->versions)) {
             $this->switchVersion($this->current());
@@ -91,7 +113,7 @@ abstract class VersionCollection implements \Iterator, \Countable
         return false;
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->versions);
     }
