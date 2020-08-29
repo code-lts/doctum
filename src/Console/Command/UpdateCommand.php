@@ -24,6 +24,7 @@ class UpdateCommand extends Command
         parent::configure();
 
         $this->addForceOption();
+        $this->addIgnoreParseErrors();
 
         $this
             ->setName('update')

@@ -50,6 +50,13 @@ abstract class Command extends BaseCommand
         $this->getDefinition()->addOption(new InputOption('force', '', InputOption::VALUE_NONE, 'Forces to rebuild from scratch', null));
     }
 
+    protected function addIgnoreParseErrors(): void
+    {
+        $this->getDefinition()->addOption(
+            new InputOption('ignore-parse-errors', '', InputOption::VALUE_NONE, 'Ignores parse errors and exits 0', null)
+        );
+    }
+
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
         $this->input = $input;
@@ -86,7 +93,7 @@ abstract class Command extends BaseCommand
         $this->displayParseSummary();
         $this->displayRenderSummary();
 
-        return count($this->errors) ? self::PARSE_ERROR : 0;
+        return $this->getExitCode();
     }
 
     public function parse(Project $project): int
@@ -95,7 +102,7 @@ abstract class Command extends BaseCommand
 
         $this->displayParseSummary();
 
-        return count($this->errors) ? self::PARSE_ERROR : 0;
+        return $this->getExitCode();
     }
 
     public function render(Project $project): int
@@ -104,7 +111,18 @@ abstract class Command extends BaseCommand
 
         $this->displayRenderSummary();
 
-        return count($this->errors) ? self::PARSE_ERROR : 0;
+        return $this->getExitCode();
+    }
+
+    private function getExitCode(): int
+    {
+        if ($this->input->getOption('ignore-parse-errors')) {
+            return 0;
+        }
+        if (count($this->errors) > 0) {
+            return self::PARSE_ERROR;
+        }
+        return 0;
     }
 
     public function messageCallback($message, $data): void

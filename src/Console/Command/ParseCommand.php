@@ -24,6 +24,7 @@ class ParseCommand extends Command
         parent::configure();
 
         $this->addForceOption();
+        $this->addIgnoreParseErrors();
 
         $this
             ->setName('parse')

@@ -24,6 +24,7 @@ class RenderCommand extends Command
         parent::configure();
 
         $this->addForceOption();
+        $this->addIgnoreParseErrors();
 
         $this
             ->setName('render')
