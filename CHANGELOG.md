@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
-## [5.1.0] - 2020-mm-dd
+## [5.1.0] - 2020-08-29
 - Allow symfony/* ~3.4 versions
 - Support `--ignore-parse-errors` to have an exit code 0.
 - Add more PHP typehints on the code-base.
