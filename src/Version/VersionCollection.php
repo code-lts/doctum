@@ -16,7 +16,7 @@ use Doctum\Project;
 abstract class VersionCollection implements \Iterator, \Countable
 {
     /**
-     * @var Version[]
+     * @var Version[]|mixed
      */
     protected $versions = [];
 
@@ -30,7 +30,10 @@ abstract class VersionCollection implements \Iterator, \Countable
      */
     protected $project;
 
-    public function __construct(array $versions)
+    /**
+     * @phpstan-param array|Version $versions
+     */
+    public function __construct($versions)
     {
         $this->add($versions);
     }

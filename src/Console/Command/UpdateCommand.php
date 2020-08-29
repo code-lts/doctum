@@ -18,6 +18,7 @@ class UpdateCommand extends Command
 {
     /**
      * @see Command
+     * @phpstan-return void
      */
     protected function configure()
     {

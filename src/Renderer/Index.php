@@ -68,6 +68,6 @@ class Index implements \Serializable
 
     public function unserialize($data)
     {
-        list($this->classes, $this->versions, $this->namespaces) = unserialize($data);
+        [$this->classes, $this->versions, $this->namespaces] = unserialize($data);
     }
 }

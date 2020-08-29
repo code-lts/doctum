@@ -21,6 +21,9 @@ use Doctum\Reflection\ClassReflection;
  */
 class ArrayStore implements StoreInterface
 {
+    /**
+     * @var array<string,ClassReflection>
+     */
     private $classes = [];
 
     public function setClasses($classes)

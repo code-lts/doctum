@@ -27,17 +27,49 @@ abstract class Command extends BaseCommand
 {
     private const PARSE_ERROR = 64;
 
+    /**
+     * @var Doctum
+     */
     protected $doctum;
+
+    /**
+     * @var string
+     */
     protected $version;
+
+    /**
+     * @var bool
+     */
     protected $started;
+
+    /**
+     * @var array<string,Diff>
+     */
     protected $diffs = [];
+
+    /**
+     * @var array<string,Transaction>
+     */
     protected $transactions = [];
+
+    /**
+     * @var string[]
+     */
     protected $errors = [];
+
+    /**
+     * @var InputInterface
+     */
     protected $input;
+
+    /**
+     * @var OutputInterface
+     */
     protected $output;
 
     /**
      * @see Command
+     * @phpstan-return void
      */
     protected function configure()
     {
@@ -57,11 +89,15 @@ abstract class Command extends BaseCommand
         );
     }
 
+    /**
+     * @phpstan-return void
+     */
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
         $this->input = $input;
         $this->output = $output;
 
+        /** @var string $config */
         $config = $input->getArgument('config');
         $filesystem = new Filesystem();
 
@@ -125,11 +161,14 @@ abstract class Command extends BaseCommand
         return 0;
     }
 
-    public function messageCallback($message, $data): void
+    /**
+     * @param mixed $data
+     */
+    public function messageCallback(int $message, $data): void
     {
         switch ($message) {
             case Message::PARSE_CLASS:
-                list($progress, $class) = $data;
+                [$progress, $class] = $data;
                 $this->displayParseProgress($progress, $class);
                 break;
             case Message::PARSE_ERROR:
@@ -167,6 +206,9 @@ abstract class Command extends BaseCommand
         ;
     }
 
+    /**
+     * @param \Doctum\Reflection\ClassReflection $class
+     */
     public function displayParseProgress(float $progress, $class): void
     {
         if ($this->started) {
@@ -199,7 +241,7 @@ abstract class Command extends BaseCommand
         ));
     }
 
-    public function displayParseEnd(Transaction $transaction)
+    public function displayParseEnd(Transaction $transaction): void
     {
         if (!$this->started) {
             return;
@@ -218,7 +260,7 @@ abstract class Command extends BaseCommand
         }
     }
 
-    public function displayRenderEnd(Diff $diff)
+    public function displayRenderEnd(Diff $diff): void
     {
         if (!$this->started) {
             return;
@@ -268,6 +310,9 @@ abstract class Command extends BaseCommand
         $this->output->writeln(sprintf("\n<fg=cyan>Version %s</>", $this->version));
     }
 
+    /**
+     * @return Doctum
+     */
     private function loadDoctum(string $config)
     {
         return require $config;

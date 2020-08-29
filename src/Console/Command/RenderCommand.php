@@ -18,6 +18,7 @@ class RenderCommand extends Command
 {
     /**
      * @see Command
+     * @phpstan-return void
      */
     protected function configure()
     {
