@@ -24,8 +24,14 @@ class ClassTraverserTest extends TestCase
      * @dataProvider getTraverseOrderClasses
      * @requires PHP <8
      */
-    public function testTraverseOrder($interfaceName, $parentName, $className, $class, $parent, $interface)
-    {
+    public function testTraverseOrder(
+        string $interfaceName,
+        string $parentName,
+        string $className,
+        ClassReflection $class,
+        ClassReflection $parent,
+        ClassReflection $interface
+    ): void {
         $store = new ArrayStore();
         $store->setClasses([$class, $parent, $interface]);
 
@@ -45,8 +51,15 @@ class ClassTraverserTest extends TestCase
     /**
      * @dataProvider getNamespaceDetectionClasses
      */
-    public function testNamespaceDetection($interfaceName, $parentName, $className, $class, $parent, $interface, $expectedNamespaces)
-    {
+    public function testNamespaceDetection(
+        string $interfaceName,
+        string $parentName,
+        string $className,
+        ClassReflection $class,
+        ClassReflection $parent,
+        ClassReflection $interface,
+        array $expectedNamespaces
+    ): void {
         $store = new ArrayStore();
         $store->setClasses([$class, $parent, $interface]);
 
@@ -59,7 +72,7 @@ class ClassTraverserTest extends TestCase
         $this->assertEquals($expectedNamespaces, $project->getNamespaces());
     }
 
-    public function getTraverseOrderClasses()
+    public function getTraverseOrderClasses(): array
     {
         // as classes are sorted by name in Project, we try all combinaison
         // by giving different names to the classes
@@ -73,7 +86,7 @@ class ClassTraverserTest extends TestCase
         ];
     }
 
-    public function getNamespaceDetectionClasses()
+    public function getNamespaceDetectionClasses(): array
     {
         return [
             array_merge($this->createClasses('C1', 'C2', 'C3'), [['']]),
@@ -82,8 +95,12 @@ class ClassTraverserTest extends TestCase
         ];
     }
 
-    protected function createClasses($interfaceName, $parentName, $className, $namespaceName = null)
-    {
+    protected function createClasses(
+        string $interfaceName,
+        string $parentName,
+        string $className,
+        string $namespaceName = null
+    ): array {
         $interface = new ClassReflection($interfaceName, 1);
 
         $parent = new ClassReflection($parentName, 1);

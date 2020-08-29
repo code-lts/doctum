@@ -13,7 +13,7 @@ use Doctum\Tree;
  */
 class TreeTest extends TestCase
 {
-    public function testNamespaces()
+    public function testNamespaces(): void
     {
         $class1 = new ClassReflection('C1', 1);
         $class2 = new ClassReflection('C2', 1);

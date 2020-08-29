@@ -29,7 +29,7 @@ class NodeVisitorTest extends TestCase
     /**
      * @dataProvider getMethodTypehints
      */
-    public function testMethodTypehints(ClassReflection $classReflection, ClassMethod $method, array $expectedHints)
+    public function testMethodTypehints(ClassReflection $classReflection, ClassMethod $method, array $expectedHints): void
     {
         $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
         $parserContext->enterClass($classReflection);
@@ -55,7 +55,7 @@ class NodeVisitorTest extends TestCase
     /**
      * @dataProvider getMethodReturnTypeHints
      */
-    public function testMethodReturnTypeHints(ClassReflection $classReflection, ClassMethod $method, $expectedReturnType)
+    public function testMethodReturnTypeHints(ClassReflection $classReflection, ClassMethod $method, string $expectedReturnType): void
     {
         $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
         $parserContext->enterClass($classReflection);
@@ -72,7 +72,7 @@ class NodeVisitorTest extends TestCase
     /**
      * @return array
      */
-    public function getMethodTypehints()
+    public function getMethodTypehints(): array
     {
         return [
             'primitive' => $this->getMethodTypehintsPrimiteveParameters(),
@@ -86,7 +86,7 @@ class NodeVisitorTest extends TestCase
     /**
      * @return array
      */
-    public function getMethodReturnTypeHints()
+    public function getMethodReturnTypeHints(): array
     {
         return [
             'primitive' => $this->getPrimitiveMethodReturnType(),
@@ -95,7 +95,7 @@ class NodeVisitorTest extends TestCase
         ];
     }
 
-    private function getPrimitiveMethodReturnType()
+    private function getPrimitiveMethodReturnType(): array
     {
         $expectedReturnType = 'string';
         $classReflection = new ClassReflection('C1', 1);
@@ -118,7 +118,7 @@ class NodeVisitorTest extends TestCase
         ];
     }
 
-    private function getClassMethodReturnType()
+    private function getClassMethodReturnType(): array
     {
         $expectedReturnType = 'Class';
         $classReflection = new ClassReflection('C1', 1);
@@ -141,7 +141,7 @@ class NodeVisitorTest extends TestCase
         ];
     }
 
-    private function getNullableMethodReturnType()
+    private function getNullableMethodReturnType(): array
     {
         $expectedReturnType = 'Class|null';
         $classReflection = new ClassReflection('C1', 1);
@@ -165,7 +165,7 @@ class NodeVisitorTest extends TestCase
     }
 
 
-    private function getMethodTypehintsPrimiteveParameters()
+    private function getMethodTypehintsPrimiteveParameters(): array
     {
         $classReflection = new ClassReflection('C1', 1);
         $method = new ClassMethod('testMethod', [
@@ -201,7 +201,7 @@ class NodeVisitorTest extends TestCase
         ];
     }
 
-    private function getMethodTypehintsClassParameters()
+    private function getMethodTypehintsClassParameters(): array
     {
         $classReflection = new ClassReflection('C1', 1);
         $paramClassReflection = new ClassReflection("Test\Class", 1);
@@ -233,7 +233,7 @@ class NodeVisitorTest extends TestCase
         ];
     }
 
-    private function getMethodTypehintsSubNamespacedClassParameters()
+    private function getMethodTypehintsSubNamespacedClassParameters(): array
     {
         $classReflection = new ClassReflection("Test\Class", 1);
         $paramClassReflection = new ClassReflection("Test\Sub\Class", 1);
@@ -265,7 +265,7 @@ class NodeVisitorTest extends TestCase
         ];
     }
 
-    private function getMethodTypehintsDocblockClassParameters()
+    private function getMethodTypehintsDocblockClassParameters(): array
     {
         $classReflection = new ClassReflection('C1', 1);
         $paramClassReflection = new ClassReflection("Test\Class", 1);
@@ -296,7 +296,7 @@ class NodeVisitorTest extends TestCase
         ];
     }
 
-    private function getMethodTypehintsDocblockMixedClassParameters()
+    private function getMethodTypehintsDocblockMixedClassParameters(): array
     {
         $classReflection = new ClassReflection('C1', 1);
         $paramClassReflection = new ClassReflection("Test\Class", 1);

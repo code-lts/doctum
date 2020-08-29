@@ -21,7 +21,7 @@ class PropertyClassVisitorTest extends TestCase
     /**
      * @requires PHP <8
      */
-    public function testAddsProperties()
+    public function testAddsProperties(): void
     {
         $class = $this->getMockBuilder(ClassReflection::class)
             ->setMethods(['getTags'])

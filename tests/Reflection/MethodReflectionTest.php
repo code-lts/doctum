@@ -7,7 +7,7 @@ use Doctum\Reflection\MethodReflection;
 
 class MethodReflectionTest extends TestCase
 {
-    public function testSetGetModifiers()
+    public function testSetGetModifiers(): void
     {
         $method = new MethodReflection('foo', 0);
         $method->setModifiers(0);

@@ -8,7 +8,7 @@ use Doctum\Reflection\ClassReflection;
 
 class ClassReflectionTest extends TestCase
 {
-    public function testIsPhpClass()
+    public function testIsPhpClass(): void
     {
         // an internal class
         $class = new ClassReflection('stdClass', 1);

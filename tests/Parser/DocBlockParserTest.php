@@ -20,7 +20,7 @@ class DocBlockParserTest extends TestCase
     /**
      * @dataProvider getParseTests
      */
-    public function testParse($comment, $expected)
+    public function testParse(string $comment, array $expected): void
     {
         $parser = new DocBlockParser();
 
@@ -38,7 +38,7 @@ class DocBlockParserTest extends TestCase
         $this->assertEquals($this->createDocblock($expected), $parser->parse($comment));
     }
 
-    public function getParseTests()
+    public function getParseTests(): array
     {
         return [
             [
@@ -371,7 +371,7 @@ class DocBlockParserTest extends TestCase
         ];
     }
 
-    private function createDocblock(array $elements)
+    private function createDocblock(array $elements): DocBlockNode
     {
         $docblock = new DocBlockNode();
         foreach ($elements as $key => $value) {

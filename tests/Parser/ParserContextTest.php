@@ -11,7 +11,7 @@ use Doctum\Reflection\ClassReflection;
 
 class ParserContextTest extends TestCase
 {
-    public function testLeaveClassBeforeEnter()
+    public function testLeaveClassBeforeEnter(): void
     {
         $filter = new TrueFilter();
         $docBlockParser = new DocBlockParser();

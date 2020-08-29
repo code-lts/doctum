@@ -20,7 +20,7 @@ class MethodClassVisitorTest extends TestCase
     /**
      * @requires PHP <8
      */
-    public function testAddsMethods()
+    public function testAddsMethods(): void
     {
         $class = $this->getMockBuilder(ClassReflection::class)
             ->setMethods(['getTags'])

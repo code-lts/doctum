@@ -7,7 +7,7 @@ use Doctum\Reflection\PropertyReflection;
 
 class PropertyReflectionTest extends TestCase
 {
-    public function testSetGetModifiers()
+    public function testSetGetModifiers(): void
     {
         $property = new PropertyReflection('foo', 0);
         $property->setModifiers(0);

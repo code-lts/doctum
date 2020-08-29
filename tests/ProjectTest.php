@@ -10,7 +10,7 @@ use Doctum\Version\Version;
 
 class ProjectTest extends TestCase
 {
-    public function testSwitchVersion()
+    public function testSwitchVersion(): void
     {
         // Dummy store and classes
         $class1 = new ClassReflection('C1', 1);
