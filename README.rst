@@ -1,20 +1,31 @@
 Doctum, a PHP API documentation generator. Fork of Sami
 =========================================================
 
-Curious about what Doctum generates? Have a look at the `Mariadb Mysql Kbs`_.
+Curious about what Doctum generates? Have a look at the `Mariadb Mysql Kbs`_ or `Laravel`_ documentation.
 
 Installation
 ------------
 
 .. caution::
 
-    Doctum requires **PHP 7.1**.
+    Doctum requires **PHP 7.1** or later.
 
 Get Doctum as a `phar file`_:
 
 .. code-block:: bash
 
     $ curl -O https://doctum.long-term.support/releases/latest/doctum.phar
+
+You can also find some alternative phar versions:
+
+- 5.1 (or any ``major``. ``minor`` version since 5.1)
+- ``major``. ``minor``. ``patch``
+- latest
+- dev
+
+.. code-block:: bash
+
+    $ curl -O https://doctum.long-term.support/releases/${version}/doctum.phar
 
 Check that everything worked as expected by executing the ``doctum.phar`` file
 without any arguments:
@@ -237,6 +248,7 @@ Files are contained into sections, depending on how Doctum needs to treat them:
 .. _Finder: https://symfony.com/doc/current/components/finder.html
 .. _phar file: https://doctum.long-term.support/releases/latest/doctum.phar
 .. _Mariadb Mysql Kbs: https://williamdes.github.io/mariadb-mysql-kbs/
+.. _Laravel: https://laravel.com/api/master/index.html
 
 Search Index
 ~~~~~~~~~~~~
