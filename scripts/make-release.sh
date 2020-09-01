@@ -11,10 +11,21 @@ mkdir ./build
 
 function get_version {
     VERSION=$($1 --version | cut -d ' ' -f 2 | sed -e 's/^[[:space:]]*//')
+    [[ ${VERSION} =~ ^[0-9]+\.[0-9]+ ]] && VERSION_RANGE="${BASH_REMATCH[0]}"
+    [[ ${VERSION} =~ ^[0-9]+\.[0-9]+\.[0-9]+-dev$ ]] && VERSION_MATCH_DEV="${BASH_REMATCH[0]}"
+
+    if [ ! -z "${VERSION_MATCH_DEV}" ]; then
+        echo "Releasing a development version.";
+        # Append -dev to the range
+        VERSION_RANGE="${VERSION_RANGE}-dev"
+    else
+        echo "Releasing a normal version.";
+    fi
 }
 
 get_version ./bin/doctum.php
 echo "${VERSION}" > ./build/VERSION
+echo "${VERSION_RANGE}" > ./build/VERSION_RANGE
 
 echo "Release for : ${VERSION}"
 
