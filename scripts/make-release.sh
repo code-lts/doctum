@@ -4,7 +4,7 @@
 # @author William Desportes <williamdes@wdes.fr>
 ##
 
-set +e
+set -e
 
 rm -rf ./build
 mkdir ./build
@@ -51,14 +51,24 @@ ${COMPOSER_BIN:-composer} update --quiet
 echo "Copy build files"
 cp CHANGELOG.md ./build/
 cp composer.lock ./build/
-sha256sum ./build/doctum.phar > ./build/doctum.phar.sha256
-sha256sum ./build/* > ./build/files.sha256
-gpg --detach-sig --local-user "${GPG_KEY}" --armor ./build/doctum.phar
-gpg --detach-sig --local-user "${GPG_KEY}" --armor ./build/doctum.phar.sha256
-gpg --detach-sig --local-user "${GPG_KEY}" --armor ./build/files.sha256
+cd ./build/
+sha256sum doctum.phar > ./doctum.phar.sha256
+sha256sum * > ./files.sha256
+gpg --detach-sig --local-user "${GPG_KEY}" --armor doctum.phar
+gpg --detach-sig --local-user "${GPG_KEY}" --armor doctum.phar.sha256
+gpg --detach-sig --local-user "${GPG_KEY}" --armor files.sha256
 echo "Lint"
-php -l ./build/doctum.phar
+php -l doctum.phar
+echo "Check fingerprints"
+sha256sum --strict --check *.sha256
 echo "Version before build: ${VERSION}"
-get_version "php ./build/doctum.phar"
+VERSION_BEFORE="${VERSION}"
+get_version "php doctum.phar"
 echo "Version after build: ${VERSION}"
-echo "Done."
+if [ "${VERSION_BEFORE}" = "${VERSION}" ]; then
+    echo "Done."
+    exit 0;
+else
+    echo "Versions do not match."
+    exit 1;
+fi

@@ -4,7 +4,7 @@
 # @author William Desportes <williamdes@wdes.fr>
 ##
 
-set +e
+set -e
 
 VERSION="$(cat ./build/VERSION)"
 VERSION_RANGE="$(cat ./build/VERSION_RANGE)"
