@@ -33,14 +33,23 @@ echo "Release for : ${VERSION}"
 
 GPG_KEY=${GPG_KEY:-C4D91FDFCEF6B4A3C653FD7890A0EF1B8251A889}
 
+PHP_VERSION="$(${PHP_BIN:-php} -r "echo PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;")"
+
+if [ "${PHP_VERSION}" = "7.1" ]; then
+    echo "PHP version (${PHP_VERSION}) matches the exact version."
+else
+    echo "Your PHP version (${PHP_VERSION}) does not match the exact version required (7.1). This can make users unable to use the phar file."
+    exit 1;
+fi
+
 if [ "${RELEASE_OPTIONS}" = "rebuild" ]; then
     echo "Rebuild deps"
     rm composer.lock
     curl -O "https://doctum.long-term.support/releases/${VERSION}/composer.lock"
-    ${COMPOSER_BIN:-composer} install --no-dev --quiet
+    ${PHP_BIN:-php} ${COMPOSER_BIN:-composer} install --no-dev --quiet
 else
     echo "Remove dev-deps"
-    ${COMPOSER_BIN:-composer} update --no-dev --quiet
+    ${PHP_BIN:-php} ${COMPOSER_BIN:-composer} update --no-dev --quiet
 fi
 
 echo "Copy composer.lock"
@@ -48,10 +57,10 @@ echo "Copy composer.lock"
 cp composer.lock ./build/
 
 echo "Generate phar"
-php -dphar.readonly=0 ./scripts/phar-generator-script.php
+${PHP_BIN:-php} -dphar.readonly=0 ./scripts/phar-generator-script.php
 chmod +x ./build/doctum.phar
 echo "Update deps"
-${COMPOSER_BIN:-composer} update --quiet
+${PHP_BIN:-php} ${COMPOSER_BIN:-composer} update --quiet
 echo "Copy build files"
 cp CHANGELOG.md ./build/
 cd ./build/
@@ -61,12 +70,12 @@ gpg --detach-sig --local-user "${GPG_KEY}" --armor doctum.phar
 gpg --detach-sig --local-user "${GPG_KEY}" --armor doctum.phar.sha256
 gpg --detach-sig --local-user "${GPG_KEY}" --armor files.sha256
 echo "Lint"
-php -l doctum.phar
+${PHP_BIN:-php} -l doctum.phar
 echo "Check fingerprints"
 sha256sum --strict --check *.sha256
 echo "Version before build: ${VERSION}"
 VERSION_BEFORE="${VERSION}"
-get_version "php doctum.phar"
+get_version "${PHP_BIN:-php} doctum.phar"
 echo "Version after build: ${VERSION}"
 if [ "${VERSION_BEFORE}" = "${VERSION}" ]; then
     echo "Done."
