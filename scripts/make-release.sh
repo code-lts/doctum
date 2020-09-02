@@ -43,6 +43,10 @@ else
     ${COMPOSER_BIN:-composer} update --no-dev --quiet
 fi
 
+echo "Copy composer.lock"
+# Copy it now because the dev deps are removed at this stage
+cp composer.lock ./build/
+
 echo "Generate phar"
 php -dphar.readonly=0 ./scripts/phar-generator-script.php
 chmod +x ./build/doctum.phar
@@ -50,7 +54,6 @@ echo "Update deps"
 ${COMPOSER_BIN:-composer} update --quiet
 echo "Copy build files"
 cp CHANGELOG.md ./build/
-cp composer.lock ./build/
 cd ./build/
 sha256sum doctum.phar > ./doctum.phar.sha256
 sha256sum * > ./files.sha256
