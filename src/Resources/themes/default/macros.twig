@@ -79,6 +79,18 @@
     )
 {%- endmacro %}
 
+{% macro function_parameters_signature(method) -%}
+    {%- from "macros.twig" import hint_link -%}
+    (
+        {%- for parameter in method.parameters %}
+            {%- if parameter.hashint %}{{ hint_link(parameter.hint) }} {% endif -%}
+            {%- if parameter.variadic %}...{% endif %}${{ parameter.name|raw }}
+            {%- if parameter.default is not null %} = {{ parameter.default }}{% endif %}
+            {%- if not loop.last %}, {% endif %}
+        {%- endfor -%}
+    )
+{%- endmacro %}
+
 {% macro render_classes(classes) -%}
     {% from _self import class_link, deprecated %}
 

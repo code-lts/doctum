@@ -13,6 +13,8 @@ namespace Doctum\Parser;
 
 use Doctum\Parser\Filter\FilterInterface;
 use Doctum\Reflection\ClassReflection;
+use Doctum\Reflection\FunctionReflection;
+use Doctum\Reflection\MethodReflection;
 
 class ParserContext
 {
@@ -27,11 +29,15 @@ class ParserContext
     protected $hash;
     protected $classes;
 
+    /** @var array<string,FunctionReflection> */
+    protected $functions;
+
     public function __construct(FilterInterface $filter, DocBlockParser $docBlockParser, $prettyPrinter)
     {
         $this->filter = $filter;
         $this->docBlockParser = $docBlockParser;
         $this->prettyPrinter = $prettyPrinter;
+        $this->functions = [];
     }
 
     public function getFilter()
@@ -104,6 +110,19 @@ class ParserContext
     public function getErrors()
     {
         return $this->errors;
+    }
+
+    public function addFunction(FunctionReflection $fun): void
+    {
+        $this->functions["{$this->namespace}\\{$fun->getName()}"] = $fun;
+    }
+
+    /**
+     * @return array<string,FunctionReflection>
+     */
+    public function getFunctions()
+    {
+        return $this->functions;
     }
 
     public function enterClass(ClassReflection $class): void

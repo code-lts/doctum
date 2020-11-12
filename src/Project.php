@@ -13,6 +13,7 @@ namespace Doctum;
 
 use Doctum\Parser\Parser;
 use Doctum\Reflection\ClassReflection;
+use Doctum\Reflection\FunctionReflection;
 use Doctum\Reflection\LazyClassReflection;
 use Doctum\Renderer\Renderer;
 use Doctum\RemoteRepository\AbstractRemoteRepository;
@@ -40,6 +41,9 @@ class Project
 
     /** @var ClassReflection[] */
     protected $classes;
+
+    /** @var FunctionReflection[] */
+    protected $functions;
 
     protected $namespaceClasses;
     protected $namespaceInterfaces;
@@ -168,6 +172,17 @@ class Project
         return array_keys($this->namespaces);
     }
 
+    public function getNamespaceFunctions($namespace)
+    {
+        if (!isset($this->functions[$namespace])) {
+            return [];
+        }
+
+        ksort($this->functions[$namespace]);
+
+        return $this->functions[$namespace];
+    }
+
     public function getNamespaceAllClasses($namespace)
     {
         $classes = array_merge(
@@ -228,6 +243,12 @@ class Project
         }
 
         return $namespaces;
+    }
+
+    public function addFunction(FunctionReflection $fun): void
+    {
+        $this->functions[$fun->getNamespace()][$fun->getName()] = $fun;
+        $fun->setProject($this);
     }
 
     public function addClass(ClassReflection $class): void
