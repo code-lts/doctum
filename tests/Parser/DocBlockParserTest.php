@@ -230,7 +230,7 @@ class DocBlockParserTest extends TestCase
                     'longDesc' => '',
                     'tags' => [
                         'author' => ['Author Name'],
-                        'covers' => ['\SomeClass::SomeMethod '],
+                        'covers' => ['\SomeClass::SomeMethod'],
                         'deprecated' => ['1.0 for ever'],
                         'todo' => ['Something needs to be done'],
                         'example' => ['Description'],
@@ -276,7 +276,7 @@ class DocBlockParserTest extends TestCase
                         'since' => ['1.0.1 First time this was introduced.'],
                         'source' => ['2 1 Check that ensures lazy counting.'],
                         'uses' => ['\MyClass::$items to retrieve the count from.'],
-                        'version' => ['1.0.1 '],
+                        'version' => ['1.0.1'],
                         'unknown' => ['any text'],
                     ],
                 ],
