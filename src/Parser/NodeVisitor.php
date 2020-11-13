@@ -87,10 +87,10 @@ class NodeVisitor extends NodeVisitorAbstract
         }
     }
 
-    protected function addFunction(FunctionNode $node, NamespaceNode $namespace = null)
+    protected function addFunction(FunctionNode $node, string $namespace = null)
     {
         $function = new FunctionReflection($node->name->__toString(), $node->getLine());
-        $function->setNamespace(isset($namespace->name) ? $namespace->name->__toString() : '');
+        $function->setNamespace($namespace !== null ? $namespace : '');
         $function->setByRef((string) $node->byRef);
 
         foreach ($node->params as $param) {

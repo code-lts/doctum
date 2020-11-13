@@ -22,6 +22,7 @@ class ParserContext
     protected $docBlockParser;
     protected $prettyPrinter;
     protected $errors;
+    /** @var string|null */
     protected $namespace;
     protected $aliases;
     protected $class;
@@ -145,7 +146,7 @@ class ParserContext
         return $this->class;
     }
 
-    public function enterNamespace($namespace): void
+    public function enterNamespace(string $namespace): void
     {
         $this->namespace = $namespace;
         $this->aliases = [];
@@ -157,7 +158,7 @@ class ParserContext
         $this->aliases = [];
     }
 
-    public function getNamespace()
+    public function getNamespace(): ?string
     {
         return $this->namespace;
     }
