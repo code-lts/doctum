@@ -56,6 +56,10 @@ class Parser
                 call_user_func($callback, Message::PARSE_ERROR, $context->getErrors());
             }
 
+            foreach ($context->getFunctions() as $addr => $fun) {
+                $project->addFunction($fun);
+            }
+
             foreach ($context->leaveFile() as $class) {
                 if (null !== $callback) {
                     call_user_func($callback, Message::PARSE_CLASS, [floor($step / $steps * 100), $class]);

@@ -12,6 +12,7 @@
 namespace Doctum\Renderer;
 
 use Michelf\MarkdownExtra;
+use Doctum\Reflection\Reflection;
 use Doctum\Reflection\ClassReflection;
 use Doctum\Reflection\MethodReflection;
 use Doctum\Reflection\PropertyReflection;
@@ -46,6 +47,7 @@ class TwigExtension extends AbstractExtension
     public function getFunctions()
     {
         return [
+            new TwigFunction('function_path', [$this, 'pathForFunction'], ['needs_context' => true, 'is_safe' => ['all']]),
             new TwigFunction('namespace_path', [$this, 'pathForNamespace'], ['needs_context' => true, 'is_safe' => ['all']]),
             new TwigFunction('class_path', [$this, 'pathForClass'], ['needs_context' => true, 'is_safe' => ['all']]),
             new TwigFunction('method_path', [$this, 'pathForMethod'], ['needs_context' => true, 'is_safe' => ['all']]),
@@ -60,6 +62,11 @@ class TwigExtension extends AbstractExtension
     public function setCurrentDepth($depth)
     {
         $this->currentDepth = $depth;
+    }
+
+    public function pathForFunction(array $context, string $function): string
+    {
+        return $this->relativeUri($this->currentDepth) . '#function_' . str_replace('\\', '', $function);
     }
 
     public function pathForClass(array $context, string $class): string
@@ -114,7 +121,7 @@ class TwigExtension extends AbstractExtension
         return sprintf('<abbr title="%s">%s</abbr>', htmlentities($class, ENT_QUOTES), htmlspecialchars($short));
     }
 
-    public function parseDesc(array $context, $desc, ClassReflection $class)
+    public function parseDesc(array $context, $desc, Reflection $classOrFunctionRefl)
     {
         if (!$desc) {
             return $desc;

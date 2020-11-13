@@ -20,12 +20,15 @@ use PhpParser\Node\Stmt\Class_ as ClassNode;
 use PhpParser\Node\Stmt\ClassLike as ClassLikeNode;
 use PhpParser\Node\Stmt\Interface_ as InterfaceNode;
 use PhpParser\Node\Stmt\Namespace_ as NamespaceNode;
+use PhpParser\Node\Stmt\Function_ as FunctionNode;
 use PhpParser\Node\Stmt\Property as PropertyNode;
 use PhpParser\Node\Stmt\TraitUse as TraitUseNode;
 use PhpParser\Node\Stmt\Trait_ as TraitNode;
 use PhpParser\Node\Stmt\Use_ as UseNode;
 use PhpParser\Node\NullableType;
 use Doctum\Project;
+use Doctum\Reflection\Reflection;
+use Doctum\Reflection\FunctionReflection;
 use Doctum\Reflection\ClassReflection;
 use Doctum\Reflection\ConstantReflection;
 use Doctum\Reflection\MethodReflection;
@@ -53,6 +56,8 @@ class NodeVisitor extends NodeVisitorAbstract
             $this->addClass($node);
         } elseif ($node instanceof TraitNode) {
             $this->addTrait($node);
+        } elseif ($node instanceof FunctionNode) {
+            $this->addFunction($node, $this->context->getNamespace());
         } elseif ($this->context->getClass() && $node instanceof TraitUseNode) {
             $this->addTraitUse($node);
         } elseif ($this->context->getClass() && $node instanceof PropertyNode) {
@@ -79,6 +84,98 @@ class NodeVisitor extends NodeVisitorAbstract
     {
         foreach ($node->uses as $use) {
             $this->context->addAlias($use->alias !== null ? $use->alias->__toString() : null, $use->name->__toString());
+        }
+    }
+
+    protected function addFunction(FunctionNode $node, NamespaceNode $namespace = null)
+    {
+        $function = new FunctionReflection($node->name->__toString(), $node->getLine());
+        $function->setNamespace(isset($namespace->name) ? $namespace->name->__toString() : '');
+        $function->setByRef((string) $node->byRef);
+
+        foreach ($node->params as $param) {
+            $parameter = new ParameterReflection($param->var->name, $param->getLine());
+            $parameter->setModifiers($param->type);
+            $parameter->setByRef($param->byRef);
+            if ($param->default) {
+                $parameter->setDefault($this->context->getPrettyPrinter()->prettyPrintExpr($param->default));
+            }
+
+            $parameter->setVariadic($param->variadic);
+
+            $type = $param->type;
+            $typeStr = null;
+
+            if ($param->type !== null && ! $param->type instanceof NullableType) {
+                $typeStr = (string) $param->type;
+            } elseif ($param->type instanceof NullableType) {
+                $type = $param->type->type;
+                $typeStr = (string) $param->type->type;
+            }
+
+            if ($type instanceof FullyQualified && 0 !== strpos($typeStr, '\\')) {
+                $typeStr = '\\' . $typeStr;
+            }
+
+            if (null !== $typeStr) {
+                $typeArr = [[$typeStr, false]];
+
+                if ($param->type instanceof NullableType) {
+                    $typeArr[] = ['null', false];
+                }
+
+                $parameter->setHint($this->resolveHint($typeArr));
+            }
+
+            $function->addParameter($parameter);
+        }
+
+        $comment = $this->context->getDocBlockParser()->parse($node->getDocComment(), $this->context, $function);
+        $function->setDocComment($node->getDocComment());
+        $function->setShortDesc($comment->getShortDesc());
+        $function->setLongDesc($comment->getLongDesc());
+        $function->setSee($this->resolveSee($comment->getTag('see')));
+        if (!$errors = $comment->getErrors()) {
+            $errors = $this->updateMethodParametersFromTags($function, $comment->getTag('param'));
+
+            if ($tag = $comment->getTag('return')) {
+                $function->setHint(is_array($tag[0][0]) ? $this->resolveHint($tag[0][0]) : $tag[0][0]);
+                $function->setHintDesc($tag[0][1]);
+            }
+
+            $function->setExceptions($comment->getTag('throws'));
+            $function->setTags($comment->getOtherTags());
+        }
+
+        $function->setErrors($errors);
+
+        $returnType = $node->getReturnType();
+        $returnTypeStr = null;
+
+        if ($returnType !== null && ! $returnType instanceof NullableType) {
+            $returnTypeStr = (string) $returnType;
+        } elseif ($returnType instanceof NullableType) {
+            $returnTypeStr = (string) $returnType->type;
+        }
+
+        if ($returnType instanceof FullyQualified && 0 !== strpos($returnTypeStr, '\\')) {
+            $returnTypeStr = '\\' . $returnTypeStr;
+        }
+
+        if (null !== $returnTypeStr) {
+            $returnTypeArr = [[$returnTypeStr, false]];
+
+            if ($returnType instanceof NullableType) {
+                $returnTypeArr[] = ['null', false];
+            }
+
+            $function->setHint($this->resolveHint($returnTypeArr));
+        }
+
+        $this->context->addFunction($function);
+
+        if ($errors) {
+            $this->context->addErrors((string) $function, $node->getLine(), $errors);
         }
     }
 
@@ -297,7 +394,10 @@ class NodeVisitor extends NodeVisitorAbstract
         }
     }
 
-    protected function updateMethodParametersFromTags(MethodReflection $method, array $tags): array
+    /**
+     * @param FunctionReflection|MethodReflection $method
+     */
+    protected function updateMethodParametersFromTags(Reflection $method, array $tags): array
     {
         // bypass if there is no @param tags defined (@param tags are optional)
         if (!count($tags)) {

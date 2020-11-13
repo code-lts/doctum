@@ -15,6 +15,7 @@ use Doctum\Project;
 
 class ParameterReflection extends Reflection
 {
+    protected $function;
     protected $method;
     protected $byRef;
     protected $modifiers;
@@ -74,6 +75,38 @@ class ParameterReflection extends Reflection
     public function setMethod(MethodReflection $method)
     {
         $this->method = $method;
+    }
+
+    public function getFunction()
+    {
+        return $this->function;
+    }
+
+    public function setFunction(FunctionReflection $function)
+    {
+        $this->function = $function;
+    }
+
+    /**
+     * @overrides
+     */
+    public function getHint()
+    {
+        if (! is_array($this->hint)) {
+            return [];
+        }
+
+        $hints = [];
+        if (isset($this->function)) {
+            $project = $this->getFunction()->getProject();
+        } else {
+            $project = $this->getClass()->getProject();
+        }
+        foreach ($this->hint as $hint) {
+            $hints[] = new HintReflection(Project::isPhpTypeHint($hint[0]) ? $hint[0] : $project->getClass($hint[0]), $hint[1]);
+        }
+
+        return $hints;
     }
 
     public function toArray()
