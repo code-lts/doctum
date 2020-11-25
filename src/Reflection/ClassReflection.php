@@ -209,7 +209,6 @@ class ClassReflection extends Reflection
     protected $category = self::CATEGORY_CLASS;
     protected $projectClass = true;
     protected $aliases = [];
-    protected $errors = [];
     protected $fromCache = false;
 
     public function __toString()
@@ -595,16 +594,6 @@ class ClassReflection extends Reflection
     public function setAliases($aliases)
     {
         $this->aliases = $aliases;
-    }
-
-    public function getErrors()
-    {
-        return $this->errors;
-    }
-
-    public function setErrors($errors)
-    {
-        $this->errors = $errors;
     }
 
     public function isFromCache()

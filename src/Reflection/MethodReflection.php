@@ -20,7 +20,6 @@ class MethodReflection extends Reflection
     protected $byRef;
     protected $modifiers;
     protected $exceptions = [];
-    protected $errors = [];
 
     public function __toString()
     {
@@ -136,16 +135,6 @@ class MethodReflection extends Reflection
     public function getRawExceptions()
     {
         return $this->exceptions;
-    }
-
-    public function getErrors()
-    {
-        return $this->errors;
-    }
-
-    public function setErrors($errors)
-    {
-        $this->errors = $errors;
     }
 
     public function getSourcePath()

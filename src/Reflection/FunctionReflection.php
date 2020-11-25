@@ -20,7 +20,6 @@ class FunctionReflection extends Reflection
     protected $project;
     protected $relativeFilePath;
     protected $exceptions = [];
-    protected $errors = [];
 
     public function __toString()
     {
@@ -137,16 +136,6 @@ class FunctionReflection extends Reflection
     public function getRawExceptions()
     {
         return $this->exceptions;
-    }
-
-    public function getErrors()
-    {
-        return $this->errors;
-    }
-
-    public function setErrors($errors)
-    {
-        $this->errors = $errors;
     }
 
     public function setRelativeFilePath($relativeFilePath)

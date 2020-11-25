@@ -16,6 +16,7 @@ class DocBlockNode
     protected $shortDesc;
     protected $longDesc;
     protected $tags = [];
+    /** @var string[] */
     protected $errors = [];
 
     public function addTag($key, $value)
@@ -78,12 +79,15 @@ class DocBlockNode
         return $this->shortDesc . "\n\n" . $this->longDesc;
     }
 
-    public function addError($error)
+    public function addError(string $error): void
     {
         $this->errors[] = $error;
     }
 
-    public function getErrors()
+    /**
+     * @return string[]
+     */
+    public function getErrors(): array
     {
         return $this->errors;
     }

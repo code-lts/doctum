@@ -33,6 +33,8 @@ abstract class Reflection
     protected $tags;
     protected $docComment;
     protected $see = [];
+    /** @var string[] */
+    protected $errors = [];
 
     public function __construct(string $name, $line)
     {
@@ -208,5 +210,21 @@ abstract class Reflection
         }
 
         return $seeElem;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getErrors(): array
+    {
+        return $this->errors;
+    }
+
+    /**
+     * @param string[] $errors
+     */
+    public function setErrors(array $errors): void
+    {
+        $this->errors = $errors;
     }
 }

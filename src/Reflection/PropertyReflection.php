@@ -18,7 +18,6 @@ class PropertyReflection extends Reflection
     protected $class;
     protected $modifiers;
     protected $default;
-    protected $errors = [];
 
     public function __toString()
     {
@@ -78,16 +77,6 @@ class PropertyReflection extends Reflection
     public function setClass(ClassReflection $class)
     {
         $this->class = $class;
-    }
-
-    public function getErrors()
-    {
-        return $this->errors;
-    }
-
-    public function setErrors($errors)
-    {
-        $this->errors = $errors;
     }
 
     public function toArray()
