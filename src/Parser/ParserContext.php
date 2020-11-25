@@ -14,19 +14,22 @@ namespace Doctum\Parser;
 use Doctum\Parser\Filter\FilterInterface;
 use Doctum\Reflection\ClassReflection;
 use Doctum\Reflection\FunctionReflection;
-use Doctum\Reflection\MethodReflection;
 
 class ParserContext
 {
     protected $filter;
     protected $docBlockParser;
+    /** @var \PhpParser\PrettyPrinter\Standard */
     protected $prettyPrinter;
-    protected $errors;
+    /** @var ParseError[] */
+    protected $errors = [];
     /** @var string|null */
     protected $namespace;
     protected $aliases;
     protected $class;
+    /** @var string|null */
     protected $file;
+    /** @var string|null */
     protected $hash;
     protected $classes;
 
@@ -54,6 +57,9 @@ class ParserContext
         return $this->docBlockParser;
     }
 
+    /**
+     * @return \PhpParser\PrettyPrinter\Standard
+     */
     public function getPrettyPrinter()
     {
         return $this->prettyPrinter;
@@ -86,29 +92,42 @@ class ParserContext
         return $this->classes;
     }
 
+    /**
+     * @return string|null
+     */
     public function getHash()
     {
         return $this->hash;
     }
 
+    /**
+     * @return string|null
+     */
     public function getFile()
     {
         return $this->file;
     }
 
-    public function addErrors($name, $line, array $errors): void
+    public function addErrors(string $name, int $line, array $errors): void
     {
         foreach ($errors as $error) {
             $this->addError($name, $line, $error);
         }
     }
 
-    public function addError($name, $line, $error): void
+    public function addError(?string $name, int $line, string $error): void
     {
-        $this->errors[] = sprintf('%s on "%s" in %s:%d', $error, $name, $this->file, $line);
+        $this->errors[] = new ParseError(
+            sprintf('%s on "%s"', $error, $name),
+            $this->file,
+            $line
+        );
     }
 
-    public function getErrors()
+    /**
+     * @return ParseError[]
+     */
+    public function getErrors(): array
     {
         return $this->errors;
     }
