@@ -79,6 +79,7 @@ final class PharFilterIterator extends RecursiveFilterIterator
         'makefile',
         '.phpunit.result.cache',
         'phpstan.neon.dist',
+        'phpstan-baseline.neon',
         'composer.lock',
         'composer.json',
         'phpmd.xml.dist',
