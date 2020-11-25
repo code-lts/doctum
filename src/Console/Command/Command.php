@@ -251,7 +251,7 @@ abstract class Command extends BaseCommand
             "\033[2A<info>  Parsing   done</info>\033[K\n\033[K\n\033[1A"
         );
 
-        if ($this->input->getOption('verbose') && count($this->errors)) {
+        if ($this->output->isVerbose() && count($this->errors) > 0) {
             foreach ($this->errors as $error) {
                 $this->output->write('<fg=red>ERROR</>: ');
                 $this->output->writeln($error, OutputInterface::OUTPUT_RAW);
