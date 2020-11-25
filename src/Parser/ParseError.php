@@ -9,24 +9,13 @@
 
 namespace Doctum\Parser;
 
-final class ParseError
-{
-    /** @var string */
-    private $message;
-    /** @var string|null */
-    private $file;
-    /** @var int */
-    private $line;
+use CodeLts\CliTools\Error;
 
-    public function __construct(string $message, ?string $file, int $line)
-    {
-        $this->message = $message;
-        $this->file = $file;
-        $this->line = $line;
-    }
+final class ParseError extends Error
+{
 
     public function __toString()
     {
-        return sprintf('%s in %s:%d', $this->message, $this->file ?? '', $this->line);
+        return sprintf('%s in %s:%d', $this->getMessage(), $this->getFile() ?? '', $this->getLine());
     }
 }

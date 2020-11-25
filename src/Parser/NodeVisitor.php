@@ -347,14 +347,14 @@ class NodeVisitor extends NodeVisitorAbstract
                 if (is_array($tag[0])) {
                     $methodOrFunctionOrProperty->setHint(is_array($tag[0][0]) ? $this->resolveHint($tag[0][0]) : $tag[0][0]);
                 } else {
-                    $errors[] = '[Hint] Hint is wrong (' . json_encode($tag[0]) . ')  for ' . $methodOrFunctionOrProperty->getName() . ' at line ' . $methodOrFunctionOrProperty->getLine();
+                    $errors[] = '[Hint] Hint is wrong (' . json_encode($tag[0]) . ')';
                 }
             }
             if (isset($tag[1])) {
                 if (is_array($tag[1])) {
                     $methodOrFunctionOrProperty->setHintDesc($tag[0][1]);
                 } else {
-                    $errors[] = '[Hint] Hint description is wrong (' . json_encode($tag[1]) . ') for ' . $methodOrFunctionOrProperty->getName() . ' at line ' . $methodOrFunctionOrProperty->getLine();
+                    $errors[] = '[Hint] Hint description is wrong (' . json_encode($tag[1]) . ')';
                 }
             }
         }

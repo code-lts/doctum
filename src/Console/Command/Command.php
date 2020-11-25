@@ -53,7 +53,7 @@ abstract class Command extends BaseCommand
     protected $transactions = [];
 
     /**
-     * @var string[]
+     * @var \Doctum\Parser\ParseError[]
      */
     protected $errors = [];
 
@@ -254,7 +254,7 @@ abstract class Command extends BaseCommand
         if ($this->output->isVerbose() && count($this->errors) > 0) {
             foreach ($this->errors as $error) {
                 $this->output->write('<fg=red>ERROR</>: ');
-                $this->output->writeln($error, OutputInterface::OUTPUT_RAW);
+                $this->output->writeln($error->__toString(), OutputInterface::OUTPUT_RAW);
             }
             $this->output->writeln('');
         }
