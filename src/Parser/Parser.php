@@ -19,9 +19,13 @@ use Symfony\Component\Finder\Finder;
 
 class Parser
 {
+    /** @var StoreInterface */
     protected $store;
+    /** @var Finder */
     protected $iterator;
+    /** @var CodeParser */
     protected $parser;
+    /** @var ClassTraverser */
     protected $traverser;
 
     public function __construct($iterator, StoreInterface $store, CodeParser $parser, ClassTraverser $traverser)
@@ -43,6 +47,10 @@ class Parser
             ++$step;
 
             $code = file_get_contents($file);
+            if ($code === false) {
+                continue;
+            }
+
             $hash = sha1($code);
             if ($transaction->hasHash($hash)) {
                 continue;
@@ -88,6 +96,10 @@ class Parser
         return $transaction;
     }
 
+    /**
+     * @param string|Finder $iterator
+     * @return Finder
+     */
     private function createIterator($iterator)
     {
         if (is_string($iterator)) {

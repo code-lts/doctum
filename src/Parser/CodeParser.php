@@ -17,8 +17,11 @@ use PhpParser\Parser as PhpParser;
 
 class CodeParser
 {
+    /** @var PhpParser */
     protected $parser;
+    /** @var NodeTraverser */
     protected $traverser;
+    /** @var ParserContext */
     protected $context;
 
     public function __construct(ParserContext $context, PhpParser $parser, NodeTraverser $traverser)
@@ -32,15 +35,15 @@ class CodeParser
         ini_set('xdebug.max_nesting_level', '10000');
     }
 
-    public function getContext()
+    public function getContext(): ParserContext
     {
         return $this->context;
     }
 
-    public function parse($code)
+    public function parse(string $code): void
     {
         try {
-            $this->traverser->traverse($this->parser->parse($code));
+            $this->traverser->traverse($this->parser->parse($code) ?? []);
         } catch (Error $e) {
             $this->context->addError($this->context->getFile(), 0, $e->getMessage());
         }
