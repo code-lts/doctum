@@ -34,6 +34,7 @@ use Doctum\Reflection\ConstantReflection;
 use Doctum\Reflection\MethodReflection;
 use Doctum\Reflection\ParameterReflection;
 use Doctum\Reflection\PropertyReflection;
+use Doctum\Parser\Node\DocBlockNode;
 
 class NodeVisitor extends NodeVisitorAbstract
 {
@@ -138,10 +139,7 @@ class NodeVisitor extends NodeVisitorAbstract
         if (!$errors = $comment->getErrors()) {
             $errors = $this->updateMethodParametersFromTags($function, $comment->getTag('param'));
 
-            if ($tag = $comment->getTag('return')) {
-                $function->setHint(is_array($tag[0][0]) ? $this->resolveHint($tag[0][0]) : $tag[0][0]);
-                $function->setHintDesc($tag[0][1]);
-            }
+            $this->addTagFromCommentToMethod('return', $comment, $function, $errors);
 
             $function->setExceptions($comment->getTag('throws'));
             $function->setTags($comment->getOtherTags());
@@ -297,10 +295,7 @@ class NodeVisitor extends NodeVisitorAbstract
         if (!$errors = $comment->getErrors()) {
             $errors = $this->updateMethodParametersFromTags($method, $comment->getTag('param'));
 
-            if ($tag = $comment->getTag('return')) {
-                $method->setHint(is_array($tag[0][0]) ? $this->resolveHint($tag[0][0]) : $tag[0][0]);
-                $method->setHintDesc($tag[0][1]);
-            }
+            $this->addTagFromCommentToMethod('return', $comment, $method, $errors);
 
             $method->setExceptions($comment->getTag('throws'));
             $method->setTags($comment->getOtherTags());
@@ -340,6 +335,31 @@ class NodeVisitor extends NodeVisitorAbstract
         }
     }
 
+    protected function addTagFromCommentToMethod(
+        string $tagName,
+        DocBlockNode $comment,
+        Reflection $methodOrFunctionOrProperty,
+        array &$errors
+    ): void {
+        $tag = $comment->getTag($tagName);
+        if (is_array($tag)) {
+            if (isset($tag[0])) {
+                if (is_array($tag[0])) {
+                    $methodOrFunctionOrProperty->setHint(is_array($tag[0][0]) ? $this->resolveHint($tag[0][0]) : $tag[0][0]);
+                } else {
+                    $errors[] = '[Hint] Hint is wrong (' . json_encode($tag[0]) . ')  for ' . $methodOrFunctionOrProperty->getName() . ' at line ' . $methodOrFunctionOrProperty->getLine();
+                }
+            }
+            if (isset($tag[1])) {
+                if (is_array($tag[1])) {
+                    $methodOrFunctionOrProperty->setHintDesc($tag[0][1]);
+                } else {
+                    $errors[] = '[Hint] Hint description is wrong (' . json_encode($tag[1]) . ') for ' . $methodOrFunctionOrProperty->getName() . ' at line ' . $methodOrFunctionOrProperty->getLine();
+                }
+            }
+        }
+    }
+
     protected function addProperty(PropertyNode $node)
     {
         foreach ($node->props as $prop) {
@@ -356,10 +376,7 @@ class NodeVisitor extends NodeVisitorAbstract
             if ($errors = $comment->getErrors()) {
                 $property->setErrors($errors);
             } else {
-                if ($tag = $comment->getTag('var')) {
-                    $property->setHint(is_array($tag[0][0]) ? $this->resolveHint($tag[0][0]) : $tag[0][0]);
-                    $property->setHintDesc($tag[0][1]);
-                }
+                $this->addTagFromCommentToMethod('var', $comment, $property, $errors);
 
                 $property->setTags($comment->getOtherTags());
             }
