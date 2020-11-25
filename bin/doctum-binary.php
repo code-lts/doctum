@@ -7,9 +7,15 @@ if (PHP_MAJOR_VERSION <= 7 && PHP_MINOR_VERSION < 1) {
 }
 
 // installed via composer?
-$composerDir = __DIR__ . '/../../../autoload.php';
-if (file_exists($composerDir)) {
-    require_once $composerDir;
+$doctumComposerAutoLoadFile = __DIR__ . '/../../../autoload.php';
+
+$doctumComposerAutoLoadFileEnv = getenv('DOCTUM_COMPOSER_AUTOLOAD_FILE');
+if (is_string($doctumComposerAutoLoadFileEnv)) {
+    $doctumComposerAutoLoadFile = $doctumComposerAutoLoadFileEnv;
+}
+
+if (file_exists($doctumComposerAutoLoadFile)) {
+    require_once $doctumComposerAutoLoadFile;
 } else {
     require_once __DIR__ . '/../vendor/autoload.php';
 }
