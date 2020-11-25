@@ -11,6 +11,7 @@
 
 namespace Doctum\Console\Command;
 
+use Doctum\Doctum;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -27,6 +28,7 @@ class ParseCommand extends Command
         $this->addForceOption();
         $this->addIgnoreParseErrors();
 
+        $defaultVersionName = Doctum::$defaultVersionName;
         $this
             ->setName('parse')
             ->setDescription('Parses a project')
@@ -45,7 +47,7 @@ incremental parsing algorithm):
 The <comment>--version</comment> option overrides the version specified
 in the configuration:
 
-    <info>php %command.full_name% config/symfony.php --version=main</info>
+    <info>php %command.full_name% config/symfony.php --version=$defaultVersionName</info>
 EOF
             );
     }

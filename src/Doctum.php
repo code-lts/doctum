@@ -47,6 +47,8 @@ class Doctum extends Container
     //@phpstan-ignore-next-line
     public const VERSION = self::VERSION_MAJOR . '.' . self::VERSION_MINOR . '.' . self::VERSION_PATCH . (self::IS_DEV ? '-dev' : '');
 
+    public static $defaultVersionName = 'main';
+
     public function __construct($iterator = null, array $config = [])
     {
         parent::__construct();
@@ -189,7 +191,7 @@ class Doctum extends Container
 
         $this['theme'] = 'default';
         $this['title'] = 'API';
-        $this['version'] = 'main';
+        $this['version'] = self::$defaultVersionName;
         $this['template_dirs'] = [];
         $this['build_dir'] = getcwd() . '/build';
         $this['cache_dir'] = getcwd() . '/cache';
