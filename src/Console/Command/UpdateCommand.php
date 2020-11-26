@@ -51,6 +51,6 @@ EOF
     {
         $output->writeln('<bg=cyan;fg=white> Updating project </>');
 
-        return $this->update($this->doctum['project']);
+        return $this->update($this->doctum->getProject());
     }
 }

@@ -210,4 +210,14 @@ class Doctum
             $this[$key] = $value;
         }
     }
+
+    public function setVersion(string $version): void
+    {
+        $this['versions'] = $version;
+    }
+
+    public function getProject(): Project
+    {
+        return $this['project'];
+    }
 }

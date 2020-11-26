@@ -61,6 +61,6 @@ EOF
     {
         $output->writeln('<bg=cyan;fg=white> Parsing project </>');
 
-        return $this->parse($this->doctum['project']);
+        return $this->parse($this->doctum->getProject());
     }
 }

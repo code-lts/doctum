@@ -111,13 +111,16 @@ abstract class Command extends BaseCommand
 
         $this->doctum = $this->loadDoctum($config);
 
-        if ($input->getOption('only-version')) {
-            $this->doctum['versions'] = $input->getOption('only-version');
-        }
-
         if (!$this->doctum instanceof Doctum) {
             throw new \RuntimeException(sprintf('Configuration file "%s" must return a Doctum instance.', $config));
         }
+
+        if ($input->getOption('only-version')) {
+            /** @var string $onlyVersionOption */
+            $onlyVersionOption = $input->getOption('only-version');
+            $this->doctum->setVersion((string) $onlyVersionOption);
+        }
+
     }
 
     public function update(Project $project): int
