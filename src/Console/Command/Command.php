@@ -120,7 +120,6 @@ abstract class Command extends BaseCommand
             $onlyVersionOption = $input->getOption('only-version');
             $this->doctum->setVersion((string) $onlyVersionOption);
         }
-
     }
 
     public function update(Project $project): int

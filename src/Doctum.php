@@ -11,6 +11,7 @@
 
 namespace Doctum;
 
+use ArrayAccess;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitor\NameResolver;
 use PhpParser\ParserFactory;
@@ -36,7 +37,7 @@ use Wdes\phpI18nL10n\Twig\Extension\I18n as I18nExtension;
 use Wdes\phpI18nL10n\plugins\MoReader;
 use Wdes\phpI18nL10n\Launcher;
 
-class Doctum
+class Doctum implements ArrayAccess
 {
     public const VERSION_MAJOR = 5;
     public const VERSION_MINOR = 2;
@@ -47,16 +48,20 @@ class Doctum
     public const VERSION = self::VERSION_MAJOR . '.' . self::VERSION_MINOR . '.' . self::VERSION_PATCH . (self::IS_DEV ? '-dev' : '');
 
     public static $defaultVersionName = 'main';
+    /**
+     * @var \Symfony\Component\Finder\Finder
+     */
+    private $files;
 
     public function __construct($iterator = null, array $config = [])
     {
         $sc = $this;
 
         if (null !== $iterator) {
-            $this['files'] = $iterator;
+            $this->files = $iterator;
         }
 
-        $this['_versions'] = function ($sc) {
+        $this['_versions'] = function () use ($sc) {
             $versions = $sc['versions'] ?? $sc['version'];
 
             if (is_string($versions)) {
@@ -70,7 +75,7 @@ class Doctum
             return $versions;
         };
 
-        $this['project'] = function ($sc) {
+        $this['project'] = function () use ($sc) {
             $project = new Project($sc['store'], $sc['_versions'], [
                 'build_dir' => $sc['build_dir'],
                 'cache_dir' => $sc['cache_dir'],
@@ -94,8 +99,8 @@ class Doctum
             return $project;
         };
 
-        $this['parser'] = function ($sc) {
-            return new Parser($sc['files'], $sc['store'], $sc['code_parser'], $sc['traverser']);
+        $this['parser'] = function () use ($sc) {
+            return new Parser($sc->files, $sc['store'], $sc['code_parser'], $sc['traverser']);
         };
 
         $this['indexer'] = function () {
@@ -106,7 +111,7 @@ class Doctum
             return new Tree();
         };
 
-        $this['parser_context'] = function ($sc) {
+        $this['parser_context'] = function () use ($sc) {
             return new ParserContext($sc['filter'], $sc['docblock_parser'], $sc['pretty_printer']);
         };
 
@@ -118,7 +123,7 @@ class Doctum
             return (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
         };
 
-        $this['php_traverser'] = function ($sc) {
+        $this['php_traverser'] = function () use ($sc) {
             $traverser = new NodeTraverser();
             $traverser->addVisitor(new NameResolver());
             $traverser->addVisitor(new NodeVisitor($sc['parser_context']));
@@ -126,7 +131,7 @@ class Doctum
             return $traverser;
         };
 
-        $this['code_parser'] = function ($sc) {
+        $this['code_parser'] = function () use ($sc) {
             return new CodeParser($sc['parser_context'], $sc['php_parser'], $sc['php_traverser']);
         };
 
@@ -142,11 +147,11 @@ class Doctum
             return new JsonStore();
         };
 
-        $this['renderer'] = function ($sc) {
+        $this['renderer'] = function () use ($sc) {
             return new Renderer($sc['twig'], $sc['themes'], $sc['tree'], $sc['indexer']);
         };
 
-        $this['traverser'] = function ($sc) {
+        $this['traverser'] = function () use ($sc) {
             $visitors = [
                 new ClassVisitor\InheritdocClassVisitor(),
                 new ClassVisitor\MethodClassVisitor(),
@@ -160,7 +165,7 @@ class Doctum
             return new ClassTraverser($visitors);
         };
 
-        $this['themes'] = function ($sc) {
+        $this['themes'] = function () use ($sc) {
             $templates = $sc['template_dirs'];
             $templates[] = __DIR__ . '/Resources/themes';
 
@@ -207,7 +212,7 @@ class Doctum
         $this['include_parent_data'] = true;
 
         foreach ($config as $key => $value) {
-            $this[$key] = $value;
+            $this->{$key} = $value;
         }
     }
 
@@ -219,5 +224,23 @@ class Doctum
     public function getProject(): Project
     {
         return $this['project'];
+    }
+
+    public function offsetSet($offset, $value) {
+        if (is_callable($this->{$offset})) {
+            $this->{$offset} = $this->{$offset}();
+        }
+    }
+
+    public function offsetExists($offset) {
+        return isset($this->{$offset});
+    }
+
+    public function offsetUnset($offset) {
+        unset($this->{$offset});
+    }
+
+    public function offsetGet($offset) {
+        return isset($this->{$offset}) ? $this->{$offset} : null;
     }
 }
