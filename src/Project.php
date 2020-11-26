@@ -53,6 +53,8 @@ class Project
     protected $version;
     protected $filesystem;
     protected $interfaces;
+    /** @var string */
+    protected $sourceDir;
 
     public function __construct(StoreInterface $store, VersionCollection $versions = null, array $config = [])
     {
@@ -88,6 +90,16 @@ class Project
     public function setParser(Parser $parser): void
     {
         $this->parser = $parser;
+    }
+
+    public function setSourceDir(string $sourceDir): void
+    {
+        $this->sourceDir = $sourceDir;
+    }
+
+    public function getSourceDir(): string
+    {
+        return $this->replaceVars($this->sourceDir);
     }
 
     public function getConfig($name, $default = null)

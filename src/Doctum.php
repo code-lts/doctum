@@ -204,8 +204,9 @@ class Doctum implements ArrayAccess
         }
 
         $this->version = self::$defaultVersionName;
-        $this->build_dir = getcwd() . '/build';
-        $this->cache_dir = getcwd() . '/cache';
+        $this->build_dir = getcwd() . DIRECTORY_SEPARATOR . 'build';
+        $this->cache_dir = getcwd() . DIRECTORY_SEPARATOR . 'cache';
+        $this->source_dir = getcwd() . DIRECTORY_SEPARATOR;
 
         foreach ($config as $key => $value) {
             $this->{$key} = $value;
@@ -238,7 +239,9 @@ class Doctum implements ArrayAccess
 
     public function getProject(): Project
     {
-        return $this->offsetGet('project');
+        $project = $this->offsetGet('project');
+        $project->setSourceDir($this->source_dir);
+        return $project;
     }
 
     /**
@@ -372,7 +375,6 @@ class Doctum implements ArrayAccess
             'theme' => $this->theme,
             'title' => $this->title,
             'source_url' => $this->source_url,
-            'source_dir' => $this->source_dir,
             'insert_todos' => $this->insert_todos,
             'sort_class_properties' => $this->sort_class_properties,
             'sort_class_methods' => $this->sort_class_methods,
