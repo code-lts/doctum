@@ -15,7 +15,6 @@ use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitor\NameResolver;
 use PhpParser\ParserFactory;
 use PhpParser\PrettyPrinter\Standard as PrettyPrinter;
-use Pimple\Container;
 use Doctum\Parser\ClassTraverser;
 use Doctum\Parser\ClassVisitor;
 use Doctum\Parser\CodeParser;
@@ -37,7 +36,7 @@ use Wdes\phpI18nL10n\Twig\Extension\I18n as I18nExtension;
 use Wdes\phpI18nL10n\plugins\MoReader;
 use Wdes\phpI18nL10n\Launcher;
 
-class Doctum extends Container
+class Doctum
 {
     public const VERSION_MAJOR = 5;
     public const VERSION_MINOR = 2;
@@ -51,8 +50,6 @@ class Doctum extends Container
 
     public function __construct($iterator = null, array $config = [])
     {
-        parent::__construct();
-
         $sc = $this;
 
         if (null !== $iterator) {
