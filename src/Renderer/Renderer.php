@@ -24,7 +24,9 @@ class Renderer
     protected $filesystem;
     protected $themes;
     protected $theme;
+    /** @var int */
     protected $steps;
+    /** @var int */
     protected $step;
     protected $tree;
     protected $indexer;
@@ -96,7 +98,7 @@ class Renderer
     protected function renderStaticTemplates(Project $project, $callback = null)
     {
         if (null !== $callback) {
-            call_user_func($callback, Message::RENDER_PROGRESS, ['Static', 'Rendering files', $this->getProgression()]);
+            call_user_func($callback, Message::RENDER_PROGRESS, ['Static', 'Rendering files', $this->step, $this->steps]);
         }
 
         $dirs = $this->theme->getTemplateDirs();
@@ -124,7 +126,7 @@ class Renderer
 
         foreach ($this->theme->getTemplates('global') as $template => $target) {
             if (null !== $callback) {
-                call_user_func($callback, Message::RENDER_PROGRESS, ['Global', $target, $this->getProgression()]);
+                call_user_func($callback, Message::RENDER_PROGRESS, ['Global', $target, $this->step, $this->steps]);
             }
 
             $this->save($project, $target, $template, $variables);
@@ -135,7 +137,7 @@ class Renderer
     {
         foreach ($namespaces as $namespace) {
             if (null !== $callback) {
-                call_user_func($callback, Message::RENDER_PROGRESS, ['Namespace', $namespace, $this->getProgression()]);
+                call_user_func($callback, Message::RENDER_PROGRESS, ['Namespace', $namespace, $this->step, $this->steps]);
             }
 
             $variables = [
@@ -158,7 +160,7 @@ class Renderer
     {
         foreach ($classes as $class) {
             if (null !== $callback) {
-                call_user_func($callback, Message::RENDER_PROGRESS, ['Class', $class->getName(), $this->getProgression()]);
+                call_user_func($callback, Message::RENDER_PROGRESS, ['Class', $class->getName(), $this->step, $this->steps]);
             }
 
             $properties = $class->getProperties($project->getConfig('include_parent_data'));
@@ -270,11 +272,6 @@ class Renderer
     protected function getTheme(Project $project)
     {
         return $this->themes->getTheme($project->getConfig('theme'));
-    }
-
-    protected function getProgression()
-    {
-        return floor((++$this->step / $this->steps) * 100);
     }
 
     /**

@@ -26,6 +26,8 @@ class ParseCommand extends Command
         parent::configure();
 
         $this->addForceOption();
+        $this->addOutputFormatOption();
+        $this->addNoProgressOption();
         $this->addIgnoreParseErrors();
 
         $defaultVersionName = Doctum::$defaultVersionName;
@@ -59,8 +61,6 @@ EOF
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('<bg=cyan;fg=white> Parsing project </>');
-
         return $this->parse($this->doctum->getProject());
     }
 }

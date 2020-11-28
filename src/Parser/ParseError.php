@@ -14,8 +14,4 @@ use CodeLts\CliTools\Error;
 final class ParseError extends Error
 {
 
-    public function __toString()
-    {
-        return sprintf('%s in %s:%d', $this->getMessage(), $this->getFile() ?? '', $this->getLine());
-    }
 }

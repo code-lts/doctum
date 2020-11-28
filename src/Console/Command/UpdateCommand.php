@@ -25,6 +25,8 @@ class UpdateCommand extends Command
         parent::configure();
 
         $this->addForceOption();
+        $this->addOutputFormatOption();
+        $this->addNoProgressOption();
         $this->addIgnoreParseErrors();
 
         $this
@@ -49,8 +51,6 @@ EOF
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('<bg=cyan;fg=white> Updating project </>');
-
         return $this->update($this->doctum->getProject());
     }
 }

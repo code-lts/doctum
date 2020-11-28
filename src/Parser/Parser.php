@@ -70,7 +70,7 @@ class Parser
 
             foreach ($context->leaveFile() as $class) {
                 if (null !== $callback) {
-                    call_user_func($callback, Message::PARSE_CLASS, [floor($step / $steps * 100), $class]);
+                    call_user_func($callback, Message::PARSE_CLASS, [$step, $steps, $class]);
                 }
 
                 $project->addClass($class);
