@@ -83,6 +83,7 @@ final class PharFilterIterator extends RecursiveFilterIterator
         'composer.lock',
         'composer.json',
         'phpmd.xml.dist',
+        '.travis.php.ini',
     ];
 
     /**
@@ -109,6 +110,7 @@ final class PharFilterIterator extends RecursiveFilterIterator
         'test',
         '.dependabot',
         '.github',
+        '.circleci',
         'examples',
     ];
 
