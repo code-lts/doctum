@@ -6,21 +6,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
+## [5.2.0] - 2020-11-29
+
+- Support custom composer vendor autoload files using the ENV "DOCTUM_COMPOSER_AUTOLOAD_FILE"
+- Add function reflection & doc section in Namespace (#12)
+- Refactor and improve the progress bar
+- Add CLI `--output-format` option that supports a lot of formats: `raw, rawtext, table, checkstyle, json, junit, prettyJson, gitlab, github, teamcity`
+- Add CLI `--no-progress` to disable progress bars but keep output
+- Fixed `--no-ansi` not displaying text
+- `RENDER_PROGRESS` callback takes `$this->step, $this->steps` instead of `$this->getProgression()` for users hacking the tool
+- `PARSE_CLASS` callback uses `$this->step, $this->steps` instead of the calculated progression
+- Most error reports are sent to stderr now, you can use `--no-progress --output-format=checkstyle 2> checkstyle.xml`
+- Add new dependency `code-lts/cli-tools`
+
 ## [5.1.0] - 2020-08-29
+
 - Allow symfony/* ~3.4 versions
 - Support `--ignore-parse-errors` to have an exit code 0.
 - Add more PHP typehints on the code-base.
 - Fix a typo on README.rst
 
 ## [5.0.3] - 2020-08-19
+
 - Some fixes for project classes
 
 ## [5.0.2] - 2020-08-15
+
 - Upgrade nikic/php-parser from 4.5.x to 4.6.x
 - Add an error for PHP versions below 7.1
 - Fixed an error due to [#249 on phpdocumentor/reflection-docblock](https://github.com/phpDocumentor/ReflectionDocBlock/issues/249)
 
 ## [5.0.1] - 2020-07-19
+
 - Fix a parsing error on "src/Parser/NodeVisitor"
 
 ## [5.0.0] - 2020-07-18
