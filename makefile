@@ -10,5 +10,8 @@ rebuild-release:
 update-release:
 	./scripts/update-release.sh
 
+tag:
+	./scripts/tag-release.sh
+
 release: make-release update-release
 	@echo "Done"
