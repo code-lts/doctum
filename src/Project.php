@@ -50,6 +50,7 @@ class Project
     protected $namespaceExceptions;
     protected $namespaces;
     protected $config;
+    /** @var string|null */
     protected $version;
     protected $filesystem;
     protected $interfaces;
@@ -107,7 +108,7 @@ class Project
         return $this->config[$name] ?? $default;
     }
 
-    public function getVersion(): string
+    public function getVersion(): ?string
     {
         return $this->version;
     }
@@ -446,7 +447,7 @@ class Project
 
     protected function replaceVars(string $pattern): string
     {
-        return str_replace('%version%', $this->version, $pattern);
+        return str_replace('%version%', (string) $this->version, $pattern);
     }
 
     protected function parseVersion(Version $version, $previous, $callback = null, $force = false): void

@@ -43,7 +43,7 @@ class DoctumTest extends TestCase
         $this->assertEquals([
             new Version(
                 'master',
-                'Main Branch',
+                'Main Branch'
             )
         ], $project->getVersions());
     }
@@ -71,7 +71,7 @@ class DoctumTest extends TestCase
         $this->assertEquals([
             new Version(
                 'main',
-                'main',
+                'main'
             )
         ], $project->getVersions());
     }
@@ -100,7 +100,7 @@ class DoctumTest extends TestCase
         $this->assertEquals([
             new Version(
                 'blob-blob-says-the-fish',
-                'blob-blob-says-the-fish',
+                'blob-blob-says-the-fish'
             )
         ], $project->getVersions());
     }
