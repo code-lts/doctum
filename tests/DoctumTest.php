@@ -10,6 +10,7 @@ use Doctum\Version\GitVersionCollection;
 use Doctum\RemoteRepository\GitHubRemoteRepository;
 use Doctum\Store\JsonStore;
 use Doctum\Version\Version;
+use LogicException;
 
 /**
  * @author William Desportes <williamdes@wdes.fr>
@@ -104,6 +105,64 @@ class DoctumTest extends TestCase
                 'blob-blob-says-the-fish'
             )
         ], $project->getVersions());
+    }
+
+    public function testBasicGitIntegrationMissingCacheDir(): void
+    {
+        $iterator = Finder::create()
+                ->files()
+                ->name('*.php')
+                ->exclude('stubs')
+                ->exclude('database')
+                ->exclude('bootstrap')
+                ->exclude('storage')
+                ->in($dir = __DIR__);
+
+        $versions = GitVersionCollection::create($dir)
+                ->add('master', 'Main Branch')
+                ->add('blob', 'Fish Branch');
+
+        $doctum = new Doctum($iterator, [
+                'title' => 'API',
+                'versions' => $versions,
+                'build_dir' => __DIR__ . '/build/%version%',
+                'default_opened_level' => 2,
+                'remote_repository' => new GitHubRemoteRepository('RepoName', dirname($dir)),
+        ]);
+        $this->expectExceptionMessage(
+            'The "cache_dir" setting must have the "%version%" placeholder as the project has more than one version.'
+        );
+        $this->expectException(LogicException::class);
+        $doctum->getProject();
+    }
+
+    public function testBasicGitIntegrationMissingBuildDir(): void
+    {
+        $iterator = Finder::create()
+                ->files()
+                ->name('*.php')
+                ->exclude('stubs')
+                ->exclude('database')
+                ->exclude('bootstrap')
+                ->exclude('storage')
+                ->in($dir = __DIR__);
+
+        $versions = GitVersionCollection::create($dir)
+                ->add('master', 'Main Branch')
+                ->add('blob', 'Fish Branch');
+
+        $doctum = new Doctum($iterator, [
+                'title' => 'API',
+                'versions' => $versions,
+                'cache_dir' => __DIR__ . '/cache/%version%',
+                'default_opened_level' => 2,
+                'remote_repository' => new GitHubRemoteRepository('RepoName', dirname($dir)),
+        ]);
+        $this->expectExceptionMessage(
+            'The "build_dir" setting must have the "%version%" placeholder as the project has more than one version.'
+        );
+        $this->expectException(LogicException::class);
+        $doctum->getProject();
     }
 
     public function testCliOnlyVersion(): void
