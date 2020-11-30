@@ -106,6 +106,31 @@ class DoctumTest extends TestCase
         ], $project->getVersions());
     }
 
+    public function testCliOnlyVersion(): void
+    {
+        $iterator = Finder::create()
+                ->files()
+                ->name('*.php')
+                ->exclude('stubs')
+                ->exclude('database')
+                ->exclude('bootstrap')
+                ->exclude('storage')
+                ->in($dir = __DIR__);
+
+        $doctum = new Doctum($iterator, [
+                'remote_repository' => new GitHubRemoteRepository('RepoName', dirname($dir)),
+        ]);
+        $doctum->setVersion('fouBar');
+        $project = $doctum->getProject();
+        $this->assertInstanceOf(Project::class, $project);
+        $this->assertEquals([
+            new Version(
+                'fouBar',
+                'fouBar'
+            )
+        ], $project->getVersions());
+    }
+
     public function testAdvancedHackyIntegration(): void
     {
         $iterator = Finder::create()
