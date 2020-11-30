@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
+## [5.2.1] - 2020-11-30
+
+- Fixed a PHP notice on "template_dirs" (#16)
+- Added some more unit tests to cover some edge cases
+
 ## [5.2.0] - 2020-11-29
 
 - Support custom composer vendor autoload files using the ENV "DOCTUM_COMPOSER_AUTOLOAD_FILE"
