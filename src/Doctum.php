@@ -421,7 +421,7 @@ class Doctum implements ArrayAccess
     private function getThemes(): ThemeSet
     {
         /** @var string[] $templates */
-        $templates = $this->config['template_dirs'];
+        $templates = $this->config['template_dirs'] ?? [];
         $templates[] = __DIR__ . '/Resources/themes';
 
         return new ThemeSet($templates);
