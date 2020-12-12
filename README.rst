@@ -25,10 +25,14 @@ Get Doctum as a `phar file`_:
 
 You can also find some alternative phar versions:
 
-- 5.1 (or any ``major``. ``minor`` version since 5.1)
+- ``major``
+- ``major``. ``minor`` (any version since 5.1)
 - ``major``. ``minor``. ``patch``
-- latest
-- dev
+- `latest <https://doctum.long-term.support/releases/latest/doctum.phar>`_
+- `dev <https://doctum.long-term.support/releases/dev/doctum.phar>`_ (not always up to date)
+- ``major``-dev
+- ``major``. ``minor``-dev (most of the time it exists)
+- ``major``. ``minor``. ``patch``-dev (sometimes it exists)
 
 .. code-block:: bash
 
