@@ -1,0 +1,14 @@
+name: lint php documentation
+on: [push]
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: lint php documentation
+              uses: sudo-bot/action-doctum@v5
+              with:
+                  config-file: scripts/doctum.php
+                  method: "parse"
+                  cli-args: "--output-format=github --no-ansi --no-progress"
