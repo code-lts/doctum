@@ -3,6 +3,13 @@ Doctum, a PHP API documentation generator. Fork of Sami
 
 Curious about what Doctum generates? Have a look at the `MariaDB MySQL Kbs`_ or `Laravel`_ documentation.
 
+Our badges
+----------
+
+.. image:: https://img.shields.io/badge/GitHub%20marketplace%20action-available-green.svg
+    :alt: GitHub marketplace action
+    :target: https://github.com/marketplace/actions/action-doctum
+
 Installation
 ------------
 
@@ -33,6 +40,8 @@ without any arguments:
 .. code-block:: bash
 
     $ php doctum.phar
+
+You can use our `GitHub marketplace action <https://github.com/marketplace/actions/action-doctum>`_ into your GitHub CI.
 
 Configuration
 -------------
