@@ -13,6 +13,7 @@ RELEASE_OPTIONS="$1"
 
 function get_version {
     VERSION=$($1 --version | cut -d ' ' -f 2 | sed -e 's/^[[:space:]]*//')
+    [[ ${VERSION} =~ ^[0-9]+ ]] && VERSION_MAJOR="${BASH_REMATCH[0]}"
     [[ ${VERSION} =~ ^[0-9]+\.[0-9]+ ]] && VERSION_RANGE="${BASH_REMATCH[0]}"
     [[ ${VERSION} =~ ^[0-9]+\.[0-9]+\.[0-9]+-dev$ ]] && VERSION_MATCH_DEV="${BASH_REMATCH[0]}"
 
@@ -20,6 +21,8 @@ function get_version {
         echo "Releasing a development version.";
         # Append -dev to the range
         VERSION_RANGE="${VERSION_RANGE}-dev"
+        # Append -dev to the major
+        VERSION_MAJOR="${VERSION_MAJOR}-dev"
     else
         echo "Releasing a normal version.";
     fi
@@ -28,7 +31,9 @@ function get_version {
 get_version ./bin/doctum.php
 echo "${VERSION}" > ./build/VERSION
 echo "${VERSION_RANGE}" > ./build/VERSION_RANGE
+echo "${VERSION_MAJOR}" > ./build/VERSION_MAJOR
 
+echo "Release for major: ${VERSION_MAJOR}, version range: ${VERSION_RANGE}"
 echo "Release for : ${VERSION}"
 
 GPG_KEY=${GPG_KEY:-C4D91FDFCEF6B4A3C653FD7890A0EF1B8251A889}
