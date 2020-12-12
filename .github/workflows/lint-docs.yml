@@ -2,7 +2,7 @@ name: lint php documentation
 on: [push]
 
 jobs:
-    lint:
+    lint-docs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
@@ -11,4 +11,4 @@ jobs:
               with:
                   config-file: scripts/doctum.php
                   method: "parse"
-                  cli-args: "--output-format=github --no-ansi --no-progress"
+                  cli-args: "--output-format=github --no-ansi --no-progress -v"
