@@ -13,14 +13,8 @@ namespace Doctum\Console\Command;
 
 use CodeLts\CliTools\AnalysisResult;
 use CodeLts\CliTools\AnsiEscapeSequences;
-use CodeLts\CliTools\ErrorFormatter\CheckstyleErrorFormatter;
-use CodeLts\CliTools\ErrorFormatter\GithubErrorFormatter;
-use CodeLts\CliTools\ErrorFormatter\TableErrorFormatter;
 use CodeLts\CliTools\ErrorsConsoleStyle;
 use CodeLts\CliTools\Exceptions\FormatNotFoundException;
-use CodeLts\CliTools\File\FuzzyRelativePathHelper;
-use CodeLts\CliTools\File\NullRelativePathHelper;
-use CodeLts\CliTools\File\SimpleRelativePathHelper;
 use CodeLts\CliTools\OutputFormat;
 use CodeLts\CliTools\Symfony\SymfonyOutput;
 use CodeLts\CliTools\Symfony\SymfonyStyle;
