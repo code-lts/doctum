@@ -28,6 +28,20 @@ function get_version {
     fi
 }
 
+function backupVendorFolder {
+    TEMP_FOLDER="$(mktemp -d /tmp/doctum.XXXXXXXXX)"
+    mv ./vendor "${TEMP_FOLDER}"
+}
+
+function restoreVendorFolder {
+    if [ ! -d ${TEMP_FOLDER} ]; then
+        echo 'No backup to restore'
+        exit 1;
+    fi
+    mv "${TEMP_FOLDER}/vendor" ./vendor
+    rmdir "${TEMP_FOLDER}"
+}
+
 get_version ./bin/doctum.php
 echo "${VERSION}" > ./build/VERSION
 echo "${VERSION_RANGE}" > ./build/VERSION_RANGE
@@ -47,6 +61,8 @@ else
     exit 1;
 fi
 
+backupVendorFolder
+
 if [ "${RELEASE_OPTIONS}" = "rebuild" ]; then
     echo "Rebuild deps"
     rm composer.lock
@@ -64,8 +80,9 @@ cp composer.lock ./build/
 echo "Generate phar"
 ${PHP_BIN:-php} -dphar.readonly=0 ./scripts/phar-generator-script.php
 chmod +x ./build/doctum.phar
-echo "Update deps"
-${PHP_BIN:-php} ${COMPOSER_BIN:-composer} update --quiet
+
+restoreVendorFolder
+
 echo "Copy build files"
 cp CHANGELOG.md ./build/
 cd ./build/
