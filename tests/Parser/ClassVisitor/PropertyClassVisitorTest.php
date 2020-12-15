@@ -50,9 +50,11 @@ class PropertyClassVisitorTest extends TestCase
         ];
         $class->expects($this->any())->method('getTags')->with($this->equalTo('property'))->will($this->returnValue($property));
 
+        /** @var ParserContext $context */
         $context = $this->getMockBuilder(ParserContext::class)->disableOriginalConstructor()->getMock();
 
         $visitor = new PropertyClassVisitor($context);
+        /** @var ClassReflection $class */
         $visitor->visit($class);
 
         $this->assertArrayHasKey('color', $class->getProperties());

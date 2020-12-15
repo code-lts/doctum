@@ -35,6 +35,7 @@ class MethodClassVisitorTest extends TestCase
                 ->will($this->returnValue($property));
 
         $visitor = new MethodClassVisitor();
+        /** @var ClassReflection $class */
         $visitor->visit($class);
 
         $this->assertArrayHasKey('askQuestion', $class->getMethods());

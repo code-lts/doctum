@@ -43,6 +43,7 @@ class ClassTraverserTest extends TestCase
         $visitor->expects($this->at(2))->method('visit')->with($project->loadClass($className));
 
         $traverser = new ClassTraverser();
+        /** @var ClassVisitorInterface $visitor */
         $traverser->addVisitor($visitor);
 
         $traverser->traverse($project);
