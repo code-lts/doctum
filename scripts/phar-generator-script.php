@@ -123,6 +123,7 @@ final class PharFilterIterator extends RecursiveFilterIterator
         'nikic/php-parser/bin',
         'scripts',
         '.git',
+        'cache',
         'build',
     ];
 
