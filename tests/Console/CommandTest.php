@@ -7,28 +7,23 @@ use Doctum\Console\Command\RenderCommand;
 use Doctum\Console\Command\UpdateCommand;
 use Doctum\Message;
 use Doctum\Parser\Transaction;
-use Doctum\Project;
 use Doctum\Renderer\Diff;
-use Doctum\Store\ArrayStore;
-use PHPUnit\Framework\TestCase;
+use Doctum\Tests\AbstractTestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
 /**
  * @author William Desportes <williamdes@wdes.fr>
  */
-class CommandTest extends TestCase
+class CommandTest extends AbstractTestCase
 {
 
     public function testParseEndBeforeStart(): void
     {
-        $store = new ArrayStore();
-        $project = new Project($store);
-
         $command = new ParseCommand();
         $commandTester = new CommandTester($command);
-        $config = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'doctum.php';
-        $commandTester->execute(['config' => $config, '--no-progress' => true, '--force' => true]);
-        $command->messageCallback(Message::PARSE_VERSION_FINISHED, new Transaction($project));
+
+        $commandTester->execute(['config' => $this->getTestConfigFilePath(), '--no-progress' => true, '--force' => true]);
+        $command->messageCallback(Message::PARSE_VERSION_FINISHED, new Transaction($this->getProject()));
         $this->assertSame(
             "\n"
                 . "\n"
@@ -44,14 +39,11 @@ class CommandTest extends TestCase
 
     public function testRenderEndBeforeStart(): void
     {
-        $store = new ArrayStore();
-        $project = new Project($store);
-
         $command = new RenderCommand();
         $commandTester = new CommandTester($command);
-        $config = __DIR__ . '/../data/doctum.php';
-        $commandTester->execute(['config' => $config, '--no-progress' => true, '--force' => true]);
-        $command->messageCallback(Message::RENDER_VERSION_FINISHED, new Diff($project, 'foo.php'));
+
+        $commandTester->execute(['config' => $this->getTestConfigFilePath(), '--no-progress' => true, '--force' => true]);
+        $command->messageCallback(Message::RENDER_VERSION_FINISHED, new Diff($this->getProject(), 'foo.php'));
         $this->assertSame(
             "\n"
                 . "\n"
@@ -77,14 +69,11 @@ class CommandTest extends TestCase
 
     public function testUpdateCommandRun(): void
     {
-        $store = new ArrayStore();
-        $project = new Project($store);
-
         $command = new UpdateCommand();
         $commandTester = new CommandTester($command);
-        $config = __DIR__ . '/../data/doctum.php';
-        $commandTester->execute(['config' => $config, '--no-progress' => true, '--force' => true]);
-        $command->messageCallback(Message::RENDER_VERSION_FINISHED, new Diff($project, 'foo.php'));
+
+        $commandTester->execute(['config' => $this->getTestConfigFilePath(), '--no-progress' => true, '--force' => true]);
+        $command->messageCallback(Message::RENDER_VERSION_FINISHED, new Diff($this->getProject(), 'foo.php'));
         $this->assertSame(
             'Updating project' . "\n"
                 . "\n"
