@@ -26,9 +26,9 @@ class CommandTest extends TestCase
         $command = new ParseCommand();
         $commandTester = new CommandTester($command);
         $config = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'doctum.php';
-        $commandTester->execute(['config' => $config, '--no-progress']);
+        $commandTester->execute(['config' => $config, '--no-progress' => true, '--force' => true]);
         $command->messageCallback(Message::PARSE_VERSION_FINISHED, new Transaction($project));
-        $this->assertStringContainsString(
+        $this->assertSame(
             "\n"
                 . "\n"
                 . 'Version main' . "\n"
@@ -49,13 +49,23 @@ class CommandTest extends TestCase
         $command = new RenderCommand();
         $commandTester = new CommandTester($command);
         $config = __DIR__ . '/../data/doctum.php';
-        $commandTester->execute(['config' => $config, '--no-progress']);
+        $commandTester->execute(['config' => $config, '--no-progress' => true, '--force' => true]);
         $command->messageCallback(Message::RENDER_VERSION_FINISHED, new Diff($project, 'foo.php'));
-        $this->assertStringContainsString(
+        $this->assertSame(
             "\n"
                 . "\n"
                 . 'Version main' . "\n"
-                . '-------------' . "\n"
+                . '-------------' . "\n" . "\n" . "\n"
+                . 'Rendering Global index.html' . "\n"
+                . 'Rendering Global doc-index.html' . "\n"
+                . 'Rendering Global namespaces.html' . "\n"
+                . 'Rendering Global classes.html' . "\n"
+                . 'Rendering Global interfaces.html' . "\n"
+                . 'Rendering Global traits.html' . "\n"
+                . 'Rendering Global opensearch.xml' . "\n"
+                . 'Rendering Global search.html' . "\n"
+                . 'Rendering Global doctum.js' . "\n"
+                . 'Rendering done' . "\n"
                 . '' . "\n"
                 . 'Rendering project Version    Updated C    Updated N    Removed C    Removed N ' . "\n"
                 . '     main            0            0            0            0' . "\n"
