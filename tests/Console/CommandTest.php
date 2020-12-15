@@ -26,7 +26,7 @@ class CommandTest extends TestCase
         $command = new ParseCommand();
         $commandTester = new CommandTester($command);
         $config = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'doctum.php';
-        $commandTester->execute(['config' => $config, '--version']);
+        $commandTester->execute(['config' => $config, '--no-progress']);
         $command->messageCallback(Message::PARSE_VERSION_FINISHED, new Transaction($project));
         $this->assertSame(
             "\n"
@@ -49,7 +49,7 @@ class CommandTest extends TestCase
         $command = new RenderCommand();
         $commandTester = new CommandTester($command);
         $config = __DIR__ . '/../data/doctum.php';
-        $commandTester->execute(['config' => $config, '--version']);
+        $commandTester->execute(['config' => $config, '--no-progress']);
         $command->messageCallback(Message::RENDER_VERSION_FINISHED, new Diff($project, 'foo.php'));
         $this->assertSame(
             "\n"
