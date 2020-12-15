@@ -300,6 +300,9 @@ abstract class Command extends BaseCommand
 
     protected function endProgress(): void
     {
+        if ($this->progressStarted === false) {
+            return;
+        }
         $this->progressStarted = false;
         $this->output->getStyle()->progressFinish();
     }
