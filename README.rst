@@ -10,6 +10,11 @@ Our badges
     :alt: GitHub marketplace action
     :target: https://github.com/marketplace/actions/action-doctum
 
+.. image:: https://codecov.io/gh/code-lts/doctum/branch/main/graph/badge.svg?branch=main
+    :alt: Project code coverage by Codecov
+    :target: https://codecov.io/gh/code-lts/doctum
+
+
 Installation
 ------------
 
