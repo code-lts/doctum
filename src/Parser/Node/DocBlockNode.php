@@ -13,17 +13,29 @@ namespace Doctum\Parser\Node;
 
 class DocBlockNode
 {
+    /** @var string */
     protected $shortDesc;
+    /** @var string */
     protected $longDesc;
+    /** @var array<string,array> */
     protected $tags = [];
     /** @var string[] */
     protected $errors = [];
 
-    public function addTag($key, $value)
+    /**
+     * Add a tag
+     *
+     * @param string $key
+     * @param array[] $value
+     */
+    public function addTag($key, $value): void
     {
         $this->tags[$key][] = $value;
     }
 
+    /**
+     * @return array<string,array>
+     */
     public function getTags()
     {
         return $this->tags;
@@ -49,32 +61,48 @@ class DocBlockNode
         return $tags;
     }
 
+    /**
+     * @param string $key
+     * @return mixed[]
+     */
     public function getTag($key)
     {
         return $this->tags[$key] ?? [];
     }
 
+    /**
+     * @return string
+     */
     public function getShortDesc()
     {
         return $this->shortDesc;
     }
 
+    /**
+     * @return string
+     */
     public function getLongDesc()
     {
         return $this->longDesc;
     }
 
-    public function setShortDesc($shortDesc)
+    /**
+     * @param string $shortDesc
+     */
+    public function setShortDesc($shortDesc): void
     {
         $this->shortDesc = $shortDesc;
     }
 
-    public function setLongDesc($longDesc)
+    /**
+     * @param string $longDesc
+     */
+    public function setLongDesc($longDesc): void
     {
         $this->longDesc = $longDesc;
     }
 
-    public function getDesc()
+    public function getDesc(): string
     {
         return $this->shortDesc . "\n\n" . $this->longDesc;
     }
