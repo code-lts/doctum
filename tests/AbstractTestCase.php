@@ -30,7 +30,7 @@ abstract class AbstractTestCase extends TestCase
      * @param mixed[] $args
      * @return mixed
      */
-    public static function callMethod(object $obj, string $name, array $args)
+    public static function callMethod($obj, string $name, array $args)
     {
         $class = new \ReflectionClass($obj);
         $method = $class->getMethod($name);
