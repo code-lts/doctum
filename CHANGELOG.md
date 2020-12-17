@@ -10,7 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added: NodeVisitor::getPropertyReflectionFromParserProperty
 - Added: Renderer::getVariablesFromClassReflection
-- Fixed: "Error: The ProgressBar is not started"
+- Fixed: "Error: The ProgressBar is not started" (#19)
+- Fixed: ""3" @param tags are expected but only "4" found" (#21)
+- Reworked the `@param` tag error detection and added new error messages
 
 ## [5.2.1] - 2020-11-30
 
