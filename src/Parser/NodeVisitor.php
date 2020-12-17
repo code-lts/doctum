@@ -429,40 +429,71 @@ class NodeVisitor extends NodeVisitorAbstract
     }
 
     /**
+     * @param array[] $tags
+     * @phpstan-param array{array{string,bool}|empty-array,string,string} $tags
+     *
+     * @return array|null
+     * @phpstan-return non-empty-array{non-empty-array{string,bool},string,string}|null
+     */
+    private function findParameterInTags(array $tags, string $tagName): ?array
+    {
+        foreach ($tags as $tag) {
+            if (count($tag) < 2) {
+                continue;
+            }
+            if ($tag[1] === $tagName) {
+                return $tag;
+            }
+        }
+        return null;
+    }
+
+    /**
      * @param FunctionReflection|MethodReflection $method
+     * @param array[] $tags
      * @return string[]
      */
     protected function updateMethodParametersFromTags(Reflection $method, array $tags): array
     {
+        $errors = [];
+
         // bypass if there is no @param tags defined (@param tags are optional)
         if (!count($tags)) {
-            return [];
-        }
-
-        if (count($method->getParameters()) != count($tags)) {
-            return [sprintf('"%d" @param tags are expected but only "%d" found', count($method->getParameters()), count($tags))];
-        }
-
-        $errors = [];
-        foreach (array_keys($method->getParameters()) as $i => $name) {
-            if ($tags[$i][1] && $tags[$i][1] != $name) {
-                $errors[] = sprintf('The "%s" @param tag variable name is wrong (should be "%s")', $tags[$i][1], $name);
-            }
-        }
-
-        if ($errors) {
             return $errors;
         }
 
-        foreach ($tags as $i => $tag) {
-            $parameter = $method->getParameter($tag[1] ? $tag[1] : $i);
-            $parameter->setShortDesc($tag[2]);
-            if (!$parameter->hasHint()) {
-                $parameter->setHint($this->resolveHint($tag[0]));
+        /** @var Reflection[] $parameters */
+        $parameters = $method->getParameters();
+
+        foreach ($parameters as $parameter) {
+            $tag = $this->findParameterInTags($tags, $parameter->getName());
+            if (! $parameter->hasHint() && $tag === null) {
+                $errors[] = sprintf(
+                    'The "%s" parameter of the method "%s" is missing a @param tag',
+                    $parameter->getName(),
+                    $method->getName()
+                );
+                continue;
+            }
+
+            if ($tag !== null) {
+                $parameter->setShortDesc($tag[2]);
+                if (! $parameter->hasHint()) {
+                    $parameter->setHint($this->resolveHint($tag[0]));
+                }
             }
         }
 
-        return [];
+        if (count($tags) > count($parameters)) {
+            $errors[] = sprintf(
+                'The method "%s" has "%d" @param tags but only "%d" where expected.',
+                $method->getName(),
+                count($tags),
+                count($method->getParameters())
+            );
+        }
+
+        return $errors;
     }
 
     protected function resolveHint(array $hints): array

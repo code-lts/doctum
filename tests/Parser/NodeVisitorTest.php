@@ -9,13 +9,14 @@ use PhpParser\Node\Param;
 use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\NodeTraverser;
 use PhpParser\PrettyPrinter\Standard;
-use PHPUnit\Framework\TestCase;
+use Doctum\Tests\AbstractTestCase;
 use Doctum\Parser\DocBlockParser;
 use Doctum\Parser\Filter\TrueFilter;
 use Doctum\Parser\NodeVisitor;
 use Doctum\Parser\ParserContext;
 use Doctum\Project;
 use Doctum\Reflection\ClassReflection;
+use Doctum\Reflection\FunctionReflection;
 use Doctum\Reflection\MethodReflection;
 use Doctum\Reflection\ParameterReflection;
 use Doctum\Store\ArrayStore;
@@ -24,7 +25,7 @@ use PhpParser\Node\Expr\Variable;
 /**
  * @author Tomasz Struczyński <t.struczynski@gmail.com>
  */
-class NodeVisitorTest extends TestCase
+class NodeVisitorTest extends AbstractTestCase
 {
     /**
      * @dataProvider getMethodTypehints
@@ -325,5 +326,43 @@ class NodeVisitorTest extends TestCase
                 'param1' => ['Test\Class', 'string'],
             ],
         ];
+    }
+
+    /**
+     * @see NodeVisitor::updateMethodParametersFromTags
+     */
+    public function testUpdateMethodParametersFromTags(): void
+    {
+        $docBlockParser = new DocBlockParser();
+        $docBlockNode = $docBlockParser->parse(
+            '/**' . "\n"
+            . '* @param type1 $param1 Description' . "\n"
+            . '* @param $param8 Description 4' . "\n"
+            . '* @param $param9' . "\n"
+            . '* @param foo' . "\n"
+            . '* @param type1 $param4 Description 4' . "\n"
+            . '**/' . "\n"
+        );
+        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $visitor = new NodeVisitor($parserContext);
+        $function = new FunctionReflection('fun1', 0);
+
+        $param1 = (new ParameterReflection('param1', 0));
+        $param1->setHint('array');
+        $function->addParameter($param1);
+
+        $param2 = (new ParameterReflection('param2', 0));
+        $function->addParameter($param2);
+
+        $this->assertSame(
+            [
+                'The "param2" parameter of the method "fun1" is missing a @param tag',
+                'The method "fun1" has "5" @param tags but only "2" where expected.',
+            ],
+            $this->callMethod($visitor, 'updateMethodParametersFromTags', [
+                $function,
+                $docBlockNode->getTag('param')
+            ])
+        );
     }
 }
