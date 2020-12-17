@@ -15,6 +15,7 @@ class FunctionReflection extends Reflection
 {
     protected $namespace;
     protected $modifiers;
+    /** @var array<string,ParameterReflection> */
     protected $parameters = [];
     protected $byRef;
     protected $project;
@@ -87,12 +88,18 @@ class FunctionReflection extends Reflection
         return $hints;
     }
 
+    /**
+     * @return void
+     */
     public function addParameter(ParameterReflection $parameter)
     {
         $this->parameters[$parameter->getName()] = $parameter;
         $parameter->setFunction($this);
     }
 
+    /**
+     * @return array<string,ParameterReflection>
+     */
     public function getParameters()
     {
         return $this->parameters;
@@ -109,8 +116,10 @@ class FunctionReflection extends Reflection
         return $this->parameters[$name] ?? null;
     }
 
-    /*
+    /**
      * Can be any iterator (so that we can lazy-load the parameters)
+     * @param array<string,ParameterReflection> $parameters
+     * @return void
      */
     public function setParameters($parameters)
     {
