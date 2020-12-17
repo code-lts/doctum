@@ -15,7 +15,7 @@ jobs:
             - name: Validate composer.json and composer.lock
               run: composer validate
             - name: Cache module
-              uses: actions/cache@v1.0.3
+              uses: actions/cache@v2
               with:
                   path: ~/.composer/cache/
                   key: composer-cache
@@ -28,13 +28,13 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v1
-            - name: Use php 7.1
+            - name: Use php 7.4
               uses: shivammathur/setup-php@v2
               with:
-                  php-version: 7.1
+                  php-version: 7.4
                   tools: composer:v2
             - name: Cache module
-              uses: actions/cache@v1.0.3
+              uses: actions/cache@v2
               with:
                   path: ~/.composer/cache/
                   key: composer-cache
