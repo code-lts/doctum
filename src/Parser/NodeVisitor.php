@@ -430,6 +430,7 @@ class NodeVisitor extends NodeVisitorAbstract
 
     /**
      * @param FunctionReflection|MethodReflection $method
+     * @return string[]
      */
     protected function updateMethodParametersFromTags(Reflection $method, array $tags): array
     {
