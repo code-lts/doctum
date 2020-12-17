@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
+## [5.3.0] - 2020-12-dd
+
+- Added: NodeVisitor::getPropertyReflectionFromParserProperty
+- Added: Renderer::getVariablesFromClassReflection
+- Fixed: "Error: The ProgressBar is not started"
+
 ## [5.2.1] - 2020-11-30
 
 - Fixed a PHP notice on "template_dirs" (#16)
