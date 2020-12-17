@@ -15,14 +15,21 @@ use Doctum\Project;
 
 class Diff
 {
+    /** @var Project */
     protected $project;
+    /** @var Index */
     protected $current;
+    /** @var string[] */
     protected $versions;
+    /** @var string */
     protected $filename;
+    /** @var bool */
     protected $alreadyRendered;
+
     protected $previousNamespaces;
     protected $currentNamespaces;
 
+    /** @var Index */
     private $previous;
 
     public function __construct(Project $project, string $filename)
@@ -46,21 +53,33 @@ class Diff
         $this->currentNamespaces = $this->current->getNamespaces();
     }
 
+    /**
+     * @return bool
+     */
     public function isEmpty()
     {
         return !$this->areVersionsModified() && (0 == count($this->getModifiedClasses()) + count($this->getRemovedClasses()));
     }
 
+    /**
+     * @return void
+     */
     public function save()
     {
         file_put_contents($this->filename, serialize($this->current));
     }
 
+    /**
+     * @return bool
+     */
     public function isAlreadyRendered()
     {
         return $this->alreadyRendered;
     }
 
+    /**
+     * @return bool
+     */
     public function areVersionsModified()
     {
         $versions = [];
@@ -81,6 +100,9 @@ class Diff
         return array_diff($this->previousNamespaces, $this->currentNamespaces);
     }
 
+    /**
+     * @return \Doctum\Reflection\ClassReflection[]
+     */
     public function getModifiedClasses()
     {
         $classes = [];

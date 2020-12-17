@@ -14,6 +14,7 @@ namespace Doctum\Renderer;
 use Doctum\Indexer;
 use Doctum\Message;
 use Doctum\Project;
+use Doctum\Reflection\ClassReflection;
 use Doctum\Tree;
 use Symfony\Component\Filesystem\Filesystem;
 
@@ -156,70 +157,85 @@ class Renderer
         }
     }
 
+    /**
+     * @param Callable|null $callback
+     * @return array<string,mixed>
+     */
+    protected function getVariablesFromClassReflection(ClassReflection $class, Project $project, $callback = null): array
+    {
+        if (null !== $callback) {
+            call_user_func($callback, Message::RENDER_PROGRESS, ['Class', $class->getName(), $this->step, $this->steps]);
+        }
+
+        $properties = $class->getProperties($project->getConfig('include_parent_data'));
+
+        $sortProperties = $project->getConfig('sort_class_properties');
+        if ($sortProperties) {
+            if (is_callable($sortProperties)) {
+                uksort($properties, $sortProperties);
+            } else {
+                ksort($properties);
+            }
+        }
+
+        $methods = $class->getMethods($project->getConfig('include_parent_data'));
+
+        $sortMethods = $project->getConfig('sort_class_methods');
+        if ($sortMethods) {
+            if (is_callable($sortMethods)) {
+                uksort($methods, $sortMethods);
+            } else {
+                ksort($methods);
+            }
+        }
+
+        $constants = $class->getConstants($project->getConfig('include_parent_data'));
+
+        $sortConstants = $project->getConfig('sort_class_constants');
+        if ($sortConstants) {
+            if (is_callable($sortConstants)) {
+                uksort($constants, $sortConstants);
+            } else {
+                ksort($constants);
+            }
+        }
+
+        $traits = $class->getTraits($project->getConfig('include_parent_data'));
+
+        $sortTraits = $project->getConfig('sort_class_traits');
+        if ($sortTraits) {
+            if (is_callable($sortTraits)) {
+                uksort($traits, $sortTraits);
+            } else {
+                ksort($traits);
+            }
+        }
+
+        $sortInterfaces = $project->getConfig('sort_class_interfaces');
+        if ($sortInterfaces) {
+            $class->sortInterfaces($sortInterfaces);
+        }
+
+        return [
+            'class' => $class,
+            'properties' => $properties,
+            'methods' => $methods,
+            'constants' => $constants,
+            'traits' => $traits,
+            'tree' => $this->getTree($project),
+        ];
+    }
+
+    /**
+     * @param ClassReflection[] $classes
+     * @param Project $project
+     * @param Callable|null $callback
+     * @return void
+     */
     protected function renderClassTemplates(array $classes, Project $project, $callback = null)
     {
         foreach ($classes as $class) {
-            if (null !== $callback) {
-                call_user_func($callback, Message::RENDER_PROGRESS, ['Class', $class->getName(), $this->step, $this->steps]);
-            }
-
-            $properties = $class->getProperties($project->getConfig('include_parent_data'));
-
-            $sortProperties = $project->getConfig('sort_class_properties');
-            if ($sortProperties) {
-                if (is_callable($sortProperties)) {
-                    uksort($properties, $sortProperties);
-                } else {
-                    ksort($properties);
-                }
-            }
-
-            $methods = $class->getMethods($project->getConfig('include_parent_data'));
-
-            $sortMethods = $project->getConfig('sort_class_methods');
-            if ($sortMethods) {
-                if (is_callable($sortMethods)) {
-                    uksort($methods, $sortMethods);
-                } else {
-                    ksort($methods);
-                }
-            }
-
-            $constants = $class->getConstants($project->getConfig('include_parent_data'));
-
-            $sortConstants = $project->getConfig('sort_class_constants');
-            if ($sortConstants) {
-                if (is_callable($sortConstants)) {
-                    uksort($constants, $sortConstants);
-                } else {
-                    ksort($constants);
-                }
-            }
-
-            $traits = $class->getTraits($project->getConfig('include_parent_data'));
-
-            $sortTraits = $project->getConfig('sort_class_traits');
-            if ($sortTraits) {
-                if (is_callable($sortTraits)) {
-                    uksort($traits, $sortTraits);
-                } else {
-                    ksort($traits);
-                }
-            }
-
-            $sortInterfaces = $project->getConfig('sort_class_interfaces');
-            if ($sortInterfaces) {
-                $class->sortInterfaces($sortInterfaces);
-            }
-
-            $variables = [
-                'class' => $class,
-                'properties' => $properties,
-                'methods' => $methods,
-                'constants' => $constants,
-                'traits' => $traits,
-                'tree' => $this->getTree($project),
-            ];
+            $variables = $this->getVariablesFromClassReflection($class, $project, $callback);
 
             foreach ($this->theme->getTemplates('class') as $template => $target) {
                 $this->save($project, sprintf($target, str_replace('\\', '/', $class->getName())), $template, $variables);

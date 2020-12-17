@@ -35,6 +35,7 @@ use Doctum\Reflection\MethodReflection;
 use Doctum\Reflection\ParameterReflection;
 use Doctum\Reflection\PropertyReflection;
 use Doctum\Parser\Node\DocBlockNode;
+use PhpParser\Node\Stmt\PropertyProperty;
 
 class NodeVisitor extends NodeVisitorAbstract
 {
@@ -215,6 +216,11 @@ class NodeVisitor extends NodeVisitorAbstract
     protected function addClassOrInterface(ClassLikeNode $node)
     {
         $class = new ClassReflection((string) $node->namespacedName, $node->getLine());
+        return $this->addClassOrInterfaceForReflection($class, $node);
+    }
+
+    protected function addClassOrInterfaceForReflection(ClassReflection $class, ClassLikeNode $node): ClassReflection
+    {
         if ($node instanceof ClassNode) {
             $class->setModifiers($node->flags);
         }
@@ -363,23 +369,7 @@ class NodeVisitor extends NodeVisitorAbstract
     protected function addProperty(PropertyNode $node)
     {
         foreach ($node->props as $prop) {
-            $property = new PropertyReflection($prop->name, $prop->getLine());
-            $property->setModifiers($node->flags);
-
-            $property->setDefault($prop->default);
-
-            $comment = $this->context->getDocBlockParser()->parse($node->getDocComment(), $this->context, $property);
-            $property->setDocComment($node->getDocComment());
-            $property->setShortDesc($comment->getShortDesc());
-            $property->setLongDesc($comment->getLongDesc());
-            $property->setSee($this->resolveSee($comment->getTag('see')));
-            if ($errors = $comment->getErrors()) {
-                $property->setErrors($errors);
-            } else {
-                $this->addTagFromCommentToMethod('var', $comment, $property, $errors);
-
-                $property->setTags($comment->getOtherTags());
-            }
+            [$property, $errors] = $this->getPropertyReflectionFromParserProperty($node, $prop);
 
             if ($this->context->getFilter()->acceptProperty($property)) {
                 $this->context->getClass()->addProperty($property);
@@ -389,6 +379,33 @@ class NodeVisitor extends NodeVisitorAbstract
                 }
             }
         }
+    }
+
+    /**
+     * @return array<int,PropertyReflection|string[]>
+     * @phpstan-return array{PropertyReflection,string[]}
+     */
+    protected function getPropertyReflectionFromParserProperty(PropertyNode $node, PropertyProperty $prop): array
+    {
+        $property = new PropertyReflection($prop->name, $prop->getLine());
+        $property->setModifiers($node->flags);
+
+        $property->setDefault($prop->default);
+
+        $comment = $this->context->getDocBlockParser()->parse($node->getDocComment(), $this->context, $property);
+        $property->setDocComment($node->getDocComment());
+        $property->setShortDesc($comment->getShortDesc());
+        $property->setLongDesc($comment->getLongDesc());
+        $property->setSee($this->resolveSee($comment->getTag('see')));
+        if ($errors = $comment->getErrors()) {
+            $property->setErrors($errors);
+        } else {
+            $this->addTagFromCommentToMethod('var', $comment, $property, $errors);
+
+            $property->setTags($comment->getOtherTags());
+        }
+
+        return [$property, $errors];
     }
 
     protected function addTraitUse(TraitUseNode $node)
