@@ -28,6 +28,8 @@ $phar = new Phar(
     'doctum.phar'
 );
 
+$shebang = "#!/usr/bin/env php";
+
 $iterator = new RecursiveDirectoryIterator($srcRoot);
 $iterator->setFlags(RecursiveDirectoryIterator::SKIP_DOTS);
 final class PharFilterIterator extends RecursiveFilterIterator
@@ -190,7 +192,7 @@ $filter = new PharFilterIterator($iterator);
 
 $pharFilesList = new RecursiveIteratorIterator($filter);
 
-$phar->setStub($phar->createDefaultStub('bin/doctum-binary.php'));
+$phar->setStub($shebang . PHP_EOL . $phar->createDefaultStub('bin/doctum-binary.php'));
 $phar->setSignatureAlgorithm(Phar::SHA256);
 $phar->buildFromIterator($pharFilesList, $srcRoot);
 
