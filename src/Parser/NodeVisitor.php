@@ -430,7 +430,7 @@ class NodeVisitor extends NodeVisitorAbstract
 
     /**
      * @param array[] $tags
-     * @phpstan-param array{array{string,bool}|empty-array,string,string} $tags
+     * @phpstan-param array{array{string,bool}|empty-array|string,string,string} $tags
      *
      * @return array|null
      * @phpstan-return non-empty-array{non-empty-array{string,bool},string,string}|null
@@ -438,6 +438,9 @@ class NodeVisitor extends NodeVisitorAbstract
     private function findParameterInTags(array $tags, string $tagName): ?array
     {
         foreach ($tags as $tag) {
+            if (! is_array($tag)) {
+                continue;
+            }
             if (count($tag) < 2) {
                 continue;
             }

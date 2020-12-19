@@ -365,4 +365,43 @@ class NodeVisitorTest extends AbstractTestCase
             ])
         );
     }
+
+    /**
+     * @see NodeVisitor::updateMethodParametersFromTags
+     */
+    public function testUpdateMethodParametersFromInvalidTags(): void
+    {
+        $docBlockParser = new DocBlockParser();
+        $docBlockNode = $docBlockParser->parse(
+            '/**' . "\n"
+            . '* @param type1 $param1 Description' . "\n"
+            . '* @param $param8 Description 4' . "\n"
+            . '* @param $param9' . "\n"
+            . '* @param foo' . "\n"
+            . '* @param type1 $param4 Description 4' . "\n"
+            . '* @param array[\Illuminate\Notifications\Channels\Notification]  $notification' . "\n"
+            . '**/' . "\n"
+        );
+        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $visitor = new NodeVisitor($parserContext);
+        $function = new FunctionReflection('fun1', 0);
+
+        $param1 = (new ParameterReflection('param1', 0));
+        $param1->setHint('array');
+        $function->addParameter($param1);
+
+        $param2 = (new ParameterReflection('param2', 0));
+        $function->addParameter($param2);
+
+        $this->assertSame(
+            [
+                'The "param2" parameter of the method "fun1" is missing a @param tag',
+                'The method "fun1" has "6" @param tags but only "2" where expected.',
+            ],
+            $this->callMethod($visitor, 'updateMethodParametersFromTags', [
+                $function,
+                $docBlockNode->getTag('param')
+            ])
+        );
+    }
 }
