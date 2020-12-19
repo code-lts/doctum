@@ -49,6 +49,12 @@ $stub = <<<STUB
  * @version $version
  * @license MIT
  */
+if (! class_exists('Phar')) {
+    echo 'You seem to be missing the Phar extension' . PHP_EOL;
+    echo 'Please read: https://stackoverflow.com/a/8851170/5155484 to find a solution' . PHP_EOL;
+    echo 'You can also ask for help on https://github.com/code-lts/doctum/issues if you think this is bug' . PHP_EOL;
+    exit(1);
+}
 Phar::interceptFileFuncs();
 Phar::mapPhar('$pharAlias');
 include 'phar://' . __FILE__ . '/bin/doctum-binary.php';
