@@ -101,6 +101,7 @@ argument:
         'language'             => 'en', // Could be 'fr'
         'build_dir'            => __DIR__ . '/build',
         'cache_dir'            => __DIR__ . '/cache',
+        'source_dir'           => '/path/to/repository/',
         'remote_repository'    => new GitHubRemoteRepository('username/repository', '/path/to/repository'),
         'default_opened_level' => 2,
     ]);
@@ -135,8 +136,9 @@ And here is how you can configure different versions:
         'versions'             => $versions,
         'title'                => 'yourlib API',
         'language'             => 'en', // Could be 'fr'
-        'build_dir'            => __DIR__.'/../build/sf2/%version%',
-        'cache_dir'            => __DIR__.'/../cache/sf2/%version%',
+        'build_dir'            => __DIR__ . '/../build/sf2/%version%',
+        'cache_dir'            => __DIR__ . '/../cache/sf2/%version%',
+        'source_dir'           => dirname($dir) . '/',
         'remote_repository'    => new GitHubRemoteRepository('yourorg/yourlib', dirname($dir)),
         'default_opened_level' => 2,
     ]);
@@ -166,7 +168,7 @@ Now that we have a configuration file, let's generate the API documentation:
 
 .. code-block:: bash
 
-    $ php doctum.phar update /path/to/config.php
+    $ doctum.phar update /path/to/config.php
 
 The generated documentation can be found under the configured ``build/``
 directory (note that the client side search engine does not work on Chrome due
@@ -182,7 +184,7 @@ if you add the ``-v`` option:
 
 .. code-block:: bash
 
-    $ php doctum.phar update /path/to/config.php -v
+    $ doctum.phar update /path/to/config.php -v
 
 Creating a Theme
 ----------------
