@@ -397,6 +397,39 @@ class NodeVisitorTest extends AbstractTestCase
             [
                 'The "param2" parameter of the method "fun1" is missing a @param tag',
                 'The method "fun1" has "6" @param tags but only "2" where expected.',
+                'The method "fun1" has "1" invalid @param tags.',
+                'Invalid @param tag on "fun1": "array[\Illuminate\Notifications\Channels\Notification]  $notification"',
+            ],
+            $this->callMethod($visitor, 'updateMethodParametersFromTags', [
+                $function,
+                $docBlockNode->getTag('param')
+            ])
+        );
+    }
+
+    /**
+     * @see NodeVisitor::updateMethodParametersFromTags
+     */
+    public function testUpdateMethodParametersFromInvalidTagsReport(): void
+    {
+        $docBlockParser = new DocBlockParser();
+        $docBlockNode = $docBlockParser->parse(
+            '/**' . "\n"
+            . '* @param array[\Illuminate\Notifications\Channels\Notification]  $notification' . "\n"
+            . '**/' . "\n"
+        );
+        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $visitor = new NodeVisitor($parserContext);
+        $function = new FunctionReflection('fun1', 0);
+
+        $param1 = (new ParameterReflection('notification', 0));
+        $function->addParameter($param1);
+
+        $this->assertSame(
+            [
+                'The "notification" parameter of the method "fun1" is missing a @param tag',
+                'The method "fun1" has "1" invalid @param tags.',
+                'Invalid @param tag on "fun1": "array[\Illuminate\Notifications\Channels\Notification]  $notification"',
             ],
             $this->callMethod($visitor, 'updateMethodParametersFromTags', [
                 $function,

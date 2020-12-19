@@ -452,6 +452,22 @@ class NodeVisitor extends NodeVisitorAbstract
     }
 
     /**
+     * @param array[] $tags All the tags
+     *
+     * @return string[] The invalid tags
+     */
+    private function getInvalidTags(array $tags): array
+    {
+        $invalidTags = [];
+        foreach ($tags as $tag) {
+            if (! is_array($tag)) {
+                $invalidTags[] = $tag;
+            }
+        }
+        return $invalidTags;
+    }
+
+    /**
      * @param FunctionReflection|MethodReflection $method
      * @param array[] $tags
      * @return string[]
@@ -496,6 +512,21 @@ class NodeVisitor extends NodeVisitorAbstract
             );
         }
 
+        $invalidTags = $this->getInvalidTags($tags);
+        if (count($invalidTags) > 0) {
+            $errors[] = sprintf(
+                'The method "%s" has "%d" invalid @param tags.',
+                $method->getName(),
+                count($invalidTags)
+            );
+            foreach ($invalidTags as $invalidTag) {
+                $errors[] = sprintf(
+                    'Invalid @param tag on "%s": "%s"',
+                    $method->getName(),
+                    $invalidTag
+                );
+            }
+        }
         return $errors;
     }
 
