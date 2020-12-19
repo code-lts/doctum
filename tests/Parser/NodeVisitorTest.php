@@ -19,6 +19,7 @@ use Doctum\Reflection\ClassReflection;
 use Doctum\Reflection\FunctionReflection;
 use Doctum\Reflection\MethodReflection;
 use Doctum\Reflection\ParameterReflection;
+use Doctum\Reflection\PropertyReflection;
 use Doctum\Store\ArrayStore;
 use PhpParser\Node\Expr\Variable;
 
@@ -435,6 +436,36 @@ class NodeVisitorTest extends AbstractTestCase
                 $function,
                 $docBlockNode->getTag('param')
             ])
+        );
+    }
+
+    /**
+     * @see NodeVisitor::addTagFromCommentToMethod
+     */
+    public function testAddTagFromCommentToMethodInvalidHint(): void
+    {
+        $docBlockParser = new DocBlockParser();
+        $docBlockNode = $docBlockParser->parse(
+            '/**' . "\n"
+            . '* @var \Illuminate\Support\Carbon;' . "\n"
+            . '**/' . "\n"
+        );
+        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $visitor = new NodeVisitor($parserContext);
+        $property = new PropertyReflection('prop1', 0);
+
+        $errors = [];
+        $this->callMethod($visitor, 'addTagFromCommentToMethod', [
+            'var',
+            $docBlockNode,
+            $property,
+            &$errors
+        ]);
+        $this->assertSame(
+            [
+                'The hint on "prop1" at @var is invalid: "\Illuminate\Support\Carbon;"'
+            ],
+            $errors
         );
     }
 }
