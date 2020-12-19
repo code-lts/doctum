@@ -189,6 +189,11 @@ class Doctum implements ArrayAccess
     private $remote_repository = null;
 
     /**
+     * @var array<string,string>|null
+     */
+    private $footer_link = null;
+
+    /**
      * include parent properties and methods on class pages
      *
      * @var bool
@@ -376,6 +381,7 @@ class Doctum implements ArrayAccess
             'title' => $this->title,
             'source_url' => $this->source_url,
             'insert_todos' => $this->insert_todos,
+            'footer_link' => $this->footer_link,
             'sort_class_properties' => $this->sort_class_properties,
             'sort_class_methods' => $this->sort_class_methods,
             'sort_class_constants' => $this->sort_class_constants,

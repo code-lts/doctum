@@ -11,10 +11,13 @@ use PHPUnit\Framework\TestCase;
  */
 abstract class AbstractTestCase extends TestCase
 {
-    protected function getProject(): Project
+    /**
+     * @param array<string,mixed> $config
+     */
+    protected function getProject(array $config = []): Project
     {
         $store = new ArrayStore();
-        return new Project($store);
+        return new Project($store, null, $config);
     }
 
     protected function getTestConfigFilePath(): string

@@ -2,13 +2,12 @@
 
 namespace Doctum\Tests;
 
-use PHPUnit\Framework\TestCase;
 use Doctum\Project;
 use Doctum\Reflection\ClassReflection;
 use Doctum\Store\ArrayStore;
 use Doctum\Version\Version;
 
-class ProjectTest extends TestCase
+class ProjectTest extends AbstractTestCase
 {
     public function testSwitchVersion(): void
     {
@@ -45,8 +44,80 @@ class ProjectTest extends TestCase
             [
                 'C21\\C2' => $class2,
                 'C31\\C32\\C3' => $class3,
-             ],
+            ],
             $project->getProjectClasses()
         );
+    }
+
+    public function testHasFooterLink(): void
+    {
+        $project = $this->getProject();
+
+        $this->assertFalse($project->hasFooterLink());
+
+        $project = $this->getProject([
+            'footer_link' => [
+                'href'        => 'https://github.com/code-lts/doctum',
+                'rel'         => 'noreferrer noopener',
+                'target'      => '_blank',
+                'before_text' => 'You can edit the configuration',
+                'link_text'   => 'on this', // Required if the href key is set
+                'after_text'  => 'repository',
+            ],
+        ]);
+
+        $this->assertTrue($project->hasFooterLink());
+
+        $project = $this->getProject([
+            'footer_link'          => [],
+        ]);
+
+        $this->assertTrue($project->hasFooterLink());
+
+        $project = $this->getProject([
+            'footer_link'          => null,
+        ]);
+
+        $this->assertFalse($project->hasFooterLink());
+
+        $project = $this->getProject([
+            'footer_link'          => 'https://example.com',
+        ]);
+
+        $this->assertFalse($project->hasFooterLink());
+    }
+
+    public function testGetFooterLink(): void
+    {
+        $project = $this->getProject();
+
+        $this->assertSame($project->getFooterLink(), [
+            'href' => '',
+            'target' => '',
+            'rel' => '',
+            'before_text' => '',
+            'link_text' => '',
+            'after_text' => '',
+        ]);
+
+        $project = $this->getProject([
+            'footer_link' => [
+                'href'        => 'https://github.com/code-lts/doctum',
+                'rel'         => 'noreferrer noopener',
+                'target'      => '_blank',
+                'before_text' => 'You can edit the configuration',
+                'link_text'   => 'on this', // Required if the href key is set
+                'after_text'  => 'repository',
+            ],
+        ]);
+
+        $this->assertSame($project->getFooterLink(), [
+            'href'        => 'https://github.com/code-lts/doctum',
+            'target'      => '_blank',
+            'rel'         => 'noreferrer noopener',
+            'before_text' => 'You can edit the configuration',
+            'link_text'   => 'on this',
+            'after_text'  => 'repository',
+        ]);
     }
 }

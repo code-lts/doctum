@@ -520,4 +520,26 @@ class Project
 
         return '';
     }
+
+    public function hasFooterLink(): bool
+    {
+        return $this->getConfig('footer_link') !== null && is_array($this->getConfig('footer_link'));
+    }
+
+    /**
+     * @return array<string,string>
+     * @phpstan-return array{href: string, rel: string, target: string, before_text: string, link_text: string, after_text: string}
+     */
+    public function getFooterLink(): array
+    {
+        $link = $this->getConfig('footer_link');
+        return [
+            'href' => $link['href'] ?? '',
+            'target' => $link['target'] ?? '',
+            'rel' => $link['rel'] ?? '',
+            'before_text' => $link['before_text'] ?? '',
+            'link_text' => $link['link_text'] ?? '',
+            'after_text' => $link['after_text'] ?? '',
+        ];
+    }
 }

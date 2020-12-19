@@ -143,6 +143,40 @@ And here is how you can configure different versions:
         'default_opened_level' => 2,
     ]);
 
+
+And here is how you can configure a footer link below the Doctum link:
+
+All `footer_link` keys are optional.
+
+.. code-block:: php
+
+    <?php
+
+    use Doctum\Doctum;
+    use Symfony\Component\Finder\Finder;
+
+    $dir = '/path/to/yourlib/src';
+    $iterator = Finder::create()
+        ->files()
+        ->name('*.php')
+        ->exclude('Resources')
+        ->exclude('Tests')
+        ->in($dir);
+
+    return new Doctum($iterator, [
+        'title'                => 'yourlib API',
+        'source_dir'           => dirname($dir) . '/',
+        'remote_repository'    => new GitHubRemoteRepository('yourorg/yourlib', dirname($dir)),
+        'footer_link'          => [
+            'href'        => 'https://github.com/code-lts/doctum',
+            'rel'         => 'noreferrer noopener',
+            'target'      => '_blank',
+            'before_text' => 'You can edit the configuration',
+            'link_text'   => 'on this', // Required if the href key is set
+            'after_text'  => 'repository',
+        ],
+    ]);
+
 You can find more configuration examples under the ``examples/`` directory of
 the source code.
 
