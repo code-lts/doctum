@@ -50,6 +50,9 @@ without any arguments:
 
     $ php doctum.phar
 
+Since 5.3.0 the phar does not require to use `php` keyword anymore because the `shebang` was added to the phar file.
+You can now call `doctum.phar` directly.
+
 You can use our `GitHub marketplace action <https://github.com/marketplace/actions/action-doctum>`_ into your GitHub CI.
 
 Configuration
