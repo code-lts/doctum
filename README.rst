@@ -41,17 +41,17 @@ You can also find some alternative phar versions:
 
 .. code-block:: bash
 
-    $ curl -O https://doctum.long-term.support/releases/${version}/doctum.phar
+    $ curl -O https://doctum.long-term.support/releases/${version}/doctum.phar && chmod +x doctum.phar
 
 Check that everything worked as expected by executing the ``doctum.phar`` file
 without any arguments:
 
 .. code-block:: bash
 
-    $ php doctum.phar
+    $ doctum.phar
 
 Since 5.3.0 the phar does not require to use `php` keyword anymore because the `shebang` was added to the phar file.
-You can now call `doctum.phar` directly.
+You can now call `doctum.phar` directly after adding execution rights onto the file.
 
 You can use our `GitHub marketplace action <https://github.com/marketplace/actions/action-doctum>`_ into your GitHub CI.
 
