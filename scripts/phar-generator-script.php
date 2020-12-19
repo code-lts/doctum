@@ -226,6 +226,15 @@ $pharFilesList = new RecursiveIteratorIterator($filter);
 $phar->setStub($shebang . PHP_EOL . $stub);
 $phar->setSignatureAlgorithm(Phar::SHA256);
 $phar->buildFromIterator($pharFilesList, $srcRoot);
+$phar->setMetadata([
+    'vcs.git' => 'https://github.com/code-lts/doctum.git',
+    'vcs.browser' => 'https://github.com/code-lts/doctum',
+    'version' => $version,
+    'build-date' => $date,
+    'license' => 'MIT',
+    'vendor' => 'Doctum',
+    'name' => 'Doctum',
+]);
 
 $files = array_map(
     function (string $fileRelativePath) {
