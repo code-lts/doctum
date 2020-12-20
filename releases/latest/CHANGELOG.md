@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
+## [5.3.0] - 2020-12-20
+
+- Added: NodeVisitor::getPropertyReflectionFromParserProperty
+- Added: Renderer::getVariablesFromClassReflection
+- Fixed: "Error: The ProgressBar is not started" (#19)
+- Fixed: ""3" @param tags are expected but only "4" found" (#21)
+- Reworked the `@param` tag error detection and added new error messages
+- Added: A shebang to all the new PHARs distributed
+- Added: Support for a custom `footer_link` configuration
+
 ## [5.2.1] - 2020-11-30
 
 - Fixed a PHP notice on "template_dirs" (#16)
