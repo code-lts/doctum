@@ -369,6 +369,34 @@ class NodeVisitorTest extends AbstractTestCase
 
     /**
      * @see NodeVisitor::updateMethodParametersFromTags
+     * @see https://github.com/20Tauri/DoxyDoxygen/issues/135#issuecomment-512090231
+     */
+    public function testUpdateMethodParametersFromTagsVariadic(): void
+    {
+        $docBlockParser = new DocBlockParser();
+        $docBlockNode = $docBlockParser->parse(
+            '/**' . "\n"
+            . '* @param FooBar|baz|string ...$args' . "\n"
+            . '**/' . "\n"
+        );
+        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $visitor = new NodeVisitor($parserContext);
+        $function = new FunctionReflection('fun1', 0);
+
+        $param1 = (new ParameterReflection('args', 0));
+        $function->addParameter($param1);
+
+        $this->assertSame(
+            [],
+            $this->callMethod($visitor, 'updateMethodParametersFromTags', [
+                $function,
+                $docBlockNode->getTag('param')
+            ])
+        );
+    }
+
+    /**
+     * @see NodeVisitor::updateMethodParametersFromTags
      * @requires PHP 7.2
      */
     public function testUpdateMethodParametersFromInvalidTags(): void
@@ -468,6 +496,34 @@ class NodeVisitorTest extends AbstractTestCase
             [
                 'The hint on "prop1" at @var is invalid: "\Illuminate\Support\Carbon;"'
             ],
+            $errors
+        );
+    }
+
+    /**
+     * @see NodeVisitor::addTagFromCommentToMethod
+     */
+    public function testAddTagFromCommentToMethodHintVariadic(): void
+    {
+        $docBlockParser = new DocBlockParser();
+        $docBlockNode = $docBlockParser->parse(
+            '/**' . "\n"
+            . '* @var FooBar|baz|string ...$args' . "\n"
+            . '**/' . "\n"
+        );
+        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $visitor = new NodeVisitor($parserContext);
+        $property = new PropertyReflection('args', 0);
+
+        $errors = [];
+        $this->callMethod($visitor, 'addTagFromCommentToMethod', [
+            'var',
+            $docBlockNode,
+            $property,
+            &$errors
+        ]);
+        $this->assertSame(
+            [],
             $errors
         );
     }
