@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
+## [5.3.1] - 2020-mm-dd
+
+- Fixed: missing "final" keyword on a class page
+
 ## [5.3.0] - 2020-12-20
 
 - Added: NodeVisitor::getPropertyReflectionFromParserProperty

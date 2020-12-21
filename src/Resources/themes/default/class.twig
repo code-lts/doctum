@@ -74,6 +74,7 @@
 {% endblock %}
 
 {% block class_signature -%}
+    {% if class.final %}final {% endif %}
     {% if not class.interface and class.abstract %}abstract {% endif %}
     {{ class_category_name(class.getCategoryId()) }}
     <strong>{{ class.shortname|raw }}</strong>
