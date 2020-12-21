@@ -26,9 +26,7 @@ testPharAbsoluteFiles() {
 
 testPharRelativeFiles() {
     cd $(dirname $0)/data/
-    set +e
     RELATIVE_OUTPUT=$(${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-relative.conf.php 2>&1)
-    set -e
     assertSame "The output must be the same" "${RELATIVE_OUTPUT}" "$(cat relative_1.out)"
     cd - > /dev/null
 }

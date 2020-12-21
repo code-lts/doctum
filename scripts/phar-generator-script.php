@@ -55,7 +55,6 @@ if (! class_exists('Phar')) {
     echo 'You can also ask for help on https://github.com/code-lts/doctum/issues if you think this is bug' . PHP_EOL;
     exit(1);
 }
-Phar::interceptFileFuncs();
 Phar::mapPhar('$pharAlias');
 include 'phar://' . __FILE__ . '/bin/doctum-binary.php';
 __HALT_COMPILER();
