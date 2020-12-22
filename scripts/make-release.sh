@@ -52,14 +52,18 @@ echo "Release for : ${VERSION}"
 
 GPG_KEY=${GPG_KEY:-C4D91FDFCEF6B4A3C653FD7890A0EF1B8251A889}
 
-PHP_VERSION="$(${PHP_BIN:-php} -r "echo PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;")"
+PHP_VERSION_REQUIRED=$(sed -nre '/"php"/ s/.*"\^(([0-9]+\.)*[0-9]+).*/\1/p' composer.json)
 
-if [ "${PHP_VERSION}" = "7.1" ]; then
-    echo "PHP version (${PHP_VERSION}) matches the exact version."
-else
-    echo "Your PHP version (${PHP_VERSION}) does not match the exact version required (7.1). This can make users unable to use the phar file."
-    exit 1;
+if [ -z "${PHP_VERSION_REQUIRED}" ]; then
+    echo 'The required php version can not be found'
+    exit 1
 fi
+
+echo "PHP version required: ${PHP_VERSION_REQUIRED}"
+
+echo "Lock composer php version"
+COMPOSER_FILE=$(cat composer.json)
+${COMPOSER_BIN:-composer} config platform.php "$PHP_VERSION_REQUIRED"
 
 backupVendorFolder
 
@@ -76,6 +80,9 @@ fi
 echo "Copy composer.lock"
 # Copy it now because the dev deps are removed at this stage
 cp composer.lock ./build/
+
+echo "Unlock composer php version"
+echo "${COMPOSER_FILE}" > composer.json
 
 echo "Generate phar"
 ${PHP_BIN:-php} -dphar.readonly=0 ./scripts/phar-generator-script.php
