@@ -17,5 +17,30 @@ testPharVersionCommand() {
     assertContains "version check" "$(${PHP_BIN:-php} ${PHAR_PATH} --version)" "by Fabien Potencier and William Desportes"
 }
 
+testPharAbsoluteFiles() {
+    cd $(dirname $0)/data/
+    ABSOLUTE_OUTPUT=$(${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-absolute.conf.php)
+    assertSame "The output must be the same" "${ABSOLUTE_OUTPUT}" "$(cat absolute_1.out)"
+    cd - > /dev/null
+}
+
+testPharRelativeFiles() {
+    cd $(dirname $0)/data/
+    set +e
+    RELATIVE_OUTPUT=$(${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-relative.conf.php 2>&1)
+    set -e
+    assertSame "The output must be the same" "${RELATIVE_OUTPUT}" "$(cat relative_1.out)"
+    cd - > /dev/null
+}
+
+testPharConfigDoesNotExist() {
+    cd $(dirname $0)/data/
+    set +e
+    OUTPUT=$(${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-error.conf.php 2>&1)
+    set -e
+    assertSame "The output must be the same" "${OUTPUT}" "$(cat error_cli_no_config.out)"
+    cd - > /dev/null
+}
+
 # Load shUnit2.
 . shunit2
