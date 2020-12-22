@@ -6,7 +6,7 @@ set -e
 
 oneTimeSetUp() {
     SKIP_GPG="yes" $(dirname $0)/../../scripts/make-release.sh
-    PHAR_PATH="$(dirname $0)/../../build/doctum.phar"
+    PHAR_PATH="$(realpath $(dirname $0)/../../build/doctum.phar)"
     echo "Using the phar: ${PHAR_PATH}"
 }
 
@@ -19,7 +19,7 @@ testPharVersionCommand() {
 
 testPharAbsoluteFiles() {
     cd $(dirname $0)/data/
-    ABSOLUTE_OUTPUT=$(${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-absolute.conf.php)
+    ABSOLUTE_OUTPUT=$(${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-absolute.conf.php 2>&1)
     assertSame "The output must be the same" "${ABSOLUTE_OUTPUT}" "$(cat absolute_1.out)"
     cd - > /dev/null
 }
@@ -38,7 +38,7 @@ testPharConfigDoesNotExist() {
     set +e
     OUTPUT=$(${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-error.conf.php 2>&1)
     set -e
-    assertSame "The output must be the same" "${OUTPUT}" "$(cat error_cli_no_config.out)"
+    assertSame "The output must be the same" "${OUTPUT}" "$(printf "$(cat error_cli_no_config.out)" "$(pwd)/")"
     cd - > /dev/null
 }
 
