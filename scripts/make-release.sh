@@ -44,7 +44,9 @@ function restoreVendorFolder {
 
 if [ ! -f ./vendor/autoload.php ]; then
     echo "Composer dependencies are missing"
-    composer update
+    echo "Updating..."
+    composer update --quiet
+    echo "Done."
 fi
 
 get_version ./bin/doctum.php
