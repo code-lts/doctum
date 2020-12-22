@@ -34,7 +34,7 @@ testPharRelativeFiles() {
 testPharConfigDoesNotExist() {
     cd $(dirname $0)/data/
     set +e
-    OUTPUT=$(${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-error.conf.php 2>&1)
+    OUTPUT=$(COLUMNS=100 ${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-error.conf.php 2>&1)
     OUTPUT=$(echo "${OUTPUT}" | sed 's/ *$//g')
     set -e
     assertSame "The output must be the same" "${OUTPUT}" "$(printf "$(cat error_cli_no_config.out)" "$(pwd)/")"
