@@ -42,6 +42,11 @@ function restoreVendorFolder {
     rmdir "${TEMP_FOLDER}"
 }
 
+if [ ! -f ./vendor/autoload.php ]; then
+    echo "Composer dependencies are missing"
+    composer update
+fi
+
 get_version ./bin/doctum.php
 echo "${VERSION}" > ./build/VERSION
 echo "${VERSION_RANGE}" > ./build/VERSION_RANGE
