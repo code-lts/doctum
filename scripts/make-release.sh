@@ -63,7 +63,12 @@ echo "PHP version required: ${PHP_VERSION_REQUIRED}"
 
 echo "Lock composer php version"
 COMPOSER_FILE=$(cat composer.json)
-${COMPOSER_BIN:-composer} config platform.php "$PHP_VERSION_REQUIRED"
+
+if [ -z "${COMPOSER_BIN}" ]; then
+    COMPOSER_BIN=$(command -v composer)
+fi
+
+${COMPOSER_BIN} config platform.php "$PHP_VERSION_REQUIRED"
 
 backupVendorFolder
 
@@ -71,10 +76,10 @@ if [ "${RELEASE_OPTIONS}" = "rebuild" ]; then
     echo "Rebuild deps"
     rm composer.lock
     curl -O "https://doctum.long-term.support/releases/${VERSION}/composer.lock"
-    ${PHP_BIN:-php} ${COMPOSER_BIN:-composer} install --no-dev --quiet
+    ${PHP_BIN:-php} ${COMPOSER_BIN} install --no-dev --quiet
 else
     echo "Remove dev-deps"
-    ${PHP_BIN:-php} ${COMPOSER_BIN:-composer} update --no-dev --quiet
+    ${PHP_BIN:-php} ${COMPOSER_BIN} update --no-dev --quiet
 fi
 
 echo "Copy composer.lock"
