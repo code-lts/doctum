@@ -33,3 +33,13 @@ jobs:
               run: composer run phpunit
             - name: Send coverage
               uses: codecov/codecov-action@v1
+
+    test-phar:
+        name: Run command line tests on the phar
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - name: Run phar tests
+              uses: sudo-bot/action-shunit2@latest
+              with:
+                  cli: "./tests/phar/run-tests.sh"
