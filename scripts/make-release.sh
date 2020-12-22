@@ -100,13 +100,15 @@ cp CHANGELOG.md ./build/
 cd ./build/
 sha256sum doctum.phar > ./doctum.phar.sha256
 sha256sum * > ./files.sha256
-gpg --detach-sig --local-user "${GPG_KEY}" --armor doctum.phar
-gpg --detach-sig --local-user "${GPG_KEY}" --armor doctum.phar.sha256
-gpg --detach-sig --local-user "${GPG_KEY}" --armor files.sha256
+if [ -z "${SKIP_GPG}" ]; then
+    gpg --detach-sig --local-user "${GPG_KEY}" --armor doctum.phar
+    gpg --detach-sig --local-user "${GPG_KEY}" --armor doctum.phar.sha256
+    gpg --detach-sig --local-user "${GPG_KEY}" --armor files.sha256
+fi
 echo "Lint"
 ${PHP_BIN:-php} -l doctum.phar
 echo "Check fingerprints"
-sha256sum --strict --check *.sha256
+sha256sum -w -c *.sha256
 echo "Version before build: ${VERSION}"
 VERSION_BEFORE="${VERSION}"
 get_version "${PHP_BIN:-php} doctum.phar"
