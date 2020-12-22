@@ -38,6 +38,7 @@ function restoreVendorFolder {
         echo 'No backup to restore'
         exit 1;
     fi
+    rm -rf ./vendor
     mv "${TEMP_FOLDER}/vendor" ./vendor
     rmdir "${TEMP_FOLDER}"
 }
