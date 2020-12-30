@@ -44,11 +44,35 @@ function restoreVendorFolder {
 }
 
 function loadEnvGitHubToken {
-    GITHUB_TOKEN=$(git config github.token)
-    if [ -z "$token" ]; then
+    GITHUB_TOKEN=$(git config github.token || echo '')
+    if [ -z "${GITHUB_TOKEN}" ]; then
         echo 'GitHub token is empty. Please run git config --add github.token "123"';
         exit 1;
     fi
+}
+
+function generate_post_data {
+  cat <<EOF
+{
+  "tag_name": "v${VERSION}",
+  "target_commitish": "$branch",
+  "name": "v${VERSION}",
+  "body": "### Version ${VERSION}",
+  "draft": true,
+  "prerelease": false
+}
+EOF
+}
+
+function uploadArtifact {
+    FILE_NAME="$1"
+    MIME_TYPE="$2"
+    ARTIFACT_OUT=$(curl -# -S -s -L \
+        -H "Authorization: token ${GITHUB_TOKEN}" \
+        -H "Content-Type: ${MIME_TYPE}" \
+        --data-binary @${FILE_NAME} \
+        "https://uploads.github.com/repos/$user/$repo/releases/$releaseId/assets?name=${FILE_NAME}")
+    echo "Uploaded: $(echo $ARTIFACT_OUT | jq -r '.name')."
 }
 
 function publishArtifacts {
@@ -56,50 +80,35 @@ function publishArtifacts {
     if ! command -v jq &> /dev/null
     then
         echo "jq could not be found"
-        exit
+        exit 1
     fi
 
     if ! command -v git &> /dev/null
     then
         echo "git could not be found"
-        exit
+        exit 1
     fi
 
     loadEnvGitHubToken
     user=${GH_ORG:-"code-lts"}
     repo=${GH_REPO:-"doctum"}
-    echo "Create release ${VERSION} for repo: $user/$repo branch: $branch"
+    echo "Create release ${VERSION} for repo: $user/$repo"
     read -r -p "Are you sure to publish the draft? [Y/n]" response
     response=${response,,} # tolower
     if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
         RELEASE_OUT="$(curl -H "Authorization: token ${GITHUB_TOKEN}" --data "$(generate_post_data)" "https://api.github.com/repos/$user/$repo/releases")"
+        echo "Created release: $(echo $RELEASE_OUT | jq -r '.html_url')"
     fi
 
-    echo "Make and publish the signature for this release."
+    echo "Upload artifacts for this release."
     read -r -p "Are you sure to upload artifacts to the draft? [Y/n]" response
     response=${response,,} # tolower
     if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
         releaseId=$(echo $RELEASE_OUT | jq -r '.id')
-        curl -L \
-            -H "Authorization: token ${GITHUB_TOKEN}" \
-            -H "Content-Type: application/pgp-signature" \
-            --data-binary @doctum.phar \
-            "https://uploads.github.com/repos/$user/$repo/releases/$releaseId/assets?name=doctum.phar"
-        curl -L \
-            -H "Authorization: token ${GITHUB_TOKEN}" \
-            -H "Content-Type: application/pgp-signature" \
-            --data-binary @doctum.phar.sha256 \
-            "https://uploads.github.com/repos/$user/$repo/releases/$releaseId/assets?name=doctum.phar.sha256"
-        curl -L \
-            -H "Authorization: token ${GITHUB_TOKEN}" \
-            -H "Content-Type: application/pgp-signature" \
-            --data-binary @doctum.phar.asc \
-            "https://uploads.github.com/repos/$user/$repo/releases/$releaseId/assets?name=doctum.phar.asc"
-        curl -L \
-            -H "Authorization: token ${GITHUB_TOKEN}" \
-            -H "Content-Type: application/pgp-signature" \
-            --data-binary @doctum.phar.sha256.asc \
-            "https://uploads.github.com/repos/$user/$repo/releases/$releaseId/assets?name=doctum.phar.sha256.asc"
+        uploadArtifact doctum.phar 'application/octet-stream'
+        uploadArtifact doctum.phar.asc 'application/pgp-signature'
+        uploadArtifact doctum.phar.sha256 'text/plain'
+        uploadArtifact doctum.phar.sha256.asc 'application/pgp-signature'
     fi
 
 }
