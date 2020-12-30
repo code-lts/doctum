@@ -184,12 +184,13 @@ get_version "${PHP_BIN:-php} doctum.phar"
 echo "Version after build: ${VERSION}"
 if [ "${VERSION_BEFORE}" = "${VERSION}" ]; then
     echo "Done."
+
+    if [ -z "${SKIP_PUBLISH_QUESTION}${VERSION_MATCH_DEV}" ]; then
+        publishArtifacts
+    fi
+
     exit 0;
 else
     echo "Versions do not match."
     exit 1;
-fi
-
-if [ -z "${SKIP_PUBLISH_QUESTION}" ] && [ -z "${VERSION_MATCH_DEV}" ]; then
-    publishArtifacts
 fi

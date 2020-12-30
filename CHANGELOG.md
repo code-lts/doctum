@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
-## [5.3.1] - 2020-mm-dd
+## [5.3.1] - 2020-12-30
 
 - Fixed: missing "final" keyword on a class page
 - Made the minimum required php version more precise on composer.json and README.md
