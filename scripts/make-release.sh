@@ -43,6 +43,67 @@ function restoreVendorFolder {
     rmdir "${TEMP_FOLDER}"
 }
 
+function loadEnvGitHubToken {
+    GITHUB_TOKEN=$(git config github.token)
+    if [ -z "$token" ]; then
+        echo 'GitHub token is empty. Please run git config --add github.token "123"';
+        exit 1;
+    fi
+}
+
+function publishArtifacts {
+
+    if ! command -v jq &> /dev/null
+    then
+        echo "jq could not be found"
+        exit
+    fi
+
+    if ! command -v git &> /dev/null
+    then
+        echo "git could not be found"
+        exit
+    fi
+
+    loadEnvGitHubToken
+    user=${GH_ORG:-"code-lts"}
+    repo=${GH_REPO:-"doctum"}
+    echo "Create release ${VERSION} for repo: $user/$repo branch: $branch"
+    read -r -p "Are you sure to publish the draft? [Y/n]" response
+    response=${response,,} # tolower
+    if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
+        RELEASE_OUT="$(curl -H "Authorization: token ${GITHUB_TOKEN}" --data "$(generate_post_data)" "https://api.github.com/repos/$user/$repo/releases")"
+    fi
+
+    echo "Make and publish the signature for this release."
+    read -r -p "Are you sure to upload artifacts to the draft? [Y/n]" response
+    response=${response,,} # tolower
+    if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
+        releaseId=$(echo $RELEASE_OUT | jq -r '.id')
+        curl -L \
+            -H "Authorization: token ${GITHUB_TOKEN}" \
+            -H "Content-Type: application/pgp-signature" \
+            --data-binary @doctum.phar \
+            "https://uploads.github.com/repos/$user/$repo/releases/$releaseId/assets?name=doctum.phar"
+        curl -L \
+            -H "Authorization: token ${GITHUB_TOKEN}" \
+            -H "Content-Type: application/pgp-signature" \
+            --data-binary @doctum.phar.sha256 \
+            "https://uploads.github.com/repos/$user/$repo/releases/$releaseId/assets?name=doctum.phar.sha256"
+        curl -L \
+            -H "Authorization: token ${GITHUB_TOKEN}" \
+            -H "Content-Type: application/pgp-signature" \
+            --data-binary @doctum.phar.asc \
+            "https://uploads.github.com/repos/$user/$repo/releases/$releaseId/assets?name=doctum.phar.asc"
+        curl -L \
+            -H "Authorization: token ${GITHUB_TOKEN}" \
+            -H "Content-Type: application/pgp-signature" \
+            --data-binary @doctum.phar.sha256.asc \
+            "https://uploads.github.com/repos/$user/$repo/releases/$releaseId/assets?name=doctum.phar.sha256.asc"
+    fi
+
+}
+
 if [ ! -f ./vendor/autoload.php ]; then
     echo "Composer dependencies are missing"
     echo "Updating..."
@@ -127,4 +188,8 @@ if [ "${VERSION_BEFORE}" = "${VERSION}" ]; then
 else
     echo "Versions do not match."
     exit 1;
+fi
+
+if [ -z "${SKIP_PUBLISH_QUESTION}" ] && [ -z "${VERSION_MATCH_DEV}" ]; then
+    publishArtifacts
 fi

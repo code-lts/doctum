@@ -5,7 +5,7 @@
 set -e
 
 oneTimeSetUp() {
-    SKIP_GPG="yes" $(dirname $0)/../../scripts/make-release.sh
+    SKIP_GPG="yes" SKIP_PUBLISH_QUESTION="yes" $(dirname $0)/../../scripts/make-release.sh
     PHAR_PATH="$(realpath $(dirname $0)/../../build/doctum.phar)"
     echo "Using the phar: ${PHAR_PATH}"
 }
