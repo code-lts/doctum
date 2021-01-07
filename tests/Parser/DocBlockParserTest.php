@@ -27,17 +27,6 @@ class DocBlockParserTest extends TestCase
         $this->assertEquals($this->createDocblock($expected), $parser->parse($comment));
     }
 
-    /**
-     * @dataProvider getParseTestsphp7dot1plus
-     * @requires PHP >=7.2
-     */
-    public function testParse7dot1plus(string $comment, array $expected): void
-    {
-        $parser = new DocBlockParser();
-
-        $this->assertEquals($this->createDocblock($expected), $parser->parse($comment));
-    }
-
     public function getParseTests(): array
     {
         return [
@@ -319,13 +308,7 @@ class DocBlockParserTest extends TestCase
                         ]
                     ],
                 ]
-            ]
-        ];
-    }
-
-    public function getParseTestsphp7dot1plus(): array
-    {
-        return [
+            ],
             [
                 '/**
          * Prepares queries for adding users and

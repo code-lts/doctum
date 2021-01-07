@@ -397,7 +397,6 @@ class NodeVisitorTest extends AbstractTestCase
 
     /**
      * @see NodeVisitor::updateMethodParametersFromTags
-     * @requires PHP 7.2
      */
     public function testUpdateMethodParametersFromInvalidTags(): void
     {
@@ -439,7 +438,6 @@ class NodeVisitorTest extends AbstractTestCase
 
     /**
      * @see NodeVisitor::updateMethodParametersFromTags
-     * @requires PHP 7.2
      */
     public function testUpdateMethodParametersFromInvalidTagsReport(): void
     {
@@ -471,7 +469,6 @@ class NodeVisitorTest extends AbstractTestCase
 
     /**
      * @see NodeVisitor::addTagFromCommentToMethod
-     * @requires PHP 7.2
      */
     public function testAddTagFromCommentToMethodInvalidHint(): void
     {
