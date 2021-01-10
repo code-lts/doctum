@@ -6,7 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
-## [5.3.1] - 2020-mm-dd
+- Drop support for PHP `7.1`
+- Drop support for `phpdocumentor/reflection-docblock` `4.3` series
+- Require PHP `7.2.20`
+- Enable support for PHP `8.0` on the PHAR
+- Resolve type aliases in docblocks (#24)
+
+## [5.3.1] - 2020-12-30
 
 - Fixed: missing "final" keyword on a class page
 - Made the minimum required php version more precise on composer.json and README.md
