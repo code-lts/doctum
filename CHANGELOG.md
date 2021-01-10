@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Drop support for `phpdocumentor/reflection-docblock` `4.3` series
 - Require PHP `7.2.20`
 - Enable support for PHP `8.0` on the PHAR
+- Resolve type aliases in docblocks (#24)
 
 ## [5.3.1] - 2020-12-30
 
