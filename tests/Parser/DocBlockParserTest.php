@@ -12,19 +12,54 @@
 namespace Doctum\Tests\Parser;
 
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\MockObject\MockObject;
+use Doctum\Parser\ParserContext;
 use Doctum\Parser\DocBlockParser;
 use Doctum\Parser\Node\DocBlockNode;
 
 class DocBlockParserTest extends TestCase
 {
+    private const NAMESPACE = '\\Foobar\\';
+    private const ALIASES = [
+        'SingleClass' => '\\Foo\\Bar\\Baz',
+        'SingleClass2' => '\\Foo\\Bar\\SingleClass2',
+        'SomeClass' => '\\Foo\\SomeClass',
+    ];
+
     /**
      * @dataProvider getParseTests
      */
     public function testParse(string $comment, array $expected): void
     {
         $parser = new DocBlockParser();
+        $expected = isset($expected['pure']) ? $expected['pure'] : $expected[0];
+        $this->assertEquals($this->createDocblock($expected), $parser->parse($comment, $this->getContextMock()));
+    }
 
-        $this->assertEquals($this->createDocblock($expected), $parser->parse($comment));
+    /**
+     * @dataProvider getParseTests
+     */
+    public function testParseWithNamespace(string $comment, array $expected): void
+    {
+        $parser = new DocBlockParser();
+        $expected = isset($expected['namespace']) ? $expected['namespace'] : $expected[0];
+        $this->assertEquals($this->createDocblock($expected), $parser->parse($comment, $this->getContextMock(self::NAMESPACE)));
+    }
+
+    /**
+     * @dataProvider getParseTests
+     */
+    public function testParseWithAliases(string $comment, array $expected): void
+    {
+        $parser = new DocBlockParser();
+        $expected = isset($expected['namespaceAndAlias']) ? $expected['namespaceAndAlias'] : $expected[0];
+        $this->assertEquals(
+            $this->createDocblock($expected),
+            $parser->parse(
+                $comment,
+                $this->getContextMock(self::NAMESPACE, self::ALIASES)
+            )
+        );
     }
 
     public function getParseTests(): array
@@ -35,7 +70,7 @@ class DocBlockParserTest extends TestCase
                 /**
                  */
                 ',
-                [],
+                [[]],
             ],
             [
                 '
@@ -43,11 +78,11 @@ class DocBlockParserTest extends TestCase
                  * The short desc.
                  */
                 ',
-                ['shortdesc' => 'The short desc.'],
+                [['shortdesc' => 'The short desc.']],
             ],
             [
                 '/** The short desc. */',
-                ['shortdesc' => 'The short desc.'],
+                [['shortdesc' => 'The short desc.']],
             ],
             [
                 '
@@ -56,7 +91,7 @@ class DocBlockParserTest extends TestCase
                  * lines.
                  */
                 ',
-                ['shortdesc' => "The short desc on two\nlines."],
+                [['shortdesc' => "The short desc on two\nlines."]],
             ],
             [
                 '
@@ -66,7 +101,7 @@ class DocBlockParserTest extends TestCase
                  * And a long desc.
                  */
                 ',
-                ['shortdesc' => 'The short desc.', 'longdesc' => 'And a long desc.'],
+                [['shortdesc' => 'The short desc.', 'longdesc' => 'And a long desc.']],
             ],
             [
                 '
@@ -80,7 +115,7 @@ class DocBlockParserTest extends TestCase
                  * With another paragraph.
                  */
                 ',
-                ['shortdesc' => "The short desc on two\nlines.", 'longdesc' => "And a long desc on\nseveral lines too.\n\nWith another paragraph."],
+                [['shortdesc' => "The short desc on two\nlines.", 'longdesc' => "And a long desc on\nseveral lines too.\n\nWith another paragraph."]],
             ],
             [
                 '
@@ -88,7 +123,7 @@ class DocBlockParserTest extends TestCase
                  * The short desc with a @tag embedded. And the short desc continues after dot on same line.
                  */
                 ',
-                ['shortdesc' => 'The short desc with a @tag embedded. And the short desc continues after dot on same line.'],
+                [['shortdesc' => 'The short desc with a @tag embedded. And the short desc continues after dot on same line.']],
             ],
             [
                 '
@@ -96,7 +131,7 @@ class DocBlockParserTest extends TestCase
                  * @see http://symfony.com/ This is a link description.
                  */
                 ',
-                ['tags' => ['see' => [['http://symfony.com/ This is a link description.', 'http://symfony.com/', 'This is a link description.']]]],
+                [['tags' => ['see' => [['http://symfony.com/ This is a link description.', 'http://symfony.com/', 'This is a link description.']]]]],
             ],
             [
                 '
@@ -104,7 +139,7 @@ class DocBlockParserTest extends TestCase
                  * @author fabien@example.com
                  */
                 ',
-                ['tags' => ['author' => 'fabien@example.com']],
+                [['tags' => ['author' => 'fabien@example.com']]],
             ],
             [
                 '
@@ -113,7 +148,7 @@ class DocBlockParserTest extends TestCase
                  * @author Thomas <thomas@example.com>
                  */
                 ',
-                ['tags' => ['author' => ['Fabien <fabien@example.com>', 'Thomas <thomas@example.com>']]],
+                [['tags' => ['author' => ['Fabien <fabien@example.com>', 'Thomas <thomas@example.com>']]]],
             ],
             [
                 '
@@ -122,11 +157,33 @@ class DocBlockParserTest extends TestCase
                  */
                 ',
                 [
-                    'tags' => [
-                        'var' => [ // Array from found tags.
-                            [ // First found tag.
-                                [['\SingleClass', false], ['\MultipleClass', true]], // Array from data types.
-                                'Property Description',
+                    'pure' => [
+                        'tags' => [
+                            'var' => [ // Array from found tags.
+                                [ // First found tag.
+                                    [['\SingleClass', false], ['\MultipleClass', true]], // Array from data types.
+                                    'Property Description',
+                                ],
+                            ],
+                        ],
+                    ],
+                    'namespace' => [
+                        'tags' => [
+                            'var' => [ // Array from found tags.
+                                [ // First found tag.
+                                    [[self::NAMESPACE . 'SingleClass', false], ['\MultipleClass', true]], // Array from data types.
+                                    'Property Description',
+                                ],
+                            ],
+                        ],
+                    ],
+                    'namespaceAndAlias' => [
+                        'tags' => [
+                            'var' => [ // Array from found tags.
+                                [ // First found tag.
+                                    [[self::ALIASES['SingleClass'], false], ['\MultipleClass', true]], // Array from data types.
+                                    'Property Description',
+                                ],
                             ],
                         ],
                     ],
@@ -139,14 +196,42 @@ class DocBlockParserTest extends TestCase
                  */
                 ',
                 [
-                    'shortDesc' => '',
-                    'longDesc' => '',
-                    'tags' => [
-                        'param' => [ // Array from found tags.
-                            [ // First found tag.
-                                [['\SingleClass', false], ['\MultipleClass', true]], // Array from data types.
-                                'paramName',
-                                'Param Description',
+                    'pure' => [
+                        'shortDesc' => '',
+                        'longDesc' => '',
+                        'tags' => [
+                            'param' => [ // Array from found tags.
+                                [ // First found tag.
+                                    [['\SingleClass', false], ['\MultipleClass', true]], // Array from data types.
+                                    'paramName',
+                                    'Param Description',
+                                ],
+                            ],
+                        ],
+                    ],
+                    'namespace' => [
+                        'shortDesc' => '',
+                        'longDesc' => '',
+                        'tags' => [
+                            'param' => [ // Array from found tags.
+                                [ // First found tag.
+                                    [[self::NAMESPACE . 'SingleClass', false], ['\MultipleClass', true]], // Array from data types.
+                                    'paramName',
+                                    'Param Description',
+                                ],
+                            ],
+                        ],
+                    ],
+                    'namespaceAndAlias' => [
+                        'shortDesc' => '',
+                        'longDesc' => '',
+                        'tags' => [
+                            'param' => [ // Array from found tags.
+                                [ // First found tag.
+                                    [[self::ALIASES['SingleClass'], false], ['\MultipleClass', true]], // Array from data types.
+                                    'paramName',
+                                    'Param Description',
+                                ],
                             ],
                         ],
                     ],
@@ -160,17 +245,51 @@ class DocBlockParserTest extends TestCase
                  */
                 ',
                 [
-                    'shortDesc' => '',
-                    'longDesc' => '',
-                    'tags' => [
-                        'throws' => [ // Array from found tags.
-                            [ // First found tag.
-                                '\SingleClass1',
-                                'Exception Description One',
+                    'pure' => [
+                        'shortDesc' => '',
+                        'longDesc' => '',
+                        'tags' => [
+                            'throws' => [ // Array from found tags.
+                                [ // First found tag.
+                                    '\SingleClass1',
+                                    'Exception Description One',
+                                ],
+                                [ // Second found tag.
+                                    '\SingleClass2',
+                                    'Exception Description Two',
+                                ],
                             ],
-                            [ // Second found tag.
-                                '\SingleClass2',
-                                'Exception Description Two',
+                        ],
+                    ],
+                    'namespace' => [
+                        'shortDesc' => '',
+                        'longDesc' => '',
+                        'tags' => [
+                            'throws' => [ // Array from found tags.
+                                [ // First found tag.
+                                    self::NAMESPACE . 'SingleClass1',
+                                    'Exception Description One',
+                                ],
+                                [ // Second found tag.
+                                    self::NAMESPACE . 'SingleClass2',
+                                    'Exception Description Two',
+                                ],
+                            ],
+                        ],
+                    ],
+                    'namespaceAndAlias' => [
+                        'shortDesc' => '',
+                        'longDesc' => '',
+                        'tags' => [
+                            'throws' => [ // Array from found tags.
+                                [ // First found tag.
+                                    self::NAMESPACE . 'SingleClass1',
+                                    'Exception Description One',
+                                ],
+                                [ // Second found tag.
+                                    self::ALIASES['SingleClass2'],
+                                    'Exception Description Two',
+                                ],
                             ],
                         ],
                     ],
@@ -183,11 +302,33 @@ class DocBlockParserTest extends TestCase
                  */
                 ',
                 [
-                    'tags' => [
-                        'return' => [ // Array from found tags.
-                            [ // First found tag.
-                                [['\SingleClass', false], ['\MultipleClass', true]], // Array from data types.
-                                'Return Description',
+                    'pure' => [
+                        'tags' => [
+                            'return' => [ // Array from found tags.
+                                [ // First found tag.
+                                    [['\SingleClass', false], ['\MultipleClass', true]], // Array from data types.
+                                    'Return Description',
+                                ],
+                            ],
+                        ],
+                    ],
+                    'namespace' => [
+                        'tags' => [
+                            'return' => [ // Array from found tags.
+                                [ // First found tag.
+                                    [[self::NAMESPACE . 'SingleClass', false], ['\MultipleClass', true]], // Array from data types.
+                                    'Return Description',
+                                ],
+                            ],
+                        ],
+                    ],
+                    'namespaceAndAlias' => [
+                        'tags' => [
+                            'return' => [ // Array from found tags.
+                                [ // First found tag.
+                                    [[self::ALIASES['SingleClass'], false], ['\MultipleClass', true]], // Array from data types.
+                                    'Return Description',
+                                ],
                             ],
                         ],
                     ],
@@ -215,58 +356,174 @@ class DocBlockParserTest extends TestCase
                 */
                ',
                 [
-                    'shortDesc' => '',
-                    'longDesc' => '',
-                    'tags' => [
-                        'author' => ['Author Name'],
-                        'covers' => ['\SomeClass::SomeMethod'],
-                        'deprecated' => ['1.0 for ever'],
-                        'todo' => ['Something needs to be done'],
-                        'example' => ['Description'],
-                        'link' => ['http://www.google.com'],
-                        'method' => ['void setInteger(int $integer)'],
-                        'property-read' => [   // array of all properties
-                            [                  // array of one property
-                                [              // array of all typehints of one property
-                                    [          // array of one typehint
-                                        'string',   // the typehint
-                                        null,       // whether or not the typehint is an array
+                    'pure' => [
+                        'shortDesc' => '',
+                        'longDesc' => '',
+                        'tags' => [
+                            'author' => ['Author Name'],
+                            'covers' => ['\SomeClass::SomeMethod'],
+                            'deprecated' => ['1.0 for ever'],
+                            'todo' => ['Something needs to be done'],
+                            'example' => ['Description'],
+                            'link' => ['http://www.google.com'],
+                            'method' => ['void setInteger(int $integer)'],
+                            'property-read' => [   // array of all properties
+                                [                  // array of one property
+                                    [              // array of all typehints of one property
+                                        [          // array of one typehint
+                                            'string',   // the typehint
+                                            null,       // whether or not the typehint is an array
+                                        ],
                                     ],
+                                    'myProperty',       // property name
+                                    '',                  // property description
                                 ],
-                                'myProperty',       // property name
-                                '',                  // property description
                             ],
-                        ],
-                        'property' => [        // see above
-                            [
+                            'property' => [        // see above
                                 [
                                     [
-                                        'string',
-                                        null,
+                                        [
+                                            'string',
+                                            null,
+                                        ],
                                     ],
+                                    'myProperty',
+                                    '',
                                 ],
-                                'myProperty',
-                                '',
                             ],
-                        ],
-                        'property-write' => [  // see above
-                            [
+                            'property-write' => [  // see above
                                 [
                                     [
-                                        'string',
-                                        null,
+                                        [
+                                            'string',
+                                            null,
+                                        ],
                                     ],
+                                    'myProperty',
+                                    '',
                                 ],
-                                'myProperty',
-                                '',
                             ],
+                            'see' => [['\SomeClass::SomeMethod This is a description.', '\SomeClass::SomeMethod', 'This is a description.']],
+                            'since' => ['1.0.1 First time this was introduced.'],
+                            'source' => ['2 1 Check that ensures lazy counting.'],
+                            'uses' => ['\MyClass::$items to retrieve the count from.'],
+                            'version' => ['1.0.1'],
+                            'unknown' => ['any text'],
                         ],
-                        'see' => [['\SomeClass::SomeMethod This is a description.', '\SomeClass::SomeMethod', 'This is a description.']],
-                        'since' => ['1.0.1 First time this was introduced.'],
-                        'source' => ['2 1 Check that ensures lazy counting.'],
-                        'uses' => ['\MyClass::$items to retrieve the count from.'],
-                        'version' => ['1.0.1'],
-                        'unknown' => ['any text'],
+                    ],
+                    'namespace' => [
+                        'shortDesc' => '',
+                        'longDesc' => '',
+                        'tags' => [
+                            'author' => ['Author Name'],
+                            'covers' => [self::NAMESPACE . 'SomeClass::SomeMethod'],
+                            'deprecated' => ['1.0 for ever'],
+                            'todo' => ['Something needs to be done'],
+                            'example' => ['Description'],
+                            'link' => ['http://www.google.com'],
+                            'method' => ['void setInteger(int $integer)'],
+                            'property-read' => [   // array of all properties
+                                [                  // array of one property
+                                    [              // array of all typehints of one property
+                                        [          // array of one typehint
+                                            'string',   // the typehint
+                                            null,       // whether or not the typehint is an array
+                                        ],
+                                    ],
+                                    'myProperty',       // property name
+                                    '',                  // property description
+                                ],
+                            ],
+                            'property' => [        // see above
+                                [
+                                    [
+                                        [
+                                            'string',
+                                            null,
+                                        ],
+                                    ],
+                                    'myProperty',
+                                    '',
+                                ],
+                            ],
+                            'property-write' => [  // see above
+                                [
+                                    [
+                                        [
+                                            'string',
+                                            null,
+                                        ],
+                                    ],
+                                    'myProperty',
+                                    '',
+                                ],
+                            ],
+                            'see' => [[self::NAMESPACE . 'SomeClass::SomeMethod This is a description.', self::NAMESPACE . 'SomeClass::SomeMethod', 'This is a description.']],
+                            'since' => ['1.0.1 First time this was introduced.'],
+                            'source' => ['2 1 Check that ensures lazy counting.'],
+                            'uses' => [self::NAMESPACE . 'MyClass::$items to retrieve the count from.'],
+                            'version' => ['1.0.1'],
+                            'unknown' => ['any text'],
+                        ],
+                    ],
+                    'namespaceAndAlias' => [
+                        'shortDesc' => '',
+                        'longDesc' => '',
+                        'tags' => [
+                            'author' => ['Author Name'],
+                            'covers' => [self::ALIASES['SomeClass'] . '::SomeMethod'],
+                            'deprecated' => ['1.0 for ever'],
+                            'todo' => ['Something needs to be done'],
+                            'example' => ['Description'],
+                            'link' => ['http://www.google.com'],
+                            'method' => ['void setInteger(int $integer)'],
+                            'property-read' => [   // array of all properties
+                                [                  // array of one property
+                                    [              // array of all typehints of one property
+                                        [          // array of one typehint
+                                            'string',   // the typehint
+                                            null,       // whether or not the typehint is an array
+                                        ],
+                                    ],
+                                    'myProperty',       // property name
+                                    '',                  // property description
+                                ],
+                            ],
+                            'property' => [        // see above
+                                [
+                                    [
+                                        [
+                                            'string',
+                                            null,
+                                        ],
+                                    ],
+                                    'myProperty',
+                                    '',
+                                ],
+                            ],
+                            'property-write' => [  // see above
+                                [
+                                    [
+                                        [
+                                            'string',
+                                            null,
+                                        ],
+                                    ],
+                                    'myProperty',
+                                    '',
+                                ],
+                            ],
+                            'see' => [[
+                                self::ALIASES['SomeClass'] . '::SomeMethod This is a description.',
+                                self::ALIASES['SomeClass'] . '::SomeMethod',
+                                'This is a description.'
+                            ]],
+                            'since' => ['1.0.1 First time this was introduced.'],
+                            'source' => ['2 1 Check that ensures lazy counting.'],
+                            'uses' => [self::NAMESPACE . 'MyClass::$items to retrieve the count from.'],
+                            'version' => ['1.0.1'],
+                            'unknown' => ['any text'],
+                        ],
                     ],
                 ],
             ],
@@ -279,7 +536,7 @@ class DocBlockParserTest extends TestCase
                 *
                 * @return array<int,string>
                 */',
-                [
+                [[
                     'shortDesc' => 'Saves the display field for a table.',
                     'longDesc' => '',
                     'tags' => [
@@ -307,7 +564,7 @@ class DocBlockParserTest extends TestCase
                             ],
                         ]
                     ],
-                ]
+                ]]
             ],
             [
                 '/**
@@ -319,7 +576,7 @@ class DocBlockParserTest extends TestCase
          *
          * @return array, $message
          */',
-                [
+                [[
                     'shortDesc' => "Prepares queries for adding users and\nalso create database and return query and message",
                     'longDesc' => '',
                     'tags' => [
@@ -349,7 +606,7 @@ class DocBlockParserTest extends TestCase
                             'array, $message',
                         ]
                     ],
-                ],
+                ]],
             ],
         ];
     }
@@ -379,5 +636,14 @@ class DocBlockParserTest extends TestCase
         }
 
         return $docblock;
+    }
+
+    private function getContextMock(string $namespace = '', array $aliases = []): MockObject
+    {
+        $contextMock = $this->getMockBuilder(ParserContext::class)->disableOriginalConstructor()->getMock();
+        $contextMock->expects($this->once())->method('getNamespace')->will($this->returnValue($namespace));
+        $contextMock->expects($this->once())->method('getAliases')->will($this->returnValue($aliases));
+
+        return $contextMock;
     }
 }

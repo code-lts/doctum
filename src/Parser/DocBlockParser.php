@@ -23,10 +23,11 @@ use phpDocumentor\Reflection\DocBlock\Tags\Throws;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use phpDocumentor\Reflection\DocBlock\Tags\InvalidTag;
 use phpDocumentor\Reflection\DocBlockFactory;
+use phpDocumentor\Reflection\Types\Context;
 
 class DocBlockParser
 {
-    public function parse(?string $comment): DocBlockNode
+    public function parse(?string $comment, ParserContext $context): DocBlockNode
     {
         $docBlock = null;
         $errorMessage = '';
@@ -38,7 +39,11 @@ class DocBlockParser
 
         try {
             $factory  = DocBlockFactory::createInstance();
-            $docBlock = $factory->create($comment);
+            $docBlockContext = new Context(
+                $context->getNamespace() ?? '',
+                $context->getAliases() ?: []
+            );
+            $docBlock = $factory->create($comment, $docBlockContext);
         } catch (\Exception $e) {
             $errorMessage = $e->getMessage();
         }

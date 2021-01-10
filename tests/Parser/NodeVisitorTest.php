@@ -334,6 +334,7 @@ class NodeVisitorTest extends AbstractTestCase
      */
     public function testUpdateMethodParametersFromTags(): void
     {
+        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
         $docBlockParser = new DocBlockParser();
         $docBlockNode = $docBlockParser->parse(
             '/**' . "\n"
@@ -342,9 +343,10 @@ class NodeVisitorTest extends AbstractTestCase
             . '* @param $param9' . "\n"
             . '* @param foo' . "\n"
             . '* @param type1 $param4 Description 4' . "\n"
-            . '**/' . "\n"
+            . '**/' . "\n",
+            $parserContext
         );
-        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+
         $visitor = new NodeVisitor($parserContext);
         $function = new FunctionReflection('fun1', 0);
 
@@ -373,13 +375,15 @@ class NodeVisitorTest extends AbstractTestCase
      */
     public function testUpdateMethodParametersFromTagsVariadic(): void
     {
+        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
         $docBlockParser = new DocBlockParser();
         $docBlockNode = $docBlockParser->parse(
             '/**' . "\n"
             . '* @param FooBar|baz|string ...$args' . "\n"
-            . '**/' . "\n"
+            . '**/' . "\n",
+            $parserContext
         );
-        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+
         $visitor = new NodeVisitor($parserContext);
         $function = new FunctionReflection('fun1', 0);
 
@@ -400,6 +404,8 @@ class NodeVisitorTest extends AbstractTestCase
      */
     public function testUpdateMethodParametersFromInvalidTags(): void
     {
+
+        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
         $docBlockParser = new DocBlockParser();
         $docBlockNode = $docBlockParser->parse(
             '/**' . "\n"
@@ -409,9 +415,10 @@ class NodeVisitorTest extends AbstractTestCase
             . '* @param foo' . "\n"
             . '* @param type1 $param4 Description 4' . "\n"
             . '* @param array[\Illuminate\Notifications\Channels\Notification]  $notification' . "\n"
-            . '**/' . "\n"
+            . '**/' . "\n",
+            $parserContext
         );
-        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+
         $visitor = new NodeVisitor($parserContext);
         $function = new FunctionReflection('fun1', 0);
 
@@ -441,13 +448,15 @@ class NodeVisitorTest extends AbstractTestCase
      */
     public function testUpdateMethodParametersFromInvalidTagsReport(): void
     {
+        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
         $docBlockParser = new DocBlockParser();
         $docBlockNode = $docBlockParser->parse(
             '/**' . "\n"
             . '* @param array[\Illuminate\Notifications\Channels\Notification]  $notification' . "\n"
-            . '**/' . "\n"
+            . '**/' . "\n",
+            $parserContext
         );
-        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+
         $visitor = new NodeVisitor($parserContext);
         $function = new FunctionReflection('fun1', 0);
 
@@ -472,13 +481,15 @@ class NodeVisitorTest extends AbstractTestCase
      */
     public function testAddTagFromCommentToMethodInvalidHint(): void
     {
+        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
         $docBlockParser = new DocBlockParser();
         $docBlockNode = $docBlockParser->parse(
             '/**' . "\n"
             . '* @var \Illuminate\Support\Carbon;' . "\n"
-            . '**/' . "\n"
+            . '**/' . "\n",
+            $parserContext
         );
-        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+
         $visitor = new NodeVisitor($parserContext);
         $property = new PropertyReflection('prop1', 0);
 
@@ -502,13 +513,15 @@ class NodeVisitorTest extends AbstractTestCase
      */
     public function testAddTagFromCommentToMethodHintVariadic(): void
     {
+        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
         $docBlockParser = new DocBlockParser();
         $docBlockNode = $docBlockParser->parse(
             '/**' . "\n"
             . '* @var FooBar|baz|string ...$args' . "\n"
-            . '**/' . "\n"
+            . '**/' . "\n",
+            $parserContext
         );
-        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+
         $visitor = new NodeVisitor($parserContext);
         $property = new PropertyReflection('args', 0);
 

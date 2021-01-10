@@ -85,7 +85,9 @@ class NodeVisitor extends NodeVisitorAbstract
     protected function addAliases(UseNode $node)
     {
         foreach ($node->uses as $use) {
-            $this->context->addAlias($use->alias !== null ? $use->alias->__toString() : null, $use->name->__toString());
+            $alias = $use->getAlias()->toString();
+            $fullName = $use->name->__toString();
+            $this->context->addAlias($alias, $fullName);
         }
     }
 
