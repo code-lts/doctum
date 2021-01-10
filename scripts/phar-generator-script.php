@@ -153,6 +153,7 @@ final class PharFilterIterator extends RecursiveFilterIterator
         'src/Resources/themes/default/data',
         'vendor/bin',
         'nikic/php-parser/bin',
+        'twig/twig/doc',
         'scripts',
         '.git',
         'cache',
