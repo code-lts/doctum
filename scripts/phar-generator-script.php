@@ -151,9 +151,10 @@ final class PharFilterIterator extends RecursiveFilterIterator
      */
     private static $excludedFolderPaths = [
         'src/Resources/themes/default/data',
+        'vendor/symfony/yaml/Resources/bin',
         'vendor/bin',
-        'nikic/php-parser/bin',
-        'twig/twig/doc',
+        'vendor/nikic/php-parser/bin',
+        'vendor/twig/twig/doc',
         'scripts',
         '.git',
         'cache',
