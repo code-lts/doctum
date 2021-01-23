@@ -1,6 +1,6 @@
 name: Run tests
 
-on: 
+on:
   push:
   pull_request:
     types: [opened, synchronize, reopened]
@@ -16,7 +16,7 @@ jobs:
                 php-version: ["7.2", "7.3", "7.4", "8.0"]
                 os: [ubuntu-latest]
         steps:
-            - uses: actions/checkout@v1
+            - uses: actions/checkout@v2
             - name: Use php ${{ matrix.php-version }}
               uses: shivammathur/setup-php@v2
               with:
@@ -43,7 +43,7 @@ jobs:
         name: Run command line tests on the phar
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v1
+            - uses: actions/checkout@v2
             - name: Run phar tests
               uses: sudo-bot/action-shunit2@latest
               with:
