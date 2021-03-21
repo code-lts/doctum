@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -16,6 +18,7 @@ use Doctum\Reflection\ClassReflection;
 
 interface StoreInterface
 {
+
     public function readClass(Project $project, $name);
 
     public function writeClass(Project $project, ClassReflection $class);
@@ -25,4 +28,5 @@ interface StoreInterface
     public function readProject(Project $project);
 
     public function flushProject(Project $project);
+
 }

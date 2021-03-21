@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -30,20 +32,21 @@ class Parser
 
     public function __construct($iterator, StoreInterface $store, CodeParser $parser, ClassTraverser $traverser)
     {
-        $this->iterator = $this->createIterator($iterator);
-        $this->store = $store;
-        $this->parser = $parser;
+        $this->iterator  = $this->createIterator($iterator);
+        $this->store     = $store;
+        $this->parser    = $parser;
         $this->traverser = $traverser;
     }
 
     public function parse(Project $project, $callback = null)
     {
-        $step = 0;
-        $steps = iterator_count($this->iterator);
-        $context = $this->parser->getContext();
+        $step        = 0;
+        $steps       = iterator_count($this->iterator);
+        $context     = $this->parser->getContext();
         $transaction = new Transaction($project);
-        $toStore = new \SplObjectStorage();
+        $toStore     = new \SplObjectStorage();
         foreach ($this->iterator as $file) {
+            $file = $file->getPathname();
             ++$step;
 
             $code = file_get_contents($file);
@@ -113,4 +116,5 @@ class Parser
 
         return $iterator;
     }
+
 }

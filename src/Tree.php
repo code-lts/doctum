@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -13,10 +15,11 @@ namespace Doctum;
 
 class Tree
 {
+
     public function getTree(Project $project)
     {
         $namespaces = [];
-        $ns = $project->getNamespaces();
+        $ns         = $project->getNamespaces();
         foreach ($ns as $namespace) {
             if (false !== $pos = strpos($namespace, '\\')) {
                 $namespaces[substr($namespace, 0, $pos)][] = $namespace;
@@ -49,8 +52,8 @@ class Tree
             }
 
             $parts = explode('\\', $namespace);
-            $url = '';
-            $url = $parts[count($parts) - 1]
+            $url   = '';
+            $url   = $parts[count($parts) - 1]
                     && $project->hasNamespace($namespace)
                     && (count($subnamespaces) || count($cl)) ? $namespace : '';
             $short = $parts[count($parts) - 1] ? $parts[count($parts) - 1] : '[Global Namespace]';
@@ -66,4 +69,5 @@ class Tree
 
         return $tree;
     }
+
 }

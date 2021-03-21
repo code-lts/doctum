@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -26,8 +28,8 @@ class CodeParser
 
     public function __construct(ParserContext $context, PhpParser $parser, NodeTraverser $traverser)
     {
-        $this->context = $context;
-        $this->parser = $parser;
+        $this->context   = $context;
+        $this->parser    = $parser;
         $this->traverser = $traverser;
 
         // with big fluent interfaces it can happen that PHP-Parser's Traverser
@@ -48,4 +50,5 @@ class CodeParser
             $this->context->addError($this->context->getFile(), 0, $e->getMessage());
         }
     }
+
 }

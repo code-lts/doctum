@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -107,7 +109,15 @@ abstract class Command extends BaseCommand
 
     protected function addOutputFormatOption(): void
     {
-        $this->getDefinition()->addOption(new InputOption('output-format', '', InputOption::VALUE_REQUIRED, 'The format to display errors', OutputFormat::OUTPUT_FORMAT_RAW_TEXT));
+        $this->getDefinition()->addOption(
+            new InputOption(
+                'output-format',
+                '',
+                InputOption::VALUE_REQUIRED,
+                'The format to display errors',
+                OutputFormat::OUTPUT_FORMAT_RAW_TEXT
+            )
+        );
     }
 
     protected function addNoProgressOption(): void
@@ -128,17 +138,17 @@ abstract class Command extends BaseCommand
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
         $this->input = $input;
-        $stdErr = $output;
+        $stdErr      = $output;
 
         if ($output instanceof ConsoleOutputInterface) {
             $stdErr = $output->getErrorOutput();
         }
         $errorConsoleStyle = new ErrorsConsoleStyle($this->input, $output);
-        $this->output = new SymfonyOutput($output, new SymfonyStyle($errorConsoleStyle));
+        $this->output      = new SymfonyOutput($output, new SymfonyStyle($errorConsoleStyle));
         $this->errorOutput = new SymfonyOutput($stdErr, new SymfonyStyle($errorConsoleStyle));
 
         /** @var string $config */
-        $config = $input->getArgument('config');
+        $config     = $input->getArgument('config');
         $filesystem = new Filesystem();
 
         if ($config && !$filesystem->isAbsolutePath($config)) {
@@ -170,9 +180,7 @@ abstract class Command extends BaseCommand
 
         $this->sourceRootDirectory = $project->getSourceDir();
         $this->output->writeFormatted(
-            $this->output->isDecorated() ?
-            '<bg=cyan;fg=white> Updating project </>'
-            : 'Updating project'
+            $this->output->isDecorated() ? '<bg=cyan;fg=white> Updating project </>' : 'Updating project'
         );
         $project->update([$this, 'messageCallback'], $this->input->getOption('force'));
 
@@ -191,9 +199,7 @@ abstract class Command extends BaseCommand
         $project->parse([$this, 'messageCallback'], $this->input->getOption('force'));
         $this->sourceRootDirectory = $project->getSourceDir();
         $this->output->writeFormatted(
-            $this->output->isDecorated() ?
-            '<bg=cyan;fg=white> Parsing project </>'
-            : 'Parsing project'
+            $this->output->isDecorated() ? '<bg=cyan;fg=white> Parsing project </>' : 'Parsing project'
         );
 
         $this->displayParseSummary();
@@ -210,9 +216,7 @@ abstract class Command extends BaseCommand
         $project->render([$this, 'messageCallback'], $this->input->getOption('force'));
         $this->sourceRootDirectory = $project->getSourceDir();
         $this->output->writeFormatted(
-            $this->output->isDecorated() ?
-            '<bg=cyan;fg=white> Rendering project </>'
-            : 'Rendering project'
+            $this->output->isDecorated() ? '<bg=cyan;fg=white> Rendering project </>' : 'Rendering project'
         );
 
         $this->displayRenderSummary();
@@ -265,7 +269,7 @@ abstract class Command extends BaseCommand
                 break;
             case Message::SWITCH_VERSION:
                 $this->version = $data;
-                $this->errors = [];
+                $this->errors  = [];
                 $this->started = false;
                 $this->displayNewVersion();
                 break;
@@ -328,14 +332,12 @@ abstract class Command extends BaseCommand
 
         $errorsPluralText = (1 === count($this->errors) ? '' : 's');
         $this->output->writeFormatted(
-            $this->output->isDecorated() ?
-            sprintf(
+            $this->output->isDecorated() ? sprintf(
                 '  Parsing %s' . AnsiEscapeSequences::ERASE_TO_LINE_END . "\n          %s"
                 . AnsiEscapeSequences::ERASE_TO_LINE_END . "\n",
                 count($this->errors) ? ' <fg=red>' . count($this->errors) . ' error' . $errorsPluralText . '</>' : '',
                 $class->getName()
-            )
-            : sprintf(
+            ) : sprintf(
                 'Parsing %s %s' . "\n",
                 $class->getName(),
                 count($this->errors) ? 'total: ' . count($this->errors) . ' error' . $errorsPluralText : ''
@@ -360,15 +362,13 @@ abstract class Command extends BaseCommand
         }
 
         $this->output->writeFormatted(
-            $this->output->isDecorated() ?
-            sprintf(
+            $this->output->isDecorated() ? sprintf(
                 '  Rendering '
                 . AnsiEscapeSequences::ERASE_TO_LINE_END
                 . "\n            <info>%s</info> %s" . AnsiEscapeSequences::ERASE_TO_LINE_END . "\n",
                 $section,
                 $message
-            )
-            : sprintf(
+            ) : sprintf(
                 'Rendering %s %s' . "\n",
                 $section,
                 $message
@@ -383,11 +383,9 @@ abstract class Command extends BaseCommand
         }
 
         $this->output->writeFormatted(
-            $this->output->isDecorated() ?
-            AnsiEscapeSequences::MOVE_CURSOR_UP_2 . "<info>  Parsing   done</info>"
+            $this->output->isDecorated() ? AnsiEscapeSequences::MOVE_CURSOR_UP_2 . '<info>  Parsing   done</info>'
             . AnsiEscapeSequences::ERASE_TO_LINE_END . "\n"
-            . AnsiEscapeSequences::ERASE_TO_LINE_END . "\n" . AnsiEscapeSequences::MOVE_CURSOR_UP_1
-            : 'Parsing done' . "\n"
+            . AnsiEscapeSequences::ERASE_TO_LINE_END . "\n" . AnsiEscapeSequences::MOVE_CURSOR_UP_1 : 'Parsing done' . "\n"
         );
         if ($this->output->isVerbose() && count($this->errors) > 0) {
             $this->output->writeLineFormatted('');
@@ -415,13 +413,11 @@ abstract class Command extends BaseCommand
         }
 
         $this->output->writeFormatted(
-            $this->output->isDecorated() ?
-            AnsiEscapeSequences::MOVE_CURSOR_UP_2
+            $this->output->isDecorated() ? AnsiEscapeSequences::MOVE_CURSOR_UP_2
             . '<info>  Rendering done</info>'
             . AnsiEscapeSequences::ERASE_TO_LINE_END . "\n"
             . AnsiEscapeSequences::ERASE_TO_LINE_END . "\n"
-            . AnsiEscapeSequences::MOVE_CURSOR_UP_1
-            : 'Rendering done' . "\n"
+            . AnsiEscapeSequences::MOVE_CURSOR_UP_1 : 'Rendering done' . "\n"
         );
         $this->output->writeLineFormatted('');
     }
@@ -433,10 +429,19 @@ abstract class Command extends BaseCommand
         }
 
         $this->output->writeLineFormatted('');
-        $this->output->writeLineFormatted('<bg=cyan;fg=white> Version </>  <bg=cyan;fg=white> Updated C </>  <bg=cyan;fg=white> Removed C </>');
+        $this->output->writeLineFormatted(
+            '<bg=cyan;fg=white> Version </>  <bg=cyan;fg=white> Updated C </>  <bg=cyan;fg=white> Removed C </>'
+        );
 
         foreach ($this->transactions as $version => $transaction) {
-            $this->output->writeLineFormatted(sprintf('%9s  %11d  %11d', $version, count($transaction->getModifiedClasses()), count($transaction->getRemovedClasses())));
+            $this->output->writeLineFormatted(
+                sprintf(
+                    '%9s  %11d  %11d',
+                    $version,
+                    count($transaction->getModifiedClasses()),
+                    count($transaction->getRemovedClasses())
+                )
+            );
         }
         $this->output->writeLineFormatted('');
     }
@@ -447,17 +452,23 @@ abstract class Command extends BaseCommand
             return;
         }
 
-        $this->output->writeLineFormatted('<bg=cyan;fg=white> Version </>  <bg=cyan;fg=white> Updated C </>  <bg=cyan;fg=white> Updated N </>  <bg=cyan;fg=white> Removed C </>  <bg=cyan;fg=white> Removed N </>');
+        $this->output->writeLineFormatted(
+            '<bg=cyan;fg=white> Version </>  <bg=cyan;fg=white> Updated C </>'
+            . '  <bg=cyan;fg=white> Updated N </>  <bg=cyan;fg=white> Removed C </>'
+            . '  <bg=cyan;fg=white> Removed N </>'
+        );
 
         foreach ($this->diffs as $version => $diff) {
-            $this->output->writeLineFormatted(sprintf(
-                '%9s  %11d  %11d  %11d  %11d',
-                $version,
-                count($diff->getModifiedClasses()),
-                count($diff->getModifiedNamespaces()),
-                count($diff->getRemovedClasses()),
-                count($diff->getRemovedNamespaces())
-            ));
+            $this->output->writeLineFormatted(
+                sprintf(
+                    '%9s  %11d  %11d  %11d  %11d',
+                    $version,
+                    count($diff->getModifiedClasses()),
+                    count($diff->getModifiedNamespaces()),
+                    count($diff->getRemovedClasses()),
+                    count($diff->getRemovedNamespaces())
+                )
+            );
         }
         $this->output->writeLineFormatted('');
     }
@@ -474,4 +485,5 @@ abstract class Command extends BaseCommand
     {
         return require $config;
     }
+
 }

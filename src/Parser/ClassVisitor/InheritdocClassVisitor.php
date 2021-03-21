@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -16,6 +18,7 @@ use Doctum\Reflection\ClassReflection;
 
 class InheritdocClassVisitor implements ClassVisitorInterface
 {
+
     public function visit(ClassReflection $class)
     {
         $modified = false;
@@ -71,4 +74,5 @@ class InheritdocClassVisitor implements ClassVisitorInterface
 
         return $modified;
     }
+
 }

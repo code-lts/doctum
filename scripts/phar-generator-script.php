@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Doctum;
 
@@ -13,7 +13,7 @@ use RecursiveIteratorIterator;
 use RecursiveFilterIterator;
 use FilesystemIterator;
 
-$srcRoot = realpath(__DIR__ . '/..') . DIRECTORY_SEPARATOR;
+$srcRoot   = realpath(__DIR__ . '/..') . DIRECTORY_SEPARATOR;
 $buildRoot = realpath(__DIR__ . '/../build');
 
 if (file_exists($buildRoot . '/doctum.phar')) {
@@ -181,14 +181,13 @@ final class PharFilterIterator extends RecursiveFilterIterator
             return true;
         }
 
-        $isExcludedFile = in_array($current->getBasename(), static::$excludedFilesNames);
+        $isExcludedFile      = in_array($current->getBasename(), static::$excludedFilesNames);
         $isExcludedExtension = in_array($current->getExtension(), static::$excludedFilesExtensions);
 
         if ($isExcludedFile || $isExcludedExtension) {
             static::$excludedFiles[] = $relativePath;
             return false;
         }
-
 
         static::$acceptedFiles[] = $relativePath;
 
@@ -218,6 +217,7 @@ final class PharFilterIterator extends RecursiveFilterIterator
     {
         return static::$excludedFolders;
     }
+
 }
 
 $filter = new PharFilterIterator($iterator);
@@ -227,7 +227,8 @@ $pharFilesList = new RecursiveIteratorIterator($filter);
 $phar->setStub($shebang . PHP_EOL . $stub);
 $phar->setSignatureAlgorithm(Phar::SHA256);
 $phar->buildFromIterator($pharFilesList, $srcRoot);
-$phar->setMetadata([
+$phar->setMetadata(
+    [
     'vcs.git' => 'https://github.com/code-lts/doctum.git',
     'vcs.browser' => 'https://github.com/code-lts/doctum',
     'version' => $version,
@@ -235,10 +236,11 @@ $phar->setMetadata([
     'license' => 'MIT',
     'vendor' => 'Doctum',
     'name' => 'Doctum',
-]);
+    ]
+);
 
 $files = array_map(
-    function (string $fileRelativePath) {
+    static function (string $fileRelativePath) {
         return [
             'name' => $fileRelativePath,
             'sha256' => hash_file('sha256', $fileRelativePath),

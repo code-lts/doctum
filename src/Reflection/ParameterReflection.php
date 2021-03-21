@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -127,16 +129,17 @@ class ParameterReflection extends Reflection
 
     public static function fromArray(Project $project, $array)
     {
-        $parameter = new self($array['name'], $array['line']);
+        $parameter            = new self($array['name'], $array['line']);
         $parameter->shortDesc = $array['short_desc'];
-        $parameter->longDesc = $array['long_desc'];
-        $parameter->hint = $array['hint'];
-        $parameter->tags = $array['tags'];
+        $parameter->longDesc  = $array['long_desc'];
+        $parameter->hint      = $array['hint'];
+        $parameter->tags      = $array['tags'];
         $parameter->modifiers = $array['modifiers'];
-        $parameter->default = $array['default'];
-        $parameter->variadic = $array['variadic'];
-        $parameter->byRef = $array['is_by_ref'];
+        $parameter->default   = $array['default'];
+        $parameter->variadic  = $array['variadic'];
+        $parameter->byRef     = $array['is_by_ref'];
 
         return $parameter;
     }
+
 }

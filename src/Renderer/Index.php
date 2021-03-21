@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -19,7 +21,7 @@ class Index implements \Serializable
     protected $versions;
     protected $namespaces;
 
-    public function __construct(Project $project = null)
+    public function __construct(?Project $project = null)
     {
         $this->classes = [];
         if (null !== $project) {
@@ -70,4 +72,5 @@ class Index implements \Serializable
     {
         [$this->classes, $this->versions, $this->namespaces] = unserialize($data);
     }
+
 }

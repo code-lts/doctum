@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -38,8 +40,8 @@ class GitVersionCollection extends VersionCollection
 
     public function __construct(string $repo)
     {
-        $this->repo = $repo;
-        $this->filter = function ($version) {
+        $this->repo    = $repo;
+        $this->filter  = static function ($version) {
             foreach (['PR', 'RC', 'BETA', 'ALPHA'] as $str) {
                 if (strpos($version, $str)) {
                     return false;
@@ -48,7 +50,7 @@ class GitVersionCollection extends VersionCollection
 
             return true;
         };
-        $this->sorter = function ($a, $b) {
+        $this->sorter  = static function ($a, $b) {
             return version_compare($a, $b, '>');
         };
         $this->gitPath = 'git';
@@ -97,7 +99,7 @@ class GitVersionCollection extends VersionCollection
                 foreach ((array) $filter as $f) {
                     $regexes[] = Glob::toRegex($f);
                 }
-                $filter = function ($version) use ($regexes) {
+                $filter = static function ($version) use ($regexes) {
                     foreach ($regexes as $regex) {
                         if (preg_match($regex, $version)) {
                             return true;
@@ -134,4 +136,5 @@ class GitVersionCollection extends VersionCollection
 
         return $process->getOutput();
     }
+
 }

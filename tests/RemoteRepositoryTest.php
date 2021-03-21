@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Doctum\Tests;
 
 use Doctum\RemoteRepository\BitBucketRemoteRepository;
@@ -12,6 +14,7 @@ use PHPUnit\Framework\TestCase;
  */
 class RemoteRepositoryTest extends TestCase
 {
+
     /**
      * Test for BitBucketRemoteRepository class
      */
@@ -55,4 +58,5 @@ class RemoteRepositoryTest extends TestCase
         $this->assertEquals('src/Project.php', $repo->getRelativePath('./src/Project.php'));
         $this->assertEquals('', $repo->getRelativePath('src/Project.php'));
     }
+
 }

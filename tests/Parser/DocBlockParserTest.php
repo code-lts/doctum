@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -20,7 +22,7 @@ use Doctum\Parser\Node\DocBlockNode;
 class DocBlockParserTest extends TestCase
 {
     private const NAMESPACE = '\\Foobar\\';
-    private const ALIASES = [
+    private const ALIASES   = [
         'SingleClass' => '\\Foo\\Bar\\Baz',
         'SingleClass2' => '\\Foo\\Bar\\SingleClass2',
         'SomeClass' => '\\Foo\\SomeClass',
@@ -31,7 +33,7 @@ class DocBlockParserTest extends TestCase
      */
     public function testParse(string $comment, array $expected): void
     {
-        $parser = new DocBlockParser();
+        $parser   = new DocBlockParser();
         $expected = isset($expected['pure']) ? $expected['pure'] : $expected[0];
         $this->assertEquals($this->createDocblock($expected), $parser->parse($comment, $this->getContextMock()));
     }
@@ -41,7 +43,7 @@ class DocBlockParserTest extends TestCase
      */
     public function testParseWithNamespace(string $comment, array $expected): void
     {
-        $parser = new DocBlockParser();
+        $parser   = new DocBlockParser();
         $expected = isset($expected['namespace']) ? $expected['namespace'] : $expected[0];
         $this->assertEquals($this->createDocblock($expected), $parser->parse($comment, $this->getContextMock(self::NAMESPACE)));
     }
@@ -51,7 +53,7 @@ class DocBlockParserTest extends TestCase
      */
     public function testParseWithAliases(string $comment, array $expected): void
     {
-        $parser = new DocBlockParser();
+        $parser   = new DocBlockParser();
         $expected = isset($expected['namespaceAndAlias']) ? $expected['namespaceAndAlias'] : $expected[0];
         $this->assertEquals(
             $this->createDocblock($expected),
@@ -458,7 +460,12 @@ class DocBlockParserTest extends TestCase
                                     '',
                                 ],
                             ],
-                            'see' => [[self::NAMESPACE . 'SomeClass::SomeMethod This is a description.', self::NAMESPACE . 'SomeClass::SomeMethod', 'This is a description.']],
+                            'see' => [
+                                [
+                                    self::NAMESPACE . 'SomeClass::SomeMethod This is a description.',
+                                    self::NAMESPACE . 'SomeClass::SomeMethod', 'This is a description.'
+                                ]
+                            ],
                             'since' => ['1.0.1 First time this was introduced.'],
                             'source' => ['2 1 Check that ensures lazy counting.'],
                             'uses' => [self::NAMESPACE . 'MyClass::$items to retrieve the count from.'],
@@ -611,23 +618,32 @@ class DocBlockParserTest extends TestCase
         ];
     }
 
+    /**
+     * @param array[] $value
+     */
+    private function addDocblockForTags(DocBlockNode $docblock, array $value): DocBlockNode
+    {
+        foreach ($value as $tag => $value) {
+            if (!is_array($value)) {
+                $value = [$value];
+            }
+            foreach ($value as $v) {
+                if (($tag === 'covers' || $tag === 'version') && PHP_MAJOR_VERSION === 7 && PHP_MINOR_VERSION === 1) {
+                    $v = $v . ' ';
+                }
+                $docblock->addTag($tag, $v);
+            }
+        }
+        return $docblock;
+    }
+
     private function createDocblock(array $elements): DocBlockNode
     {
         $docblock = new DocBlockNode();
         foreach ($elements as $key => $value) {
             switch ($key) {
                 case 'tags':
-                    foreach ($value as $tag => $value) {
-                        if (!is_array($value)) {
-                            $value = [$value];
-                        }
-                        foreach ($value as $v) {
-                            if (($tag === 'covers' || $tag === 'version') && PHP_MAJOR_VERSION === 7 && PHP_MINOR_VERSION === 1) {
-                                $v = $v . ' ';
-                            }
-                            $docblock->addTag($tag, $v);
-                        }
-                    }
+                    $docblock = $this->addDocblockForTags($docblock, $value);
                     break;
                 default:
                     $method = 'set' . $key;
@@ -646,4 +662,5 @@ class DocBlockParserTest extends TestCase
 
         return $contextMock;
     }
+
 }

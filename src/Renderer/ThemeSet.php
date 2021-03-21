@@ -9,6 +9,8 @@
  * with this source code in the file LICENSE.
  */
 
+declare(strict_types = 1);
+
 namespace Doctum\Renderer;
 
 use Symfony\Component\Finder\Finder;
@@ -35,15 +37,22 @@ class ThemeSet
     protected function discover(array $dirs)
     {
         $this->themes = [];
-        $parents = [];
-        foreach (Finder::create()->name('manifest.yml')->in($dirs) as $manifest) {
-            $text = file_get_contents($manifest);
+        $parents      = [];
+        $themes       = Finder::create()->name('manifest.yml')->files()->in($dirs)->getIterator();
+        foreach ($themes as $manifest) {
+            $manifest = $manifest->getPathname();
+            if (! file_exists($manifest)) {
+                // This should not exist
+                throw new \InvalidArgumentException(sprintf('Theme manifest "%s" is not a file.', $manifest));
+            }
+            $text   = file_get_contents($manifest);
             $config = Yaml::parse($text);
             if (!isset($config['name'])) {
                 throw new \InvalidArgumentException(sprintf('Theme manifest in "%s" must have a "name" entry.', $manifest));
             }
 
-            $this->themes[$config['name']] = $theme = new Theme($config['name'], dirname($manifest));
+            $theme                         = new Theme($config['name'], dirname($manifest));
+            $this->themes[$config['name']] = $theme;
 
             if (isset($config['parent'])) {
                 $parents[$config['name']] = $config['parent'];
@@ -65,4 +74,5 @@ class ThemeSet
             $this->themes[$name]->setParent($this->themes[$parent]);
         }
     }
+
 }

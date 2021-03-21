@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -21,7 +23,7 @@ class Theme
     public function __construct($name, $dir)
     {
         $this->name = $name;
-        $this->dir = $dir;
+        $this->dir  = $dir;
     }
 
     public function getTemplateDirs()
@@ -69,4 +71,5 @@ class Theme
     {
         $this->templates[$type] = $templates;
     }
+
 }

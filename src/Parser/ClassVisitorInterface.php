@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -15,5 +17,7 @@ use Doctum\Reflection\ClassReflection;
 
 interface ClassVisitorInterface
 {
+
     public function visit(ClassReflection $class);
+
 }

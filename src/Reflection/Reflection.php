@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -15,12 +17,12 @@ use Doctum\Project;
 
 abstract class Reflection
 {
-    public const MODIFIER_PUBLIC = 1;
-    public const MODIFIER_PROTECTED = 2;
-    public const MODIFIER_PRIVATE = 4;
-    public const MODIFIER_STATIC = 8;
-    public const MODIFIER_ABSTRACT = 16;
-    public const MODIFIER_FINAL = 32;
+    public const MODIFIER_PUBLIC            = 1;
+    public const MODIFIER_PROTECTED         = 2;
+    public const MODIFIER_PRIVATE           = 4;
+    public const MODIFIER_STATIC            = 8;
+    public const MODIFIER_ABSTRACT          = 16;
+    public const MODIFIER_FINAL             = 32;
     protected const VISIBILITY_MODIFER_MASK = 7; // 1 | 2 | 4
 
     /** @var string */
@@ -91,7 +93,7 @@ abstract class Reflection
             return [];
         }
 
-        $hints = [];
+        $hints   = [];
         $project = $this->getClass()->getProject();
         foreach ($this->hint as $hint) {
             $hints[] = new HintReflection(Project::isPhpTypeHint($hint[0]) ? $hint[0] : $project->getClass($hint[0]), $hint[1]);
@@ -198,7 +200,7 @@ abstract class Reflection
         /** @var Project $project */
         $project = $this->getClass()->getProject();
 
-        $class = $project->getClass($seeElem[2]);
+        $class  = $project->getClass($seeElem[2]);
         $method = $class->getMethod($seeElem[3]);
 
         if ($method) {
@@ -227,4 +229,5 @@ abstract class Reflection
     {
         $this->errors = $errors;
     }
+
 }

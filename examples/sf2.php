@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 use Doctum\Doctum;
 use Doctum\Version\GitVersionCollection;
 use Symfony\Component\Finder\Finder;
@@ -9,16 +11,16 @@ $iterator = Finder::create()
     ->name('*.php')
     ->exclude('Resources')
     ->exclude('Tests')
-    ->in($dir = '/path/to/symfony/src')
-;
+    ->in($dir = '/path/to/symfony/src');
 
 $versions = GitVersionCollection::create($dir)
     ->addFromTags('v2.0.*')
     ->add('2.0', '2.0 branch')
-    ->add('master', 'master branch')
-;
+    ->add('master', 'master branch');
 
-return new Doctum($iterator, [
+return new Doctum(
+    $iterator,
+    [
     'theme'                => 'symfony',
     'versions'             => $versions,
     'title'                => 'Symfony2 API',
@@ -27,4 +29,5 @@ return new Doctum($iterator, [
     // use a custom theme directory
     'template_dirs'        => [__DIR__ . '/themes/symfony'],
     'default_opened_level' => 2,
-]);
+    ]
+);

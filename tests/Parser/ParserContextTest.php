@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Doctum\Tests\Parser;
 
 use PhpParser\PrettyPrinter\Standard as PrettyPrinter;
@@ -11,14 +13,15 @@ use Doctum\Reflection\ClassReflection;
 
 class ParserContextTest extends TestCase
 {
+
     public function testLeaveClassBeforeEnter(): void
     {
-        $filter = new TrueFilter();
+        $filter         = new TrueFilter();
         $docBlockParser = new DocBlockParser();
-        $prettyPrinter = new PrettyPrinter();
+        $prettyPrinter  = new PrettyPrinter();
 
         $context = new ParserContext($filter, $docBlockParser, $prettyPrinter);
-        $class = new ClassReflection('C1', 1);
+        $class   = new ClassReflection('C1', 1);
 
         $context->enterFile(null, null);
 
@@ -33,4 +36,5 @@ class ParserContextTest extends TestCase
 
         $this->assertContainsOnlyInstancesOf(ClassReflection::class, $classes);
     }
+
 }

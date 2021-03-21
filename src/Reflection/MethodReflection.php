@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -156,24 +158,27 @@ class MethodReflection extends Reflection
             'is_by_ref' => $this->byRef,
             'exceptions' => $this->exceptions,
             'errors' => $this->errors,
-            'parameters' => array_map(function ($parameter) {
-                return $parameter->toArray();
-            }, $this->parameters),
+            'parameters' => array_map(
+                static function ($parameter) {
+                    return $parameter->toArray();
+                },
+                $this->parameters
+            ),
         ];
     }
 
     public static function fromArray(Project $project, $array)
     {
-        $method = new self($array['name'], $array['line']);
-        $method->shortDesc = $array['short_desc'];
-        $method->longDesc = $array['long_desc'];
-        $method->hint = $array['hint'];
-        $method->hintDesc = $array['hint_desc'];
-        $method->tags = $array['tags'];
-        $method->modifiers = $array['modifiers'];
-        $method->byRef = $array['is_by_ref'];
+        $method             = new self($array['name'], $array['line']);
+        $method->shortDesc  = $array['short_desc'];
+        $method->longDesc   = $array['long_desc'];
+        $method->hint       = $array['hint'];
+        $method->hintDesc   = $array['hint_desc'];
+        $method->tags       = $array['tags'];
+        $method->modifiers  = $array['modifiers'];
+        $method->byRef      = $array['is_by_ref'];
         $method->exceptions = $array['exceptions'];
-        $method->errors = $array['errors'];
+        $method->errors     = $array['errors'];
 
         foreach ($array['parameters'] as $parameter) {
             $method->addParameter(ParameterReflection::fromArray($project, $parameter));
@@ -181,4 +186,5 @@ class MethodReflection extends Reflection
 
         return $method;
     }
+
 }

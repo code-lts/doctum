@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -57,25 +59,34 @@ class Project
     /** @var string */
     protected $sourceDir;
 
-    public function __construct(StoreInterface $store, VersionCollection $versions = null, array $config = [])
+    public function __construct(StoreInterface $store, ?VersionCollection $versions = null, array $config = [])
     {
         if (null === $versions) {
             $versions = new SingleVersionCollection(new Version(Doctum::$defaultVersionName));
         }
-        $this->versions = $versions;
-        $this->store = $store;
-        $this->config = array_merge([
+        $this->versions   = $versions;
+        $this->store      = $store;
+        $this->config     = array_merge(
+            [
             'build_dir' => sys_get_temp_dir() . 'doctum/build',
             'cache_dir' => sys_get_temp_dir() . 'doctum/cache',
             'include_parent_data' => true,
             'theme' => 'default',
-        ], $config);
+            ],
+            $config
+        );
         $this->filesystem = new Filesystem();
 
         if (count($this->versions) > 1) {
             foreach (['build_dir', 'cache_dir'] as $dir) {
                 if (false === strpos($this->config[$dir], '%version%')) {
-                    throw new \LogicException(sprintf('The "%s" setting must have the "%%version%%" placeholder as the project has more than one version.', $dir));
+                    throw new \LogicException(
+                        sprintf(
+                            'The "%s" setting must have the "%%version%%" placeholder'
+                            . ' as the project has more than one version.',
+                            $dir
+                        )
+                    );
                 }
             }
         }
@@ -158,7 +169,7 @@ class Project
             call_user_func($callback, Message::SWITCH_VERSION, $version);
         }
 
-        $this->version = $version;
+        $this->version = $version->getName();
 
         $this->initialize();
 
@@ -247,8 +258,8 @@ class Project
 
     public function getNamespaceSubNamespaces($parent): array
     {
-        $prefix = strlen($parent) ? ($parent . '\\') : '';
-        $len = strlen($prefix);
+        $prefix     = strlen($parent) ? ($parent . '\\') : '';
+        $len        = strlen($prefix);
         $namespaces = [];
 
         foreach ($this->namespaces as $sub) {
@@ -347,10 +358,10 @@ class Project
 
     public function initialize()
     {
-        $this->namespaces = [];
-        $this->interfaces = [];
-        $this->classes = [];
-        $this->namespaceClasses = [];
+        $this->namespaces          = [];
+        $this->interfaces          = [];
+        $this->classes             = [];
+        $this->namespaceClasses    = [];
         $this->namespaceInterfaces = [];
         $this->namespaceExceptions = [];
     }
@@ -391,7 +402,30 @@ class Project
 
     public static function isPhpTypeHint($hint): bool
     {
-        return in_array(strtolower($hint), ['', 'scalar', 'object', 'boolean', 'bool', 'true', 'false', 'int', 'integer', 'array', 'string', 'mixed', 'void', 'null', 'resource', 'double', 'float', 'callable', '$this']);
+        return in_array(
+            strtolower($hint),
+            [
+                '',
+                'scalar',
+                'object',
+                'boolean',
+                'bool',
+                'true',
+                'false',
+                'int',
+                'integer',
+                'array',
+                'string',
+                'mixed',
+                'void',
+                'null',
+                'resource',
+                'double',
+                'float',
+                'callable',
+                '$this'
+            ]
+        );
     }
 
     protected function updateCache(ClassReflection $class)
@@ -400,8 +434,8 @@ class Project
 
         $this->namespaces[$class->getNamespace()] = $class->getNamespace();
         // add sub-namespaces
-        $namespace = $class->getNamespace();
-        while ($namespace = substr($namespace, 0, strrpos($namespace, '\\'))) {
+        $namespace = $class->getNamespace() ?? '';
+        while ($namespace = substr($namespace, 0, (int) strrpos($namespace, '\\'))) {
             $this->namespaces[$namespace] = $namespace;
         }
 
@@ -409,7 +443,7 @@ class Project
             $this->namespaceExceptions[$class->getNamespace()][$name] = $class;
         } elseif ($class->isInterface()) {
             $this->namespaceInterfaces[$class->getNamespace()][$name] = $class;
-            $this->interfaces[$name] = $class;
+            $this->interfaces[$name]                                  = $class;
         } else {
             $this->namespaceClasses[$class->getNamespace()][$name] = $class;
         }
@@ -542,4 +576,5 @@ class Project
             'after_text' => $link['after_text'] ?? '',
         ];
     }
+
 }

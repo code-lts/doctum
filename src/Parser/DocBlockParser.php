@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -27,27 +29,27 @@ use phpDocumentor\Reflection\Types\Context;
 
 class DocBlockParser
 {
+
     public function parse(?string $comment, ParserContext $context): DocBlockNode
     {
-        $docBlock = null;
+        $docBlock     = null;
         $errorMessage = '';
-        $result = new DocBlockNode();
+        $result       = new DocBlockNode();
 
         if ($comment === null) {
             return $result;
         }
 
         try {
-            $factory  = DocBlockFactory::createInstance();
+            $factory         = DocBlockFactory::createInstance();
             $docBlockContext = new Context(
                 $context->getNamespace() ?? '',
                 $context->getAliases() ?: []
             );
-            $docBlock = $factory->create($comment, $docBlockContext);
+            $docBlock        = $factory->create($comment, $docBlockContext);
         } catch (\Exception $e) {
             $errorMessage = $e->getMessage();
         }
-
 
         if ($errorMessage) {
             $result->addError($errorMessage);
@@ -67,7 +69,6 @@ class DocBlockParser
 
     protected function parseTag(DocBlock\Tag $tag)
     {
-
         $class = get_class($tag);
         switch ($class) {
             case Var_::class:
@@ -124,4 +125,5 @@ class DocBlockParser
 
         return $hints;
     }
+
 }

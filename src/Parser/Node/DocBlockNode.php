@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -25,7 +27,7 @@ class DocBlockNode
     /**
      * Add a tag
      *
-     * @param string $key
+     * @param string  $key
      * @param array[] $value
      */
     public function addTag($key, $value): void
@@ -119,4 +121,5 @@ class DocBlockNode
     {
         return $this->errors;
     }
+
 }

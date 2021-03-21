@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -97,16 +99,17 @@ class PropertyReflection extends Reflection
 
     public static function fromArray(Project $project, $array)
     {
-        $property = new self($array['name'], $array['line']);
+        $property            = new self($array['name'], $array['line']);
         $property->shortDesc = $array['short_desc'];
-        $property->longDesc = $array['long_desc'];
-        $property->hint = $array['hint'];
-        $property->hintDesc = $array['hint_desc'];
-        $property->tags = $array['tags'];
+        $property->longDesc  = $array['long_desc'];
+        $property->hint      = $array['hint'];
+        $property->hintDesc  = $array['hint_desc'];
+        $property->tags      = $array['tags'];
         $property->modifiers = $array['modifiers'];
-        $property->default = $array['default'];
-        $property->errors = $array['errors'];
+        $property->default   = $array['default'];
+        $property->errors    = $array['errors'];
 
         return $property;
     }
+
 }

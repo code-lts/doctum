@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -33,7 +35,7 @@ class PropertyClassVisitor implements ClassVisitorInterface
 
     public function visit(ClassReflection $class)
     {
-        $modified = false;
+        $modified   = false;
         $properties = $class->getTags('property');
         if (!empty($properties)) {
             foreach ($properties as $propertyTag) {
@@ -72,4 +74,5 @@ class PropertyClassVisitor implements ClassVisitorInterface
 
         return false;
     }
+
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -15,9 +17,9 @@ use Doctum\Project;
 
 class ClassReflection extends Reflection
 {
-    private const CATEGORY_CLASS = 1;
+    private const CATEGORY_CLASS     = 1;
     private const CATEGORY_INTERFACE = 2;
-    private const CATEGORY_TRAIT = 3;
+    private const CATEGORY_TRAIT     = 3;
 
     private static $phpInternalClasses = [
         'stdclass' => true,
@@ -199,17 +201,17 @@ class ClassReflection extends Reflection
     protected $namespace;
     protected $modifiers;
     protected $properties = [];
-    protected $methods = [];
+    protected $methods    = [];
     protected $interfaces = [];
-    protected $constants = [];
-    protected $traits = [];
+    protected $constants  = [];
+    protected $traits     = [];
     protected $parent;
     protected $file;
     protected $relativeFilePath;
-    protected $category = self::CATEGORY_CLASS;
+    protected $category     = self::CATEGORY_CLASS;
     protected $projectClass = true;
-    protected $aliases = [];
-    protected $fromCache = false;
+    protected $aliases      = [];
+    protected $fromCache    = false;
 
     public function __toString()
     {
@@ -627,43 +629,52 @@ class ClassReflection extends Reflection
             'errors' => $this->errors,
             'interfaces' => $this->interfaces,
             'traits' => $this->traits,
-            'properties' => array_map(function ($property) {
-                return $property->toArray();
-            }, $this->properties),
-            'methods' => array_map(function ($method) {
-                return $method->toArray();
-            }, $this->methods),
-            'constants' => array_map(function ($constant) {
-                return $constant->toArray();
-            }, $this->constants),
+            'properties' => array_map(
+                static function ($property) {
+                    return $property->toArray();
+                },
+                $this->properties
+            ),
+            'methods' => array_map(
+                static function ($method) {
+                    return $method->toArray();
+                },
+                $this->methods
+            ),
+            'constants' => array_map(
+                static function ($constant) {
+                    return $constant->toArray();
+                },
+                $this->constants
+            ),
         ];
     }
 
     public static function fromArray(Project $project, $array)
     {
-        $class = new self($array['name'], $array['line']);
-        $class->shortDesc = $array['short_desc'];
-        $class->longDesc = $array['long_desc'];
-        $class->hint = $array['hint'];
-        $class->tags = $array['tags'];
-        $class->namespace = $array['namespace'];
-        $class->hash = $array['hash'];
-        $class->file = $array['file'];
+        $class                   = new self($array['name'], $array['line']);
+        $class->shortDesc        = $array['short_desc'];
+        $class->longDesc         = $array['long_desc'];
+        $class->hint             = $array['hint'];
+        $class->tags             = $array['tags'];
+        $class->namespace        = $array['namespace'];
+        $class->hash             = $array['hash'];
+        $class->file             = $array['file'];
         $class->relativeFilePath = $array['relative_file'];
-        $class->modifiers = $array['modifiers'];
-        $class->fromCache = true;
+        $class->modifiers        = $array['modifiers'];
+        $class->fromCache        = true;
         if ($array['is_interface']) {
             $class->setInterface(true);
         }
         if ($array['is_trait']) {
             $class->setTrait(true);
         }
-        $class->aliases = $array['aliases'];
-        $class->errors = $array['errors'];
-        $class->parent = $array['parent'];
+        $class->aliases    = $array['aliases'];
+        $class->errors     = $array['errors'];
+        $class->parent     = $array['parent'];
         $class->interfaces = $array['interfaces'];
-        $class->constants = $array['constants'];
-        $class->traits = $array['traits'];
+        $class->constants  = $array['constants'];
+        $class->traits     = $array['traits'];
 
         $class->setProject($project);
 
@@ -690,4 +701,5 @@ class ClassReflection extends Reflection
             ksort($this->interfaces);
         }
     }
+
 }

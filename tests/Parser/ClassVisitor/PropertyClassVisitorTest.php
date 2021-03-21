@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -18,6 +20,7 @@ use Doctum\Reflection\ClassReflection;
 
 class PropertyClassVisitorTest extends TestCase
 {
+
     /**
      * @requires PHP <8
      */
@@ -61,4 +64,5 @@ class PropertyClassVisitorTest extends TestCase
         $this->assertArrayHasKey('animal', $class->getProperties());
         $this->assertArrayHasKey('enigma', $class->getProperties());
     }
+
 }

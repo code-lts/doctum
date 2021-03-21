@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -18,7 +20,7 @@ class HintReflection
 
     public function __construct($name, $array)
     {
-        $this->name = $name;
+        $this->name  = $name;
         $this->array = $array;
     }
 
@@ -52,4 +54,5 @@ class HintReflection
     {
         $this->array = (bool) $boolean;
     }
+
 }

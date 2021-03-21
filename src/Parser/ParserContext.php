@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -38,10 +40,10 @@ class ParserContext
 
     public function __construct(FilterInterface $filter, DocBlockParser $docBlockParser, $prettyPrinter)
     {
-        $this->filter = $filter;
+        $this->filter         = $filter;
         $this->docBlockParser = $docBlockParser;
-        $this->prettyPrinter = $prettyPrinter;
-        $this->functions = [];
+        $this->prettyPrinter  = $prettyPrinter;
+        $this->functions      = [];
     }
 
     public function getFilter()
@@ -77,16 +79,16 @@ class ParserContext
 
     public function enterFile($file, $hash): void
     {
-        $this->file = $file;
-        $this->hash = $hash;
-        $this->errors = [];
+        $this->file    = $file;
+        $this->hash    = $hash;
+        $this->errors  = [];
         $this->classes = [];
     }
 
     public function leaveFile()
     {
-        $this->hash = null;
-        $this->file = null;
+        $this->hash   = null;
+        $this->file   = null;
         $this->errors = [];
 
         return $this->classes;
@@ -134,7 +136,7 @@ class ParserContext
 
     public function addFunction(FunctionReflection $fun): void
     {
-        $this->functions["{$this->namespace}\\{$fun->getName()}"] = $fun;
+        $this->functions[$this->namespace . '\\' . $fun->getName()] = $fun;
     }
 
     /**
@@ -157,7 +159,7 @@ class ParserContext
         }
 
         $this->classes[] = $this->class;
-        $this->class = null;
+        $this->class     = null;
     }
 
     public function getClass()
@@ -168,17 +170,18 @@ class ParserContext
     public function enterNamespace(string $namespace): void
     {
         $this->namespace = $namespace;
-        $this->aliases = [];
+        $this->aliases   = [];
     }
 
     public function leaveNamespace(): void
     {
         $this->namespace = null;
-        $this->aliases = [];
+        $this->aliases   = [];
     }
 
     public function getNamespace(): ?string
     {
         return $this->namespace;
     }
+
 }

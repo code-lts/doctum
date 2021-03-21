@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -51,8 +53,9 @@ class JsonStore implements StoreInterface
     public function readProject(Project $project)
     {
         $classes = [];
-        foreach (Finder::create()->name('c_*.json')->in($this->getStoreDir($project)) as $file) {
-            $classes[] = ClassReflection::fromArray($project, json_decode(file_get_contents($file), true));
+        $files   = Finder::create()->name('c_*.json')->files()->in($this->getStoreDir($project));
+        foreach ($files as $file) {
+            $classes[] = ClassReflection::fromArray($project, json_decode(file_get_contents($file->getPathname()), true));
         }
 
         return $classes;
@@ -82,4 +85,5 @@ class JsonStore implements StoreInterface
 
         return $dir;
     }
+
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -23,14 +25,14 @@ class Transaction
 
     public function __construct(Project $project)
     {
-        $this->hashes = [];
+        $this->hashes  = [];
         $this->classes = [];
 
         foreach ($project->getProjectClasses() as $class) {
             $this->addClass($class);
         }
 
-        $this->visited = [];
+        $this->visited  = [];
         $this->modified = [];
     }
 
@@ -75,8 +77,9 @@ class Transaction
         }
 
         $this->hashes[$hash][$name] = true;
-        $this->classes[$name] = $hash;
-        $this->modified[] = $name;
-        $this->visited[$hash] = true;
+        $this->classes[$name]       = $hash;
+        $this->modified[]           = $name;
+        $this->visited[$hash]       = true;
     }
+
 }

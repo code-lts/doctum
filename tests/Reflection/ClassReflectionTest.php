@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Doctum\Tests\Reflection;
 
 use Doctum\Console\Application;
@@ -8,6 +10,7 @@ use Doctum\Reflection\ClassReflection;
 
 class ClassReflectionTest extends TestCase
 {
+
     public function testIsPhpClass(): void
     {
         // an internal class
@@ -30,4 +33,5 @@ class ClassReflectionTest extends TestCase
         $class = new ClassReflection(Application::class, 1);
         $this->assertFalse($class->isPhpClass());
     }
+
 }

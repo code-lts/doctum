@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -53,9 +55,13 @@ class TwigExtension extends AbstractExtension
             new TwigFunction('method_path', [$this, 'pathForMethod'], ['needs_context' => true, 'is_safe' => ['all']]),
             new TwigFunction('property_path', [$this, 'pathForProperty'], ['needs_context' => true, 'is_safe' => ['all']]),
             new TwigFunction('path', [$this, 'pathForStaticFile'], ['needs_context' => true]),
-            new TwigFunction('abbr_class', function ($class, bool $absolute = false) {
-                return self::abbrClass($class, $absolute);
-            }, ['is_safe' => ['all']]),
+            new TwigFunction(
+                'abbr_class',
+                static function ($class, bool $absolute = false) {
+                    return self::abbrClass($class, $absolute);
+                },
+                ['is_safe' => ['all']]
+            ),
         ];
     }
 
@@ -132,9 +138,13 @@ class TwigExtension extends AbstractExtension
         }
 
         // FIXME: the @see argument is more complex than just a class (Class::Method, local method directly, ...)
-        $desc = preg_replace_callback('/@see ([^ ]+)/', function ($match) {
-            return 'see ' . $match[1];
-        }, $desc);
+        $desc = preg_replace_callback(
+            '/@see ([^ ]+)/',
+            static function ($match) {
+                return 'see ' . $match[1];
+            },
+            $desc
+        );
 
         return preg_replace(['#^<p>\s*#s', '#\s*</p>\s*$#s'], '', $this->markdown->transform($desc));
     }
@@ -156,4 +166,5 @@ class TwigExtension extends AbstractExtension
 
         return rtrim(str_repeat('../', $value), '/') . '/';
     }
+
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Doctum\Tests;
 
 use PHPUnit\Framework\TestCase;
@@ -13,6 +15,7 @@ use Doctum\Tree;
  */
 class TreeTest extends TestCase
 {
+
     public function testNamespaces(): void
     {
         $class1 = new ClassReflection('C1', 1);
@@ -25,9 +28,9 @@ class TreeTest extends TestCase
         $store->setClasses([$class1, $class2, $class3]);
 
         $project = new Project($store);
-        $project->loadClass($class1);
-        $project->loadClass($class2);
-        $project->loadClass($class3);
+        $project->loadClass($class1->__toString());
+        $project->loadClass($class2->__toString());
+        $project->loadClass($class3->__toString());
 
         $tree = new Tree();
 
@@ -46,6 +49,7 @@ class TreeTest extends TestCase
         $this->assertCount(3, $generated[2]);
         $this->assertCount(1, $generated[2][2]);
         $this->assertEquals('C32', $generated[2][2][0][0]);
-        $this->assertEquals("C31\C32", $generated[2][2][0][1]);
+        $this->assertEquals('C31\C32', $generated[2][2][0][1]);
     }
+
 }

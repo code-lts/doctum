@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -85,13 +87,13 @@ class NodeVisitor extends NodeVisitorAbstract
     protected function addAliases(UseNode $node)
     {
         foreach ($node->uses as $use) {
-            $alias = $use->getAlias()->toString();
+            $alias    = $use->getAlias()->toString();
             $fullName = $use->name->__toString();
             $this->context->addAlias($alias, $fullName);
         }
     }
 
-    protected function addFunction(FunctionNode $node, string $namespace = null)
+    protected function addFunction(FunctionNode $node, ?string $namespace = null)
     {
         $function = new FunctionReflection($node->name->__toString(), $node->getLine());
         $function->setNamespace($namespace !== null ? $namespace : '');
@@ -107,13 +109,13 @@ class NodeVisitor extends NodeVisitorAbstract
 
             $parameter->setVariadic($param->variadic);
 
-            $type = $param->type;
+            $type    = $param->type;
             $typeStr = null;
 
             if ($param->type !== null && ! $param->type instanceof NullableType) {
                 $typeStr = (string) $param->type;
             } elseif ($param->type instanceof NullableType) {
-                $type = $param->type->type;
+                $type    = $param->type->type;
                 $typeStr = (string) $param->type->type;
             }
 
@@ -150,7 +152,7 @@ class NodeVisitor extends NodeVisitorAbstract
 
         $function->setErrors($errors);
 
-        $returnType = $node->getReturnType();
+        $returnType    = $node->getReturnType();
         $returnTypeStr = null;
 
         if ($returnType !== null && ! $returnType instanceof NullableType) {
@@ -268,13 +270,13 @@ class NodeVisitor extends NodeVisitorAbstract
 
             $parameter->setVariadic($param->variadic);
 
-            $type = $param->type;
+            $type    = $param->type;
             $typeStr = null;
 
             if ($param->type !== null && ! $param->type instanceof NullableType) {
                 $typeStr = (string) $param->type;
             } elseif ($param->type instanceof NullableType) {
-                $type = $param->type->type;
+                $type    = $param->type->type;
                 $typeStr = (string) $param->type->type;
             }
 
@@ -295,7 +297,12 @@ class NodeVisitor extends NodeVisitorAbstract
             $method->addParameter($parameter);
         }
 
-        $comment = $this->context->getDocBlockParser()->parse($node->getDocComment(), $this->context, $method);
+        $docComment = $node->getDocComment();
+        $comment    = $this->context->getDocBlockParser()->parse(
+            $docComment === null ? null : $docComment->__toString(),
+            $this->context,
+            $method
+        );
         $method->setDocComment($node->getDocComment());
         $method->setShortDesc($comment->getShortDesc());
         $method->setLongDesc($comment->getLongDesc());
@@ -311,7 +318,7 @@ class NodeVisitor extends NodeVisitorAbstract
 
         $method->setErrors($errors);
 
-        $returnType = $node->getReturnType();
+        $returnType    = $node->getReturnType();
         $returnTypeStr = null;
 
         if ($returnType !== null && ! $returnType instanceof NullableType) {
@@ -399,7 +406,7 @@ class NodeVisitor extends NodeVisitorAbstract
      */
     protected function getPropertyReflectionFromParserProperty(PropertyNode $node, PropertyProperty $prop): array
     {
-        $property = new PropertyReflection($prop->name, $prop->getLine());
+        $property = new PropertyReflection($prop->name->toString(), $prop->getLine());
         $property->setModifiers($node->flags);
 
         $property->setDefault($prop->default);
@@ -430,8 +437,8 @@ class NodeVisitor extends NodeVisitorAbstract
     protected function addConstant(ClassConstNode $node)
     {
         foreach ($node->consts as $const) {
-            $constant = new ConstantReflection($const->name, $const->getLine());
-            $comment = $this->context->getDocBlockParser()->parse($node->getDocComment(), $this->context, $constant);
+            $constant = new ConstantReflection($const->name->toString(), $const->getLine());
+            $comment  = $this->context->getDocBlockParser()->parse($node->getDocComment(), $this->context, $constant);
             $constant->setDocComment($node->getDocComment());
             $constant->setShortDesc($comment->getShortDesc());
             $constant->setLongDesc($comment->getLongDesc());
@@ -481,7 +488,7 @@ class NodeVisitor extends NodeVisitorAbstract
 
     /**
      * @param FunctionReflection|MethodReflection $method
-     * @param array[] $tags
+     * @param array[]                             $tags
      * @return string[]
      */
     protected function updateMethodParametersFromTags(Reflection $method, array $tags): array
@@ -590,11 +597,11 @@ class NodeVisitor extends NodeVisitorAbstract
 
     protected function resolveSee(array $see)
     {
-        $return = [];
+        $return  = [];
         $matches = [];
 
         foreach ($see as $seeEntry) {
-            $reference = $seeEntry[1];
+            $reference   = $seeEntry[1];
             $description = $seeEntry[2];
             if ((bool) preg_match('/^[\w]+:\/\/.+$/', $reference)) { //URL
                 $return[] = [
@@ -625,4 +632,5 @@ class NodeVisitor extends NodeVisitorAbstract
 
         return $return;
     }
+
 }

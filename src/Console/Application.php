@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -20,6 +22,7 @@ use Symfony\Component\Console\Application as BaseApplication;
 
 class Application extends BaseApplication
 {
+
     public function __construct()
     {
         error_reporting(-1);
@@ -36,4 +39,5 @@ class Application extends BaseApplication
     {
         return parent::getLongVersion() . ' by <comment>Fabien Potencier and William Desportes</comment>';
     }
+
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -35,11 +37,11 @@ class Renderer
 
     public function __construct(\Twig\Environment $twig, ThemeSet $themes, Tree $tree, Indexer $indexer)
     {
-        $this->twig = $twig;
-        $this->themes = $themes;
-        $this->tree = $tree;
+        $this->twig       = $twig;
+        $this->themes     = $themes;
+        $this->tree       = $tree;
         $this->cachedTree = [];
-        $this->indexer = $indexer;
+        $this->indexer    = $indexer;
         $this->filesystem = new Filesystem();
     }
 
@@ -50,7 +52,8 @@ class Renderer
 
     public function render(Project $project, $callback = null, $force = false)
     {
-        $this->twig->setCache($cacheDir = $project->getCacheDir() . '/twig');
+        $cacheDir = $project->getCacheDir() . '/twig';
+        $this->twig->setCache($cacheDir);
 
         if ($force) {
             $project->flushDir($cacheDir);
@@ -62,14 +65,11 @@ class Renderer
             return $diff;
         }
 
-        $this->steps = count($diff->getModifiedClasses())
-            + count($diff->getModifiedNamespaces())
-            + count($this->getTheme($project)->getTemplates('global'))
-            + 1;
-        $this->step = 0;
+        $this->steps = count($diff->getModifiedClasses()) + count($diff->getModifiedNamespaces()) + count($this->getTheme($project)->getTemplates('global')) + 1;
+        $this->step  = 0;
 
         $this->theme = $this->getTheme($project);
-        $dirs = $this->theme->getTemplateDirs();
+        $dirs        = $this->theme->getTemplateDirs();
         // add parent directory to be able to extends the same template as the current one but in the parent theme
         foreach ($dirs as $dir) {
             $dirs[] = dirname($dir);
@@ -228,8 +228,8 @@ class Renderer
 
     /**
      * @param ClassReflection[] $classes
-     * @param Project $project
-     * @param Callable|null $callback
+     * @param Project           $project
+     * @param Callable|null     $callback
      * @return void
      */
     protected function renderClassTemplates(array $classes, Project $project, $callback = null)
@@ -262,16 +262,16 @@ class Renderer
     {
         $items = [];
         foreach ($project->getProjectClasses() as $class) {
-            $letter = strtoupper(substr($class->getShortName(), 0, 1));
+            $letter           = strtoupper(substr($class->getShortName(), 0, 1));
             $items[$letter][] = ['class', $class];
 
             foreach ($class->getProperties() as $property) {
-                $letter = strtoupper(substr($property->getName(), 0, 1));
+                $letter           = strtoupper(substr($property->getName(), 0, 1));
                 $items[$letter][] = ['property', $property];
             }
 
             foreach ($class->getMethods() as $method) {
-                $letter = strtoupper(substr($method->getName(), 0, 1));
+                $letter           = strtoupper(substr($method->getName(), 0, 1));
                 $items[$letter][] = ['method', $method];
             }
         }
@@ -306,4 +306,5 @@ class Renderer
 
         return $this->cachedTree[$key];
     }
+
 }

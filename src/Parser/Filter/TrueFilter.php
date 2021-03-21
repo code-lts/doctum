@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -17,6 +19,7 @@ use Doctum\Reflection\PropertyReflection;
 
 class TrueFilter implements FilterInterface
 {
+
     public function acceptClass(ClassReflection $class)
     {
         return true;
@@ -31,4 +34,5 @@ class TrueFilter implements FilterInterface
     {
         return true;
     }
+
 }

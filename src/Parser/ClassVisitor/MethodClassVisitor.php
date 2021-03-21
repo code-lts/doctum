@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -24,6 +26,7 @@ use Doctum\Reflection\ParameterReflection;
  */
 class MethodClassVisitor implements ClassVisitorInterface
 {
+
     public function visit(ClassReflection $class)
     {
         $modified = false;
@@ -136,4 +139,5 @@ class MethodClassVisitor implements ClassVisitorInterface
 
         return true;
     }
+
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -60,7 +62,7 @@ abstract class VersionCollection implements \Iterator, \Countable
 
     /**
      * @param array|string|Version $version
-     * @param string $longname
+     * @param string               $longname
      * @phpstan-return self
      */
     public function add($version, $longname = null)
@@ -120,4 +122,5 @@ abstract class VersionCollection implements \Iterator, \Countable
     {
         return count($this->versions);
     }
+
 }

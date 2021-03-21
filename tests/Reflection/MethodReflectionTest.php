@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Doctum\Tests\Reflection;
 
 use PHPUnit\Framework\TestCase;
@@ -7,6 +9,7 @@ use Doctum\Reflection\MethodReflection;
 
 class MethodReflectionTest extends TestCase
 {
+
     public function testSetGetModifiers(): void
     {
         $method = new MethodReflection('foo', 0);
@@ -26,4 +29,5 @@ class MethodReflectionTest extends TestCase
         $this->assertTrue($method->isPublic());
         $this->assertTrue($method->isAbstract());
     }
+
 }

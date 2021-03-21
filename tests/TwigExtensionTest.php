@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Doctum\Tests;
 
 use Doctum\Project;
@@ -13,6 +15,7 @@ use PHPUnit\Framework\TestCase;
  */
 class TwigExtensionTest extends TestCase
 {
+
     /**
      * Test for abbrClass
      */
@@ -104,4 +107,5 @@ class TwigExtensionTest extends TestCase
             ]
         );
     }
+
 }

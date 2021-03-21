@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -20,6 +22,7 @@ use Doctum\Store\ArrayStore;
 
 class ClassTraverserTest extends TestCase
 {
+
     /**
      * @dataProvider getTraverseOrderClasses
      * @requires PHP <8
@@ -92,7 +95,7 @@ class ClassTraverserTest extends TestCase
         return [
             array_merge($this->createClasses('C1', 'C2', 'C3'), [['']]),
             array_merge($this->createClasses('C1', 'C2', 'C3', 'Ns1'), [['', 'Ns1']]),
-            array_merge($this->createClasses('C1', 'C2', 'C3', "Ns1\Ns2\Ns3"), [['', 'Ns1', "Ns1\Ns2", "Ns1\Ns2\Ns3"]]),
+            array_merge($this->createClasses('C1', 'C2', 'C3', 'Ns1\Ns2\Ns3'), [['', 'Ns1', 'Ns1\Ns2', 'Ns1\Ns2\Ns3']]),
         ];
     }
 
@@ -100,7 +103,7 @@ class ClassTraverserTest extends TestCase
         string $interfaceName,
         string $parentName,
         string $className,
-        string $namespaceName = null
+        ?string $namespaceName = null
     ): array {
         $interface = new ClassReflection($interfaceName, 1);
 
@@ -115,4 +118,5 @@ class ClassTraverserTest extends TestCase
 
         return [$interfaceName, $parentName, $className, $class, $parent, $interface];
     }
+
 }

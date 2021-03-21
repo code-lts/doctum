@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -16,6 +18,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class UpdateCommand extends Command
 {
+
     /**
      * @see Command
      * @phpstan-return void
@@ -53,4 +56,5 @@ EOF
     {
         return $this->update($this->doctum->getProject());
     }
+
 }

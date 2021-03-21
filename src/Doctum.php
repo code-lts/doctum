@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 /*
  * This file is part of the Doctum utility.
  *
@@ -49,7 +51,7 @@ class Doctum implements ArrayAccess
     public const VERSION_MAJOR = 5;
     public const VERSION_MINOR = 4;
     public const VERSION_PATCH = 0;
-    public const IS_DEV = true;
+    public const IS_DEV        = true;
 
     //@phpstan-ignore-next-line
     public const VERSION = self::VERSION_MAJOR . '.' . self::VERSION_MINOR . '.' . self::VERSION_PATCH . (self::IS_DEV ? '-dev' : '');
@@ -208,9 +210,9 @@ class Doctum implements ArrayAccess
             $this->files = $iterator;
         }
 
-        $this->version = self::$defaultVersionName;
-        $this->build_dir = getcwd() . DIRECTORY_SEPARATOR . 'build';
-        $this->cache_dir = getcwd() . DIRECTORY_SEPARATOR . 'cache';
+        $this->version    = self::$defaultVersionName;
+        $this->build_dir  = getcwd() . DIRECTORY_SEPARATOR . 'build';
+        $this->cache_dir  = getcwd() . DIRECTORY_SEPARATOR . 'cache';
         $this->source_dir = getcwd() . DIRECTORY_SEPARATOR;
 
         foreach ($config as $key => $value) {
@@ -251,7 +253,7 @@ class Doctum implements ArrayAccess
 
     /**
      * @param string $offset
-     * @param mixed $value
+     * @param mixed  $value
      * @return void
      */
     public function offsetSet($offset, $value)
@@ -357,12 +359,15 @@ class Doctum implements ArrayAccess
         $configLanguage = $this->config['language'] ?? 'en';
         $moReader->readFile($dataDir . $configLanguage . '.mo');
         Launcher::$plugin = $moReader;
-        $twig = new Environment(new FilesystemLoader(['/']), [
+        $twig             = new Environment(
+            new FilesystemLoader(['/']),
+            [
             'strict_variables' => true,
             'debug' => true,
             'auto_reload' => true,
             'cache' => false,
-        ]);
+            ]
+        );
         $twig->addExtension(new TwigExtension());
         $twig->addExtension(new I18nExtension());
 
@@ -371,7 +376,10 @@ class Doctum implements ArrayAccess
 
     private function getBuiltProject(): Project
     {
-        $project = new Project($this['store'], $this['_versions'], [
+        $project = new Project(
+            $this['store'],
+            $this['_versions'],
+            [
             'build_dir' => $this->build_dir,
             'cache_dir' => $this->cache_dir,
             'remote_repository' => $this->remote_repository,
@@ -387,7 +395,8 @@ class Doctum implements ArrayAccess
             'sort_class_constants' => $this->sort_class_constants,
             'sort_class_traits' => $this->sort_class_traits,
             'sort_class_interfaces' => $this->sort_class_interfaces,
-        ]);
+            ]
+        );
         $project->setRenderer($this['renderer']);
         $project->setParser($this['parser']);
 
@@ -427,7 +436,7 @@ class Doctum implements ArrayAccess
     private function getThemes(): ThemeSet
     {
         /** @var string[] $templates */
-        $templates = $this->config['template_dirs'] ?? [];
+        $templates   = $this->config['template_dirs'] ?? [];
         $templates[] = __DIR__ . '/Resources/themes';
 
         return new ThemeSet($templates);
@@ -496,4 +505,5 @@ class Doctum implements ArrayAccess
 
         return $traverser;
     }
+
 }

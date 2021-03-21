@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Doctum\Tests\Parser;
 
 use PhpParser\Node\Name\FullyQualified;
@@ -17,7 +19,6 @@ use Doctum\Parser\ParserContext;
 use Doctum\Project;
 use Doctum\Reflection\ClassReflection;
 use Doctum\Reflection\FunctionReflection;
-use Doctum\Reflection\MethodReflection;
 use Doctum\Reflection\ParameterReflection;
 use Doctum\Reflection\PropertyReflection;
 use Doctum\Store\ArrayStore;
@@ -28,6 +29,7 @@ use PhpParser\Node\Expr\Variable;
  */
 class NodeVisitorTest extends AbstractTestCase
 {
+
     /**
      * @dataProvider getMethodTypehints
      */
@@ -39,7 +41,6 @@ class NodeVisitorTest extends AbstractTestCase
         $traverser->addVisitor(new NodeVisitor($parserContext));
         $traverser->traverse([$method]);
 
-        /** @var MethodReflection $method */
         $reflMethod = $classReflection->getMethod($method->name->__toString());
 
         $this->assertCount(count($expectedHints), $reflMethod->getParameters());
@@ -65,7 +66,6 @@ class NodeVisitorTest extends AbstractTestCase
         $traverser->addVisitor(new NodeVisitor($parserContext));
         $traverser->traverse([$method]);
 
-        /** @var MethodReflection $method */
         $reflMethod = $classReflection->getMethod($method->name->__toString());
 
         $this->assertEquals($expectedReturnType, $reflMethod->getHintAsString());
@@ -100,10 +100,13 @@ class NodeVisitorTest extends AbstractTestCase
     private function getPrimitiveMethodReturnType(): array
     {
         $expectedReturnType = 'string';
-        $classReflection = new ClassReflection('C1', 1);
-        $method = new ClassMethod('testMethod', [
+        $classReflection    = new ClassReflection('C1', 1);
+        $method             = new ClassMethod(
+            'testMethod',
+            [
             'returnType' => 'string'
-        ]);
+            ]
+        );
 
         $classReflection->setMethods([$method]);
 
@@ -123,10 +126,13 @@ class NodeVisitorTest extends AbstractTestCase
     private function getClassMethodReturnType(): array
     {
         $expectedReturnType = 'Class';
-        $classReflection = new ClassReflection('C1', 1);
-        $method = new ClassMethod('testMethod', [
+        $classReflection    = new ClassReflection('C1', 1);
+        $method             = new ClassMethod(
+            'testMethod',
+            [
             'returnType' => new FullyQualified('Test\\Class'),
-        ]);
+            ]
+        );
 
         $classReflection->setMethods([$method]);
 
@@ -146,10 +152,13 @@ class NodeVisitorTest extends AbstractTestCase
     private function getNullableMethodReturnType(): array
     {
         $expectedReturnType = 'Class|null';
-        $classReflection = new ClassReflection('C1', 1);
-        $method = new ClassMethod('testMethod', [
+        $classReflection    = new ClassReflection('C1', 1);
+        $method             = new ClassMethod(
+            'testMethod',
+            [
             'returnType' => new NullableType('Test\\Class'),
-        ]);
+            ]
+        );
 
         $classReflection->setMethods([$method]);
 
@@ -166,11 +175,12 @@ class NodeVisitorTest extends AbstractTestCase
         ];
     }
 
-
     private function getMethodTypehintsPrimiteveParameters(): array
     {
         $classReflection = new ClassReflection('C1', 1);
-        $method = new ClassMethod('testMethod', [
+        $method          = new ClassMethod(
+            'testMethod',
+            [
             'params' => [
                 new Param(
                     new Variable('param1'),
@@ -183,7 +193,8 @@ class NodeVisitorTest extends AbstractTestCase
                     'string'
                 ),
             ],
-        ]);
+            ]
+        );
 
         $classReflection->setMethods([$method]);
         $store = new ArrayStore();
@@ -205,9 +216,11 @@ class NodeVisitorTest extends AbstractTestCase
 
     private function getMethodTypehintsClassParameters(): array
     {
-        $classReflection = new ClassReflection('C1', 1);
-        $paramClassReflection = new ClassReflection("Test\Class", 1);
-        $method = new ClassMethod('testMethod', [
+        $classReflection      = new ClassReflection('C1', 1);
+        $paramClassReflection = new ClassReflection('Test\Class', 1);
+        $method               = new ClassMethod(
+            'testMethod',
+            [
             'params' => [
                 new Param(
                     new Variable('param1'),
@@ -215,7 +228,8 @@ class NodeVisitorTest extends AbstractTestCase
                     new FullyQualified('Test\\Class')
                 ),
             ],
-        ]);
+            ]
+        );
 
         $classReflection->setMethods([$method]);
         $store = new ArrayStore();
@@ -237,9 +251,11 @@ class NodeVisitorTest extends AbstractTestCase
 
     private function getMethodTypehintsSubNamespacedClassParameters(): array
     {
-        $classReflection = new ClassReflection("Test\Class", 1);
-        $paramClassReflection = new ClassReflection("Test\Sub\Class", 1);
-        $method = new ClassMethod('testMethod', [
+        $classReflection      = new ClassReflection('Test\Class', 1);
+        $paramClassReflection = new ClassReflection('Test\Sub\Class', 1);
+        $method               = new ClassMethod(
+            'testMethod',
+            [
             'params' => [
                 new Param(
                     new Variable('param1'),
@@ -247,7 +263,8 @@ class NodeVisitorTest extends AbstractTestCase
                     new Relative('Sub\\Class')
                 ),
             ],
-        ]);
+            ]
+        );
 
         $classReflection->setMethods([$method]);
         $store = new ArrayStore();
@@ -269,15 +286,18 @@ class NodeVisitorTest extends AbstractTestCase
 
     private function getMethodTypehintsDocblockClassParameters(): array
     {
-        $classReflection = new ClassReflection('C1', 1);
-        $paramClassReflection = new ClassReflection("Test\Class", 1);
-        $method = new ClassMethod('testMethod', [
+        $classReflection      = new ClassReflection('C1', 1);
+        $paramClassReflection = new ClassReflection('Test\Class', 1);
+        $method               = new ClassMethod(
+            'testMethod',
+            [
             'params' => [
                 new Param(
                     new Variable('param1')
                 ),
             ],
-        ]);
+            ]
+        );
         $method->setDocComment(new \PhpParser\Comment\Doc('/** @param Test\\Class $param1 */'));
 
         $classReflection->setMethods([$method]);
@@ -300,15 +320,18 @@ class NodeVisitorTest extends AbstractTestCase
 
     private function getMethodTypehintsDocblockMixedClassParameters(): array
     {
-        $classReflection = new ClassReflection('C1', 1);
-        $paramClassReflection = new ClassReflection("Test\Class", 1);
-        $method = new ClassMethod('testMethod', [
+        $classReflection      = new ClassReflection('C1', 1);
+        $paramClassReflection = new ClassReflection('Test\Class', 1);
+        $method               = new ClassMethod(
+            'testMethod',
+            [
             'params' => [
                 new Param(
                     new Variable('param1')
                 ),
             ],
-        ]);
+            ]
+        );
         $method->setDocComment(new \PhpParser\Comment\Doc('/** @param Test\\Class|string $param1 */'));
 
         $classReflection->setMethods([$method]);
@@ -334,9 +357,9 @@ class NodeVisitorTest extends AbstractTestCase
      */
     public function testUpdateMethodParametersFromTags(): void
     {
-        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $parserContext  = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
         $docBlockParser = new DocBlockParser();
-        $docBlockNode = $docBlockParser->parse(
+        $docBlockNode   = $docBlockParser->parse(
             '/**' . "\n"
             . '* @param type1 $param1 Description' . "\n"
             . '* @param $param8 Description 4' . "\n"
@@ -347,7 +370,7 @@ class NodeVisitorTest extends AbstractTestCase
             $parserContext
         );
 
-        $visitor = new NodeVisitor($parserContext);
+        $visitor  = new NodeVisitor($parserContext);
         $function = new FunctionReflection('fun1', 0);
 
         $param1 = (new ParameterReflection('param1', 0));
@@ -362,10 +385,14 @@ class NodeVisitorTest extends AbstractTestCase
                 'The "param2" parameter of the method "fun1" is missing a @param tag',
                 'The method "fun1" has "5" @param tags but only "2" where expected.',
             ],
-            $this->callMethod($visitor, 'updateMethodParametersFromTags', [
+            $this->callMethod(
+                $visitor,
+                'updateMethodParametersFromTags',
+                [
                 $function,
                 $docBlockNode->getTag('param')
-            ])
+                ]
+            )
         );
     }
 
@@ -375,16 +402,16 @@ class NodeVisitorTest extends AbstractTestCase
      */
     public function testUpdateMethodParametersFromTagsVariadic(): void
     {
-        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $parserContext  = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
         $docBlockParser = new DocBlockParser();
-        $docBlockNode = $docBlockParser->parse(
+        $docBlockNode   = $docBlockParser->parse(
             '/**' . "\n"
             . '* @param FooBar|baz|string ...$args' . "\n"
             . '**/' . "\n",
             $parserContext
         );
 
-        $visitor = new NodeVisitor($parserContext);
+        $visitor  = new NodeVisitor($parserContext);
         $function = new FunctionReflection('fun1', 0);
 
         $param1 = (new ParameterReflection('args', 0));
@@ -392,10 +419,14 @@ class NodeVisitorTest extends AbstractTestCase
 
         $this->assertSame(
             [],
-            $this->callMethod($visitor, 'updateMethodParametersFromTags', [
+            $this->callMethod(
+                $visitor,
+                'updateMethodParametersFromTags',
+                [
                 $function,
                 $docBlockNode->getTag('param')
-            ])
+                ]
+            )
         );
     }
 
@@ -404,10 +435,9 @@ class NodeVisitorTest extends AbstractTestCase
      */
     public function testUpdateMethodParametersFromInvalidTags(): void
     {
-
-        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $parserContext  = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
         $docBlockParser = new DocBlockParser();
-        $docBlockNode = $docBlockParser->parse(
+        $docBlockNode   = $docBlockParser->parse(
             '/**' . "\n"
             . '* @param type1 $param1 Description' . "\n"
             . '* @param $param8 Description 4' . "\n"
@@ -419,7 +449,7 @@ class NodeVisitorTest extends AbstractTestCase
             $parserContext
         );
 
-        $visitor = new NodeVisitor($parserContext);
+        $visitor  = new NodeVisitor($parserContext);
         $function = new FunctionReflection('fun1', 0);
 
         $param1 = (new ParameterReflection('param1', 0));
@@ -436,10 +466,14 @@ class NodeVisitorTest extends AbstractTestCase
                 'The method "fun1" has "1" invalid @param tags.',
                 'Invalid @param tag on "fun1": "array[\Illuminate\Notifications\Channels\Notification]  $notification"',
             ],
-            $this->callMethod($visitor, 'updateMethodParametersFromTags', [
+            $this->callMethod(
+                $visitor,
+                'updateMethodParametersFromTags',
+                [
                 $function,
                 $docBlockNode->getTag('param')
-            ])
+                ]
+            )
         );
     }
 
@@ -448,16 +482,16 @@ class NodeVisitorTest extends AbstractTestCase
      */
     public function testUpdateMethodParametersFromInvalidTagsReport(): void
     {
-        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $parserContext  = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
         $docBlockParser = new DocBlockParser();
-        $docBlockNode = $docBlockParser->parse(
+        $docBlockNode   = $docBlockParser->parse(
             '/**' . "\n"
             . '* @param array[\Illuminate\Notifications\Channels\Notification]  $notification' . "\n"
             . '**/' . "\n",
             $parserContext
         );
 
-        $visitor = new NodeVisitor($parserContext);
+        $visitor  = new NodeVisitor($parserContext);
         $function = new FunctionReflection('fun1', 0);
 
         $param1 = (new ParameterReflection('notification', 0));
@@ -469,10 +503,14 @@ class NodeVisitorTest extends AbstractTestCase
                 'The method "fun1" has "1" invalid @param tags.',
                 'Invalid @param tag on "fun1": "array[\Illuminate\Notifications\Channels\Notification]  $notification"',
             ],
-            $this->callMethod($visitor, 'updateMethodParametersFromTags', [
+            $this->callMethod(
+                $visitor,
+                'updateMethodParametersFromTags',
+                [
                 $function,
                 $docBlockNode->getTag('param')
-            ])
+                ]
+            )
         );
     }
 
@@ -481,25 +519,29 @@ class NodeVisitorTest extends AbstractTestCase
      */
     public function testAddTagFromCommentToMethodInvalidHint(): void
     {
-        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $parserContext  = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
         $docBlockParser = new DocBlockParser();
-        $docBlockNode = $docBlockParser->parse(
+        $docBlockNode   = $docBlockParser->parse(
             '/**' . "\n"
             . '* @var \Illuminate\Support\Carbon;' . "\n"
             . '**/' . "\n",
             $parserContext
         );
 
-        $visitor = new NodeVisitor($parserContext);
+        $visitor  = new NodeVisitor($parserContext);
         $property = new PropertyReflection('prop1', 0);
 
         $errors = [];
-        $this->callMethod($visitor, 'addTagFromCommentToMethod', [
+        $this->callMethod(
+            $visitor,
+            'addTagFromCommentToMethod',
+            [
             'var',
             $docBlockNode,
             $property,
             &$errors
-        ]);
+            ]
+        );
         $this->assertSame(
             [
                 'The hint on "prop1" at @var is invalid: "\Illuminate\Support\Carbon;"'
@@ -513,28 +555,33 @@ class NodeVisitorTest extends AbstractTestCase
      */
     public function testAddTagFromCommentToMethodHintVariadic(): void
     {
-        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $parserContext  = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
         $docBlockParser = new DocBlockParser();
-        $docBlockNode = $docBlockParser->parse(
+        $docBlockNode   = $docBlockParser->parse(
             '/**' . "\n"
             . '* @var FooBar|baz|string ...$args' . "\n"
             . '**/' . "\n",
             $parserContext
         );
 
-        $visitor = new NodeVisitor($parserContext);
+        $visitor  = new NodeVisitor($parserContext);
         $property = new PropertyReflection('args', 0);
 
         $errors = [];
-        $this->callMethod($visitor, 'addTagFromCommentToMethod', [
+        $this->callMethod(
+            $visitor,
+            'addTagFromCommentToMethod',
+            [
             'var',
             $docBlockNode,
             $property,
             &$errors
-        ]);
+            ]
+        );
         $this->assertSame(
             [],
             $errors
         );
     }
+
 }

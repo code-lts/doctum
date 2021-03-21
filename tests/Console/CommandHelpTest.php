@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Doctum\Tests\Command;
 
 use Doctum\Console\Command\ParseCommand;
@@ -15,7 +17,7 @@ class CommandHelpTest extends AbstractTestCase
 
     public function testParseHelp(): void
     {
-        $command = new ParseCommand();
+        $command      = new ParseCommand();
         $helpContents = 'The <info>parse</info> command parses a project and generates a database' . "\n"
             . 'with API information:' . "\n"
             . "\n"
@@ -38,7 +40,7 @@ class CommandHelpTest extends AbstractTestCase
 
     public function testRenderHelp(): void
     {
-        $command = new RenderCommand();
+        $command      = new RenderCommand();
         $helpContents = 'The <info>render</info> command renders a project as a static set of HTML files:' . "\n"
             . "\n"
             . '    <info>php ./vendor/bin/phpunit render render config/doctum.php</info>' . "\n"
@@ -60,7 +62,7 @@ class CommandHelpTest extends AbstractTestCase
 
     public function testUpdateHelp(): void
     {
-        $command = new UpdateCommand();
+        $command      = new UpdateCommand();
         $helpContents = 'The <info>update</info> command parses and renders a project:' . "\n"
             . "\n"
             . '    <info>php ./vendor/bin/phpunit update config/symfony.php</info>' . "\n"
@@ -72,4 +74,5 @@ class CommandHelpTest extends AbstractTestCase
             $command->getProcessedHelp()
         );
     }
+
 }
