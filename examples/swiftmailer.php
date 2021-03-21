@@ -19,9 +19,7 @@ $versions = GitVersionCollection::create($dir)
     )
     ->add('master', 'master branch');
 
-return new Doctum(
-    $iterator,
-    [
+return new Doctum($iterator, [
     'theme'                => 'default',
     'versions'             => $versions,
     'title'                => 'Swiftmailer API',

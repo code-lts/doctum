@@ -10,9 +10,7 @@ $iterator = Finder::create()
     ->name('*.php')
     ->in('/path/to/zf2/library');
 
-return new Doctum(
-    $iterator,
-    [
+return new Doctum($iterator, [
     'title'               => 'ZF2 API (for master)',
     'theme'               => 'default',
     'build_dir'           => __DIR__ . '/../build/zf2',

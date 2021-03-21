@@ -18,9 +18,7 @@ $versions = GitVersionCollection::create($dir)
     ->add('2.0', '2.0 branch')
     ->add('master', 'master branch');
 
-return new Doctum(
-    $iterator,
-    [
+return new Doctum($iterator, [
     'theme'                => 'symfony',
     'versions'             => $versions,
     'title'                => 'Symfony2 API',
