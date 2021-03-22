@@ -127,7 +127,7 @@ class ParameterReflection extends Reflection
         ];
     }
 
-    public static function fromArray(Project $project, $array)
+    public static function fromArray(Project $project, array $array): self
     {
         $parameter            = new self($array['name'], $array['line']);
         $parameter->shortDesc = $array['short_desc'];

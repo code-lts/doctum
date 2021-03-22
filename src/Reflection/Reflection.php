@@ -230,4 +230,8 @@ abstract class Reflection
         $this->errors = $errors;
     }
 
+    /**
+     * @param array<string,mixed> $array
+     */
+    abstract static function fromArray(Project $project, array $array): self;
 }

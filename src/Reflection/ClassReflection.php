@@ -315,7 +315,7 @@ class ClassReflection extends Reflection
         $this->project = $project;
     }
 
-    public function setNamespace($namespace)
+    public function setNamespace(string $namespace): void
     {
         $this->namespace = ltrim($namespace, '\\');
     }
@@ -650,7 +650,7 @@ class ClassReflection extends Reflection
         ];
     }
 
-    public static function fromArray(Project $project, $array)
+    public static function fromArray(Project $project, array $array): self
     {
         $class                   = new self($array['name'], $array['line']);
         $class->shortDesc        = $array['short_desc'];

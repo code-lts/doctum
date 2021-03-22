@@ -136,8 +136,10 @@ class NodeVisitor extends NodeVisitorAbstract
             $function->addParameter($parameter);
         }
 
-        $comment = $this->context->getDocBlockParser()->parse($node->getDocComment(), $this->context, $function);
-        $function->setDocComment($node->getDocComment());
+        $docComment = $node->getDocComment();
+        $docComment = $docComment === null ? null : $docComment->__toString();
+        $comment = $this->context->getDocBlockParser()->parse($docComment, $this->context, $function);
+        $function->setDocComment($docComment);
         $function->setShortDesc($comment->getShortDesc());
         $function->setLongDesc($comment->getLongDesc());
         $function->setSee($this->resolveSee($comment->getTag('see')));
@@ -228,13 +230,15 @@ class NodeVisitor extends NodeVisitorAbstract
         if ($node instanceof ClassNode) {
             $class->setModifiers($node->flags);
         }
-        $class->setNamespace($this->context->getNamespace());
+        $class->setNamespace($this->context->getNamespace() ?? '');
         $class->setAliases($this->context->getAliases());
         $class->setHash($this->context->getHash());
         $class->setFile($this->context->getFile());
 
-        $comment = $this->context->getDocBlockParser()->parse($node->getDocComment(), $this->context, $class);
-        $class->setDocComment($node->getDocComment());
+        $docComment = $node->getDocComment();
+        $docComment = $docComment === null ? null : $docComment->__toString();
+        $comment = $this->context->getDocBlockParser()->parse($docComment, $this->context, $class);
+        $class->setDocComment($docComment);
         $class->setShortDesc($comment->getShortDesc());
         $class->setLongDesc($comment->getLongDesc());
         $class->setSee($this->resolveSee($comment->getTag('see')));
@@ -411,8 +415,10 @@ class NodeVisitor extends NodeVisitorAbstract
 
         $property->setDefault($prop->default);
 
-        $comment = $this->context->getDocBlockParser()->parse($node->getDocComment(), $this->context, $property);
-        $property->setDocComment($node->getDocComment());
+        $docComment = $node->getDocComment();
+        $docComment = $docComment === null ? null : $docComment->__toString();
+        $comment = $this->context->getDocBlockParser()->parse($docComment, $this->context, $property);
+        $property->setDocComment($docComment);
         $property->setShortDesc($comment->getShortDesc());
         $property->setLongDesc($comment->getLongDesc());
         $property->setSee($this->resolveSee($comment->getTag('see')));
