@@ -138,7 +138,7 @@ class NodeVisitor extends NodeVisitorAbstract
 
         $docComment = $node->getDocComment();
         $docComment = $docComment === null ? null : $docComment->__toString();
-        $comment = $this->context->getDocBlockParser()->parse($docComment, $this->context, $function);
+        $comment    = $this->context->getDocBlockParser()->parse($docComment, $this->context, $function);
         $function->setDocComment($docComment);
         $function->setShortDesc($comment->getShortDesc());
         $function->setLongDesc($comment->getLongDesc());
@@ -237,7 +237,7 @@ class NodeVisitor extends NodeVisitorAbstract
 
         $docComment = $node->getDocComment();
         $docComment = $docComment === null ? null : $docComment->__toString();
-        $comment = $this->context->getDocBlockParser()->parse($docComment, $this->context, $class);
+        $comment    = $this->context->getDocBlockParser()->parse($docComment, $this->context, $class);
         $class->setDocComment($docComment);
         $class->setShortDesc($comment->getShortDesc());
         $class->setLongDesc($comment->getLongDesc());
@@ -417,7 +417,7 @@ class NodeVisitor extends NodeVisitorAbstract
 
         $docComment = $node->getDocComment();
         $docComment = $docComment === null ? null : $docComment->__toString();
-        $comment = $this->context->getDocBlockParser()->parse($docComment, $this->context, $property);
+        $comment    = $this->context->getDocBlockParser()->parse($docComment, $this->context, $property);
         $property->setDocComment($docComment);
         $property->setShortDesc($comment->getShortDesc());
         $property->setLongDesc($comment->getLongDesc());

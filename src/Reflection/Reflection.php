@@ -233,5 +233,6 @@ abstract class Reflection
     /**
      * @param array<string,mixed> $array
      */
-    abstract static function fromArray(Project $project, array $array): self;
+    abstract public static function fromArray(Project $project, array $array): self;
+
 }
