@@ -45,6 +45,9 @@ abstract class Reflection
         $this->tags = [];
     }
 
+    /**
+     * @return self|null
+     */
     abstract public function getClass();
 
     public function getName(): string
@@ -232,7 +235,8 @@ abstract class Reflection
 
     /**
      * @param array<string,mixed> $array
+     * @return self
      */
-    abstract public static function fromArray(Project $project, array $array): self;
+    abstract public static function fromArray(Project $project, array $array);
 
 }

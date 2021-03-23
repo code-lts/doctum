@@ -191,7 +191,10 @@ class FunctionReflection extends Reflection
         ];
     }
 
-    public static function fromArray(Project $project, array $array): self
+    /**
+     * @return self
+     */
+    public static function fromArray(Project $project, array $array)
     {
         $method             = new self($array['name'], $array['line']);
         $method->shortDesc  = $array['short_desc'];
