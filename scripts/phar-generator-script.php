@@ -108,6 +108,7 @@ final class PharFilterIterator extends RecursiveFilterIterator
         'README',
         'Readme.php',
         '.php_cs.cache',
+        '.php_cs',
         'makefile',
         '.phpunit.result.cache',
         'phpstan.neon.dist',
