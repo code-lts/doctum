@@ -358,7 +358,7 @@ class Doctum implements ArrayAccess
         /** @var string $configLanguage */
         $configLanguage = $this->config['language'] ?? 'en';
         $moReader->readFile($dataDir . $configLanguage . '.mo');
-        Launcher::$plugin = $moReader;
+        Launcher::setPlugin($moReader);
         $twig             = new Environment(
             new FilesystemLoader(['/']),
             [
