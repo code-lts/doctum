@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Require PHP `7.2.20`
 - Enable support for PHP `8.0` on the PHAR
 - Resolve type aliases in docblocks (#24)
+- Upgrade Twig to `^3.0`
+- Upgrade `code-lts/cli-tools` to `^1.4`
+- Upgrade `wdes/php-i18n-l10n` to `^3.0`
 
 ## [5.3.1] - 2020-12-30
 
