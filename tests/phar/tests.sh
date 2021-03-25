@@ -19,14 +19,14 @@ testPharVersionCommand() {
 
 testPharAbsoluteFiles() {
     cd $(dirname $0)/data/
-    ABSOLUTE_OUTPUT=$(${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-absolute.conf.php 2>&1)
+    ABSOLUTE_OUTPUT=$(COLUMNS=100 ${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-absolute.conf.php 2>&1)
     assertSame "The output must be the same" "${ABSOLUTE_OUTPUT}" "$(cat absolute_1.out)"
     cd - > /dev/null
 }
 
 testPharRelativeFiles() {
     cd $(dirname $0)/data/
-    RELATIVE_OUTPUT=$(${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-relative.conf.php 2>&1)
+    RELATIVE_OUTPUT=$(COLUMNS=100 ${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-relative.conf.php 2>&1)
     assertSame "The output must be the same" "${RELATIVE_OUTPUT}" "$(cat relative_1.out)"
     cd - > /dev/null
 }

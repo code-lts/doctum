@@ -17,8 +17,9 @@ jobs:
                 php-version: ["7.2", "7.3", "7.4", "8.0"]
                 os: [ubuntu-latest]
                 experimental: [false]
+                composer-options: ['']
                 include:
-                    - { php-version: '8.1', experimental: true, os: ubuntu-latest }
+                    - { php-version: '8.1', experimental: true, os: ubuntu-latest, composer-options: '--ignore-platform-reqs' }
         steps:
             - uses: actions/checkout@v2
             - name: Use php ${{ matrix.php-version }}
@@ -33,11 +34,7 @@ jobs:
                   path: ~/.composer/cache/
                   key: composer-cache
             - name: Install dependencies
-              if: ${{ matrix.php-version != '8.0' }}
-              run: composer install --no-interaction --prefer-dist --no-progress --no-suggest
-            - name: Install dependencies for php 8.0
-              if: ${{ matrix.php-version == '8.0' }}
-              run: composer install --no-interaction --prefer-dist --no-progress --no-suggest --ignore-platform-reqs
+              run: composer install --no-interaction ${{ matrix.composer-options }}
             - name: Run php tests
               run: composer run phpunit
             - name: Send coverage
@@ -53,6 +50,8 @@ jobs:
                 php-version: ["7.2", "7.3", "7.4", "8.0"]
                 os: [ubuntu-latest]
                 experimental: [false]
+                include:
+                    - { php-version: '8.1', experimental: true, os: ubuntu-latest }
         steps:
             - uses: actions/checkout@v2
             - name: Use php ${{ matrix.php-version }}
