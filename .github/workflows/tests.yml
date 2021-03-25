@@ -11,10 +11,14 @@ jobs:
     test-php:
         name: Test on php ${{ matrix.php-version }} and ${{ matrix.os }}
         runs-on: ${{ matrix.os }}
+        continue-on-error: ${{ matrix.experimental }}
         strategy:
             matrix:
                 php-version: ["7.2", "7.3", "7.4", "8.0"]
                 os: [ubuntu-latest]
+                experimental: [false]
+                include:
+                    - { php-version: '8.1', experimental: true, os: ubuntu-latest }
         steps:
             - uses: actions/checkout@v2
             - name: Use php ${{ matrix.php-version }}
@@ -40,11 +44,27 @@ jobs:
               uses: codecov/codecov-action@v1
 
     test-phar:
-        name: Run command line tests on the phar
-        runs-on: ubuntu-latest
+        name: Run command line tests on the phar with php ${{ matrix.php-version }} on ${{ matrix.os }}
+        runs-on: ${{ matrix.os }}
+        continue-on-error: ${{ matrix.experimental }}
+        strategy:
+            fail-fast: false
+            matrix:
+                php-version: ["7.2", "7.3", "7.4", "8.0"]
+                os: [ubuntu-latest]
+                experimental: [false]
         steps:
             - uses: actions/checkout@v2
-            - name: Run phar tests
-              uses: sudo-bot/action-shunit2@latest
+            - name: Use php ${{ matrix.php-version }}
+              uses: shivammathur/setup-php@v2
               with:
-                  cli: "./tests/phar/run-tests.sh"
+                  php-version: ${{ matrix.php-version }}
+            - name: Cache module
+              uses: actions/cache@v2
+              with:
+                  path: ~/v2.1.8.tar.gz
+                  key: shunit2-cache
+            - name: Setup shunit 2
+              run: ./tests/phar/install-tests.sh
+            - name: Run phar tests
+              run: ./tests/phar/tests.sh
