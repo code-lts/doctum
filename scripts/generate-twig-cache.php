@@ -1,13 +1,12 @@
 #!/usr/bin/env php
 <?php
 
-declare(strict_types = 1);
-
-// phpcs:disable PSR12.Files.FileHeader.IncorrectOrder
 /**
  * @license http://unlicense.org/UNLICENSE The UNLICENSE
  * @author William Desportes <williamdes@wdes.fr>
  */
+
+declare(strict_types = 1);
 
 $options = getopt(
     '',
@@ -54,13 +53,13 @@ if (empty($options['package-version'])) {
     exit(1);
 }
 
-require_once(__DIR__ . '/../vendor/autoload.php');
+require_once __DIR__ . '/../vendor/autoload.php';
 
-use Doctum\Renderer\TwigExtension;
-use Wdes\phpI18nL10n\Twig\Extension\I18n as ExtensionI18n;
+use Doctum\Doctum;
 use Twig\Cache\FilesystemCache;
 use Twig\Environment as TwigEnvironment;
 use Twig\Loader\FilesystemLoader as TwigLoaderFilesystem;
+use Wdes\phpI18nL10n\Twig\TranslationNode;
 
 $shortTempDir = $options['twig-templates-po-files'];
 $jsonMaping   = $options['json-mapping'];
@@ -74,8 +73,8 @@ $twig   = new TwigEnvironment(
     'cache' => $cache
     ]
 );
-$twig->addExtension(new TwigExtension());
-$twig->addExtension(new ExtensionI18n());
+Doctum::addTwigExtensions($twig);
+TranslationNode::$enableAddDebugInfo = true;
 
 $mappings               = new stdClass();
 $mappings->mappings     = [];
@@ -118,11 +117,16 @@ $files = new RecursiveIteratorIterator(
     new RecursiveDirectoryIterator($templateDir),
     RecursiveIteratorIterator::LEAVES_ONLY
 );
+
 foreach ($files as $file) {
     // force twig to generate cache
     if ($file->isFile() && $file->getExtension() === 'twig') {
         $shortName = str_replace($templateDir, '', $file);
-        $template  = $twig->loadTemplate($shortName);
+        if (TwigEnvironment::MAJOR_VERSION === 3) {
+            $template = $twig->loadTemplate($twig->getTemplateClass($shortName), $shortName);
+        } else {// @phpstan-ignore-line Twig 2
+            $template = $twig->loadTemplate($shortName);// @phpstan-ignore-line Twig 2
+        }
         // Generate line map
         $cacheFile                                 = $cache->generateKey($shortName, $twig->getTemplateClass($shortName));
         $cacheFile                                 = str_replace($options['twig-cache-dir'], '', $cacheFile);

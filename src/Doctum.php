@@ -359,7 +359,7 @@ class Doctum implements ArrayAccess
         $configLanguage = $this->config['language'] ?? 'en';
         $moReader->readFile($dataDir . $configLanguage . '.mo');
         Launcher::setPlugin($moReader);
-        $twig             = new Environment(
+        $twig = new Environment(
             new FilesystemLoader(['/']),
             [
             'strict_variables' => true,
@@ -368,10 +368,18 @@ class Doctum implements ArrayAccess
             'cache' => false,
             ]
         );
-        $twig->addExtension(new TwigExtension());
-        $twig->addExtension(new I18nExtension());
+        Doctum::addTwigExtensions($twig);
 
         return $twig;
+    }
+
+    /**
+     * @internal Do not use outside of the project
+     */
+    public static function addTwigExtensions(Environment $twig): void
+    {
+        $twig->addExtension(new TwigExtension());
+        $twig->addExtension(new I18nExtension());
     }
 
     private function getBuiltProject(): Project
