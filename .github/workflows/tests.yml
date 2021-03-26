@@ -50,8 +50,9 @@ jobs:
                 php-version: ["7.2", "7.3", "7.4", "8.0"]
                 os: [ubuntu-latest]
                 experimental: [false]
+                composer-options: ['']
                 include:
-                    - { php-version: '8.1', experimental: true, os: ubuntu-latest }
+                    - { php-version: '8.1', experimental: true, os: ubuntu-latest, composer-options: '--ignore-platform-reqs' }
         steps:
             - uses: actions/checkout@v2
             - name: Use php ${{ matrix.php-version }}
@@ -66,4 +67,4 @@ jobs:
             - name: Setup shunit 2
               run: ./tests/phar/install-tests.sh
             - name: Run phar tests
-              run: ./tests/phar/tests.sh
+              run: COMPOSER_OPTIONS="${{ matrix.composer-options }}" ./tests/phar/tests.sh

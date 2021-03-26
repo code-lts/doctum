@@ -19,25 +19,25 @@ testPharVersionCommand() {
 
 testPharAbsoluteFiles() {
     cd $(dirname $0)/data/
-    ABSOLUTE_OUTPUT=$(COLUMNS=100 ${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-absolute.conf.php 2>&1)
-    assertSame "The output must be the same" "${ABSOLUTE_OUTPUT}" "$(cat absolute_1.out)"
+    ABSOLUTE_OUTPUT=$(COLUMNS=200 ${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-absolute.conf.php 2>&1)
+    assertSame "The output must be the same" "$(cat absolute_1.out)" "${ABSOLUTE_OUTPUT}"
     cd - > /dev/null
 }
 
 testPharRelativeFiles() {
     cd $(dirname $0)/data/
-    RELATIVE_OUTPUT=$(COLUMNS=100 ${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-relative.conf.php 2>&1)
-    assertSame "The output must be the same" "${RELATIVE_OUTPUT}" "$(cat relative_1.out)"
+    RELATIVE_OUTPUT=$(COLUMNS=200 ${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-relative.conf.php 2>&1)
+    assertSame "The output must be the same" "$(cat relative_1.out)" "${RELATIVE_OUTPUT}"
     cd - > /dev/null
 }
 
 testPharConfigDoesNotExist() {
     cd $(dirname $0)/data/
     set +e
-    OUTPUT=$(COLUMNS=100 ${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-error.conf.php 2>&1)
+    OUTPUT=$(COLUMNS=200 ${PHAR_PATH} update --no-progress --no-ansi --force ./doctum-error.conf.php 2>&1)
     OUTPUT=$(echo "${OUTPUT}" | sed 's/ *$//g')
     set -e
-    assertSame "The output must be the same" "${OUTPUT}" "$(printf "$(cat error_cli_no_config.out)" "$(pwd)/")"
+    assertSame "The output must be the same" "$(printf "$(cat error_cli_no_config.out)" "$(pwd)/")" "${OUTPUT}"
     cd - > /dev/null
 }
 
