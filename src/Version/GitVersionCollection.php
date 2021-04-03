@@ -123,6 +123,9 @@ class GitVersionCollection extends VersionCollection
         return $this;
     }
 
+    /**
+     * @param string[] $arguments
+     */
     protected function execute(array $arguments): string
     {
         array_unshift($arguments, $this->gitPath);

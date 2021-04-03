@@ -246,7 +246,9 @@ class Renderer
     protected function save(Project $project, $uri, $template, $variables)
     {
         $depth = substr_count($uri, '/');
-        $this->twig->getExtension(TwigExtension::class)->setCurrentDepth($depth);
+        /** @var TwigExtension $twigExtension */
+        $twigExtension = $this->twig->getExtension(TwigExtension::class);
+        $twigExtension->setCurrentDepth($depth);
         $this->twig->addGlobal('root_path', str_repeat('../', $depth));
 
         $file = $project->getBuildDir() . '/' . $uri;

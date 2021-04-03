@@ -26,12 +26,13 @@ class TwigExtension extends AbstractExtension
 {
     protected $markdown;
     protected $project;
-    protected $currentDepth;
+    /** @var int|null */
+    protected $currentDepth = null;
 
     /**
      * Returns a list of filters to add to the existing list.
      *
-     * @return array An array of filters
+     * @return TwigFilter[] An array of filters
      */
     public function getFilters()
     {
@@ -44,7 +45,7 @@ class TwigExtension extends AbstractExtension
     /**
      * Returns a list of functions to add to the existing list.
      *
-     * @return array An array of functions
+     * @return TwigFunction[] An array of functions
      */
     public function getFunctions()
     {
@@ -65,7 +66,7 @@ class TwigExtension extends AbstractExtension
         ];
     }
 
-    public function setCurrentDepth($depth)
+    public function setCurrentDepth(int $depth): void
     {
         $this->currentDepth = $depth;
     }
@@ -95,7 +96,7 @@ class TwigExtension extends AbstractExtension
         return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $property->getClass()->getName()) . '.html#property_' . $property->getName();
     }
 
-    public function pathForStaticFile(array $context, $file)
+    public function pathForStaticFile(array $context, string $file): string
     {
         return $this->relativeUri($this->currentDepth) . $file;
     }
@@ -149,7 +150,7 @@ class TwigExtension extends AbstractExtension
         return preg_replace(['#^<p>\s*#s', '#\s*</p>\s*$#s'], '', $this->markdown->transform($desc));
     }
 
-    public function getSnippet($string)
+    public function getSnippet(string $string)
     {
         if (preg_match('/^(.{50,}?)\s.*/m', $string, $matches)) {
             $string = $matches[1];
@@ -158,7 +159,7 @@ class TwigExtension extends AbstractExtension
         return str_replace(["\n", "\r"], '', strip_tags($string));
     }
 
-    protected function relativeUri($value)
+    protected function relativeUri(?int $value): string
     {
         if (!$value) {
             return '';

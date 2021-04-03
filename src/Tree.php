@@ -16,6 +16,9 @@ namespace Doctum;
 class Tree
 {
 
+    /**
+     * @return array[]
+     */
     public function getTree(Project $project)
     {
         $namespaces = [];
@@ -31,6 +34,12 @@ class Tree
         return $this->generateClassTreeLevel($project, 1, $namespaces, []);
     }
 
+    /**
+     * @param int $level
+     * @param array $namespaces
+     * @param \Doctum\Reflection\ClassReflection[] $classes
+     * @return array[]
+     */
     protected function generateClassTreeLevel(Project $project, $level, array $namespaces, array $classes)
     {
         ++$level;

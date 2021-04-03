@@ -61,7 +61,7 @@ abstract class VersionCollection implements \Iterator, \Countable
     }
 
     /**
-     * @param array|string|Version $version
+     * @param string[]|string|Version $version
      * @param string               $longname
      * @phpstan-return self
      */
@@ -82,6 +82,9 @@ abstract class VersionCollection implements \Iterator, \Countable
         return $this;
     }
 
+    /**
+     * @return Version[]
+     */
     public function getVersions(): array
     {
         return $this->versions;

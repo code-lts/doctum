@@ -444,10 +444,10 @@ class NodeVisitor extends NodeVisitorAbstract
     protected function addConstant(ClassConstNode $node)
     {
         foreach ($node->consts as $const) {
-            $constant = new ConstantReflection($const->name->toString(), $const->getLine());
+            $constant   = new ConstantReflection($const->name->toString(), $const->getLine());
             $docComment = $node->getDocComment();
             $docComment = $docComment === null ? null : $docComment->__toString();
-            $comment  = $this->context->getDocBlockParser()->parse($docComment, $this->context, $constant);
+            $comment    = $this->context->getDocBlockParser()->parse($docComment, $this->context, $constant);
             $constant->setDocComment($docComment);
             $constant->setShortDesc($comment->getShortDesc());
             $constant->setLongDesc($comment->getLongDesc());

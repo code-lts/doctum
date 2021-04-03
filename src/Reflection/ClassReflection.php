@@ -470,11 +470,18 @@ class ClassReflection extends Reflection
         $this->methods = $methods;
     }
 
+    /**
+     * @param \PhpParser\Node\Stmt\Interface_ $interface
+     * @return void
+     */
     public function addInterface($interface)
     {
         $this->interfaces[$interface] = $interface;
     }
 
+    /**
+     * @return ClassReflection[]
+     */
     public function getInterfaces($deep = false)
     {
         $interfaces = [];
@@ -498,11 +505,18 @@ class ClassReflection extends Reflection
         return $allInterfaces;
     }
 
+    /**
+     * @param \PhpParser\Node\Stmt\Trait_ $trait
+     * @return void
+     */
     public function addTrait($trait)
     {
         $this->traits[$trait] = $trait;
     }
 
+    /**
+     * @return ClassReflection[]
+     */
     public function getTraits($deep = false)
     {
         $traits = [];
