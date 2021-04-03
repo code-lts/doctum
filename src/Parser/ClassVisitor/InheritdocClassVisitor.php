@@ -54,8 +54,9 @@ class InheritdocClassVisitor implements ClassVisitorInterface
                 $modified = true;
             }
 
-            if ('{@inheritdoc}' == strtolower(trim($method->getShortDesc())) || !$method->getDocComment()) {
-                if ($method->getShortDesc() != $parentMethod->getShortDesc()) {
+            $shortDesc = $method->getShortDesc() ?? '';
+            if ('{@inheritdoc}' === strtolower(trim($shortDesc)) || !$method->getDocComment()) {
+                if ($shortDesc != $parentMethod->getShortDesc()) {
                     $method->setShortDesc($parentMethod->getShortDesc());
                     $modified = true;
                 }
