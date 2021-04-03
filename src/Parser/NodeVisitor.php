@@ -361,29 +361,43 @@ class NodeVisitor extends NodeVisitorAbstract
         Reflection $methodOrFunctionOrProperty,
         array &$errors
     ): void {
-        $tag = $comment->getTag($tagName);
+        $tagsThatShouldHaveOnlyOne = ['return', 'var'];
+        $tag                       = $comment->getTag($tagName);
         if (is_array($tag)) {
-            if (isset($tag[0])) {
-                if (is_array($tag[0])) {
-                    $methodOrFunctionOrProperty->setHint(is_array($tag[0][0]) ? $this->resolveHint($tag[0][0]) : $tag[0][0]);
+            if (in_array($tagName, $tagsThatShouldHaveOnlyOne, true) && count($tag) > 1) {
+                $errors[] = sprintf(
+                    'Too much @%s tags on "%s" at @%s found: %d @%s tags',
+                    $tagName,
+                    $methodOrFunctionOrProperty->getName(),
+                    $tagName,
+                    count($tag),
+                    $tagName
+                );
+            }
+            $firstTagFound = $tag[0] ?? null;
+            if ($firstTagFound !== null) {
+                if (is_array($firstTagFound)) {
+                    $hint            = $firstTagFound[0];
+                    $hintDescription = $firstTagFound[1] ?? null;
+                    $methodOrFunctionOrProperty->setHint(is_array($hint) ? $this->resolveHint($hint) : $hint);
+                    if ($hintDescription !== null) {
+                        if (is_string($hintDescription)) {
+                            $methodOrFunctionOrProperty->setHintDesc($hintDescription);
+                        } else {
+                            $errors[] = sprintf(
+                                'The hint description on "%s" at @%s is invalid: "%s"',
+                                $methodOrFunctionOrProperty->getName(),
+                                $tagName,
+                                $hintDescription
+                            );
+                        }
+                    }
                 } else {
                     $errors[] = sprintf(
                         'The hint on "%s" at @%s is invalid: "%s"',
                         $methodOrFunctionOrProperty->getName(),
                         $tagName,
-                        $tag[0]
-                    );
-                }
-            }
-            if (isset($tag[1])) {
-                if (is_array($tag[1])) {
-                    $methodOrFunctionOrProperty->setHintDesc($tag[0][1]);
-                } else {
-                    $errors[] = sprintf(
-                        'The hint description on "%s" at @%s is invalid: "%s"',
-                        $methodOrFunctionOrProperty->getName(),
-                        $tagName,
-                        $tag[1]
+                        $firstTagFound
                     );
                 }
             }

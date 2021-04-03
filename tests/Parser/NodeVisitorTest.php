@@ -584,4 +584,150 @@ class NodeVisitorTest extends AbstractTestCase
         );
     }
 
+    /**
+     * @see NodeVisitor::addTagFromCommentToMethod
+     */
+    public function testAddTagFromCommentToMethodReturnParam(): void
+    {
+        $parserContext  = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $docBlockParser = new DocBlockParser();
+        $docBlockNode   = $docBlockParser->parse(
+            '/**' . "\n"
+            . '* @return FooBar|baz|string comment' . "\n"
+            . '**/' . "\n",
+            $parserContext
+        );
+
+        $visitor  = new NodeVisitor($parserContext);
+        $property = new PropertyReflection('args', 0);
+
+        $errors = [];
+        $this->callMethod(
+            $visitor,
+            'addTagFromCommentToMethod',
+            [
+                'return',
+                $docBlockNode,
+                $property,
+                &$errors
+            ]
+        );
+        $this->assertSame('comment', $property->getHintDesc());
+        $this->assertSame(
+            [],
+            $errors
+        );
+    }
+
+    /**
+     * @see NodeVisitor::addTagFromCommentToMethod
+     */
+    public function testAddTagFromCommentToMethodReturnParamNoComment(): void
+    {
+        $parserContext  = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $docBlockParser = new DocBlockParser();
+        $docBlockNode   = $docBlockParser->parse(
+            '/**' . "\n"
+            . '* @return FooBar|baz|string' . "\n"
+            . '**/' . "\n",
+            $parserContext
+        );
+
+        $visitor  = new NodeVisitor($parserContext);
+        $property = new PropertyReflection('args', 0);
+
+        $errors = [];
+        $this->callMethod(
+            $visitor,
+            'addTagFromCommentToMethod',
+            [
+                'return',
+                $docBlockNode,
+                $property,
+                &$errors
+            ]
+        );
+        $this->assertSame('', $property->getHintDesc());
+        $this->assertSame(
+            [],
+            $errors
+        );
+    }
+
+    /**
+     * @see NodeVisitor::addTagFromCommentToMethod
+     */
+    public function testAddTagFromCommentToMethodReturnParamTooMuchVarTags(): void
+    {
+        $parserContext  = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $docBlockParser = new DocBlockParser();
+        $docBlockNode   = $docBlockParser->parse(
+            '/**' . "\n"
+            . '* @var string' . "\n"
+            . '* @var FooBar|baz|string' . "\n"
+            . '**/' . "\n",
+            $parserContext
+        );
+
+        $visitor  = new NodeVisitor($parserContext);
+        $property = new PropertyReflection('myProperty', 0);
+
+        $errors = [];
+        $this->callMethod(
+            $visitor,
+            'addTagFromCommentToMethod',
+            [
+                'var',
+                $docBlockNode,
+                $property,
+                &$errors
+            ]
+        );
+        $this->assertSame('', $property->getHintDesc());
+        $this->assertSame(
+            [
+                'Too much @var tags on "myProperty" at @var found: 2 @var tags'
+            ],
+            $errors
+        );
+    }
+
+    /**
+     * @see NodeVisitor::addTagFromCommentToMethod
+     */
+    public function testAddTagFromCommentToMethodReturnParamTooMuchReturnTags(): void
+    {
+        $parserContext  = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $docBlockParser = new DocBlockParser();
+        $docBlockNode   = $docBlockParser->parse(
+            '/**' . "\n"
+            . '* @return string' . "\n"
+            . '* @return FooBar|baz|string' . "\n"
+            . '**/' . "\n",
+            $parserContext
+        );
+
+        $visitor  = new NodeVisitor($parserContext);
+        $property = new FunctionReflection('functionName', 0);
+
+        $errors = [];
+        $this->callMethod(
+            $visitor,
+            'addTagFromCommentToMethod',
+            [
+                'return',
+                $docBlockNode,
+                $property,
+                &$errors
+            ]
+        );
+        $this->assertSame('', $property->getHintDesc());
+        $this->assertSame(
+            [
+                'Too much @return tags on "functionName" at @return found: 2 @return tags'
+            ],
+            $errors
+        );
+    }
+
 }
