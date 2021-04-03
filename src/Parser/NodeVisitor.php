@@ -302,12 +302,13 @@ class NodeVisitor extends NodeVisitorAbstract
         }
 
         $docComment = $node->getDocComment();
+        $docComment = $docComment === null ? null : $docComment->__toString();
         $comment    = $this->context->getDocBlockParser()->parse(
-            $docComment === null ? null : $docComment->__toString(),
+            $docComment,
             $this->context,
             $method
         );
-        $method->setDocComment($node->getDocComment());
+        $method->setDocComment($docComment);
         $method->setShortDesc($comment->getShortDesc());
         $method->setLongDesc($comment->getLongDesc());
         $method->setSee($this->resolveSee($comment->getTag('see')));
@@ -444,8 +445,10 @@ class NodeVisitor extends NodeVisitorAbstract
     {
         foreach ($node->consts as $const) {
             $constant = new ConstantReflection($const->name->toString(), $const->getLine());
-            $comment  = $this->context->getDocBlockParser()->parse($node->getDocComment(), $this->context, $constant);
-            $constant->setDocComment($node->getDocComment());
+            $docComment = $node->getDocComment();
+            $docComment = $docComment === null ? null : $docComment->__toString();
+            $comment  = $this->context->getDocBlockParser()->parse($docComment, $this->context, $constant);
+            $constant->setDocComment($docComment);
             $constant->setShortDesc($comment->getShortDesc());
             $constant->setLongDesc($comment->getLongDesc());
 
