@@ -62,7 +62,12 @@ EOF
             if ($pharPath !== '') {
                 $phar_self             = new Phar($pharPath);
                 $metadata              = $phar_self->getMetadata();
-                $data['phar_metadata'] = $metadata;
+                $data['phar_metadata'] = [
+                    'vcs.git' => $metadata['vcs.git'],
+                    'vcs.browser' => $metadata['vcs.browser'],
+                    'vcs.ref' => $metadata['vcs.ref'],
+                    'build-date' => $metadata['build-date'],
+                ];
             }
         }
         if ($input->getOption('json')) {

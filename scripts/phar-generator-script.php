@@ -25,7 +25,15 @@ if (! is_dir($buildRoot)) {
     mkdir($buildRoot);
 }
 
-$version = \Doctum\Doctum::VERSION;
+$version       = \Doctum\Doctum::VERSION;
+$commandOutput = [];
+exec('git rev-parse --verify HEAD', $commandOutput);
+
+$gitCommit = $commandOutput[0] ?? '';
+if (empty($gitCommit)) {
+    echo 'Unable to fetch the git commit';
+    exit(1);
+}
 
 $pharAlias = 'doctum-' . $version . '.phar';
 
@@ -233,13 +241,14 @@ $phar->setSignatureAlgorithm(Phar::SHA256);
 $phar->buildFromIterator($pharFilesList, $srcRoot);
 $phar->setMetadata(
     [
-    'vcs.git' => 'https://github.com/code-lts/doctum.git',
-    'vcs.browser' => 'https://github.com/code-lts/doctum',
-    'version' => $version,
-    'build-date' => $date,
-    'license' => 'MIT',
-    'vendor' => 'Doctum',
-    'name' => 'Doctum',
+        'vcs.git' => 'https://github.com/code-lts/doctum.git',
+        'vcs.browser' => 'https://github.com/code-lts/doctum',
+        'vcs.ref' => $gitCommit,
+        'version' => $version,
+        'build-date' => $date,
+        'license' => 'MIT',
+        'vendor' => 'Doctum',
+        'name' => 'Doctum',
     ]
 );
 
