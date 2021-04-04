@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgrade `wdes/php-i18n-l10n` to `^4.0`
 - Fixed a bug that removed @return and @var descriptions since 5.3.0
 - Added detection for duplicated @var and @return tags
+- Added a "version" command to avoid having users parsing unsafe output
 
 ## [5.3.1] - 2020-12-30
 
