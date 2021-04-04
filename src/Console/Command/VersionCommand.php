@@ -39,10 +39,15 @@ The <info>%command.name%</info> command gives you access to version data:
 
 To print everything in the JSON format:
     <info>php %command.full_name% --json</info>
+To print everything in a text format:
+    <info>php %command.full_name% --text</info>
 EOF
             );
         $this->getDefinition()->addOption(
             new InputOption('json', null, InputOption::VALUE_NONE, 'Show the data in a JSON format')
+        );
+        $this->getDefinition()->addOption(
+            new InputOption('text', null, InputOption::VALUE_NONE, 'Show the data in a text format for humans')
         );
     }
 
@@ -76,6 +81,25 @@ EOF
                 return 1;
             }
             $output->writeln($jsonData);
+            return 0;
+        }
+        if ($input->getOption('text')) {
+            $output->writeln('Version: ' . $data['version']);
+            $output->writeln('Version-major: ' . $data['major']);
+            $output->writeln('Version-minor: ' . $data['minor']);
+            $output->writeln('Version-patch: ' . $data['patch']);
+            $output->writeln('Version-is-dev: ' . $data['is_dev_version']);
+            $output->writeln('License: ' . $data['license']);
+            $isPhar = $data['phar_metadata'] !== null;
+            $output->writeln('Phar-detected: ' . ($isPhar ? 'yes' : 'no'));
+            if ($isPhar) {
+                /** @var array<string,string> $meta */
+                $meta = $data['phar_metadata'];
+                $output->writeln('Phar-Vcs-Git: ' . $meta['vcs.git']);
+                $output->writeln('Phar-Vcs-Browser: ' . $meta['vcs.browser']);
+                $output->writeln('Phar-Vcs-Ref: ' . $meta['vcs.ref']);
+                $output->writeln('Phar-Build-Date: ' . $meta['build-date']);
+            }
             return 0;
         }
         $output->writeln($data['version']);
