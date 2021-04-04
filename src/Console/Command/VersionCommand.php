@@ -71,7 +71,7 @@ EOF
             }
         }
         if ($input->getOption('json')) {
-            $jsonData = json_encode($data, JSON_PRETTY_PRINT);
+            $jsonData = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
             if ($jsonData === false) {
                 return 1;
             }
