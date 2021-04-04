@@ -428,7 +428,7 @@ abstract class Command extends BaseCommand
             return;
         }
 
-        $this->output->writeLineFormatted('');
+        $this->output->writeLineFormatted('');// Display a line break after the title
         $this->output->writeLineFormatted(
             '<bg=cyan;fg=white> Version </>  <bg=cyan;fg=white> Updated C </>  <bg=cyan;fg=white> Removed C </>'
         );
@@ -452,6 +452,7 @@ abstract class Command extends BaseCommand
             return;
         }
 
+        $this->output->writeLineFormatted('');// Display a line break after the title
         $this->output->writeLineFormatted(
             '<bg=cyan;fg=white> Version </>  <bg=cyan;fg=white> Updated C </>'
             . '  <bg=cyan;fg=white> Updated N </>  <bg=cyan;fg=white> Removed C </>'
