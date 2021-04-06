@@ -26,6 +26,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Better support for `@method` annotations on classes, added `static` keyword support
 - Add support for `@internal`, `@deprecated`, `@since` on constants
 - Add support for `@example` on methods
+- Fix OpenSearch feature and document the config
+- Fix favicon config and document an example config
 
 ## [5.3.1] - 2020-12-30
 
