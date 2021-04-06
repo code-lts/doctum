@@ -45,6 +45,16 @@ namespace Models;
 class LaravelModel
 {
     /**
+     * abou
+     *
+     * blob blob
+     * @internal is int
+     * @deprecated v1
+     * @since v1
+     */
+    public const MY_CONST = 'foobar';
+
+    /**
      * @var string
      */
     protected $protectedProp;
@@ -127,6 +137,22 @@ class LaravelModel
     protected $model;
 
     /**
+     * @var string
+     * @example https://example.com
+     */
+    protected $uri;
+
+    /**
+     * What does the cow say ?
+     *
+     * @example moo
+     */
+    public function cowsay(): string
+    {
+        return 'moo';
+    }
+
+    /**
      * @todo lambs
      * @deprecated use a drone
      * @since ever
@@ -170,5 +196,47 @@ class LaravelModel
     public static function staticTrueSetAll(array ...$params): void
     {
 
+    }
+
+    /**
+     * Filter the list to include items with these characteristics
+     *
+     * @example $list->filter('Name', 'bob'); // only bob in list
+     * @example $list->filter('Name', array('aziz', 'bob'); // aziz and bob in list
+     * @example $list->filter(array('Name'=>'bob, 'Age'=>21)); // bob or someone with Age 21
+     * @example $list->filter(array('Name'=>'bob, 'Age'=>array(21, 43))); // bob or anyone with Age 21 or 43
+     */
+    public function adb()
+    {
+        return [];
+    }
+
+    /**
+     * Return a copy of this list which contains items matching any of these characteristics.
+     *
+     * See {@link filter()}
+     * @example // only bob in the list
+     *          $list = $list->filterAny('Name', 'bob');
+     *          // SQL: WHERE "Name" = 'bob'
+     * @example // azis or bob in the list
+     *          $list = $list->filterAny('Name', array('aziz', 'bob');
+     *          // SQL: WHERE ("Name" IN ('aziz','bob'))
+     * @example // bob or anyone aged 21 in the list
+     *          $list = $list->filterAny(array('Name'=>'bob, 'Age'=>21));
+     *          // SQL: WHERE ("Name" = 'bob' OR "Age" = '21')
+     * @example // bob or anyone aged 21 or 43 in the list
+     *          $list = $list->filterAny(array('Name'=>'bob, 'Age'=>array(21, 43)));
+     *          // SQL: WHERE ("Name" = 'bob' OR ("Age" IN ('21', '43'))
+     * @example // all bobs, phils or anyone aged 21 or 43 in the list
+     *          $list = $list->filterAny(array('Name'=>array('bob','phil'), 'Age'=>array(21, 43)));
+     *          // SQL: WHERE (("Name" IN ('bob', 'phil')) OR ("Age" IN ('21', '43'))
+     *
+     * @see Foo
+     *
+     * @return Foo
+     */
+    public function zzd()
+    {
+        return [];
     }
 }
