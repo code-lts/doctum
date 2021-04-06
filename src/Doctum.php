@@ -189,6 +189,10 @@ class Doctum implements ArrayAccess
     private $sort_class_interfaces = false;
     /** @var AbstractRemoteRepository|null */
     private $remote_repository = null;
+    /** @var string|null */
+    private $base_url = null;
+    /** @var string|null */
+    private $favicon = null;
 
     /**
      * @var array<string,string>|null
@@ -396,6 +400,8 @@ class Doctum implements ArrayAccess
             'theme' => $this->theme,
             'title' => $this->title,
             'source_url' => $this->source_url,
+            'base_url' => $this->base_url,
+            'favicon' => $this->favicon,
             'insert_todos' => $this->insert_todos,
             'footer_link' => $this->footer_link,
             'sort_class_properties' => $this->sort_class_properties,
