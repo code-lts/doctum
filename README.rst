@@ -177,6 +177,32 @@ All `footer_link` keys are optional.
         ],
     ]);
 
+To enable `OpenSearch <https://en.wikipedia.org/wiki/OpenSearch>`_ feature in your users browsers:
+
+.. code-block:: php
+
+    <?php
+
+    use Doctum\Doctum;
+    use Symfony\Component\Finder\Finder;
+
+    $dir = '/path/to/yourlib/src';
+    $iterator = Finder::create()
+        ->files()
+        ->name('*.php')
+        ->exclude('Resources')
+        ->exclude('Tests')
+        ->in($dir);
+
+    return new Doctum($iterator, [
+        'title'    => 'Project Api Documentation',
+        // Necessary to enable the opensearch.xml file generation
+        'base_url' => 'https://apidocs.company.tld/',
+        // If you have a favicon
+        // 'favicon' => 'https://company.tld/favicon.ico',
+        // ... more configs
+    ]);
+
 You can find more configuration examples under the ``examples/`` directory of
 the source code.
 
