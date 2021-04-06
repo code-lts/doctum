@@ -233,6 +233,19 @@ abstract class Reflection
         return ! empty($this->getTags('internal'));
     }
 
+    public function hasExamples(): bool
+    {
+        return ! empty($this->getExamples());
+    }
+
+    /**
+     * @return array[]
+     */
+    public function getExamples(): array
+    {
+        return $this->getTags('example');
+    }
+
     public function hasSince(): bool
     {
         return $this->getSince() !== null;

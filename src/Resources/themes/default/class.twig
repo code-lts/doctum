@@ -149,6 +149,18 @@
     </table>
 {% endblock %}
 
+{% block examples %}
+    <table class="table table-condensed">
+        {% for example in method.getExamples() %}
+            <tr>
+                <td><pre class="examples">
+                    {{- example|join(' ')|nl2br -}}
+                </pre></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
 {% block see %}
     <table class="table table-condensed">
         {% for see in method.see %}
@@ -299,6 +311,12 @@
                 <h4>{% trans 'See also' %}</h4>
 
                 {{ block('see') }}
+            {% endif %}
+
+            {% if method.hasExamples() %}
+                <h4>{% trans 'Examples' %}</h4>
+
+                {{ block('examples') }}
             {% endif %}
         </div>
     </div>
