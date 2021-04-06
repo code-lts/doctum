@@ -19,6 +19,7 @@ use Doctum\Parser\ParserContext;
 use Doctum\Project;
 use Doctum\Reflection\ClassReflection;
 use Doctum\Reflection\FunctionReflection;
+use Doctum\Reflection\MethodReflection;
 use Doctum\Reflection\ParameterReflection;
 use Doctum\Reflection\PropertyReflection;
 use Doctum\Store\ArrayStore;
@@ -42,9 +43,14 @@ class NodeVisitorTest extends AbstractTestCase
         $traverser->traverse([$method]);
 
         $reflMethod = $classReflection->getMethod($method->name->__toString());
+        $this->assertNotFalse($reflMethod);
 
-        $this->assertCount(count($expectedHints), $reflMethod->getParameters());
-        foreach ($reflMethod->getParameters() as $paramKey => $parameter) {
+        $this->assertInstanceOf(MethodReflection::class, $reflMethod);
+        /** @var MethodReflection $reflMethod */
+        $params = $reflMethod->getParameters();
+        $this->assertNotFalse($params);
+        $this->assertCount(count($expectedHints), $params);
+        foreach ($params as $paramKey => $parameter) {
             /** @var ParameterReflection $parameter */
             $this->assertArrayHasKey($paramKey, $expectedHints);
             $hint = $parameter->getHint();
@@ -68,6 +74,9 @@ class NodeVisitorTest extends AbstractTestCase
 
         $reflMethod = $classReflection->getMethod($method->name->__toString());
 
+        $this->assertInstanceOf(MethodReflection::class, $reflMethod);
+
+        /** @var MethodReflection $reflMethod */
         $this->assertEquals($expectedReturnType, $reflMethod->getHintAsString());
     }
 

@@ -200,7 +200,9 @@ class ClassReflection extends Reflection
     protected $hash;
     protected $namespace;
     protected $modifiers;
+    /** @var PropertyReflection[] */
     protected $properties = [];
+    /** @var MethodReflection[] */
     protected $methods    = [];
     protected $interfaces = [];
     protected $constants  = [];
@@ -310,11 +312,17 @@ class ClassReflection extends Reflection
         return $this->project;
     }
 
+    /**
+     * @return void
+     */
     public function setProject(Project $project)
     {
         $this->project = $project;
     }
 
+    /**
+     * @return void
+     */
     public function setNamespace(string $namespace): void
     {
         $this->namespace = ltrim($namespace, '\\');
@@ -325,6 +333,9 @@ class ClassReflection extends Reflection
         return $this->namespace;
     }
 
+    /**
+     * @return void
+     */
     public function setModifiers($modifiers)
     {
         $this->modifiers = $modifiers;
@@ -362,14 +373,20 @@ class ClassReflection extends Reflection
         return $properties;
     }
 
-    /*
+    /**
      * Can be any iterator (so that we can lazy-load the properties)
+     *
+     * @param PropertyReflection[] $properties
+     * @return void
      */
     public function setProperties($properties)
     {
         $this->properties = $properties;
     }
 
+    /**
+     * @return void
+     */
     public function addConstant(ConstantReflection $constant)
     {
         $this->constants[$constant->getName()] = $constant;
@@ -401,12 +418,18 @@ class ClassReflection extends Reflection
         $this->constants = $constants;
     }
 
+    /**
+     * @return void
+     */
     public function addMethod(MethodReflection $method)
     {
         $this->methods[$method->getName()] = $method;
         $method->setClass($this);
     }
 
+    /**
+     * @return MethodReflection|false False if not found
+     */
     public function getMethod($name)
     {
         return $this->methods[$name] ?? false;
@@ -465,6 +488,9 @@ class ClassReflection extends Reflection
         return $methods;
     }
 
+    /**
+     * @return void
+     */
     public function setMethods($methods)
     {
         $this->methods = $methods;
@@ -540,11 +566,17 @@ class ClassReflection extends Reflection
         return $allTraits;
     }
 
+    /**
+     * @return void
+     */
     public function setTraits($traits)
     {
         $this->traits = $traits;
     }
 
+    /**
+     * @return void
+     */
     public function setParent($parent)
     {
         $this->parent = $parent;
@@ -565,31 +597,49 @@ class ClassReflection extends Reflection
         return array_merge([$parent], $parent->getParent(true));
     }
 
+    /**
+     * @return void
+     */
     public function setInterface($boolean)
     {
         $this->category = $boolean ? self::CATEGORY_INTERFACE : self::CATEGORY_CLASS;
     }
 
+    /**
+     * @return bool
+     */
     public function isInterface()
     {
         return self::CATEGORY_INTERFACE === $this->category;
     }
 
+    /**
+     * @return void
+     */
     public function setTrait($boolean)
     {
         $this->category = $boolean ? self::CATEGORY_TRAIT : self::CATEGORY_CLASS;
     }
 
+    /**
+     * @return bool
+     */
     public function isTrait()
     {
         return self::CATEGORY_TRAIT === $this->category;
     }
 
+    /**
+     * @return void
+     */
     public function setCategory($category)
     {
         $this->category = $category;
     }
 
+    /**
+     * @return bool
+     */
     public function isException()
     {
         $parent = $this;
@@ -607,6 +657,9 @@ class ClassReflection extends Reflection
         return $this->aliases;
     }
 
+    /**
+     * @return void
+     */
     public function setAliases($aliases)
     {
         $this->aliases = $aliases;
@@ -617,11 +670,17 @@ class ClassReflection extends Reflection
         return $this->fromCache;
     }
 
+    /**
+     * @return void
+     */
     public function notFromCache()
     {
         $this->fromCache = false;
     }
 
+    /**
+     * @return array<string,mixed>
+     */
     public function toArray()
     {
         return [
@@ -710,6 +769,9 @@ class ClassReflection extends Reflection
         return $class;
     }
 
+    /**
+     * @return void
+     */
     public function sortInterfaces($sort)
     {
         if (is_callable($sort)) {

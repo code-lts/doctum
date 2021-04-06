@@ -27,13 +27,21 @@ abstract class Reflection
 
     /** @var string */
     protected $name;
+    /** @var int */
     protected $line;
+    /** @var string */
     protected $shortDesc;
+    /** @var string */
     protected $longDesc;
+    /** @var string|null|array */
     protected $hint;
+    /** @var string */
     protected $hintDesc;
+    /** @var array<string,array> */
     protected $tags;
+    /** @var string|null */
     protected $docComment;
+    /** @var array[] */
     protected $see = [];
     /** @var string[] */
     protected $errors = [];
@@ -60,36 +68,59 @@ abstract class Reflection
         $this->name = $name;
     }
 
+    /**
+     * @return int
+     */
     public function getLine()
     {
         return $this->line;
     }
 
-    public function setLine($line)
+    /**
+     * @param int $line
+     */
+    public function setLine($line): void
     {
         $this->line = $line;
     }
 
+    /**
+     * @return string
+     */
     public function getShortDesc()
     {
         return $this->shortDesc;
     }
 
+    /**
+     * @param string $shortDesc
+     * @return void
+     */
     public function setShortDesc($shortDesc)
     {
         $this->shortDesc = $shortDesc;
     }
 
+    /**
+     * @return string
+     */
     public function getLongDesc()
     {
         return $this->longDesc;
     }
 
+    /**
+     * @param string $longDesc
+     * @return void
+     */
     public function setLongDesc($longDesc)
     {
         $this->longDesc = $longDesc;
     }
 
+    /**
+     * @return HintReflection[]
+     */
     public function getHint()
     {
         if (! is_array($this->hint)) {
@@ -105,6 +136,10 @@ abstract class Reflection
         return $hints;
     }
 
+    /**
+     * @return string
+     * @example string|int
+     */
     public function getHintAsString()
     {
         $str = [];
@@ -115,64 +150,97 @@ abstract class Reflection
         return implode('|', $str);
     }
 
-    public function hasHint()
+    public function hasHint(): bool
     {
         return $this->hint ? true : false;
     }
 
+    /**
+     * @param string|array|null $hint
+     * @return void
+     */
     public function setHint($hint)
     {
         $this->hint = $hint;
     }
 
+    /**
+     * @return string|array|null
+     */
     public function getRawHint()
     {
         return $this->hint;
     }
 
+    /**
+     * @return void
+     */
     public function setHintDesc($desc)
     {
         $this->hintDesc = $desc;
     }
 
+    /**
+     * @return string
+     */
     public function getHintDesc()
     {
         return $this->hintDesc;
     }
 
-    public function setTags($tags)
+    /**
+     * @param array<string,array> $tags
+     * @return void
+     */
+    public function setTags(array $tags): void
     {
         $this->tags = $tags;
     }
 
+    /**
+     * @return array<string,array>
+     */
     public function getTags($name)
     {
         return $this->tags[$name] ?? [];
     }
 
+    /**
+     * @return array<string,array>
+     */
     public function getDeprecated()
     {
         return $this->getTags('deprecated');
     }
 
+    /**
+     * @return array<string,array>
+     */
     public function getTodo()
     {
         return $this->getTags('todo');
     }
 
-    // not serialized as it is only useful when parsing
+    /**
+     * not serialized as it is only useful when parsing
+     * @param string|null $comment
+     * @return void
+     */
     public function setDocComment($comment)
     {
         $this->docComment = $comment;
     }
 
+    /**
+     * @return string|null
+     */
     public function getDocComment()
     {
         return $this->docComment;
     }
 
     /**
-     * @return array
+     * @return array[]
      */
     public function getSee()
     {
@@ -193,12 +261,20 @@ abstract class Reflection
         return $see;
     }
 
+    /**
+     * @param array[] $see
+     * @return void
+     */
     public function setSee(array $see)
     {
         $this->see = $see;
     }
 
-    private function prepareMethodSee(array $seeElem)
+    /**
+     * @param array<int,MethodReflection|ClassReflection|false> $seeElem
+     * @return array<int,MethodReflection|ClassReflection|false>
+     */
+    private function prepareMethodSee(array $seeElem): array
     {
         /** @var Project $project */
         $project = $this->getClass()->getProject();

@@ -20,6 +20,10 @@ class PropertyReflection extends Reflection
     protected $class;
     protected $modifiers;
     protected $default;
+    /** @var bool */
+    protected $isReadOnly = false;
+    /** @var bool */
+    protected $isWriteOnly = false;
 
     public function __toString()
     {
@@ -36,32 +40,52 @@ class PropertyReflection extends Reflection
         $this->modifiers = $modifiers;
     }
 
-    public function isPublic()
+    public function setReadOnly(bool $isReadOnly): void
+    {
+        $this->isReadOnly = $isReadOnly;
+    }
+
+    public function setWriteOnly(bool $isWriteOnly): void
+    {
+        $this->isWriteOnly = $isWriteOnly;
+    }
+
+    public function isReadOnly(): bool
+    {
+        return $this->isReadOnly;
+    }
+
+    public function isWriteOnly(): bool
+    {
+        return $this->isWriteOnly;
+    }
+
+    public function isPublic(): bool
     {
         return self::MODIFIER_PUBLIC === (self::MODIFIER_PUBLIC & $this->modifiers);
     }
 
-    public function isProtected()
+    public function isProtected(): bool
     {
         return self::MODIFIER_PROTECTED === (self::MODIFIER_PROTECTED & $this->modifiers);
     }
 
-    public function isPrivate()
+    public function isPrivate(): bool
     {
         return self::MODIFIER_PRIVATE === (self::MODIFIER_PRIVATE & $this->modifiers);
     }
 
-    public function isStatic()
+    public function isStatic(): bool
     {
         return self::MODIFIER_STATIC === (self::MODIFIER_STATIC & $this->modifiers);
     }
 
-    public function isFinal()
+    public function isFinal(): bool
     {
         return self::MODIFIER_FINAL === (self::MODIFIER_FINAL & $this->modifiers);
     }
 
-    public function setDefault($default)
+    public function setDefault($default): void
     {
         $this->default = $default;
     }
@@ -76,11 +100,14 @@ class PropertyReflection extends Reflection
         return $this->class;
     }
 
-    public function setClass(ClassReflection $class)
+    public function setClass(ClassReflection $class): void
     {
         $this->class = $class;
     }
 
+    /**
+     * @return array<string,mixed>
+     */
     public function toArray()
     {
         return [

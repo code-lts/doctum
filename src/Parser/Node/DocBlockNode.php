@@ -38,12 +38,15 @@ class DocBlockNode
     /**
      * @return array<string,array>
      */
-    public function getTags()
+    public function getTags(): array
     {
         return $this->tags;
     }
 
-    public function getOtherTags()
+    /**
+     * @return array<string,array>
+     */
+    public function getOtherTags(): array
     {
         $tags = $this->tags;
         unset($tags['param'], $tags['return'], $tags['var'], $tags['throws']);
@@ -67,7 +70,7 @@ class DocBlockNode
      * @param string $key
      * @return mixed[]
      */
-    public function getTag($key)
+    public function getTag($key): array
     {
         return $this->tags[$key] ?? [];
     }
