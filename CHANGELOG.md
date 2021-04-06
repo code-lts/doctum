@@ -17,6 +17,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed a bug that removed @return and @var descriptions since 5.3.0
 - Added detection for duplicated @var and @return tags
 - Added a "version" command to avoid having users parsing unsafe output
+- Added support for `@mixin` annotations on classes
+- Added support for `@property-write` and `@property-read` annotations on classes
+- Added support for `@readonly` annotations on methods and classes
+- Added support for `@internal` annotations on methods and classes
+- Added support for `@deprecated` annotations on properties
+- Added support for `@since` annotations on classes, methods, properties
 
 ## [5.3.1] - 2020-12-30
 
