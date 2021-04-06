@@ -68,10 +68,10 @@ class Project
         $this->store      = $store;
         $this->config     = array_merge(
             [
-            'build_dir' => sys_get_temp_dir() . 'doctum/build',
-            'cache_dir' => sys_get_temp_dir() . 'doctum/cache',
-            'include_parent_data' => true,
-            'theme' => 'default',
+                'build_dir' => sys_get_temp_dir() . 'doctum/build',
+                'cache_dir' => sys_get_temp_dir() . 'doctum/cache',
+                'include_parent_data' => true,
+                'theme' => 'default',
             ],
             $config
         );

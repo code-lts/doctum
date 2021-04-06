@@ -642,10 +642,13 @@ class ClassReflection extends Reflection
         return ! empty($this->getTags('mixin'));
     }
 
+    /**
+     * @return array<int,array<string,ClassReflection>>
+     */
     public function getMixins(): array
     {
         $mixins = [];
-        foreach($this->getTags('mixin') as $mixin) {
+        foreach ($this->getTags('mixin') as $mixin) {
             $mixins[] = [
                 'class' => new ClassReflection($mixin[0], -1),
             ];
