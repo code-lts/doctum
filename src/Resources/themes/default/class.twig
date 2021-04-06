@@ -1,5 +1,5 @@
 {% extends "layout/layout.twig" %}
-{% from "macros.twig" import render_classes, breadcrumbs, namespace_link, class_link, property_link, method_link, hint_link, source_link, method_source_link, deprecated, deprecations, todo, todos, class_category_name %}
+{% from "macros.twig" import render_classes, breadcrumbs, namespace_link, class_link, property_link, method_link, hint_link, source_link, method_source_link, deprecated, deprecations, internals, todo, todos, class_category_name %}
 {% block title %}{{ class|raw }} | {{ parent() }}{% endblock %}
 {% block body_class 'class' %}
 {% block page_id 'class:' ~ (class.name|replace({'\\': '_'})) %}
@@ -28,6 +28,7 @@
     <p>{{ block('class_signature') }}</p>
 
     {{ deprecations(class) }}
+    {{ internals(class) }}
 
     {% if class.shortdesc or class.longdesc %}
         <div class="description">
@@ -37,9 +38,7 @@
             {% if class.longdesc -%}
                 <p>{{ class.longdesc|desc(class) }}</p>
             {%- endif %}
-            {% if project.config('insert_todos') == true %}
-                {{ todos(class) }}
-            {% endif %}
+            {{ todos(class) }}
         </div>
     {% endif %}
 
@@ -179,6 +178,7 @@
         {% for property in properties %}
             <tr>
                 <td class="type" id="property_{{ property.name|raw }}">
+                    {% if property.isInternal() %}<span class="label label-warning">{% trans 'internal' %}</span>{% endif %}
                     {% if property.isDeprecated() %}<span class="label label-danger">{% trans 'deprecated' %}</span>{% endif %}
                     {% if property.isReadOnly() %}<span class="label label-primary">{% trans 'read-only' %}</span>{% endif %}
                     {% if property.isWriteOnly() %}<span class="label label-success">{% trans 'write-only' %}</span>{% endif %}
@@ -241,24 +241,21 @@
     </h3>
     <div class="details">
         {{ deprecations(method) }}
+        {{ internals(method) }}
 
-        {% if method.shortdesc or method.longdesc %}
-            <div class="method-description">
-                {% if not method.shortdesc and not method.longdesc %}
-                    <p class="no-description">{% trans 'No description' %}</p>
-                {% else %}
-                    {% if method.shortdesc -%}
-                    <p>{{ method.shortdesc|desc(class) }}</p>
-                    {%- endif %}
-                    {% if method.longdesc -%}
-                    <p>{{ method.longdesc|desc(class) }}</p>
-                    {%- endif %}
+        <div class="method-description">
+            {% if not method.shortdesc and not method.longdesc %}
+                <p class="no-description">{% trans 'No description' %}</p>
+            {% else %}
+                {% if method.shortdesc -%}
+                <p>{{ method.shortdesc|desc(class) }}</p>
                 {%- endif %}
-                {% if project.config('insert_todos') == true %}
-                    {{ todos(method) }}
-                {% endif %}
-            </div>
-        {% endif %}
+                {% if method.longdesc -%}
+                <p>{{ method.longdesc|desc(class) }}</p>
+                {%- endif %}
+            {%- endif %}
+            {{ todos(method) }}
+        </div>
         <div class="tags">
             {% if method.parameters %}
                 <h4>{% trans 'Parameters' %}</h4>

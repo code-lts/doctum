@@ -50,11 +50,6 @@ class PropertyReflection extends Reflection
         $this->isWriteOnly = $isWriteOnly;
     }
 
-    public function isDeprecated(): bool
-    {
-        return ! empty($this->getDeprecated());
-    }
-
     public function isReadOnly(): bool
     {
         return $this->isReadOnly;

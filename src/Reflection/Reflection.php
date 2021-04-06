@@ -221,6 +221,26 @@ abstract class Reflection
         return $this->getTags('todo');
     }
 
+    public function isDeprecated(): bool
+    {
+        return ! empty($this->getDeprecated());
+    }
+
+    public function isInternal(): bool
+    {
+        return ! empty($this->getTags('internal'));
+    }
+
+    /**
+     * Get the internal tags
+     *
+     * @return array<string,array>
+     */
+    public function getInternal(): array
+    {
+        return $this->getTags('internal');
+    }
+
     /**
      * not serialized as it is only useful when parsing
      * @param string|null $comment

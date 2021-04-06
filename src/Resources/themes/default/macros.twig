@@ -126,7 +126,7 @@
 {% endmacro %}
 
 {% macro deprecated(reflection) %}
-    {% if reflection.deprecated %}<small><sup><span class="label label-danger">{% trans 'deprecated' %}</span></sup></small>{% endif %}
+    {% if reflection.deprecated %}<small><span class="label label-danger">{% trans 'deprecated' %}</span></small>{% endif %}
 {% endmacro %}
 
 {% macro deprecations(reflection) %}
@@ -145,8 +145,24 @@
     {% endif %}
 {% endmacro %}
 
+{% macro internals(reflection) %}
+    {% if reflection.isInternal() %}
+        {% for internalTag in reflection.getInternal() %}
+        <table>
+            <tr>
+                <td><span class="label label-warning">{% trans 'internal' %}</span></td>
+                <td>&nbsp;{{ internalTag[0]|raw }} {{ internalTag[1:]|join(' ')|raw }}</td>
+            </tr>
+        </table>
+        {% endfor %}
+        &nbsp;
+    {% endif %}
+{% endmacro %}
+
 {% macro todo(reflection) %}
-        {% if reflection.todo %}<small><sup><span class="label label-info">{% trans 'todo' %}</span></sup></small>{% endif %}
+        {% if project.config('insert_todos') == true %}
+            {% if reflection.todo %}<small><span class="label label-info">{% trans 'todo' %}</span></small>{% endif %}
+        {% endif %}
 {% endmacro %}
 
 {% macro todos(reflection) %}
