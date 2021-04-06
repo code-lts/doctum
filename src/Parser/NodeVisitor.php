@@ -472,6 +472,7 @@ class NodeVisitor extends NodeVisitorAbstract
             $constant->setDocComment($docComment);
             $constant->setShortDesc($comment->getShortDesc());
             $constant->setLongDesc($comment->getLongDesc());
+            $constant->setTags($comment->getOtherTags());
 
             $this->context->getClass()->addConstant($constant);
         }

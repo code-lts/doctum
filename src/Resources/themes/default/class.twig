@@ -186,7 +186,15 @@
     <table class="table table-condensed">
         {% for constant in constants %}
             <tr>
-                <td>{{ constant.name|raw }}</td>
+                <td>
+                    {% if constant.isInternal() %}<span class="label label-warning">{% trans 'internal' %}</span>{% endif %}
+                    {% if constant.isDeprecated() %}<span class="label label-danger">{% trans 'deprecated' %}</span>{% endif %}
+                    {{ constant.name|raw }}
+                    {% if constant.hasSince() %}
+                        <i>{{ 'Since:'|trans }} {{ constant.getSince() }}</i>
+                        <br>
+                    {% endif %}
+                </td>
                 <td class="last">
                     <p><em>{{ constant.shortdesc|desc(class) }}</em></p>
                     <p>{{ constant.longdesc|desc(class) }}</p>
