@@ -88,6 +88,11 @@
             {%- if not loop.last %}, {% endif %}
         {%- endfor %}
     {%- endif %}
+    {%- if class.hasMixins %}
+        {% for mixin in class.getMixins() %}
+            <i>mixin</i> {{ class_link(mixin.class) }}
+        {% endfor %}
+    {%- endif %}
     {{- source_link(project, class) }}
 {% endblock %}
 
