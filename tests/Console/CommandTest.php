@@ -62,7 +62,8 @@ class CommandTest extends AbstractTestCase
                 . 'Rendering Global doctum.js' . "\n"
                 . 'Rendering done' . "\n"
                 . "\n"
-                . 'Rendering project Version    Updated C    Updated N    Removed C    Removed N ' . "\n"
+                . 'Rendering project' . "\n"
+                . ' Version    Updated C    Updated N    Removed C    Removed N ' . "\n"
                 . '     main            0            0            0            0' . "\n"
                 . "\n",
             $commandTester->getDisplay()
@@ -95,6 +96,7 @@ class CommandTest extends AbstractTestCase
                 . "\n"
                 . ' Version    Updated C    Removed C ' . "\n"
                 . '     main            0            0' . "\n"
+                . "\n"
                 . "\n"
                 . ' Version    Updated C    Updated N    Removed C    Removed N ' . "\n"
                 . '     main            0            0            0            0' . "\n"

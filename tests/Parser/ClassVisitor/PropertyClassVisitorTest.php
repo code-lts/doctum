@@ -51,7 +51,18 @@ class PropertyClassVisitorTest extends TestCase
                 null,
             ],
         ];
-        $class->expects($this->any())->method('getTags')->with($this->equalTo('property'))->will($this->returnValue($property));
+
+        $class->expects($this->exactly(3))
+            ->method('getTags')
+            ->withConsecutive(
+                ['property'],
+                ['property-read'],
+                ['property-write']
+            )->willReturnOnConsecutiveCalls(
+                $property,
+                $property,
+                $property
+            );
 
         /** @var ParserContext $context */
         $context = $this->getMockBuilder(ParserContext::class)->disableOriginalConstructor()->getMock();
