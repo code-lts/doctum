@@ -22,6 +22,7 @@
         <h1>
             {{ class.name|split('\\')|last|raw }}
             {{ deprecated(class) }}
+            {% if class.isReadOnly() %}<small><span class="label label-primary">{% trans 'read-only' %}</span></small>{% endif %}
         </h1>
     </div>
 

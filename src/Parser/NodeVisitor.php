@@ -245,7 +245,11 @@ class NodeVisitor extends NodeVisitorAbstract
         if ($errors = $comment->getErrors()) {
             $class->setErrors($errors);
         } else {
-            $class->setTags($comment->getOtherTags());
+            $otherTags = $comment->getOtherTags();
+            if (isset($otherTags['readonly'])) {
+                $class->setReadOnly(true);
+            }
+            $class->setTags($otherTags);
         }
 
         if ($this->context->getFilter()->acceptClass($class)) {
@@ -441,8 +445,11 @@ class NodeVisitor extends NodeVisitorAbstract
             $property->setErrors($errors);
         } else {
             $this->addTagFromCommentToMethod('var', $comment, $property, $errors);
-
-            $property->setTags($comment->getOtherTags());
+            $otherTags = $comment->getOtherTags();
+            if (isset($otherTags['readonly'])) {
+                $property->setReadOnly(true);
+            }
+            $property->setTags($otherTags);
         }
 
         return [$property, $errors];

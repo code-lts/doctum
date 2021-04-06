@@ -45,6 +45,8 @@ abstract class Reflection
     protected $see = [];
     /** @var string[] */
     protected $errors = [];
+    /** @var bool */
+    protected $isReadOnly = false;
 
     public function __construct(string $name, $line)
     {
@@ -239,6 +241,16 @@ abstract class Reflection
     public function getInternal(): array
     {
         return $this->getTags('internal');
+    }
+
+    public function setReadOnly(bool $isReadOnly): void
+    {
+        $this->isReadOnly = $isReadOnly;
+    }
+
+    public function isReadOnly(): bool
+    {
+        return $this->isReadOnly;
     }
 
     /**

@@ -21,8 +21,6 @@ class PropertyReflection extends Reflection
     protected $modifiers;
     protected $default;
     /** @var bool */
-    protected $isReadOnly = false;
-    /** @var bool */
     protected $isWriteOnly = false;
 
     public function __toString()
@@ -40,19 +38,10 @@ class PropertyReflection extends Reflection
         $this->modifiers = $modifiers;
     }
 
-    public function setReadOnly(bool $isReadOnly): void
-    {
-        $this->isReadOnly = $isReadOnly;
-    }
 
     public function setWriteOnly(bool $isWriteOnly): void
     {
         $this->isWriteOnly = $isWriteOnly;
-    }
-
-    public function isReadOnly(): bool
-    {
-        return $this->isReadOnly;
     }
 
     public function isWriteOnly(): bool
