@@ -20,9 +20,9 @@
 
     <div class="page-header">
         <h1>
-            {{ class.name|split('\\')|last|raw }}
-            {{ deprecated(class) }}
-            {% if class.isReadOnly() %}<small><span class="label label-primary">{% trans 'read-only' %}</span></small>{% endif %}
+            {{- class.name|split('\\')|last|raw -}}
+            {{- deprecated(class) }}
+            {% if class.isReadOnly() %}<small><span class="label label-primary">{% trans 'read-only' %}</span></small>{% endif -%}
         </h1>
     </div>
 
@@ -44,9 +44,9 @@
             {% if class.longdesc -%}
                 <p>{{ class.longdesc|desc(class) }}</p>
             {%- endif %}
-            {{ todos(class) }}
         </div>
     {% endif %}
+    {{- todos(class) -}}
 
     {% if traits %}
         <h2>{% trans 'Traits' %}</h2>
@@ -276,10 +276,10 @@
         <code>{{ block('method_signature') }}</code>
     </h3>
     <div class="details">
-        {% if method.hasSince() %}
+        {%- if method.hasSince() -%}
             <i>{{ 'Since:'|trans }} {{ method.getSince() }}</i>
             <br>
-        {% endif %}
+        {%- endif -%}
         {{ deprecations(method) }}
         {{ internals(method) }}
 
@@ -294,7 +294,7 @@
                 <p>{{ method.longdesc|desc(class) }}</p>
                 {%- endif %}
             {%- endif %}
-            {{ todos(method) }}
+            {{- todos(method) -}}
         </div>
         <div class="tags">
             {% if method.parameters %}
