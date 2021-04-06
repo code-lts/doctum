@@ -24,6 +24,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added support for `@deprecated` annotations on properties
 - Added support for `@since` annotations on classes, methods, properties
 - Better support for `@method` annotations on classes, added `static` keyword support
+- Add support for `@internal`, `@deprecated`, `@since` on constants
+- Add support for `@example` on methods
 
 ## [5.3.1] - 2020-12-30
 
