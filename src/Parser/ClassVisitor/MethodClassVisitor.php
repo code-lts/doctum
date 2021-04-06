@@ -143,7 +143,6 @@ class MethodClassVisitor implements ClassVisitorInterface
                     'hint' => $argumentType,
                     'default' => $defaultValue,
                 ];
-                echo json_encode($arguments, JSON_PRETTY_PRINT);
             }
         }
 
