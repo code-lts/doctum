@@ -233,6 +233,17 @@ abstract class Reflection
         return ! empty($this->getTags('internal'));
     }
 
+    public function hasSince(): bool
+    {
+        return $this->getSince() !== null;
+    }
+
+    public function getSince(): ?string
+    {
+        $sinceTags = $this->getTags('since');
+        return empty($sinceTags) ? null : (isset($sinceTags[0][0]) ? $sinceTags[0][0] : null);
+    }
+
     /**
      * Get the internal tags
      *

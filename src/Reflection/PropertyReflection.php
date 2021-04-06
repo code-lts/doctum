@@ -38,7 +38,6 @@ class PropertyReflection extends Reflection
         $this->modifiers = $modifiers;
     }
 
-
     public function setWriteOnly(bool $isWriteOnly): void
     {
         $this->isWriteOnly = $isWriteOnly;

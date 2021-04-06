@@ -26,6 +26,11 @@
         </h1>
     </div>
 
+    {% if class.hasSince() %}
+        <i>{{ 'Since:'|trans }} {{ class.getSince() }}</i>
+        <br>
+    {% endif %}
+
     <p>{{ block('class_signature') }}</p>
 
     {{ deprecations(class) }}
@@ -184,14 +189,19 @@
         {% for property in properties %}
             <tr>
                 <td class="type" id="property_{{ property.name|raw }}">
-                    {% if property.isInternal() %}<span class="label label-warning">{% trans 'internal' %}</span>{% endif %}
-                    {% if property.isDeprecated() %}<span class="label label-danger">{% trans 'deprecated' %}</span>{% endif %}
-                    {% if property.isReadOnly() %}<span class="label label-primary">{% trans 'read-only' %}</span>{% endif %}
-                    {% if property.isWriteOnly() %}<span class="label label-success">{% trans 'write-only' %}</span>{% endif %}
                     {% if property.static %}static{% endif %}
                     {% if property.protected %}protected{% endif %}
                     {% if property.private %}private{% endif %}
                     {{ hint_link(property.hint) }}
+                    {% if property.isInternal() %}<span class="label label-warning">{% trans 'internal' %}</span>{% endif %}
+                    {% if property.isDeprecated() %}<span class="label label-danger">{% trans 'deprecated' %}</span>{% endif %}
+                    {% if property.isReadOnly() %}<span class="label label-primary">{% trans 'read-only' %}</span>{% endif %}
+                    {% if property.isWriteOnly() %}<span class="label label-success">{% trans 'write-only' %}</span>{% endif %}
+
+        {% if property.hasSince() %}
+            <i>{{ 'Since:'|trans }} {{ property.getSince() }}</i>
+            <br>
+        {% endif %}
                 </td>
                 <td>${{ property.name|raw }}</td>
                 <td class="last">{{ property.shortdesc|desc(class) }}</td>
@@ -246,6 +256,10 @@
         <code>{{ block('method_signature') }}</code>
     </h3>
     <div class="details">
+        {% if method.hasSince() %}
+            <i>{{ 'Since:'|trans }} {{ method.getSince() }}</i>
+            <br>
+        {% endif %}
         {{ deprecations(method) }}
         {{ internals(method) }}
 
