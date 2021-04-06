@@ -17,12 +17,13 @@ use Doctum\Parser\ClassVisitorInterface;
 use Doctum\Reflection\ClassReflection;
 use Doctum\Reflection\MethodReflection;
 use Doctum\Reflection\ParameterReflection;
+use Doctum\Reflection\Reflection;
 
 /**
  * Looks for @method tags on classes in the format of:
  *
  * @phpstan-ignore-next-line
- * @method [return type] [name]([type] [parameter], [...]) [<description>]
+ * @method [[static] return type] [name]([[type] [parameter]<, ...>]) [<description>]
  */
 class MethodClassVisitor implements ClassVisitorInterface
 {
@@ -44,57 +45,114 @@ class MethodClassVisitor implements ClassVisitorInterface
     }
 
     /**
+     * @license MIT
+     * @copyright 2010 Mike van Riel
+     *
      * Parse the parts of an @method tag into an associative array.
      *
-     * Original @method parsing by https://github.com/phpDocumentor/ReflectionDocBlock/blob/master/src/phpDocumentor/Reflection/DocBlock/Tag/MethodTag.php
+     * Original @method parsing by https://github.com/phpDocumentor/ReflectionDocBlock/blob/5.2.0/src/DocBlock/Tags/Method.php#L84
      *
-     * @param string $tag Method tag contents
+     * @param string $body Method tag contents
      *
-     * @return array|false
+     * @return array|null
      */
-    protected function parseMethod($tag)
+    protected function parseMethod($body): ?array
     {
-        // Account for default array syntax
-        $tag = str_replace('array()', 'array', $tag);
-
-        $matches = [];
         // 1. none or more whitespace
-        // 2. optionally a word with underscores followed by whitespace : as
+        // 2. optionally the keyword "static" followed by whitespace
+        // 3. optionally a word with underscores followed by whitespace : as
         //    type for the return value
-        // 3. then optionally a word with underscores followed by () and
+        // 4. then optionally a word with underscores followed by () and
         //    whitespace : as method name as used by phpDocumentor
-        // 4. then a word with underscores, followed by ( and any character
+        // 5. then a word with underscores, followed by ( and any character
         //    until a ) and whitespace : as method name with signature
-        // 5. any remaining text : as description
-        $pattern = '/^[\s]*(?P<hint>([\w\|_\\\\]+)[\s]+)?(?:[\w_]+\(\)[\s]+)?(?P<method>[\w\|_\\\\]+)\((?P<args>[^\)]*)\)[\s]*(?P<description>.*)/u';
-        if (!preg_match($pattern, $tag, $matches)) {
-            return false;
+        // 6. any remaining text : as description
+        $regex = '/^
+            # Static keyword
+            # Declares a static method ONLY if type is also present
+            (?:
+                (static)
+                \s+
+            )?
+            # Return type
+            (?:
+                (
+                    (?:[\w\|_\\\\]*\$this[\w\|_\\\\]*)
+                    |
+                    (?:
+                        (?:[\w\|_\\\\]+)
+                        # array notation
+                        (?:\[\])*
+                    )*+
+                )
+                \s+
+            )?
+            # Method name
+            ([\w_]+)
+            # Arguments
+            (?:
+                \((.*(?=\)))\)
+            )?
+            \s*
+            # Description
+            (.*)
+        $/sux';
+        if (!preg_match($regex, $body, $matches)) {
+            return null;
         }
 
-        // Parse arguments
-        $args = [];
-        if (isset($matches['args'])) {
-            foreach (explode(',', $matches['args']) as $arg) {
-                $parts = [];
-                if (preg_match('/^[\s]*(?P<hint>([\w\|_\\\\]+)[\s]+)*[\s]*\$(?P<name>[\w\|_\\\\]+)?(?:[\s]*=[\s]*)?(?P<default>.*)/', $arg, $parts)) {
-                    // Fix array default values
-                    if ($parts['default'] == 'array') {
-                        $parts['default'] = 'array()';
+        [, $static, $returnType, $methodName, $argumentLines, $description] = $matches;
+
+        $isStatic = $static === 'static';
+
+        if ($returnType === '') {
+            $returnType = 'void';
+        }
+
+        $arguments = [];
+        if ($argumentLines !== '') {
+            $argumentsExploded = explode(',', $argumentLines);
+            foreach ($argumentsExploded as $argument) {
+                $argument           = explode(' ', trim($argument), 2);
+                $defaultValue       = '';
+                $argumentType       = '';
+                $argumentName       = '';
+                $hasVariadicAtStart = strpos($argument[0], '...$') === 0;
+                if (strpos($argument[0], '$') === 0 || $hasVariadicAtStart) {// Only param name, example: $param1
+                    $argumentName = substr($argument[0], $hasVariadicAtStart ? 4 : 1);// Remove $
+                } else {// Type and param name, example: string $param1 or just a type, example: string
+                    $argumentType = $argument[0];
+                    if (isset($argument[1])) {// Type and param name
+                        $hasVariadicAtStart = strpos($argument[1], '...$') === 0;
+                        $argumentName       = substr($argument[1], $hasVariadicAtStart ? 4 : 1);// Remove $
+                        $defaultPart        = explode('=', $argumentName, 2);
+                        if (count($defaultPart) === 2) {// detected varName = defaultValue
+                            $argumentName = $defaultPart[0];
+                            $defaultValue = $defaultPart[1];
+                        }
                     }
-                    $args[$parts['name']] = [
-                        'hint' => $parts['hint'],
-                        'name' => $parts['name'],
-                        'default' => $parts['default'],
-                    ];
                 }
+
+                $argumentName = trim($argumentName);
+                $argumentType = trim($argumentType);
+                $defaultValue = trim($defaultValue);
+
+                $arguments[$argumentName] = [
+                    'isVariadic' => $hasVariadicAtStart,
+                    'name' => $argumentName,
+                    'hint' => $argumentType,
+                    'default' => $defaultValue,
+                ];
+                echo json_encode($arguments, JSON_PRETTY_PRINT);
             }
         }
 
         return [
-            'hint' => trim($matches['hint']),
-            'name' => $matches['method'],
-            'args' => $args,
-            'description' => $matches['description'],
+            'isStatic' => $isStatic,
+            'hint' => trim($returnType),
+            'name' => $methodName,
+            'args' => $arguments,
+            'description' => $description,
         ];
     }
 
@@ -111,7 +169,7 @@ class MethodClassVisitor implements ClassVisitorInterface
         $data = $this->parseMethod($methodTag);
 
         // Bail if the method format is invalid
-        if (!$data) {
+        if ($data === null) {
             return false;
         }
 
@@ -121,6 +179,9 @@ class MethodClassVisitor implements ClassVisitorInterface
 
         if ($data['hint']) {
             $method->setHint([[$data['hint'], null]]);
+        }
+        if ($data['isStatic']) {
+            $method->setModifiers(Reflection::MODIFIER_STATIC);
         }
 
         // Add arguments to the method
@@ -132,6 +193,7 @@ class MethodClassVisitor implements ClassVisitorInterface
             if (!empty($arg['default'])) {
                 $param->setDefault($arg['default']);
             }
+            $param->setVariadic($arg['isVariadic']);
             $method->addParameter($param);
         }
 
