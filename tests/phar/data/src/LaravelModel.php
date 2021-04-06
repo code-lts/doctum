@@ -5,6 +5,24 @@ namespace Models;
 /**
  * Desc
  *
+ * @method static self ISO8859_1()
+ * @method static self ISO8859_2()
+ * @method string getString()
+ * @method void setInteger(int $integer)
+ * @method setString(int $integer)
+ * @method setArgs(array $args = [])
+ * @method setArgsOld(array $args = array())
+ * @method setAll(array ...$args)
+ * @method setAllSlim(...$args)
+ * @method setEmpty($args)
+ * @method setUnk($integ, $var2, string $val3)
+ * @method static string staticGetter()
+ *
+ * @method static Foo myStaticMethod(int $integ, LaravelModel $model, self $mySelf, array ...$arrVaria)
+ * @method static Foo myStaticMethodWithDocs(int $integ, LaravelModel $model, self $mySelf, array ...$arrVaria) A cute description
+ * @method static Foo myStaticMethodArrayBreaks(array $a1 = [], array $a2 = array(), ?array $a3 = null, $a4 = false, array ...$arrVaria)
+ * @method static Foo myStaticMethodArrayBreaks2(array $a1 = [], array $a2 = array(), ?array $a3 = null, $a4 = false, ...$arrVaria)
+ *
  * @property int $myIntProperty
  * @property-read int $myIntPropertyRead
  * @property-write int $myIntPropertyWrite
@@ -137,6 +155,19 @@ class LaravelModel
      * @public
      */
     function publicMethodOld(): void
+    {
+
+    }
+
+    /**
+     * @public
+     */
+    function trueSetAll(array ...$params): void
+    {
+
+    }
+
+    public static function staticTrueSetAll(array ...$params): void
     {
 
     }
