@@ -140,4 +140,46 @@ class ProjectTest extends AbstractTestCase
         );
     }
 
+    public function testGetBaseUrl(): void
+    {
+        $project = $this->getProject();
+
+        $this->assertNull(
+            $project->getBaseUrl()
+        );
+
+        $project = $this->getProject(
+            [
+            'base_url' => 'https://github.com/code-lts/doctum'
+            ]
+        );
+
+        $this->assertSame(
+            'https://github.com/code-lts/doctum',
+            $project->getBaseUrl()
+        );
+
+        $project = $this->getProject(
+            [
+            'base_url' => 'https://github.com/code-lts/doctum/'
+            ]
+        );
+
+        $this->assertSame(
+            'https://github.com/code-lts/doctum',
+            $project->getBaseUrl()
+        );
+
+        $project = $this->getProject(
+            [
+            'base_url' => 'https://github.com/code-lts/doctum//'
+            ]
+        );
+
+        $this->assertSame(
+            'https://github.com/code-lts/doctum',
+            $project->getBaseUrl()
+        );
+    }
+
 }

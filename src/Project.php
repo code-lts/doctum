@@ -555,6 +555,12 @@ class Project
         return '';
     }
 
+    public function getBaseUrl(): ?string
+    {
+        $url = $this->getConfig('base_url');
+        return $url === null ? null : rtrim($url, '/');
+    }
+
     public function hasFooterLink(): bool
     {
         return $this->getConfig('footer_link') !== null && is_array($this->getConfig('footer_link'));

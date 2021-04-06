@@ -23,11 +23,11 @@
         <link rel="shortcut icon" href="{{ project.config('favicon') }}" />
     {% endif %}
 
-    {% if project.config('base_url') %}
+    {% if project.getBaseUrl() %}
         {%- for version in project.versions -%}
             <link rel="search"
                   type="application/opensearchdescription+xml"
-                  href="{{ project.config('base_url')|replace({'%version%': version}) }}/opensearch.xml"
+                  href="{{ project.getBaseUrl()|replace({'%version%': version}) }}/opensearch.xml"
                   title="{{ project.config('title') }} ({{ version }})" />
         {% endfor -%}
     {% endif %}
