@@ -179,6 +179,7 @@
         {% for property in properties %}
             <tr>
                 <td class="type" id="property_{{ property.name|raw }}">
+                    {% if property.isDeprecated() %}<span class="label label-danger">{% trans 'deprecated' %}</span>{% endif %}
                     {% if property.isReadOnly() %}<span class="label label-primary">{% trans 'read-only' %}</span>{% endif %}
                     {% if property.isWriteOnly() %}<span class="label label-success">{% trans 'write-only' %}</span>{% endif %}
                     {% if property.static %}static{% endif %}
