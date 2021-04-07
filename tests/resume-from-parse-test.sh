@@ -34,13 +34,13 @@ echo "Running update"
 ./bin/doctum.php update -v --no-progress --no-ansi --force tests/phar/data/doctum-absolute.conf.php
 
 echo "Comparing cache"
-diff --recursive "${TEMP_FOLDER}/cache/" tests/phar/data/cache/
+diff --unified --color=always --minimal --suppress-common-lines --recursive "${TEMP_FOLDER}/cache/" tests/phar/data/cache/
 if [ $? -eq 0 ]; then
     echo "The cache directories where the same"
 fi
 
 echo "Comparing build"
-diff --recursive "${TEMP_FOLDER}/build/" tests/phar/data/build/
+diff --unified --color=always --minimal --suppress-common-lines --recursive "${TEMP_FOLDER}/build/" tests/phar/data/build/
 if [ $? -eq 0 ]; then
     echo "The build directories where the same"
 fi
