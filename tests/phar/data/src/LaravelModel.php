@@ -235,9 +235,42 @@ class LaravelModel
      * @see Foo
      *
      * @return Foo
+     * @throws \Exception
      */
     public function zzd()
     {
         return [];
     }
+
+    /**
+     * Gets the length of an UTF-8 character.
+     *
+     * According to RFC 3629, a UTF-8 character can have at most 4 bytes.
+     * However, this implementation supports UTF-8 characters containing up to 6
+     * bytes.
+     *
+     * @see https://tools.ietf.org/html/rfc3629
+     *
+     * @param string $byte the byte to be analyzed
+     *
+     * @return int
+     */
+    public static function getCharLength($byte)
+    {
+        $byte = ord($byte);
+        if ($byte < 128) {
+            return 1;
+        } elseif ($byte < 224) {
+            return 2;
+        } elseif ($byte < 240) {
+            return 3;
+        } elseif ($byte < 248) {
+            return 4;
+        } elseif ($byte < 252) {
+            return 5; // unofficial
+        }
+
+        return 6; // unofficial
+    }
+
 }

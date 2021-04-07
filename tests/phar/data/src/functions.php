@@ -59,6 +59,8 @@ function complexOperations(int $i, $a, ...$b): string
  * @since 1.0.0
  *
  * @example foo bar
+ *
+ * @throws \Exception
  */
 function giveMeFoo(int $i, Foo $a, ...$b): Foo
 {

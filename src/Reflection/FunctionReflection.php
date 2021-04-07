@@ -16,7 +16,6 @@ use Doctum\Project;
 class FunctionReflection extends Reflection
 {
     protected $namespace;
-    protected $modifiers;
     /** @var array<string,ParameterReflection> */
     protected $parameters = [];
     protected $byRef;
