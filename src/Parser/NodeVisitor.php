@@ -637,7 +637,7 @@ class NodeVisitor extends NodeVisitorAbstract
             if (is_string($seeEntry)) {// Support bad formatted @see tags
                 $seeEntries = explode(',', $seeEntry);
                 foreach ($seeEntries as $entry) {
-                    $return[] = $this->getParsedSeeEntry($entry, '');
+                    $return[] = $this->getParsedSeeEntry(trim($entry, " \n\t"), '');
                 }
                 continue;
             }

@@ -739,4 +739,123 @@ class NodeVisitorTest extends AbstractTestCase
         );
     }
 
+    /**
+     * @see NodeVisitor::getParsedSeeEntry
+     */
+    public function testGetParsedSeeEntry(): void
+    {
+        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $visitor       = new NodeVisitor($parserContext);
+
+        $result = $this->callMethod(
+            $visitor,
+            'getParsedSeeEntry',
+            [
+                'https://foo.tld',
+                ''
+            ]
+        );
+        $this->assertSame(
+            [
+                'https://foo.tld',
+                '',
+                false,
+                false,
+                'https://foo.tld',
+            ],
+            $result
+        );
+
+        $result = $this->callMethod(
+            $visitor,
+            'getParsedSeeEntry',
+            [
+                'Class::method()',
+                ''
+            ]
+        );
+        $this->assertSame(
+            [
+                'Class::method()',
+                '',
+                'Class',
+                'method',
+                false,
+            ],
+            $result
+        );
+
+        $result = $this->callMethod(
+            $visitor,
+            'getParsedSeeEntry',
+            [
+                'FooClass',
+                ''
+            ]
+        );
+        $this->assertSame(
+            [
+                'FooClass',
+                '',
+                'FooClass',
+                false,
+                false,
+            ],
+            $result
+        );
+    }
+
+    /**
+     * @see NodeVisitor::resolveSee
+     */
+    public function testResolveSee(): void
+    {
+        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $visitor       = new NodeVisitor($parserContext);
+
+        $result = $this->callMethod(
+            $visitor,
+            'resolveSee',
+            [
+                [
+                    'Net_Sample::$foo, Net_Other::someMethod()',
+                    'https://example.com,      http://foo.bar.tld/folder/'
+                ],
+            ]
+        );
+        $this->assertSame(
+            [
+                [
+                    'Net_Sample::$foo',
+                    '',
+                    'Net_Sample::$foo',
+                    false,
+                    false,
+                ],
+                [
+                    'Net_Other::someMethod()',
+                    '',
+                    'Net_Other',
+                    'someMethod',
+                    false,
+                ],
+                [
+                    'https://example.com',
+                    '',
+                    false,
+                    false,
+                    'https://example.com',
+                ],
+                [
+                    'http://foo.bar.tld/folder/',
+                    '',
+                    false,
+                    false,
+                    'http://foo.bar.tld/folder/',
+                ],
+            ],
+            $result
+        );
+    }
+
 }
