@@ -1,4 +1,4 @@
-.PHONY: make-release update-release release
+.PHONY: make-release update-release release upload-release
 
 make-release:
 	./scripts/make-release.sh
@@ -15,3 +15,9 @@ tag:
 
 release: make-release update-release
 	@echo "Done"
+
+upload-release:
+	@git log --graph -4 --format="%H %s - %b - %G?" gh-pages
+	@git push --dry-run origin gh-pages:gh-pages
+	@sleep 2
+	@git push origin gh-pages:gh-pages
