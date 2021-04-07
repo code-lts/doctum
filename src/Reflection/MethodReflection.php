@@ -126,6 +126,7 @@ class MethodReflection extends Reflection
             'hint' => $this->hint,
             'hint_desc' => $this->hintDesc,
             'tags' => $this->tags,
+            'see'  => $this->see,
             'modifiers' => $this->modifiers,
             'is_by_ref' => $this->byRef,
             'exceptions' => $this->exceptions,
@@ -154,6 +155,7 @@ class MethodReflection extends Reflection
         $method->byRef      = $array['is_by_ref'];
         $method->exceptions = $array['exceptions'];
         $method->errors     = $array['errors'];
+        $method->see        = $array['see'] ?? [];// New in 5.4.0
 
         foreach ($array['parameters'] as $parameter) {
             $method->addParameter(ParameterReflection::fromArray($project, $parameter));
