@@ -70,3 +70,32 @@ jobs:
               run: |
                 export PATH="$PATH:$HOME/shunit2-2.1.8/"
                 COMPOSER_BIN="/bin/composer" COMPOSER_OPTIONS="${{ matrix.composer-options }}" ./tests/phar/tests.sh
+
+    test-resume-from-parse:
+        name: Run resume from parse tests with php ${{ matrix.php-version }} on ${{ matrix.os }}
+        runs-on: ${{ matrix.os }}
+        continue-on-error: ${{ matrix.experimental }}
+        strategy:
+            fail-fast: false
+            matrix:
+                php-version: ["7.2", "7.3", "7.4", "8.0"]
+                os: [ubuntu-latest]
+                experimental: [false]
+                composer-options: ['']
+                include:
+                    - { php-version: '8.1', experimental: true, os: ubuntu-latest, composer-options: '--ignore-platform-reqs' }
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use php ${{ matrix.php-version }}
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php-version }}
+            - name: Cache module
+              uses: actions/cache@v2
+              with:
+                  path: ~/.composer/cache/
+                  key: composer-cache
+            - name: Install dependencies
+              run: composer install --no-interaction ${{ matrix.composer-options }}
+            - name: Run resume from parse diff tests
+              run: ./tests/resume-from-parse-test.sh
