@@ -30,6 +30,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix favicon config and document an example config
 - Add support for `@public`, `@private`, `@protected`, `@final`, `@access` annotations
 - Fixed invalid `@see` annotations parsing and rendering
+- Added access handling on constants
+- Fixed global namespace handling
 
 ## [5.3.1] - 2020-12-30
 
