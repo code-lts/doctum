@@ -187,6 +187,7 @@ class LaravelModel
 
     /**
      * @public
+     * @see Net_Sample::$foo, Net_Other::someMethod(), https://example.com, Foo
      */
     function trueSetAll(array ...$params): void
     {
