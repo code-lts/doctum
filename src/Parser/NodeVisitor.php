@@ -626,42 +626,60 @@ class NodeVisitor extends NodeVisitorAbstract
         return $alias;
     }
 
-    protected function resolveSee(array $see)
+    /**
+     * @return array<int,array<int,string|false>>
+     */
+    protected function resolveSee(array $see): array
     {
-        $return  = [];
-        $matches = [];
-
+        $return = [];
         foreach ($see as $seeEntry) {
-            $reference   = $seeEntry[1];
-            $description = $seeEntry[2];
-            if ((bool) preg_match('/^[\w]+:\/\/.+$/', $reference)) { //URL
-                $return[] = [
-                    $reference,
-                    $description,
-                    false,
-                    false,
-                    $reference,
-                ];
-            } elseif ((bool) preg_match('/(.+)\:\:(.+)\(.*\)/', $reference, $matches)) { //Method
-                $return[] = [
-                    $reference,
-                    $description,
-                    $this->resolveAlias($matches[1]),
-                    $matches[2],
-                    false,
-                ];
-            } else { // We assume, that this is a class reference.
-                $return[] = [
-                    $reference,
-                    $description,
-                    $this->resolveAlias($reference),
-                    false,
-                    false,
-                ];
+            // Example: @see Net_Sample::$foo, Net_Other::someMethod()
+            if (is_string($seeEntry)) {// Support bad formatted @see tags
+                $seeEntries = explode(',', $seeEntry);
+                foreach ($seeEntries as $entry) {
+                    $return[] = $this->getParsedSeeEntry($entry, '');
+                }
+                continue;
             }
+            $reference   = $seeEntry[1];
+            $description = $seeEntry[2] ?? '';
+            $return[]    = $this->getParsedSeeEntry($reference, $description);
         }
 
         return $return;
+    }
+
+    /**
+     * @return array<int,string|false>
+     */
+    protected function getParsedSeeEntry(string $reference, string $description): array
+    {
+        $matches = [];
+        if ((bool) preg_match('/^[\w]+:\/\/.+$/', $reference)) { //URL
+            return [
+                $reference,
+                $description,
+                false,
+                false,
+                $reference,
+            ];
+        } elseif ((bool) preg_match('/(.+)\:\:(.+)\(.*\)/', $reference, $matches)) { //Method
+            return [
+                $reference,
+                $description,
+                $this->resolveAlias($matches[1]),
+                $matches[2],
+                false,
+            ];
+        } else { // We assume, that this is a class reference.
+            return [
+                $reference,
+                $description,
+                $this->resolveAlias($reference),
+                false,
+                false,
+            ];
+        }
     }
 
 }

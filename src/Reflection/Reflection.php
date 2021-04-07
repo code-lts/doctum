@@ -41,7 +41,7 @@ abstract class Reflection
     protected $tags;
     /** @var string|null */
     protected $docComment;
-    /** @var array[] */
+    /** @var array<int,array<int,string|false>> */
     protected $see = [];
     /** @var string[] */
     protected $errors = [];
@@ -253,8 +253,9 @@ abstract class Reflection
 
     public function getSince(): ?string
     {
+        /** @var array[] $sinceTags */
         $sinceTags = $this->getTags('since');
-        return empty($sinceTags) ? null : (isset($sinceTags[0][0]) ? $sinceTags[0][0] : null);
+        return count($sinceTags) > 0 ? implode(' ', $sinceTags[0]) : null;
     }
 
     /**
@@ -313,12 +314,11 @@ abstract class Reflection
 
             $see[] = $seeElem;
         }
-
         return $see;
     }
 
     /**
-     * @param array[] $see
+     * @param array<int,array<int,string|false>> $see
      * @return void
      */
     public function setSee(array $see)
@@ -327,7 +327,7 @@ abstract class Reflection
     }
 
     /**
-     * @param array<int,MethodReflection|ClassReflection|false> $seeElem
+     * @param array<int,string|false> $seeElem
      * @return array<int,MethodReflection|ClassReflection|false>
      */
     private function prepareMethodSee(array $seeElem): array
