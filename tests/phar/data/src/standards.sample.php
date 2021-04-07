@@ -103,6 +103,49 @@ $GLOBALS['_NET_SAMPLE_Count'] = 0;
  */
 class Net_Sample
 {
+    /**
+     * @const high priority : iOS, these correspond to APNs priorities 10.
+     * @access protected
+     */
+    const ACCESS_PROTECTED = 'high';
+
+    protected const TRUE_PROTECTED = 'high';
+
+
+    /**
+     * @const high priority : iOS, these correspond to APNs priorities 10.
+     * @access private
+     */
+    const ACCESS_PRIVATE = 'high';
+
+    /**
+     * @const high priority : iOS, these correspond to APNs priorities 10.
+     */
+    private const TRUE_ACCESS_PRIVATE = 'high';
+
+    /**
+     * @const high priority : iOS, these correspond to APNs priorities 10.
+     * @access private
+     */
+    public const ACCESS_PRIVATE_TRUE_PUBLIC = 'high';
+
+    /**
+     * @const high priority : iOS, these correspond to APNs priorities 10.
+     * @access private
+     */
+    protected const ACCESS_PRIVATE_TRUE_PROTECTED = 'high';
+
+    /**
+     * @const high priority : iOS, these correspond to APNs priorities 10.
+     * @private
+     */
+    const high = 'high';
+
+    /**
+     * @const normal priority : iOS, these correspond to APNs priorities 5
+     */
+    const normal = 'normal';
+
     // {{{ properties
 
     /**
@@ -271,6 +314,16 @@ class Net_Sample
      * @return void
      */
     function isPublic()
+    {
+
+    }
+
+    /**
+     * @access private
+     *
+     * @return void
+     */
+    public function isPrivatePublic()
     {
 
     }
