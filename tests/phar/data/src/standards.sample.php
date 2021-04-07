@@ -98,6 +98,8 @@ $GLOBALS['_NET_SAMPLE_Count'] = 0;
  * @see        NetOther, Net_Sample::Net_Sample()
  * @since      Class available since Release 1.2.0
  * @deprecated Class deprecated in Release 2.0.0
+ *
+ * @final
  */
 class Net_Sample
 {
@@ -122,6 +124,14 @@ class Net_Sample
      * @access private
      */
     var $_good = true;
+
+    /**
+     * Foo
+     *
+     * @var bool
+     * @access protected
+     */
+    var $_protected = true;
 
     // }}}
     // {{{ setFoo()
@@ -223,6 +233,46 @@ class Net_Sample
         } else {
             return false;
         }
+    }
+
+    /**
+     * @access protected
+     *
+     * @return void
+     */
+    function isProtected()
+    {
+
+    }
+
+    /**
+     * @private
+     *
+     * @return void
+     */
+    function isPrivate2()
+    {
+
+    }
+
+    /**
+     * @access private
+     *
+     * @return void
+     */
+    function isPrivate()
+    {
+
+    }
+
+    /**
+     * @access public
+     *
+     * @return void
+     */
+    function isPublic()
+    {
+
     }
 
     // }}}
