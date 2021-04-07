@@ -18,7 +18,6 @@ use Doctum\Project;
 class PropertyReflection extends Reflection
 {
     protected $class;
-    protected $modifiers;
     protected $default;
     /** @var bool */
     protected $isWriteOnly = false;

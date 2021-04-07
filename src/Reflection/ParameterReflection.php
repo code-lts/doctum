@@ -118,6 +118,7 @@ class ParameterReflection extends Reflection
             'default' => $this->default,
             'variadic' => $this->variadic,
             'is_by_ref' => $this->byRef,
+            'is_read_only' => $this->isReadOnly(),
         ];
     }
 
@@ -126,15 +127,16 @@ class ParameterReflection extends Reflection
      */
     public static function fromArray(Project $project, array $array)
     {
-        $parameter            = new self($array['name'], $array['line']);
-        $parameter->shortDesc = $array['short_desc'];
-        $parameter->longDesc  = $array['long_desc'];
-        $parameter->hint      = $array['hint'];
-        $parameter->tags      = $array['tags'];
-        $parameter->modifiers = $array['modifiers'];
-        $parameter->default   = $array['default'];
-        $parameter->variadic  = $array['variadic'];
-        $parameter->byRef     = $array['is_by_ref'];
+        $parameter             = new self($array['name'], $array['line']);
+        $parameter->shortDesc  = $array['short_desc'];
+        $parameter->longDesc   = $array['long_desc'];
+        $parameter->hint       = $array['hint'];
+        $parameter->tags       = $array['tags'];
+        $parameter->modifiers  = $array['modifiers'];
+        $parameter->default    = $array['default'];
+        $parameter->variadic   = $array['variadic'];
+        $parameter->byRef      = $array['is_by_ref'];
+        $parameter->isReadOnly = $array['is_read_only'] ?? false;// New in 5.4.0
 
         return $parameter;
     }
