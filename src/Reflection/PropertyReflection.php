@@ -28,7 +28,10 @@ class PropertyReflection extends Reflection
         return $this->class . '::$' . $this->name;
     }
 
-    public function setModifiers($modifiers)
+    /**
+     * {@inheritDoc}
+     */
+    public function setModifiers(int $modifiers): void
     {
         // if no modifiers, property is public
         if (0 === ($modifiers & self::VISIBILITY_MODIFER_MASK)) {

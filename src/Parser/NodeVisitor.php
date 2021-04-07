@@ -101,7 +101,7 @@ class NodeVisitor extends NodeVisitorAbstract
 
         foreach ($node->params as $param) {
             $parameter = new ParameterReflection($param->var->name, $param->getLine());
-            $parameter->setModifiers($param->type);
+            $parameter->setModifiers($param->flags);
             $parameter->setByRef($param->byRef);
             if ($param->default) {
                 $parameter->setDefault($this->context->getPrettyPrinter()->prettyPrintExpr($param->default));
@@ -152,6 +152,8 @@ class NodeVisitor extends NodeVisitorAbstract
             $function->setTags($comment->getOtherTags());
         }
 
+
+        $function->setModifiersFromTags();
         $function->setErrors($errors);
 
         $returnType    = $node->getReturnType();
@@ -259,6 +261,8 @@ class NodeVisitor extends NodeVisitorAbstract
             $this->context->enterClass($class);
         }
 
+        $class->setModifiersFromTags();
+
         return $class;
     }
 
@@ -270,7 +274,7 @@ class NodeVisitor extends NodeVisitorAbstract
 
         foreach ($node->params as $param) {
             $parameter = new ParameterReflection($param->var->name, $param->getLine());
-            $parameter->setModifiers($param->type);
+            $parameter->setModifiers($param->flags);
             $parameter->setByRef($param->byRef);
             if ($param->default) {
                 $parameter->setDefault($this->context->getPrettyPrinter()->prettyPrintExpr($param->default));
@@ -325,6 +329,7 @@ class NodeVisitor extends NodeVisitorAbstract
             $method->setTags($comment->getOtherTags());
         }
 
+        $method->setModifiersFromTags();
         $method->setErrors($errors);
 
         $returnType    = $node->getReturnType();
@@ -451,6 +456,7 @@ class NodeVisitor extends NodeVisitorAbstract
             }
             $property->setTags($otherTags);
         }
+        $property->setModifiersFromTags();
 
         return [$property, $errors];
     }

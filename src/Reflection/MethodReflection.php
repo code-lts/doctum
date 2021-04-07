@@ -20,7 +20,6 @@ class MethodReflection extends Reflection
     protected $class;
     protected $parameters = [];
     protected $byRef;
-    protected $modifiers;
     protected $exceptions = [];
 
     public function __toString()
@@ -38,7 +37,10 @@ class MethodReflection extends Reflection
         return $this->byRef;
     }
 
-    public function setModifiers($modifiers)
+    /**
+     * {@inheritDoc}
+     */
+    public function setModifiers(int $modifiers): void
     {
         // if no modifiers, method is public
         if (0 === ($modifiers & self::VISIBILITY_MODIFER_MASK)) {

@@ -20,7 +20,6 @@ class ParameterReflection extends Reflection
     protected $function;
     protected $method;
     protected $byRef;
-    protected $modifiers;
     protected $default;
     protected $variadic;
 
@@ -32,11 +31,6 @@ class ParameterReflection extends Reflection
     public function getClass()
     {
         return $this->method->getClass();
-    }
-
-    public function setModifiers($modifiers)
-    {
-        $this->modifiers = $modifiers;
     }
 
     public function setByRef($boolean)

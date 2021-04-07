@@ -105,7 +105,10 @@ class LazyClassReflection extends ClassReflection
         throw new \LogicException('A LazyClassReflection instance is read-only.');
     }
 
-    public function setModifiers($modifiers)
+    /**
+     * {@inheritDoc}
+     */
+    public function setModifiers(int $modifiers): void
     {
         throw new \LogicException('A LazyClassReflection instance is read-only.');
     }

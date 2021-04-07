@@ -17,6 +17,7 @@ use Doctum\Project;
 
 abstract class Reflection
 {
+    // Constants from: vendor/nikic/php-parser/lib/PhpParser/Node/Stmt/Class_.php
     public const MODIFIER_PUBLIC            = 1;
     public const MODIFIER_PROTECTED         = 2;
     public const MODIFIER_PRIVATE           = 4;
@@ -47,6 +48,8 @@ abstract class Reflection
     protected $errors = [];
     /** @var bool */
     protected $isReadOnly = false;
+    /** @var int */
+    protected $modifiers;
 
     public function __construct(string $name, $line)
     {
@@ -59,6 +62,69 @@ abstract class Reflection
      * @return self|null
      */
     abstract public function getClass();
+
+    /**
+     * Set the modifier flags
+     *
+     * @phpstan-param self::MODIFIER_*|int $modifiers
+     */
+    public function setModifiers(int $modifiers): void
+    {
+        $this->modifiers = $modifiers;
+    }
+
+    /**
+     * Set the modifier from phpdoc tags
+     *
+     */
+    public function setModifiersFromTags(): void
+    {
+        $hasFinalTag     = count($this->getTags('final')) > 0;
+        $hasProtectedTag = count($this->getTags('protected')) > 0;
+        $hasPrivateTag   = count($this->getTags('private')) > 0;
+        $hasPublicTag    = count($this->getTags('public')) > 0;
+        $hasStaticTag    = count($this->getTags('static')) > 0;
+        $accessTags      = $this->getTags('access');
+        $hasAccessTag    = count($accessTags) > 0;
+        $flags           = $this->modifiers;
+
+        if ($hasAccessTag) {
+            $accessTag = strtolower(trim(implode('', $accessTags[0])));
+            if ($accessTag === 'protected') {
+                $hasProtectedTag = true;
+            } elseif ($accessTag === 'private') {
+                $hasPrivateTag = true;
+            } elseif ($accessTag === 'public') {
+                $hasPublicTag = true;
+            }
+        }
+
+        if ($hasFinalTag) {
+            $flags |= self::MODIFIER_FINAL;
+        }
+        if ($hasProtectedTag) {
+            $flags |= self::MODIFIER_PROTECTED;
+        }
+        if ($hasPrivateTag) {
+            $flags |= self::MODIFIER_PRIVATE;
+        }
+        if ($hasPublicTag) {
+            $flags |= self::MODIFIER_PUBLIC;
+        }
+        if ($hasStaticTag) {
+            $flags |= self::MODIFIER_STATIC;
+        }
+
+        //@access
+        /*echo json_encode([
+            $hasFinalTag ,
+            $hasProtectedTag ,
+            $hasPrivateTag ,
+            $hasPublicTag ,
+            $hasStaticTag ,
+        ]);*/
+        $this->setModifiers($flags);
+    }
 
     public function getName(): string
     {

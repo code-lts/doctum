@@ -199,7 +199,6 @@ class ClassReflection extends Reflection
 
     protected $hash;
     protected $namespace;
-    protected $modifiers;
     /** @var PropertyReflection[] */
     protected $properties = [];
     /** @var MethodReflection[] */
@@ -331,14 +330,6 @@ class ClassReflection extends Reflection
     public function getNamespace()
     {
         return $this->namespace;
-    }
-
-    /**
-     * @return void
-     */
-    public function setModifiers($modifiers)
-    {
-        $this->modifiers = $modifiers;
     }
 
     public function addProperty(PropertyReflection $property)
