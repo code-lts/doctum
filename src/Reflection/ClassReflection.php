@@ -254,16 +254,6 @@ class ClassReflection extends Reflection
         return $this->name;
     }
 
-    public function isAbstract()
-    {
-        return self::MODIFIER_ABSTRACT === (self::MODIFIER_ABSTRACT & $this->modifiers);
-    }
-
-    public function isFinal()
-    {
-        return self::MODIFIER_FINAL === (self::MODIFIER_FINAL & $this->modifiers);
-    }
-
     public function getHash()
     {
         return $this->hash;

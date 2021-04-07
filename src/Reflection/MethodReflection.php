@@ -50,36 +50,6 @@ class MethodReflection extends Reflection
         $this->modifiers = $modifiers;
     }
 
-    public function isPublic()
-    {
-        return self::MODIFIER_PUBLIC === (self::MODIFIER_PUBLIC & $this->modifiers);
-    }
-
-    public function isProtected()
-    {
-        return self::MODIFIER_PROTECTED === (self::MODIFIER_PROTECTED & $this->modifiers);
-    }
-
-    public function isPrivate()
-    {
-        return self::MODIFIER_PRIVATE === (self::MODIFIER_PRIVATE & $this->modifiers);
-    }
-
-    public function isStatic()
-    {
-        return self::MODIFIER_STATIC === (self::MODIFIER_STATIC & $this->modifiers);
-    }
-
-    public function isAbstract()
-    {
-        return self::MODIFIER_ABSTRACT === (self::MODIFIER_ABSTRACT & $this->modifiers);
-    }
-
-    public function isFinal()
-    {
-        return self::MODIFIER_FINAL === (self::MODIFIER_FINAL & $this->modifiers);
-    }
-
     public function getClass()
     {
         return $this->class;

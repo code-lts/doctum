@@ -51,31 +51,6 @@ class PropertyReflection extends Reflection
         return $this->isWriteOnly;
     }
 
-    public function isPublic(): bool
-    {
-        return self::MODIFIER_PUBLIC === (self::MODIFIER_PUBLIC & $this->modifiers);
-    }
-
-    public function isProtected(): bool
-    {
-        return self::MODIFIER_PROTECTED === (self::MODIFIER_PROTECTED & $this->modifiers);
-    }
-
-    public function isPrivate(): bool
-    {
-        return self::MODIFIER_PRIVATE === (self::MODIFIER_PRIVATE & $this->modifiers);
-    }
-
-    public function isStatic(): bool
-    {
-        return self::MODIFIER_STATIC === (self::MODIFIER_STATIC & $this->modifiers);
-    }
-
-    public function isFinal(): bool
-    {
-        return self::MODIFIER_FINAL === (self::MODIFIER_FINAL & $this->modifiers);
-    }
-
     public function setDefault($default): void
     {
         $this->default = $default;

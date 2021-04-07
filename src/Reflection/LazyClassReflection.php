@@ -73,7 +73,7 @@ class LazyClassReflection extends ClassReflection
         throw new \LogicException('A LazyClassReflection instance is read-only.');
     }
 
-    public function isAbstract()
+    public function isAbstract(): bool
     {
         if (false === $this->loaded) {
             $this->load();
@@ -82,7 +82,7 @@ class LazyClassReflection extends ClassReflection
         return parent::isAbstract();
     }
 
-    public function isFinal()
+    public function isFinal(): bool
     {
         if (false === $this->loaded) {
             $this->load();

@@ -86,7 +86,7 @@ abstract class Reflection
         $hasStaticTag    = count($this->getTags('static')) > 0;
         $accessTags      = $this->getTags('access');
         $hasAccessTag    = count($accessTags) > 0;
-        $flags           = $this->modifiers;
+        $flags           = $this->modifiers ?? 0;
 
         if ($hasAccessTag) {
             $accessTag = strtolower(trim(implode('', $accessTags[0])));
@@ -115,15 +115,37 @@ abstract class Reflection
             $flags |= self::MODIFIER_STATIC;
         }
 
-        //@access
-        /*echo json_encode([
-            $hasFinalTag ,
-            $hasProtectedTag ,
-            $hasPrivateTag ,
-            $hasPublicTag ,
-            $hasStaticTag ,
-        ]);*/
         $this->setModifiers($flags);
+    }
+
+    public function isPublic(): bool
+    {
+        return self::MODIFIER_PUBLIC === (self::MODIFIER_PUBLIC & $this->modifiers);
+    }
+
+    public function isProtected(): bool
+    {
+        return self::MODIFIER_PROTECTED === (self::MODIFIER_PROTECTED & $this->modifiers);
+    }
+
+    public function isPrivate(): bool
+    {
+        return self::MODIFIER_PRIVATE === (self::MODIFIER_PRIVATE & $this->modifiers);
+    }
+
+    public function isStatic(): bool
+    {
+        return self::MODIFIER_STATIC === (self::MODIFIER_STATIC & $this->modifiers);
+    }
+
+    public function isAbstract(): bool
+    {
+        return self::MODIFIER_ABSTRACT === (self::MODIFIER_ABSTRACT & $this->modifiers);
+    }
+
+    public function isFinal(): bool
+    {
+        return self::MODIFIER_FINAL === (self::MODIFIER_FINAL & $this->modifiers);
     }
 
     public function getName(): string
