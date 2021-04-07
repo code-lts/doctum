@@ -1,4 +1,5 @@
 {% extends "layout/layout.twig" %}
+{% from "macros.twig" import namespace_link %}
 {% block title %}{% trans 'Namespaces' %} | {{ parent() }}{% endblock %}
 {% block body_class 'namespaces' %}
 
@@ -19,7 +20,7 @@
                         <ul>
                     {% set last_name = top_level %}
                 {% endif %}
-                <li><a href="{{ namespace_path(namespace) }}">{{ namespace|raw }}</a></li>
+                <li>{{ namespace_link(namespace) }}</li>
             {% endfor %}
                 </ul>
             </div>

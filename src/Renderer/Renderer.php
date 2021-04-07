@@ -137,8 +137,15 @@ class Renderer
     protected function renderNamespaceTemplates(array $namespaces, Project $project, $callback = null)
     {
         foreach ($namespaces as $namespace) {
+            $namespaceDisplayName = $namespace;
+            $namespaceName        = $namespace;
+            if ($namespace === '') {
+                $namespaceDisplayName = Tree::getGlobalNamespaceName();
+                $namespaceName        = Tree::getGlobalNamespacePageName();
+            }
+
             if (null !== $callback) {
-                call_user_func($callback, Message::RENDER_PROGRESS, ['Namespace', $namespace, $this->step, $this->steps]);
+                call_user_func($callback, Message::RENDER_PROGRESS, ['Namespace', $namespaceDisplayName, $this->step, $this->steps]);
             }
 
             $variables = [
@@ -152,7 +159,7 @@ class Renderer
             ];
 
             foreach ($this->theme->getTemplates('namespace') as $template => $target) {
-                $this->save($project, sprintf($target, str_replace('\\', '/', $namespace)), $template, $variables);
+                $this->save($project, sprintf($target, str_replace('\\', '/', $namespaceName)), $template, $variables);
             }
         }
     }

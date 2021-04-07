@@ -6,7 +6,7 @@
 {%- endmacro %}
 
 {% macro namespace_link(namespace) -%}
-    <a href="{{ namespace_path(namespace) }}">{{ namespace|raw }}</a>
+    <a href="{{ namespace_path(namespace) }}">{{ namespace == '' ? global_namespace_name() : namespace|raw }}</a>
 {%- endmacro %}
 
 {% macro class_link(class, absolute) -%}

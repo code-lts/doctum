@@ -13,8 +13,20 @@ declare(strict_types = 1);
 
 namespace Doctum;
 
+use Wdes\phpI18nL10n\Launcher;
+
 class Tree
 {
+
+    public static function getGlobalNamespacePageName(): string
+    {
+        return Launcher::gettext('[Global_Namespace]');
+    }
+
+    public static function getGlobalNamespaceName(): string
+    {
+        return Launcher::gettext('[Global Namespace]');
+    }
 
     /**
      * @return array[]
@@ -65,7 +77,7 @@ class Tree
             $url   = $parts[count($parts) - 1]
                     && $project->hasNamespace($namespace)
                     && (count($subnamespaces) || count($cl)) ? $namespace : '';
-            $short = $parts[count($parts) - 1] ? $parts[count($parts) - 1] : '[Global Namespace]';
+            $short = $parts[count($parts) - 1] ? $parts[count($parts) - 1] : self::getGlobalNamespaceName();
 
             $tree[] = [$short, $url, $this->generateClassTreeLevel($project, $level, $ns, $cl)];
         }

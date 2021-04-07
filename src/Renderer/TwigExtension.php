@@ -18,6 +18,7 @@ use Doctum\Reflection\Reflection;
 use Doctum\Reflection\ClassReflection;
 use Doctum\Reflection\MethodReflection;
 use Doctum\Reflection\PropertyReflection;
+use Doctum\Tree;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 use Twig\TwigFilter;
@@ -50,6 +51,7 @@ class TwigExtension extends AbstractExtension
     public function getFunctions()
     {
         return [
+            new TwigFunction('global_namespace_name', [Tree::class, 'getGlobalNamespaceName']),
             new TwigFunction('function_path', [$this, 'pathForFunction'], ['needs_context' => true, 'is_safe' => ['all']]),
             new TwigFunction('namespace_path', [$this, 'pathForNamespace'], ['needs_context' => true, 'is_safe' => ['all']]),
             new TwigFunction('class_path', [$this, 'pathForClass'], ['needs_context' => true, 'is_safe' => ['all']]),
@@ -83,6 +85,9 @@ class TwigExtension extends AbstractExtension
 
     public function pathForNamespace(array $context, string $namespace): string
     {
+        if ($namespace === '') {
+            $namespace = Tree::getGlobalNamespacePageName();
+        }
         return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $namespace) . '.html';
     }
 

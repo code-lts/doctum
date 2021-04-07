@@ -1,6 +1,6 @@
 {% extends "layout/layout.twig" %}
 {% from "macros.twig" import breadcrumbs, render_classes, class_link, namespace_link, hint_link, deprecated %}
-{% block title %}{{ namespace|raw }} | {{ parent() }}{% endblock %}
+{% block title %}{{ namespace == '' ? global_namespace_name() : namespace|raw }} | {{ parent() }}{% endblock %}
 {% block body_class 'namespace' %}
 {% block page_id 'namespace:' ~ (namespace|replace({'\\': '_'})) %}
 
@@ -32,7 +32,7 @@
 {% block page_content %}
 
     <div class="page-header">
-        <h1>{{ namespace|raw }}</h1>
+        <h1>{{ namespace == '' ? global_namespace_name() : namespace|raw }}</h1>
     </div>
 
     {% if subnamespaces %}
