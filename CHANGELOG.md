@@ -28,6 +28,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add support for `@example` on methods
 - Fix OpenSearch feature and document the config
 - Fix favicon config and document an example config
+- Add support for `@public`, `@private`, `@protected`, `@final`, `@access` annotations
+- Fixed invalid `@see` annotations parsing and rendering
 
 ## [5.3.1] - 2020-12-30
 
