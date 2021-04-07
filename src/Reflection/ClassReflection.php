@@ -569,7 +569,7 @@ class ClassReflection extends Reflection
         $class->fromCache        = true;
 
         if (isset($array['is_read_only'])) {// New in 5.4.0
-            $class->setReadOnly(true);
+            $class->setReadOnly($array['is_read_only']);
         }
 
         if ($array['is_interface']) {

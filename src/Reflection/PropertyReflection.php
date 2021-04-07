@@ -86,6 +86,8 @@ class PropertyReflection extends Reflection
             'modifiers' => $this->modifiers,
             'default' => $this->default,
             'errors' => $this->errors,
+            'is_read_only' => $this->isReadOnly(),
+            'is_write_only' => $this->isWriteOnly(),
         ];
     }
 
@@ -103,6 +105,14 @@ class PropertyReflection extends Reflection
         $property->modifiers = $array['modifiers'];
         $property->default   = $array['default'];
         $property->errors    = $array['errors'];
+
+        if (isset($array['is_read_only'])) {// New in 5.4.0
+            $property->setReadOnly($array['is_read_only']);
+        }
+
+        if (isset($array['is_write_only'])) {// New in 5.4.0
+            $property->setWriteOnly($array['is_write_only']);
+        }
 
         return $property;
     }
