@@ -612,6 +612,7 @@ class Project
         'sessionupdatetimestamphandlerinterface' => true,
         'reflector' => true,
         'stringable' => true,// PHP >= 8.0
+        'weakreference' => true,// PHP >= 7.4.0
     ];
 
     protected function updateCache(ClassReflection $class)
