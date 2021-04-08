@@ -170,6 +170,7 @@ class FunctionReflection extends Reflection
     public function toArray()
     {
         return [
+            'namespace' => $this->namespace,
             'name' => $this->name,
             'line' => $this->line,
             'short_desc' => $this->shortDesc,
@@ -205,6 +206,7 @@ class FunctionReflection extends Reflection
         $method->byRef      = $array['is_by_ref'];
         $method->exceptions = $array['exceptions'];
         $method->errors     = $array['errors'];
+        $method->namespace  = $array['namespace'] ?? '';// New in 5.4.0
 
         foreach ($array['parameters'] as $parameter) {
             $method->addParameter(ParameterReflection::fromArray($project, $parameter));
