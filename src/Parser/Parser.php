@@ -15,6 +15,8 @@ namespace Doctum\Parser;
 
 use Doctum\Message;
 use Doctum\Project;
+use Doctum\Reflection\ClassReflection;
+use Doctum\Reflection\FunctionReflection;
 use Doctum\Reflection\LazyClassReflection;
 use Doctum\Store\StoreInterface;
 use Symfony\Component\Finder\Finder;
@@ -69,6 +71,7 @@ class Parser
 
             foreach ($context->getFunctions() as $addr => $fun) {
                 $project->addFunction($fun);
+                $toStore->attach($fun);
             }
 
             foreach ($context->leaveFile() as $class) {
@@ -92,8 +95,12 @@ class Parser
         // visit each class for stuff that can only be done when all classes are parsed
         $toStore->addAll($this->traverser->traverse($project));
 
-        foreach ($toStore as $class) {
-            $this->store->writeClass($project, $class);
+        foreach ($toStore as $classOrFun) {
+            if ($classOrFun instanceof FunctionReflection) {
+                $this->store->writeFunction($project, $classOrFun);
+            } elseif ($classOrFun instanceof ClassReflection) {
+                $this->store->writeClass($project, $classOrFun);
+            }
         }
 
         return $transaction;

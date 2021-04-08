@@ -15,6 +15,7 @@ namespace Doctum\Store;
 
 use Doctum\Project;
 use Doctum\Reflection\ClassReflection;
+use Doctum\Reflection\FunctionReflection;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
@@ -29,31 +30,59 @@ class JsonStore implements StoreInterface
      */
     public function readClass(Project $project, $name): ClassReflection
     {
-        if (!file_exists($this->getFilename($project, $name))) {
-            throw new \InvalidArgumentException(sprintf('File "%s" for class "%s" does not exist.', $this->getFilename($project, $name), $name));
+        if (!file_exists($this->getFilename('class', $project, $name))) {
+            throw new \InvalidArgumentException(sprintf('File "%s" for class "%s" does not exist.', $this->getFilename('class', $project, $name), $name));
         }
 
-        return ClassReflection::fromArray($project, json_decode(file_get_contents($this->getFilename($project, $name)), true));
+        return ClassReflection::fromArray($project, json_decode(file_get_contents($this->getFilename('class', $project, $name)), true));
     }
 
     public function removeClass(Project $project, $name)
     {
-        if (!file_exists($this->getFilename($project, $name))) {
+        if (!file_exists($this->getFilename('class', $project, $name))) {
             throw new \RuntimeException(sprintf('Unable to remove the "%s" class.', $name));
         }
 
-        unlink($this->getFilename($project, $name));
+        unlink($this->getFilename('class', $project, $name));
     }
 
     public function writeClass(Project $project, ClassReflection $class)
     {
-        file_put_contents($this->getFilename($project, $class->getName()), json_encode($class->toArray(), self::JSON_PRETTY_PRINT));
+        file_put_contents($this->getFilename('class', $project, $class->getName()), json_encode($class->toArray(), self::JSON_PRETTY_PRINT));
+    }
+
+    /**
+     * @return FunctionReflection A FunctionReflection instance
+     *
+     * @throws \InvalidArgumentException if the function does not exist in the store
+     */
+    public function readFunction(Project $project, string $name): FunctionReflection
+    {
+        if (!file_exists($this->getFilename('function', $project, $name))) {
+            throw new \InvalidArgumentException(sprintf('File "%s" for function "%s" does not exist.', $this->getFilename('function', $project, $name), $name));
+        }
+
+        return FunctionReflection::fromArray($project, json_decode(file_get_contents($this->getFilename('function', $project, $name)), true));
+    }
+
+    public function removeFunction(Project $project, string $name): void
+    {
+        if (!file_exists($this->getFilename('function', $project, $name))) {
+            throw new \RuntimeException(sprintf('Unable to remove the "%s" function.', $name));
+        }
+
+        unlink($this->getFilename('function', $project, $name));
+    }
+
+    public function writeFunction(Project $project, FunctionReflection $function): void
+    {
+        file_put_contents($this->getFilename('function', $project, $function->getName()), json_encode($function->toArray(), self::JSON_PRETTY_PRINT));
     }
 
     public function readProject(Project $project)
     {
-        $classes = [];
-        $files   = Finder::create()->name('c_*.json')->files()->in($this->getStoreDir($project));
+        $classesOrFunctions = [];
+        $files              = Finder::create()->name('c_*.json')->files()->in($this->getStoreDir($project));
         foreach ($files as $file) {
             $contents = file_get_contents($file->getPathname());
             if ($contents === false) {
@@ -63,10 +92,22 @@ class JsonStore implements StoreInterface
             if ($data === false || $data === null) {
                 continue;
             }
-            $classes[] = ClassReflection::fromArray($project, $data);
+            $classesOrFunctions[] = ClassReflection::fromArray($project, $data);
+        }
+        $files = Finder::create()->name('f_*.json')->files()->in($this->getStoreDir($project));
+        foreach ($files as $file) {
+            $contents = file_get_contents($file->getPathname());
+            if ($contents === false) {
+                continue;
+            }
+            $data = json_decode($contents, true);
+            if ($data === false || $data === null) {
+                continue;
+            }
+            $classesOrFunctions[] = FunctionReflection::fromArray($project, $data);
         }
 
-        return $classes;
+        return $classesOrFunctions;
     }
 
     public function flushProject(Project $project)
@@ -75,14 +116,14 @@ class JsonStore implements StoreInterface
         $filesystem->remove($this->getStoreDir($project));
     }
 
-    protected function getFilename($project, $name)
+    protected function getFilename(string $type, Project $project, string $name): string
     {
         $dir = $this->getStoreDir($project);
 
-        return $dir . '/c_' . md5($name) . '.json';
+        return $dir . '/' . $type[0] . '_' . md5($name) . '.json';
     }
 
-    protected function getStoreDir(Project $project)
+    protected function getStoreDir(Project $project): string
     {
         $dir = $project->getCacheDir() . '/store';
 

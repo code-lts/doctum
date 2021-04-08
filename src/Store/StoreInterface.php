@@ -15,6 +15,7 @@ namespace Doctum\Store;
 
 use Doctum\Project;
 use Doctum\Reflection\ClassReflection;
+use Doctum\Reflection\FunctionReflection;
 
 interface StoreInterface
 {
@@ -25,8 +26,24 @@ interface StoreInterface
 
     public function removeClass(Project $project, $name);
 
+    public function readFunction(Project $project, string $name): FunctionReflection;
+
+    public function writeFunction(Project $project, FunctionReflection $Function): void;
+
+    public function removeFunction(Project $project, string $name): void;
+
+    /**
+     * Read the storage and return it
+     *
+     * @return array<int,ClassReflection|FunctionReflection>
+     */
     public function readProject(Project $project);
 
+    /**
+     * Empty the storage
+     *
+     * @return void
+     */
     public function flushProject(Project $project);
 
 }

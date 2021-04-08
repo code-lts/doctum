@@ -15,6 +15,7 @@ namespace Doctum\Store;
 
 use Doctum\Project;
 use Doctum\Reflection\ClassReflection;
+use Doctum\Reflection\FunctionReflection;
 
 /**
  * Stores classes in-memory.
@@ -27,6 +28,11 @@ class ArrayStore implements StoreInterface
      * @var array<string,ClassReflection>
      */
     private $classes = [];
+
+    /**
+     * @var array<string,FunctionReflection>
+     */
+    private $functions = [];
 
     public function setClasses($classes)
     {
@@ -58,14 +64,38 @@ class ArrayStore implements StoreInterface
         $this->classes[$class->getName()] = $class;
     }
 
+    public function readFunction(Project $project, string $name): FunctionReflection
+    {
+        if (!isset($this->functions[$name])) {
+            throw new \InvalidArgumentException(sprintf('Function "%s" does not exist.', $name));
+        }
+
+        return $this->functions[$name];
+    }
+
+    public function removeFunction(Project $project, string $name): void
+    {
+        if (!isset($this->functions[$name])) {
+            throw new \InvalidArgumentException(sprintf('Function "%s" does not exist.', $name));
+        }
+
+        unset($this->functions[$name]);
+    }
+
+    public function writeFunction(Project $project, FunctionReflection $function): void
+    {
+        $this->functions[$function->getName()] = $function;
+    }
+
     public function readProject(Project $project)
     {
-        return $this->classes;
+        return array_merge($this->classes, $this->functions);
     }
 
     public function flushProject(Project $project)
     {
-        $this->classes = [];
+        $this->classes   = [];
+        $this->functions = [];
     }
 
 }

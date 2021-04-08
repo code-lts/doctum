@@ -370,8 +370,12 @@ class Project
     {
         $this->initialize();
 
-        foreach ($this->store->readProject($this) as $class) {
-            $this->addClass($class);
+        foreach ($this->store->readProject($this) as $classOrFun) {
+            if ($classOrFun instanceof FunctionReflection) {
+                $this->addFunction($classOrFun);
+            } elseif ($classOrFun instanceof ClassReflection) {
+                $this->addClass($classOrFun);
+            }
         }
     }
 
