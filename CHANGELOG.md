@@ -32,6 +32,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed invalid `@see` annotations parsing and rendering
 - Added access handling on constants
 - Fixed global namespace handling
+- Added methods for functions to the `StoreInterface` class
+- Changed return body of `readProject` method of `StoreInterface` to also return functions
+- Fix some resume after parse step missing data
+- Add more tests on render, parse and update CLIs
 
 ## [5.3.1] - 2020-12-30
 
