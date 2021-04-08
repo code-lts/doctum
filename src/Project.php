@@ -404,7 +404,10 @@ class Project
         $this->read();
     }
 
-    public static function isPhpTypeHint($hint): bool
+    /**
+     * @internal Will be removed without notice someday
+     */
+    public static function isPhpTypeHint(string $hint): bool
     {
         // TODO: improve
         return in_array(
@@ -433,7 +436,10 @@ class Project
         );
     }
 
-    /** @var array<string,true> */
+    /**
+     * @var array<string,true>
+     * @internal Will be removed without notice someday
+     */
     public static $phpInternalClasses = [
         'stdclass' => true,
         'exception' => true,
@@ -605,6 +611,7 @@ class Project
         'sessionidinterface' => true,
         'sessionupdatetimestamphandlerinterface' => true,
         'reflector' => true,
+        'stringable' => true,// PHP >= 8.0
     ];
 
     protected function updateCache(ClassReflection $class)
