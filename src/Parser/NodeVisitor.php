@@ -28,6 +28,8 @@ use PhpParser\Node\Stmt\TraitUse as TraitUseNode;
 use PhpParser\Node\Stmt\Trait_ as TraitNode;
 use PhpParser\Node\Stmt\Use_ as UseNode;
 use PhpParser\Node\NullableType;
+use PhpParser\Node\Expr\Error as ExprError;
+use PhpParser\Node\Expr as NodeExpr;
 use Doctum\Project;
 use Doctum\Reflection\Reflection;
 use Doctum\Reflection\FunctionReflection;
@@ -101,7 +103,24 @@ class NodeVisitor extends NodeVisitorAbstract
         $function->setByRef((string) $node->byRef);
 
         foreach ($node->params as $param) {
-            $parameter = new ParameterReflection($param->var->name, $param->getLine());
+            if ($param->var instanceof ExprError) {
+                $errors = [
+                    'The expression had an error, please report this to Doctum for a better handling of this error',
+                ];
+                $this->context->addErrors($function->__toString(), $node->getLine(), $errors);
+                continue;
+            }
+            if ($param->var->name instanceof NodeExpr) {
+                $errors = [
+                    'This was unexpected, please report this to Doctum for a better handling of this error',
+                ];
+                $this->context->addErrors($function->__toString(), $node->getLine(), $errors);
+                continue;
+            }
+            $parameter = new ParameterReflection(
+                $param->var->name,
+                $param->getLine()
+            );
             $parameter->setModifiers($param->flags);
             $parameter->setByRef($param->byRef);
             if ($param->default) {
@@ -282,6 +301,20 @@ class NodeVisitor extends NodeVisitorAbstract
         $method->setByRef((string) $node->byRef);
 
         foreach ($node->params as $param) {
+            if ($param->var instanceof ExprError) {
+                $errors = [
+                    'The expression had an error, please report this to Doctum for a better handling of this error',
+                ];
+                $this->context->addErrors($method->__toString(), $node->getLine(), $errors);
+                continue;
+            }
+            if ($param->var->name instanceof NodeExpr) {
+                $errors = [
+                    'This was unexpected, please report this to Doctum for a better handling of this error',
+                ];
+                $this->context->addErrors($method->__toString(), $node->getLine(), $errors);
+                continue;
+            }
             $parameter = new ParameterReflection($param->var->name, $param->getLine());
             $parameter->setModifiers($param->flags);
             $parameter->setByRef($param->byRef);

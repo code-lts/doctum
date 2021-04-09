@@ -15,6 +15,9 @@ namespace Doctum\Version;
 
 use Doctum\Project;
 
+/**
+ * @implements \Iterator<Version>
+ */
 abstract class VersionCollection implements \Iterator, \Countable
 {
     /**

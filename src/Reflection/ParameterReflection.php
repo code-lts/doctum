@@ -17,7 +17,9 @@ use Doctum\Project;
 
 class ParameterReflection extends Reflection
 {
+    /** @var FunctionReflection */
     protected $function;
+    /** @var MethodReflection */
     protected $method;
     protected $byRef;
     protected $default;
@@ -28,6 +30,9 @@ class ParameterReflection extends Reflection
         return $this->method . '#' . $this->name;
     }
 
+    /**
+     * @return ClassReflection|null
+     */
     public function getClass()
     {
         return $this->method->getClass();
@@ -63,6 +68,9 @@ class ParameterReflection extends Reflection
         return $this->variadic;
     }
 
+    /**
+     * @return MethodReflection|null
+     */
     public function getMethod()
     {
         return $this->method;
@@ -73,6 +81,9 @@ class ParameterReflection extends Reflection
         $this->method = $method;
     }
 
+    /**
+     * @return FunctionReflection|null
+     */
     public function getFunction()
     {
         return $this->function;
@@ -94,9 +105,13 @@ class ParameterReflection extends Reflection
 
         $hints = [];
         if (isset($this->function)) {
-            $project = $this->getFunction()->getProject();
+            /** @var FunctionReflection $function */
+            $function = $this->getFunction();
+            $project  = $function->getProject();
         } else {
-            $project = $this->getClass()->getProject();
+            /** @var ClassReflection $class */
+            $class   = $this->getClass();
+            $project = $class->getProject();
         }
         foreach ($this->hint as $hint) {
             $hints[] = new HintReflection(Project::isPhpTypeHint($hint[0]) ? $hint[0] : $project->getClass($hint[0]), $hint[1]);

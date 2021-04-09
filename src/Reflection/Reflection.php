@@ -34,7 +34,7 @@ abstract class Reflection
     protected $shortDesc;
     /** @var string */
     protected $longDesc;
-    /** @var string|null|array */
+    /** @var string|null|array<int,mixed> */
     protected $hint;
     /** @var string */
     protected $hintDesc;
@@ -217,8 +217,10 @@ abstract class Reflection
             return [];
         }
 
-        $hints   = [];
-        $project = $this->getClass()->getProject();
+        $hints = [];
+        /** @var FunctionReflection $class Not sure this is the right type */
+        $class   = $this->getClass();
+        $project = $class->getProject();
         foreach ($this->hint as $hint) {
             $hints[] = new HintReflection(Project::isPhpTypeHint($hint[0]) ? $hint[0] : $project->getClass($hint[0]), $hint[1]);
         }
@@ -390,8 +392,9 @@ abstract class Reflection
     public function getSee()
     {
         $see = [];
-        /** @var Project $project */
-        $project = $this->getClass()->getProject();
+        /** @var FunctionReflection $class Not sure this is the right type */
+        $class   = $this->getClass();
+        $project = $class->getProject();
 
         foreach ($this->see as $seeElem) {
             if ($seeElem[3]) {
@@ -420,11 +423,16 @@ abstract class Reflection
      */
     private function prepareMethodSee(array $seeElem): array
     {
-        /** @var Project $project */
-        $project = $this->getClass()->getProject();
+        /** @var FunctionReflection $class Not sure this is the right type */
+        $class   = $this->getClass();
+        $project = $class->getProject();
 
-        $class  = $project->getClass($seeElem[2]);
-        $method = $class->getMethod($seeElem[3]);
+        $method = null;
+
+        if ($seeElem[2] !== false) {
+            $class  = $project->getClass($seeElem[2]);
+            $method = $class->getMethod($seeElem[3]);
+        }
 
         if ($method) {
             $seeElem[2] = false;

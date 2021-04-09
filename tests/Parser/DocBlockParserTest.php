@@ -14,10 +14,11 @@ declare(strict_types = 1);
 namespace Doctum\Tests\Parser;
 
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
 use Doctum\Parser\ParserContext;
 use Doctum\Parser\DocBlockParser;
+use Doctum\Parser\Filter\TrueFilter;
 use Doctum\Parser\Node\DocBlockNode;
+use PhpParser\PrettyPrinter\Standard;
 
 class DocBlockParserTest extends TestCase
 {
@@ -654,13 +655,14 @@ class DocBlockParserTest extends TestCase
         return $docblock;
     }
 
-    private function getContextMock(string $namespace = '', array $aliases = []): MockObject
+    private function getContextMock(string $namespace = '', array $aliases = []): ParserContext
     {
-        $contextMock = $this->getMockBuilder(ParserContext::class)->disableOriginalConstructor()->getMock();
-        $contextMock->expects($this->once())->method('getNamespace')->will($this->returnValue($namespace));
-        $contextMock->expects($this->once())->method('getAliases')->will($this->returnValue($aliases));
-
-        return $contextMock;
+        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $parserContext->enterNamespace($namespace);
+        foreach ($aliases as $aliasKey => $alias) {
+            $parserContext->addAlias($aliasKey, $alias);
+        }
+        return $parserContext;
     }
 
 }

@@ -17,6 +17,7 @@ use Doctum\Project;
 
 class MethodReflection extends Reflection
 {
+    /** @var ClassReflection */
     protected $class;
     protected $parameters = [];
     protected $byRef;
@@ -50,6 +51,9 @@ class MethodReflection extends Reflection
         $this->modifiers = $modifiers;
     }
 
+    /**
+     * @return ClassReflection|null
+     */
     public function getClass()
     {
         return $this->class;

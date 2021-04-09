@@ -114,6 +114,7 @@ class ClassTraverserTest extends TestCase
         $interface = new ClassReflection($interfaceName, 1);
 
         $parent = new ClassReflection($parentName, 1);
+        /** @var mixed $interfaceName */
         $parent->addInterface($interfaceName);
 
         $class = new ClassReflection($className, 1);
