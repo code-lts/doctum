@@ -25,7 +25,6 @@ class ClassTraverserTest extends TestCase
 
     /**
      * @dataProvider getTraverseOrderClasses
-     * @requires PHP <8
      */
     public function testTraverseOrder(
         string $interfaceName,
@@ -41,15 +40,22 @@ class ClassTraverserTest extends TestCase
         $project = new Project($store);
 
         $visitor = $this->getMockBuilder(ClassVisitorInterface::class)->getMock();
-        $visitor->expects($this->at(0))->method('visit')->with($project->loadClass($interfaceName));
-        $visitor->expects($this->at(1))->method('visit')->with($project->loadClass($parentName));
-        $visitor->expects($this->at(2))->method('visit')->with($project->loadClass($className));
+        $visitor->method('visit')->withConsecutive(
+            [$project->loadClass($interfaceName)],
+            [$project->loadClass($parentName)],
+            [$project->loadClass($className)]
+        );
 
         $traverser = new ClassTraverser();
         /** @var ClassVisitorInterface $visitor */
         $traverser->addVisitor($visitor);
 
         $traverser->traverse($project);
+        $proj = $store->readProject($project);
+
+        $this->assertArrayHasKey('C1', $proj);
+        $this->assertArrayHasKey('C2', $proj);
+        $this->assertArrayHasKey('C3', $proj);
     }
 
     /**
