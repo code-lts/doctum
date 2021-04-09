@@ -8,6 +8,7 @@ use Symfony\Component\Finder\Finder;
 $rootDir  = __DIR__ . '/src';
 $iterator = Finder::create()
     ->files()
+    ->sortByName()
     ->name('*.php')
     ->in($rootDir);
 
