@@ -42,6 +42,10 @@ class RendererTest extends AbstractTestCase
         $this->assertTrue($diff->isAlreadyRendered());
         $this->assertFileExists($file);
         unlink($file);
+        if (PHP_VERSION_ID < 70300) {
+            $this->assertFileNotExists($file);
+            return;
+        }
         $this->assertFileDoesNotExist($file);
     }
 
