@@ -14,6 +14,9 @@ Our badges
     :alt: Project code coverage by Codecov
     :target: https://codecov.io/gh/code-lts/doctum
 
+.. image:: https://github.com/code-lts/doctum/actions/workflows/tests.yml/badge.svg?branch=main
+    :alt: Project test suite
+    :target: https://github.com/code-lts/doctum/actions/workflows/tests.yml
 
 Installation
 ------------
