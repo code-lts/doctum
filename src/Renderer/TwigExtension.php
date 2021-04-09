@@ -13,7 +13,6 @@ declare(strict_types = 1);
 
 namespace Doctum\Renderer;
 
-use Michelf\MarkdownExtra;
 use Doctum\Reflection\Reflection;
 use Doctum\Reflection\ClassReflection;
 use Doctum\Reflection\MethodReflection;
@@ -22,9 +21,11 @@ use Doctum\Tree;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 use Twig\TwigFilter;
+use Parsedown;
 
 class TwigExtension extends AbstractExtension
 {
+    /** @var Parsedown */
     protected $markdown;
     protected $project;
     /** @var int|null */
@@ -146,7 +147,7 @@ class TwigExtension extends AbstractExtension
         }
 
         if (null === $this->markdown) {
-            $this->markdown = new MarkdownExtra();
+            $this->markdown = new Parsedown();
         }
 
         // FIXME: the @see argument is more complex than just a class (Class::Method, local method directly, ...)
@@ -158,7 +159,7 @@ class TwigExtension extends AbstractExtension
             $desc
         );
 
-        return preg_replace(['#^<p>\s*#s', '#\s*</p>\s*$#s'], '', $this->markdown->transform($desc));
+        return $this->markdown->text($desc);
     }
 
     public function getSnippet(string $string)
