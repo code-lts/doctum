@@ -52,7 +52,7 @@ class NodeVisitor extends NodeVisitorAbstract
     public function enterNode(AbstractNode $node)
     {
         if ($node instanceof NamespaceNode) {
-            $this->context->enterNamespace($node->name->__toString());
+            $this->context->enterNamespace($node->name === null ? '' : $node->name->__toString());
         } elseif ($node instanceof UseNode) {
             $this->addAliases($node);
         } elseif ($node instanceof InterfaceNode) {
