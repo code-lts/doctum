@@ -16,6 +16,7 @@ namespace Doctum\Store;
 use Doctum\Project;
 use Doctum\Reflection\ClassReflection;
 use Doctum\Reflection\FunctionReflection;
+use Exception;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
@@ -30,11 +31,32 @@ class JsonStore implements StoreInterface
      */
     public function readClass(Project $project, $name): ClassReflection
     {
-        if (!file_exists($this->getFilename('class', $project, $name))) {
-            throw new \InvalidArgumentException(sprintf('File "%s" for class "%s" does not exist.', $this->getFilename('class', $project, $name), $name));
+        $fileName = $this->getFilename('class', $project, $name);
+
+        if (!file_exists($fileName)) {
+            throw new \InvalidArgumentException(sprintf('File "%s" for class "%s" does not exist.', $fileName, $name));
         }
 
-        return ClassReflection::fromArray($project, json_decode(file_get_contents($this->getFilename('class', $project, $name)), true));
+        return ClassReflection::fromArray($project, $this->readJsonFile($fileName));
+    }
+
+    protected function readJsonFile(string $filePath): array
+    {
+        $contents = file_get_contents($filePath);
+        if ($contents === false) {
+            throw new Exception(
+                sprintf('Unable to read the class: %s', $filePath)
+            );
+        }
+
+        $contents = json_decode($contents, true);
+        if ($contents === false) {
+            throw new Exception(
+                sprintf('Unable to JSON decode the class from: %s', $filePath)
+            );
+        }
+
+        return $contents;
     }
 
     public function removeClass(Project $project, $name)
@@ -58,11 +80,13 @@ class JsonStore implements StoreInterface
      */
     public function readFunction(Project $project, string $name): FunctionReflection
     {
-        if (!file_exists($this->getFilename('function', $project, $name))) {
-            throw new \InvalidArgumentException(sprintf('File "%s" for function "%s" does not exist.', $this->getFilename('function', $project, $name), $name));
+        $fileName = $this->getFilename('function', $project, $name);
+
+        if (!file_exists($fileName)) {
+            throw new \InvalidArgumentException(sprintf('File "%s" for function "%s" does not exist.', $fileName, $name));
         }
 
-        return FunctionReflection::fromArray($project, json_decode(file_get_contents($this->getFilename('function', $project, $name)), true));
+        return FunctionReflection::fromArray($project, $this->readJsonFile($fileName));
     }
 
     public function removeFunction(Project $project, string $name): void

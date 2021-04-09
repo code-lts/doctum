@@ -85,7 +85,7 @@ class DocBlockParser
                 /** @var \phpDocumentor\Reflection\DocBlock\Tags\Param $tag */
                 return [
                     $this->parseHint($tag->getType() ? explode('|', $tag->getType()->__toString()) : []),
-                    ltrim($tag->getVariableName(), '$'),
+                    ltrim($tag->getVariableName() ?? '', '$'),
                     $tag->getDescription() ? $tag->getDescription()->__toString() : '',
                 ];
             case Throws::class:

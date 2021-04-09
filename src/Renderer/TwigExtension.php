@@ -93,12 +93,18 @@ class TwigExtension extends AbstractExtension
 
     public function pathForMethod(array $context, MethodReflection $method)
     {
-        return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $method->getClass()->getName()) . '.html#method_' . $method->getName();
+        /** @var Reflection */
+        $class = $method->getClass();
+
+        return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $class->getName()) . '.html#method_' . $method->getName();
     }
 
     public function pathForProperty(array $context, PropertyReflection $property)
     {
-        return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $property->getClass()->getName()) . '.html#property_' . $property->getName();
+        /** @var Reflection */
+        $class = $property->getClass();
+
+        return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $class->getName()) . '.html#property_' . $property->getName();
     }
 
     public function pathForStaticFile(array $context, string $file): string

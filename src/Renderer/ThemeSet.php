@@ -45,7 +45,10 @@ class ThemeSet
                 // This should not exist
                 throw new \InvalidArgumentException(sprintf('Theme manifest "%s" is not a file.', $manifest));
             }
-            $text   = file_get_contents($manifest);
+            $text = file_get_contents($manifest);
+            if ($text === false) {
+                throw new \Exception(sprintf('Could not read "%s" file.', $manifest));
+            }
             $config = Yaml::parse($text);
             if (!isset($config['name'])) {
                 throw new \InvalidArgumentException(sprintf('Theme manifest in "%s" must have a "name" entry.', $manifest));

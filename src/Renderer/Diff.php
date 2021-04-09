@@ -42,9 +42,12 @@ class Diff
 
         if (file_exists($filename)) {
             $this->alreadyRendered = true;
-            if (false === $this->previous = @unserialize(file_get_contents($filename))) {
+            $previous              = $this->readSerializedFile($filename);
+            if (null === $previous) {
                 $this->alreadyRendered = false;
                 $this->previous        = new Index();
+            } else {
+                $this->previous = $previous;
             }
         } else {
             $this->alreadyRendered = false;
@@ -53,6 +56,16 @@ class Diff
 
         $this->previousNamespaces = $this->previous->getNamespaces();
         $this->currentNamespaces  = $this->current->getNamespaces();
+    }
+
+    protected function readSerializedFile(string $filename): ?Index
+    {
+        $contents = file_get_contents($filename);
+        if ($contents === false) {
+            return null;
+        }
+        $contents = @unserialize($contents);
+        return $contents === false ? null : $contents;
     }
 
     /**

@@ -35,7 +35,7 @@ interface StoreInterface
     /**
      * Read the storage and return it
      *
-     * @return array<int,ClassReflection|FunctionReflection>
+     * @return array<int|string,ClassReflection|FunctionReflection>
      */
     public function readProject(Project $project);
 

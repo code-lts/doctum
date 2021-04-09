@@ -16,6 +16,11 @@ use FilesystemIterator;
 $srcRoot   = realpath(__DIR__ . '/..') . DIRECTORY_SEPARATOR;
 $buildRoot = realpath(__DIR__ . '/../build');
 
+if ($buildRoot === false) {
+    echo 'Build root could not be resolved' . PHP_EOL;
+    exit(1);
+}
+
 if (file_exists($buildRoot . '/doctum.phar')) {
     echo 'The phar file should not exist' . PHP_EOL;
     exit(1);

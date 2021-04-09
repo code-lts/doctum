@@ -5,8 +5,16 @@ parameters:
         excludes_analyse:
             - vendor/*
             - tests/phar/data/*
+            - scripts/generate-twig-cache.php
+            - scripts/update-po-files.php
         paths:
             - src/
             - scripts/
             - examples/
             - tests/
+        ignoreErrors:
+            - "#^Method .* has no return typehint specified\\.$#"
+            - "#^Property .* has no typehint specified\\.$#"
+            - "#^Method .* with no typehint specified\\.$#"
+            - "#^Method .* has parameter .* with no value type specified in iterable type array.*\\.$#"
+            - "#^Method .* return type has no value type specified in iterable type array\\.$#"
