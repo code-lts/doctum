@@ -38,6 +38,7 @@ use Doctum\Reflection\ParameterReflection;
 use Doctum\Reflection\PropertyReflection;
 use Doctum\Parser\Node\DocBlockNode;
 use PhpParser\Node\Stmt\PropertyProperty;
+use PhpParser\Node\UnionType;
 
 class NodeVisitor extends NodeVisitorAbstract
 {
@@ -110,18 +111,7 @@ class NodeVisitor extends NodeVisitorAbstract
             $parameter->setVariadic($param->variadic);
 
             $type    = $param->type;
-            $typeStr = null;
-
-            if ($param->type !== null && ! $param->type instanceof NullableType) {
-                $typeStr = (string) $param->type;
-            } elseif ($param->type instanceof NullableType) {
-                $type    = $param->type->type;
-                $typeStr = (string) $param->type->type;
-            }
-
-            if ($type instanceof FullyQualified && 0 !== strpos($typeStr, '\\')) {
-                $typeStr = '\\' . $typeStr;
-            }
+            $typeStr = $this->typeToString($type);
 
             if (null !== $typeStr) {
                 $typeArr = [[$typeStr, false]];
@@ -157,17 +147,7 @@ class NodeVisitor extends NodeVisitorAbstract
         $function->setErrors($errors);
 
         $returnType    = $node->getReturnType();
-        $returnTypeStr = null;
-
-        if ($returnType !== null && ! $returnType instanceof NullableType) {
-            $returnTypeStr = (string) $returnType;
-        } elseif ($returnType instanceof NullableType) {
-            $returnTypeStr = (string) $returnType->type;
-        }
-
-        if ($returnType instanceof FullyQualified && 0 !== strpos($returnTypeStr, '\\')) {
-            $returnTypeStr = '\\' . $returnTypeStr;
-        }
+        $returnTypeStr = $this->typeToString($returnType);
 
         if (null !== $returnTypeStr) {
             $returnTypeArr = [[$returnTypeStr, false]];
@@ -184,6 +164,35 @@ class NodeVisitor extends NodeVisitorAbstract
         if ($errors) {
             $this->context->addErrors((string) $function, $node->getLine(), $errors);
         }
+    }
+
+    /**
+     * @param \PhpParser\Node\Identifier|\PhpParser\Node\Name|NullableType|UnionType|null $type Type declaration
+     */
+    protected function typeToString($type): ?string
+    {
+        $typeString = null;
+        if ($type !== null && ! ($type instanceof NullableType || $type instanceof UnionType)) {
+            $typeString = $type->__toString();
+        } elseif ($type instanceof NullableType) {
+            $typeString = $type->type->__toString();
+        } elseif ($type instanceof UnionType) {
+            $typeString = [];
+            foreach ($type->types as $type) {
+                $typeString[] = $type->__toString();
+            }
+            $typeString = implode('|', $typeString);
+        }
+
+        if ($typeString === null) {
+            return null;
+        }
+
+        if ($type instanceof FullyQualified && 0 !== strpos($typeString, '\\')) {
+            $typeString = '\\' . $typeString;
+        }
+
+        return $typeString;
     }
 
     protected function addInterface(InterfaceNode $node)
@@ -283,18 +292,7 @@ class NodeVisitor extends NodeVisitorAbstract
             $parameter->setVariadic($param->variadic);
 
             $type    = $param->type;
-            $typeStr = null;
-
-            if ($param->type !== null && ! $param->type instanceof NullableType) {
-                $typeStr = (string) $param->type;
-            } elseif ($param->type instanceof NullableType) {
-                $type    = $param->type->type;
-                $typeStr = (string) $param->type->type;
-            }
-
-            if ($type instanceof FullyQualified && 0 !== strpos($typeStr, '\\')) {
-                $typeStr = '\\' . $typeStr;
-            }
+            $typeStr = $this->typeToString($type);
 
             if (null !== $typeStr) {
                 $typeArr = [[$typeStr, false]];
@@ -333,17 +331,7 @@ class NodeVisitor extends NodeVisitorAbstract
         $method->setErrors($errors);
 
         $returnType    = $node->getReturnType();
-        $returnTypeStr = null;
-
-        if ($returnType !== null && ! $returnType instanceof NullableType) {
-            $returnTypeStr = (string) $returnType;
-        } elseif ($returnType instanceof NullableType) {
-            $returnTypeStr = (string) $returnType->type;
-        }
-
-        if ($returnType instanceof FullyQualified && 0 !== strpos($returnTypeStr, '\\')) {
-            $returnTypeStr = '\\' . $returnTypeStr;
-        }
+        $returnTypeStr = $this->typeToString($returnType);
 
         if (null !== $returnTypeStr) {
             $returnTypeArr = [[$returnTypeStr, false]];
