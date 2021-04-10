@@ -6,6 +6,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
+## [5.4.0] - 2021-04-10
+
+- Drop support for PHP `7.1`
+- Drop support for `phpdocumentor/reflection-docblock` `4.3` series
+- Require PHP `7.2.20`
+- Enable support for PHP `8.0` on the PHAR
+- Resolve type aliases in docblocks (#24)
+- Upgrade Twig to `^3.0`
+- Upgrade `code-lts/cli-tools` to `^1.4`
+- Upgrade `wdes/php-i18n-l10n` to `^4.0`
+- Fixed a bug that removed `@return` and `@var` descriptions since 5.3.0
+- Added detection for duplicated `@var` and `@return` tags
+- Added a "version" command to avoid having users parsing unsafe output
+- Added support for `@mixin` annotations on classes
+- Added support for `@property-write` and `@property-read` annotations on classes
+- Added support for `@readonly` annotations on methods and classes
+- Added support for `@internal` annotations on methods and classes
+- Added support for `@deprecated` annotations on properties
+- Added support for `@since` annotations on classes, methods, properties
+- Better support for `@method` annotations on classes, added `static` keyword support
+- Add support for `@internal`, `@deprecated`, `@since` on constants
+- Add support for `@example` on methods
+- Fix OpenSearch feature and document the config
+- Fix favicon config and document an example config
+- Add support for `@public`, `@private`, `@protected`, `@final`, `@access` annotations
+- Fixed invalid `@see` annotations parsing and rendering
+- Added access handling on constants
+- Fixed global namespace handling
+- Added methods for functions to the `StoreInterface` class
+- Changed return body of `readProject` method of `StoreInterface` to also return functions
+- Fix some resume after parse step missing data
+- Add more tests on render, parse and update CLIs
+- Remove old lib `michelf/php-markdown` and use `erusev/parsedown` to fix an HTML parsing bug
+- Add GitHub SECURITY and FUNDING configs
+- Add `Stringable` PHP 8.0 class to internal PHP class list
+- Add WeakReference PHP 7.4 class to internal PHP class list
+- Support `UnionType` of PHP 8
+- Support `namespace {//code}` syntax for namespaces without a name
+
 ## [5.3.1] - 2020-12-30
 
 - Fixed: missing "final" keyword on a class page
