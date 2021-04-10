@@ -1,4 +1,4 @@
-.PHONY: make-release update-release release upload-release update-rss
+.PHONY: make-release update-release release upload-release update-rss update-built-docs
 
 make-release:
 	./scripts/make-release.sh
@@ -15,6 +15,9 @@ update-rss:
 
 update-version-compat:
 	./scripts/update-version-compat.sh
+
+update-built-docs:
+	./scripts/update-built-docs.sh
 
 tag:
 	./scripts/tag-release.sh

@@ -1,0 +1,30 @@
+name: Publish Api documentations to GitHub pages
+
+on:
+    repository_dispatch:
+        types: run-build-api-docs
+    workflow_dispatch:
+    schedule:
+        - cron: "00 12 * * *"
+
+jobs:
+    publish-pages:
+        environment:
+            name: API documentations
+            url: https://doctum.long-term.support/api-docs/
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+                  ssh-key: ${{ secrets.SSH_KEY_DEPLOY }}
+            - name: Import GPG key
+              uses: crazy-max/ghaction-import-gpg@c8906e451f398a510633c8bf0d6150b2fb2cb7c9
+              with:
+                  gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+                  passphrase: ${{ secrets.GPG_PASSPHRASE }}
+                  git-user-signingkey: true
+                  git-commit-gpgsign: true
+            - name: Build docs and push changes
+              run: ./scripts/update-built-docs.sh
