@@ -23,7 +23,7 @@ git ls-files ./api-docs/phpstorm-stubs/ | xargs -r -n 1 rm
 rm -rfd ./api-docs/phpstorm-stubs/*
 
 # Render
-./releases/latest/doctum.phar update --ignore-parse-errors -v api-docs/doctum-php-phpstorm-stubs.php --force
+./releases/latest/doctum.phar update --no-ansi --no-progress --ignore-parse-errors -v api-docs/doctum-php-phpstorm-stubs.php --force
 
 # Push the changes, but not if empty
 git add -A ./api-docs/phpstorm-stubs
