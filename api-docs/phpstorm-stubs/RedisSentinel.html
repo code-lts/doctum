@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>RedisSentinel | PHP Jetbrains phpstorm-stubs</title>
+
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
+        <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="js/bootstrap.min.js"></script>
+        <script src="js/typeahead.min.js"></script>
+        <script src="doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:RedisSentinel" data-root-path="">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">PHP Jetbrains phpstorm-stubs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="namespaces.html">Namespaces</a></li>
+                    <li><a href="interfaces.html">Interfaces</a></li>
+                    <li><a href="traits.html">Traits</a></li>
+                    <li><a href="doc-index.html">Index</a></li>
+                    <li><a href="search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                            <div id="page-content">
+    <div class="page-header">
+        <h1>RedisSentinel    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>RedisSentinel</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/redis/RedisSentinel.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Helper autocomplete for phpredis extension</p></p>                    </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(string $host, int $port, float $timeout = 0, string|null $persistent = null, int $retryInterval = 0, float $readTimeout = 0)
+        
+                                            <p><p>Creates a Redis Sentinel</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_ckquorum">ckquorum</a>(string $master)
+        
+                                            <p><p>Check if the current Sentinel configuration is able to reach the quorum needed to failover a master, and the
+majority needed to authorize the failover. This command should be used in monitoring systems to check if a
+Sentinel deployment is ok.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_failover">failover</a>(string $master)
+        
+                                            <p><p>Force a failover as if the master was not reachable, and without asking for agreement to other Sentinels
+(however a new version of the configuration will be published so that the other Sentinels will update
+their configurations).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_flushconfig">flushconfig</a>()
+        
+                                            <p><p>Force Sentinel to rewrite its configuration on disk, including the current Sentinel state.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getMasterAddrByName">getMasterAddrByName</a>(string $master)
+        
+                                            <p><p>Return the ip and port number of the master with that name. If a failover is in progress or terminated
+successfully for this master it returns the address and port of the promoted replica.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_master">master</a>(string $master)
+        
+                                            <p><p>Return the state and info of the specified master</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_masters">masters</a>()
+        
+                                            <p><p>Return a list of monitored masters and their state</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_ping">ping</a>()
+        
+                                            <p><p>Ping the sentinel</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_reset">reset</a>(string $pattern)
+        
+                                            <p><p>Reset all the masters with matching name. The pattern argument is a glob-style pattern.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_sentinels">sentinels</a>(string $master)
+        
+                                            <p><p>Return a list of sentinel instances for this master, and their state</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_slaves">slaves</a>(string $master)
+        
+                                            <p><p>Return a list of sentinel instances for this master, and their state</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/redis/RedisSentinel.php#L51">at line 51</a></div>
+        <code>                    
+    <strong>__construct</strong>(string $host, int $port, float $timeout = 0, string|null $persistent = null, int $retryInterval = 0, float $readTimeout = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates a Redis Sentinel</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$host</td>
+                <td><p>Sentinel IP address or hostname</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$port</td>
+                <td><p>Sentinel Port</p></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$timeout</td>
+                <td><p>Value in seconds (optional, default is 0 meaning unlimited)</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$persistent</td>
+                <td><p>Persistent connection id (optional, default is null meaning not persistent)</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$retryInterval</td>
+                <td><p>Value in milliseconds (optional, default is 0)</p></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$readTimeout</td>
+                <td><p>Value in seconds (optional, default is 0 meaning unlimited)</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                            <h4>Examples</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><pre class="examples">// 1s timeout, 100ms delay between reconnection attempts.<br />
+$sentinel = new RedisSentinel(&#039;127.0.0.1&#039;, 26379, 1, null, 100);</pre></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_ckquorum">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/redis/RedisSentinel.php#L73">at line 73</a></div>
+        <code>                    bool
+    <strong>ckquorum</strong>(string $master)
+        </code>
+    </h3>
+    <div class="details"><i>Since: &gt;= 5.2.0</i>
+            <br>    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Check if the current Sentinel configuration is able to reach the quorum needed to failover a master, and the
+majority needed to authorize the failover. This command should be used in monitoring systems to check if a
+Sentinel deployment is ok.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$master</td>
+                <td><p>Name of master</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>True in case of success, False in case of failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                            <h4>Examples</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><pre class="examples">$sentinel-&gt;ckquorum(&#039;mymaster&#039;);</pre></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_failover">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/redis/RedisSentinel.php#L88">at line 88</a></div>
+        <code>                    bool
+    <strong>failover</strong>(string $master)
+        </code>
+    </h3>
+    <div class="details"><i>Since: &gt;= 5.2.0</i>
+            <br>    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Force a failover as if the master was not reachable, and without asking for agreement to other Sentinels
+(however a new version of the configuration will be published so that the other Sentinels will update
+their configurations).</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$master</td>
+                <td><p>Name of master</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>True in case of success, False in case of failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                            <h4>Examples</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><pre class="examples">$sentinel-&gt;failover(&#039;mymaster&#039;);</pre></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushconfig">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/redis/RedisSentinel.php#L106">at line 106</a></div>
+        <code>                    bool
+    <strong>flushconfig</strong>()
+        </code>
+    </h3>
+    <div class="details"><i>Since: &gt;= 5.2.0</i>
+            <br>    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Force Sentinel to rewrite its configuration on disk, including the current Sentinel state.</p></p>                <p><p>Normally Sentinel rewrites the configuration every time something changes in its state (in the context of the
+subset of the state which is persisted on disk across restart). However sometimes it is possible that the
+configuration file is lost because of operation errors, disk failures, package upgrade scripts or configuration
+managers. In those cases a way to to force Sentinel to rewrite the configuration file is handy.</p>
+<p>This command works even if the previous configuration file is completely missing.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>True in case of success, False in case of failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                            <h4>Examples</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><pre class="examples">$sentinel-&gt;flushconfig();</pre></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMasterAddrByName">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/redis/RedisSentinel.php#L120">at line 120</a></div>
+        <code>                    array|false
+    <strong>getMasterAddrByName</strong>(string $master)
+        </code>
+    </h3>
+    <div class="details"><i>Since: &gt;= 5.2.0</i>
+            <br>    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return the ip and port number of the master with that name. If a failover is in progress or terminated
+successfully for this master it returns the address and port of the promoted replica.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$master</td>
+                <td><p>Name of master</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|false</td>
+            <td><p>['address', 'port'] in case of success, False in case of failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                            <h4>Examples</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><pre class="examples">$sentinel-&gt;getMasterAddrByName(&#039;mymaster&#039;);</pre></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_master">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/redis/RedisSentinel.php#L133">at line 133</a></div>
+        <code>                    array|false
+    <strong>master</strong>(string $master)
+        </code>
+    </h3>
+    <div class="details"><i>Since: &gt;= 5.2.0</i>
+            <br>    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return the state and info of the specified master</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$master</td>
+                <td><p>Name of master</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|false</td>
+            <td><p>Associative array with info in case of success, False in case of failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                            <h4>Examples</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><pre class="examples">$sentinel-&gt;master(&#039;mymaster&#039;);</pre></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_masters">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/redis/RedisSentinel.php#L144">at line 144</a></div>
+        <code>                    array|false
+    <strong>masters</strong>()
+        </code>
+    </h3>
+    <div class="details"><i>Since: &gt;= 5.2.0</i>
+            <br>    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return a list of monitored masters and their state</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|false</td>
+            <td><p>Array of arrays with info for each master in case of success, FALSE in case of failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                            <h4>Examples</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><pre class="examples">$sentinel-&gt;masters();</pre></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_ping">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/redis/RedisSentinel.php#L155">at line 155</a></div>
+        <code>                    bool
+    <strong>ping</strong>()
+        </code>
+    </h3>
+    <div class="details"><i>Since: &gt;= 5.2.0</i>
+            <br>    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Ping the sentinel</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>True in case of success, False in case of failure</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                            <h4>Examples</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><pre class="examples">$sentinel-&gt;ping();</pre></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_reset">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/redis/RedisSentinel.php#L170">at line 170</a></div>
+        <code>                    bool
+    <strong>reset</strong>(string $pattern)
+        </code>
+    </h3>
+    <div class="details"><i>Since: &gt;= 5.2.0</i>
+            <br>    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Reset all the masters with matching name. The pattern argument is a glob-style pattern.</p></p>                <p><p>The reset process clears any previous state in a master (including a failover in progress), and removes every
+replica and sentinel already discovered and associated with the master.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$pattern</td>
+                <td><p>Glob-style pattern</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>True in case of success, False in case of failure</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                            <h4>Examples</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><pre class="examples">$sentinel-&gt;reset(&#039;*&#039;);</pre></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sentinels">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/redis/RedisSentinel.php#L183">at line 183</a></div>
+        <code>                    array|false
+    <strong>sentinels</strong>(string $master)
+        </code>
+    </h3>
+    <div class="details"><i>Since: &gt;= 5.2.0</i>
+            <br>    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return a list of sentinel instances for this master, and their state</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$master</td>
+                <td><p>Name of master</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|false</td>
+            <td><p>Array of arrays with info for each sentinel in case of success, False in case of failure</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                            <h4>Examples</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><pre class="examples">$sentinel-&gt;sentinels(&#039;mymaster&#039;);</pre></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_slaves">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/redis/RedisSentinel.php#L196">at line 196</a></div>
+        <code>                    array|false
+    <strong>slaves</strong>(string $master)
+        </code>
+    </h3>
+    <div class="details"><i>Since: &gt;= 5.2.0</i>
+            <br>    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return a list of sentinel instances for this master, and their state</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$master</td>
+                <td><p>Name of master</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|false</td>
+            <td><p>Array of arrays with info for each replica in case of success, False in case of failure</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                            <h4>Examples</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><pre class="examples">$sentinel-&gt;slaves(&#039;mymaster&#039;);</pre></td>
+            </tr>
+            </table>
+
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built using <a href="https://github.com/JetBrains/phpstorm-stubs#readme" rel="noreferrer noopener" target="_blank">phpstorm-stubs</a> from JetBrains.</div></div>
+    </div>
+    </body>
+
+</html>

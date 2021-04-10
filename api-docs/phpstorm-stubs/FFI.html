@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>FFI | PHP Jetbrains phpstorm-stubs</title>
+
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
+        <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="js/bootstrap.min.js"></script>
+        <script src="js/typeahead.min.js"></script>
+        <script src="doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:FFI" data-root-path="">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">PHP Jetbrains phpstorm-stubs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="namespaces.html">Namespaces</a></li>
+                    <li><a href="interfaces.html">Interfaces</a></li>
+                    <li><a href="traits.html">Traits</a></li>
+                    <li><a href="doc-index.html">Index</a></li>
+                    <li><a href="search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                            <div id="page-content">
+    <div class="page-header">
+        <h1>FFI    
+            </h1>
+    </div>
+
+            <i>Since: 7.4</i>
+        <br>
+    
+    <p>        class
+    <strong>FFI</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/FFI/FFI.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Class FFI</p></p>            <p><p>FFI class provides access to a simple way to call native functions,
+access native variables and create/access data structures defined
+in C language.</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="FFI.html">FFI</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_cdef">cdef</a>(string $code, string $library = null)
+        
+                                            <p><p>The method creates a binding on the existing C function.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="FFI.html">FFI</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_load">load</a>(string $filename)
+        
+                                            <p><p>Instead of embedding of a long C definition into PHP string,
+and creating FFI through FFI::cdef(), it's possible to separate
+it into a C header file. Note, that C preprocessor directives
+(e.g. #define or #ifdef) are not supported. And only a couple of
+special macros may be used especially for FFI.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="FFI.html">FFI</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_scope">scope</a>(string $name)
+        
+                                            <p><p>FFI definition parsing and shared library loading may take
+significant time. It's not useful to do it on each HTTP request in
+WEB environment. However, it's possible to pre-load FFI definitions
+and libraries at php startup, and instantiate FFI objects when
+necessary. Header files may be extended with FFI_SCOPE define
+(default pre-loading scope is &quot;C&quot;). This name is going to be
+used as FFI::scope() argument. It's possible to pre-load few
+files into a single scope.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_new">new</a>(string|<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>|mixed $type, bool $owned = true, bool $persistent = false)
+        
+                                            <p><p>Method that creates an arbitrary C structure.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_free">free</a>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> $pointer)
+        
+                                            <p><p>Manually removes previously created &quot;not-owned&quot; data structure.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_cast">cast</a>(mixed $type, <a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> $pointer)
+        
+                                            <p><p>Casts given $pointer to another C type, specified by C declaration
+string or FFI\CType object.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_type">type</a>(string|<a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a> $type)
+        
+                                            <p><p>This function creates and returns a FFI\CType object, representng
+type of the given C type declaration string.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_typeof">typeof</a>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> $pointer)
+        
+                                            <p><p>This function returns a FFI\CType object, representing the type of
+the given FFI\CData object.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_arrayType">arrayType</a>(<a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a> $type, array $dimensions)
+        
+                                            <p><p>Constructs a new C array type with elements of $type and
+dimensions specified by $dimensions.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addr">addr</a>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> $pointer)
+        
+                                            <p><p>Returns C pointer to the given C data structure. The pointer is
+not &quot;owned&quot; and won't be free. Anyway, this is a potentially
+unsafe operation, because the life-time of the returned pointer
+may be longer than life-time of the source object, and this may
+cause dangling pointer dereference (like in regular C).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_sizeof">sizeof</a>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>|<a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a> $pointer)
+        
+                                            <p><p>Returns size of C data type of the given FFI\CData or FFI\CType.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_alignof">alignof</a>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>|<a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a> $pointer)
+        
+                                            <p><p>Returns size of C data type of the given FFI\CData or FFI\CType.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_memcpy">memcpy</a>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> $target, mixed $source, int $size)
+        
+                                            <p><p>Copies $size bytes from memory area $source to memory area $target.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_memcmp">memcmp</a>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>|string $a, <a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>|string $b, int $size)
+        
+                                            <p><p>Compares $size bytes from memory area $a and $b.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_memset">memset</a>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> $target, int $byte, int $size)
+        
+                                            <p><p>Fills the $size bytes of the memory area pointed to by $target with
+the constant byte $byte.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_string">string</a>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> $source, int $size = 0)
+        
+                                            <p><p>Creates a PHP string from $size bytes of memory area pointed by
+$source. If size is omitted, $source must be zero terminated
+array of C chars.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isNull">isNull</a>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> $ptr)
+        
+                                            <p><p>Checks whether a FFI\CData is a null pointer.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_cdef">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/FFI/FFI.php#L36">at line 36</a></div>
+        <code>        static            <a href="FFI.html">FFI</a>
+    <strong>cdef</strong>(string $code, string $library = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>The method creates a binding on the existing C function.</p></p>                <p><p>All variables and functions defined by first arguments are bound
+to corresponding native symbols in DSO library and then may be
+accessed as FFI object methods and properties. C types of argument,
+return value and variables are automatically converted to/from PHP
+types (if possible). Otherwise, they are wrapped in a special CData
+proxy object and may be accessed by elements.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$code</td>
+                <td><p>The collection of C declarations.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$library</td>
+                <td><p>DSO library.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="FFI.html">FFI</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="FFI/ParserException.html"><abbr title="FFI\ParserException">ParserException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_load">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/FFI/FFI.php#L61">at line 61</a></div>
+        <code>        static            <a href="FFI.html">FFI</a>
+    <strong>load</strong>(string $filename)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Instead of embedding of a long C definition into PHP string,
+and creating FFI through FFI::cdef(), it's possible to separate
+it into a C header file. Note, that C preprocessor directives
+(e.g. #define or #ifdef) are not supported. And only a couple of
+special macros may be used especially for FFI.</p></p>                <p><p><code></p>
+<h1>define FFI_LIB &quot;libc.so.6&quot;</h1>
+<p>int printf(const char *format, ...);
+</code></p>
+<p>Here, FFI_LIB specifies, that the given library should be loaded.</p>
+<p><code>
+$ffi = FFI::load(<strong>DIR</strong> . &quot;/printf.h&quot;);
+$ffi-&gt;printf(&quot;Hello world!\n&quot;);
+</code></p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$filename</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="FFI.html">FFI</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_scope">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/FFI/FFI.php#L98">at line 98</a></div>
+        <code>        static            <a href="FFI.html">FFI</a>
+    <strong>scope</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>FFI definition parsing and shared library loading may take
+significant time. It's not useful to do it on each HTTP request in
+WEB environment. However, it's possible to pre-load FFI definitions
+and libraries at php startup, and instantiate FFI objects when
+necessary. Header files may be extended with FFI_SCOPE define
+(default pre-loading scope is &quot;C&quot;). This name is going to be
+used as FFI::scope() argument. It's possible to pre-load few
+files into a single scope.</p></p>                <p><p><code></p>
+<h1>define FFI_LIB &quot;libc.so.6&quot;</h1>
+<h1>define FFI_SCOPE &quot;libc&quot;</h1>
+<p>int printf(const char *format, ...);
+</code></p>
+<p>These files are loaded through the same FFI::load() load function,
+executed from file loaded by opcache.preload php.ini directive.</p>
+<p><code>
+ffi.preload=/etc/php/ffi/printf.h
+</code></p>
+<p>Finally, FFI::scope() instantiate an FFI object, that implements
+all C definition from the given scope.</p>
+<p><code>
+$ffi = FFI::scope(&quot;libc&quot;);
+$ffi-&gt;printf(&quot;Hello world!\n&quot;);
+</code></p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="FFI.html">FFI</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_new">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/FFI/FFI.php#L109">at line 109</a></div>
+        <code>        static            <a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>
+    <strong>new</strong>(string|<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>|mixed $type, bool $owned = true, bool $persistent = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Method that creates an arbitrary C structure.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>|mixed</td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$owned</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$persistent</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="FFI/ParserException.html"><abbr title="FFI\ParserException">ParserException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_free">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/FFI/FFI.php#L117">at line 117</a></div>
+        <code>        static            void
+    <strong>free</strong>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> $pointer)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Manually removes previously created &quot;not-owned&quot; data structure.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></td>
+                <td>$pointer</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_cast">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/FFI/FFI.php#L132">at line 132</a></div>
+        <code>        static            <a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>
+    <strong>cast</strong>(mixed $type, <a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> $pointer)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Casts given $pointer to another C type, specified by C declaration
+string or FFI\CType object.</p></p>                <p><p>This function may be called statically and use only predefined
+types, or as a method of previously created FFI object. In last
+case the first argument may reuse all type and tag names
+defined in FFI::cdef().</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></td>
+                <td>$pointer</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_type">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/FFI/FFI.php#L146">at line 146</a></div>
+        <code>        static            <a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a>
+    <strong>type</strong>(string|<a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a> $type)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>This function creates and returns a FFI\CType object, representng
+type of the given C type declaration string.</p></p>                <p><p>FFI::type() may be called statically and use only predefined types,
+or as a method of previously created FFI object. In last case the
+first argument may reuse all type and tag names defined in
+FFI::cdef().</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|<a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a></td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_typeof">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/FFI/FFI.php#L155">at line 155</a></div>
+        <code>        static            <a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a>
+    <strong>typeof</strong>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> $pointer)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>This function returns a FFI\CType object, representing the type of
+the given FFI\CData object.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></td>
+                <td>$pointer</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_arrayType">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/FFI/FFI.php#L165">at line 165</a></div>
+        <code>        static            <a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a>
+    <strong>arrayType</strong>(<a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a> $type, array $dimensions)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Constructs a new C array type with elements of $type and
+dimensions specified by $dimensions.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a></td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$dimensions</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addr">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/FFI/FFI.php#L177">at line 177</a></div>
+        <code>        static            <a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>
+    <strong>addr</strong>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> $pointer)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns C pointer to the given C data structure. The pointer is
+not &quot;owned&quot; and won't be free. Anyway, this is a potentially
+unsafe operation, because the life-time of the returned pointer
+may be longer than life-time of the source object, and this may
+cause dangling pointer dereference (like in regular C).</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></td>
+                <td>$pointer</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sizeof">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/FFI/FFI.php#L185">at line 185</a></div>
+        <code>        static            int
+    <strong>sizeof</strong>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>|<a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a> $pointer)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns size of C data type of the given FFI\CData or FFI\CType.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>|<a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a></td>
+                <td>$pointer</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_alignof">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/FFI/FFI.php#L193">at line 193</a></div>
+        <code>        static            int
+    <strong>alignof</strong>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>|<a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a> $pointer)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns size of C data type of the given FFI\CData or FFI\CType.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>|<a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a></td>
+                <td>$pointer</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_memcpy">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/FFI/FFI.php#L203">at line 203</a></div>
+        <code>        static            void
+    <strong>memcpy</strong>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> $target, mixed $source, int $size)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Copies $size bytes from memory area $source to memory area $target.</p></p>                <p><p>$source may be any native data structure (FFI\CData) or PHP string.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></td>
+                <td>$target</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$source</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$size</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_memcmp">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/FFI/FFI.php#L213">at line 213</a></div>
+        <code>        static            int
+    <strong>memcmp</strong>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>|string $a, <a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>|string $b, int $size)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Compares $size bytes from memory area $a and $b.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>|string</td>
+                <td>$a</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>|string</td>
+                <td>$b</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$size</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_memset">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/FFI/FFI.php#L223">at line 223</a></div>
+        <code>        static            void
+    <strong>memset</strong>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> $target, int $byte, int $size)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Fills the $size bytes of the memory area pointed to by $target with
+the constant byte $byte.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></td>
+                <td>$target</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$byte</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$size</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_string">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/FFI/FFI.php#L234">at line 234</a></div>
+        <code>        static            string
+    <strong>string</strong>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> $source, int $size = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates a PHP string from $size bytes of memory area pointed by
+$source. If size is omitted, $source must be zero terminated
+array of C chars.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></td>
+                <td>$source</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$size</td>
+                <td><p>[optional]</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isNull">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/FFI/FFI.php#L242">at line 242</a></div>
+        <code>        static            bool
+    <strong>isNull</strong>(<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> $ptr)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks whether a FFI\CData is a null pointer.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></td>
+                <td>$ptr</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built using <a href="https://github.com/JetBrains/phpstorm-stubs#readme" rel="noreferrer noopener" target="_blank">phpstorm-stubs</a> from JetBrains.</div></div>
+    </div>
+    </body>
+
+</html>

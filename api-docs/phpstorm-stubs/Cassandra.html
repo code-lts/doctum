@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Cassandra | PHP Jetbrains phpstorm-stubs</title>
+
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
+        <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="js/bootstrap.min.js"></script>
+        <script src="js/typeahead.min.js"></script>
+        <script src="doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:Cassandra" data-root-path="">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">PHP Jetbrains phpstorm-stubs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="namespaces.html">Namespaces</a></li>
+                    <li><a href="interfaces.html">Interfaces</a></li>
+                    <li><a href="traits.html">Traits</a></li>
+                    <li><a href="doc-index.html">Index</a></li>
+                    <li><a href="search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                            <div id="page-content">
+    <div class="page-header">
+        <h1>Cassandra    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>Cassandra</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/cassandra/cassandra.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>The main entry point to the PHP Driver for Apache Cassandra.</p></p>            <p><p>Use Cassandra::cluster() to build a cluster instance.
+Use Cassandra::ssl() to build SSL options instance.</p></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        CONSISTENCY_ANY
+                                    </td>
+                <td class="last">
+                    <p><em><p>Consistency level ANY means the request is fulfilled as soon as the data
+has been written on the Coordinator. Requests with this consistency level
+are not guaranteed to make it to Replica nodes.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        CONSISTENCY_ONE
+                                    </td>
+                <td class="last">
+                    <p><em><p>Consistency level ONE guarantees that data has been written to at least
+one Replica node.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        CONSISTENCY_TWO
+                                    </td>
+                <td class="last">
+                    <p><em><p>Consistency level TWO guarantees that data has been written to at least
+two Replica nodes.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        CONSISTENCY_THREE
+                                    </td>
+                <td class="last">
+                    <p><em><p>Consistency level THREE guarantees that data has been written to at least
+three Replica nodes.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        CONSISTENCY_QUORUM
+                                    </td>
+                <td class="last">
+                    <p><em><p>Consistency level QUORUM guarantees that data has been written to at least
+the majority of Replica nodes. How many nodes exactly are a majority
+depends on the replication factor of a given keyspace and is calculated
+using the formula <code>ceil(RF / 2 + 1)</code>, where <code>ceil</code> is a mathematical
+ceiling function and <code>RF</code> is the replication factor used. For example,
+for a replication factor of <code>5</code>, the majority is <code>ceil(5 / 2 + 1) = 3</code>.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        CONSISTENCY_ALL
+                                    </td>
+                <td class="last">
+                    <p><em><p>Consistency level ALL guarantees that data has been written to all
+Replica nodes.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        CONSISTENCY_LOCAL_QUORUM
+                                    </td>
+                <td class="last">
+                    <p><em><p>Same as <code>CONSISTENCY_QUORUM</code>, but confined to the local data center. This
+consistency level works only with <code>NetworkTopologyStrategy</code> replication.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        CONSISTENCY_EACH_QUORUM
+                                    </td>
+                <td class="last">
+                    <p><em><p>Consistency level EACH_QUORUM guarantees that data has been written to at
+least a majority Replica nodes in all datacenters. This consistency level
+works only with <code>NetworkTopologyStrategy</code> replication.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        CONSISTENCY_SERIAL
+                                    </td>
+                <td class="last">
+                    <p><em><p>This is a serial consistency level, it is used in conditional updates,
+e.g. (<code>CREATE|INSERT ... IF NOT EXISTS</code>), and should be specified as the
+<code>serial_consistency</code> execution option when invoking <code>session.execute</code>
+or <code>session.execute_async</code>.</p></em></p>
+                    <p><p>Consistency level SERIAL, when set, ensures that a Paxos commit fails if
+any of the replicas is down.</p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        CONSISTENCY_LOCAL_SERIAL
+                                    </td>
+                <td class="last">
+                    <p><em><p>Same as <code>CONSISTENCY_SERIAL</code>, but confined to the local data center. This
+consistency level works only with <code>NetworkTopologyStrategy</code> replication.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        CONSISTENCY_LOCAL_ONE
+                                    </td>
+                <td class="last">
+                    <p><em><p>Same as <code>CONSISTENCY_ONE</code>, but confined to the local data center. This
+consistency level works only with <code>NetworkTopologyStrategy</code> replication.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        VERIFY_NONE
+                                    </td>
+                <td class="last">
+                    <p><em><p>Perform no verification of nodes when using SSL encryption.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        VERIFY_PEER_CERT
+                                    </td>
+                <td class="last">
+                    <p><em><p>Verify presence and validity of SSL certificates.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        VERIFY_PEER_IDENTITY
+                                    </td>
+                <td class="last">
+                    <p><em><p>Verify that the IP address matches the SSL certificate’s common name or
+one of its subject alternative names. This implies the certificate is
+also present.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        BATCH_LOGGED
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        BATCH_UNLOGGED
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        BATCH_COUNTER
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        LOG_DISABLED
+                                    </td>
+                <td class="last">
+                    <p><em><p>Used to disable logging.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        LOG_CRITICAL
+                                    </td>
+                <td class="last">
+                    <p><em><p>Allow critical level logging.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        LOG_ERROR
+                                    </td>
+                <td class="last">
+                    <p><em><p>Allow error level logging.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        LOG_WARN
+                                    </td>
+                <td class="last">
+                    <p><em><p>Allow warning level logging.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        LOG_INFO
+                                    </td>
+                <td class="last">
+                    <p><em><p>Allow info level logging.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        LOG_DEBUG
+                                    </td>
+                <td class="last">
+                    <p><em><p>Allow debug level logging.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        LOG_TRACE
+                                    </td>
+                <td class="last">
+                    <p><em><p>Allow trace level logging.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_TEXT
+                                    </td>
+                <td class="last">
+                    <p><em><p>When using a map, collection or set of type text, all of its elements
+must be strings.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_ASCII
+                                    </td>
+                <td class="last">
+                    <p><em><p>When using a map, collection or set of type ascii, all of its elements
+must be strings.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_VARCHAR
+                                    </td>
+                <td class="last">
+                    <p><em><p>When using a map, collection or set of type varchar, all of its elements
+must be strings.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_BIGINT
+                                    </td>
+                <td class="last">
+                    <p><em><p>When using a map, collection or set of type bigint, all of its elements
+must be instances of Bigint.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_SMALLINT
+                                    </td>
+                <td class="last">
+                    <p><em><p>When using a map, collection or set of type smallint, all of its elements
+must be instances of Inet.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_TINYINT
+                                    </td>
+                <td class="last">
+                    <p><em><p>When using a map, collection or set of type tinyint, all of its elements
+must be instances of Inet.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_BLOB
+                                    </td>
+                <td class="last">
+                    <p><em><p>When using a map, collection or set of type blob, all of its elements
+must be instances of Blob.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_BOOLEAN
+                                    </td>
+                <td class="last">
+                    <p><em><p>When using a map, collection or set of type bool, all of its elements
+must be boolean.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_COUNTER
+                                    </td>
+                <td class="last">
+                    <p><em><p>When using a map, collection or set of type counter, all of its elements
+must be instances of Bigint.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_DECIMAL
+                                    </td>
+                <td class="last">
+                    <p><em><p>When using a map, collection or set of type decimal, all of its elements
+must be instances of Decimal.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_DOUBLE
+                                    </td>
+                <td class="last">
+                    <p><em><p>When using a map, collection or set of type double, all of its elements
+must be doubles.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_FLOAT
+                                    </td>
+                <td class="last">
+                    <p><em><p>When using a map, collection or set of type float, all of its elements
+must be instances of Float.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_INT
+                                    </td>
+                <td class="last">
+                    <p><em><p>When using a map, collection or set of type int, all of its elements
+must be ints.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_TIMESTAMP
+                                    </td>
+                <td class="last">
+                    <p><em><p>When using a map, collection or set of type timestamp, all of its elements
+must be instances of Timestamp.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_UUID
+                                    </td>
+                <td class="last">
+                    <p><em><p>When using a map, collection or set of type uuid, all of its elements
+must be instances of Uuid.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_VARINT
+                                    </td>
+                <td class="last">
+                    <p><em><p>When using a map, collection or set of type varint, all of its elements
+must be instances of Varint.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_TIMEUUID
+                                    </td>
+                <td class="last">
+                    <p><em><p>When using a map, collection or set of type timeuuid, all of its elements
+must be instances of Timeuuid.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_INET
+                                    </td>
+                <td class="last">
+                    <p><em><p>When using a map, collection or set of type inet, all of its elements
+must be instances of Inet.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        VERSION
+                                    </td>
+                <td class="last">
+                    <p><em><p>The current version of the extension.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        CPP_DRIVER_VERSION
+                                    </td>
+                <td class="last">
+                    <p><em><p>The version of the cpp-driver the extension is compiled against.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="Cassandra/Cluster/Builder.html"><abbr title="Cassandra\Cluster\Builder">Builder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_cluster">cluster</a>()
+        
+                                            <p><p>Creates a new cluster builder for constructing a Cluster object.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="Cassandra/SSLOptions/Builder.html"><abbr title="Cassandra\SSLOptions\Builder">Builder</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_ssl">ssl</a>()
+        
+                                            <p><p>Creates a new ssl builder for constructing a SSLOptions object.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_cluster">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/cassandra/cassandra.php#L451">at line 451</a></div>
+        <code>        static            <a href="Cassandra/Cluster/Builder.html"><abbr title="Cassandra\Cluster\Builder">Builder</abbr></a>
+    <strong>cluster</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates a new cluster builder for constructing a Cluster object.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="Cassandra/Cluster/Builder.html"><abbr title="Cassandra\Cluster\Builder">Builder</abbr></a></td>
+            <td><p>A cluster builder object with default settings</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_ssl">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/cassandra/cassandra.php#L459">at line 459</a></div>
+        <code>        static            <a href="Cassandra/SSLOptions/Builder.html"><abbr title="Cassandra\SSLOptions\Builder">Builder</abbr></a>
+    <strong>ssl</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates a new ssl builder for constructing a SSLOptions object.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="Cassandra/SSLOptions/Builder.html"><abbr title="Cassandra\SSLOptions\Builder">Builder</abbr></a></td>
+            <td><p>A SSL options builder with default settings</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built using <a href="https://github.com/JetBrains/phpstorm-stubs#readme" rel="noreferrer noopener" target="_blank">phpstorm-stubs</a> from JetBrains.</div></div>
+    </div>
+    </body>
+
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>parallel\Runtime | PHP Jetbrains phpstorm-stubs</title>
+
+            <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../fonts/doctum-font.css">
+        <script src="../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../js/bootstrap.min.js"></script>
+        <script src="../js/typeahead.min.js"></script>
+        <script src="../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:parallel_Runtime" data-root-path="../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../index.html">PHP Jetbrains phpstorm-stubs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../classes.html">Classes</a></li>
+                    <li><a href="../namespaces.html">Namespaces</a></li>
+                    <li><a href="../interfaces.html">Interfaces</a></li>
+                    <li><a href="../traits.html">Traits</a></li>
+                    <li><a href="../doc-index.html">Index</a></li>
+                    <li><a href="../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../parallel.html">parallel</a></li><li class="backslash">\</li><li>Runtime</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Runtime    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>Runtime</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/parallel/parallel/Runtime.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Each runtime represents a single PHP thread, the thread is created (and bootstrapped) upon construction. The thread
+then waits for tasks to be scheduled: Scheduled tasks will be executed FIFO and then the thread will resume waiting
+until more tasks are scheduled, or it's closed, killed, or destroyed by the normal scoping rules of PHP objects.</p></p>            <p><p>Warning: When a runtime is destroyed by the normal scoping rules of PHP objects, it will first execute all of the
+tasks that were scheduled, and block while doing so.</p>
+<p>When a new runtime is created, it does not share code with the thread (or process) that created it. This means it
+doesn't have the same classes and functions loaded, nor the same autoloader set. In some cases, a very lightweight
+runtime is desirable because the tasks that will be scheduled do not need access to the code in the parent thread.
+In those cases where the tasks do need to access the same code, it is enough to set an autoloader as the bootstrap.</p>
+<p>Note: preloading may be used in conjunction with parallel, in this case preloaded code is available without
+bootstrapping</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(string|null $bootstrap = null)
+        
+                                            <p><p>Shall construct a new runtime without bootstrapping.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="parallel\parallel\Future">Future</abbr>|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_run">run</a>(<a href="../Closure.html">Closure</a> $task, array|null $argv = null)
+        
+                                            <p><p>Shall schedule task for execution in parallel, passing argv at execution time.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_close">close</a>()
+        
+                                            <p><p>Shall request that the runtime shutsdown.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_kill">kill</a>()
+        
+                                            <p><p>Shall attempt to force the runtime to shutdown.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/parallel/parallel/Runtime.php#L36">at line 36</a></div>
+        <code>                    
+    <strong>__construct</strong>(string|null $bootstrap = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Shall construct a new runtime without bootstrapping.</p></p>                <p><p>Shall construct a bootstrapped runtime.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$bootstrap</td>
+                <td><p>The location of a bootstrap file, generally an autoloader.</p></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../parallel/Runtime/Error.html"><abbr title="parallel\Runtime\Error">Error</abbr></a></td>
+                <td><p>if thread could not be created</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../parallel/Runtime/Error/Bootstrap.html"><abbr title="parallel\Runtime\Error\Bootstrap">Bootstrap</abbr></a></td>
+                <td><p>if bootstrapping failed</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_run">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/parallel/parallel/Runtime.php#L96">at line 96</a></div>
+        <code>                    <abbr title="parallel\parallel\Future">Future</abbr>|null
+    <strong>run</strong>(<a href="../Closure.html">Closure</a> $task, array|null $argv = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Shall schedule task for execution in parallel, passing argv at execution time.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../Closure.html">Closure</a></td>
+                <td>$task</td>
+                <td><p>A Closure with specific characteristics.</p></td>
+            </tr>
+                    <tr>
+                <td>array|null</td>
+                <td>$argv</td>
+                <td><p>An array of arguments with specific characteristics to be passed to task at execution
+time.</p>
+<h3>Task Characteristics</h3>
+<hr />
+<p>Closures scheduled for parallel execution must not:</p>
+<ul>
+<li>accept or return by reference</li>
+<li>accept or return internal objects (see notes)</li>
+<li>execute a limited set of instructions</li>
+</ul>
+<p>Instructions prohibited in Closures intended for parallel execution are:</p>
+<ul>
+<li>yield</li>
+<li>use by-reference</li>
+<li>declare class</li>
+<li>declare named function</li>
+</ul>
+<p>Note: Nested closures may yield or use by-reference, but must not contain class or named function declarations.
+Note: No instructions are prohibited in the files which the task may include.</p>
+<h3>Arguments Characteristics</h3>
+<hr />
+<p>Arguments must not:</p>
+<ul>
+<li>contain references</li>
+<li>contain resources</li>
+<li>contain internal objects (see notes)</li>
+</ul>
+<p>Note: In the case of file stream resources, the resource will be cast to the file descriptor and passed as int
+where possible, this is unsupported on Windows</p>
+<h3>Internal Objects Notes</h3>
+<hr />
+<p>Internal objects generally use a custom structure which cannot be copied by value safely, PHP currently lacks
+the mechanics to do this (without serialization) and so only objects that do not use a custom structure may
+be shared.</p>
+<p>Some internal objects do not use a custom structure, for example see \parallel\Events\Event and so may be
+shared. Closures are a special kind of internal object and support being copied by value, and so may be
+shared. Channels are central to writing parallel code and support concurrent access and execution by
+necessity, and so may be shared.</p>
+<p>Warning: A user class that extends an internal class may use a custom structure as defined by the internal
+class, in which case they cannot be copied by value safely, and so may not be shared.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="parallel\parallel\Future">Future</abbr>|null</td>
+            <td><p>The return Future must not be ignored when the task contains a return or throw
+statement.</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../parallel/Runtime/Error/Closed.html"><abbr title="parallel\Runtime\Error\Closed">Closed</abbr></a></td>
+                <td><p>if \parallel\Runtime was closed.</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../parallel/Runtime/Error/IllegalFunction.html"><abbr title="parallel\Runtime\Error\IllegalFunction">IllegalFunction</abbr></a></td>
+                <td><p>if task is a closure created from an internal function.</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../parallel/Runtime/Error/IllegalInstruction.html"><abbr title="parallel\Runtime\Error\IllegalInstruction">IllegalInstruction</abbr></a></td>
+                <td><p>if task contains illegal instructions.</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../parallel/Runtime/Error/IllegalParameter.html"><abbr title="parallel\Runtime\Error\IllegalParameter">IllegalParameter</abbr></a></td>
+                <td><p>if task accepts or argv contains illegal variables.</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../parallel/Runtime/Error/IllegalReturn.html"><abbr title="parallel\Runtime\Error\IllegalReturn">IllegalReturn</abbr></a></td>
+                <td><p>if task returns illegally.</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_close">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/parallel/parallel/Runtime.php#L106">at line 106</a></div>
+        <code>                    void
+    <strong>close</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Shall request that the runtime shutsdown.</p></p>                <p><p>Note: Tasks scheduled for execution will be executed before the shutdown occurs.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../parallel/Runtime/Error/Closed.html"><abbr title="parallel\Runtime\Error\Closed">Closed</abbr></a></td>
+                <td><p>if Runtime was already closed.</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_kill">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/parallel/parallel/Runtime.php#L116">at line 116</a></div>
+        <code>                    void
+    <strong>kill</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Shall attempt to force the runtime to shutdown.</p></p>                <p><p>Note: Tasks scheduled for execution will not be executed, the currently running task shall be interrupted.
+Warning: Internal function calls in progress cannot be interrupted.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../parallel/Runtime/Error/Closed.html"><abbr title="parallel\Runtime\Error\Closed">Closed</abbr></a></td>
+                <td><p>if Runtime was closed.</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built using <a href="https://github.com/JetBrains/phpstorm-stubs#readme" rel="noreferrer noopener" target="_blank">phpstorm-stubs</a> from JetBrains.</div></div>
+    </div>
+    </body>
+
+</html>

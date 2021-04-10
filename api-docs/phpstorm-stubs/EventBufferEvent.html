@@ -1,0 +1,2096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>EventBufferEvent | PHP Jetbrains phpstorm-stubs</title>
+
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
+        <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="js/bootstrap.min.js"></script>
+        <script src="js/typeahead.min.js"></script>
+        <script src="doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:EventBufferEvent" data-root-path="">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">PHP Jetbrains phpstorm-stubs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="namespaces.html">Namespaces</a></li>
+                    <li><a href="interfaces.html">Interfaces</a></li>
+                    <li><a href="traits.html">Traits</a></li>
+                    <li><a href="doc-index.html">Index</a></li>
+                    <li><a href="search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                            <div id="page-content">
+    <div class="page-header">
+        <h1>EventBufferEvent    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>EventBufferEvent</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>EventBufferEvent.</p></p>            <p><p>Represents Libevent's buffer event.
+Usually an application wants to perform some amount of data buffering in addition to just responding to events. When we want to write data, for example, the usual pattern looks like:
+Decide that we want to write some data to a connection; put that data in a buffer.
+Wait for the connection to become writable
+Write as much of the data as we can
+Remember how much we wrote, and if we still have more data to write, wait for the connection to become writable again.
+This buffered I/O pattern is common enough that Libevent provides a generic mechanism for it. A &quot;buffer event&quot; consists of an underlying transport (like a socket), a read buffer, and a write buffer. Instead of regular events, which give callbacks when the underlying transport is ready to be read or written, a buffer event invokes its user-supplied callbacks when it has read or written enough data.</p></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        READING
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        WRITING
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        EOF
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ERROR
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TIMEOUT
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        CONNECTED
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_CLOSE_ON_FREE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_THREADSAFE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_DEFER_CALLBACKS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_UNLOCK_CALLBACKS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SSL_OPEN
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SSL_CONNECTING
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SSL_ACCEPTING
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_fd">
+                                                                                int
+                                                                                
+                                    </td>
+                <td>$fd</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_priority">
+                                                                                int
+                                                                                
+                                    </td>
+                <td>$priority</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_input">
+                                                                                <a href="EventBuffer.html">EventBuffer</a>
+                                                                                
+                                    </td>
+                <td>$input</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_output">
+                                                                                <a href="EventBuffer.html">EventBuffer</a>
+                                                                                
+                                    </td>
+                <td>$output</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(<a href="EventBase.html">EventBase</a> $base, mixed $socket = null, int $options = 0, callable|null $readcb = null, callable|null $writecb = null, callable|null $eventcb = null)
+        
+                                            <p><p>__construct.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_close">close</a>()
+        
+                                            <p><p>close.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_connect">connect</a>(string $addr)
+        
+                                            <p><p>connect.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_connectHost">connectHost</a>(<a href="EventDnsBase.html">EventDnsBase</a>|null $dns_base, string $hostname, int $port, int $family = EventUtil::AF_UNSPEC)
+        
+                                            <p><p>connectHost.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="EventBufferEvent.html">EventBufferEvent</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_createSslFilter">createSslFilter</a>(<a href="EventBufferEvent.html">EventBufferEvent</a> $underlying, <a href="EventSslContext.html">EventSslContext</a> $ctx, int $state, int $options = 0)
+        
+                                            <p><p>createSslFilter</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_createPair">createPair</a>(<a href="EventBase.html">EventBase</a> $base, int $options = 0)
+        
+                                            <p><p>createPair.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_disable">disable</a>(int $events)
+        
+                                            <p><p>disable.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_enable">enable</a>(int $events)
+        
+                                            <p><p>enable.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_free">free</a>()
+        
+                                            <p><p>free.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getDnsErrorString">getDnsErrorString</a>()
+        
+                                            <p><p>getDnsErrorString.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getEnabled">getEnabled</a>()
+        
+                                            <p><p>getEnabled.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="EventBuffer.html">EventBuffer</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getInput">getInput</a>()
+        
+                                            <p><p>getInput.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="EventBuffer.html">EventBuffer</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getOutput">getOutput</a>()
+        
+                                            <p><p>getOutput.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_read">read</a>(int $size)
+        
+                                            <p><p>read.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_readBuffer">readBuffer</a>(<a href="EventBuffer.html">EventBuffer</a> $buf)
+        
+                                            <p><p>readBuffer.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setCallbacks">setCallbacks</a>(callable $readcb, callable $writecb, callable $eventcb, mixed $arg = null)
+        
+                                            <p><p>setCallbacks.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setPriority">setPriority</a>(int $priority)
+        
+                                            <p><p>setPriority.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTimeouts">setTimeouts</a>(float $timeout_read, float $timeout_write)
+        
+                                            <p><p>setTimeouts.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setWatermark">setWatermark</a>(int $events, int $lowmark, int $highmark)
+        
+                                            <p><p>setWatermark.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    false|string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_sslError">sslError</a>()
+        
+                                            <p><p>sslError.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="EventBufferEvent.html">EventBufferEvent</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_sslFilter">sslFilter</a>(<a href="EventBase.html">EventBase</a> $base, <a href="EventBufferEvent.html">EventBufferEvent</a> $underlying, <a href="EventSslContext.html">EventSslContext</a> $ctx, int $state, int $options = 0)
+        
+                                            <p><p>sslFilter.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_sslGetCipherInfo">sslGetCipherInfo</a>()
+        
+                                            <p><p>sslGetCipherInfo.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_sslGetCipherName">sslGetCipherName</a>()
+        
+                                            <p><p>sslGetCipherName.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_sslGetCipherVersion">sslGetCipherVersion</a>()
+        
+                                            <p><p>sslGetCipherVersion.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_sslGetProtocol">sslGetProtocol</a>()
+        
+                                            <p><p>sslGetProtocol.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_sslRenegotiate">sslRenegotiate</a>()
+        
+                                            <p><p>sslRenegotiate.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="EventBufferEvent.html">EventBufferEvent</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_sslSocket">sslSocket</a>(<a href="EventBase.html">EventBase</a> $base, mixed $socket, <a href="EventSslContext.html">EventSslContext</a> $ctx, int $state, int $options = 0)
+        
+                                            <p><p>sslSocket.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_write">write</a>(string $data)
+        
+                                            <p><p>write.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_writeBuffer">writeBuffer</a>(<a href="EventBuffer.html">EventBuffer</a> $buf)
+        
+                                            <p><p>writeBuffer.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L744">at line 744</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="EventBase.html">EventBase</a> $base, mixed $socket = null, int $options = 0, callable|null $readcb = null, callable|null $writecb = null, callable|null $eventcb = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>__construct.</p></p>                <p><p>Constructs EventBufferEvent object.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="EventBase.html">EventBase</a></td>
+                <td>$base</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$socket</td>
+                <td><p>= null</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$options</td>
+                <td><p>= 0</p></td>
+            </tr>
+                    <tr>
+                <td>callable|null</td>
+                <td>$readcb</td>
+                <td><p>= null</p></td>
+            </tr>
+                    <tr>
+                <td>callable|null</td>
+                <td>$writecb</td>
+                <td><p>= null</p></td>
+            </tr>
+                    <tr>
+                <td>callable|null</td>
+                <td>$eventcb</td>
+                <td><p>= null</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://php.net/manual/en/eventbufferevent.construct.php">https://php.net/manual/en/eventbufferevent.construct.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_close">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L753">at line 753</a></div>
+        <code>                    bool
+    <strong>close</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>close.</p></p>                <p><p>Closes file descriptor associated with the current buffer event.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://php.net/manual/en/eventbufferevent.close.php">https://php.net/manual/en/eventbufferevent.close.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_connect">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L765">at line 765</a></div>
+        <code>                    bool
+    <strong>connect</strong>(string $addr)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>connect.</p></p>                <p><p>Connect buffer event's file descriptor to given address or UNIX socket.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$addr</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://php.net/manual/en/eventbufferevent.connect.php">https://php.net/manual/en/eventbufferevent.connect.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_connectHost">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L780">at line 780</a></div>
+        <code>                    bool
+    <strong>connectHost</strong>(<a href="EventDnsBase.html">EventDnsBase</a>|null $dns_base, string $hostname, int $port, int $family = EventUtil::AF_UNSPEC)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>connectHost.</p></p>                <p><p>Connects to a hostname with optionally asyncronous DNS.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="EventDnsBase.html">EventDnsBase</a>|null</td>
+                <td>$dns_base</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$hostname</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$port</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$family</td>
+                <td><p>= EventUtil::AF_UNSPEC</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://php.net/manual/en/eventbufferevent.connecthost.php">https://php.net/manual/en/eventbufferevent.connecthost.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createSslFilter">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L792">at line 792</a></div>
+        <code>                    <a href="EventBufferEvent.html">EventBufferEvent</a>
+    <strong>createSslFilter</strong>(<a href="EventBufferEvent.html">EventBufferEvent</a> $underlying, <a href="EventSslContext.html">EventSslContext</a> $ctx, int $state, int $options = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>createSslFilter</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="EventBufferEvent.html">EventBufferEvent</a></td>
+                <td>$underlying</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="EventSslContext.html">EventSslContext</a></td>
+                <td>$ctx</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$state</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$options</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="EventBufferEvent.html">EventBufferEvent</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://bitbucket.org/osmanov/pecl-event/src/8e5ab7303f3ef7827b71f31904a51b3f26dd1ac2/php8/classes/buffer_event.c#lines-1025">https://bitbucket.org/osmanov/pecl-event/src/8e5ab7303f3ef7827b71f31904a51b3f26dd1ac2/php8/classes/buffer_event.c#lines-1025</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createPair">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L805">at line 805</a></div>
+        <code>        static            array
+    <strong>createPair</strong>(<a href="EventBase.html">EventBase</a> $base, int $options = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>createPair.</p></p>                <p><p>Creates two buffer events connected to each other.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="EventBase.html">EventBase</a></td>
+                <td>$base</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$options</td>
+                <td><p>= 0</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://php.net/manual/en/eventbufferevent.createpair.php">https://php.net/manual/en/eventbufferevent.createpair.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_disable">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L817">at line 817</a></div>
+        <code>                    bool
+    <strong>disable</strong>(int $events)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>disable.</p></p>                <p><p>Disable events read, write, or both on a buffer event.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$events</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://php.net/manual/en/eventbufferevent.disable.php">https://php.net/manual/en/eventbufferevent.disable.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_enable">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L829">at line 829</a></div>
+        <code>                    bool
+    <strong>enable</strong>(int $events)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>enable.</p></p>                <p><p>Enable events read, write, or both on a buffer event.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$events</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://php.net/manual/en/eventbufferevent.enable.php">https://php.net/manual/en/eventbufferevent.enable.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_free">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L837">at line 837</a></div>
+        <code>                    void
+    <strong>free</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>free.</p></p>                <p><p>Free a buffer event.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://php.net/manual/en/eventbufferevent.free.php">https://php.net/manual/en/eventbufferevent.free.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDnsErrorString">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L847">at line 847</a></div>
+        <code>                    string
+    <strong>getDnsErrorString</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>getDnsErrorString.</p></p>                <p><p>Returns string describing the last failed DNS lookup attempt.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://php.net/manual/en/eventbufferevent.getdnserrorstring.php">https://php.net/manual/en/eventbufferevent.getdnserrorstring.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getEnabled">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L858">at line 858</a></div>
+        <code>                    int
+    <strong>getEnabled</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>getEnabled.</p></p>                <p><p>Returns bitmask of events currently enabled on the buffer event.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://php.net/manual/en/eventbufferevent.getenabled.php">https://php.net/manual/en/eventbufferevent.getenabled.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getInput">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L869">at line 869</a></div>
+        <code>                    <a href="EventBuffer.html">EventBuffer</a>
+    <strong>getInput</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>getInput.</p></p>                <p><p>Returns underlying input buffer associated with current buffer event.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="EventBuffer.html">EventBuffer</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://php.net/manual/en/eventbufferevent.getinput.php">https://php.net/manual/en/eventbufferevent.getinput.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getOutput">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L880">at line 880</a></div>
+        <code>                    <a href="EventBuffer.html">EventBuffer</a>
+    <strong>getOutput</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>getOutput.</p></p>                <p><p>Returns underlying output buffer associated with current buffer event.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="EventBuffer.html">EventBuffer</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://php.net/manual/en/eventbufferevent.getoutput.php">https://php.net/manual/en/eventbufferevent.getoutput.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_read">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L893">at line 893</a></div>
+        <code>                    string|null
+    <strong>read</strong>(int $size)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>read.</p></p>                <p><p>Read buffer's data.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$size</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://php.net/manual/en/eventbufferevent.read.php">https://php.net/manual/en/eventbufferevent.read.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_readBuffer">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L905">at line 905</a></div>
+        <code>                    bool
+    <strong>readBuffer</strong>(<a href="EventBuffer.html">EventBuffer</a> $buf)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>readBuffer.</p></p>                <p><p>Drains the entire contents of the input buffer and places them into buf.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="EventBuffer.html">EventBuffer</a></td>
+                <td>$buf</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://php.net/manual/en/eventbufferevent.readbuffer.php">https://php.net/manual/en/eventbufferevent.readbuffer.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCallbacks">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L918">at line 918</a></div>
+        <code>                    void
+    <strong>setCallbacks</strong>(callable $readcb, callable $writecb, callable $eventcb, mixed $arg = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>setCallbacks.</p></p>                <p><p>Assigns read, write and event(status) callbacks.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$readcb</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$writecb</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$eventcb</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$arg</td>
+                <td><p>(optional)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://php.net/manual/en/eventbufferevent.setcallbacks.php">https://php.net/manual/en/eventbufferevent.setcallbacks.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPriority">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L930">at line 930</a></div>
+        <code>                    bool
+    <strong>setPriority</strong>(int $priority)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>setPriority.</p></p>                <p><p>Assign a priority to a bufferevent.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$priority</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://php.net/manual/en/eventbufferevent.setpriority.php">https://php.net/manual/en/eventbufferevent.setpriority.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTimeouts">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L943">at line 943</a></div>
+        <code>                    bool
+    <strong>setTimeouts</strong>(float $timeout_read, float $timeout_write)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>setTimeouts.</p></p>                <p><p>Set the read and write timeout for a buffer event.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float</td>
+                <td>$timeout_read</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$timeout_write</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://php.net/manual/en/eventbufferevent.settimeouts.php">https://php.net/manual/en/eventbufferevent.settimeouts.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setWatermark">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L955">at line 955</a></div>
+        <code>                    void
+    <strong>setWatermark</strong>(int $events, int $lowmark, int $highmark)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>setWatermark.</p></p>                <p><p>Adjusts read and/or write watermarks.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$events</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$lowmark</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$highmark</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://php.net/manual/en/eventbufferevent.setwatermark.php">https://php.net/manual/en/eventbufferevent.setwatermark.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sslError">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L965">at line 965</a></div>
+        <code>                    false|string
+    <strong>sslError</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>sslError.</p></p>                <p><p>Returns most recent OpenSSL error reported on the buffer event.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>false|string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://secure.php.net/manual/en/eventbufferevent.sslerror.php">https://secure.php.net/manual/en/eventbufferevent.sslerror.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sslFilter">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L981">at line 981</a></div>
+        <code>        static            <a href="EventBufferEvent.html">EventBufferEvent</a>
+    <strong>sslFilter</strong>(<a href="EventBase.html">EventBase</a> $base, <a href="EventBufferEvent.html">EventBufferEvent</a> $underlying, <a href="EventSslContext.html">EventSslContext</a> $ctx, int $state, int $options = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>sslFilter.</p></p>                <p><p>Create a new SSL buffer event to send its data over another buffer event.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="EventBase.html">EventBase</a></td>
+                <td>$base</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="EventBufferEvent.html">EventBufferEvent</a></td>
+                <td>$underlying</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="EventSslContext.html">EventSslContext</a></td>
+                <td>$ctx</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$state</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$options</td>
+                <td><p>= 0</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="EventBufferEvent.html">EventBufferEvent</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://secure.php.net/manual/en/eventbufferevent.sslfilter.php">https://secure.php.net/manual/en/eventbufferevent.sslfilter.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sslGetCipherInfo">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L991">at line 991</a></div>
+        <code>                    string|false
+    <strong>sslGetCipherInfo</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>sslGetCipherInfo.</p></p>                <p><p>Returns a textual description of the cipher.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|false</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://secure.php.net/manual/en/eventbufferevent.sslgetcipherinfo.php">https://secure.php.net/manual/en/eventbufferevent.sslgetcipherinfo.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sslGetCipherName">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L1001">at line 1001</a></div>
+        <code>                    string|false
+    <strong>sslGetCipherName</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>sslGetCipherName.</p></p>                <p><p>Returns the current cipher name of the SSL connection.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|false</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://secure.php.net/manual/en/eventbufferevent.sslgetciphername.php">https://secure.php.net/manual/en/eventbufferevent.sslgetciphername.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sslGetCipherVersion">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L1011">at line 1011</a></div>
+        <code>                    string|false
+    <strong>sslGetCipherVersion</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>sslGetCipherVersion.</p></p>                <p><p>Returns version of cipher used by current SSL connection.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|false</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://secure.php.net/manual/en/eventbufferevent.sslgetcipherversion.php">https://secure.php.net/manual/en/eventbufferevent.sslgetcipherversion.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sslGetProtocol">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L1021">at line 1021</a></div>
+        <code>                    string
+    <strong>sslGetProtocol</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>sslGetProtocol.</p></p>                <p><p>Returns the name of the protocol used for current SSL.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://secure.php.net/manual/en/eventbufferevent.sslgetprotocol.php">https://secure.php.net/manual/en/eventbufferevent.sslgetprotocol.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sslRenegotiate">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L1029">at line 1029</a></div>
+        <code>                    void
+    <strong>sslRenegotiate</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>sslRenegotiate.</p></p>                <p><p>Tells a bufferevent to begin SSL renegotiation.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://secure.php.net/manual/en/eventbufferevent.sslrenegotiate.php">https://secure.php.net/manual/en/eventbufferevent.sslrenegotiate.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sslSocket">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L1045">at line 1045</a></div>
+        <code>        static            <a href="EventBufferEvent.html">EventBufferEvent</a>
+    <strong>sslSocket</strong>(<a href="EventBase.html">EventBase</a> $base, mixed $socket, <a href="EventSslContext.html">EventSslContext</a> $ctx, int $state, int $options = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>sslSocket.</p></p>                <p><p>Creates a new SSL buffer event to send its data over an SSL on a socket.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="EventBase.html">EventBase</a></td>
+                <td>$base</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$socket</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="EventSslContext.html">EventSslContext</a></td>
+                <td>$ctx</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$state</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$options</td>
+                <td><p>(optional)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="EventBufferEvent.html">EventBufferEvent</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://secure.php.net/manual/en/eventbufferevent.sslsocket.php">https://secure.php.net/manual/en/eventbufferevent.sslsocket.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_write">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L1057">at line 1057</a></div>
+        <code>                    bool
+    <strong>write</strong>(string $data)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>write.</p></p>                <p><p>Adds data to a buffer event's output buffer.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$data</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://secure.php.net/manual/en/eventbufferevent.write.php">https://secure.php.net/manual/en/eventbufferevent.write.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_writeBuffer">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/phpstorm-stubs-master/event/event.php#L1069">at line 1069</a></div>
+        <code>                    bool
+    <strong>writeBuffer</strong>(<a href="EventBuffer.html">EventBuffer</a> $buf)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>writeBuffer.</p></p>                <p><p>Adds contents of the entire buffer to a buffer event's output buffer.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="EventBuffer.html">EventBuffer</a></td>
+                <td>$buf</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://secure.php.net/manual/en/eventbufferevent.writebuffer.php">https://secure.php.net/manual/en/eventbufferevent.writebuffer.php</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built using <a href="https://github.com/JetBrains/phpstorm-stubs#readme" rel="noreferrer noopener" target="_blank">phpstorm-stubs</a> from JetBrains.</div></div>
+    </div>
+    </body>
+
+</html>
