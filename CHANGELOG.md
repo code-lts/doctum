@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
+## [5.4.0] - 2021-04-10
+
 - Drop support for PHP `7.1`
 - Drop support for `phpdocumentor/reflection-docblock` `4.3` series
 - Require PHP `7.2.20`
