@@ -14,8 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgrade Twig to `^3.0`
 - Upgrade `code-lts/cli-tools` to `^1.4`
 - Upgrade `wdes/php-i18n-l10n` to `^4.0`
-- Fixed a bug that removed @return and @var descriptions since 5.3.0
-- Added detection for duplicated @var and @return tags
+- Fixed a bug that removed `@return` and `@var` descriptions since 5.3.0
+- Added detection for duplicated `@var` and `@return` tags
 - Added a "version" command to avoid having users parsing unsafe output
 - Added support for `@mixin` annotations on classes
 - Added support for `@property-write` and `@property-read` annotations on classes
@@ -36,6 +36,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed return body of `readProject` method of `StoreInterface` to also return functions
 - Fix some resume after parse step missing data
 - Add more tests on render, parse and update CLIs
+- Remove old lib `michelf/php-markdown` and use `erusev/parsedown` to fix an HTML parsing bug
+- Add GitHub SECURITY and FUNDING configs
+- Add `Stringable` PHP 8.0 class to internal PHP class list
+- Add WeakReference PHP 7.4 class to internal PHP class list
+- Support `UnionType` of PHP 8
+- Support `namespace {//code}` syntax for namespaces without a name
 
 ## [5.3.1] - 2020-12-30
 
