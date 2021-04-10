@@ -13,6 +13,9 @@ update-release:
 update-rss:
 	./scripts/update-rss.sh
 
+update-version-compat:
+	./scripts/update-version-compat.sh
+
 tag:
 	./scripts/tag-release.sh
 
