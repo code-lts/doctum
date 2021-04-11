@@ -15,6 +15,7 @@ fi
 
 # Download, extract and move
 curl -L -s -o phpstorm-stubs.zip https://github.com/JetBrains/phpstorm-stubs/archive/refs/heads/master.zip
+rm -rf ./api-docs/sources/phpstorm-stubs/*
 unzip -q -j -d ./api-docs/sources/phpstorm-stubs ./phpstorm-stubs.zip && rm ./phpstorm-stubs.zip
 
 # Try as hard as possible to cleanup the dir
