@@ -24,6 +24,9 @@ rm -rfd ./api-docs/phpstorm-stubs/*
 # Render
 ./releases/latest/doctum.phar update --no-ansi --no-progress --ignore-parse-errors -v api-docs/doctum-php-phpstorm-stubs.php --force
 
+# Local folder cleanup
+rm -rf ./api-docs/sources/phpstorm-stubs/
+
 # Push the changes, but not if empty
 git add -A ./api-docs/phpstorm-stubs
 git diff-index --quiet HEAD || git commit -m "Api documentations update ($(date --utc))" -m "#apidocs" && git push
@@ -31,5 +34,4 @@ git diff-index --quiet HEAD || git commit -m "Api documentations update ($(date 
 git checkout - > /dev/null
 
 # Local folder cleanup
-rm -rf ./api-docs/sources/phpstorm-stubs/
 rm -rf ./api-docs/phpstorm-stubs
