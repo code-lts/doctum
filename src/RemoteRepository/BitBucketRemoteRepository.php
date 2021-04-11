@@ -13,15 +13,17 @@ namespace Doctum\RemoteRepository;
 
 class BitBucketRemoteRepository extends AbstractRemoteRepository
 {
+
     public function getFileUrl($projectVersion, $relativePath, $line)
     {
         $url = 'https://bitbucket.org/' . $this->name . '/src/' . $this->buildProjectPath($projectVersion, $relativePath);
 
         if (null !== $line) {
             $filename = basename($relativePath);
-            $url .= "#{$filename}-{$line}";
+            $url     .= '#' . $filename . '-' . $line;
         }
 
         return $url;
     }
+
 }

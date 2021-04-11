@@ -42,4 +42,5 @@ final class ErrorHandler
 
         return false;
     }
+
 }

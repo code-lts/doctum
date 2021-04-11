@@ -8,6 +8,7 @@ use Doctum\Reflection\ClassReflection;
 
 class ClassReflectionTest extends TestCase
 {
+
     public function testIsPhpClass(): void
     {
         // an internal class
@@ -30,4 +31,5 @@ class ClassReflectionTest extends TestCase
         $class = new ClassReflection(Application::class, 1);
         $this->assertFalse($class->isPhpClass());
     }
+
 }

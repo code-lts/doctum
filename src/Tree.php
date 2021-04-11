@@ -11,12 +11,28 @@
 
 namespace Doctum;
 
+use Wdes\phpI18nL10n\Launcher;
+
 class Tree
 {
+
+    public static function getGlobalNamespacePageName(): string
+    {
+        return Launcher::gettext('[Global_Namespace]');
+    }
+
+    public static function getGlobalNamespaceName(): string
+    {
+        return Launcher::gettext('[Global Namespace]');
+    }
+
+    /**
+     * @return array[]
+     */
     public function getTree(Project $project)
     {
         $namespaces = [];
-        $ns = $project->getNamespaces();
+        $ns         = $project->getNamespaces();
         foreach ($ns as $namespace) {
             if (false !== $pos = strpos($namespace, '\\')) {
                 $namespaces[substr($namespace, 0, $pos)][] = $namespace;
@@ -28,6 +44,12 @@ class Tree
         return $this->generateClassTreeLevel($project, 1, $namespaces, []);
     }
 
+    /**
+     * @param int $level
+     * @param array $namespaces
+     * @param \Doctum\Reflection\ClassReflection[] $classes
+     * @return array[]
+     */
     protected function generateClassTreeLevel(Project $project, $level, array $namespaces, array $classes)
     {
         ++$level;
@@ -49,11 +71,11 @@ class Tree
             }
 
             $parts = explode('\\', $namespace);
-            $url = '';
-            $url = $parts[count($parts) - 1]
+            $url   = '';
+            $url   = $parts[count($parts) - 1]
                     && $project->hasNamespace($namespace)
                     && (count($subnamespaces) || count($cl)) ? $namespace : '';
-            $short = $parts[count($parts) - 1] ? $parts[count($parts) - 1] : '[Global Namespace]';
+            $short = $parts[count($parts) - 1] ? $parts[count($parts) - 1] : self::getGlobalNamespaceName();
 
             $tree[] = [$short, $url, $this->generateClassTreeLevel($project, $level, $ns, $cl)];
         }
@@ -66,4 +88,5 @@ class Tree
 
         return $tree;
     }
+
 }

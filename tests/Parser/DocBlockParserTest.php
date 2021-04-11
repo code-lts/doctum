@@ -13,10 +13,14 @@ namespace Doctum\Tests\Parser;
 
 use PHPUnit\Framework\TestCase;
 use Doctum\Parser\DocBlockParser;
+use Doctum\Parser\Filter\TrueFilter;
 use Doctum\Parser\Node\DocBlockNode;
+use Doctum\Parser\ParserContext;
+use PhpParser\PrettyPrinter\Standard;
 
 class DocBlockParserTest extends TestCase
 {
+
     /**
      * @dataProvider getParseTests
      */
@@ -24,7 +28,7 @@ class DocBlockParserTest extends TestCase
     {
         $parser = new DocBlockParser();
 
-        $this->assertEquals($this->createDocblock($expected), $parser->parse($comment));
+        $this->assertEquals($this->createDocblock($expected), $parser->parse($comment, $this->getContextMock()));
     }
 
     /**
@@ -35,7 +39,7 @@ class DocBlockParserTest extends TestCase
     {
         $parser = new DocBlockParser();
 
-        $this->assertEquals($this->createDocblock($expected), $parser->parse($comment));
+        $this->assertEquals($this->createDocblock($expected), $parser->parse($comment, $this->getContextMock()));
     }
 
     public function getParseTests(): array
@@ -397,4 +401,15 @@ class DocBlockParserTest extends TestCase
 
         return $docblock;
     }
+
+    private function getContextMock(string $namespace = '', array $aliases = []): ParserContext
+    {
+        $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
+        $parserContext->enterNamespace($namespace);
+        foreach ($aliases as $aliasKey => $alias) {
+            $parserContext->addAlias($aliasKey, $alias);
+        }
+        return $parserContext;
+    }
+
 }

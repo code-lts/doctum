@@ -15,7 +15,9 @@ use Doctum\Project;
 
 class ParameterReflection extends Reflection
 {
+    /** @var FunctionReflection */
     protected $function;
+    /** @var MethodReflection */
     protected $method;
     protected $byRef;
     protected $modifiers;
@@ -27,6 +29,9 @@ class ParameterReflection extends Reflection
         return $this->method . '#' . $this->name;
     }
 
+    /**
+     * @return ClassReflection|null
+     */
     public function getClass()
     {
         return $this->method->getClass();
@@ -67,6 +72,9 @@ class ParameterReflection extends Reflection
         return $this->variadic;
     }
 
+    /**
+     * @return MethodReflection|null
+     */
     public function getMethod()
     {
         return $this->method;
@@ -77,6 +85,9 @@ class ParameterReflection extends Reflection
         $this->method = $method;
     }
 
+    /**
+     * @return FunctionReflection|null
+     */
     public function getFunction()
     {
         return $this->function;
@@ -98,9 +109,13 @@ class ParameterReflection extends Reflection
 
         $hints = [];
         if (isset($this->function)) {
-            $project = $this->getFunction()->getProject();
+            /** @var FunctionReflection $function */
+            $function = $this->getFunction();
+            $project  = $function->getProject();
         } else {
-            $project = $this->getClass()->getProject();
+            /** @var ClassReflection $class */
+            $class   = $this->getClass();
+            $project = $class->getProject();
         }
         foreach ($this->hint as $hint) {
             $hints[] = new HintReflection(Project::isPhpTypeHint($hint[0]) ? $hint[0] : $project->getClass($hint[0]), $hint[1]);
@@ -125,18 +140,22 @@ class ParameterReflection extends Reflection
         ];
     }
 
+    /**
+     * @return self
+     */
     public static function fromArray(Project $project, $array)
     {
-        $parameter = new self($array['name'], $array['line']);
+        $parameter            = new self($array['name'], $array['line']);
         $parameter->shortDesc = $array['short_desc'];
-        $parameter->longDesc = $array['long_desc'];
-        $parameter->hint = $array['hint'];
-        $parameter->tags = $array['tags'];
+        $parameter->longDesc  = $array['long_desc'];
+        $parameter->hint      = $array['hint'];
+        $parameter->tags      = $array['tags'];
         $parameter->modifiers = $array['modifiers'];
-        $parameter->default = $array['default'];
-        $parameter->variadic = $array['variadic'];
-        $parameter->byRef = $array['is_by_ref'];
+        $parameter->default   = $array['default'];
+        $parameter->variadic  = $array['variadic'];
+        $parameter->byRef     = $array['is_by_ref'];
 
         return $parameter;
     }
+
 }

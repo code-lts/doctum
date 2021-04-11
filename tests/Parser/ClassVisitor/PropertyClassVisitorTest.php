@@ -18,9 +18,7 @@ use Doctum\Reflection\ClassReflection;
 
 class PropertyClassVisitorTest extends TestCase
 {
-    /**
-     * @requires PHP <8
-     */
+
     public function testAddsProperties(): void
     {
         $class = $this->getMockBuilder(ClassReflection::class)
@@ -48,7 +46,14 @@ class PropertyClassVisitorTest extends TestCase
                 null,
             ],
         ];
-        $class->expects($this->any())->method('getTags')->with($this->equalTo('property'))->will($this->returnValue($property));
+
+        $class->expects($this->exactly(1))
+            ->method('getTags')
+            ->withConsecutive(
+                ['property']
+            )->willReturnOnConsecutiveCalls(
+                $property
+            );
 
         /** @var ParserContext $context */
         $context = $this->getMockBuilder(ParserContext::class)->disableOriginalConstructor()->getMock();
@@ -61,4 +66,5 @@ class PropertyClassVisitorTest extends TestCase
         $this->assertArrayHasKey('animal', $class->getProperties());
         $this->assertArrayHasKey('enigma', $class->getProperties());
     }
+
 }

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Doctum;
 
 // To be able to fetch the version in this script afterwards
@@ -13,8 +11,13 @@ use RecursiveIteratorIterator;
 use RecursiveFilterIterator;
 use FilesystemIterator;
 
-$srcRoot = realpath(__DIR__ . '/..') . DIRECTORY_SEPARATOR;
+$srcRoot   = realpath(__DIR__ . '/..') . DIRECTORY_SEPARATOR;
 $buildRoot = realpath(__DIR__ . '/../build');
+
+if ($buildRoot === false) {
+    echo 'Build root could not be resolved' . PHP_EOL;
+    exit(1);
+}
 
 if (file_exists($buildRoot . '/doctum.phar')) {
     echo 'The phar file should not exist' . PHP_EOL;
@@ -25,7 +28,15 @@ if (! is_dir($buildRoot)) {
     mkdir($buildRoot);
 }
 
-$version = \Doctum\Doctum::VERSION;
+$version       = \Doctum\Doctum::VERSION;
+$commandOutput = [];
+exec('git rev-parse --verify HEAD', $commandOutput);
+
+$gitCommit = $commandOutput[0] ?? '';
+if (empty($gitCommit)) {
+    echo 'Unable to fetch the git commit';
+    exit(1);
+}
 
 $pharAlias = 'doctum-' . $version . '.phar';
 
@@ -108,6 +119,7 @@ final class PharFilterIterator extends RecursiveFilterIterator
         'README',
         'Readme.php',
         '.php_cs.cache',
+        '.php_cs',
         'makefile',
         '.phpunit.result.cache',
         'phpstan.neon.dist',
@@ -125,7 +137,10 @@ final class PharFilterIterator extends RecursiveFilterIterator
         'rst',
         'md',
         'po',
+        'po~',
+        'mo~',
         'pot',
+        'pot~',
         'm4',
         'c',
         'h',
@@ -181,14 +196,13 @@ final class PharFilterIterator extends RecursiveFilterIterator
             return true;
         }
 
-        $isExcludedFile = in_array($current->getBasename(), static::$excludedFilesNames);
+        $isExcludedFile      = in_array($current->getBasename(), static::$excludedFilesNames);
         $isExcludedExtension = in_array($current->getExtension(), static::$excludedFilesExtensions);
 
         if ($isExcludedFile || $isExcludedExtension) {
             static::$excludedFiles[] = $relativePath;
             return false;
         }
-
 
         static::$acceptedFiles[] = $relativePath;
 
@@ -218,6 +232,7 @@ final class PharFilterIterator extends RecursiveFilterIterator
     {
         return static::$excludedFolders;
     }
+
 }
 
 $filter = new PharFilterIterator($iterator);
@@ -227,18 +242,21 @@ $pharFilesList = new RecursiveIteratorIterator($filter);
 $phar->setStub($shebang . PHP_EOL . $stub);
 $phar->setSignatureAlgorithm(Phar::SHA256);
 $phar->buildFromIterator($pharFilesList, $srcRoot);
-$phar->setMetadata([
-    'vcs.git' => 'https://github.com/code-lts/doctum.git',
-    'vcs.browser' => 'https://github.com/code-lts/doctum',
-    'version' => $version,
-    'build-date' => $date,
-    'license' => 'MIT',
-    'vendor' => 'Doctum',
-    'name' => 'Doctum',
-]);
+$phar->setMetadata(
+    [
+        'vcs.git' => 'https://github.com/code-lts/doctum.git',
+        'vcs.browser' => 'https://github.com/code-lts/doctum',
+        'vcs.ref' => $gitCommit,
+        'version' => $version,
+        'build-date' => $date,
+        'license' => 'MIT',
+        'vendor' => 'Doctum',
+        'name' => 'Doctum',
+    ]
+);
 
 $files = array_map(
-    function (string $fileRelativePath) {
+    static function (string $fileRelativePath) {
         return [
             'name' => $fileRelativePath,
             'sha256' => hash_file('sha256', $fileRelativePath),

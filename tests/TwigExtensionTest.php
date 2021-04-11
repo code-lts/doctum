@@ -13,6 +13,7 @@ use PHPUnit\Framework\TestCase;
  */
 class TwigExtensionTest extends TestCase
 {
+
     /**
      * Test for abbrClass
      */
@@ -104,4 +105,5 @@ class TwigExtensionTest extends TestCase
             ]
         );
     }
+
 }

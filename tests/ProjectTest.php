@@ -9,6 +9,7 @@ use Doctum\Version\Version;
 
 class ProjectTest extends AbstractTestCase
 {
+
     public function testSwitchVersion(): void
     {
         // Dummy store and classes
@@ -37,8 +38,8 @@ class ProjectTest extends AbstractTestCase
 
         // Load version 2
         $project->switchVersion(new Version('2'), null, true);
-        $project->loadClass($class2);
-        $project->loadClass($class3);
+        $project->loadClass($class2->__toString());
+        $project->loadClass($class3->__toString());
 
         $this->assertEquals(
             [
@@ -55,7 +56,8 @@ class ProjectTest extends AbstractTestCase
 
         $this->assertFalse($project->hasFooterLink());
 
-        $project = $this->getProject([
+        $project = $this->getProject(
+            [
             'footer_link' => [
                 'href'        => 'https://github.com/code-lts/doctum',
                 'rel'         => 'noreferrer noopener',
@@ -64,25 +66,32 @@ class ProjectTest extends AbstractTestCase
                 'link_text'   => 'on this', // Required if the href key is set
                 'after_text'  => 'repository',
             ],
-        ]);
+            ]
+        );
 
         $this->assertTrue($project->hasFooterLink());
 
-        $project = $this->getProject([
+        $project = $this->getProject(
+            [
             'footer_link'          => [],
-        ]);
+            ]
+        );
 
         $this->assertTrue($project->hasFooterLink());
 
-        $project = $this->getProject([
+        $project = $this->getProject(
+            [
             'footer_link'          => null,
-        ]);
+            ]
+        );
 
         $this->assertFalse($project->hasFooterLink());
 
-        $project = $this->getProject([
+        $project = $this->getProject(
+            [
             'footer_link'          => 'https://example.com',
-        ]);
+            ]
+        );
 
         $this->assertFalse($project->hasFooterLink());
     }
@@ -91,16 +100,20 @@ class ProjectTest extends AbstractTestCase
     {
         $project = $this->getProject();
 
-        $this->assertSame($project->getFooterLink(), [
+        $this->assertSame(
+            $project->getFooterLink(),
+            [
             'href' => '',
             'target' => '',
             'rel' => '',
             'before_text' => '',
             'link_text' => '',
             'after_text' => '',
-        ]);
+            ]
+        );
 
-        $project = $this->getProject([
+        $project = $this->getProject(
+            [
             'footer_link' => [
                 'href'        => 'https://github.com/code-lts/doctum',
                 'rel'         => 'noreferrer noopener',
@@ -109,15 +122,62 @@ class ProjectTest extends AbstractTestCase
                 'link_text'   => 'on this', // Required if the href key is set
                 'after_text'  => 'repository',
             ],
-        ]);
+            ]
+        );
 
-        $this->assertSame($project->getFooterLink(), [
+        $this->assertSame(
+            $project->getFooterLink(),
+            [
             'href'        => 'https://github.com/code-lts/doctum',
             'target'      => '_blank',
             'rel'         => 'noreferrer noopener',
             'before_text' => 'You can edit the configuration',
             'link_text'   => 'on this',
             'after_text'  => 'repository',
-        ]);
+            ]
+        );
     }
+
+    public function testGetBaseUrl(): void
+    {
+        $project = $this->getProject();
+
+        $this->assertNull(
+            $project->getBaseUrl()
+        );
+
+        $project = $this->getProject(
+            [
+            'base_url' => 'https://github.com/code-lts/doctum'
+            ]
+        );
+
+        $this->assertSame(
+            'https://github.com/code-lts/doctum',
+            $project->getBaseUrl()
+        );
+
+        $project = $this->getProject(
+            [
+            'base_url' => 'https://github.com/code-lts/doctum/'
+            ]
+        );
+
+        $this->assertSame(
+            'https://github.com/code-lts/doctum',
+            $project->getBaseUrl()
+        );
+
+        $project = $this->getProject(
+            [
+            'base_url' => 'https://github.com/code-lts/doctum//'
+            ]
+        );
+
+        $this->assertSame(
+            'https://github.com/code-lts/doctum',
+            $project->getBaseUrl()
+        );
+    }
+
 }

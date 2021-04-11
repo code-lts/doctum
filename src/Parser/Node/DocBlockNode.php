@@ -119,4 +119,5 @@ class DocBlockNode
     {
         return $this->errors;
     }
+
 }

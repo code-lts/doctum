@@ -37,4 +37,5 @@ class ViewSourceClassVisitor implements ClassVisitorInterface
 
         return false;
     }
+
 }

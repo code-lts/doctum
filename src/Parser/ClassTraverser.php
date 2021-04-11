@@ -33,7 +33,7 @@ class ClassTraverser
     public function traverse(Project $project)
     {
         // parent classes/interfaces are visited before their "children"
-        $classes = $project->getProjectClasses();
+        $classes  = $project->getProjectClasses();
         $modified = new \SplObjectStorage();
         while ($class = array_shift($classes)) {
             // re-push the class at the end if parent class/interfaces have not been visited yet
@@ -43,7 +43,8 @@ class ClassTraverser
                 continue;
             }
 
-            foreach ($interfaces = $class->getInterfaces() as $interface) {
+            $interfaces = $class->getInterfaces();
+            foreach ($interfaces as $interface) {
                 if (isset($classes[$interface->getName()])) {
                     $classes[$class->getName()] = $class;
 
@@ -78,4 +79,5 @@ class ClassTraverser
 
         return $modified;
     }
+
 }

@@ -116,7 +116,7 @@ function publishArtifacts {
 if [ ! -f ./vendor/autoload.php ]; then
     echo "Composer dependencies are missing"
     echo "Updating..."
-    composer update --quiet
+    ${COMPOSER_BIN} update --quiet ${COMPOSER_OPTIONS:-}
     echo "Done."
 fi
 
@@ -154,10 +154,10 @@ if [ "${RELEASE_OPTIONS}" = "rebuild" ]; then
     echo "Rebuild deps"
     rm composer.lock
     curl -O "https://doctum.long-term.support/releases/${VERSION}/composer.lock"
-    ${PHP_BIN:-php} ${COMPOSER_BIN} install --no-dev --quiet
+    ${PHP_BIN:-php} ${COMPOSER_BIN} install --no-dev --quiet ${COMPOSER_OPTIONS:-}
 else
     echo "Remove dev-deps"
-    ${PHP_BIN:-php} ${COMPOSER_BIN} update --no-dev --quiet
+    ${PHP_BIN:-php} ${COMPOSER_BIN} update --no-dev --quiet ${COMPOSER_OPTIONS:-}
 fi
 
 echo "Copy composer.lock"

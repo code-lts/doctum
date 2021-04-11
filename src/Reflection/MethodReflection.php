@@ -15,6 +15,7 @@ use Doctum\Project;
 
 class MethodReflection extends Reflection
 {
+    /** @var ClassReflection */
     protected $class;
     protected $parameters = [];
     protected $byRef;
@@ -36,6 +37,9 @@ class MethodReflection extends Reflection
         return $this->byRef;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function setModifiers($modifiers)
     {
         // if no modifiers, method is public
@@ -76,6 +80,9 @@ class MethodReflection extends Reflection
         return self::MODIFIER_FINAL === (self::MODIFIER_FINAL & $this->modifiers);
     }
 
+    /**
+     * @return ClassReflection|null
+     */
     public function getClass()
     {
         return $this->class;
@@ -152,28 +159,36 @@ class MethodReflection extends Reflection
             'hint' => $this->hint,
             'hint_desc' => $this->hintDesc,
             'tags' => $this->tags,
+            'see' => $this->see,
             'modifiers' => $this->modifiers,
             'is_by_ref' => $this->byRef,
             'exceptions' => $this->exceptions,
             'errors' => $this->errors,
-            'parameters' => array_map(function ($parameter) {
-                return $parameter->toArray();
-            }, $this->parameters),
+            'parameters' => array_map(
+                static function ($parameter) {
+                    return $parameter->toArray();
+                },
+                $this->parameters
+            ),
         ];
     }
 
+    /**
+     * @return self
+     */
     public static function fromArray(Project $project, $array)
     {
-        $method = new self($array['name'], $array['line']);
-        $method->shortDesc = $array['short_desc'];
-        $method->longDesc = $array['long_desc'];
-        $method->hint = $array['hint'];
-        $method->hintDesc = $array['hint_desc'];
-        $method->tags = $array['tags'];
-        $method->modifiers = $array['modifiers'];
-        $method->byRef = $array['is_by_ref'];
+        $method             = new self($array['name'], $array['line']);
+        $method->shortDesc  = $array['short_desc'];
+        $method->longDesc   = $array['long_desc'];
+        $method->hint       = $array['hint'];
+        $method->hintDesc   = $array['hint_desc'];
+        $method->tags       = $array['tags'];
+        $method->modifiers  = $array['modifiers'];
+        $method->byRef      = $array['is_by_ref'];
         $method->exceptions = $array['exceptions'];
-        $method->errors = $array['errors'];
+        $method->errors     = $array['errors'];
+        $method->see        = $array['see'] ?? [];// New in 5.4.0 and 5.3.2 as a fix
 
         foreach ($array['parameters'] as $parameter) {
             $method->addParameter(ParameterReflection::fromArray($project, $parameter));
@@ -181,4 +196,5 @@ class MethodReflection extends Reflection
 
         return $method;
     }
+
 }

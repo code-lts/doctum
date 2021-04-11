@@ -16,6 +16,7 @@ use Doctum\Reflection\ClassReflection;
 
 interface StoreInterface
 {
+
     public function readClass(Project $project, $name);
 
     public function writeClass(Project $project, ClassReflection $class);
@@ -25,4 +26,5 @@ interface StoreInterface
     public function readProject(Project $project);
 
     public function flushProject(Project $project);
+
 }

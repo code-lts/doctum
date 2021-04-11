@@ -21,7 +21,7 @@ class Theme
     public function __construct($name, $dir)
     {
         $this->name = $name;
-        $this->dir = $dir;
+        $this->dir  = $dir;
     }
 
     public function getTemplateDirs()
@@ -69,4 +69,5 @@ class Theme
     {
         $this->templates[$type] = $templates;
     }
+
 }

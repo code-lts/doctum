@@ -16,6 +16,7 @@ use Doctum\Reflection\PropertyReflection;
 
 class PublicFilter extends TrueFilter
 {
+
     public function acceptMethod(MethodReflection $method)
     {
         return $method->isPublic();
@@ -25,4 +26,5 @@ class PublicFilter extends TrueFilter
     {
         return $property->isPublic();
     }
+
 }

@@ -13,6 +13,7 @@ namespace Doctum\Version;
 
 class SingleVersionCollection extends VersionCollection
 {
+
     public function add($version, $longname = null)
     {
         $countable = is_array($this->versions) || $this->versions instanceof \Countable;
@@ -29,4 +30,5 @@ class SingleVersionCollection extends VersionCollection
     protected function switchVersion(Version $version)
     {
     }
+
 }

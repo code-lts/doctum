@@ -15,23 +15,32 @@ use Doctum\Project;
 
 abstract class Reflection
 {
-    public const MODIFIER_PUBLIC = 1;
-    public const MODIFIER_PROTECTED = 2;
-    public const MODIFIER_PRIVATE = 4;
-    public const MODIFIER_STATIC = 8;
-    public const MODIFIER_ABSTRACT = 16;
-    public const MODIFIER_FINAL = 32;
+    // Constants from: vendor/nikic/php-parser/lib/PhpParser/Node/Stmt/Class_.php
+    public const MODIFIER_PUBLIC            = 1;
+    public const MODIFIER_PROTECTED         = 2;
+    public const MODIFIER_PRIVATE           = 4;
+    public const MODIFIER_STATIC            = 8;
+    public const MODIFIER_ABSTRACT          = 16;
+    public const MODIFIER_FINAL             = 32;
     protected const VISIBILITY_MODIFER_MASK = 7; // 1 | 2 | 4
 
     /** @var string */
     protected $name;
+    /** @var int */
     protected $line;
+    /** @var string */
     protected $shortDesc;
+    /** @var string */
     protected $longDesc;
+    /** @var string|null|array<int,mixed> */
     protected $hint;
+    /** @var string */
     protected $hintDesc;
+    /** @var array<string,array> */
     protected $tags;
+    /** @var string|null */
     protected $docComment;
+    /** @var array<int,array<int,string|false>> */
     protected $see = [];
     /** @var string[] */
     protected $errors = [];
@@ -43,6 +52,9 @@ abstract class Reflection
         $this->tags = [];
     }
 
+    /**
+     * @return self|null
+     */
     abstract public function getClass();
 
     public function getName(): string
@@ -55,36 +67,59 @@ abstract class Reflection
         $this->name = $name;
     }
 
+    /**
+     * @return int
+     */
     public function getLine()
     {
         return $this->line;
     }
 
+    /**
+     * @param int $line
+     */
     public function setLine($line)
     {
         $this->line = $line;
     }
 
+    /**
+     * @return string
+     */
     public function getShortDesc()
     {
         return $this->shortDesc;
     }
 
+    /**
+     * @param string $shortDesc
+     * @return void
+     */
     public function setShortDesc($shortDesc)
     {
         $this->shortDesc = $shortDesc;
     }
 
+    /**
+     * @return string
+     */
     public function getLongDesc()
     {
         return $this->longDesc;
     }
 
+    /**
+     * @param string $longDesc
+     * @return void
+     */
     public function setLongDesc($longDesc)
     {
         $this->longDesc = $longDesc;
     }
 
+    /**
+     * @return HintReflection[]
+     */
     public function getHint()
     {
         if (! is_array($this->hint)) {
@@ -92,7 +127,9 @@ abstract class Reflection
         }
 
         $hints = [];
-        $project = $this->getClass()->getProject();
+        /** @var FunctionReflection $class Not sure this is the right type */
+        $class   = $this->getClass();
+        $project = $class->getProject();
         foreach ($this->hint as $hint) {
             $hints[] = new HintReflection(Project::isPhpTypeHint($hint[0]) ? $hint[0] : $project->getClass($hint[0]), $hint[1]);
         }
@@ -100,6 +137,10 @@ abstract class Reflection
         return $hints;
     }
 
+    /**
+     * @return string
+     * @example string|int
+     */
     public function getHintAsString()
     {
         $str = [];
@@ -115,65 +156,99 @@ abstract class Reflection
         return $this->hint ? true : false;
     }
 
+    /**
+     * @param string|array|null $hint
+     * @return void
+     */
     public function setHint($hint)
     {
         $this->hint = $hint;
     }
 
+    /**
+     * @return string|array|null
+     */
     public function getRawHint()
     {
         return $this->hint;
     }
 
+    /**
+     * @return void
+     */
     public function setHintDesc($desc)
     {
         $this->hintDesc = $desc;
     }
 
+    /**
+     * @return string
+     */
     public function getHintDesc()
     {
         return $this->hintDesc;
     }
 
+    /**
+     * @param array<string,array> $tags
+     * @return void
+     */
     public function setTags($tags)
     {
         $this->tags = $tags;
     }
 
+    /**
+     * @return array<string,array>
+     */
     public function getTags($name)
     {
         return $this->tags[$name] ?? [];
     }
 
+    /**
+     * @return array<string,array>
+     */
     public function getDeprecated()
     {
         return $this->getTags('deprecated');
     }
 
+    /**
+     * @return array<string,array>
+     */
     public function getTodo()
     {
         return $this->getTags('todo');
     }
 
-    // not serialized as it is only useful when parsing
+    /**
+     * not serialized as it is only useful when parsing
+     * @param string|null $comment
+     * @return void
+     */
     public function setDocComment($comment)
     {
         $this->docComment = $comment;
     }
 
+    /**
+     * @return string|null
+     */
     public function getDocComment()
     {
         return $this->docComment;
     }
 
     /**
-     * @return array
+     * @return array[]
      */
     public function getSee()
     {
         $see = [];
-        /** @var Project $project */
-        $project = $this->getClass()->getProject();
+        /** @var FunctionReflection $class Not sure this is the right type */
+        $class   = $this->getClass();
+        $project = $class->getProject();
 
         foreach ($this->see as $seeElem) {
             if ($seeElem[3]) {
@@ -184,22 +259,34 @@ abstract class Reflection
 
             $see[] = $seeElem;
         }
-
         return $see;
     }
 
+    /**
+     * @param array<int,array<int,string|false>> $see
+     * @return void
+     */
     public function setSee(array $see)
     {
         $this->see = $see;
     }
 
-    private function prepareMethodSee(array $seeElem)
+    /**
+     * @param array<int,string|false> $seeElem
+     * @return array<int,MethodReflection|ClassReflection|false>
+     */
+    private function prepareMethodSee(array $seeElem): array
     {
-        /** @var Project $project */
-        $project = $this->getClass()->getProject();
+        /** @var FunctionReflection $class Not sure this is the right type */
+        $class   = $this->getClass();
+        $project = $class->getProject();
 
-        $class = $project->getClass($seeElem[2]);
-        $method = $class->getMethod($seeElem[3]);
+        $method = null;
+
+        if ($seeElem[2] !== false) {
+            $class  = $project->getClass($seeElem[2]);
+            $method = $class->getMethod($seeElem[3]);
+        }
 
         if ($method) {
             $seeElem[2] = false;
@@ -227,4 +314,5 @@ abstract class Reflection
     {
         $this->errors = $errors;
     }
+
 }

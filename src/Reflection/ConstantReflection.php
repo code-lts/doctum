@@ -42,12 +42,16 @@ class ConstantReflection extends Reflection
         ];
     }
 
+    /**
+     * @return self
+     */
     public static function fromArray(Project $project, $array)
     {
-        $constant = new self($array['name'], $array['line']);
+        $constant            = new self($array['name'], $array['line']);
         $constant->shortDesc = $array['short_desc'];
-        $constant->longDesc = $array['long_desc'];
+        $constant->longDesc  = $array['long_desc'];
 
         return $constant;
     }
+
 }

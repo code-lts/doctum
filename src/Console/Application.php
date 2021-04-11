@@ -20,6 +20,7 @@ use Symfony\Component\Console\Application as BaseApplication;
 
 class Application extends BaseApplication
 {
+
     public function __construct()
     {
         error_reporting(-1);
@@ -36,4 +37,5 @@ class Application extends BaseApplication
     {
         return parent::getLongVersion() . ' by <comment>Fabien Potencier and William Desportes</comment>';
     }
+
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Doctum\Tests\Command;
 
 use Doctum\Console\Command\ParseCommand;
@@ -19,7 +21,7 @@ class CommandTest extends AbstractTestCase
 
     public function testParseEndBeforeStart(): void
     {
-        $command = new ParseCommand();
+        $command       = new ParseCommand();
         $commandTester = new CommandTester($command);
 
         $commandTester->execute(['config' => $this->getTestConfigFilePath(), '--no-progress' => true, '--force' => true]);
@@ -39,7 +41,7 @@ class CommandTest extends AbstractTestCase
 
     public function testRenderEndBeforeStart(): void
     {
-        $command = new RenderCommand();
+        $command       = new RenderCommand();
         $commandTester = new CommandTester($command);
 
         $commandTester->execute(['config' => $this->getTestConfigFilePath(), '--no-progress' => true, '--force' => true]);
@@ -60,7 +62,8 @@ class CommandTest extends AbstractTestCase
                 . 'Rendering Global doctum.js' . "\n"
                 . 'Rendering done' . "\n"
                 . "\n"
-                . 'Rendering project Version    Updated C    Updated N    Removed C    Removed N ' . "\n"
+                . 'Rendering project' . "\n"
+                . ' Version    Updated C    Updated N    Removed C    Removed N ' . "\n"
                 . '     main            0            0            0            0' . "\n"
                 . "\n",
             $commandTester->getDisplay()
@@ -69,7 +72,7 @@ class CommandTest extends AbstractTestCase
 
     public function testUpdateCommandRun(): void
     {
-        $command = new UpdateCommand();
+        $command       = new UpdateCommand();
         $commandTester = new CommandTester($command);
 
         $commandTester->execute(['config' => $this->getTestConfigFilePath(), '--no-progress' => true, '--force' => true]);
@@ -94,10 +97,12 @@ class CommandTest extends AbstractTestCase
                 . ' Version    Updated C    Removed C ' . "\n"
                 . '     main            0            0' . "\n"
                 . "\n"
+                . "\n"
                 . ' Version    Updated C    Updated N    Removed C    Removed N ' . "\n"
                 . '     main            0            0            0            0' . "\n"
                 . "\n",
             $commandTester->getDisplay()
         );
     }
+
 }

@@ -18,7 +18,7 @@ abstract class AbstractRemoteRepository
 
     public function __construct($name, $localPath)
     {
-        $this->name = $name;
+        $this->name      = $name;
         $this->localPath = $localPath;
     }
 
@@ -27,7 +27,7 @@ abstract class AbstractRemoteRepository
     public function getRelativePath($file)
     {
         $replacementCount = 0;
-        $filePath = str_replace($this->localPath, '', $file, $replacementCount);
+        $filePath         = str_replace($this->localPath, '', $file, $replacementCount);
 
         if (1 === $replacementCount) {
             return $filePath;
@@ -40,4 +40,5 @@ abstract class AbstractRemoteRepository
     {
         return str_replace('\\', '/', $projectVersion . '/' . ltrim($relativePath, '/'));
     }
+
 }

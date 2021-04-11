@@ -31,7 +31,7 @@ class Version
 
     public function __construct(string $name, ?string $longname = null)
     {
-        $this->name = $name;
+        $this->name     = $name;
         $this->longname = null === $longname ? $name : $longname;
         $this->isFrozen = false;
     }
@@ -65,4 +65,5 @@ class Version
     {
         return $this->isFrozen;
     }
+
 }

@@ -23,30 +23,41 @@ use phpDocumentor\Reflection\DocBlock\Tags\Throws;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use phpDocumentor\Reflection\DocBlock\Tags\InvalidTag;
 use phpDocumentor\Reflection\DocBlockFactory;
+use phpDocumentor\Reflection\Types\Context;
 
 class DocBlockParser
 {
-    public function parse(?string $comment): DocBlockNode
+
+    public function parse(?string $comment, ParserContext $context): DocBlockNode
     {
-        $docBlock = null;
+        $docBlock     = null;
         $errorMessage = '';
-        $result = new DocBlockNode();
+        $result       = new DocBlockNode();
 
         if ($comment === null) {
             return $result;
         }
 
         try {
-            $factory  = DocBlockFactory::createInstance();
-            $docBlock = $factory->create($comment);
+            $factory         = DocBlockFactory::createInstance();
+            $docBlockContext = new Context(
+                $context->getNamespace() ?? '',
+                $context->getAliases() ?: []
+            );
+            $docBlock        = $factory->create($comment, $docBlockContext);
         } catch (\Exception $e) {
             $errorMessage = $e->getMessage();
         }
 
-
-        if ($errorMessage) {
+        if ($errorMessage !== '') {
             $result->addError($errorMessage);
 
+            return $result;
+        }
+
+        if ($docBlock === null) {
+            $errorMessage = 'Unable to build the doc block factory, this should not happen. Please report it !';
+            $result->addError($errorMessage);
             return $result;
         }
 
@@ -62,31 +73,33 @@ class DocBlockParser
 
     protected function parseTag(DocBlock\Tag $tag)
     {
-
         $class = get_class($tag);
         switch ($class) {
             case Var_::class:
             case Return_::class:
                 /** @var \phpDocumentor\Reflection\DocBlock\Tags\Return_ $tag */
+                $type = $tag->getType();
                 return [
-                    $this->parseHint($tag->getType() ? explode('|', $tag->getType()->__toString()) : []),
-                    $tag->getDescription() ? $tag->getDescription()->__toString() : '',
+                    $this->parseHint($type !== null ? explode('|', $type->__toString()) : []),
+                    $tag->getDescription() !== null ? $tag->getDescription()->__toString() : '',
                 ];
             case Property::class:
             case PropertyRead::class:
             case PropertyWrite::class:
             case Param::class:
                 /** @var \phpDocumentor\Reflection\DocBlock\Tags\Param $tag */
+                $type = $tag->getType();
                 return [
-                    $this->parseHint($tag->getType() ? explode('|', $tag->getType()->__toString()) : []),
-                    ltrim($tag->getVariableName(), '$'),
-                    $tag->getDescription() ? $tag->getDescription()->__toString() : '',
+                    $this->parseHint($type !== null ? explode('|', $type->__toString()) : []),
+                    ltrim($tag->getVariableName() ?? '', '$'),
+                    $tag->getDescription() !== null ? $tag->getDescription()->__toString() : '',
                 ];
             case Throws::class:
                 /** @var \phpDocumentor\Reflection\DocBlock\Tags\Throws $tag */
+                $type = $tag->getType();
                 return [
-                    $tag->getType() ? $tag->getType()->__toString() : '',
-                    $tag->getDescription() ? $tag->getDescription()->__toString() : '',
+                    $type !== null ? $type->__toString() : '',
+                    $tag->getDescription() !== null ? $tag->getDescription()->__toString() : '',
                 ];
             case See::class:
                 // For backwards compatibility, in first cell we store content.
@@ -96,7 +109,7 @@ class DocBlockParser
                 return [
                     $tag->__toString(),
                     $tag->getReference()->__toString(),
-                    $tag->getDescription() ? $tag->getDescription()->__toString() : '',
+                    $tag->getDescription() !== null ? $tag->getDescription()->__toString() : '',
                 ];
             case InvalidTag::class:
                 /** @var \phpDocumentor\Reflection\DocBlock\Tags\InvalidTag $tag */
@@ -119,4 +132,5 @@ class DocBlockParser
 
         return $hints;
     }
+
 }

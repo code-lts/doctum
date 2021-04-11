@@ -13,6 +13,7 @@ namespace Doctum\RemoteRepository;
 
 class GitHubRemoteRepository extends AbstractRemoteRepository
 {
+
     public function getFileUrl($projectVersion, $relativePath, $line)
     {
         $url = 'https://github.com/' . $this->name . '/blob/' . $this->buildProjectPath($projectVersion, $relativePath);
@@ -23,4 +24,5 @@ class GitHubRemoteRepository extends AbstractRemoteRepository
 
         return $url;
     }
+
 }

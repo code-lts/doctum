@@ -15,9 +15,9 @@ use Doctum\Project;
 
 class ClassReflection extends Reflection
 {
-    private const CATEGORY_CLASS = 1;
+    private const CATEGORY_CLASS     = 1;
     private const CATEGORY_INTERFACE = 2;
-    private const CATEGORY_TRAIT = 3;
+    private const CATEGORY_TRAIT     = 3;
 
     private static $phpInternalClasses = [
         'stdclass' => true,
@@ -198,18 +198,20 @@ class ClassReflection extends Reflection
     protected $hash;
     protected $namespace;
     protected $modifiers;
+    /** @var PropertyReflection[] */
     protected $properties = [];
-    protected $methods = [];
+    /** @var MethodReflection[] */
+    protected $methods    = [];
     protected $interfaces = [];
-    protected $constants = [];
-    protected $traits = [];
+    protected $constants  = [];
+    protected $traits     = [];
     protected $parent;
     protected $file;
     protected $relativeFilePath;
-    protected $category = self::CATEGORY_CLASS;
+    protected $category     = self::CATEGORY_CLASS;
     protected $projectClass = true;
-    protected $aliases = [];
-    protected $fromCache = false;
+    protected $aliases      = [];
+    protected $fromCache    = false;
 
     public function __toString()
     {
@@ -308,11 +310,17 @@ class ClassReflection extends Reflection
         return $this->project;
     }
 
+    /**
+     * @return void
+     */
     public function setProject(Project $project)
     {
         $this->project = $project;
     }
 
+    /**
+     * @return void
+     */
     public function setNamespace($namespace)
     {
         $this->namespace = ltrim($namespace, '\\');
@@ -360,14 +368,20 @@ class ClassReflection extends Reflection
         return $properties;
     }
 
-    /*
+    /**
      * Can be any iterator (so that we can lazy-load the properties)
+     *
+     * @param PropertyReflection[] $properties
+     * @return void
      */
     public function setProperties($properties)
     {
         $this->properties = $properties;
     }
 
+    /**
+     * @return void
+     */
     public function addConstant(ConstantReflection $constant)
     {
         $this->constants[$constant->getName()] = $constant;
@@ -399,12 +413,18 @@ class ClassReflection extends Reflection
         $this->constants = $constants;
     }
 
+    /**
+     * @return void
+     */
     public function addMethod(MethodReflection $method)
     {
         $this->methods[$method->getName()] = $method;
         $method->setClass($this);
     }
 
+    /**
+     * @return MethodReflection|false False if not found
+     */
     public function getMethod($name)
     {
         return $this->methods[$name] ?? false;
@@ -463,16 +483,26 @@ class ClassReflection extends Reflection
         return $methods;
     }
 
+    /**
+     * @return void
+     */
     public function setMethods($methods)
     {
         $this->methods = $methods;
     }
 
+    /**
+     * @param \PhpParser\Node\Stmt\Interface_ $interface
+     * @return void
+     */
     public function addInterface($interface)
     {
         $this->interfaces[$interface] = $interface;
     }
 
+    /**
+     * @return ClassReflection[]
+     */
     public function getInterfaces($deep = false)
     {
         $interfaces = [];
@@ -496,11 +526,18 @@ class ClassReflection extends Reflection
         return $allInterfaces;
     }
 
+    /**
+     * @param \PhpParser\Node\Stmt\Trait_ $trait
+     * @return void
+     */
     public function addTrait($trait)
     {
         $this->traits[$trait] = $trait;
     }
 
+    /**
+     * @return ClassReflection[]
+     */
     public function getTraits($deep = false)
     {
         $traits = [];
@@ -524,11 +561,17 @@ class ClassReflection extends Reflection
         return $allTraits;
     }
 
+    /**
+     * @return void
+     */
     public function setTraits($traits)
     {
         $this->traits = $traits;
     }
 
+    /**
+     * @return void
+     */
     public function setParent($parent)
     {
         $this->parent = $parent;
@@ -549,31 +592,68 @@ class ClassReflection extends Reflection
         return array_merge([$parent], $parent->getParent(true));
     }
 
+    /**
+     * @return void
+     */
     public function setInterface($boolean)
     {
         $this->category = $boolean ? self::CATEGORY_INTERFACE : self::CATEGORY_CLASS;
     }
 
+    /**
+     * @return bool
+     */
     public function isInterface()
     {
         return self::CATEGORY_INTERFACE === $this->category;
     }
 
+    /**
+     * @return void
+     */
     public function setTrait($boolean)
     {
         $this->category = $boolean ? self::CATEGORY_TRAIT : self::CATEGORY_CLASS;
     }
 
+    /**
+     * @return bool
+     */
     public function isTrait()
     {
         return self::CATEGORY_TRAIT === $this->category;
     }
 
+    /**
+     * @return void
+     */
     public function setCategory($category)
     {
         $this->category = $category;
     }
 
+    public function hasMixins(): bool
+    {
+        return ! empty($this->getTags('mixin'));
+    }
+
+    /**
+     * @return array<int,array<string,ClassReflection>>
+     */
+    public function getMixins(): array
+    {
+        $mixins = [];
+        foreach ($this->getTags('mixin') as $mixin) {
+            $mixins[] = [
+                'class' => new ClassReflection($mixin[0], -1),
+            ];
+        }
+        return $mixins;
+    }
+
+    /**
+     * @return bool
+     */
     public function isException()
     {
         $parent = $this;
@@ -591,6 +671,9 @@ class ClassReflection extends Reflection
         return $this->aliases;
     }
 
+    /**
+     * @return void
+     */
     public function setAliases($aliases)
     {
         $this->aliases = $aliases;
@@ -601,11 +684,17 @@ class ClassReflection extends Reflection
         return $this->fromCache;
     }
 
+    /**
+     * @return void
+     */
     public function notFromCache()
     {
         $this->fromCache = false;
     }
 
+    /**
+     * @return array<string,mixed>
+     */
     public function toArray()
     {
         return [
@@ -627,43 +716,56 @@ class ClassReflection extends Reflection
             'errors' => $this->errors,
             'interfaces' => $this->interfaces,
             'traits' => $this->traits,
-            'properties' => array_map(function ($property) {
-                return $property->toArray();
-            }, $this->properties),
-            'methods' => array_map(function ($method) {
-                return $method->toArray();
-            }, $this->methods),
-            'constants' => array_map(function ($constant) {
-                return $constant->toArray();
-            }, $this->constants),
+            'properties' => array_map(
+                static function ($property) {
+                    return $property->toArray();
+                },
+                $this->properties
+            ),
+            'methods' => array_map(
+                static function ($method) {
+                    return $method->toArray();
+                },
+                $this->methods
+            ),
+            'constants' => array_map(
+                static function ($constant) {
+                    return $constant->toArray();
+                },
+                $this->constants
+            ),
         ];
     }
 
+    /**
+     * @return self
+     */
     public static function fromArray(Project $project, $array)
     {
-        $class = new self($array['name'], $array['line']);
-        $class->shortDesc = $array['short_desc'];
-        $class->longDesc = $array['long_desc'];
-        $class->hint = $array['hint'];
-        $class->tags = $array['tags'];
-        $class->namespace = $array['namespace'];
-        $class->hash = $array['hash'];
-        $class->file = $array['file'];
+        $class                   = new self($array['name'], $array['line']);
+        $class->shortDesc        = $array['short_desc'];
+        $class->longDesc         = $array['long_desc'];
+        $class->hint             = $array['hint'];
+        $class->tags             = $array['tags'];
+        $class->namespace        = $array['namespace'];
+        $class->hash             = $array['hash'];
+        $class->file             = $array['file'];
         $class->relativeFilePath = $array['relative_file'];
-        $class->modifiers = $array['modifiers'];
-        $class->fromCache = true;
+        $class->modifiers        = $array['modifiers'];
+        $class->fromCache        = true;
+
         if ($array['is_interface']) {
             $class->setInterface(true);
         }
         if ($array['is_trait']) {
             $class->setTrait(true);
         }
-        $class->aliases = $array['aliases'];
-        $class->errors = $array['errors'];
-        $class->parent = $array['parent'];
+        $class->aliases    = $array['aliases'];
+        $class->errors     = $array['errors'];
+        $class->parent     = $array['parent'];
         $class->interfaces = $array['interfaces'];
-        $class->constants = $array['constants'];
-        $class->traits = $array['traits'];
+        $class->constants  = $array['constants'];
+        $class->traits     = $array['traits'];
 
         $class->setProject($project);
 
@@ -682,6 +784,9 @@ class ClassReflection extends Reflection
         return $class;
     }
 
+    /**
+     * @return void
+     */
     public function sortInterfaces($sort)
     {
         if (is_callable($sort)) {
@@ -690,4 +795,5 @@ class ClassReflection extends Reflection
             ksort($this->interfaces);
         }
     }
+
 }

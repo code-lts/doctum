@@ -65,4 +65,5 @@ class ArrayStore implements StoreInterface
     {
         $this->classes = [];
     }
+
 }

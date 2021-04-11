@@ -10,14 +10,12 @@ $iterator = Finder::create()
     ->name('*.php')
     ->exclude('Resources')
     ->exclude('Tests')
-    ->in($dir = '/path/to/symfony/src')
-;
+    ->in($dir = '/path/to/symfony/src');
 
 $versions = GitVersionCollection::create($dir)
     ->addFromTags('v2.0.*')
     ->add('2.0', '2.0 branch')
-    ->add('master', 'master branch')
-;
+    ->add('master', 'master branch');
 
 return new Doctum($iterator, [
     'theme' => 'symfony',
@@ -27,4 +25,5 @@ return new Doctum($iterator, [
     'cache_dir' => __DIR__ . '/../cache/sf2/%version%',
     'remote_repository' => new GitLabRemoteRepository('symfony/symfony', dirname($dir), 'https://gitlab.company.com/'),
     'default_opened_level' => 2,
-]);
+    ]
+);

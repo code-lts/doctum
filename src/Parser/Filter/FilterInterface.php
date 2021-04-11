@@ -17,9 +17,11 @@ use Doctum\Reflection\PropertyReflection;
 
 interface FilterInterface
 {
+
     public function acceptClass(ClassReflection $class);
 
     public function acceptMethod(MethodReflection $method);
 
     public function acceptProperty(PropertyReflection $property);
+
 }

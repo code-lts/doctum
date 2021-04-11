@@ -82,4 +82,5 @@ class JsonStore implements StoreInterface
 
         return $dir;
     }
+
 }

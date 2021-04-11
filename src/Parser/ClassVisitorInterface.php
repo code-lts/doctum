@@ -15,5 +15,7 @@ use Doctum\Reflection\ClassReflection;
 
 interface ClassVisitorInterface
 {
+
     public function visit(ClassReflection $class);
+
 }

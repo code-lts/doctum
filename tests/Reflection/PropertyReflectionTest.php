@@ -7,6 +7,7 @@ use Doctum\Reflection\PropertyReflection;
 
 class PropertyReflectionTest extends TestCase
 {
+
     public function testSetGetModifiers(): void
     {
         $property = new PropertyReflection('foo', 0);
@@ -26,4 +27,5 @@ class PropertyReflectionTest extends TestCase
         $this->assertTrue($property->isPublic());
         $this->assertTrue($property->isStatic());
     }
+
 }

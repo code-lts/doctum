@@ -14,13 +14,16 @@ Our badges
     :alt: Project code coverage by Codecov
     :target: https://codecov.io/gh/code-lts/doctum
 
+.. image:: https://github.com/code-lts/doctum/actions/workflows/tests.yml/badge.svg?branch=main
+    :alt: Project test suite
+    :target: https://github.com/code-lts/doctum/actions/workflows/tests.yml
 
 Installation
 ------------
 
 .. caution::
 
-    Doctum requires **PHP 7.1.3** or later.
+    Doctum requires **PHP 7.2.20** or later.
 
 Get Doctum as a `phar file`_:
 
@@ -175,6 +178,32 @@ All `footer_link` keys are optional.
             'link_text'   => 'on this', // Required if the href key is set
             'after_text'  => 'repository',
         ],
+    ]);
+
+To enable `OpenSearch <https://en.wikipedia.org/wiki/OpenSearch>`_ feature in your users browsers:
+
+.. code-block:: php
+
+    <?php
+
+    use Doctum\Doctum;
+    use Symfony\Component\Finder\Finder;
+
+    $dir = '/path/to/yourlib/src';
+    $iterator = Finder::create()
+        ->files()
+        ->name('*.php')
+        ->exclude('Resources')
+        ->exclude('Tests')
+        ->in($dir);
+
+    return new Doctum($iterator, [
+        'title'    => 'Project Api Documentation',
+        // Necessary to enable the opensearch.xml file generation
+        'base_url' => 'https://apidocs.company.tld/',
+        // If you have a favicon
+        // 'favicon' => 'https://company.tld/favicon.ico',
+        // ... more configs
     ]);
 
 You can find more configuration examples under the ``examples/`` directory of

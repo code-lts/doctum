@@ -13,6 +13,8 @@ namespace Doctum\Parser;
 
 use Doctum\Message;
 use Doctum\Project;
+use Doctum\Reflection\ClassReflection;
+use Doctum\Reflection\FunctionReflection;
 use Doctum\Reflection\LazyClassReflection;
 use Doctum\Store\StoreInterface;
 use Symfony\Component\Finder\Finder;
@@ -30,20 +32,21 @@ class Parser
 
     public function __construct($iterator, StoreInterface $store, CodeParser $parser, ClassTraverser $traverser)
     {
-        $this->iterator = $this->createIterator($iterator);
-        $this->store = $store;
-        $this->parser = $parser;
+        $this->iterator  = $this->createIterator($iterator);
+        $this->store     = $store;
+        $this->parser    = $parser;
         $this->traverser = $traverser;
     }
 
     public function parse(Project $project, $callback = null)
     {
-        $step = 0;
-        $steps = iterator_count($this->iterator);
-        $context = $this->parser->getContext();
+        $step        = 0;
+        $steps       = iterator_count($this->iterator);
+        $context     = $this->parser->getContext();
         $transaction = new Transaction($project);
-        $toStore = new \SplObjectStorage();
+        $toStore     = new \SplObjectStorage();
         foreach ($this->iterator as $file) {
+            $file = $file->getPathname();
             ++$step;
 
             $code = file_get_contents($file);
@@ -66,6 +69,7 @@ class Parser
 
             foreach ($context->getFunctions() as $addr => $fun) {
                 $project->addFunction($fun);
+                $toStore->attach($fun);
             }
 
             foreach ($context->leaveFile() as $class) {
@@ -89,8 +93,13 @@ class Parser
         // visit each class for stuff that can only be done when all classes are parsed
         $toStore->addAll($this->traverser->traverse($project));
 
-        foreach ($toStore as $class) {
-            $this->store->writeClass($project, $class);
+        foreach ($toStore as $classOrFun) {
+            if ($classOrFun instanceof FunctionReflection) {
+                // Doctum 5.4
+                $classOrFun = $classOrFun;// Do nothing on this version
+            } elseif ($classOrFun instanceof ClassReflection) {
+                $this->store->writeClass($project, $classOrFun);
+            }
         }
 
         return $transaction;
@@ -113,4 +122,5 @@ class Parser
 
         return $iterator;
     }
+
 }

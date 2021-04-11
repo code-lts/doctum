@@ -26,6 +26,8 @@ use PhpParser\Node\Stmt\TraitUse as TraitUseNode;
 use PhpParser\Node\Stmt\Trait_ as TraitNode;
 use PhpParser\Node\Stmt\Use_ as UseNode;
 use PhpParser\Node\NullableType;
+use PhpParser\Node\Expr\Error as ExprError;
+use PhpParser\Node\Expr as NodeExpr;
 use Doctum\Project;
 use Doctum\Reflection\Reflection;
 use Doctum\Reflection\FunctionReflection;
@@ -36,6 +38,7 @@ use Doctum\Reflection\ParameterReflection;
 use Doctum\Reflection\PropertyReflection;
 use Doctum\Parser\Node\DocBlockNode;
 use PhpParser\Node\Stmt\PropertyProperty;
+use PhpParser\Node\UnionType;
 
 class NodeVisitor extends NodeVisitorAbstract
 {
@@ -49,7 +52,7 @@ class NodeVisitor extends NodeVisitorAbstract
     public function enterNode(AbstractNode $node)
     {
         if ($node instanceof NamespaceNode) {
-            $this->context->enterNamespace($node->name->__toString());
+            $this->context->enterNamespace($node->name === null ? '' : $node->name->__toString());
         } elseif ($node instanceof UseNode) {
             $this->addAliases($node);
         } elseif ($node instanceof InterfaceNode) {
@@ -85,19 +88,38 @@ class NodeVisitor extends NodeVisitorAbstract
     protected function addAliases(UseNode $node)
     {
         foreach ($node->uses as $use) {
-            $this->context->addAlias($use->alias !== null ? $use->alias->__toString() : null, $use->name->__toString());
+            $alias    = $use->getAlias()->toString();
+            $fullName = $use->name->__toString();
+            $this->context->addAlias($alias, $fullName);
         }
     }
 
-    protected function addFunction(FunctionNode $node, string $namespace = null)
+    protected function addFunction(FunctionNode $node, ?string $namespace = null)
     {
         $function = new FunctionReflection($node->name->__toString(), $node->getLine());
         $function->setNamespace($namespace !== null ? $namespace : '');
         $function->setByRef((string) $node->byRef);
 
         foreach ($node->params as $param) {
-            $parameter = new ParameterReflection($param->var->name, $param->getLine());
-            $parameter->setModifiers($param->type);
+            if ($param->var instanceof ExprError) {
+                $errors = [
+                    'The expression had an error, please report this to Doctum for a better handling of this error',
+                ];
+                $this->context->addErrors($function->__toString(), $node->getLine(), $errors);
+                continue;
+            }
+            if ($param->var->name instanceof NodeExpr) {
+                $errors = [
+                    'This was unexpected, please report this to Doctum for a better handling of this error',
+                ];
+                $this->context->addErrors($function->__toString(), $node->getLine(), $errors);
+                continue;
+            }
+            $parameter = new ParameterReflection(
+                $param->var->name,
+                $param->getLine()
+            );
+            $parameter->setModifiers($param->flags);
             $parameter->setByRef($param->byRef);
             if ($param->default) {
                 $parameter->setDefault($this->context->getPrettyPrinter()->prettyPrintExpr($param->default));
@@ -105,19 +127,8 @@ class NodeVisitor extends NodeVisitorAbstract
 
             $parameter->setVariadic($param->variadic);
 
-            $type = $param->type;
-            $typeStr = null;
-
-            if ($param->type !== null && ! $param->type instanceof NullableType) {
-                $typeStr = (string) $param->type;
-            } elseif ($param->type instanceof NullableType) {
-                $type = $param->type->type;
-                $typeStr = (string) $param->type->type;
-            }
-
-            if ($type instanceof FullyQualified && 0 !== strpos($typeStr, '\\')) {
-                $typeStr = '\\' . $typeStr;
-            }
+            $type    = $param->type;
+            $typeStr = $this->typeToString($type);
 
             if (null !== $typeStr) {
                 $typeArr = [[$typeStr, false]];
@@ -132,8 +143,10 @@ class NodeVisitor extends NodeVisitorAbstract
             $function->addParameter($parameter);
         }
 
-        $comment = $this->context->getDocBlockParser()->parse($node->getDocComment(), $this->context, $function);
-        $function->setDocComment($node->getDocComment());
+        $docComment = $node->getDocComment();
+        $docComment = $docComment === null ? null : $docComment->__toString();
+        $comment    = $this->context->getDocBlockParser()->parse($docComment, $this->context, $function);
+        $function->setDocComment($docComment);
         $function->setShortDesc($comment->getShortDesc());
         $function->setLongDesc($comment->getLongDesc());
         $function->setSee($this->resolveSee($comment->getTag('see')));
@@ -146,20 +159,11 @@ class NodeVisitor extends NodeVisitorAbstract
             $function->setTags($comment->getOtherTags());
         }
 
+
         $function->setErrors($errors);
 
-        $returnType = $node->getReturnType();
-        $returnTypeStr = null;
-
-        if ($returnType !== null && ! $returnType instanceof NullableType) {
-            $returnTypeStr = (string) $returnType;
-        } elseif ($returnType instanceof NullableType) {
-            $returnTypeStr = (string) $returnType->type;
-        }
-
-        if ($returnType instanceof FullyQualified && 0 !== strpos($returnTypeStr, '\\')) {
-            $returnTypeStr = '\\' . $returnTypeStr;
-        }
+        $returnType    = $node->getReturnType();
+        $returnTypeStr = $this->typeToString($returnType);
 
         if (null !== $returnTypeStr) {
             $returnTypeArr = [[$returnTypeStr, false]];
@@ -176,6 +180,35 @@ class NodeVisitor extends NodeVisitorAbstract
         if ($errors) {
             $this->context->addErrors((string) $function, $node->getLine(), $errors);
         }
+    }
+
+    /**
+     * @param \PhpParser\Node\Identifier|\PhpParser\Node\Name|NullableType|UnionType|null $type Type declaration
+     */
+    protected function typeToString($type): ?string
+    {
+        $typeString = null;
+        if ($type !== null && ! ($type instanceof NullableType || $type instanceof UnionType)) {
+            $typeString = $type->__toString();
+        } elseif ($type instanceof NullableType) {
+            $typeString = $type->type->__toString();
+        } elseif ($type instanceof UnionType) {
+            $typeString = [];
+            foreach ($type->types as $type) {
+                $typeString[] = $type->__toString();
+            }
+            $typeString = implode('|', $typeString);
+        }
+
+        if ($typeString === null) {
+            return null;
+        }
+
+        if ($type instanceof FullyQualified && 0 !== strpos($typeString, '\\')) {
+            $typeString = '\\' . $typeString;
+        }
+
+        return $typeString;
     }
 
     protected function addInterface(InterfaceNode $node)
@@ -224,13 +257,15 @@ class NodeVisitor extends NodeVisitorAbstract
         if ($node instanceof ClassNode) {
             $class->setModifiers($node->flags);
         }
-        $class->setNamespace($this->context->getNamespace());
+        $class->setNamespace($this->context->getNamespace() ?? '');
         $class->setAliases($this->context->getAliases());
         $class->setHash($this->context->getHash());
         $class->setFile($this->context->getFile());
 
-        $comment = $this->context->getDocBlockParser()->parse($node->getDocComment(), $this->context, $class);
-        $class->setDocComment($node->getDocComment());
+        $docComment = $node->getDocComment();
+        $docComment = $docComment === null ? null : $docComment->__toString();
+        $comment    = $this->context->getDocBlockParser()->parse($docComment, $this->context, $class);
+        $class->setDocComment($docComment);
         $class->setShortDesc($comment->getShortDesc());
         $class->setLongDesc($comment->getLongDesc());
         $class->setSee($this->resolveSee($comment->getTag('see')));
@@ -247,6 +282,7 @@ class NodeVisitor extends NodeVisitorAbstract
             $this->context->enterClass($class);
         }
 
+
         return $class;
     }
 
@@ -257,8 +293,22 @@ class NodeVisitor extends NodeVisitorAbstract
         $method->setByRef((string) $node->byRef);
 
         foreach ($node->params as $param) {
+            if ($param->var instanceof ExprError) {
+                $errors = [
+                    'The expression had an error, please report this to Doctum for a better handling of this error',
+                ];
+                $this->context->addErrors($method->__toString(), $node->getLine(), $errors);
+                continue;
+            }
+            if ($param->var->name instanceof NodeExpr) {
+                $errors = [
+                    'This was unexpected, please report this to Doctum for a better handling of this error',
+                ];
+                $this->context->addErrors($method->__toString(), $node->getLine(), $errors);
+                continue;
+            }
             $parameter = new ParameterReflection($param->var->name, $param->getLine());
-            $parameter->setModifiers($param->type);
+            $parameter->setModifiers($param->flags);
             $parameter->setByRef($param->byRef);
             if ($param->default) {
                 $parameter->setDefault($this->context->getPrettyPrinter()->prettyPrintExpr($param->default));
@@ -266,19 +316,8 @@ class NodeVisitor extends NodeVisitorAbstract
 
             $parameter->setVariadic($param->variadic);
 
-            $type = $param->type;
-            $typeStr = null;
-
-            if ($param->type !== null && ! $param->type instanceof NullableType) {
-                $typeStr = (string) $param->type;
-            } elseif ($param->type instanceof NullableType) {
-                $type = $param->type->type;
-                $typeStr = (string) $param->type->type;
-            }
-
-            if ($type instanceof FullyQualified && 0 !== strpos($typeStr, '\\')) {
-                $typeStr = '\\' . $typeStr;
-            }
+            $type    = $param->type;
+            $typeStr = $this->typeToString($type);
 
             if (null !== $typeStr) {
                 $typeArr = [[$typeStr, false]];
@@ -293,8 +332,14 @@ class NodeVisitor extends NodeVisitorAbstract
             $method->addParameter($parameter);
         }
 
-        $comment = $this->context->getDocBlockParser()->parse($node->getDocComment(), $this->context, $method);
-        $method->setDocComment($node->getDocComment());
+        $docComment = $node->getDocComment();
+        $docComment = $docComment === null ? null : $docComment->__toString();
+        $comment    = $this->context->getDocBlockParser()->parse(
+            $docComment,
+            $this->context,
+            $method
+        );
+        $method->setDocComment($docComment);
         $method->setShortDesc($comment->getShortDesc());
         $method->setLongDesc($comment->getLongDesc());
         $method->setSee($this->resolveSee($comment->getTag('see')));
@@ -309,18 +354,8 @@ class NodeVisitor extends NodeVisitorAbstract
 
         $method->setErrors($errors);
 
-        $returnType = $node->getReturnType();
-        $returnTypeStr = null;
-
-        if ($returnType !== null && ! $returnType instanceof NullableType) {
-            $returnTypeStr = (string) $returnType;
-        } elseif ($returnType instanceof NullableType) {
-            $returnTypeStr = (string) $returnType->type;
-        }
-
-        if ($returnType instanceof FullyQualified && 0 !== strpos($returnTypeStr, '\\')) {
-            $returnTypeStr = '\\' . $returnTypeStr;
-        }
+        $returnType    = $node->getReturnType();
+        $returnTypeStr = $this->typeToString($returnType);
 
         if (null !== $returnTypeStr) {
             $returnTypeArr = [[$returnTypeStr, false]];
@@ -347,29 +382,43 @@ class NodeVisitor extends NodeVisitorAbstract
         Reflection $methodOrFunctionOrProperty,
         array &$errors
     ): void {
-        $tag = $comment->getTag($tagName);
+        $tagsThatShouldHaveOnlyOne = ['return', 'var'];
+        $tag                       = $comment->getTag($tagName);
         if (is_array($tag)) {
-            if (isset($tag[0])) {
-                if (is_array($tag[0])) {
-                    $methodOrFunctionOrProperty->setHint(is_array($tag[0][0]) ? $this->resolveHint($tag[0][0]) : $tag[0][0]);
+            if (in_array($tagName, $tagsThatShouldHaveOnlyOne, true) && count($tag) > 1) {
+                $errors[] = sprintf(
+                    'Too much @%s tags on "%s" at @%s found: %d @%s tags',
+                    $tagName,
+                    $methodOrFunctionOrProperty->getName(),
+                    $tagName,
+                    count($tag),
+                    $tagName
+                );
+            }
+            $firstTagFound = $tag[0] ?? null;
+            if ($firstTagFound !== null) {
+                if (is_array($firstTagFound)) {
+                    $hint            = $firstTagFound[0];
+                    $hintDescription = $firstTagFound[1] ?? null;
+                    $methodOrFunctionOrProperty->setHint(is_array($hint) ? $this->resolveHint($hint) : $hint);
+                    if ($hintDescription !== null) {
+                        if (is_string($hintDescription)) {
+                            $methodOrFunctionOrProperty->setHintDesc($hintDescription);
+                        } else {
+                            $errors[] = sprintf(
+                                'The hint description on "%s" at @%s is invalid: "%s"',
+                                $methodOrFunctionOrProperty->getName(),
+                                $tagName,
+                                $hintDescription
+                            );
+                        }
+                    }
                 } else {
                     $errors[] = sprintf(
                         'The hint on "%s" at @%s is invalid: "%s"',
                         $methodOrFunctionOrProperty->getName(),
                         $tagName,
-                        $tag[0]
-                    );
-                }
-            }
-            if (isset($tag[1])) {
-                if (is_array($tag[1])) {
-                    $methodOrFunctionOrProperty->setHintDesc($tag[0][1]);
-                } else {
-                    $errors[] = sprintf(
-                        'The hint description on "%s" at @%s is invalid: "%s"',
-                        $methodOrFunctionOrProperty->getName(),
-                        $tagName,
-                        $tag[1]
+                        $firstTagFound
                     );
                 }
             }
@@ -397,13 +446,15 @@ class NodeVisitor extends NodeVisitorAbstract
      */
     protected function getPropertyReflectionFromParserProperty(PropertyNode $node, PropertyProperty $prop): array
     {
-        $property = new PropertyReflection($prop->name, $prop->getLine());
+        $property = new PropertyReflection($prop->name->toString(), $prop->getLine());
         $property->setModifiers($node->flags);
 
         $property->setDefault($prop->default);
 
-        $comment = $this->context->getDocBlockParser()->parse($node->getDocComment(), $this->context, $property);
-        $property->setDocComment($node->getDocComment());
+        $docComment = $node->getDocComment();
+        $docComment = $docComment === null ? null : $docComment->__toString();
+        $comment    = $this->context->getDocBlockParser()->parse($docComment, $this->context, $property);
+        $property->setDocComment($docComment);
         $property->setShortDesc($comment->getShortDesc());
         $property->setLongDesc($comment->getLongDesc());
         $property->setSee($this->resolveSee($comment->getTag('see')));
@@ -411,7 +462,6 @@ class NodeVisitor extends NodeVisitorAbstract
             $property->setErrors($errors);
         } else {
             $this->addTagFromCommentToMethod('var', $comment, $property, $errors);
-
             $property->setTags($comment->getOtherTags());
         }
 
@@ -428,9 +478,11 @@ class NodeVisitor extends NodeVisitorAbstract
     protected function addConstant(ClassConstNode $node)
     {
         foreach ($node->consts as $const) {
-            $constant = new ConstantReflection($const->name, $const->getLine());
-            $comment = $this->context->getDocBlockParser()->parse($node->getDocComment(), $this->context, $constant);
-            $constant->setDocComment($node->getDocComment());
+            $constant   = new ConstantReflection($const->name->toString(), $const->getLine());
+            $docComment = $node->getDocComment();
+            $docComment = $docComment === null ? null : $docComment->__toString();
+            $comment    = $this->context->getDocBlockParser()->parse($docComment, $this->context, $constant);
+            $constant->setDocComment($docComment);
             $constant->setShortDesc($comment->getShortDesc());
             $constant->setLongDesc($comment->getLongDesc());
 
@@ -479,7 +531,7 @@ class NodeVisitor extends NodeVisitorAbstract
 
     /**
      * @param FunctionReflection|MethodReflection $method
-     * @param array[] $tags
+     * @param array[]                             $tags
      * @return string[]
      */
     protected function updateMethodParametersFromTags(Reflection $method, array $tags): array
@@ -586,41 +638,60 @@ class NodeVisitor extends NodeVisitorAbstract
         return $alias;
     }
 
-    protected function resolveSee(array $see)
+    /**
+     * @return array<int,array<int,string|false>>
+     */
+    protected function resolveSee(array $see): array
     {
         $return = [];
-        $matches = [];
-
         foreach ($see as $seeEntry) {
-            $reference = $seeEntry[1];
-            $description = $seeEntry[2];
-            if ((bool) preg_match('/^[\w]+:\/\/.+$/', $reference)) { //URL
-                $return[] = [
-                    $reference,
-                    $description,
-                    false,
-                    false,
-                    $reference,
-                ];
-            } elseif ((bool) preg_match('/(.+)\:\:(.+)\(.*\)/', $reference, $matches)) { //Method
-                $return[] = [
-                    $reference,
-                    $description,
-                    $this->resolveAlias($matches[1]),
-                    $matches[2],
-                    false,
-                ];
-            } else { // We assume, that this is a class reference.
-                $return[] = [
-                    $reference,
-                    $description,
-                    $this->resolveAlias($reference),
-                    false,
-                    false,
-                ];
+            // Example: @see Net_Sample::$foo, Net_Other::someMethod()
+            if (is_string($seeEntry)) {// Support bad formatted @see tags
+                $seeEntries = explode(',', $seeEntry);
+                foreach ($seeEntries as $entry) {
+                    $return[] = $this->getParsedSeeEntry(trim($entry, " \n\t"), '');
+                }
+                continue;
             }
+            $reference   = $seeEntry[1];
+            $description = $seeEntry[2] ?? '';
+            $return[]    = $this->getParsedSeeEntry($reference, $description);
         }
 
         return $return;
     }
+
+    /**
+     * @return array<int,string|false>
+     */
+    protected function getParsedSeeEntry(string $reference, string $description): array
+    {
+        $matches = [];
+        if ((bool) preg_match('/^[\w]+:\/\/.+$/', $reference)) { //URL
+            return [
+                $reference,
+                $description,
+                false,
+                false,
+                $reference,
+            ];
+        } elseif ((bool) preg_match('/(.+)\:\:(.+)\(.*\)/', $reference, $matches)) { //Method
+            return [
+                $reference,
+                $description,
+                $this->resolveAlias($matches[1]),
+                $matches[2],
+                false,
+            ];
+        } else { // We assume, that this is a class reference.
+            return [
+                $reference,
+                $description,
+                $this->resolveAlias($reference),
+                false,
+                false,
+            ];
+        }
+    }
+
 }

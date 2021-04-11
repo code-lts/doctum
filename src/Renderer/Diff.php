@@ -34,23 +34,36 @@ class Diff
 
     public function __construct(Project $project, string $filename)
     {
-        $this->project = $project;
-        $this->current = new Index($project);
+        $this->project  = $project;
+        $this->current  = new Index($project);
         $this->filename = $filename;
 
         if (file_exists($filename)) {
             $this->alreadyRendered = true;
-            if (false === $this->previous = @unserialize(file_get_contents($filename))) {
+            $previous              = $this->readSerializedFile($filename);
+            if (null === $previous) {
                 $this->alreadyRendered = false;
-                $this->previous = new Index();
+                $this->previous        = new Index();
+            } else {
+                $this->previous = $previous;
             }
         } else {
             $this->alreadyRendered = false;
-            $this->previous = new Index();
+            $this->previous        = new Index();
         }
 
         $this->previousNamespaces = $this->previous->getNamespaces();
-        $this->currentNamespaces = $this->current->getNamespaces();
+        $this->currentNamespaces  = $this->current->getNamespaces();
+    }
+
+    protected function readSerializedFile(string $filename): ?Index
+    {
+        $contents = file_get_contents($filename);
+        if ($contents === false) {
+            return null;
+        }
+        $contents = @unserialize($contents);
+        return $contents === false ? null : $contents;
     }
 
     /**
@@ -119,4 +132,5 @@ class Diff
     {
         return array_diff(array_keys($this->previous->getClasses()), array_keys($this->current->getClasses()));
     }
+
 }

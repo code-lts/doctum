@@ -17,12 +17,10 @@ use Doctum\Reflection\ClassReflection;
 
 class MethodClassVisitorTest extends TestCase
 {
-    /**
-     * @requires PHP <8
-     */
+
     public function testAddsMethods(): void
     {
-        $class = $this->getMockBuilder(ClassReflection::class)
+        $class    = $this->getMockBuilder(ClassReflection::class)
             ->setMethods(['getTags'])
             ->setConstructorArgs(['Mock', 1])
             ->getMock();
@@ -30,9 +28,9 @@ class MethodClassVisitorTest extends TestCase
             explode(' ', 'string askQuestion() Ask 3 questions'),
         ];
         $class->expects($this->any())
-                ->method('getTags')
-                ->with($this->equalTo('method'))
-                ->will($this->returnValue($property));
+            ->method('getTags')
+            ->with($this->equalTo('method'))
+            ->will($this->returnValue($property));
 
         $visitor = new MethodClassVisitor();
         /** @var ClassReflection $class */
@@ -40,4 +38,5 @@ class MethodClassVisitorTest extends TestCase
 
         $this->assertArrayHasKey('askQuestion', $class->getMethods());
     }
+
 }

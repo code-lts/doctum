@@ -11,25 +11,28 @@
 
 namespace Doctum\Renderer;
 
-use Michelf\MarkdownExtra;
 use Doctum\Reflection\Reflection;
 use Doctum\Reflection\ClassReflection;
 use Doctum\Reflection\MethodReflection;
 use Doctum\Reflection\PropertyReflection;
+use Doctum\Tree;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 use Twig\TwigFilter;
+use Parsedown;
 
 class TwigExtension extends AbstractExtension
 {
+    /** @var Parsedown */
     protected $markdown;
     protected $project;
-    protected $currentDepth;
+    /** @var int|null */
+    protected $currentDepth = null;
 
     /**
      * Returns a list of filters to add to the existing list.
      *
-     * @return array An array of filters
+     * @return TwigFilter[] An array of filters
      */
     public function getFilters()
     {
@@ -42,20 +45,25 @@ class TwigExtension extends AbstractExtension
     /**
      * Returns a list of functions to add to the existing list.
      *
-     * @return array An array of functions
+     * @return TwigFunction[] An array of functions
      */
     public function getFunctions()
     {
         return [
+            new TwigFunction('global_namespace_name', [Tree::class, 'getGlobalNamespaceName']),
             new TwigFunction('function_path', [$this, 'pathForFunction'], ['needs_context' => true, 'is_safe' => ['all']]),
             new TwigFunction('namespace_path', [$this, 'pathForNamespace'], ['needs_context' => true, 'is_safe' => ['all']]),
             new TwigFunction('class_path', [$this, 'pathForClass'], ['needs_context' => true, 'is_safe' => ['all']]),
             new TwigFunction('method_path', [$this, 'pathForMethod'], ['needs_context' => true, 'is_safe' => ['all']]),
             new TwigFunction('property_path', [$this, 'pathForProperty'], ['needs_context' => true, 'is_safe' => ['all']]),
             new TwigFunction('path', [$this, 'pathForStaticFile'], ['needs_context' => true]),
-            new TwigFunction('abbr_class', function ($class, bool $absolute = false) {
-                return self::abbrClass($class, $absolute);
-            }, ['is_safe' => ['all']]),
+            new TwigFunction(
+                'abbr_class',
+                static function ($class, bool $absolute = false) {
+                    return self::abbrClass($class, $absolute);
+                },
+                ['is_safe' => ['all']]
+            ),
         ];
     }
 
@@ -76,17 +84,26 @@ class TwigExtension extends AbstractExtension
 
     public function pathForNamespace(array $context, string $namespace): string
     {
+        if ($namespace === '') {
+            $namespace = Tree::getGlobalNamespacePageName();
+        }
         return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $namespace) . '.html';
     }
 
     public function pathForMethod(array $context, MethodReflection $method)
     {
-        return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $method->getClass()->getName()) . '.html#method_' . $method->getName();
+        /** @var Reflection */
+        $class = $method->getClass();
+
+        return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $class->getName()) . '.html#method_' . $method->getName();
     }
 
     public function pathForProperty(array $context, PropertyReflection $property)
     {
-        return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $property->getClass()->getName()) . '.html#property_' . $property->getName();
+        /** @var Reflection */
+        $class = $property->getClass();
+
+        return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $class->getName()) . '.html#property_' . $property->getName();
     }
 
     public function pathForStaticFile(array $context, $file)
@@ -128,18 +145,22 @@ class TwigExtension extends AbstractExtension
         }
 
         if (null === $this->markdown) {
-            $this->markdown = new MarkdownExtra();
+            $this->markdown = new Parsedown();
         }
 
         // FIXME: the @see argument is more complex than just a class (Class::Method, local method directly, ...)
-        $desc = preg_replace_callback('/@see ([^ ]+)/', function ($match) {
-            return 'see ' . $match[1];
-        }, $desc);
+        $desc = preg_replace_callback(
+            '/@see ([^ ]+)/',
+            static function ($match) {
+                return 'see ' . $match[1];
+            },
+            $desc
+        );
 
-        return preg_replace(['#^<p>\s*#s', '#\s*</p>\s*$#s'], '', $this->markdown->transform($desc));
+        return $this->markdown->text($desc);
     }
 
-    public function getSnippet($string)
+    public function getSnippet(string $string)
     {
         if (preg_match('/^(.{50,}?)\s.*/m', $string, $matches)) {
             $string = $matches[1];
@@ -156,4 +177,5 @@ class TwigExtension extends AbstractExtension
 
         return rtrim(str_repeat('../', $value), '/') . '/';
     }
+
 }

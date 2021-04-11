@@ -11,6 +11,7 @@ use PHPUnit\Framework\TestCase;
  */
 abstract class AbstractTestCase extends TestCase
 {
+
     /**
      * @param array<string,mixed> $config
      */
@@ -28,16 +29,17 @@ abstract class AbstractTestCase extends TestCase
     /**
      * Call a non accessible method
      *
-     * @param object $obj
-     * @param string $name
+     * @param object  $obj
+     * @param string  $name
      * @param mixed[] $args
      * @return mixed
      */
     public static function callMethod($obj, string $name, array $args)
     {
-        $class = new \ReflectionClass($obj);
+        $class  = new \ReflectionClass($obj);
         $method = $class->getMethod($name);
         $method->setAccessible(true);
         return $method->invokeArgs($obj, $args);
     }
+
 }

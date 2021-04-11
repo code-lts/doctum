@@ -24,6 +24,9 @@ class PropertyReflection extends Reflection
         return $this->class . '::$' . $this->name;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function setModifiers($modifiers)
     {
         // if no modifiers, property is public
@@ -79,6 +82,9 @@ class PropertyReflection extends Reflection
         $this->class = $class;
     }
 
+    /**
+     * @return array<string,mixed>
+     */
     public function toArray()
     {
         return [
@@ -95,18 +101,22 @@ class PropertyReflection extends Reflection
         ];
     }
 
+    /**
+     * @return self
+     */
     public static function fromArray(Project $project, $array)
     {
-        $property = new self($array['name'], $array['line']);
+        $property            = new self($array['name'], $array['line']);
         $property->shortDesc = $array['short_desc'];
-        $property->longDesc = $array['long_desc'];
-        $property->hint = $array['hint'];
-        $property->hintDesc = $array['hint_desc'];
-        $property->tags = $array['tags'];
+        $property->longDesc  = $array['long_desc'];
+        $property->hint      = $array['hint'];
+        $property->hintDesc  = $array['hint_desc'];
+        $property->tags      = $array['tags'];
         $property->modifiers = $array['modifiers'];
-        $property->default = $array['default'];
-        $property->errors = $array['errors'];
+        $property->default   = $array['default'];
+        $property->errors    = $array['errors'];
 
         return $property;
     }
+
 }

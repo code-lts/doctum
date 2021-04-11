@@ -17,6 +17,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class RenderCommand extends Command
 {
+
     /**
      * @see Command
      * @phpstan-return void
@@ -62,4 +63,5 @@ EOF
     {
         return $this->render($this->doctum->getProject());
     }
+
 }

@@ -34,4 +34,5 @@ class GitLabRemoteRepository extends AbstractRemoteRepository
 
         return $url;
     }
+
 }
