@@ -120,7 +120,7 @@ if [ ! -f ./vendor/autoload.php ]; then
     echo "Done."
 fi
 
-get_version ./bin/doctum.php
+get_version "${PHP_BIN:-php} ./bin/doctum.php"
 echo "${VERSION}" > ./build/VERSION
 echo "${VERSION_RANGE}" > ./build/VERSION_RANGE
 echo "${VERSION_MAJOR}" > ./build/VERSION_MAJOR
