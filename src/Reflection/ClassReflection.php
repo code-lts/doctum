@@ -632,25 +632,6 @@ class ClassReflection extends Reflection
         $this->category = $category;
     }
 
-    public function hasMixins(): bool
-    {
-        return ! empty($this->getTags('mixin'));
-    }
-
-    /**
-     * @return array<int,array<string,ClassReflection>>
-     */
-    public function getMixins(): array
-    {
-        $mixins = [];
-        foreach ($this->getTags('mixin') as $mixin) {
-            $mixins[] = [
-                'class' => new ClassReflection($mixin[0], -1),
-            ];
-        }
-        return $mixins;
-    }
-
     /**
      * @return bool
      */
