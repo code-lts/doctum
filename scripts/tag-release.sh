@@ -19,7 +19,7 @@ function get_version {
     fi
 }
 
-get_version ./bin/doctum.php
+get_version "${PHP_BIN:-php} ./bin/doctum.php"
 
 echo "Version: ${VERSION}"
 
