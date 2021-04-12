@@ -45,6 +45,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support `UnionType` of PHP 8
 - Support `namespace {//code}` syntax for namespaces without a name
 
+## [5.3.2] - 2021-04-12
+
+_LTS release (PHP 7.1 only)_
+
+- Disabled all other PHP versions for the 5.3.x series, only PHP 7.1 is allowed
+- Fixed a bug that removed `@return` and `@var` descriptions since 5.3.0
+- Fix OpenSearch feature and documented the config
+- Fix favicon config and document an example config
+- Fixed global namespace handling
+- Fixed a resume after parse step missing data
+- Add more tests on render, parse and update CLIs
+- Remove old lib `michelf/php-markdown` and use `erusev/parsedown` to fix an HTML parsing bug
+- Add GitHub SECURITY and FUNDING configs
+- Support `UnionType` of PHP 8
+- Support `namespace {//code}` syntax for namespaces without a name
+
 ## [5.3.1] - 2020-12-30
 
 - Fixed: missing "final" keyword on a class page
