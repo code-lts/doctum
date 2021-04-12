@@ -130,7 +130,7 @@ echo "Release for : ${VERSION}"
 
 GPG_KEY=${GPG_KEY:-C4D91FDFCEF6B4A3C653FD7890A0EF1B8251A889}
 
-PHP_VERSION_REQUIRED=$(sed -nre '/"php"/ s/.*"\^(([0-9]+\.)*[0-9]+).*/\1/p' composer.json)
+PHP_VERSION_REQUIRED='7.1.3'
 
 if [ -z "${PHP_VERSION_REQUIRED}" ]; then
     echo 'The required php version can not be found'
