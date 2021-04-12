@@ -1,7 +1,7 @@
 <?php
 
-if (PHP_MAJOR_VERSION <= 7 && PHP_MINOR_VERSION < 1) {
-    echo 'You need to use PHP 7.1 or above to run Doctum.' . PHP_EOL;
+if (PHP_MAJOR_VERSION <= 7 && PHP_MINOR_VERSION !== 1) {
+    echo 'You need to use PHP 7.1 to run this LTS version of Doctum. Please upgrade to 5.4 series to use a newer PHP version.' . PHP_EOL;
     echo 'Current detected version: (' . PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION . ') (' . PHP_VERSION_ID . ').' . PHP_EOL;
     exit(1);
 }

@@ -14,12 +14,10 @@ jobs:
         continue-on-error: ${{ matrix.experimental }}
         strategy:
             matrix:
-                php-version: ["7.1", "7.2", "7.3", "7.4", "8.0"]
+                php-version: ["7.1"]
                 os: [ubuntu-latest]
                 experimental: [false]
                 composer-options: ['']
-                include:
-                    - { php-version: '8.1', experimental: true, os: ubuntu-latest, composer-options: '--ignore-platform-reqs' }
         steps:
             - uses: actions/checkout@v2
             - name: Use php ${{ matrix.php-version }}
@@ -47,12 +45,10 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php-version: ["7.1", "7.2", "7.3", "7.4", "8.0"]
+                php-version: ["7.1"]
                 os: [ubuntu-latest]
                 experimental: [false]
                 composer-options: ['']
-                include:
-                    - { php-version: '8.1', experimental: true, os: ubuntu-latest, composer-options: '--ignore-platform-reqs' }
         steps:
             - uses: actions/checkout@v2
             - name: Use php ${{ matrix.php-version }}
@@ -78,12 +74,10 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php-version: ["7.1", "7.2", "7.3", "7.4", "8.0"]
+                php-version: ["7.1"]
                 os: [ubuntu-latest]
                 experimental: [true]
                 composer-options: ['']
-                include:
-                    - { php-version: '8.1', experimental: true, os: ubuntu-latest, composer-options: '--ignore-platform-reqs' }
         steps:
             - uses: actions/checkout@v2
             - name: Use php ${{ matrix.php-version }}
