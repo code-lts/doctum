@@ -176,6 +176,7 @@ final class PharFilterIterator extends RecursiveFilterIterator
         '.git',
         'cache',
         'build',
+        'api-docs/cache',
     ];
 
     public function accept()
