@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
+## [5.4.0] - 2021-04-10
+
 - Drop support for PHP `7.1`
 - Drop support for `phpdocumentor/reflection-docblock` `4.3` series
 - Require PHP `7.2.20`
@@ -40,6 +42,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add GitHub SECURITY and FUNDING configs
 - Add `Stringable` PHP 8.0 class to internal PHP class list
 - Add WeakReference PHP 7.4 class to internal PHP class list
+- Support `UnionType` of PHP 8
+- Support `namespace {//code}` syntax for namespaces without a name
+
+## [5.3.3] - 2021-MM-DD
+
+_LTS release (PHP 7.1 only)_
+
+- Fixed Search results descriptions render
+
+## [5.3.2] - 2021-04-12
+
+_LTS release (PHP 7.1 only)_
+
+- Disabled all other PHP versions for the 5.3.x series, only PHP 7.1 is allowed
+- Fixed a bug that removed `@return` and `@var` descriptions since 5.3.0
+- Fix OpenSearch feature and documented the config
+- Fix favicon config and document an example config
+- Fixed global namespace handling
+- Fixed a resume after parse step missing data
+- Add more tests on render, parse and update CLIs
+- Remove old lib `michelf/php-markdown` and use `erusev/parsedown` to fix an HTML parsing bug
+- Add GitHub SECURITY and FUNDING configs
 - Support `UnionType` of PHP 8
 - Support `namespace {//code}` syntax for namespaces without a name
 
