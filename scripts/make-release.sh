@@ -12,7 +12,13 @@ mkdir ./build
 RELEASE_OPTIONS="$1"
 
 function get_version {
+    set +e
     VERSION=$($1 version)
+    if [ $? -ne 0 ]; then
+        printf 'Bad output: "%s"\n' "${VERSION}"
+        exit 1
+    fi
+    set -e
     [[ ${VERSION} =~ ^[0-9]+ ]] && VERSION_MAJOR="${BASH_REMATCH[0]}"
     [[ ${VERSION} =~ ^[0-9]+\.[0-9]+ ]] && VERSION_RANGE="${BASH_REMATCH[0]}"
     [[ ${VERSION} =~ ^[0-9]+\.[0-9]+\.[0-9]+-dev$ ]] && VERSION_MATCH_DEV="${BASH_REMATCH[0]}"
@@ -113,6 +119,10 @@ function publishArtifacts {
 
 }
 
+if [ -z "${COMPOSER_BIN}" ]; then
+    COMPOSER_BIN=$(command -v composer)
+fi
+
 if [ ! -f ./vendor/autoload.php ]; then
     echo "Composer dependencies are missing"
     echo "Updating..."
@@ -120,7 +130,14 @@ if [ ! -f ./vendor/autoload.php ]; then
     echo "Done."
 fi
 
-get_version ./bin/doctum.php
+get_version "${PHP_BIN:-php} ./bin/doctum.php"
+
+if [ -z "${VERSION}" ] || [ -z "${VERSION_RANGE}" ] || [ -z "${VERSION_MAJOR}" ]; then
+    echo 'Could not get the version'
+    echo "Output was: ${get_version}"
+    exit 1
+fi
+
 echo "${VERSION}" > ./build/VERSION
 echo "${VERSION_RANGE}" > ./build/VERSION_RANGE
 echo "${VERSION_MAJOR}" > ./build/VERSION_MAJOR
@@ -141,10 +158,6 @@ echo "PHP version required: ${PHP_VERSION_REQUIRED}"
 
 echo "Lock composer php version"
 COMPOSER_FILE=$(cat composer.json)
-
-if [ -z "${COMPOSER_BIN}" ]; then
-    COMPOSER_BIN=$(command -v composer)
-fi
 
 ${COMPOSER_BIN} config platform.php "$PHP_VERSION_REQUIRED"
 
