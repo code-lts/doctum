@@ -16,9 +16,11 @@ if [ ! -d ./api-docs/sources/phpstorm-stubs ]; then
 fi
 
 # Download, extract and move
-curl -L -s -o phpstorm-stubs.zip https://github.com/JetBrains/phpstorm-stubs/archive/refs/heads/master.zip
+curl -# -L -o phpstorm-stubs.tar.gz https://github.com/JetBrains/phpstorm-stubs/archive/refs/heads/master.tar.gz
 
-unzip -f -o -q -j -d ./api-docs/sources/phpstorm-stubs ./phpstorm-stubs.zip && rm ./phpstorm-stubs.zip
+tar xzvf phpstorm-stubs.tar.gz --strip-components=1 -C ./api-docs/sources/phpstorm-stubs && rm phpstorm-stubs.tar.gz
+
+du -sh ./api-docs/sources/phpstorm-stubs
 
 # Try as hard as possible to cleanup the dir
 git ls-files ./api-docs/phpstorm-stubs/ | xargs -r -n 1 rm
@@ -33,6 +35,8 @@ rm -rf ./api-docs/sources/phpstorm-stubs/
 # Push the changes, but not if empty
 git add -A ./api-docs/phpstorm-stubs
 git diff-index --quiet HEAD || git commit -m "Api documentations update ($(date --utc))" -m "#apidocs" && git push
+
+git status
 
 git checkout - > /dev/null
 
