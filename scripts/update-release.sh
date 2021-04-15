@@ -7,10 +7,15 @@
 
 set -e
 
+# Example: 5.4.0 or 5.4.0-dev
 VERSION="$(cat ./build/VERSION)"
+# Example: 5.4-dev or 5.4
 VERSION_RANGE="$(cat ./build/VERSION_RANGE)"
+# Example: 5 or 5-dev
 VERSION_MAJOR="$(cat ./build/VERSION_MAJOR)"
+# Example: 0 or 1 depending on the -dev suffix
 IS_DEV_VERSION="$(echo "${VERSION_RANGE}" | grep -F -q -e '-dev' && echo '1' || echo '0')"
+# Example: 5db49ae740e4d1fd8eb79a9de52c9aefc7906f1f
 PHAR_COMMIT="$(git rev-parse --verify HEAD)"
 # Manual switch
 IS_LTS_MODE="1"
@@ -32,13 +37,19 @@ fi
 
 updateLatestFolders() {
     SOURCE_FOLDER="$1"
-    # Yes that could be symlinks but diffs between releases would be missed
-    rm -rf releases/${VERSION_ENV}
+    # Yes that process could use symlinks but diffs between releases would be not possible
+    if [ ! -d ./releases/${VERSION_ENV}/ ]; then
+        mkdir ./releases/${VERSION_ENV}
+    fi
+    if [ ! -d ${SOURCE_FOLDER} ]; then
+        printf 'Source folder does not exist: "%s"' "${SOURCE_FOLDER}"
+        exit 1
+    fi
     # Copy latest/dev to version name (example: latest to 5.1.0)
-    cp -rp "${SOURCE_FOLDER}/*" ./releases/${VERSION_ENV}/
+    cp -rp ${SOURCE_FOLDER}/* ./releases/${VERSION_ENV}/
     git add -A ./releases/${VERSION_ENV}/*
 
-    git commit -S -m "Update ${VERSION_ENV} release" -m "version: ${VERSION}" -m "version-env: ${VERSION_ENV}" -m "version-range: ${VERSION_RANGE}" -m "version-major: ${VERSION_MAJOR}" -m "${VERSION_TEXT}" -m "${VERSION_TEXT_EXTRA}" -m "Commit: ${PHAR_COMMIT}"
+    git commit -S -m "Update ${VERSION_ENV} release" -m "version: ${VERSION}" -m "version-env: ${VERSION_ENV}" -m "version-range: ${VERSION_ENV}" -m "version-major: ${VERSION_MAJOR}" -m "${VERSION_TEXT}" -m "${VERSION_TEXT_EXTRA}" -m "Commit: ${PHAR_COMMIT}"
 }
 
 doChangesForRelease() {
