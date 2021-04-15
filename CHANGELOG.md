@@ -45,6 +45,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support `UnionType` of PHP 8
 - Support `namespace {//code}` syntax for namespaces without a name
 
+## [5.3.3] - 2021-MM-DD
+
+_LTS release (PHP 7.1 only)_
+
+- Fixed Search results descriptions render
+
 ## [5.3.2] - 2021-04-12
 
 _LTS release (PHP 7.1 only)_
