@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>EvPeriodic | PHP Jetbrains phpstorm-stubs</title>
+
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
+        <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="js/bootstrap.min.js"></script>
+        <script src="js/typeahead.min.js"></script>
+        <script src="doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:EvPeriodic" data-root-path="">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">PHP Jetbrains phpstorm-stubs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="namespaces.html">Namespaces</a></li>
+                    <li><a href="interfaces.html">Interfaces</a></li>
+                    <li><a href="traits.html">Traits</a></li>
+                    <li><a href="doc-index.html">Index</a></li>
+                    <li><a href="search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                            <div id="page-content">
+    <div class="page-header">
+        <h1>EvPeriodic    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>EvPeriodic</strong>        extends <a href="EvWatcher.html">EvWatcher</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Ev/Ev.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Class EvPeriodic</p></p>            <p><p>Periodic watchers are also timers of a kind, but they are very versatile.</p>
+<p>Unlike EvTimer, EvPeriodic watchers are not based on real time (or relative time, the physical time that passes) but
+on wall clock time (absolute time, calendar or clock). The difference is that wall clock time can run faster or
+slower than real time, and time jumps are not uncommon (e.g. when adjusting it).</p>
+<p>EvPeriodic watcher can be configured to trigger after some specific point in time. For example, if an EvPeriodic
+watcher is configured to trigger &quot;in 10 seconds&quot; (e.g. EvLoop::now() + 10.0 , i.e. an absolute time, not a delay),
+and the system clock is reset to January of the previous year , then it will take a year or more to trigger the event
+(unlike an EvTimer , which would still trigger roughly 10 seconds after starting it as it uses a relative timeout).</p>
+<p>As with timers, the callback is guaranteed to be invoked only when the point in time where it is supposed to trigger
+has passed. If multiple timers become ready during the same loop iteration then the ones with earlier time-out values
+are invoked before ones with later time-out values (but this is no longer true when a callback calls EvLoop::run()
+recursively).</p></p>        </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_is_active">
+                                                                                bool
+                                                                                
+                                    </td>
+                <td>$is_active</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="EvWatcher.html#property_is_active">
+EvWatcher</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_is_pending">
+                                                                                bool
+                                                                                
+                                    </td>
+                <td>$is_pending</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="EvWatcher.html#property_is_pending">
+EvWatcher</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_data">
+                                                                                mixed
+                                                                                
+                                    </td>
+                <td>$data</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="EvWatcher.html#property_data">
+EvWatcher</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_priority">
+                                                                                int
+                                                                                
+                                    </td>
+                <td>$priority</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="EvWatcher.html#property_priority">
+EvWatcher</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_offset">
+                                                                                float
+                                                                                
+                                    </td>
+                <td>$offset</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_interval">
+                                                                                float
+                                                                                
+                                    </td>
+                <td>$interval</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(float $offset, float $interval, callable|null $reschedule_cb = null, callable $callback, mixed $data = null, int $priority = 0)
+        
+                                            <p><p>Constructs EvPeriodic watcher object.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_clear">clear</a>()
+        
+                                            <p><p>Clear watcher pending status.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="EvWatcher.html#method_clear">
+EvWatcher</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_feed">feed</a>(int $revents)
+        
+                                            <p><p>Feeds the given revents set into the event loop.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="EvWatcher.html#method_feed">
+EvWatcher</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="EvLoop.html">EvLoop</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getLoop">getLoop</a>()
+        
+                                            <p><p>Returns the loop responsible for the watcher.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="EvWatcher.html#method_getLoop">
+EvWatcher</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_invoke">invoke</a>(int $revents)
+        
+                                            <p><p>Invokes the watcher callback with the given received events bit mask.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="EvWatcher.html#method_invoke">
+EvWatcher</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_keepalive">keepalive</a>(bool $value = true)
+        
+                                            <p><p>Configures whether to keep the loop from returning.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="EvWatcher.html#method_keepalive">
+EvWatcher</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setCallback">setCallback</a>(callable $callback)
+        
+                                            <p><p>Sets new callback for the watcher.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="EvWatcher.html#method_setCallback">
+EvWatcher</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_start">start</a>()
+        
+                                            <p><p>Starts the watcher.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="EvWatcher.html#method_start">
+EvWatcher</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_stop">stop</a>()
+        
+                                            <p><p>Stops the watcher.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="EvWatcher.html#method_stop">
+EvWatcher</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_again">again</a>()
+        
+                                            <p><p>Simply stops and restarts the periodic watcher again.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    float
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_at">at</a>()
+        
+                                            <p><p>Returns the absolute time that this watcher is supposed to trigger next.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="EvPeriodic.html">EvPeriodic</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_createStopped">createStopped</a>(float $offset, float $interval, callable|null $reschedule_cb = null, callable $callback, mixed $data = null, int $priority = 0)
+        
+                                            <p><p>Create a stopped EvPeriodic watcher</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_set">set</a>(float $offset, float $interval, null|callable $reschedule_cb = null)
+        
+                                            <p><p>Configures the watcher</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Ev/Ev.php#L806">at line 806</a></div>
+        <code>                    
+    <strong>__construct</strong>(float $offset, float $interval, callable|null $reschedule_cb = null, callable $callback, mixed $data = null, int $priority = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Constructs EvPeriodic watcher object.</p></p>                <p><p>Constructs EvPeriodic watcher object and starts it automatically. EvPeriodic::createStopped() method creates
+stopped periodic watcher.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float</td>
+                <td>$offset</td>
+                <td><p>When repeating, this contains the offset value, otherwise this is the absolute point in
+time (the offset value passed to EvPeriodic::set(), although libev might modify this value for better
+numerical stability).</p></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$interval</td>
+                <td><p>The current interval value. Can be modified any time, but changes only take effect when
+the periodic timer fires or EvPeriodic::again() is being called.</p></td>
+            </tr>
+                    <tr>
+                <td>callable|null</td>
+                <td>$reschedule_cb</td>
+                <td><p>If set, tt must return the next time to trigger, based on the passed time value
+(that is, the lowest time value larger than or equal to the second argument). It will usually be called just
+before the callback will be triggered, but might be called at other times, too.</p></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$data</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$priority</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_clear">
+        <div class="location">in <a href="EvWatcher.html#method_clear">
+EvWatcher</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Ev/Ev.php#L435">at line 435</a></div>
+        <code>                    int
+    <strong>clear</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Clear watcher pending status.</p></p>                <p><p>If the watcher is pending, this method clears its pending status and returns its revents bitset (as if its
+callback was invoked). If the watcher isn't pending it does nothing and returns 0.</p>
+<p>Sometimes it can be useful to &quot;poll&quot; a watcher instead of waiting for its callback to be invoked, which can be
+accomplished with this function.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>In case if the watcher is pending, returns revents bitset as if the watcher callback had been
+invoked. Otherwise returns 0 .</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_feed">
+        <div class="location">in <a href="EvWatcher.html#method_feed">
+EvWatcher</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Ev/Ev.php#L444">at line 444</a></div>
+        <code>                    
+    <strong>feed</strong>(int $revents)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Feeds the given revents set into the event loop.</p></p>                <p><p>Feeds the given revents set into the event loop, as if the specified event had happened for the watcher.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$revents</td>
+                <td><p>Bit mask of watcher received events.</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLoop">
+        <div class="location">in <a href="EvWatcher.html#method_getLoop">
+EvWatcher</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Ev/Ev.php#L451">at line 451</a></div>
+        <code>                    <a href="EvLoop.html">EvLoop</a>
+    <strong>getLoop</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the loop responsible for the watcher.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="EvLoop.html">EvLoop</a></td>
+            <td><p>Event loop object responsible for the watcher.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_invoke">
+        <div class="location">in <a href="EvWatcher.html#method_invoke">
+EvWatcher</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Ev/Ev.php#L458">at line 458</a></div>
+        <code>                    
+    <strong>invoke</strong>(int $revents)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Invokes the watcher callback with the given received events bit mask.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$revents</td>
+                <td><p>Bit mask of watcher received events.</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_keepalive">
+        <div class="location">in <a href="EvWatcher.html#method_keepalive">
+EvWatcher</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Ev/Ev.php#L474">at line 474</a></div>
+        <code>                    
+    <strong>keepalive</strong>(bool $value = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Configures whether to keep the loop from returning.</p></p>                <p><p>Configures whether to keep the loop from returning. With keepalive value set to FALSE the watcher won't keep
+Ev::run() / EvLoop::run() from returning even though the watcher is active.</p>
+<p>Watchers have keepalive value TRUE by default.</p>
+<p>Clearing keepalive status is useful when returning from Ev::run() / EvLoop::run() just because of the watcher
+is undesirable. It could be a long running UDP socket watcher or so.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$value</td>
+                <td><p>With keepalive value set to FALSE the watcher won't keep Ev::run() / EvLoop::run() from
+returning even though the watcher is active.</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCallback">
+        <div class="location">in <a href="EvWatcher.html#method_setCallback">
+EvWatcher</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Ev/Ev.php#L481">at line 481</a></div>
+        <code>                    
+    <strong>setCallback</strong>(callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets new callback for the watcher.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td><p>void callback ([ object $watcher = NULL [, int $revents = NULL ]] )</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_start">
+        <div class="location">in <a href="EvWatcher.html#method_start">
+EvWatcher</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Ev/Ev.php#L488">at line 488</a></div>
+        <code>                    
+    <strong>start</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Starts the watcher.</p></p>                <p><p>Marks the watcher as active. Note that only active watchers will receive events.</p></p>        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stop">
+        <div class="location">in <a href="EvWatcher.html#method_stop">
+EvWatcher</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Ev/Ev.php#L495">at line 495</a></div>
+        <code>                    
+    <strong>stop</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Stops the watcher.</p></p>                <p><p>Marks the watcher as inactive. Note that only active watchers will receive events.</p></p>        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_again">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Ev/Ev.php#L817">at line 817</a></div>
+        <code>                    void
+    <strong>again</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Simply stops and restarts the periodic watcher again.</p></p>                <p><p>Simply stops and restarts the periodic watcher again. This is only useful when attributes are changed.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_at">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Ev/Ev.php#L828">at line 828</a></div>
+        <code>                    float
+    <strong>at</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the absolute time that this watcher is supposed to trigger next.</p></p>                <p><p>When the watcher is active, returns the absolute time that this watcher is supposed to trigger next. This is not
+the same as the offset argument to EvPeriodic::set() or EvPeriodic::__construct(), but indeed works even in
+interval mode.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>float</td>
+            <td><p>Rhe absolute time this watcher is supposed to trigger next in seconds.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createStopped">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Ev/Ev.php#L849">at line 849</a></div>
+        <code>final        static            <a href="EvPeriodic.html">EvPeriodic</a>
+    <strong>createStopped</strong>(float $offset, float $interval, callable|null $reschedule_cb = null, callable $callback, mixed $data = null, int $priority = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a stopped EvPeriodic watcher</p></p>                <p><p>Create EvPeriodic object. Unlike EvPeriodic::__construct() this method doesn't start the watcher automatically.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float</td>
+                <td>$offset</td>
+                <td><p>When repeating, this contains the offset value, otherwise this is the absolute point in
+time (the offset value passed to EvPeriodic::set(), although libev might modify this value for better
+numerical stability).</p></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$interval</td>
+                <td><p>The current interval value. Can be modified any time, but changes only take effect when
+the periodic timer fires or EvPeriodic::again() is being called.</p></td>
+            </tr>
+                    <tr>
+                <td>callable|null</td>
+                <td>$reschedule_cb</td>
+                <td><p>If set, tt must return the next time to trigger, based on the passed time value
+(that is, the lowest time value larger than or equal to the second argument). It will usually be called just
+before the callback will be triggered, but might be called at other times, too.</p></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$data</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$priority</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="EvPeriodic.html">EvPeriodic</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_set">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Ev/Ev.php#L860">at line 860</a></div>
+        <code>                    void
+    <strong>set</strong>(float $offset, float $interval, null|callable $reschedule_cb = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Configures the watcher</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float</td>
+                <td>$offset</td>
+                <td><p>The same meaning as for {see \EvPeriodic::__construct}</p></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$interval</td>
+                <td><p>The same meaning as for {see \EvPeriodic::__construct}</p></td>
+            </tr>
+                    <tr>
+                <td>null|callable</td>
+                <td>$reschedule_cb</td>
+                <td><p>The same meaning as for {see \EvPeriodic::__construct}</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built using <a href="https://github.com/JetBrains/phpstorm-stubs#readme" rel="noreferrer noopener" target="_blank">phpstorm-stubs</a> from JetBrains.</div></div>
+    </div>
+    </body>
+
+</html>

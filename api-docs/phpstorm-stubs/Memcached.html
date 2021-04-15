@@ -1,0 +1,5195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Memcached | PHP Jetbrains phpstorm-stubs</title>
+
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
+        <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="js/bootstrap.min.js"></script>
+        <script src="js/typeahead.min.js"></script>
+        <script src="doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:Memcached" data-root-path="">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">PHP Jetbrains phpstorm-stubs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="namespaces.html">Namespaces</a></li>
+                    <li><a href="interfaces.html">Interfaces</a></li>
+                    <li><a href="traits.html">Traits</a></li>
+                    <li><a href="doc-index.html">Index</a></li>
+                    <li><a href="search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                            <div id="page-content">
+    <div class="page-header">
+        <h1>Memcached    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Memcached</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Represents a connection to a set of memcached servers.</p></p>                    </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        OPT_COMPRESSION
+                                    </td>
+                <td class="last">
+                    <p><em><p>Enables or disables payload compression. When enabled,
+item values longer than a certain threshold (currently 100 bytes) will be
+compressed during storage and decompressed during retrieval
+transparently.</p>
+<p>Type: boolean, default: <b>TRUE</b>.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_COMPRESSION_TYPE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_PREFIX_KEY
+                                    </td>
+                <td class="last">
+                    <p><em><p>This can be used to create a "domain" for your item keys. The value
+specified here will be prefixed to each of the keys. It cannot be
+longer than 128 characters and will reduce the
+maximum available key size. The prefix is applied only to the item keys,
+not to the server keys.</p>
+<p>Type: string, default: "".</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_SERIALIZER
+                                    </td>
+                <td class="last">
+                    <p><em><p>
+Specifies the serializer to use for serializing non-scalar values.</em></p>
+                    <p><p>The valid serializers are <b>Memcached::SERIALIZER_PHP</b>
+or <b>Memcached::SERIALIZER_IGBINARY</b>. The latter is
+supported only when memcached is configured with
+--enable-memcached-igbinary option and the
+igbinary extension is loaded.
+</p></p>
+<p>Type: integer, default: <b>Memcached::SERIALIZER_PHP</b>.</p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        HAVE_IGBINARY
+                                    </td>
+                <td class="last">
+                    <p><em><p>Indicates whether igbinary serializer support is available.</p>
+<p>Type: boolean.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        HAVE_JSON
+                                    </td>
+                <td class="last">
+                    <p><em><p>Indicates whether JSON serializer support is available.</p>
+<p>Type: boolean.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        HAVE_MSGPACK
+                                            <i>Since: 3.0.0</i>
+                        <br>
+                                    </td>
+                <td class="last">
+                    <p><em><p>Indicates whether msgpack serializer support is available.</p>
+<p>Type: boolean.</p>
+<p>Available as of Memcached 3.0.0.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        HAVE_ENCODING
+                                    </td>
+                <td class="last">
+                    <p><em><p>Indicate whether set_encoding_key is available</p>
+<p>Type: boolean.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        HAVE_SESSION
+                                    </td>
+                <td class="last">
+                    <p><em><p>Feature support</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        HAVE_SASL
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_HASH
+                                    </td>
+                <td class="last">
+                    <p><em><p>Specifies the hashing algorithm used for the item keys. The valid
+values are supplied via <b>Memcached::HASH_*</b> constants.</em></p>
+                    <p><p>Each hash algorithm has its advantages and its disadvantages. Go with the
+default if you don't know or don't care.</p></p>
+<p>Type: integer, default: <b>Memcached::HASH_DEFAULT</b></p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        HASH_DEFAULT
+                                    </td>
+                <td class="last">
+                    <p><em><p>The default (Jenkins one-at-a-time) item key hashing algorithm.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        HASH_MD5
+                                    </td>
+                <td class="last">
+                    <p><em><p>MD5 item key hashing algorithm.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        HASH_CRC
+                                    </td>
+                <td class="last">
+                    <p><em><p>CRC item key hashing algorithm.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        HASH_FNV1_64
+                                    </td>
+                <td class="last">
+                    <p><em><p>FNV1_64 item key hashing algorithm.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        HASH_FNV1A_64
+                                    </td>
+                <td class="last">
+                    <p><em><p>FNV1_64A item key hashing algorithm.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        HASH_FNV1_32
+                                    </td>
+                <td class="last">
+                    <p><em><p>FNV1_32 item key hashing algorithm.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        HASH_FNV1A_32
+                                    </td>
+                <td class="last">
+                    <p><em><p>FNV1_32A item key hashing algorithm.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        HASH_HSIEH
+                                    </td>
+                <td class="last">
+                    <p><em><p>Hsieh item key hashing algorithm.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        HASH_MURMUR
+                                    </td>
+                <td class="last">
+                    <p><em><p>Murmur item key hashing algorithm.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_DISTRIBUTION
+                                    </td>
+                <td class="last">
+                    <p><em><p>Specifies the method of distributing item keys to the servers.</em></p>
+                    <p><p>Currently supported methods are modulo and consistent hashing. Consistent
+hashing delivers better distribution and allows servers to be added to
+the cluster with minimal cache losses.</p></p>
+<p>Type: integer, default: <b>Memcached::DISTRIBUTION_MODULA.</b></p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        DISTRIBUTION_MODULA
+                                    </td>
+                <td class="last">
+                    <p><em><p>Modulo-based key distribution algorithm.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        DISTRIBUTION_CONSISTENT
+                                    </td>
+                <td class="last">
+                    <p><em><p>Consistent hashing key distribution algorithm (based on libketama).</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        DISTRIBUTION_VIRTUAL_BUCKET
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_LIBKETAMA_COMPATIBLE
+                                    </td>
+                <td class="last">
+                    <p><em><p>Enables or disables compatibility with libketama-like behavior. When
+enabled, the item key hashing algorithm is set to MD5 and distribution is
+set to be weighted consistent hashing distribution. This is useful
+because other libketama-based clients (Python, Ruby, etc.) with the same
+server configuration will be able to access the keys transparently.</em></p>
+                    <p><p></p></p>
+<p>
+It is highly recommended to enable this option if you want to use
+consistent hashing, and it may be enabled by default in future
+releases.
+</p>
+<p>Type: boolean, default: <b>FALSE</b>.</p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_LIBKETAMA_HASH
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_TCP_KEEPALIVE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_BUFFER_WRITES
+                                    </td>
+                <td class="last">
+                    <p><em><p>Enables or disables buffered I/O. Enabling buffered I/O causes
+storage commands to "buffer" instead of being sent. Any action that
+retrieves data causes this buffer to be sent to the remote connection.</em></p>
+                    <p><p>Quitting the connection or closing down the connection will also cause
+the buffered data to be pushed to the remote connection.</p></p>
+<p>Type: boolean, default: <b>FALSE</b>.</p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_BINARY_PROTOCOL
+                                    </td>
+                <td class="last">
+                    <p><em><p>Enable the use of the binary protocol. Please note that you cannot
+toggle this option on an open connection.</p>
+<p>Type: boolean, default: <b>FALSE</b>.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_NO_BLOCK
+                                    </td>
+                <td class="last">
+                    <p><em><p>Enables or disables asynchronous I/O. This is the fastest transport
+available for storage functions.</p>
+<p>Type: boolean, default: <b>FALSE</b>.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_TCP_NODELAY
+                                    </td>
+                <td class="last">
+                    <p><em><p>Enables or disables the no-delay feature for connecting sockets (may
+be faster in some environments).</p>
+<p>Type: boolean, default: <b>FALSE</b>.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_SOCKET_SEND_SIZE
+                                    </td>
+                <td class="last">
+                    <p><em><p>The maximum socket send buffer in bytes.</p>
+<p>Type: integer, default: varies by platform/kernel
+configuration.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_SOCKET_RECV_SIZE
+                                    </td>
+                <td class="last">
+                    <p><em><p>The maximum socket receive buffer in bytes.</p>
+<p>Type: integer, default: varies by platform/kernel
+configuration.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_CONNECT_TIMEOUT
+                                    </td>
+                <td class="last">
+                    <p><em><p>In non-blocking mode this set the value of the timeout during socket
+connection, in milliseconds.</p>
+<p>Type: integer, default: 1000.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_RETRY_TIMEOUT
+                                    </td>
+                <td class="last">
+                    <p><em><p>The amount of time, in seconds, to wait until retrying a failed
+connection attempt.</p>
+<p>Type: integer, default: 0.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_SEND_TIMEOUT
+                                    </td>
+                <td class="last">
+                    <p><em><p>Socket sending timeout, in microseconds. In cases where you cannot
+use non-blocking I/O this will allow you to still have timeouts on the
+sending of data.</p>
+<p>Type: integer, default: 0.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_RECV_TIMEOUT
+                                    </td>
+                <td class="last">
+                    <p><em><p>Socket reading timeout, in microseconds. In cases where you cannot
+use non-blocking I/O this will allow you to still have timeouts on the
+reading of data.</p>
+<p>Type: integer, default: 0.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_POLL_TIMEOUT
+                                    </td>
+                <td class="last">
+                    <p><em><p>Timeout for connection polling, in milliseconds.</p>
+<p>Type: integer, default: 1000.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_CACHE_LOOKUPS
+                                    </td>
+                <td class="last">
+                    <p><em><p>Enables or disables caching of DNS lookups.</p>
+<p>Type: boolean, default: <b>FALSE</b>.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_SERVER_FAILURE_LIMIT
+                                    </td>
+                <td class="last">
+                    <p><em><p>Specifies the failure limit for server connection attempts. The
+server will be removed after this many continuous connection
+failures.</p>
+<p>Type: integer, default: 0.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_AUTO_EJECT_HOSTS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_HASH_WITH_PREFIX_KEY
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_NOREPLY
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_SORT_HOSTS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_VERIFY_KEY
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_USE_UDP
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_NUMBER_OF_REPLICAS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_RANDOMIZE_REPLICA_READ
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_CORK
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_REMOVE_FAILED_SERVERS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_DEAD_TIMEOUT
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_SERVER_TIMEOUT_LIMIT
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_MAX
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_IO_BYTES_WATERMARK
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_IO_KEY_PREFETCH
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_IO_MSG_WATERMARK
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_LOAD_FROM_FILE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_SUPPORT_CAS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_TCP_KEEPIDLE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_USER_DATA
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_SUCCESS
+                                    </td>
+                <td class="last">
+                    <p><em><p>The operation was successful.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_FAILURE
+                                    </td>
+                <td class="last">
+                    <p><em><p>The operation failed in some fashion.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_HOST_LOOKUP_FAILURE
+                                    </td>
+                <td class="last">
+                    <p><em><p>DNS lookup failed.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_UNKNOWN_READ_FAILURE
+                                    </td>
+                <td class="last">
+                    <p><em><p>Failed to read network data.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_PROTOCOL_ERROR
+                                    </td>
+                <td class="last">
+                    <p><em><p>Bad command in memcached protocol.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_CLIENT_ERROR
+                                    </td>
+                <td class="last">
+                    <p><em><p>Error on the client side.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_SERVER_ERROR
+                                    </td>
+                <td class="last">
+                    <p><em><p>Error on the server side.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_WRITE_FAILURE
+                                    </td>
+                <td class="last">
+                    <p><em><p>Failed to write network data.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_DATA_EXISTS
+                                    </td>
+                <td class="last">
+                    <p><em><p>Failed to do compare-and-swap: item you are trying to store has been
+modified since you last fetched it.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_NOTSTORED
+                                    </td>
+                <td class="last">
+                    <p><em><p>Item was not stored: but not because of an error. This normally
+means that either the condition for an "add" or a "replace" command
+wasn't met, or that the item is in a delete queue.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_NOTFOUND
+                                    </td>
+                <td class="last">
+                    <p><em><p>Item with this key was not found (with "get" operation or "cas"
+operations).</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_PARTIAL_READ
+                                    </td>
+                <td class="last">
+                    <p><em><p>Partial network data read error.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_SOME_ERRORS
+                                    </td>
+                <td class="last">
+                    <p><em><p>Some errors occurred during multi-get.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_NO_SERVERS
+                                    </td>
+                <td class="last">
+                    <p><em><p>Server list is empty.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_END
+                                    </td>
+                <td class="last">
+                    <p><em><p>End of result set.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_ERRNO
+                                    </td>
+                <td class="last">
+                    <p><em><p>System error.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_BUFFERED
+                                    </td>
+                <td class="last">
+                    <p><em><p>The operation was buffered.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_TIMEOUT
+                                    </td>
+                <td class="last">
+                    <p><em><p>The operation timed out.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_BAD_KEY_PROVIDED
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_BAD_KEY_PROVIDED: The key provided is not a valid key.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_STORED
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_STORED: The requested object has been successfully stored on the server.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_DELETED
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_DELETED: The object requested by the key has been deleted.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_STAT
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_STAT: A “stat” command has been returned in the protocol.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_ITEM
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_ITEM: An item has been fetched (this is an internal error only).</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_NOT_SUPPORTED
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_NOT_SUPPORTED: The given method is not supported in the server.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_FETCH_NOTFINISHED
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_FETCH_NOTFINISHED: A request has been made, but the server has not finished the fetch of the last request.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_SERVER_MARKED_DEAD
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_SERVER_MARKED_DEAD: The requested server has been marked dead.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_UNKNOWN_STAT_KEY
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_UNKNOWN_STAT_KEY: The server you are communicating with has a stat key which has not be defined in the protocol.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_INVALID_HOST_PROTOCOL
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_INVALID_HOST_PROTOCOL: The server you are connecting too has an invalid protocol. Most likely you are connecting to an older server that does not speak the binary protocol.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_MEMORY_ALLOCATION_FAILURE
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_MEMORY_ALLOCATION_FAILURE: An error has occurred while trying to allocate memory.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_E2BIG
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_E2BIG: Item is too large for the server to store.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_KEY_TOO_BIG
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_KEY_TOO_BIG: The key that has been provided is too large for the given server.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_SERVER_TEMPORARILY_DISABLED
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_SERVER_TEMPORARILY_DISABLED</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_SERVER_MEMORY_ALLOCATION_FAILURE
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMORY_ALLOCATION_FAILURE: An error has occurred while trying to allocate memory.</em></p>
+                    <p><h1>if defined(LIBMEMCACHED_VERSION_HEX) &amp;&amp; LIBMEMCACHED_VERSION_HEX &gt;= 0x01000008</p></h1></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_AUTH_PROBLEM
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_AUTH_PROBLEM: An unknown issue has occured during authentication.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_AUTH_FAILURE
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_AUTH_FAILURE: The credentials provided are not valid for this server.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_AUTH_CONTINUE
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_AUTH_CONTINUE: Authentication has been paused.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_CONNECTION_FAILURE
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_CONNECTION_FAILURE: A unknown error has occured while trying to connect to a server.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_CONNECTION_BIND_FAILURE
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_CONNECTION_BIND_FAILURE: We were not able to bind() to the socket.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_READ_FAILURE
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_READ_FAILURE: A read failure has occurred.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_DATA_DOES_NOT_EXIST
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_DATA_DOES_NOT_EXIST: The data requested with the key given was not found.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_VALUE
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_VALUE: A value has been returned from the server (this is an internal condition only).</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_FAIL_UNIX_SOCKET
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_FAIL_UNIX_SOCKET: A connection was not established with the server via a unix domain socket.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_NO_KEY_PROVIDED
+                                    </td>
+                <td class="last">
+                    <p><em><p>No key was provided.</p></p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_INVALID_ARGUMENTS
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_INVALID_ARGUMENTS: The arguments supplied to the given function were not valid.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_PARSE_ERROR
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_PARSE_ERROR: An error has occurred while trying to parse the configuration string. You should use memparse to determine what the error was.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_PARSE_USER_ERROR
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_PARSE_USER_ERROR: An error has occurred in parsing the configuration string.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_DEPRECATED
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_DEPRECATED: The method that was requested has been deprecated.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_IN_PROGRESS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_MAXIMUM_RETURN
+                                    </td>
+                <td class="last">
+                    <p><em><p>MEMCACHED_MAXIMUM_RETURN: This in an internal only state.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ON_CONNECT
+                                    </td>
+                <td class="last">
+                    <p><em><p>Server callbacks, if compiled with --memcached-protocol</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ON_ADD
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ON_APPEND
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ON_DECREMENT
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ON_DELETE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ON_FLUSH
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ON_GET
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ON_INCREMENT
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ON_NOOP
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ON_PREPEND
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ON_QUIT
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ON_REPLACE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ON_SET
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ON_STAT
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ON_VERSION
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RESPONSE_SUCCESS
+                                    </td>
+                <td class="last">
+                    <p><em><p>Constants used when compiled with --memcached-protocol</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RESPONSE_KEY_ENOENT
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RESPONSE_KEY_EEXISTS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RESPONSE_E2BIG
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RESPONSE_EINVAL
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RESPONSE_NOT_STORED
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RESPONSE_DELTA_BADVAL
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RESPONSE_NOT_MY_VBUCKET
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RESPONSE_AUTH_ERROR
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RESPONSE_AUTH_CONTINUE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RESPONSE_UNKNOWN_COMMAND
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RESPONSE_ENOMEM
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RESPONSE_NOT_SUPPORTED
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RESPONSE_EINTERNAL
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RESPONSE_EBUSY
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RESPONSE_ETMPFAIL
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_CONNECTION_SOCKET_CREATE_FAILURE
+                                    </td>
+                <td class="last">
+                    <p><em><p>Failed to create network socket.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        RES_PAYLOAD_FAILURE
+                                    </td>
+                <td class="last">
+                    <p><em><p>Payload failure: could not compress/decompress or serialize/unserialize the value.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SERIALIZER_PHP
+                                    </td>
+                <td class="last">
+                    <p><em><p>The default PHP serializer.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SERIALIZER_IGBINARY
+                                    </td>
+                <td class="last">
+                    <p><em><p>The igbinary serializer.</em></p>
+                    <p><p>Instead of textual representation it stores PHP data structures in a
+compact binary form, resulting in space and time gains.</p></p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SERIALIZER_JSON
+                                    </td>
+                <td class="last">
+                    <p><em><p>The JSON serializer. Requires PHP 5.2.10+.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SERIALIZER_JSON_ARRAY
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SERIALIZER_MSGPACK
+                                    </td>
+                <td class="last">
+                    <p><em><p>The msgpack serializer.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        COMPRESSION_FASTLZ
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        COMPRESSION_ZLIB
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        GET_PRESERVE_ORDER
+                                    </td>
+                <td class="last">
+                    <p><em><p>A flag for <b>Memcached::getMulti</b> and
+<b>Memcached::getMultiByKey</b> to ensure that the keys are
+returned in the same order as they were requested in. Non-existing keys
+get a default value of NULL.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        GET_EXTENDED
+                                    </td>
+                <td class="last">
+                    <p><em><p>A flag for <b>Memcached::get()</b>, <b>Memcached::getMulti()</b> and
+<b>Memcached::getMultiByKey()</b> to ensure that the CAS token values are returned as well.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        GET_ERROR_RETURN_VALUE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(string $persistent_id = &#039;&#039;, callable $on_new_object_cb = null, string $connection_str = &#039;&#039;)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Create a Memcached instance</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getResultCode">getResultCode</a>()
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Return the result code of the last operation</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getResultMessage">getResultMessage</a>()
+        
+                                            <p><p>(PECL memcached &gt;= 1.0.0)<br/>
+Return the message describing the result of the last operation</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_get">get</a>(string $key, callable $cache_cb = null, int $flags = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Retrieve an item</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getByKey">getByKey</a>(string $server_key, string $key, callable $cache_cb = null, int $flags = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Retrieve an item from a specific server</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getMulti">getMulti</a>(array $keys, int $flags = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Retrieve multiple items</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getMultiByKey">getMultiByKey</a>(string $server_key, array $keys, int $flags = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Retrieve multiple items from a specific server</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getDelayed">getDelayed</a>(array $keys, bool $with_cas = null, callable $value_cb = null)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Request multiple items</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getDelayedByKey">getDelayedByKey</a>(string $server_key, array $keys, bool $with_cas = null, callable $value_cb = null)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Request multiple items from a specific server</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fetch">fetch</a>()
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Fetch the next result</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fetchAll">fetchAll</a>()
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Fetch all the remaining results</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_set">set</a>(string $key, mixed $value, int $expiration = 0, int $udf_flags = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Store an item</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setByKey">setByKey</a>(string $server_key, string $key, mixed $value, int $expiration = 0, int $udf_flags = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Store an item on a specific server</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_touch">touch</a>(string $key, int $expiration = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Set a new expiration on an item</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_touchByKey">touchByKey</a>(string $server_key, string $key, int $expiration)
+        
+                                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Set a new expiration on an item on a specific server</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setMulti">setMulti</a>(array $items, int $expiration = 0, int $udf_flags = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Store multiple items</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setMultiByKey">setMultiByKey</a>(string $server_key, array $items, int $expiration = 0, int $udf_flags = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Store multiple items on a specific server</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_cas">cas</a>(float $cas_token, string $key, mixed $value, int $expiration = 0, int $udf_flags = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Compare and swap an item</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_casByKey">casByKey</a>(float $cas_token, string $server_key, string $key, mixed $value, int $expiration = 0, int $udf_flags = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Compare and swap an item on a specific server</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_add">add</a>(string $key, mixed $value, int $expiration = 0, int $udf_flags = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Add an item under a new key</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addByKey">addByKey</a>(string $server_key, string $key, mixed $value, int $expiration = 0, int $udf_flags = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Add an item under a new key on a specific server</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_append">append</a>(string $key, string $value)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Append data to an existing item</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_appendByKey">appendByKey</a>(string $server_key, string $key, string $value)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Append data to an existing item on a specific server</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_prepend">prepend</a>(string $key, string $value)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Prepend data to an existing item</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_prependByKey">prependByKey</a>(string $server_key, string $key, string $value)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Prepend data to an existing item on a specific server</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_replace">replace</a>(string $key, mixed $value, int $expiration = null, int $udf_flags = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Replace the item under an existing key</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_replaceByKey">replaceByKey</a>(string $server_key, string $key, mixed $value, int $expiration = null, int $udf_flags = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Replace the item under an existing key on a specific server</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_delete">delete</a>(string $key, int $time = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Delete an item</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_deleteMulti">deleteMulti</a>(array $keys, int $time = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Delete multiple items</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_deleteByKey">deleteByKey</a>(string $server_key, string $key, int $time = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Delete an item from a specific server</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_deleteMultiByKey">deleteMultiByKey</a>(string $server_key, array $keys, int $time = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Delete multiple items from a specific server</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_increment">increment</a>(string $key, int $offset = 1, int $initial_value = 0, int $expiry = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Increment numeric item's value</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_decrement">decrement</a>(string $key, int $offset = 1, int $initial_value = 0, int $expiry = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Decrement numeric item's value</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_incrementByKey">incrementByKey</a>(string $server_key, string $key, int $offset = 1, int $initial_value = 0, int $expiry = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Increment numeric item's value, stored on a specific server</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_decrementByKey">decrementByKey</a>(string $server_key, string $key, int $offset = 1, int $initial_value = 0, int $expiry = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Decrement numeric item's value, stored on a specific server</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addServer">addServer</a>(string $host, int $port, int $weight = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Add a server to the server pool</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addServers">addServers</a>(array $servers)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.1)<br/>
+Add multiple servers to the server pool</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getServerList">getServerList</a>()
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Get the list of the servers in the pool</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getServerByKey">getServerByKey</a>(string $server_key)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Map a key to a server</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_resetServerList">resetServerList</a>()
+        
+                                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Clears all servers from the server list</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_quit">quit</a>()
+        
+                                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Close any open connections</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getStats">getStats</a>(string $type = null)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Get server pool statistics</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getVersion">getVersion</a>()
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.5)<br/>
+Get server pool version info</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getAllKeys">getAllKeys</a>()
+        
+                                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Gets the keys stored on all the servers</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_flush">flush</a>(int $delay = 0)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Invalidate all items in the cache</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getOption">getOption</a>(int $option)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Retrieve a Memcached option value</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setOption">setOption</a>(int $option, mixed $value)
+        
+                                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Set a Memcached option</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setOptions">setOptions</a>(array $options)
+        
+                                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Set Memcached options</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setSaslAuthData">setSaslAuthData</a>(string $username, string $password)
+        
+                                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Set the credentials to use for authentication</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isPersistent">isPersistent</a>()
+        
+                                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Check if a persitent connection to memcache is being used</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_isPristine">isPristine</a>()
+        
+                                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Check if the instance was recently created</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_flushBuffers">flushBuffers</a>()
+        
+                                            <p><p>Flush and send buffered commands</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setEncodingKey">setEncodingKey</a>(string $key)
+        
+                                            <p><p>Sets AES encryption key (libmemcached 1.0.6 and higher)</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getLastDisconnectedServer">getLastDisconnectedServer</a>()
+        
+                                            <p><p>Returns the last disconnected server. Was added in 0.34 according to libmemcached's Changelog</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getLastErrorErrno">getLastErrorErrno</a>()
+        
+                                            <p><p>Returns the last error errno that occurred</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getLastErrorCode">getLastErrorCode</a>()
+        
+                                            <p><p>Returns the last error code that occurred</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getLastErrorMessage">getLastErrorMessage</a>()
+        
+                                            <p><p>Returns the last error message that occurred</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setBucket">setBucket</a>(array $host_map, array $forward_map, int $replicas)
+        
+                                            <p><p>Sets the memcached virtual buckets</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L671">at line 671</a></div>
+        <code>                    
+    <strong>__construct</strong>(string $persistent_id = &#039;&#039;, callable $on_new_object_cb = null, string $connection_str = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Create a Memcached instance</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$persistent_id</td>
+                <td><p>[optional]</p></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$on_new_object_cb</td>
+                <td><p>[optional]</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$connection_str</td>
+                <td><p>[optional]</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getResultCode">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L679">at line 679</a></div>
+        <code>                    int
+    <strong>getResultCode</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Return the result code of the last operation</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>Result code of the last Memcached operation.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getResultMessage">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L687">at line 687</a></div>
+        <code>                    string
+    <strong>getResultMessage</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 1.0.0)<br/>
+Return the message describing the result of the last operation</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>Message describing the result of the last Memcached operation.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_get">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L706">at line 706</a></div>
+        <code>                    mixed
+    <strong>get</strong>(string $key, callable $cache_cb = null, int $flags = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Retrieve an item</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key of the item to retrieve.
+</p></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$cache_cb</td>
+                <td><p>[optional] <p>
+Read-through caching callback or <b>NULL</b>.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$flags</td>
+                <td><p>[optional] <p>
+The flags for the get operation.
+</p></p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>the value stored in the cache or <b>FALSE</b> otherwise.
+The <b>Memcached::getResultCode</b> will return
+<b>Memcached::RES_NOTFOUND</b> if the key does not exist.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getByKey">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L728">at line 728</a></div>
+        <code>                    mixed
+    <strong>getByKey</strong>(string $server_key, string $key, callable $cache_cb = null, int $flags = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Retrieve an item from a specific server</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$server_key</td>
+                <td><p>
+The key identifying the server to store the value on or retrieve it from. Instead of hashing on the actual key for the item, we hash on the server key when deciding which memcached server to talk to. This allows related items to be grouped together on a single server for efficiency with multi operations.
+</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key of the item to fetch.
+</p></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$cache_cb</td>
+                <td><p>[optional] <p>
+Read-through caching callback or <b>NULL</b>
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$flags</td>
+                <td><p>[optional] <p>
+The flags for the get operation.
+</p></p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>the value stored in the cache or <b>FALSE</b> otherwise.
+The <b>Memcached::getResultCode</b> will return
+<b>Memcached::RES_NOTFOUND</b> if the key does not exist.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMulti">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L743">at line 743</a></div>
+        <code>                    mixed
+    <strong>getMulti</strong>(array $keys, int $flags = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Retrieve multiple items</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$keys</td>
+                <td><p>
+Array of keys to retrieve.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$flags</td>
+                <td><p>[optional] <p>
+The flags for the get operation.
+</p></p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>the array of found items or <b>FALSE</b> on failure.
+Use <b>Memcached::getResultCode</b> if necessary.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMultiByKey">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L761">at line 761</a></div>
+        <code>                    array|false
+    <strong>getMultiByKey</strong>(string $server_key, array $keys, int $flags = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Retrieve multiple items from a specific server</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$server_key</td>
+                <td><p>
+The key identifying the server to store the value on or retrieve it from. Instead of hashing on the actual key for the item, we hash on the server key when deciding which memcached server to talk to. This allows related items to be grouped together on a single server for efficiency with multi operations.
+</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$keys</td>
+                <td><p>
+Array of keys to retrieve.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$flags</td>
+                <td><p>[optional] <p>
+The flags for the get operation.
+</p></p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|false</td>
+            <td><p>the array of found items or <b>FALSE</b> on failure.
+Use <b>Memcached::getResultCode</b> if necessary.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDelayed">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L779">at line 779</a></div>
+        <code>                    bool
+    <strong>getDelayed</strong>(array $keys, bool $with_cas = null, callable $value_cb = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Request multiple items</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$keys</td>
+                <td><p>
+Array of keys to request.
+</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$with_cas</td>
+                <td><p>[optional] <p>
+Whether to request CAS token values also.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$value_cb</td>
+                <td><p>[optional] <p>
+The result callback or <b>NULL</b>.
+</p></p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+Use <b>Memcached::getResultCode</b> if necessary.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDelayedByKey">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L800">at line 800</a></div>
+        <code>                    bool
+    <strong>getDelayedByKey</strong>(string $server_key, array $keys, bool $with_cas = null, callable $value_cb = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Request multiple items from a specific server</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$server_key</td>
+                <td><p>
+The key identifying the server to store the value on or retrieve it from. Instead of hashing on the actual key for the item, we hash on the server key when deciding which memcached server to talk to. This allows related items to be grouped together on a single server for efficiency with multi operations.
+</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$keys</td>
+                <td><p>
+Array of keys to request.
+</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$with_cas</td>
+                <td><p>[optional] <p>
+Whether to request CAS token values also.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$value_cb</td>
+                <td><p>[optional] <p>
+The result callback or <b>NULL</b>.
+</p></p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+Use <b>Memcached::getResultCode</b> if necessary.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fetch">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L810">at line 810</a></div>
+        <code>                    array|false
+    <strong>fetch</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Fetch the next result</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|false</td>
+            <td><p>the next result or <b>FALSE</b> otherwise.
+The <b>Memcached::getResultCode</b> will return
+<b>Memcached::RES_END</b> if result set is exhausted.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fetchAll">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L819">at line 819</a></div>
+        <code>                    array|false
+    <strong>fetchAll</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Fetch all the remaining results</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|false</td>
+            <td><p>the results or <b>FALSE</b> on failure.
+Use <b>Memcached::getResultCode</b> if necessary.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_set">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L838">at line 838</a></div>
+        <code>                    bool
+    <strong>set</strong>(string $key, mixed $value, int $expiration = 0, int $udf_flags = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Store an item</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key under which to store the value.
+</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>
+The value to store.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$expiration</td>
+                <td><p>[optional] <p>
+The expiration time, defaults to 0. See Expiration Times for more info.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$udf_flags</td>
+                <td><p>[optional]</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+Use <b>Memcached::getResultCode</b> if necessary.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setByKey">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L860">at line 860</a></div>
+        <code>                    bool
+    <strong>setByKey</strong>(string $server_key, string $key, mixed $value, int $expiration = 0, int $udf_flags = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Store an item on a specific server</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$server_key</td>
+                <td><p>
+The key identifying the server to store the value on or retrieve it from. Instead of hashing on the actual key for the item, we hash on the server key when deciding which memcached server to talk to. This allows related items to be grouped together on a single server for efficiency with multi operations.
+</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key under which to store the value.
+</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>
+The value to store.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$expiration</td>
+                <td><p>[optional] <p>
+The expiration time, defaults to 0. See Expiration Times for more info.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$udf_flags</td>
+                <td><p>[optional]</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+Use <b>Memcached::getResultCode</b> if necessary.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_touch">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L875">at line 875</a></div>
+        <code>                    bool
+    <strong>touch</strong>(string $key, int $expiration = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Set a new expiration on an item</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key under which to store the value.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$expiration</td>
+                <td><p>
+The expiration time, defaults to 0. See Expiration Times for more info.
+</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+Use <b>Memcached::getResultCode</b> if necessary.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_touchByKey">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L893">at line 893</a></div>
+        <code>                    bool
+    <strong>touchByKey</strong>(string $server_key, string $key, int $expiration)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Set a new expiration on an item on a specific server</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$server_key</td>
+                <td><p>
+The key identifying the server to store the value on or retrieve it from. Instead of hashing on the actual key for the item, we hash on the server key when deciding which memcached server to talk to. This allows related items to be grouped together on a single server for efficiency with multi operations.
+</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key under which to store the value.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$expiration</td>
+                <td><p>
+The expiration time, defaults to 0. See Expiration Times for more info.
+</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+Use <b>Memcached::getResultCode</b> if necessary.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setMulti">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L909">at line 909</a></div>
+        <code>                    bool
+    <strong>setMulti</strong>(array $items, int $expiration = 0, int $udf_flags = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Store multiple items</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$items</td>
+                <td><p>
+An array of key/value pairs to store on the server.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$expiration</td>
+                <td><p>[optional] <p>
+The expiration time, defaults to 0. See Expiration Times for more info.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$udf_flags</td>
+                <td><p>[optional]</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+Use <b>Memcached::getResultCode</b> if necessary.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setMultiByKey">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L928">at line 928</a></div>
+        <code>                    bool
+    <strong>setMultiByKey</strong>(string $server_key, array $items, int $expiration = 0, int $udf_flags = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Store multiple items on a specific server</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$server_key</td>
+                <td><p>
+The key identifying the server to store the value on or retrieve it from. Instead of hashing on the actual key for the item, we hash on the server key when deciding which memcached server to talk to. This allows related items to be grouped together on a single server for efficiency with multi operations.
+</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$items</td>
+                <td><p>
+An array of key/value pairs to store on the server.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$expiration</td>
+                <td><p>[optional] <p>
+The expiration time, defaults to 0. See Expiration Times for more info.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$udf_flags</td>
+                <td><p>[optional]</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+Use <b>Memcached::getResultCode</b> if necessary.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_cas">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L952">at line 952</a></div>
+        <code>                    bool
+    <strong>cas</strong>(float $cas_token, string $key, mixed $value, int $expiration = 0, int $udf_flags = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Compare and swap an item</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float</td>
+                <td>$cas_token</td>
+                <td><p>
+Unique value associated with the existing item. Generated by memcache.
+</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key under which to store the value.
+</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>
+The value to store.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$expiration</td>
+                <td><p>[optional] <p>
+The expiration time, defaults to 0. See Expiration Times for more info.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$udf_flags</td>
+                <td><p>[optional]</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+The <b>Memcached::getResultCode</b> will return
+<b>Memcached::RES_DATA_EXISTS</b> if the item you are trying
+to store has been modified since you last fetched it.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_casByKey">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L979">at line 979</a></div>
+        <code>                    bool
+    <strong>casByKey</strong>(float $cas_token, string $server_key, string $key, mixed $value, int $expiration = 0, int $udf_flags = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Compare and swap an item on a specific server</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float</td>
+                <td>$cas_token</td>
+                <td><p>
+Unique value associated with the existing item. Generated by memcache.
+</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$server_key</td>
+                <td><p>
+The key identifying the server to store the value on or retrieve it from. Instead of hashing on the actual key for the item, we hash on the server key when deciding which memcached server to talk to. This allows related items to be grouped together on a single server for efficiency with multi operations.
+</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key under which to store the value.
+</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>
+The value to store.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$expiration</td>
+                <td><p>[optional] <p>
+The expiration time, defaults to 0. See Expiration Times for more info.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$udf_flags</td>
+                <td><p>[optional]</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+The <b>Memcached::getResultCode</b> will return
+<b>Memcached::RES_DATA_EXISTS</b> if the item you are trying
+to store has been modified since you last fetched it.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_add">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L999">at line 999</a></div>
+        <code>                    bool
+    <strong>add</strong>(string $key, mixed $value, int $expiration = 0, int $udf_flags = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Add an item under a new key</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key under which to store the value.
+</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>
+The value to store.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$expiration</td>
+                <td><p>[optional] <p>
+The expiration time, defaults to 0. See Expiration Times for more info.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$udf_flags</td>
+                <td><p>[optional]</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+The <b>Memcached::getResultCode</b> will return
+<b>Memcached::RES_NOTSTORED</b> if the key already exists.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addByKey">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1022">at line 1022</a></div>
+        <code>                    bool
+    <strong>addByKey</strong>(string $server_key, string $key, mixed $value, int $expiration = 0, int $udf_flags = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Add an item under a new key on a specific server</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$server_key</td>
+                <td><p>
+The key identifying the server to store the value on or retrieve it from. Instead of hashing on the actual key for the item, we hash on the server key when deciding which memcached server to talk to. This allows related items to be grouped together on a single server for efficiency with multi operations.
+</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key under which to store the value.
+</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>
+The value to store.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$expiration</td>
+                <td><p>[optional] <p>
+The expiration time, defaults to 0. See Expiration Times for more info.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$udf_flags</td>
+                <td><p>[optional]</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+The <b>Memcached::getResultCode</b> will return
+<b>Memcached::RES_NOTSTORED</b> if the key already exists.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_append">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1038">at line 1038</a></div>
+        <code>                    bool
+    <strong>append</strong>(string $key, string $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Append data to an existing item</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key under which to store the value.
+</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$value</td>
+                <td><p>
+The string to append.
+</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+The <b>Memcached::getResultCode</b> will return
+<b>Memcached::RES_NOTSTORED</b> if the key does not exist.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_appendByKey">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1057">at line 1057</a></div>
+        <code>                    bool
+    <strong>appendByKey</strong>(string $server_key, string $key, string $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Append data to an existing item on a specific server</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$server_key</td>
+                <td><p>
+The key identifying the server to store the value on or retrieve it from. Instead of hashing on the actual key for the item, we hash on the server key when deciding which memcached server to talk to. This allows related items to be grouped together on a single server for efficiency with multi operations.
+</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key under which to store the value.
+</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$value</td>
+                <td><p>
+The string to append.
+</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+The <b>Memcached::getResultCode</b> will return
+<b>Memcached::RES_NOTSTORED</b> if the key does not exist.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_prepend">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1073">at line 1073</a></div>
+        <code>                    bool
+    <strong>prepend</strong>(string $key, string $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Prepend data to an existing item</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key of the item to prepend the data to.
+</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$value</td>
+                <td><p>
+The string to prepend.
+</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+The <b>Memcached::getResultCode</b> will return
+<b>Memcached::RES_NOTSTORED</b> if the key does not exist.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_prependByKey">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1092">at line 1092</a></div>
+        <code>                    bool
+    <strong>prependByKey</strong>(string $server_key, string $key, string $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Prepend data to an existing item on a specific server</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$server_key</td>
+                <td><p>
+The key identifying the server to store the value on or retrieve it from. Instead of hashing on the actual key for the item, we hash on the server key when deciding which memcached server to talk to. This allows related items to be grouped together on a single server for efficiency with multi operations.
+</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key of the item to prepend the data to.
+</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$value</td>
+                <td><p>
+The string to prepend.
+</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+The <b>Memcached::getResultCode</b> will return
+<b>Memcached::RES_NOTSTORED</b> if the key does not exist.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_replace">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1112">at line 1112</a></div>
+        <code>                    bool
+    <strong>replace</strong>(string $key, mixed $value, int $expiration = null, int $udf_flags = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Replace the item under an existing key</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key under which to store the value.
+</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>
+The value to store.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$expiration</td>
+                <td><p>[optional] <p>
+The expiration time, defaults to 0. See Expiration Times for more info.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$udf_flags</td>
+                <td><p>[optional]</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+The <b>Memcached::getResultCode</b> will return
+<b>Memcached::RES_NOTSTORED</b> if the key does not exist.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_replaceByKey">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1135">at line 1135</a></div>
+        <code>                    bool
+    <strong>replaceByKey</strong>(string $server_key, string $key, mixed $value, int $expiration = null, int $udf_flags = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Replace the item under an existing key on a specific server</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$server_key</td>
+                <td><p>
+The key identifying the server to store the value on or retrieve it from. Instead of hashing on the actual key for the item, we hash on the server key when deciding which memcached server to talk to. This allows related items to be grouped together on a single server for efficiency with multi operations.
+</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key under which to store the value.
+</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>
+The value to store.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$expiration</td>
+                <td><p>[optional] <p>
+The expiration time, defaults to 0. See Expiration Times for more info.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$udf_flags</td>
+                <td><p>[optional]</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+The <b>Memcached::getResultCode</b> will return
+<b>Memcached::RES_NOTSTORED</b> if the key does not exist.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_delete">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1151">at line 1151</a></div>
+        <code>                    bool
+    <strong>delete</strong>(string $key, int $time = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Delete an item</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key to be deleted.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$time</td>
+                <td><p>[optional] <p>
+The amount of time the server will wait to delete the item.
+</p></p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+The <b>Memcached::getResultCode</b> will return
+<b>Memcached::RES_NOTFOUND</b> if the key does not exist.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteMulti">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1167">at line 1167</a></div>
+        <code>                    array
+    <strong>deleteMulti</strong>(array $keys, int $time = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Delete multiple items</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$keys</td>
+                <td><p>
+The keys to be deleted.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$time</td>
+                <td><p>[optional] <p>
+The amount of time the server will wait to delete the items.
+</p></p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Returns array indexed by keys and where values are indicating whether operation succeeded or not.
+The <b>Memcached::getResultCode</b> will return
+<b>Memcached::RES_NOTFOUND</b> if the key does not exist.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteByKey">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1186">at line 1186</a></div>
+        <code>                    bool
+    <strong>deleteByKey</strong>(string $server_key, string $key, int $time = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Delete an item from a specific server</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$server_key</td>
+                <td><p>
+The key identifying the server to store the value on or retrieve it from. Instead of hashing on the actual key for the item, we hash on the server key when deciding which memcached server to talk to. This allows related items to be grouped together on a single server for efficiency with multi operations.
+</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key to be deleted.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$time</td>
+                <td><p>[optional] <p>
+The amount of time the server will wait to delete the item.
+</p></p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+The <b>Memcached::getResultCode</b> will return
+<b>Memcached::RES_NOTFOUND</b> if the key does not exist.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteMultiByKey">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1205">at line 1205</a></div>
+        <code>                    bool
+    <strong>deleteMultiByKey</strong>(string $server_key, array $keys, int $time = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Delete multiple items from a specific server</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$server_key</td>
+                <td><p>
+The key identifying the server to store the value on or retrieve it from. Instead of hashing on the actual key for the item, we hash on the server key when deciding which memcached server to talk to. This allows related items to be grouped together on a single server for efficiency with multi operations.
+</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$keys</td>
+                <td><p>
+The keys to be deleted.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$time</td>
+                <td><p>[optional] <p>
+The amount of time the server will wait to delete the items.
+</p></p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+The <b>Memcached::getResultCode</b> will return
+<b>Memcached::RES_NOTFOUND</b> if the key does not exist.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_increment">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1225">at line 1225</a></div>
+        <code>                    int|false
+    <strong>increment</strong>(string $key, int $offset = 1, int $initial_value = 0, int $expiry = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Increment numeric item's value</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key of the item to increment.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$offset</td>
+                <td><p>[optional] <p>
+The amount by which to increment the item's value.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$initial_value</td>
+                <td><p>[optional] <p>
+The value to set the item to if it doesn't currently exist.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$expiry</td>
+                <td><p>[optional] <p>
+The expiry time to set on the item.
+</p></p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|false</td>
+            <td><p>new item's value on success or <b>FALSE</b> on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_decrement">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1245">at line 1245</a></div>
+        <code>                    int|false
+    <strong>decrement</strong>(string $key, int $offset = 1, int $initial_value = 0, int $expiry = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Decrement numeric item's value</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key of the item to decrement.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$offset</td>
+                <td><p>[optional] <p>
+The amount by which to decrement the item's value.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$initial_value</td>
+                <td><p>[optional] <p>
+The value to set the item to if it doesn't currently exist.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$expiry</td>
+                <td><p>[optional] <p>
+The expiry time to set on the item.
+</p></p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|false</td>
+            <td><p>item's new value on success or <b>FALSE</b> on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_incrementByKey">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1268">at line 1268</a></div>
+        <code>                    int|false
+    <strong>incrementByKey</strong>(string $server_key, string $key, int $offset = 1, int $initial_value = 0, int $expiry = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Increment numeric item's value, stored on a specific server</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$server_key</td>
+                <td><p>
+The key identifying the server to store the value on or retrieve it from. Instead of hashing on the actual key for the item, we hash on the server key when deciding which memcached server to talk to. This allows related items to be grouped together on a single server for efficiency with multi operations.
+</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key of the item to increment.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$offset</td>
+                <td><p>[optional] <p>
+The amount by which to increment the item's value.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$initial_value</td>
+                <td><p>[optional] <p>
+The value to set the item to if it doesn't currently exist.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$expiry</td>
+                <td><p>[optional] <p>
+The expiry time to set on the item.
+</p></p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|false</td>
+            <td><p>new item's value on success or <b>FALSE</b> on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_decrementByKey">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1291">at line 1291</a></div>
+        <code>                    int|false
+    <strong>decrementByKey</strong>(string $server_key, string $key, int $offset = 1, int $initial_value = 0, int $expiry = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Decrement numeric item's value, stored on a specific server</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$server_key</td>
+                <td><p>
+The key identifying the server to store the value on or retrieve it from. Instead of hashing on the actual key for the item, we hash on the server key when deciding which memcached server to talk to. This allows related items to be grouped together on a single server for efficiency with multi operations.
+</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>
+The key of the item to decrement.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$offset</td>
+                <td><p>[optional] <p>
+The amount by which to decrement the item's value.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$initial_value</td>
+                <td><p>[optional] <p>
+The value to set the item to if it doesn't currently exist.
+</p></p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$expiry</td>
+                <td><p>[optional] <p>
+The expiry time to set on the item.
+</p></p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|false</td>
+            <td><p>item's new value on success or <b>FALSE</b> on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addServer">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1315">at line 1315</a></div>
+        <code>                    bool
+    <strong>addServer</strong>(string $host, int $port, int $weight = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Add a server to the server pool</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$host</td>
+                <td><p>
+The hostname of the memcache server. If the hostname is invalid, data-related
+operations will set
+<b>Memcached::RES_HOST_LOOKUP_FAILURE</b> result code.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$port</td>
+                <td><p>
+The port on which memcache is running. Usually, this is
+11211.
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$weight</td>
+                <td><p>[optional] <p>
+The weight of the server relative to the total weight of all the
+servers in the pool. This controls the probability of the server being
+selected for operations. This is used only with consistent distribution
+option and usually corresponds to the amount of memory available to
+memcache on that server.
+</p></p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addServers">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1324">at line 1324</a></div>
+        <code>                    bool
+    <strong>addServers</strong>(array $servers)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.1)<br/>
+Add multiple servers to the server pool</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$servers</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getServerList">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1332">at line 1332</a></div>
+        <code>                    array
+    <strong>getServerList</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Get the list of the servers in the pool</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The list of all servers in the server pool.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getServerByKey">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1346">at line 1346</a></div>
+        <code>                    array
+    <strong>getServerByKey</strong>(string $server_key)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Map a key to a server</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$server_key</td>
+                <td><p>
+The key identifying the server to store the value on or retrieve it from. Instead of hashing on the actual key for the item, we hash on the server key when deciding which memcached server to talk to. This allows related items to be grouped together on a single server for efficiency with multi operations.
+</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>an array containing three keys of host,
+port, and weight on success or <b>FALSE</b>
+on failure.
+Use <b>Memcached::getResultCode</b> if necessary.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resetServerList">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1354">at line 1354</a></div>
+        <code>                    bool
+    <strong>resetServerList</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Clears all servers from the server list</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_quit">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1362">at line 1362</a></div>
+        <code>                    bool
+    <strong>quit</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Close any open connections</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getStats">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1371">at line 1371</a></div>
+        <code>                    array|false
+    <strong>getStats</strong>(string $type = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Get server pool statistics</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$type</td>
+                <td><p>items, slabs, sizes ...</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|false</td>
+            <td><p>Array of server statistics, one entry per server.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getVersion">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1379">at line 1379</a></div>
+        <code>                    array
+    <strong>getVersion</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.5)<br/>
+Get server pool version info</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Array of server versions, one entry per server.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAllKeys">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1387">at line 1387</a></div>
+        <code>                    array|false
+    <strong>getAllKeys</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Gets the keys stored on all the servers</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|false</td>
+            <td><p>the keys stored on all the servers on success or <b>FALSE</b> on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flush">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1399">at line 1399</a></div>
+        <code>                    bool
+    <strong>flush</strong>(int $delay = 0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Invalidate all items in the cache</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$delay</td>
+                <td><p>[optional] <p>
+Numer of seconds to wait before invalidating the items.
+</p></p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.
+Use <b>Memcached::getResultCode</b> if necessary.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getOption">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1411">at line 1411</a></div>
+        <code>                    mixed
+    <strong>getOption</strong>(int $option)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Retrieve a Memcached option value</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$option</td>
+                <td><p>
+One of the Memcached::OPT_* constants.
+</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>the value of the requested option, or <b>FALSE</b> on
+error.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setOption">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1421">at line 1421</a></div>
+        <code>                    bool
+    <strong>setOption</strong>(int $option, mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 0.1.0)<br/>
+Set a Memcached option</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$option</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setOptions">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1433">at line 1433</a></div>
+        <code>                    bool
+    <strong>setOptions</strong>(array $options)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Set Memcached options</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$options</td>
+                <td><p>
+An associative array of options where the key is the option to set and
+the value is the new value for the option.
+</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setSaslAuthData">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1447">at line 1447</a></div>
+        <code>                    bool
+    <strong>setSaslAuthData</strong>(string $username, string $password)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Set the credentials to use for authentication</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$username</td>
+                <td><p>
+The username to use for authentication.
+</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$password</td>
+                <td><p>
+The password to use for authentication.
+</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isPersistent">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1455">at line 1455</a></div>
+        <code>                    bool
+    <strong>isPersistent</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Check if a persitent connection to memcache is being used</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if Memcache instance uses a persistent connection, false otherwise.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isPristine">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1463">at line 1463</a></div>
+        <code>                    bool
+    <strong>isPristine</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PECL memcached &gt;= 2.0.0)<br/>
+Check if the instance was recently created</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>the true if instance is recently created, false otherwise.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushBuffers">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1470">at line 1470</a></div>
+        <code>                    bool
+    <strong>flushBuffers</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flush and send buffered commands</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setEncodingKey">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1478">at line 1478</a></div>
+        <code>                    bool
+    <strong>setEncodingKey</strong>(string $key)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets AES encryption key (libmemcached 1.0.6 and higher)</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLastDisconnectedServer">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1485">at line 1485</a></div>
+        <code>                    array|false
+    <strong>getLastDisconnectedServer</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the last disconnected server. Was added in 0.34 according to libmemcached's Changelog</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|false</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLastErrorErrno">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1492">at line 1492</a></div>
+        <code>                    int
+    <strong>getLastErrorErrno</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the last error errno that occurred</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLastErrorCode">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1499">at line 1499</a></div>
+        <code>                    int
+    <strong>getLastErrorCode</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the last error code that occurred</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLastErrorMessage">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1506">at line 1506</a></div>
+        <code>                    string
+    <strong>getLastErrorMessage</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the last error message that occurred</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setBucket">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L1516">at line 1516</a></div>
+        <code>                    bool
+    <strong>setBucket</strong>(array $host_map, array $forward_map, int $replicas)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the memcached virtual buckets</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$host_map</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$forward_map</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$replicas</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built using <a href="https://github.com/JetBrains/phpstorm-stubs#readme" rel="noreferrer noopener" target="_blank">phpstorm-stubs</a> from JetBrains.</div></div>
+    </div>
+    </body>
+
+</html>

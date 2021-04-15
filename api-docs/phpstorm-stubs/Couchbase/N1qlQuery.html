@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Couchbase\N1qlQuery | PHP Jetbrains phpstorm-stubs</title>
+
+            <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../fonts/doctum-font.css">
+        <script src="../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../js/bootstrap.min.js"></script>
+        <script src="../js/typeahead.min.js"></script>
+        <script src="../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:Couchbase_N1qlQuery" data-root-path="../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../index.html">PHP Jetbrains phpstorm-stubs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../classes.html">Classes</a></li>
+                    <li><a href="../namespaces.html">Namespaces</a></li>
+                    <li><a href="../interfaces.html">Interfaces</a></li>
+                    <li><a href="../traits.html">Traits</a></li>
+                    <li><a href="../doc-index.html">Index</a></li>
+                    <li><a href="../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../Couchbase.html">Couchbase</a></li><li class="backslash">\</li><li>N1qlQuery</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>N1qlQuery    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>N1qlQuery</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Represents a N1QL query</p></p>                    </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        NOT_BOUNDED
+                                    </td>
+                <td class="last">
+                    <p><em><p>This is the default (for single-statement requests).</p></em></p>
+                    <p><p>No timestamp vector is used in the index scan.
+This is also the fastest mode, because we avoid the cost of obtaining the vector,
+and we also avoid any wait for the index to catch up to the vector.</p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        REQUEST_PLUS
+                                    </td>
+                <td class="last">
+                    <p><em><p>This implements strong consistency per request.</p></em></p>
+                    <p><p>Before processing the request, a current vector is obtained.
+The vector is used as a lower bound for the statements in the request.
+If there are DML statements in the request, RYOW is also applied within the request.</p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        STATEMENT_PLUS
+                                    </td>
+                <td class="last">
+                    <p><em><p>This implements strong consistency per statement.</p></em></p>
+                    <p><p>Before processing each statement, a current vector is obtained
+and used as a lower bound for that statement.</p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PROFILE_NONE
+                                    </td>
+                <td class="last">
+                    <p><em><p>Disables profiling. This is the default</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PROFILE_PHASES
+                                    </td>
+                <td class="last">
+                    <p><em><p>Enables phase profiling.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PROFILE_TIMINGS
+                                    </td>
+                <td class="last">
+                    <p><em><p>Enables general timing profiling.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fromString">fromString</a>(string $statement)
+        
+                                            <p><p>Creates new N1qlQuery instance directly from the N1QL string.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_adhoc">adhoc</a>(bool $adhoc)
+        
+                                            <p><p>Allows to specify if this query is adhoc or not.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_crossBucket">crossBucket</a>(bool $crossBucket)
+        
+                                            <p><p>Allows to pull credentials from the Authenticator</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_positionalParams">positionalParams</a>(array $params)
+        
+                                            <p><p>Specify array of positional parameters</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_namedParams">namedParams</a>(array $params)
+        
+                                            <p><p>Specify associative array of named parameters</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_consistency">consistency</a>(int $consistency)
+        
+                                            <p><p>Specifies the consistency level for this query</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_profile">profile</a>(string $profileType)
+        
+                                            <p><p>Controls the profiling mode used during query execution</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_consistentWith">consistentWith</a>(<a href="../Couchbase/MutationState.html"><abbr title="Couchbase\MutationState">MutationState</abbr></a> $state)
+        
+                                            <p><p>Sets mutation state the query should be consistent with</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_readonly">readonly</a>(bool $readonly)
+        
+                                            <p><p>If set to true, it will signal the query engine on the server that only non-data modifying requests
+are allowed. Note that this rule is enforced on the server and not the SDK side.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_scanCap">scanCap</a>(int $scanCap)
+        
+                                            <p><p>Advanced: Maximum buffered channel size between the indexer client and the query service for index scans.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_pipelineBatch">pipelineBatch</a>(int $pipelineBatch)
+        
+                                            <p><p>Advanced: Controls the number of items execution operators can batch for Fetch from the KV.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_pipelineCap">pipelineCap</a>(int $pipelineCap)
+        
+                                            <p><p>Advanced: Maximum number of items each execution operator can buffer between various operators.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_maxParallelism">maxParallelism</a>(int $maxParallelism)
+        
+                                            <p><p>Allows to override the default maximum parallelism for the query execution on the server side.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_fromString">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1935">at line 1935</a></div>
+        <code>        static            <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+    <strong>fromString</strong>(string $statement)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates new N1qlQuery instance directly from the N1QL string.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$statement</td>
+                <td><p>N1QL string</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_adhoc">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1947">at line 1947</a></div>
+        <code>                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+    <strong>adhoc</strong>(bool $adhoc)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Allows to specify if this query is adhoc or not.</p></p>                <p><p>If it is not adhoc (so performed often), the client will try to perform optimizations
+transparently based on the server capabilities, like preparing the statement and
+then executing a query plan instead of the raw query.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$adhoc</td>
+                <td><p>if query is adhoc, default is true (plain execution)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_crossBucket">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1959">at line 1959</a></div>
+        <code>                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+    <strong>crossBucket</strong>(bool $crossBucket)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Allows to pull credentials from the Authenticator</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$crossBucket</td>
+                <td><p>if query includes joins for multiple buckets (default is false)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="../Couchbase/Authenticator.html"><abbr title="Couchbase\Authenticator">Authenticator</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>
+                                            <a href="../Couchbase/ClassicAuthenticator.html"><abbr title="Couchbase\ClassicAuthenticator">ClassicAuthenticator</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_positionalParams">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1972">at line 1972</a></div>
+        <code>                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+    <strong>positionalParams</strong>(array $params)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Specify array of positional parameters</p></p>                <p><p>Previously specified positional parameters will be replaced.
+Note: carefully choose type of quotes for the query string, because PHP also uses <code>$</code>
+(dollar sign) for variable interpolation. If you are using double quotes, make sure
+that N1QL parameters properly escaped.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$params</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_namedParams">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1985">at line 1985</a></div>
+        <code>                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+    <strong>namedParams</strong>(array $params)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Specify associative array of named parameters</p></p>                <p><p>The supplied array of key/value pairs will be merged with already existing named parameters.
+Note: carefully choose type of quotes for the query string, because PHP also uses <code>$</code>
+(dollar sign) for variable interpolation. If you are using double quotes, make sure
+that N1QL parameters properly escaped.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$params</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_consistency">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1998">at line 1998</a></div>
+        <code>                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+    <strong>consistency</strong>(int $consistency)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Specifies the consistency level for this query</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$consistency</td>
+                <td><p>consistency level</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Couchbase\N1qlQuery::NOT_BOUNDED">N1qlQuery::NOT_BOUNDED</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>
+                                            <abbr title="Couchbase\N1qlQuery::REQUEST_PLUS">N1qlQuery::REQUEST_PLUS</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>
+                                            <abbr title="Couchbase\N1qlQuery::STATEMENT_PLUS">N1qlQuery::STATEMENT_PLUS</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>
+                                            <a href="../Couchbase/N1qlQuery.html#method_consistentWith">
+<abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr>::consistentWith</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_profile">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L2009">at line 2009</a></div>
+        <code>                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+    <strong>profile</strong>(string $profileType)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Controls the profiling mode used during query execution</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$profileType</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Couchbase\N1qlQuery::PROFILE_NONE">N1qlQuery::PROFILE_NONE</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>
+                                            <abbr title="Couchbase\N1qlQuery::PROFILE_PHASES">N1qlQuery::PROFILE_PHASES</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>
+                                            <abbr title="Couchbase\N1qlQuery::PROFILE_TIMINGS">N1qlQuery::PROFILE_TIMINGS</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_consistentWith">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L2019">at line 2019</a></div>
+        <code>                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+    <strong>consistentWith</strong>(<a href="../Couchbase/MutationState.html"><abbr title="Couchbase\MutationState">MutationState</abbr></a> $state)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets mutation state the query should be consistent with</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../Couchbase/MutationState.html"><abbr title="Couchbase\MutationState">MutationState</abbr></a></td>
+                <td>$state</td>
+                <td><p>the container of mutation tokens</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="../Couchbase/MutationState.html"><abbr title="Couchbase\MutationState">MutationState</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_readonly">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L2039">at line 2039</a></div>
+        <code>                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+    <strong>readonly</strong>(bool $readonly)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>If set to true, it will signal the query engine on the server that only non-data modifying requests
+are allowed. Note that this rule is enforced on the server and not the SDK side.</p></p>                <p><p>Controls whether a query can change a resulting record set.</p>
+<p>If readonly is true, then the following statements are not allowed:</p>
+<ul>
+<li>CREATE INDEX</li>
+<li>DROP INDEX</li>
+<li>INSERT</li>
+<li>MERGE</li>
+<li>UPDATE</li>
+<li>UPSERT</li>
+<li>DELETE</li>
+</ul></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$readonly</td>
+                <td><p>true if readonly should be forced, false is the default and will use the server side default.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_scanCap">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L2049">at line 2049</a></div>
+        <code>                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+    <strong>scanCap</strong>(int $scanCap)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Advanced: Maximum buffered channel size between the indexer client and the query service for index scans.</p></p>                <p><p>This parameter controls when to use scan backfill. Use 0 or a negative number to disable.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$scanCap</td>
+                <td><p>the scan_cap param, use 0 or negative number to disable.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_pipelineBatch">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L2057">at line 2057</a></div>
+        <code>                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+    <strong>pipelineBatch</strong>(int $pipelineBatch)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Advanced: Controls the number of items execution operators can batch for Fetch from the KV.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$pipelineBatch</td>
+                <td><p>the pipeline_batch param.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_pipelineCap">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L2065">at line 2065</a></div>
+        <code>                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+    <strong>pipelineCap</strong>(int $pipelineCap)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Advanced: Maximum number of items each execution operator can buffer between various operators.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$pipelineCap</td>
+                <td><p>the pipeline_cap param.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_maxParallelism">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L2073">at line 2073</a></div>
+        <code>                    <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
+    <strong>maxParallelism</strong>(int $maxParallelism)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Allows to override the default maximum parallelism for the query execution on the server side.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$maxParallelism</td>
+                <td><p>the maximum parallelism for this query, 0 or negative values disable it.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built using <a href="https://github.com/JetBrains/phpstorm-stubs#readme" rel="noreferrer noopener" target="_blank">phpstorm-stubs</a> from JetBrains.</div></div>
+    </div>
+    </body>
+
+</html>

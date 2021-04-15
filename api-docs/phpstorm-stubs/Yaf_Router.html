@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Yaf_Router | PHP Jetbrains phpstorm-stubs</title>
+
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
+        <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="js/bootstrap.min.js"></script>
+        <script src="js/typeahead.min.js"></script>
+        <script src="doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:Yaf_Router" data-root-path="">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">PHP Jetbrains phpstorm-stubs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="namespaces.html">Namespaces</a></li>
+                    <li><a href="interfaces.html">Interfaces</a></li>
+                    <li><a href="traits.html">Traits</a></li>
+                    <li><a href="doc-index.html">Index</a></li>
+                    <li><a href="search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                            <div id="page-content">
+    <div class="page-header">
+        <h1>Yaf_Router    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Yaf_Router</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p><b>Yaf_Router</b> is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URI: see Yaf_Request_Abstract::setBaseUri()) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request. This values of the module, controller, action and other parameters are packaged into a Yaf_Request_Abstract object which is then processed by Yaf_Dispatcher. Routing occurs only once: when the request is initially received and before the first controller is dispatched. Yaf_Router is designed to allow for mod_rewrite-like functionality using pure PHP structures. It is very loosely based on Ruby on Rails routing and does not require any prior knowledge of webserver URL rewriting</p>
+<p><br/>
+<b>Default Route</b>
+<br/></p>
+<p><b>Yaf_Router</b> comes pre-configured with a default route Yaf_Route_Static, which will match URIs in the shape of controller/action. Additionally, a module name may be specified as the first path element, allowing URIs of the form module/controller/action. Finally, it will also match any additional parameters appended to the URI by default - controller/action/var1/value1/var2/value2.</p>
+<p><br/>
+<b>Note:</b></p>
+<p>Module name must be defined in config, considering application.module="Index,Foo,Bar", in this case, only index, foo and bar can be considered as a module name. if doesn't config, there is only one module named "Index".</p>
+<p><br/></p>
+<p>** See examples by opening the external documentation</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property__routes">
+                                        protected                                        <a href="Yaf_Route_Interface.html">Yaf_Route_Interface</a>[]
+                                                                                
+                                    </td>
+                <td>$_routes</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property__current">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$_current</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="Yaf_Router.html">Yaf_Router</a>|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addRoute">addRoute</a>(string $name, <a href="Yaf_Route_Interface.html">Yaf_Route_Interface</a> $route)
+        
+                                            <p><p>by default, Yaf_Router using a Yaf_Route_Static as its default route. you can add new routes into router's route stack by calling this method.</p>
+<p><br/></p>
+<p>the newer route will be called before the older(route stack), and if the newer router return TRUE, the router process will be end. otherwise, the older one will be called.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="Yaf_Router.html">Yaf_Router</a>|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addConfig">addConfig</a>(<a href="Yaf_Config_Abstract.html">Yaf_Config_Abstract</a> $config)
+        
+                                            <p><p>Add routes defined by configs into Yaf_Router's route stack</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="Yaf_Router.html">Yaf_Router</a>|false
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_route">route</a>(<a href="Yaf_Request_Abstract.html">Yaf_Request_Abstract</a> $request)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="Yaf_Route_Interface.html">Yaf_Route_Interface</a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getRoute">getRoute</a>(string $name)
+        
+                                            <p><p>Retrieve a route by name, see also Yaf_Router::getCurrentRoute()</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="Yaf_Route_Interface.html">Yaf_Route_Interface</a>[]
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getRoutes">getRoutes</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getCurrentRoute">getCurrentRoute</a>()
+        
+                                            <p><p>Get the name of the route which is effective in the route process.</p>
+<p><br/>
+<b>Note:</b></p>
+<p>You should call this method after the route process finished, since before that, this method will always return NULL.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf.php#L953">at line 953</a></div>
+        <code>                    
+    <strong>__construct</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addRoute">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf.php#L967">at line 967</a></div>
+        <code>                    <a href="Yaf_Router.html">Yaf_Router</a>|false
+    <strong>addRoute</strong>(string $name, <a href="Yaf_Route_Interface.html">Yaf_Route_Interface</a> $route)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>by default, Yaf_Router using a Yaf_Route_Static as its default route. you can add new routes into router's route stack by calling this method.</p>
+<p><br/></p>
+<p>the newer route will be called before the older(route stack), and if the newer router return TRUE, the router process will be end. otherwise, the older one will be called.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="Yaf_Route_Interface.html">Yaf_Route_Interface</a></td>
+                <td>$route</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="Yaf_Router.html">Yaf_Router</a>|false</td>
+            <td><p>return FALSE on failure</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addConfig">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf.php#L978">at line 978</a></div>
+        <code>                    <a href="Yaf_Router.html">Yaf_Router</a>|false
+    <strong>addConfig</strong>(<a href="Yaf_Config_Abstract.html">Yaf_Config_Abstract</a> $config)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add routes defined by configs into Yaf_Router's route stack</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="Yaf_Config_Abstract.html">Yaf_Config_Abstract</a></td>
+                <td>$config</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="Yaf_Router.html">Yaf_Router</a>|false</td>
+            <td><p>return FALSE on failure</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_route">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf.php#L987">at line 987</a></div>
+        <code>                    <a href="Yaf_Router.html">Yaf_Router</a>|false
+    <strong>route</strong>(<a href="Yaf_Request_Abstract.html">Yaf_Request_Abstract</a> $request)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="Yaf_Request_Abstract.html">Yaf_Request_Abstract</a></td>
+                <td>$request</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="Yaf_Router.html">Yaf_Router</a>|false</td>
+            <td><p>return FALSE on failure</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRoute">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf.php#L998">at line 998</a></div>
+        <code>                    <a href="Yaf_Route_Interface.html">Yaf_Route_Interface</a>
+    <strong>getRoute</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Retrieve a route by name, see also Yaf_Router::getCurrentRoute()</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="Yaf_Route_Interface.html">Yaf_Route_Interface</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRoutes">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf.php#L1005">at line 1005</a></div>
+        <code>                    <a href="Yaf_Route_Interface.html">Yaf_Route_Interface</a>[]
+    <strong>getRoutes</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="Yaf_Route_Interface.html">Yaf_Route_Interface</a>[]</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCurrentRoute">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf.php#L1017">at line 1017</a></div>
+        <code>                    string
+    <strong>getCurrentRoute</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the name of the route which is effective in the route process.</p>
+<p><br/>
+<b>Note:</b></p>
+<p>You should call this method after the route process finished, since before that, this method will always return NULL.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>the name of the effective route.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built using <a href="https://github.com/JetBrains/phpstorm-stubs#readme" rel="noreferrer noopener" target="_blank">phpstorm-stubs</a> from JetBrains.</div></div>
+    </div>
+    </body>
+
+</html>
