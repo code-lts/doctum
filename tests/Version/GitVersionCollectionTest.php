@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace Doctum\Tests\Version;
 
 use Doctum\Tests\AbstractTestCase;

@@ -50,8 +50,8 @@ class GitVersionCollection extends VersionCollection
 
             return true;
         };
-        $this->sorter  = static function (string $a, string $b) {
-            return version_compare($a, $b, '>');
+        $this->sorter  = static function (string $a, string $b): int {
+            return version_compare($a, $b, '>') === true ? 1 : 0;
         };
         $this->gitPath = 'git';
     }
