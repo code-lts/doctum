@@ -86,7 +86,7 @@ class GitVersionCollection extends VersionCollection
     }
 
     /**
-     * @param \Closure|null $filter
+     * @param \Closure|null|string[] $filter An array_filter callback that will be used for filtering versions or an array of globs
      */
     public function addFromTags($filter = null): self
     {
