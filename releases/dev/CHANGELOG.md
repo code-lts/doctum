@@ -50,6 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 _LTS release (PHP 7.1 only)_
 
 - Fixed Search results descriptions render
+- Fixed PHP 8.0 usort does not want bool anymore on `GitVersionCollection` setups
 
 ## [5.3.2] - 2021-04-12
 
