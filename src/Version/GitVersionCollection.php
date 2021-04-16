@@ -41,16 +41,16 @@ class GitVersionCollection extends VersionCollection
     public function __construct(string $repo)
     {
         $this->repo    = $repo;
-        $this->filter  = static function ($version) {
+        $this->filter  = static function (string $version): bool {
             foreach (['PR', 'RC', 'BETA', 'ALPHA'] as $str) {
-                if (strpos($version, $str)) {
+                if (strpos($version, $str) !== false) {
                     return false;
                 }
             }
 
             return true;
         };
-        $this->sorter  = static function ($a, $b) {
+        $this->sorter  = static function (string $a, string $b) {
             return version_compare($a, $b, '>');
         };
         $this->gitPath = 'git';
