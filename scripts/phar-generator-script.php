@@ -175,6 +175,8 @@ final class PharFilterIterator extends RecursiveFilterIterator
         'cache',
         'build',
         'api-docs/cache',
+        'docs/build',
+        'docs/cache',
     ];
 
     public function accept()
