@@ -51,18 +51,18 @@ class TwigExtension extends AbstractExtension
     {
         return [
             new TwigFunction('global_namespace_name', [Tree::class, 'getGlobalNamespaceName']),
-            new TwigFunction('function_path', [$this, 'pathForFunction'], ['needs_context' => true, 'is_safe' => ['all']]),
-            new TwigFunction('namespace_path', [$this, 'pathForNamespace'], ['needs_context' => true, 'is_safe' => ['all']]),
-            new TwigFunction('class_path', [$this, 'pathForClass'], ['needs_context' => true, 'is_safe' => ['all']]),
-            new TwigFunction('method_path', [$this, 'pathForMethod'], ['needs_context' => true, 'is_safe' => ['all']]),
-            new TwigFunction('property_path', [$this, 'pathForProperty'], ['needs_context' => true, 'is_safe' => ['all']]),
+            new TwigFunction('function_path', [$this, 'pathForFunction'], ['needs_context' => true, 'is_safe' => ['html']]),
+            new TwigFunction('namespace_path', [$this, 'pathForNamespace'], ['needs_context' => true, 'is_safe' => ['html']]),
+            new TwigFunction('class_path', [$this, 'pathForClass'], ['needs_context' => true, 'is_safe' => ['html']]),
+            new TwigFunction('method_path', [$this, 'pathForMethod'], ['needs_context' => true, 'is_safe' => ['html']]),
+            new TwigFunction('property_path', [$this, 'pathForProperty'], ['needs_context' => true, 'is_safe' => ['html']]),
             new TwigFunction('path', [$this, 'pathForStaticFile'], ['needs_context' => true]),
             new TwigFunction(
                 'abbr_class',
                 static function ($class, bool $absolute = false) {
                     return self::abbrClass($class, $absolute);
                 },
-                ['is_safe' => ['all']]
+                ['is_safe' => ['html']]
             ),
         ];
     }
