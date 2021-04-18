@@ -133,6 +133,15 @@ class Builder
     public function firstOr($columns = ['*'], \Closure $callback = null);
 
     /**
+     * Execute the query and get the first result or call a callback.
+     *
+     * @param  \Closure|array<int, (string|'*')>  $columns
+     * @param  \Closure|null  $callback
+     * @phpstan-return TModelClass|mixed
+     */
+    public function firstOr2($columns = ['*'], \Closure $callback = null);
+
+    /**
      * Add a basic where clause to the query.
      *
      * @param  \Closure|model-property<TModelClass>|array<model-property<TModelClass>|int, mixed>|\Illuminate\Database\Query\Expression  $column
