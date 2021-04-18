@@ -123,13 +123,13 @@ class TwigExtension extends AbstractExtension
             $class = $class->getName();
 
             if ($short === $class && !$absolute) {
-                return $class;
+                return htmlspecialchars($class, ENT_QUOTES);
             }
         } else {
-            $parts = explode('\\', $class);
+            $parts = explode('\\', $class, ENT_QUOTES);
 
             if (count($parts) === 1 && !$absolute) {
-                return $class;
+                return htmlspecialchars($class);
             }
 
             $short = array_pop($parts);

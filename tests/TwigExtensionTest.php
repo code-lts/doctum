@@ -22,7 +22,7 @@ class TwigExtensionTest extends TestCase
         $this->assertEquals('<abbr title="TumDoc\Parse">Parse</abbr>', TwigExtension::abbrClass('TumDoc\\Parse'));
         $this->assertEquals('Parse', TwigExtension::abbrClass('Parse'));
         $this->assertEquals('<abbr title="Parse">Parse</abbr>', TwigExtension::abbrClass('Parse', true));
-        $this->assertEquals('array<int,string>[]', TwigExtension::abbrClass('array<int,string>[]'));
+        $this->assertEquals('array&lt;int,string&gt;[]', TwigExtension::abbrClass('array<int,string>[]'));
         $this->assertEquals(
             '<abbr title="array&lt;int,string&gt;[]">array&lt;int,string&gt;[]</abbr>',
             TwigExtension::abbrClass('array<int,string>[]', true)
