@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Doctum\Tests\Command;
+namespace Doctum\Tests\Console;
 
 use Doctum\Console\Command\ParseCommand;
 use Doctum\Console\Command\RenderCommand;

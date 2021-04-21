@@ -1,6 +1,6 @@
 <?php
 
-namespace Doctum\Tests\Command;
+namespace Doctum\Tests\Console;
 
 use Doctum\Console\Command\ParseCommand;
 use Doctum\Console\Command\RenderCommand;
