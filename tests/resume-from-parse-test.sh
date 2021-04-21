@@ -18,10 +18,10 @@ TEMP_FOLDER="$(mktemp -d /tmp/doctum-resume-parse-test.XXXXXXXXX)"
 echo "Using temp foler: ${TEMP_FOLDER}"
 
 echo "Running parse"
-./bin/doctum.php parse -v --no-progress --no-ansi --force tests/phar/data/doctum-absolute.conf.php
+./bin/doctum.php parse -v --ignore-parse-errors --no-progress --no-ansi --force tests/phar/data/doctum-absolute.conf.php
 
 echo "Running render"
-./bin/doctum.php render -v --no-progress --no-ansi --force tests/phar/data/doctum-absolute.conf.php
+./bin/doctum.php render -v --ignore-parse-errors --no-progress --no-ansi --force tests/phar/data/doctum-absolute.conf.php
 
 echo "Moving files to: ${TEMP_FOLDER}"
 
@@ -31,7 +31,7 @@ mv tests/phar/data/cache ${TEMP_FOLDER}
 cleanWorkspace
 
 echo "Running update"
-./bin/doctum.php update -v --no-progress --no-ansi --force tests/phar/data/doctum-absolute.conf.php
+./bin/doctum.php update -v --ignore-parse-errors --no-progress --no-ansi --force tests/phar/data/doctum-absolute.conf.php
 
 echo "Comparing cache"
 diff --unified --color=always --minimal --suppress-common-lines --recursive tests/phar/data/cache/ "${TEMP_FOLDER}/cache/"
