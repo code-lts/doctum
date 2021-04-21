@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed composer autoload warnings on PSR-4 classes
 - Adjusted `.gitattributes` to exclude useless files from composer bundles
 - Added tests on for the final composer package
+- Support `{@link function}`, `{@link Class::function}` or `{@link https://example.com}` syntax
 
 ## [5.4.0] - 2021-04-10
 
