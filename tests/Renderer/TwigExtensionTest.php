@@ -36,8 +36,20 @@ class TwigExtensionTest extends AbstractTestCase
                 '<p><p>text</p></p>'
             ],
             [
+                'Constructor. Set DB Object and set {@link $return_statements return_statements}.',
+                '<p>Constructor. Set DB Object and set $return_statements return_statements.</p>'
+            ],
+            [
+                'Constructor. Set DB Object and set {@link $return_statements return_statements}',
+                '<p>Constructor. Set DB Object and set $return_statements return_statements</p>'
+            ],
+            [
                 'Hi {@link \PDO}',
                 '<p>Hi \PDO</p>'
+            ],
+            [
+                'Hi {@link https://doctum.long-term.support}',
+                '<p>Hi <a href="https://doctum.long-term.support">https://doctum.long-term.support</a></p>'
             ],
             [
                 'Hi {@link \PDO}',
@@ -220,6 +232,11 @@ class TwigExtensionTest extends AbstractTestCase
         $project->addClass($ref4);
         return [
             [
+                'https://doctum.long-term.support',
+                'https://doctum.long-term.support',
+                $ref
+            ],
+            [
                 '\PDO',
                 '[PDO](https://www.php.net/PDO)',
                 $ref
@@ -272,6 +289,16 @@ class TwigExtensionTest extends AbstractTestCase
             [
                 'my_class',
                 'my_class',
+                new ClassReflection('my_class', 0)
+            ],
+            [
+                '$return_statements return_statements.',
+                '$return_statements return_statements.',
+                new ClassReflection('my_class', 0)
+            ],
+            [
+                '$return_statements return_statements',
+                '$return_statements return_statements',
                 new ClassReflection('my_class', 0)
             ],
         ];

@@ -154,7 +154,7 @@ class TwigExtension extends AbstractExtension
         $desc = str_replace(['<code>', '</code>'], ['```', '```'], $desc);
 
         $desc = (string) preg_replace_callback(
-            '/@see ([^ ]+)/',
+            '/@see ([^ ]+)/', // Match until a whitespace is found
             function ($match) use (&$classOrFunctionRefl): string {
                 return $this->transformContentsIntoLinks($match[1], $classOrFunctionRefl);
             },
@@ -162,7 +162,7 @@ class TwigExtension extends AbstractExtension
         );
 
         $desc = (string) preg_replace_callback(
-            '/\{@link ((?!\})(?<contents>[^ ]+))/',
+            '/\{@link (?!\})(?<contents>[^\r\n\t\f]+)\}/',
             function (array $match) use (&$classOrFunctionRefl): string {
                 $data = rtrim($match['contents'], '}');
                 return $this->transformContentsIntoLinks($data, $classOrFunctionRefl);
