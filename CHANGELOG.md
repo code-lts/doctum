@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
+## [5.4.1] - 2021-04-DD
+
+- Fixed Search results descriptions render
+- Fixed PHP 8.0 usort does not want bool anymore on `GitVersionCollection` setups
+- Fixed CSS issues with method descriptions
+- Fixed phpdoc blocks render having `<code>` HTML tags
+- Fixed composer autoload warnings on PSR-4 classes
+- Adjusted `.gitattributes` to exclude useless files from composer bundles
+- Added tests on for the final composer package
+
 ## [5.4.0] - 2021-04-10
 
 - Drop support for PHP `7.1`
