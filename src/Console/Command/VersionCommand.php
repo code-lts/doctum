@@ -84,11 +84,13 @@ EOF
             return 0;
         }
         if ($input->getOption('text')) {
+            /** @var bool $isDev */
+            $isDev = $data['is_dev_version'];
             $output->writeln('Version: ' . $data['version']);
             $output->writeln('Version-major: ' . $data['major']);
             $output->writeln('Version-minor: ' . $data['minor']);
             $output->writeln('Version-patch: ' . $data['patch']);
-            $output->writeln('Version-is-dev: ' . ($data['is_dev_version'] ? 'yes' : 'no'));
+            $output->writeln('Version-is-dev: ' . ($isDev ? 'yes' : 'no'));
             $output->writeln('License: ' . $data['license']);
             $isPhar = $data['phar_metadata'] !== null;
             $output->writeln('Phar-detected: ' . ($isPhar ? 'yes' : 'no'));
