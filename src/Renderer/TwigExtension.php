@@ -15,6 +15,7 @@ namespace Doctum\Renderer;
 
 use Doctum\Reflection\Reflection;
 use Doctum\Reflection\ClassReflection;
+use Doctum\Reflection\FunctionReflection;
 use Doctum\Reflection\MethodReflection;
 use Doctum\Reflection\PropertyReflection;
 use Doctum\Tree;
@@ -94,7 +95,7 @@ class TwigExtension extends AbstractExtension
 
     public function pathForMethod(array $context, MethodReflection $method)
     {
-        /** @var Reflection */
+        /** @var Reflection $class */
         $class = $method->getClass();
 
         return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $class->getName()) . '.html#method_' . $method->getName();
@@ -102,7 +103,7 @@ class TwigExtension extends AbstractExtension
 
     public function pathForProperty(array $context, PropertyReflection $property)
     {
-        /** @var Reflection */
+        /** @var Reflection $class */
         $class = $property->getClass();
 
         return $this->relativeUri($this->currentDepth) . str_replace('\\', '/', $class->getName()) . '.html#property_' . $property->getName();
@@ -152,18 +153,88 @@ class TwigExtension extends AbstractExtension
 
         $desc = str_replace(['<code>', '</code>'], ['```', '```'], $desc);
 
-        // FIXME: the @see argument is more complex than just a class (Class::Method, local method directly, ...)
-        $desc = preg_replace_callback(
+        $desc = (string) preg_replace_callback(
             '/@see ([^ ]+)/',
-            static function ($match) {
-                return 'see ' . $match[1];
+            function ($match) use (&$classOrFunctionRefl): string {
+                return $this->transformContentsIntoLinks($match[1], $classOrFunctionRefl);
             },
             $desc
         );
 
+        $desc = (string) preg_replace_callback(
+            '/\{@link ((?!\})(?<contents>[^ ]+))/',
+            function (array $match) use (&$classOrFunctionRefl): string {
+                $data = rtrim($match['contents'], '}');
+                return $this->transformContentsIntoLinks($data, $classOrFunctionRefl);
+            },
+            $desc
+        );
+
+
         return $this->markdown->text($desc);
     }
 
+    public function transformContentsIntoLinks(string $data, Reflection $classOrFunctionRefl): string
+    {
+            $isClassReflection    = $classOrFunctionRefl instanceof ClassReflection;
+            $isFunctionReflection = $classOrFunctionRefl instanceof FunctionReflection;
+        if (! $isClassReflection && ! $isFunctionReflection) {
+            return $data;
+        }
+
+            /** @var ClassReflection|FunctionReflection $class */
+            $class = $classOrFunctionRefl;
+
+            // Example: Foo::bar_function_on_foo_class
+            $classMethod = explode('::', trim($data, " \t\n\r"), 2);
+
+            // Found "bar_function_on_foo_class", from example: bar_function_on_foo_class
+        if (count($classMethod) === 1 && $class instanceof ClassReflection) {
+            // In this case we resolve a link to a method name in the current class
+            $method = $class->getMethod($classMethod[0]);
+            if ($method !== false) {
+                $short = $this->pathForMethod([], $method);
+                return '[' . $data . '](' . $short . ')';
+            }
+        }
+
+            /** @var \Doctum\Project|null $project Original one is not realistic */
+            $project = $class->getProject();
+        if ($project === null) {
+            // This should never happen
+            return $data;
+        }
+
+            $cr = $project->getClass($classMethod[0]);
+        if ($cr->isPhpClass()) {
+            $className = $cr->getName();
+            return '[' . $className . '](https://www.php.net/' . $className . ')';
+        }
+
+        if (! $cr->isProjectClass()) {
+            return $data;
+        }
+
+            // Found "bar_function_on_foo_class", from example: Foo::bar_function_on_foo_class
+        if (count($classMethod) === 2) {
+            // In this case we have a function name to resolve on the previously found class
+            $method = $cr->getMethod($classMethod[1]);
+            if ($method !== false) {
+                $short = $this->pathForMethod([], $method);
+                return '[' . $data . '](' . $short . ')';
+            }
+        }
+
+            // Final case, we link the found class
+            $short = $this->pathForClass([], $cr->getName());
+            return '[' . $data . '](' . $short . ')';
+    }
+
+    /**
+     * Seems not to be used
+     *
+     * @return string
+     */
     public function getSnippet(string $string)
     {
         if (preg_match('/^(.{50,}?)\s.*/m', $string, $matches)) {

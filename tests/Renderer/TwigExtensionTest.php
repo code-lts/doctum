@@ -4,7 +4,10 @@ declare(strict_types = 1);
 
 namespace Doctum\Tests\Renderer;
 
+use Doctum\Reflection\ClassReflection;
 use Doctum\Reflection\FunctionReflection;
+use Doctum\Reflection\MethodReflection;
+use Doctum\Reflection\Reflection;
 use Doctum\Renderer\TwigExtension;
 use Doctum\Tests\AbstractTestCase;
 
@@ -16,7 +19,14 @@ class TwigExtensionTest extends AbstractTestCase
      */
     public function dataProviderParseDesc(): array
     {
+        $project = $this->getProject();
+        $ref1    = new FunctionReflection('my_function', 0);
+        $ref1->setProject($project);
         return [
+            [
+                '',
+                ''
+            ],
             [
                 '<p>text</p>',
                 '<p>text</p>'
@@ -24,6 +34,24 @@ class TwigExtensionTest extends AbstractTestCase
             [
                 '<p><p>text</p></p>',
                 '<p><p>text</p></p>'
+            ],
+            [
+                'Hi {@link \PDO}',
+                '<p>Hi \PDO</p>'
+            ],
+            [
+                'Hi {@link \PDO}',
+                '<p>Hi <a href="https://www.php.net/PDO">PDO</a></p>',
+                $ref1
+            ],
+            [
+                '@see \PDO',
+                '<p>\PDO</p>'
+            ],
+            [
+                '@see \PDO',
+                '<p><a href="https://www.php.net/PDO">PDO</a></p>',
+                $ref1
             ],
             [
                 '# H1' . "\n"
@@ -161,7 +189,7 @@ class TwigExtensionTest extends AbstractTestCase
     /**
      * @dataProvider dataProviderParseDesc
      */
-    public function testParseDesc(string $intput, string $expectedOutput): void
+    public function testParseDesc(string $intput, string $expectedOutput, ?Reflection $ref = null): void
     {
         $extension = new TwigExtension();
         $this->assertSame(
@@ -169,7 +197,97 @@ class TwigExtensionTest extends AbstractTestCase
             $extension->parseDesc(
                 [],
                 $intput,
-                new FunctionReflection('', 0)
+                $ref === null ? new FunctionReflection('', 0) : $ref
+            )
+        );
+    }
+
+    /**
+     * @return array[]
+     */
+    public function dataProviderTransformContentsIntoLinks(): array
+    {
+        $project = $this->getProject();
+        $ref     = new FunctionReflection('', 0);
+        $ref->setProject($project);
+        $ref2 = new FunctionReflection('my_function', 0);
+        $ref2->setProject($project);
+        $ref3 = new ClassReflection('my_class_name', 0);
+        $ref3->setProject($project);
+        $ref4 = new ClassReflection('my_class', 0);
+        $ref4->addMethod(new MethodReflection('myMethod', 0));
+        $ref4->setProject($project);
+        $project->addClass($ref4);
+        return [
+            [
+                '\PDO',
+                '[PDO](https://www.php.net/PDO)',
+                $ref
+            ],
+            [
+                'PDO',
+                '[PDO](https://www.php.net/PDO)',
+                $ref
+            ],
+            [
+                '\Foo::methodName',
+                '\Foo::methodName',
+                $ref
+            ],
+            [
+                'my_function',
+                'my_function',
+                $ref2
+            ],
+            [
+                'my_class_name',
+                'my_class_name',
+                $ref3
+            ],
+            [
+                'my_class',
+                '[my_class](my_class.html)',
+                $ref3
+            ],
+            [
+                'my_class::myMethod',
+                '[my_class::myMethod](my_class.html#method_myMethod)',
+                $ref3
+            ],
+            [
+                'myMethod',
+                'myMethod',
+                $ref3
+            ],
+            [
+                'myMethod',
+                '[myMethod](my_class.html#method_myMethod)',
+                $ref4
+            ],
+            [
+                'my_class::myMethod',
+                'my_class::myMethod',
+                new MethodReflection('myMethod', 0)
+            ],
+            [
+                'my_class',
+                'my_class',
+                new ClassReflection('my_class', 0)
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider dataProviderTransformContentsIntoLinks
+     */
+    public function testTransformContentsIntoLinks(string $intput, string $expectedOutput, Reflection $refl): void
+    {
+        $extension = new TwigExtension();
+        $this->assertSame(
+            $expectedOutput,
+            $extension->transformContentsIntoLinks(
+                $intput,
+                $refl
             )
         );
     }
