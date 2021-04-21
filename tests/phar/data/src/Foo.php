@@ -17,24 +17,36 @@ class Foo
      * level 1
      * ------------
      *
-     *Describe {@link https://doctum.long-term.support } is LTS
+     * Describe {@link https://doctum.long-term.support } is LTS
      * Describe {@link Foo::expects_void_variadic } function
      * Describe {@link expects_void_variadic } function
+     *
+     * Describe {@link \Foo\Foo } class
+     *
+     * Describe {@link \Foo\Foo::expects_void_variadic } class and function
      *
      * Describe2 { @link https://doctum.long-term.support } is LTS
      * Describe2 { @link Foo::expects_void_variadic } function
      * Describe2 { @link expects_void_variadic } function
      *
-     * 
+     *
+     * You need to see: @see expects_void_variadic for more details
+     * You need to see2: @see expects_void_variadic
+     *
+     * You need to see: @see https://doctum.long-term.support
+     *
+     * You need to see: @see Foo::expects_void_variadic for more details
+     *
+     * You need to see2: @see Foo::expects_void_variadic
+     *
      * @see expects_void_variadic
      * @see https://doctum.long-term.support
      * @see Foo::expects_void_variadic
      *
-     * You need to {@see expects_void_variadic}
-     * You need to {@see https://doctum.long-term.support}
-     * You need to {@see Foo::expects_void_variadic}
+     * @see string
+     * @see \PDO
+     * @see \Foo\Foo
      *
-     * 
      * @return void
      */
     function expects_void_variadic(Closure $fn): void {
