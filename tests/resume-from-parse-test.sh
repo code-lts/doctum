@@ -15,7 +15,7 @@ cleanWorkspace
 
 TEMP_FOLDER="$(mktemp -d /tmp/doctum-resume-parse-test.XXXXXXXXX)"
 
-echo "Using temp foler: ${TEMP_FOLDER}"
+echo "Using temp folder: ${TEMP_FOLDER}"
 
 echo "Running parse"
 ./bin/doctum.php parse -v --ignore-parse-errors --no-progress --no-ansi --force tests/phar/data/doctum-absolute.conf.php
@@ -44,3 +44,5 @@ diff --unified --color=always --minimal --suppress-common-lines --recursive test
 if [ $? -eq 0 ]; then
     echo "The build directories where the same"
 fi
+
+rm -rf "${TEMP_FOLDER}"

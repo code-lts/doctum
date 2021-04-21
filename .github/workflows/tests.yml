@@ -99,3 +99,32 @@ jobs:
               run: composer install --no-interaction ${{ matrix.composer-options }}
             - name: Run resume from parse diff tests
               run: ./tests/resume-from-parse-test.sh
+
+    test-composer-package-auto-test:
+        name: Run auto-package tests with php ${{ matrix.php-version }} on ${{ matrix.os }}
+        runs-on: ${{ matrix.os }}
+        continue-on-error: ${{ matrix.experimental }}
+        strategy:
+            fail-fast: false
+            matrix:
+                php-version: ["7.2", "7.3", "7.4", "8.0"]
+                os: [ubuntu-latest]
+                experimental: [false]
+                composer-options: ['']
+                include:
+                    - { php-version: '8.1', experimental: true, os: ubuntu-latest, composer-options: '--ignore-platform-reqs' }
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use php ${{ matrix.php-version }}
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php-version }}
+            - name: Cache module
+              uses: actions/cache@v2
+              with:
+                  path: ~/.composer/cache/
+                  key: composer-cache
+            - name: Run composer package self tests
+              env:
+                  COMPOSER_CLI_OPTIONS: ${{ matrix.composer-options }}
+              run: ./tests/composer-package-auto-test.sh
