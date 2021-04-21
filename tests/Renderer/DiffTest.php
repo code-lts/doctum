@@ -7,7 +7,7 @@ namespace Doctum\Tests\Renderer;
 use Doctum\Renderer\Diff;
 use Doctum\Tests\AbstractTestCase;
 
-class RendererTest extends AbstractTestCase
+class DiffTest extends AbstractTestCase
 {
 
     public function testIsPhpClass(): void

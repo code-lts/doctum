@@ -140,15 +140,17 @@ class TwigExtension extends AbstractExtension
         return sprintf('<abbr title="%s">%s</abbr>', htmlentities($class, ENT_QUOTES), htmlspecialchars($short));
     }
 
-    public function parseDesc(array $context, $desc, Reflection $classOrFunctionRefl)
+    public function parseDesc(array $context, ?string $desc, Reflection $classOrFunctionRefl)
     {
-        if (!$desc) {
+        if ($desc === null || $desc === '') {
             return $desc;
         }
 
         if (null === $this->markdown) {
             $this->markdown = new Parsedown();
         }
+
+        $desc = str_replace(['<code>', '</code>'], ['```', '```'], $desc);
 
         // FIXME: the @see argument is more complex than just a class (Class::Method, local method directly, ...)
         $desc = preg_replace_callback(
