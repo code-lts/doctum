@@ -106,6 +106,14 @@ class Foo
     {
 
     }
+
+	/**
+     * Constructor. Set DB Object and set {@link $return_statements return_statements}.
+     */
+	public function __construct()
+	{
+
+    }
 }
 $f = new Foo();
 $f->expects_void_variadic(static function (string ...$a) {
