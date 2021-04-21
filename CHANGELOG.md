@@ -51,6 +51,10 @@ _LTS release (PHP 7.1 only)_
 
 - Fixed Search results descriptions render
 - Fixed PHP 8.0 usort does not want bool anymore on `GitVersionCollection` setups
+- Fixed CSS issues with method descriptions
+- Fixed phpdoc blocks render having `<code>` HTML tags
+- Fixed composer autoload warnings on PSR-4 classes
+- Adjusted `.gitattributes` to exclude useless files from composer bundles
 
 ## [5.3.2] - 2021-04-12
 
