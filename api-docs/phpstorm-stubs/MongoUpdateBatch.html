@@ -116,7 +116,7 @@
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(<a href="MongoCollection.html">MongoCollection</a> $collection, array $write_options)
         
                                             <p><p>(PECL mongo &gt;= 1.5.0)</p>
@@ -127,7 +127,7 @@
                 <div class="col-md-2 type">
                     bool
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_add">add</a>(array $item)
         
                                             <p><p>(PECL mongo &gt;= 1.5.0)</p>
@@ -139,7 +139,7 @@ MongoWriteBatch</a></small></div>
                 <div class="col-md-2 type">
                     array
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_execute">execute</a>(array $write_options)
         
                                             <p><p>(PECL mongo &gt;= 1.5.0)</p>
@@ -175,10 +175,10 @@ MongoWriteBatch</a></small></div>
                     <tr>
                 <td><a href="MongoCollection.html">MongoCollection</a></td>
                 <td>$collection</td>
-                <td><p>The {see \MongoCollection} to execute the batch on.
-Its {@link <a href="https://php.net/manual/en/mongo.writeconcerns.php">https://php.net/manual/en/mongo.writeconcerns.php</a> write concern}
-will be copied and used as the default write concern if none is given as <code >$write_options</code> or during
-{see \MongoWriteBatch::execute()}.</p></td>
+                <td><p>The {\MongoCollection} to execute the batch on.
+Its <a href="https://php.net/manual/en/mongo.writeconcerns.php">https://php.net/manual/en/mongo.writeconcerns.php</a> write concern
+will be copied and used as the default write concern if none is given as <code >$write_options``` or during
+{<a href="MongoWriteBatch.html">\MongoWriteBatch::execute()}.</a></p></td>
             </tr>
                     <tr>
                 <td>array</td>
@@ -186,10 +186,10 @@ will be copied and used as the default write concern if none is given as <code >
                 <td><p>[optional]</p>
 <p> An array of Write Options.</p><table><thead><tr><th>key</th><th>value meaning</th></tr>
 </thead>
-<tbody><tr><td>w (int|string)</td><td>{@link https://php.net/manual/en/mongo.writeconcerns.php Write concern} value</td></tr>
-<tr><td>wtimeout (int)</td><td>{@link https://php.net/manual/en/mongo.writeconcerns.php Maximum time to wait for replication}</td></tr>
+<tbody><tr><td>w (int|string)</td><td>https://php.net/manual/en/mongo.writeconcerns.php Write concern value</td></tr>
+<tr><td>wtimeout (int)</td><td>https://php.net/manual/en/mongo.writeconcerns.php Maximum time to wait for replication</td></tr>
 <tr><td>ordered</td><td>Determins if MongoDB must apply this batch in order (sequentally, one item at a time) or can rearrange it.
-Defaults to <strong><code>TRUE</code></strong></td></tr>
+Defaults to <strong>```TRUE```</strong></td></tr>
 <tr><td>j (bool)</td><td>Wait for journaling on the primary. This value is discouraged, use WriteConcern instead</td></tr>
 <tr><td>fsync (bool)</td><td>Wait for fsync on the primary. This value is discouraged, use WriteConcern instead</td></tr>
 </tbody></table></td>
@@ -241,28 +241,28 @@ depends on the batch's operation type.
 
 <tbody>
 <tr>
-<td><strong><code>MongoWriteBatch::COMMAND_INSERT</code></strong></td>
+<td><strong>```MongoWriteBatch::COMMAND_INSERT```</strong></td>
 <td>
 The document to add.
 </td>
 </tr>
 <tr>
-<td><strong><code>MongoWriteBatch::COMMAND_UPDATE</code></strong></td>
+<td><strong>```MongoWriteBatch::COMMAND_UPDATE```</strong></td>
 <td>
 <p>Raw update operation.</p>
 <p>Required keys are <em>"q"</em> and <em>"u"</em>, which correspond to the
-<code>$criteria</code> and <code>$new_object</code> parameters of {see \MongoCollection::update()}, respectively.</p>
+```$criteria``` and ```$new_object``` parameters of {[\MongoCollection::update()},](MongoCollection.html) respectively.</p>
 <p>Optional keys are <em>"multi"</em> and <em>"upsert"</em>, which correspond to the
-<em>"multiple"</em> and <em>"upsert"</em> options for {see \MongoCollection::update()}, respectively.
-If unspecified, both options default to <strong><code>FALSE</code></strong>.</p>
+<em>"multiple"</em> and <em>"upsert"</em> options for {[\MongoCollection::update()},](MongoCollection.html) respectively.
+If unspecified, both options default to <strong>```FALSE```</strong>.</p>
 </td>
 </tr>
 <tr>
-<td><strong><code>MongoWriteBatch::COMMAND_DELETE</code></strong></td>
+<td><strong>```MongoWriteBatch::COMMAND_DELETE```</strong></td>
 <td>
 <p class="para">Raw delete operation.</p>
-<p>Required keys are: <em>"q"</em> and <em>"limit"</em>, which correspond to the <code>$criteria</code> parameter
-and <em>"justOne"</em> option of {see \MongoCollection::remove()}, respectively.</p>
+<p>Required keys are: <em>"q"</em> and <em>"limit"</em>, which correspond to the ```$criteria``` parameter
+and <em>"justOne"</em> option of {[\MongoCollection::remove()},](MongoCollection.html) respectively.</p>
 <p>The <em>"limit"</em> option is an integer; however, MongoDB only supports <em>0</em> (i.e. remove all matching
 ocuments) and <em>1</em> (i.e. remove at most one matching document) at this time.</p>
 </td>
@@ -312,7 +312,7 @@ MongoWriteBatch</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <tr>
                 <td>array</td>
                 <td>$write_options</td>
-                <td><p>See {see \MongoWriteBatch::__construct}</p></td>
+                <td><p>See {<a href="MongoWriteBatch.html">\MongoWriteBatch::__construct}</a></p></td>
             </tr>
             </table>
 
