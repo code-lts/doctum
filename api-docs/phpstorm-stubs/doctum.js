@@ -499,7 +499,7 @@
                     {"type":"Interface","link":"Traversable.html","name":"Traversable","doc":"<p>Interface to detect if a class is traversable using foreach.</p>"},
                 
                     {"type":"Interface","link":"UnitEnum.html","name":"UnitEnum","doc":""},
-                                {"type":"Method","fromName":"UnitEnum","fromLink":"UnitEnum.html","link":"UnitEnum.html#method_cases","name":"UnitEnum::cases","doc":null},
+                                {"type":"Method","fromName":"UnitEnum","fromLink":"UnitEnum.html","link":"UnitEnum.html#method_cases","name":"UnitEnum::cases","doc":""},
             
                                                  {"type":"Interface","fromName":"Yaf","fromLink":"Yaf.html","link":"Yaf/Route_Interface.html","name":"Yaf\\Route_Interface","doc":"<p><b>\\Yaf\\Route_Interface</b> used for developer defined their custom route.</p>"},
                                 {"type":"Method","fromName":"Yaf\\Route_Interface","fromLink":"Yaf/Route_Interface.html","link":"Yaf/Route_Interface.html#method_route","name":"Yaf\\Route_Interface::route","doc":"<p><b>\\Yaf\\Route_Interface::route()</b> is the only method that a custom route should implement.</p><br/>\n<p>if this method return TRUE, then the route process will be end. otherwise, \\Yaf\\Router will call next route in the route stack to route request.</p><br/>\n<p>This method would set the route result to the parameter request, by calling \\Yaf\\Request_Abstract::setControllerName(), \\Yaf\\Request_Abstract::setActionName() and \\Yaf\\Request_Abstract::setModuleName().</p><br/>\n<p>This method should also call \\Yaf\\Request_Abstract::setRouted() to make the request routed at last.</p>"},
@@ -9683,7 +9683,7 @@
                     {"type":"Class","link":"UnhandledMatchError.html","name":"UnhandledMatchError","doc":""},
                 
                     {"type":"Class","link":"UnitEnum.html","name":"UnitEnum","doc":""},
-                                {"type":"Method","fromName":"UnitEnum","fromLink":"UnitEnum.html","link":"UnitEnum.html#method_cases","name":"UnitEnum::cases","doc":null},
+                                {"type":"Method","fromName":"UnitEnum","fromLink":"UnitEnum.html","link":"UnitEnum.html#method_cases","name":"UnitEnum::cases","doc":""},
             
                     {"type":"Class","link":"V8Js.html","name":"V8Js","doc":null},
                                 {"type":"Method","fromName":"V8Js","fromLink":"V8Js.html","link":"V8Js.html#method___construct","name":"V8Js::__construct","doc":"<p>Initializes and starts V8 engine and returns new V8Js object with it's own V8 context.</p>"},
