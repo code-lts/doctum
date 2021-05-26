@@ -954,6 +954,8 @@
         {"type":"Method","fromName":"BlackfireProbe","fromLink":"BlackfireProbe.html","link":"BlackfireProbe.html#method_disable","name":"BlackfireProbe::disable","doc":"<p>Disables instrumentation.</p>"},
         {"type":"Method","fromName":"BlackfireProbe","fromLink":"BlackfireProbe.html","link":"BlackfireProbe.html#method_close","name":"BlackfireProbe::close","doc":"<p>Stops the profiling and forces the collected data to be sent to Blackfire.</p>"},
         {"type":"Method","fromName":"BlackfireProbe","fromLink":"BlackfireProbe.html","link":"BlackfireProbe.html#method_createSubProfileQuery","name":"BlackfireProbe::createSubProfileQuery","doc":"<p>Creates a sub-query string to create a new profile linked to the current one.</p>"},
+        {"type":"Method","fromName":"BlackfireProbe","fromLink":"BlackfireProbe.html","link":"BlackfireProbe.html#method_setTransactionName","name":"BlackfireProbe::setTransactionName","doc":"<p>Sets a custom transaction name for Blackfire Monitoring.</p>"},
+        {"type":"Method","fromName":"BlackfireProbe","fromLink":"BlackfireProbe.html","link":"BlackfireProbe.html#method_ignoreTransaction","name":"BlackfireProbe::ignoreTransaction","doc":"<p>Disables Blackfire Monitoring instrumentation for a transaction.</p>"},
             
                     {"type":"Class","link":"COM.html","name":"COM","doc":"<p>The COM class allows you to instantiate an OLE compatible COM object and call its methods and access its properties.</p>"},
                                 {"type":"Method","fromName":"COM","fromLink":"COM.html","link":"COM.html#method___construct","name":"COM::__construct","doc":"<p>(PHP 4 &gt;= 4.1.0, PHP 5, PHP 7)<br/>\nCOM class constructor.</p>"},
