@@ -1,43 +1,51 @@
 #!/bin/sh
-set -e
-
-# Change branch
-git checkout gh-pages > /dev/null
+set -eu
 
 doDocsUpdate() {
+    # Change branch
+    git checkout gh-pages > /dev/null
+
     FOLDER_NAME="$1"
     SOURCE_URL="$2"
+    BUILD_DIR="./api-docs/$FOLDER_NAME"
+    SOURCE_DIR="./api-docs/sources/$FOLDER_NAME"
+
+    echo "Starting to work on: $FOLDER_NAME"
+    echo "Source-url: $SOURCE_URL"
+    echo "Source: $BUILD_DIR"
+    echo "Build: $SOURCE_DIR"
 
     # Create the folders if not exists
-    if [ ! -d ./api-docs/$FOLDER_NAME ]; then
-        mkdir ./api-docs/$FOLDER_NAME
+    if [ ! -d "$BUILD_DIR" ]; then
+        mkdir "$BUILD_DIR"
     fi
 
-    rm -rf ./api-docs/sources/$FOLDER_NAME
+    rm -rfd "$SOURCE_DIR"
 
-    if [ ! -d ./api-docs/sources/$FOLDER_NAME ]; then
-        mkdir ./api-docs/sources/$FOLDER_NAME
+    if [ ! -d "$SOURCE_DIR" ]; then
+        mkdir "$SOURCE_DIR"
     fi
 
     # Download, extract and move
     curl -# -L -o $FOLDER_NAME.tar.gz "$SOURCE_URL"
 
-    tar xzvf $FOLDER_NAME.tar.gz --strip-components=1 -C ./api-docs/sources/$FOLDER_NAME && rm $FOLDER_NAME.tar.gz
+    tar xzvf $FOLDER_NAME.tar.gz --strip-components=1 -C "$SOURCE_DIR" && rm $FOLDER_NAME.tar.gz
 
-    du -sh ./api-docs/sources/$FOLDER_NAME
+    du -sh "$SOURCE_DIR"
 
     # Try as hard as possible to cleanup the dir
-    git ls-files ./api-docs/$FOLDER_NAME/ | xargs -r -n 1 rm
-    rm -rfd ./api-docs/$FOLDER_NAME/*
+    git ls-files "$BUILD_DIR" | xargs -r -n 1 rm
+    # kept non variable by security
+    rm -rfd "$BUILD_DIR"
 
     # Render
     ./releases/latest/doctum.phar update --no-ansi --no-progress --ignore-parse-errors -v api-docs/doctum-php-$FOLDER_NAME.php --force
 
-    # Local folder cleanup
-    rm -rf ./api-docs/sources/$FOLDER_NAME/
+    # Local source folder cleanup
+    rm -rfd $SOURCE_DIR
 
     # Push the changes, but not if empty
-    git add -A ./api-docs/$FOLDER_NAME
+    git add -A "$BUILD_DIR"
     git diff-index --quiet HEAD || git commit -m "Api documentations update ($(date --utc))" -m "#apidocs" && git push
 
     git status
@@ -45,8 +53,9 @@ doDocsUpdate() {
     git checkout - > /dev/null
 
     # Local folder cleanup
-    rm -rf ./api-docs/$FOLDER_NAME
+    rm -rfd ./api-docs/$FOLDER_NAME
 
+    echo "Ended working on: $BUILD_DIR"
 }
 
 doDocsUpdate "phpstorm-stubs" "https://github.com/JetBrains/phpstorm-stubs/archive/refs/heads/master.tar.gz"
