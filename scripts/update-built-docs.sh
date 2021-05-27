@@ -4,41 +4,50 @@ set -e
 # Change branch
 git checkout gh-pages > /dev/null
 
-# Create the folders if not exists
-if [ ! -d ./api-docs/phpstorm-stubs ]; then
-    mkdir ./api-docs/phpstorm-stubs
-fi
+doDocsUpdate() {
+    FOLDER_NAME="$1"
+    SOURCE_URL="$2"
 
-rm -rf ./api-docs/sources/phpstorm-stubs
+    # Create the folders if not exists
+    if [ ! -d ./api-docs/$FOLDER_NAME ]; then
+        mkdir ./api-docs/$FOLDER_NAME
+    fi
 
-if [ ! -d ./api-docs/sources/phpstorm-stubs ]; then
-    mkdir ./api-docs/sources/phpstorm-stubs
-fi
+    rm -rf ./api-docs/sources/$FOLDER_NAME
 
-# Download, extract and move
-curl -# -L -o phpstorm-stubs.tar.gz https://github.com/JetBrains/phpstorm-stubs/archive/refs/heads/master.tar.gz
+    if [ ! -d ./api-docs/sources/$FOLDER_NAME ]; then
+        mkdir ./api-docs/sources/$FOLDER_NAME
+    fi
 
-tar xzvf phpstorm-stubs.tar.gz --strip-components=1 -C ./api-docs/sources/phpstorm-stubs && rm phpstorm-stubs.tar.gz
+    # Download, extract and move
+    curl -# -L -o $FOLDER_NAME.tar.gz "$SOURCE_URL"
 
-du -sh ./api-docs/sources/phpstorm-stubs
+    tar xzvf $FOLDER_NAME.tar.gz --strip-components=1 -C ./api-docs/sources/$FOLDER_NAME && rm $FOLDER_NAME.tar.gz
 
-# Try as hard as possible to cleanup the dir
-git ls-files ./api-docs/phpstorm-stubs/ | xargs -r -n 1 rm
-rm -rfd ./api-docs/phpstorm-stubs/*
+    du -sh ./api-docs/sources/$FOLDER_NAME
 
-# Render
-./releases/latest/doctum.phar update --no-ansi --no-progress --ignore-parse-errors -v api-docs/doctum-php-phpstorm-stubs.php --force
+    # Try as hard as possible to cleanup the dir
+    git ls-files ./api-docs/$FOLDER_NAME/ | xargs -r -n 1 rm
+    rm -rfd ./api-docs/$FOLDER_NAME/*
 
-# Local folder cleanup
-rm -rf ./api-docs/sources/phpstorm-stubs/
+    # Render
+    ./releases/latest/doctum.phar update --no-ansi --no-progress --ignore-parse-errors -v api-docs/doctum-php-$FOLDER_NAME.php --force
 
-# Push the changes, but not if empty
-git add -A ./api-docs/phpstorm-stubs
-git diff-index --quiet HEAD || git commit -m "Api documentations update ($(date --utc))" -m "#apidocs" && git push
+    # Local folder cleanup
+    rm -rf ./api-docs/sources/$FOLDER_NAME/
 
-git status
+    # Push the changes, but not if empty
+    git add -A ./api-docs/$FOLDER_NAME
+    git diff-index --quiet HEAD || git commit -m "Api documentations update ($(date --utc))" -m "#apidocs" && git push
 
-git checkout - > /dev/null
+    git status
 
-# Local folder cleanup
-rm -rf ./api-docs/phpstorm-stubs
+    git checkout - > /dev/null
+
+    # Local folder cleanup
+    rm -rf ./api-docs/$FOLDER_NAME
+
+}
+
+doDocsUpdate "phpstorm-stubs" "https://github.com/JetBrains/phpstorm-stubs/archive/refs/heads/master.tar.gz"
+doDocsUpdate "mangopay2-php-sdk" "https://github.com/Mangopay/mangopay2-php-sdk/archive/refs/heads/master.tar.gz"
