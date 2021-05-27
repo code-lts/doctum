@@ -73,7 +73,7 @@
 
             <h2>Namespaces</h2>
         <div class="namespace-list">
-            <a href="[Global_Namespace].html">[Global Namespace]</a><a href="Aerospike.html">Aerospike</a><a href="Cassandra.html">Cassandra</a><a href="Couchbase.html">Couchbase</a><a href="Crypto.html">Crypto</a><a href="Decimal.html">Decimal</a><a href="Ds.html">Ds</a><a href="FFI.html">FFI</a><a href="Grpc.html">Grpc</a><a href="JetBrains.html">JetBrains</a><a href="MongoDB.html">MongoDB</a><a href="Mosquitto.html">Mosquitto</a><a href="Parle.html">Parle</a><a href="RdKafka.html">RdKafka</a><a href="Saxon.html">Saxon</a><a href="StubTests.html">StubTests</a><a href="Vtiful.html">Vtiful</a><a href="Yaf.html">Yaf</a><a href="___PHPSTORM_HELPERS.html">___PHPSTORM_HELPERS</a><a href="ast.html">ast</a><a href="http.html">http</a><a href="mysql_xdevapi.html">mysql_xdevapi</a><a href="parallel.html">parallel</a><a href="pq.html">pq</a>        </div>
+            <a href="[Global_Namespace].html">[Global Namespace]</a><a href="Aerospike.html">Aerospike</a><a href="Cassandra.html">Cassandra</a><a href="Couchbase.html">Couchbase</a><a href="Crypto.html">Crypto</a><a href="Decimal.html">Decimal</a><a href="Ds.html">Ds</a><a href="FFI.html">FFI</a><a href="Grpc.html">Grpc</a><a href="JetBrains.html">JetBrains</a><a href="MongoDB.html">MongoDB</a><a href="Mosquitto.html">Mosquitto</a><a href="Parle.html">Parle</a><a href="RdKafka.html">RdKafka</a><a href="Saxon.html">Saxon</a><a href="StubTests.html">StubTests</a><a href="Vtiful.html">Vtiful</a><a href="Yaf.html">Yaf</a><a href="___PHPSTORM_HELPERS.html">___PHPSTORM_HELPERS</a><a href="ast.html">ast</a><a href="http.html">http</a><a href="mysql_xdevapi.html">mysql_xdevapi</a><a href="newrelic.html">newrelic</a><a href="parallel.html">parallel</a><a href="pq.html">pq</a>        </div>
     
             <h2>Classes</h2>
     <div class="container-fluid underlined">
@@ -29094,13 +29094,59 @@ Available only with mysqlnd.</p></p>                    </div>
                                             </div>
                     <div class="col-md-2"></div>
                 </div>
+                            <div class="row" id="function_newrelic_accept_distributed_trace_headers">
+                    <div class="col-md-2 type">
+                                                                                                bool
+                    </div>
+                    <div class="col-md-8">
+                        newrelic_accept_distributed_trace_headers(array $headers, string $transport_type = &#039;HTTP&#039;)<br>
+                                                                                                    <i>Since: 9.8</i>
+                            <br>
+                                                                            <p><p>Accepts an array of distributed trace headers.</p></p>                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                            <div class="row" id="function_newrelic_accept_distributed_trace_payload">
+                    <div class="col-md-2 type">
+                                                                                                void
+                    </div>
+                    <div class="col-md-8">
+                        newrelic_accept_distributed_trace_payload(string $payload)<br>
+                                                <span class="label label-danger">deprecated</span>                                                    <i>Since: 8.4</i>
+                            <br>
+                                                                            <p><p>Accepts a distributed trace payload.</p></p>                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                            <div class="row" id="function_newrelic_accept_distributed_trace_payload_httpsafe">
+                    <div class="col-md-2 type">
+                                                                                                bool
+                    </div>
+                    <div class="col-md-8">
+                        newrelic_accept_distributed_trace_payload_httpsafe(string $httpsafe_payload, string $transport_type = &#039;HTTP&#039;)<br>
+                                                <span class="label label-danger">deprecated</span>                                                    <i>Since: 8.4</i>
+                            <br>
+                                                                            <p><p>Accepts a distributed trace payload that includes an HTTPSafe (Base64 encoded) JSON string.</p></p>                    </div>
+                    <div class="col-md-2"></div>
+                </div>
                             <div class="row" id="function_newrelic_add_custom_parameter">
                     <div class="col-md-2 type">
                                                                                                 bool
                     </div>
                     <div class="col-md-8">
                         newrelic_add_custom_parameter(string $key, bool|float|int|string $value)<br>
-                                                                                                                            <p><p>Add a custom parameter to the current web transaction with the specified value.</p></p>                    </div>
+                                                                                                    <i>Since: 4.4.5.35</i>
+                            <br>
+                                                                            <p><p>Attaches a custom attribute (key/value pair) to the current transaction and the current span (if enabled).</p></p>                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                            <div class="row" id="function_newrelic_add_custom_span_parameter">
+                    <div class="col-md-2 type">
+                                                                                                bool
+                    </div>
+                    <div class="col-md-8">
+                        newrelic_add_custom_span_parameter(string $key, bool|float|int|string $value)<br>
+                                                                                                    <i>Since: 9.12.0.268</i>
+                            <br>
+                                                                            <p><p>Attaches a custom attribute (key/value pair) to the current span.</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_newrelic_add_custom_tracer">
@@ -29109,8 +29155,7 @@ Available only with mysqlnd.</p></p>                    </div>
                     </div>
                     <div class="col-md-8">
                         newrelic_add_custom_tracer(string $functionName)<br>
-                                                                                                                            <p><p>Add user-defined functions or methods to the list to be instrumented . API equivalent of the
-newrelic.transaction_tracer.custom setting.</p></p>                    </div>
+                                                                                                                            <p><p>Specify functions or methods for the agent to instrument with custom instrumentation.</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_newrelic_background_job">
@@ -29119,7 +29164,7 @@ newrelic.transaction_tracer.custom setting.</p></p>                    </div>
                     </div>
                     <div class="col-md-8">
                         newrelic_background_job(bool $flag = true)<br>
-                                                                                                                            <p><p>Mark current transaction as a background job or a web transaction.</p></p>                    </div>
+                                                                                                                            <p><p>Manually specify that a transaction is a background job or a web transaction.</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_newrelic_capture_params">
@@ -29127,9 +29172,19 @@ newrelic.transaction_tracer.custom setting.</p></p>                    </div>
                                                                                                 void
                     </div>
                     <div class="col-md-8">
-                        newrelic_capture_params(bool $enable = true)<br>
-                                                                                                                            <p><p>Enables the capturing of URL parameters for displaying in transaction traces. This will override the
-newrelic.capture_params setting.</p></p>                    </div>
+                        newrelic_capture_params(bool $enable_flag = true)<br>
+                                                                                                                            <p><p>Enable or disable the capture of URL parameters.</p></p>                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                            <div class="row" id="function_newrelic_create_distributed_trace_payload">
+                    <div class="col-md-2 type">
+                                                                                                <a href="newrelic/DistributedTracePayload.html"><abbr title="newrelic\DistributedTracePayload">DistributedTracePayload</abbr></a>
+                    </div>
+                    <div class="col-md-8">
+                        newrelic_create_distributed_trace_payload()<br>
+                                                <span class="label label-danger">deprecated</span>                                                    <i>Since: 8.4</i>
+                            <br>
+                                                                            <p><p>Creates a distributed trace payload.</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_newrelic_custom_metric">
@@ -29137,18 +29192,17 @@ newrelic.capture_params setting.</p></p>                    </div>
                                                                                                 bool
                     </div>
                     <div class="col-md-8">
-                        newrelic_custom_metric(string $metricName, float $value)<br>
-                                                                                                                            <p><p>Adds a custom metric with the specified name and value.</p></p>                    </div>
+                        newrelic_custom_metric(string $metric_name, float $value)<br>
+                                                                                                                            <p><p>Add a custom metric (in milliseconds) to time a component of your app not captured by default.</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_newrelic_disable_autorum">
                     <div class="col-md-2 type">
-                                                                                                true
+                                                                                                bool|null
                     </div>
                     <div class="col-md-8">
                         newrelic_disable_autorum()<br>
-                                                                                                                            <p><p>Prevents the output filter from attempting to insert the JavaScript for page load timing (sometimes referred to as
-real user monitoring or RUM) for this current transaction.</p></p>                    </div>
+                                                                                                                            <p><p>Disable automatic injection of the browser monitoring snippet on particular pages.</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_newrelic_enable_params">
@@ -29167,7 +29221,7 @@ real user monitoring or RUM) for this current transaction.</p></p>              
                     </div>
                     <div class="col-md-8">
                         newrelic_end_of_transaction()<br>
-                                                                                                                            <p><p>Stop recording the web transaction immediately.</p></p>                    </div>
+                                                                                                                            <p><p>Stop timing the current transaction, but continue instrumenting it.</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_newrelic_end_transaction">
@@ -29176,7 +29230,9 @@ real user monitoring or RUM) for this current transaction.</p></p>              
                     </div>
                     <div class="col-md-8">
                         newrelic_end_transaction(bool $ignore = false)<br>
-                                                                                                                            <p><p>Causes the current transaction to end immediately.</p></p>                    </div>
+                                                                                                    <i>Since: 3.0.5.95</i>
+                            <br>
+                                                                            <p><p>Stop instrumenting the current transaction immediately.</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_newrelic_get_browser_timing_footer">
@@ -29185,8 +29241,7 @@ real user monitoring or RUM) for this current transaction.</p></p>              
                     </div>
                     <div class="col-md-8">
                         newrelic_get_browser_timing_footer(bool $includeTags = true)<br>
-                                                                                                                            <p><p>Returns the JavaScript string to inject at the very end of the HTML output for page load timing (sometimes referred
-to as real user monitoring or RUM).</p></p>                    </div>
+                                                                                                                            <p><p>Returns a browser monitoring snippet to inject at the end of the HTML output.</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_newrelic_get_browser_timing_header">
@@ -29195,8 +29250,25 @@ to as real user monitoring or RUM).</p></p>                    </div>
                     </div>
                     <div class="col-md-8">
                         newrelic_get_browser_timing_header(bool $includeTags = true)<br>
-                                                                                                                            <p><p>Returns the JavaScript string to inject as part of the header for page load timing (sometimes referred to as real
-user monitoring or RUM).</p></p>                    </div>
+                                                                                                                            <p><p>Returns a browser monitoring snippet to inject in the head of your HTML output.</p></p>                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                            <div class="row" id="function_newrelic_get_linking_metadata">
+                    <div class="col-md-2 type">
+                                                                                                array
+                    </div>
+                    <div class="col-md-8">
+                        newrelic_get_linking_metadata()<br>
+                                                                                                                            <p><p>Returns a collection of metadata necessary for linking data to a trace or an entity.</p></p>                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                            <div class="row" id="function_newrelic_get_trace_metadata">
+                    <div class="col-md-2 type">
+                                                                                                array
+                    </div>
+                    <div class="col-md-8">
+                        newrelic_get_trace_metadata()<br>
+                                                                                                                            <p><p>Returns an associative array containing the identifiers of the current trace and the parent span.</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_newrelic_ignore_apdex">
@@ -29205,7 +29277,7 @@ user monitoring or RUM).</p></p>                    </div>
                     </div>
                     <div class="col-md-8">
                         newrelic_ignore_apdex()<br>
-                                                                                                                            <p><p>Do not generate Apdex metrics for this transaction.</p></p>                    </div>
+                                                                                                                            <p><p>Ignore the current transaction when calculating Apdex.</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_newrelic_ignore_transaction">
@@ -29214,7 +29286,29 @@ user monitoring or RUM).</p></p>                    </div>
                     </div>
                     <div class="col-md-8">
                         newrelic_ignore_transaction()<br>
-                                                                                                                            <p><p>Do not generate metrics for this transaction.</p></p>                    </div>
+                                                                                                                            <p><p>Do not instrument the current transaction.</p></p>                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                            <div class="row" id="function_newrelic_insert_distributed_trace_headers">
+                    <div class="col-md-2 type">
+                                                                                                bool
+                    </div>
+                    <div class="col-md-8">
+                        newrelic_insert_distributed_trace_headers(array $headers)<br>
+                                                                                                    <i>Since: 9.8</i>
+                            <br>
+                                                                            <p><p>Inserts W3C Trace Context headers and New Relic Distributed Tracing headers into an outbound array of headers.</p></p>                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                            <div class="row" id="function_newrelic_is_sampled">
+                    <div class="col-md-2 type">
+                                                                                                bool
+                    </div>
+                    <div class="col-md-8">
+                        newrelic_is_sampled()<br>
+                                                                                                    <i>Since: 9.3</i>
+                            <br>
+                                                                            <p><p>Returns a value indicating whether or not the current transaction is marked as sampled.</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_newrelic_name_transaction">
@@ -29223,16 +29317,19 @@ user monitoring or RUM).</p></p>                    </div>
                     </div>
                     <div class="col-md-8">
                         newrelic_name_transaction(string $name)<br>
-                                                                                                                            <p><p>Sets the name of the transaction to the specified name.</p></p>                    </div>
+                                                                                                                            <p><p>Set custom name for current transaction.</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_newrelic_notice_error">
                     <div class="col-md-2 type">
-                                                                                                void
+                                                                                                null
                     </div>
                     <div class="col-md-8">
-                        newrelic_notice_error(string|int $messageOrUnused = null, <a href="Exception.html">Exception</a>|string $exceptionOrMessage = null, string $unused2 = null, int $unused3 = null, mixed $unused4 = null)<br>
-                                                                                                                            <p><p>Report an error at this line of code, with a complete stack trace.</p></p>                    </div>
+                        newrelic_notice_error(string|Throwable|Exception|int $messageOrExceptionOrCode, string $errstr = null, string $errfile = null, int $errline = null, string $errcontext = null)<br>
+                                                                                                    <i>Since: 2.6</i>
+                            <br>
+                                                                            <p><p>Use these calls to collect errors that the PHP agent does not collect automatically and to set the callback for
+your own error and exception handler.</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_newrelic_record_custom_event">
@@ -29241,12 +29338,14 @@ user monitoring or RUM).</p></p>                    </div>
                     </div>
                     <div class="col-md-8">
                         newrelic_record_custom_event(string $name, array $attributes)<br>
-                                                                                                                            <p><p>Records a New Relic Insights custom event.</p></p>                    </div>
+                                                                                                    <i>Since: 4.18.0.89</i>
+                            <br>
+                                                                            <p><p>Record a custom event with the given name and attributes</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_newrelic_record_datastore_segment">
                     <div class="col-md-2 type">
-                                                                                                mixed|false
+                                                                                                mixed
                     </div>
                     <div class="col-md-8">
                         newrelic_record_datastore_segment(callable $func, array $parameters)<br>
@@ -29260,8 +29359,10 @@ user monitoring or RUM).</p></p>                    </div>
                                                                                                 bool
                     </div>
                     <div class="col-md-8">
-                        newrelic_set_appname(string $name, string $license = null, bool $xmit = false)<br>
-                                                                                                                            <p><p>Sets the name of the application to name.</p></p>                    </div>
+                        newrelic_set_appname(string $name, string $license, bool $xmit = false)<br>
+                                                                                                    <i>Since: 3.1.5.111</i>
+                            <br>
+                                                                            <p><p>Set the New Relic application name, which the New Relic UI uses to connect your data to the correct application.</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_newrelic_set_user_attributes">
@@ -29269,8 +29370,10 @@ user monitoring or RUM).</p></p>                    </div>
                                                                                                 bool
                     </div>
                     <div class="col-md-8">
-                        newrelic_set_user_attributes(string $user, string $account, string $product)<br>
-                                                                                                                            <p><p>Sets user attributes (custom parameters).</p></p>                    </div>
+                        newrelic_set_user_attributes(string $user_value, string $account_value, string $product_value)<br>
+                                                                                                    <i>Since: 3.1.5.111</i>
+                            <br>
+                                                                            <p><p>Create user-related custom attributes. newrelic_add_custom_parameter is more flexible.</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_newrelic_start_transaction">
@@ -29278,9 +29381,13 @@ user monitoring or RUM).</p></p>                    </div>
                                                                                                 bool
                     </div>
                     <div class="col-md-8">
-                        newrelic_start_transaction(string $appName, string $license = null)<br>
-                                                                                                                            <p><p>If you have ended a transaction before your script terminates (perhaps due to it just having finished a task in a job
-queue manager) and you want to start a new transaction, use this call.</p></p>                    </div>
+                        newrelic_start_transaction(string $appname, string $license = null)<br>
+                                                                                                    <i>Since: 3.0.5.95</i>
+                            <br>
+                                                                            <p><p>Start a new transaction manually. Usually used after manually ending a transaction with
+newrelic_end_transaction(),
+for example when separating tasks in a job queue manager. When instrumenting this new transaction, the agent
+performs the same operations as when the script first started.</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_next">
