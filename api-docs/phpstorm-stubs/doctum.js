@@ -3906,7 +3906,7 @@
         {"type":"Method","fromName":"FANNConnection","fromLink":"FANNConnection.html","link":"FANNConnection.html#method_getWeight","name":"FANNConnection::getWeight","doc":"<p>Returns the connection weight</p>"},
         {"type":"Method","fromName":"FANNConnection","fromLink":"FANNConnection.html","link":"FANNConnection.html#method_setWeight","name":"FANNConnection::setWeight","doc":"<p>Sets the connections weight</p>"},
             
-                    {"type":"Class","link":"FFI.html","name":"FFI","doc":"<p>Class FFI</p>"},
+                    {"type":"Class","link":"FFI.html","name":"FFI","doc":"<p>FFI class provides access to a simple way to call native functions,\naccess native variables and create/access data structures defined\nin C language.</p>"},
                                 {"type":"Method","fromName":"FFI","fromLink":"FFI.html","link":"FFI.html#method_cdef","name":"FFI::cdef","doc":"<p>The method creates a binding on the existing C function.</p>"},
         {"type":"Method","fromName":"FFI","fromLink":"FFI.html","link":"FFI.html#method_load","name":"FFI::load","doc":"<p>Instead of embedding of a long C definition into PHP string,\nand creating FFI through FFI::cdef(), it's possible to separate\nit into a C header file. Note, that C preprocessor directives\n(e.g. #define or #ifdef) are not supported. And only a couple of\nspecial macros may be used especially for FFI.</p>"},
         {"type":"Method","fromName":"FFI","fromLink":"FFI.html","link":"FFI.html#method_scope","name":"FFI::scope","doc":"<p>FFI definition parsing and shared library loading may take\nsignificant time. It's not useful to do it on each HTTP request in\nWEB environment. However, it's possible to pre-load FFI definitions\nand libraries at php startup, and instantiate FFI objects when\nnecessary. Header files may be extended with FFI_SCOPE define\n(default pre-loading scope is &quot;C&quot;). This name is going to be\nused as FFI::scope() argument. It's possible to pre-load few\nfiles into a single scope.</p>"},
@@ -3925,13 +3925,17 @@
         {"type":"Method","fromName":"FFI","fromLink":"FFI.html","link":"FFI.html#method_string","name":"FFI::string","doc":"<p>Creates a PHP string from $size bytes of memory area pointed by\n$source. If size is omitted, $source must be zero terminated\narray of C chars.</p>"},
         {"type":"Method","fromName":"FFI","fromLink":"FFI.html","link":"FFI.html#method_isNull","name":"FFI::isNull","doc":"<p>Checks whether a FFI\\CData is a null pointer.</p>"},
             
-                                                {"type":"Class","fromName":"FFI","fromLink":"FFI.html","link":"FFI/CData.html","name":"FFI\\CData","doc":"<p>Class CData</p>"},
+                                                {"type":"Class","fromName":"FFI","fromLink":"FFI.html","link":"FFI/CData.html","name":"FFI\\CData","doc":"<p>Proxy object that provides access to compiled structures.</p>"},
+                                {"type":"Method","fromName":"FFI\\CData","fromLink":"FFI/CData.html","link":"FFI/CData.html#method___get","name":"FFI\\CData::__get","doc":""},
+        {"type":"Method","fromName":"FFI\\CData","fromLink":"FFI/CData.html","link":"FFI/CData.html#method___set","name":"FFI\\CData::__set","doc":"<p>In the case that CData is a wrapper over an array, it is an\nimplementation of the {\\Traversable}, {\\Countable},\nand {\\ArrayAccess}</p>"},
+        {"type":"Method","fromName":"FFI\\CData","fromLink":"FFI/CData.html","link":"FFI/CData.html#method___invoke","name":"FFI\\CData::__invoke","doc":""},
+            
+                                                {"type":"Class","fromName":"FFI","fromLink":"FFI.html","link":"FFI/CType.html","name":"FFI\\CType","doc":"<p>Class containing C type information.</p>"},
+                                {"type":"Method","fromName":"FFI\\CType","fromLink":"FFI/CType.html","link":"FFI/CType.html#method_getName","name":"FFI\\CType::getName","doc":"<p>Returns the name of the type.</p>"},
+            
+                                                {"type":"Class","fromName":"FFI","fromLink":"FFI.html","link":"FFI/Exception.html","name":"FFI\\Exception","doc":"<p>General FFI exception.</p>"},
                 
-                                                {"type":"Class","fromName":"FFI","fromLink":"FFI.html","link":"FFI/CType.html","name":"FFI\\CType","doc":"<p>Class CType</p>"},
-                
-                                                {"type":"Class","fromName":"FFI","fromLink":"FFI.html","link":"FFI/Exception.html","name":"FFI\\Exception","doc":"<p>Class Exception</p>"},
-                
-                                                {"type":"Class","fromName":"FFI","fromLink":"FFI.html","link":"FFI/ParserException.html","name":"FFI\\ParserException","doc":"<p>Class ParserException</p>"},
+                                                {"type":"Class","fromName":"FFI","fromLink":"FFI.html","link":"FFI/ParserException.html","name":"FFI\\ParserException","doc":"<p>An exception that occurs when parsing invalid header files.</p>"},
                 
                     {"type":"Class","link":"FilesystemIterator.html","name":"FilesystemIterator","doc":"<p>The Filesystem iterator</p>"},
                                 {"type":"Method","fromName":"FilesystemIterator","fromLink":"FilesystemIterator.html","link":"FilesystemIterator.html#method___construct","name":"FilesystemIterator::__construct","doc":"<p>Constructs a new filesystem iterator</p>"},
