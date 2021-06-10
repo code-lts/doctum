@@ -10,17 +10,18 @@ $sourceRootDir = $rootDir . 'sources/mangopay2-php-sdk';
 $iterator = Finder::create()
     ->files()
     ->name('*.php')
+    ->path('MangoPay')
     ->in($sourceRootDir);
 
 return new Doctum($iterator, [
-    'title'                => 'PHP Jetbrains mangopay2-php-sdk',
+    'title'                => 'Mangopay PHP SDK',
     'build_dir'            => $rootDir . '/mangopay2-php-sdk',
     'cache_dir'            => $rootDir . '/cache',
     'source_dir'           => $rootDir,
     'version'              => 'master',// For remote links to work
     'remote_repository'    => new GitHubRemoteRepository('Mangopay/mangopay2-php-sdk', $sourceRootDir),
     'footer_link'          => [
-        'href'        => 'https://github.com/JetBrains/mangopay2-php-sdk#readme',
+        'href'        => 'https://github.com/mangopay/mangopay2-php-sdk#readme',
         'rel'         => 'noreferrer noopener',
         'target'      => '_blank',
         'before_text' => 'This documentation is built for the',
