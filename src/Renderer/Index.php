@@ -18,6 +18,7 @@ use Doctum\Project;
 class Index implements \Serializable
 {
     protected $classes;
+    /** @var string[] */
     protected $versions;
     protected $namespaces;
 
@@ -43,6 +44,9 @@ class Index implements \Serializable
         }
     }
 
+    /**
+     * @return string[]
+     */
     public function getVersions()
     {
         return $this->versions;
@@ -63,11 +67,35 @@ class Index implements \Serializable
         return $this->classes[$class] ?? false;
     }
 
+    /**
+     * @return array[]
+     */
+    public function __serialize(): array
+    {
+        return [$this->classes, $this->versions, $this->namespaces];
+    }
+
+    /**
+     * @param array[] $data
+     */
+    public function __unserialize(array $data): void
+    {
+        [$this->classes, $this->versions, $this->namespaces] = $data;
+    }
+
+    /**
+     * @return string
+     */
     public function serialize()
     {
         return serialize([$this->classes, $this->versions, $this->namespaces]);
     }
 
+    /**
+     * @param string $data
+     *
+     * @return void
+     */
     public function unserialize($data)
     {
         [$this->classes, $this->versions, $this->namespaces] = unserialize($data);
