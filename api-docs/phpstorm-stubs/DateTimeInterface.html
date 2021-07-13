@@ -254,7 +254,7 @@ Returns date formatted according to given format</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    int|false
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getOffset">getOffset</a>()
@@ -276,7 +276,7 @@ Gets the Unix timestamp</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="DateTimeZone.html">DateTimeZone</a>
+                    <a href="DateTimeZone.html">DateTimeZone</a>|false
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getTimezone">getTimezone</a>()
@@ -304,7 +304,7 @@ The __wakeup handler</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_diff">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L87">at line 87</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L88">at line 88</a></div>
         <code>                    <a href="DateInterval.html">DateInterval</a>
     <strong>diff</strong>(<a href="DateTimeInterface.html">DateTimeInterface</a> $targetObject, bool $absolute = false)
         </code>
@@ -340,7 +340,7 @@ Returns the difference between two DateTime objects</p></p>
         <tr>
             <td><a href="DateInterval.html">DateInterval</a></td>
             <td><p>The <a href="https://secure.php.net/manual/en/class.dateinterval.php">https://secure.php.net/manual/en/class.dateinterval.php</a> DateInterval} object representing the
-difference between the two dates or <b>FALSE</b> on failure.</p></td>
+difference between the two dates.</p></td>
         </tr>
     </table>
 
@@ -353,7 +353,7 @@ difference between the two dates or <b>FALSE</b> on failure.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_format">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L99">at line 99</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L101">at line 101</a></div>
         <code>                    string
     <strong>format</strong>(string $format)
         </code>
@@ -385,7 +385,8 @@ Format accepted by  https://secure.php.net/manual/en/function.date.php date().
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td><p>Returns the formatted date string on success or <b>FALSE</b> on failure.</p></td>
+            <td><p>Returns the formatted date string on success or <b>FALSE</b> on failure.
+Since PHP8, it always returns <b>STRING</b>.</p></td>
         </tr>
     </table>
 
@@ -398,8 +399,8 @@ Format accepted by  https://secure.php.net/manual/en/function.date.php date().
             </div>
                     <div class="method-item">
                     <h3 id="method_getOffset">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L108">at line 108</a></div>
-        <code>                    int
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L111">at line 111</a></div>
+        <code>                    int|false
     <strong>getOffset</strong>()
         </code>
     </h3>
@@ -417,9 +418,9 @@ Returns the timezone offset</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
+            <td>int|false</td>
             <td><p>Returns the timezone offset in seconds from UTC on success
-or <b>FALSE</b> on failure.</p></td>
+or <b>FALSE</b> on failure. Since PHP8, it always returns <b>INT</b>.</p></td>
         </tr>
     </table>
 
@@ -432,7 +433,7 @@ or <b>FALSE</b> on failure.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTimestamp">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L116">at line 116</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L120">at line 120</a></div>
         <code>                    int
     <strong>getTimestamp</strong>()
         </code>
@@ -465,8 +466,8 @@ Gets the Unix timestamp</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTimezone">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L126">at line 126</a></div>
-        <code>                    <a href="DateTimeZone.html">DateTimeZone</a>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L130">at line 130</a></div>
+        <code>                    <a href="DateTimeZone.html">DateTimeZone</a>|false
     <strong>getTimezone</strong>()
         </code>
     </h3>
@@ -484,7 +485,7 @@ Return time zone relative to given DateTime</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="DateTimeZone.html">DateTimeZone</a></td>
+            <td><a href="DateTimeZone.html">DateTimeZone</a>|false</td>
             <td><p>Returns a <a href="https://secure.php.net/manual/en/class.datetimezone.php">https://secure.php.net/manual/en/class.datetimezone.php</a> DateTimeZone object on success
 or <b>FALSE</b> on failure.</p></td>
         </tr>
@@ -499,7 +500,7 @@ or <b>FALSE</b> on failure.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method___wakeup">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L134">at line 134</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L138">at line 138</a></div>
         <code>                    void
     <strong>__wakeup</strong>()
         </code>
