@@ -1935,7 +1935,7 @@ from the range. +inf and -inf are also valid limits.</p></p>                </di
                     int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_zRemRangeByScore">zRemRangeByScore</a>(string $key, float|string $start, float|string $end)
+                    <a href="#method_zRemRangeByScore">zRemRangeByScore</a>(string $key, string $start, string $end)
         
                                             <p><p>Deletes the elements of the sorted set stored at the specified key which have scores in the range [start,end].</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -11085,7 +11085,7 @@ $redis-&gt;zCount(&#039;key&#039;, 0, 3); // 2, corresponding to array(&#039;val
                     <h3 id="method_zRemRangeByScore">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L2956">at line 2956</a></div>
         <code>                    int
-    <strong>zRemRangeByScore</strong>(string $key, float|string $start, float|string $end)
+    <strong>zRemRangeByScore</strong>(string $key, string $start, string $end)
         </code>
     </h3>
     <div class="details">    
@@ -11105,14 +11105,14 @@ $redis-&gt;zCount(&#039;key&#039;, 0, 3); // 2, corresponding to array(&#039;val
                 <td></td>
             </tr>
                     <tr>
-                <td>float|string</td>
+                <td>string</td>
                 <td>$start</td>
-                <td><p>double or &quot;+inf&quot; or &quot;-inf&quot; string</p></td>
+                <td><p>double or &quot;+inf&quot; or &quot;-inf&quot; as a string</p></td>
             </tr>
                     <tr>
-                <td>float|string</td>
+                <td>string</td>
                 <td>$end</td>
-                <td><p>double or &quot;+inf&quot; or &quot;-inf&quot; string</p></td>
+                <td><p>double or &quot;+inf&quot; or &quot;-inf&quot; as a string</p></td>
             </tr>
             </table>
 
@@ -11137,7 +11137,7 @@ $redis-&gt;zCount(&#039;key&#039;, 0, 3); // 2, corresponding to array(&#039;val
 $redis-&gt;zAdd(&#039;key&#039;, 0, &#039;val0&#039;);<br />
 $redis-&gt;zAdd(&#039;key&#039;, 2, &#039;val2&#039;);<br />
 $redis-&gt;zAdd(&#039;key&#039;, 10, &#039;val10&#039;);<br />
-$redis-&gt;zRemRangeByScore(&#039;key&#039;, 0, 3); // 2<br />
+$redis-&gt;zRemRangeByScore(&#039;key&#039;, &#039;0&#039;, &#039;3&#039;); // 2<br />
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
