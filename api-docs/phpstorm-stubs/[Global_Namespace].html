@@ -1148,6 +1148,16 @@ See MongoClient::__construct() and the section on connecting for more informatio
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                    <a href="OCICollection.html"><abbr title="OCICollection">OCICollection</abbr></a>    </div>
+                <div class="col-md-6"><p>OCI8 Collection functionality.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="OCILob.html"><abbr title="OCILob">OCILob</abbr></a>    </div>
+                <div class="col-md-6"><p>OCI8 LOB functionality for large binary (BLOB) and character (CLOB) objects.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="OCI_Collection.html"><abbr title="OCI_Collection">OCI_Collection</abbr></a>    </div>
                 <div class="col-md-6"><p>OCI8 Collection functionality.</p></div>
             </div>
@@ -30228,7 +30238,7 @@ Allocates and returns a new cursor (statement handle)</p></p>                   
                 </div>
                             <div class="row" id="function_oci_new_descriptor">
                     <div class="col-md-2 type">
-                                                                                                <a href="OCI_Lob.html">OCI_Lob</a>|false
+                                                                                                <a href="OCI_Lob.html">OCI_Lob</a>|<a href="OCILob.html">OCILob</a>|false
                     </div>
                     <div class="col-md-8">
                         oci_new_descriptor(resource $connection, int $type = OCI_DTYPE_LOB)<br>
@@ -30337,6 +30347,16 @@ Returns the Oracle Database version</p></p>                    </div>
 Sets the action name</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
+                            <div class="row" id="function_oci_set_call_timeout">
+                    <div class="col-md-2 type">
+                                                                                                bool
+                    </div>
+                    <div class="col-md-8">
+                        oci_set_call_timeout(resource $connection, int $time_out)<br>
+                                                                                                                            <p><p>(PHP 7.2 &gt;= 7.2.14, PHP 8, PHP 7 &gt;= 7.3.1, PHP 8, PECL OCI8 &gt;= 2.2.0)<br/>
+Sets a millisecond timeout for database calls</p></p>                    </div>
+                    <div class="col-md-2"></div>
+                </div>
                             <div class="row" id="function_oci_set_client_identifier">
                     <div class="col-md-2 type">
                                                                                                 bool
@@ -30355,6 +30375,16 @@ Sets the client identifier</p></p>                    </div>
                         oci_set_client_info(resource $connection, string $client_info)<br>
                                                                                                                             <p><p>(PHP 5.3.2, PECL OCI8 &gt;= 1.4.0)<br/>
 Sets the client information</p></p>                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                            <div class="row" id="function_oci_set_db_operation">
+                    <div class="col-md-2 type">
+                                                                                                bool
+                    </div>
+                    <div class="col-md-8">
+                        oci_set_db_operation(resource $connection, string $dbop)<br>
+                                                                                                                            <p><p>(PHP 7 &gt;== 7.2.14, PHP 8, PHP 7 &gt;= 7.3.1, PHP 8, PECL OCI8 &gt;= 2.2.0)
+Sets the database operation</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_oci_set_edition">
@@ -30433,7 +30463,7 @@ Alias of {oci_cancel}</p></p>                    </div>
                                                                                                 bool
                     </div>
                     <div class="col-md-8">
-                        ocicloselob(<a href="OCI_Lob.html">OCI_Lob</a> $lob_descriptor)<br>
+                        ocicloselob(<a href="OCI_Lob.html">OCI_Lob</a>|<a href="OCILob.html">OCILob</a> $lob_descriptor)<br>
                                                                                                                             <p><p>(PHP 4 &gt;= 4.0.6, PECL OCI8 1.0)
 Alias of {OCI-Lob::close()}</p></p>                    </div>
                     <div class="col-md-2"></div>
@@ -30663,7 +30693,7 @@ Alias of {oci_fetch_all}</p></p>                    </div>
                                                                                                 bool
                     </div>
                     <div class="col-md-8">
-                        ocifreecollection(<a href="OCI_Collection.html">OCI_Collection</a> $collection)<br>
+                        ocifreecollection(<a href="OCI_Collection.html">OCI_Collection</a>|<a href="OCICollection.html">OCICollection</a> $collection)<br>
                                                                                                                             <p><p>(PHP 4 &gt;= 4.0.7, PHP 5, PECL OCI8 &gt;= 1.0.0)<br/>
 Alias of {<a href="OCI_Collection.html">OCI_Collection::free}</a></p></p>                    </div>
                     <div class="col-md-2"></div>
@@ -30715,7 +30745,7 @@ Alias of {oci_internal_debug}</p></p>                    </div>
                                                                                                 string|false
                     </div>
                     <div class="col-md-8">
-                        ociloadlob(<a href="OCI_Lob.html">OCI_Lob</a> $lob_descriptor)<br>
+                        ociloadlob(<a href="OCI_Lob.html">OCI_Lob</a>|<a href="OCILob.html">OCILob</a> $lob_descriptor)<br>
                                                                                                                             <p><p>(PHP 4, PHP 5, PECL OCI8 &gt;= 1.0.0)<br/>
 Alias of
 {<a href="OCI_Lob.html">OCI_Lob::load}</a></p></p>                    </div>
@@ -30861,7 +30891,7 @@ Alias of {oci_num_rows}</p></p>                    </div>
                                                                                                 bool
                     </div>
                     <div class="col-md-8">
-                        ocisavelob(<a href="OCI_Lob.html">OCI_Lob</a> $lob_descriptor, string $data, int $offset)<br>
+                        ocisavelob(<a href="OCI_Lob.html">OCI_Lob</a>|<a href="OCILob.html">OCILob</a> $lob_descriptor, string $data, int $offset)<br>
                                                                                                                             <p><p>(PHP 4, PHP 5, PECL OCI8 &gt;= 1.0.0)<br/>
 Alias of
 {OCI-Lob::save}</p></p>                    </div>
@@ -30872,7 +30902,7 @@ Alias of
                                                                                                 bool
                     </div>
                     <div class="col-md-8">
-                        ocisavelobfile(<a href="OCI_Lob.html">OCI_Lob</a> $lob_descriptor, string $filename)<br>
+                        ocisavelobfile(<a href="OCI_Lob.html">OCI_Lob</a>|<a href="OCILob.html">OCILob</a> $lob_descriptor, string $filename)<br>
                                                                                                                             <p><p>(PHP 4, PHP 5, PECL OCI8 &gt;= 1.0.0)<br/>
 Alias of
 {<a href="OCI_Lob.html">OCI_Lob::import}</a></p></p>                    </div>
@@ -30913,7 +30943,7 @@ Alias of {oci_statement_type}</p></p>                    </div>
                                                                                                 bool
                     </div>
                     <div class="col-md-8">
-                        ociwritelobtofile(<a href="OCI_Lob.html">OCI_Lob</a> $lob_descriptor, string $filename, int $start, int $length)<br>
+                        ociwritelobtofile(<a href="OCI_Lob.html">OCI_Lob</a>|<a href="OCILob.html">OCILob</a> $lob_descriptor, string $filename, int $start, int $length)<br>
                                                                                                                             <p><p>(PHP 4, PHP 5, PECL OCI8 &gt;= 1.0.0)<br/>
 Alias of
 {<a href="OCI_Lob.html">OCI_Lob::export}</a></p></p>                    </div>
@@ -30924,7 +30954,7 @@ Alias of
                                                                                                 bool
                     </div>
                     <div class="col-md-8">
-                        ociwritetemporarylob(<a href="OCI_Lob.html">OCI_Lob</a> $lob_descriptor, string $data, int $lob_type = OCI_TEMP_CLOB)<br>
+                        ociwritetemporarylob(<a href="OCI_Lob.html">OCI_Lob</a>|<a href="OCILob.html">OCILob</a> $lob_descriptor, string $data, int $lob_type = OCI_TEMP_CLOB)<br>
                                                                                                                             <p><p>(PHP 4 &gt;= 4.0.6, PECL OCI8 1.0)
 Writes a temporary large object
 Alias of {OCI-Lob::writeTemporary()}</p></p>                    </div>
