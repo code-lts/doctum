@@ -5021,7 +5021,7 @@ Return the values from a single column in the input array</p></p>               
                                                                                                 array
                     </div>
                     <div class="col-md-8">
-                        array_diff(array $array1, array $array2, array ...$_)<br>
+                        array_diff(array $array, array ...$arrays)<br>
                                                                                                                             <p><p>Computes the difference of arrays</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -5030,7 +5030,7 @@ Return the values from a single column in the input array</p></p>               
                                                                                                 array
                     </div>
                     <div class="col-md-8">
-                        array_diff_assoc(array $array1, array $array2, array ...$_)<br>
+                        array_diff_assoc(array $array, array ...$arrays)<br>
                                                                                                                             <p><p>Computes the difference of arrays with additional index check</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -5039,7 +5039,7 @@ Return the values from a single column in the input array</p></p>               
                                                                                                 array
                     </div>
                     <div class="col-md-8">
-                        array_diff_key(array $array1, array $array2, array ...$_)<br>
+                        array_diff_key(array $array, array ...$arrays)<br>
                                                                                                                             <p><p>Computes the difference of arrays using keys for comparison</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -5048,7 +5048,7 @@ Return the values from a single column in the input array</p></p>               
                                                                                                 array
                     </div>
                     <div class="col-md-8">
-                        array_diff_uassoc(array $array1, array $array2, array $_ = null, callable $key_compare_func)<br>
+                        array_diff_uassoc(array $array, array $array2, callable $key_compare_func, array ...$rest)<br>
                                                                                                                             <p><p>Computes the difference of arrays with additional index check which is performed by a user supplied callback function</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -5057,7 +5057,7 @@ Return the values from a single column in the input array</p></p>               
                                                                                                 array
                     </div>
                     <div class="col-md-8">
-                        array_diff_ukey(array $array1, array $array2, array $_ = null, callable $key_compare_func)<br>
+                        array_diff_ukey(array $array, array $array2, callable $key_compare_func, array ...$rest)<br>
                                                                                                                             <p><p>Computes the difference of arrays using a callback function on the keys for comparison</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -5103,7 +5103,7 @@ passing them to the <b>callback</b> function.</p></p>                    </div>
                                                                                                 array
                     </div>
                     <div class="col-md-8">
-                        array_intersect(array $array1, array $array2, array ...$_)<br>
+                        array_intersect(array $array, array ...$arrays)<br>
                                                                                                                             <p><p>Computes the intersection of arrays</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -5112,7 +5112,7 @@ passing them to the <b>callback</b> function.</p></p>                    </div>
                                                                                                 array
                     </div>
                     <div class="col-md-8">
-                        array_intersect_assoc(array $array1, array $array2, array $_ = null)<br>
+                        array_intersect_assoc(array $array, array ...$arrays)<br>
                                                                                                                             <p><p>Computes the intersection of arrays with additional index check</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -5121,7 +5121,7 @@ passing them to the <b>callback</b> function.</p></p>                    </div>
                                                                                                 array
                     </div>
                     <div class="col-md-8">
-                        array_intersect_key(array $array1, array $array2, array ...$_)<br>
+                        array_intersect_key(array $array, array ...$arrays)<br>
                                                                                                                             <p><p>Computes the intersection of arrays using keys for comparison</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -5130,7 +5130,7 @@ passing them to the <b>callback</b> function.</p></p>                    </div>
                                                                                                 array
                     </div>
                     <div class="col-md-8">
-                        array_intersect_uassoc(array $array1, array $array2, array $_ = null, callable $key_compare_func)<br>
+                        array_intersect_uassoc(array $array, array $array2, callable $key_compare_func, array ...$rest)<br>
                                                                                                                             <p><p>Computes the intersection of arrays with additional index check, compares indexes by a callback function</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -5139,7 +5139,7 @@ passing them to the <b>callback</b> function.</p></p>                    </div>
                                                                                                 array
                     </div>
                     <div class="col-md-8">
-                        array_intersect_ukey(array $array1, array $array2, array $_ = null, callable $key_compare_func)<br>
+                        array_intersect_ukey(array $array, array $array2, callable $key_compare_func, ...$rest)<br>
                                                                                                                             <p><p>Computes the intersection of arrays using a callback function on the keys for comparison</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -5209,7 +5209,7 @@ passing them to the <b>callback</b> function.</p></p>                    </div>
                                                                                                 array
                     </div>
                     <div class="col-md-8">
-                        array_merge(array ...$arrays)<br>
+                        array_merge($array, array ...$arrays)<br>
                                                                                                                             <p><p>Merges the elements of one or more arrays together (if the input arrays have the same string keys, then the later value for that key will overwrite the previous one; if the arrays contain numeric keys, the later value will be appended)
 Since 7.4.0 this function can be called without any parameter, and it will return empty array.</p></p>                    </div>
                     <div class="col-md-2"></div>
@@ -5219,7 +5219,7 @@ Since 7.4.0 this function can be called without any parameter, and it will retur
                                                                                                 array
                     </div>
                     <div class="col-md-8">
-                        array_merge_recursive(array ...$arrays)<br>
+                        array_merge_recursive(array $arr1, array ...$arrays)<br>
                                                                                                                             <p><p>Merge two or more arrays recursively</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -5228,7 +5228,7 @@ Since 7.4.0 this function can be called without any parameter, and it will retur
                                                                                                 bool
                     </div>
                     <div class="col-md-8">
-                        array_multisort(array $array, ...$rest)<br>
+                        array_multisort(array $array, $sort_order = SORT_ASC, $sort_flags = SORT_REGULAR, ...$rest)<br>
                                                                                                                             <p><p>Sort multiple or multi-dimensional arrays</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -5364,7 +5364,7 @@ Since 7.3.0 this function can be called with only one parameter.</p></p>        
                                                                                                 array
                     </div>
                     <div class="col-md-8">
-                        array_udiff(array $array1, array $array2, array $_ = null, callable $data_compare_func)<br>
+                        array_udiff(array $array, array $array2, callable $data_compare_func, array ...$rest)<br>
                                                                                                                             <p><p>Computes the difference of arrays by using a callback function for data comparison</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -5373,7 +5373,7 @@ Since 7.3.0 this function can be called with only one parameter.</p></p>        
                                                                                                 array
                     </div>
                     <div class="col-md-8">
-                        array_udiff_assoc(array $array1, array $array2, array $_ = null, callable $data_compare_func)<br>
+                        array_udiff_assoc(array $array, array $array2, callable $data_compare_func, array ...$rest)<br>
                                                                                                                             <p><p>Computes the difference of arrays with additional index check, compares data by a callback function</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -5382,7 +5382,7 @@ Since 7.3.0 this function can be called with only one parameter.</p></p>        
                                                                                                 array
                     </div>
                     <div class="col-md-8">
-                        array_udiff_uassoc(array $array1, array $array2, array $_ = null, callable $data_compare_func, callable $key_compare_func)<br>
+                        array_udiff_uassoc(array $array, array $array2, callable $data_compare_func, callable $key_compare_func, array ...$rest)<br>
                                                                                                                             <p><p>Computes the difference of arrays with additional index check, compares data and indexes by a callback function</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -5391,7 +5391,7 @@ Since 7.3.0 this function can be called with only one parameter.</p></p>        
                                                                                                 array
                     </div>
                     <div class="col-md-8">
-                        array_uintersect(array $array1, array $array2, array $_ = null, callable $data_compare_func)<br>
+                        array_uintersect(array $array, array $array2, callable $data_compare_func, array ...$rest)<br>
                                                                                                                             <p><p>Computes the intersection of arrays, compares data by a callback function</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -5400,7 +5400,7 @@ Since 7.3.0 this function can be called with only one parameter.</p></p>        
                                                                                                 array
                     </div>
                     <div class="col-md-8">
-                        array_uintersect_assoc(array $array1, array $array2, array $_ = null, callable $data_compare_func)<br>
+                        array_uintersect_assoc(array $array, array $array2, callable $data_compare_func, array ...$rest)<br>
                                                                                                                             <p><p>Computes the intersection of arrays with additional index check, compares data by a callback function</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -5409,7 +5409,7 @@ Since 7.3.0 this function can be called with only one parameter.</p></p>        
                                                                                                 array
                     </div>
                     <div class="col-md-8">
-                        array_uintersect_uassoc(array $array1, array $array2, array $_ = null, callable $data_compare_func, callable $key_compare_func)<br>
+                        array_uintersect_uassoc(array $array, array $array2, callable $data_compare_func, callable $key_compare_func, array ...$rest)<br>
                                                                                                                             <p><p>Computes the intersection of arrays with additional index check, compares data and indexes by separate callback functions</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -6137,7 +6137,7 @@ Get text for collator's last error code</p></p>                    </div>
                                                                                                 string|false
                     </div>
                     <div class="col-md-8">
-                        collator_get_locale(<a href="Collator.html">Collator</a> $object, int $type = null)<br>
+                        collator_get_locale(<a href="Collator.html">Collator</a> $object, int $type)<br>
                                                                                                                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
 Get the locale name of the collator</p></p>                    </div>
                     <div class="col-md-2"></div>
@@ -10080,7 +10080,7 @@ or an EOF is seen.</p></p>                    </div>
                 </div>
                             <div class="row" id="function_explode">
                     <div class="col-md-2 type">
-                                                                                                array|false
+                                                                                                string[]|false
                     </div>
                     <div class="col-md-8">
                         explode(string $separator, string $string, int $limit)<br>
@@ -14546,7 +14546,7 @@ name</p></p>                    </div>
                                                                                                 int|false
                     </div>
                     <div class="col-md-8">
-                        gmmktime(int $hour = null, int $minute = null, int $second = null, int $month = null, int $day = null, int $year = null, int $is_dst = null)<br>
+                        gmmktime(int $hour, int|null $minute = null, int|null $second = null, int|null $month = null, int|null $day = null, int|null $year = null, int $is_dst = null)<br>
                                                                                                                             <p><p>Get Unix timestamp for a GMT date</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -17003,7 +17003,7 @@ Convert domain name from IDNA ASCII to Unicode.</p></p>                    </div
                                                                                                 array|false
                     </div>
                     <div class="col-md-8">
-                        imageaffinematrixget(int $type, mixed $options = null)<br>
+                        imageaffinematrixget(int $type, mixed $options)<br>
                                                                                                     <i>Since: 5.5</i>
                             <br>
                                                                             <p><p>Return an image containing the affine tramsformed src image, using an optional clipping area</p></p>                    </div>
@@ -17095,7 +17095,7 @@ Before 7.2.0 it's only available if PHP iscompiled with the bundled version of t
                 </div>
                             <div class="row" id="function_imagecolorclosest">
                     <div class="col-md-2 type">
-                                                                                                int|false
+                                                                                                int
                     </div>
                     <div class="col-md-8">
                         imagecolorclosest(<a href="GdImage.html">GdImage</a> $image, int $red, int $green, int $blue)<br>
@@ -17104,7 +17104,7 @@ Before 7.2.0 it's only available if PHP iscompiled with the bundled version of t
                 </div>
                             <div class="row" id="function_imagecolorclosestalpha">
                     <div class="col-md-2 type">
-                                                                                                int|false
+                                                                                                int
                     </div>
                     <div class="col-md-8">
                         imagecolorclosestalpha(<a href="GdImage.html">GdImage</a> $image, int $red, int $green, int $blue, int $alpha)<br>
@@ -17113,7 +17113,7 @@ Before 7.2.0 it's only available if PHP iscompiled with the bundled version of t
                 </div>
                             <div class="row" id="function_imagecolorclosesthwb">
                     <div class="col-md-2 type">
-                                                                                                int|false
+                                                                                                int
                     </div>
                     <div class="col-md-8">
                         imagecolorclosesthwb(<a href="GdImage.html">GdImage</a> $image, int $red, int $green, int $blue)<br>
@@ -17131,7 +17131,7 @@ Before 7.2.0 it's only available if PHP iscompiled with the bundled version of t
                 </div>
                             <div class="row" id="function_imagecolorexact">
                     <div class="col-md-2 type">
-                                                                                                int|false
+                                                                                                int
                     </div>
                     <div class="col-md-8">
                         imagecolorexact(<a href="GdImage.html">GdImage</a> $image, int $red, int $green, int $blue)<br>
@@ -17158,7 +17158,7 @@ Before 7.2.0 it's only available if PHP iscompiled with the bundled version of t
                 </div>
                             <div class="row" id="function_imagecolorresolve">
                     <div class="col-md-2 type">
-                                                                                                int|false
+                                                                                                int
                     </div>
                     <div class="col-md-8">
                         imagecolorresolve(<a href="GdImage.html">GdImage</a> $image, int $red, int $green, int $blue)<br>
@@ -17167,7 +17167,7 @@ Before 7.2.0 it's only available if PHP iscompiled with the bundled version of t
                 </div>
                             <div class="row" id="function_imagecolorresolvealpha">
                     <div class="col-md-2 type">
-                                                                                                int|false
+                                                                                                int
                     </div>
                     <div class="col-md-8">
                         imagecolorresolvealpha(<a href="GdImage.html">GdImage</a> $image, int $red, int $green, int $blue, int $alpha)<br>
@@ -18299,10 +18299,10 @@ Alias of imap_body()</p></p>                    </div>
                 </div>
                             <div class="row" id="function_imap_headerinfo">
                     <div class="col-md-2 type">
-                                                                                                object
+                                                                                                stdClass|false
                     </div>
                     <div class="col-md-8">
-                        imap_headerinfo(resource $stream_id, int $msg_no, int $from_length = 0, int $subject_length = 0)<br>
+                        imap_headerinfo(<a href="IMAP/Connection.html"><abbr title="IMAP\Connection">Connection</abbr></a> $imap, int $message_num, int $from_length = 0, int $subject_length = 0, $default_host = null)<br>
                                                                                                                             <p><p>Read the header of the message</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -18474,7 +18474,7 @@ Alias of imap_body()</p></p>                    </div>
                                                                                                 resource|false
                     </div>
                     <div class="col-md-8">
-                        imap_open(string $mailbox, string $user, string $password, int $flags = 0, int $retries = 0, array|null $options = null)<br>
+                        imap_open(string $mailbox, string $user, string $password, int $flags = 0, int $retries = 0, array $options = null)<br>
                                                                                                                             <p><p>Open an IMAP stream to a mailbox</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -23824,7 +23824,7 @@ Scans the data from the given file pointer and extract each embedded uuencoded f
                                                                                                 string|false
                     </div>
                     <div class="col-md-8">
-                        mb_convert_variables(string $to_encoding, array|string $from_encoding, mixed $var, mixed ...$vars)<br>
+                        mb_convert_variables(string $to_encoding, array|string $from_encoding, mixed ...$vars, mixed $var)<br>
                                                                                                                             <p><p>Convert character code in variable(s)</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -23839,10 +23839,10 @@ Scans the data from the given file pointer and extract each embedded uuencoded f
                 </div>
                             <div class="row" id="function_mb_decode_numericentity">
                     <div class="col-md-2 type">
-                                                                                                string
+                                                                                                string|false|null
                     </div>
                     <div class="col-md-8">
-                        mb_decode_numericentity(string $string, array $map, string|null $encoding)<br>
+                        mb_decode_numericentity(string $string, array $map, string|null $encoding = null, bool $is_hex = false)<br>
                                                                                                                             <p><p>Decode HTML numeric string reference to character</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -25220,7 +25220,7 @@ Memcache::pconnect — Open memcached server persistent connection</p></p>      
                                                                                                 int|false
                     </div>
                     <div class="col-md-8">
-                        mktime(int $hour = null, int $minute = null, int $second = null, int $month = null, int $day = null, int $year = null, int $is_dst = -1)<br>
+                        mktime(int $hour, int|null $minute = null, int|null $second = null, int|null $month = null, int|null $day = null, int|null $year = null, int $is_dst = -1)<br>
                                                                                                                             <p><p>Get Unix timestamp for a date</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -26740,7 +26740,7 @@ Alias of mysql_num_rows()</p></p>                    </div>
                 </div>
                             <div class="row" id="function_mysqli_connect">
                     <div class="col-md-2 type">
-                                                                                                mysqli|false|null
+                                                                                                mysqli|false
                     </div>
                     <div class="col-md-8">
                         mysqli_connect(string|null $hostname = null, string|null $username = null, string|null $password = null, string|null $database = null, int|null $port = null, string|null $socket = null)<br>
@@ -27000,7 +27000,7 @@ Available only with mysqlnd.</p></p>                    </div>
                                                                                                 string|null
                     </div>
                     <div class="col-md-8">
-                        mysqli_get_client_info(<a href="mysqli.html">mysqli</a>|null $mysql)<br>
+                        mysqli_get_client_info(<a href="mysqli.html">mysqli</a>|null $mysql = null)<br>
                                                                                                                             <p><p>Get MySQL client info</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -27430,7 +27430,7 @@ Available only with mysqlnd.</p></p>                    </div>
                                                                                                 bool
                     </div>
                     <div class="col-md-8">
-                        mysqli_stmt_bind_param(<a href="mysqli_stmt.html">mysqli_stmt</a> $statement, string $types, mixed $var1, mixed ...$_)<br>
+                        mysqli_stmt_bind_param(<a href="mysqli_stmt.html">mysqli_stmt</a> $statement, string $types, mixed $var1, mixed ...$vars)<br>
                                                                                                                             <p><p>Binds variables to a prepared statement as parameters</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -27439,7 +27439,7 @@ Available only with mysqlnd.</p></p>                    </div>
                                                                                                 bool
                     </div>
                     <div class="col-md-8">
-                        mysqli_stmt_bind_result(<a href="mysqli_stmt.html">mysqli_stmt</a> $statement, mixed $var1, mixed ...$_)<br>
+                        mysqli_stmt_bind_result(<a href="mysqli_stmt.html">mysqli_stmt</a> $statement, mixed $var1, mixed ...$vars)<br>
                                                                                                                             <p><p>Binds variables to a prepared statement for result storage</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -31067,7 +31067,7 @@ Alias of {OCI-Lob::writeTemporary()}</p></p>                    </div>
                                                                                                 resource|false
                     </div>
                     <div class="col-md-8">
-                        odbc_exec(resource $connection_id, string $query_string)<br>
+                        odbc_exec(resource $connection_id, string $query_string, int $flags = null)<br>
                                                                                                                             <p><p>Prepare and execute an SQL statement</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -31676,7 +31676,7 @@ Computes shared secret for public value of remote DH key and local DH key</p></p
                                                                                                 bool
                     </div>
                     <div class="col-md-8">
-                        openssl_open(string $data, string $output, string $encrypted_key, <a href="OpenSSLAsymmetricKey.html">OpenSSLAsymmetricKey</a>|<a href="OpenSSLCertificate.html">OpenSSLCertificate</a>|array|string $private_key, string $cipher_algo = &quot;RC4&quot;, string|null $iv)<br>
+                        openssl_open(string $data, string $output, string $encrypted_key, <a href="OpenSSLAsymmetricKey.html">OpenSSLAsymmetricKey</a>|<a href="OpenSSLCertificate.html">OpenSSLCertificate</a>|array|string $private_key, string $cipher_algo, string|null $iv)<br>
                                                                                                                             <p><p>Open sealed data</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -34322,7 +34322,7 @@ and <b>pg_result_error</b>.</p></p>                    </div>
                                                                                                 int
                     </div>
                     <div class="col-md-8">
-                        printf(string $format, string|int|float ...$values)<br>
+                        printf(string $format, mixed ...$values)<br>
                                                                                                                             <p><p>Output a formatted string</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -35874,7 +35874,7 @@ can be used to indicate an error in the script logic (e.g. database connection p
                                                                                                 string|false
                     </div>
                     <div class="col-md-8">
-                        setlocale(int $category, array|string|int $locales, string ...$rest)<br>
+                        setlocale(int $category, string|array|int $locales, string ...$rest)<br>
                                                                                                                             <p><p>Set locale information</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -35884,7 +35884,9 @@ can be used to indicate an error in the script logic (e.g. database connection p
                     </div>
                     <div class="col-md-8">
                         setrawcookie(string $name, string $value = &#039;&#039;, array $options = [])<br>
-                                                                                                                            <p><p>Send a cookie without urlencoding the cookie value</p></p>                    </div>
+                                                                                                    <i>Since: 7.3</i>
+                            <br>
+                                                                            <p><p>Send a cookie without urlencoding the cookie value</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
                             <div class="row" id="function_settype">
@@ -36438,7 +36440,7 @@ Get array with contents of getaddrinfo about the given hostname.</p></p>        
                                                                                                 int|null
                     </div>
                     <div class="col-md-8">
-                        socket_cmsg_space(int $level, int $type, int $n = 0)<br>
+                        socket_cmsg_space(int $level, int $type, int $num = 0)<br>
                                                                                                     <i>Since: 5.5</i>
                             <br>
                                                                             <p><p>Calculate message buffer size</p></p>                    </div>
@@ -37433,7 +37435,7 @@ Argon2i</p></p>                    </div>
                                                                                                 string
                     </div>
                     <div class="col-md-8">
-                        sodium_crypto_pwhash_scryptsalsa208sha256(int $length, string $password, string $salt, int $opslimit, int $memlimit)<br>
+                        sodium_crypto_pwhash_scryptsalsa208sha256(int $length, string $password, string $salt, int $opslimit, int $memlimit, $alg = null)<br>
                                                                                                     <i>Since: 7.2</i>
                             <br>
                                                                             <p><p>Secure password-based key derivation function
@@ -37517,7 +37519,7 @@ X25519</p></p>                    </div>
                                                                                                 string
                     </div>
                     <div class="col-md-8">
-                        sodium_crypto_scalarmult_base(string $secret_key)<br>
+                        sodium_crypto_scalarmult_base(string $secret_key, $string_2)<br>
                                                                                                     <i>Since: 7.2</i>
                             <br>
                                                                             <p><p>Scalar multiplication of the base point and your key</p></p>                    </div>
@@ -37608,30 +37610,6 @@ Xsals20 + Poly1305</p></p>                    </div>
                     </div>
                     <div class="col-md-8">
                         sodium_crypto_secretstream_xchacha20poly1305_keygen()<br>
-                                                                                                    <i>Since: 7.2</i>
-                            <br>
-                                                                            <p class="no-description">No description</p>
-                                            </div>
-                    <div class="col-md-2"></div>
-                </div>
-                            <div class="row" id="function_sodium_crypto_secretstream_xchacha20poly1305_pull">
-                    <div class="col-md-2 type">
-                                                                                                array|false
-                    </div>
-                    <div class="col-md-8">
-                        sodium_crypto_secretstream_xchacha20poly1305_pull(string $state, string $ciphertext, string $additional_data = &#039;&#039;)<br>
-                                                                                                    <i>Since: 7.2</i>
-                            <br>
-                                                                            <p class="no-description">No description</p>
-                                            </div>
-                    <div class="col-md-2"></div>
-                </div>
-                            <div class="row" id="function_sodium_crypto_secretstream_xchacha20poly1305_push">
-                    <div class="col-md-2 type">
-                                                                                                string
-                    </div>
-                    <div class="col-md-8">
-                        sodium_crypto_secretstream_xchacha20poly1305_push(string $state, string $message, string $additional_data, int $tag)<br>
                                                                                                     <i>Since: 7.2</i>
                             <br>
                                                                             <p class="no-description">No description</p>
@@ -38153,7 +38131,7 @@ Returns the current version of the Apache Solr extension</p></p>                
                                                                                                 string
                     </div>
                     <div class="col-md-8">
-                        sprintf(string $format, string|int|float ...$values)<br>
+                        sprintf(string $format, mixed ...$values)<br>
                                                                                                                             <p><p>Return a formatted string</p></p>                    </div>
                     <div class="col-md-2"></div>
                 </div>
@@ -46297,7 +46275,7 @@ value and refcount information.</p></p>                    </div>
                                                                                                 bool
                     </div>
                     <div class="col-md-8">
-                        xdebug_dump_aggr_profiling_data()<br>
+                        xdebug_dump_aggr_profiling_data($prefix)<br>
                                                                                                                             <p class="no-description">No description</p>
                                             </div>
                     <div class="col-md-2"></div>
@@ -47529,7 +47507,7 @@ Write full DTD element tag</p></p>                    </div>
                                                                                                 bool
                     </div>
                     <div class="col-md-8">
-                        xmlwriter_write_dtd_entity(resource|<a href="XMLWriter.html">XMLWriter</a> $writer, string $name, string $content, bool $pe, string $pubid, string $sysid, string $ndataid)<br>
+                        xmlwriter_write_dtd_entity(resource|<a href="XMLWriter.html">XMLWriter</a> $writer, string $name, string $content, bool $isParam = false, string|null $publicId = null, string|null $systemId = null, string|null $notationData = null)<br>
                                                                                                                             <p><p>(PHP 5 &gt;= 5.1.2, PECL xmlwriter &gt;= 0.1.0)<br/>
 Write full DTD Entity tag</p></p>                    </div>
                     <div class="col-md-2"></div>
