@@ -14,6 +14,7 @@ declare(strict_types = 1);
 namespace Doctum;
 
 use ArrayAccess;
+use ReturnTypeWillChange;// phpcs:ignore SlevomatCodingStandard.Namespaces.UnusedUses.UnusedUse
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitor\NameResolver;
 use PhpParser\ParserFactory;

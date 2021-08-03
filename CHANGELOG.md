@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - yyyy-mm-dd
 
 - Fixed PHP errors when non configuration file was given, now it displays the error message
+- Adjust error handler for PHP 8.0 silenced errors
 
 ## [5.4.1] - 2021-04-22
 
