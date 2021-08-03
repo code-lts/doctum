@@ -147,7 +147,7 @@ abstract class Command extends BaseCommand
         $this->output      = new SymfonyOutput($output, new SymfonyStyle($errorConsoleStyle));
         $this->errorOutput = new SymfonyOutput($stdErr, new SymfonyStyle($errorConsoleStyle));
 
-        /** @var string $config */
+        /** @var string|null $config */
         $config     = $input->getArgument('config');
         $filesystem = new Filesystem();
 
@@ -155,7 +155,7 @@ abstract class Command extends BaseCommand
             $config = getcwd() . '/' . $config;
         }
 
-        if (!is_file($config)) {
+        if ($config === null || !is_file($config)) {
             throw new \InvalidArgumentException(sprintf('Configuration file "%s" does not exist.', $config));
         }
 
