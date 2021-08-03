@@ -99,14 +99,13 @@ argument:
 .. code-block:: php
 
     return new Doctum($iterator, [
-        'theme'                => 'symfony',
         'title'                => 'yourlib API',
         'language'             => 'en', // Could be 'fr'
         'build_dir'            => __DIR__ . '/build',
         'cache_dir'            => __DIR__ . '/cache',
         'source_dir'           => '/path/to/repository/',
         'remote_repository'    => new GitHubRemoteRepository('username/repository', '/path/to/repository'),
-        'default_opened_level' => 2,
+        'default_opened_level' => 2, // optional, 2 is the default value
     ]);
 
 And here is how you can configure different versions:
@@ -135,7 +134,6 @@ And here is how you can configure different versions:
         ->add('main', 'main branch');
 
     return new Doctum($iterator, [
-        'theme'                => 'symfony',
         'versions'             => $versions,
         'title'                => 'yourlib API',
         'language'             => 'en', // Could be 'fr'
@@ -143,7 +141,7 @@ And here is how you can configure different versions:
         'cache_dir'            => __DIR__ . '/../cache/sf2/%version%',
         'source_dir'           => dirname($dir) . '/',
         'remote_repository'    => new GitHubRemoteRepository('yourorg/yourlib', dirname($dir)),
-        'default_opened_level' => 2,
+        'default_opened_level' => 2, // optional, 2 is the default value
     ]);
 
 
@@ -260,10 +258,10 @@ theme (this is a YAML file):
 
 .. code-block:: yaml
 
-    name:   symfony
+    name:   markdown-custom
     parent: default
 
-The above configuration creates a new ``symfony`` theme based on the
+The above configuration creates a new ``markdown-custom`` theme based on the
 ``default`` built-in theme. To override a template, just create a file with
 the same name as the original one. For instance, here is how you can extend the
 default class template to prefix the class name with "Class " in the class page
@@ -311,7 +309,7 @@ the default theme:
         'traits.twig':     'traits.html'
         'opensearch.twig': 'opensearch.xml'
         'search.twig':     'search.html'
-        'doctum.js.twig':    'doctum.js'
+        'doctum.js.twig':  'doctum.js'
 
     namespace:
         'namespace.twig': '%s.html'
