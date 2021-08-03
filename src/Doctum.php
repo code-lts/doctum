@@ -260,15 +260,18 @@ class Doctum implements ArrayAccess
      * @param mixed  $value
      * @return void
      */
-    public function offsetSet($offset, $value): void
+    #[ReturnTypeWillChange]
+    public function offsetSet($offset, $value)
     {
         $this->{$offset} = $value;
     }
 
     /**
      * @param string $offset
+     * @return bool
      */
-    public function offsetExists($offset): bool
+    #[ReturnTypeWillChange]
+    public function offsetExists($offset)
     {
         return isset($this->{$offset});
     }
@@ -277,7 +280,8 @@ class Doctum implements ArrayAccess
      * @param string $offset
      * @return void
      */
-    public function offsetUnset($offset): void
+    #[ReturnTypeWillChange]
+    public function offsetUnset($offset)
     {
         unset($this->{$offset});
     }
