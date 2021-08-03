@@ -39,7 +39,17 @@ final class ErrorHandler
      */
     public function handle($level, $message, $file = 'unknown', $line = 0, $context = []): bool
     {
-        if (error_reporting() & $level) {
+        /**
+         * Check if Error Control Operator (@) was used
+         * See: https://php.watch/versions/8.0/fatal-error-suppression#suppress-error-handlers
+         */
+        $isSilenced = ! (error_reporting() & $level);
+
+        if (PHP_VERSION_ID < 80000) {
+            $isSilenced = error_reporting() == 0;
+        }
+
+        if (! $isSilenced) {
             throw new \ErrorException(sprintf('%s: %s in %s line %d', $this->levels[$level] ?? $level, $message, $file, $line));
         }
 
