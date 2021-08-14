@@ -7957,7 +7957,7 @@
         {"type":"Method","fromName":"ReflectionGenerator","fromLink":"ReflectionGenerator.html","link":"ReflectionGenerator.html#method_getExecutingGenerator","name":"ReflectionGenerator::getExecutingGenerator","doc":"<p>Gets the executing Generator object</p>"},
             
                     {"type":"Class","link":"ReflectionIntersectionType.html","name":"ReflectionIntersectionType","doc":""},
-                                {"type":"Method","fromName":"ReflectionIntersectionType","fromLink":"ReflectionIntersectionType.html","link":"ReflectionIntersectionType.html#method_getTypes","name":"ReflectionIntersectionType::getTypes","doc":null},
+                                {"type":"Method","fromName":"ReflectionIntersectionType","fromLink":"ReflectionIntersectionType.html","link":"ReflectionIntersectionType.html#method_getTypes","name":"ReflectionIntersectionType::getTypes","doc":""},
             
                     {"type":"Class","link":"ReflectionMethod.html","name":"ReflectionMethod","doc":"<p>The <b>ReflectionMethod</b> class reports\ninformation about a method.</p>"},
                                 {"type":"Method","fromName":"ReflectionMethod","fromLink":"ReflectionMethod.html","link":"ReflectionMethod.html#method___construct","name":"ReflectionMethod::__construct","doc":"<p>Constructs a ReflectionMethod</p>"},
