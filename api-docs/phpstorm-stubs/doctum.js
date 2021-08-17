@@ -7981,7 +7981,7 @@
         {"type":"Method","fromName":"ReflectionMethod","fromLink":"ReflectionMethod.html","link":"ReflectionMethod.html#method_invokeArgs","name":"ReflectionMethod::invokeArgs","doc":"<p>Invokes the reflected method and pass its arguments as array.</p>"},
         {"type":"Method","fromName":"ReflectionMethod","fromLink":"ReflectionMethod.html","link":"ReflectionMethod.html#method_getDeclaringClass","name":"ReflectionMethod::getDeclaringClass","doc":"<p>Gets declaring class for the reflected method.</p>"},
         {"type":"Method","fromName":"ReflectionMethod","fromLink":"ReflectionMethod.html","link":"ReflectionMethod.html#method_getPrototype","name":"ReflectionMethod::getPrototype","doc":"<p>Gets the method prototype (if there is one).</p>"},
-        {"type":"Method","fromName":"ReflectionMethod","fromLink":"ReflectionMethod.html","link":"ReflectionMethod.html#method_setAccessible","name":"ReflectionMethod::setAccessible","doc":"<p>Set method accessibility</p>"},
+        {"type":"Method","fromName":"ReflectionMethod","fromLink":"ReflectionMethod.html","link":"ReflectionMethod.html#method_setAccessible","name":"ReflectionMethod::setAccessible","doc":"<p>Set method accessibility\nThis method is no-op starting from PHP 8.1</p>"},
             
                     {"type":"Class","link":"ReflectionNamedType.html","name":"ReflectionNamedType","doc":""},
                                 {"type":"Method","fromName":"ReflectionNamedType","fromLink":"ReflectionNamedType.html","link":"ReflectionNamedType.html#method_getName","name":"ReflectionNamedType::getName","doc":"<p>Get the text of the type hint.</p>"},
@@ -8031,7 +8031,7 @@
         {"type":"Method","fromName":"ReflectionProperty","fromLink":"ReflectionProperty.html","link":"ReflectionProperty.html#method_getModifiers","name":"ReflectionProperty::getModifiers","doc":"<p>Gets modifiers</p>"},
         {"type":"Method","fromName":"ReflectionProperty","fromLink":"ReflectionProperty.html","link":"ReflectionProperty.html#method_getDeclaringClass","name":"ReflectionProperty::getDeclaringClass","doc":"<p>Gets declaring class</p>"},
         {"type":"Method","fromName":"ReflectionProperty","fromLink":"ReflectionProperty.html","link":"ReflectionProperty.html#method_getDocComment","name":"ReflectionProperty::getDocComment","doc":"<p>Gets doc comment</p>"},
-        {"type":"Method","fromName":"ReflectionProperty","fromLink":"ReflectionProperty.html","link":"ReflectionProperty.html#method_setAccessible","name":"ReflectionProperty::setAccessible","doc":"<p>Set property accessibility</p>"},
+        {"type":"Method","fromName":"ReflectionProperty","fromLink":"ReflectionProperty.html","link":"ReflectionProperty.html#method_setAccessible","name":"ReflectionProperty::setAccessible","doc":"<p>Set property accessibility\nThis method is no-op starting from PHP 8.1</p>"},
         {"type":"Method","fromName":"ReflectionProperty","fromLink":"ReflectionProperty.html","link":"ReflectionProperty.html#method_getType","name":"ReflectionProperty::getType","doc":"<p>Gets property type</p>"},
         {"type":"Method","fromName":"ReflectionProperty","fromLink":"ReflectionProperty.html","link":"ReflectionProperty.html#method_hasType","name":"ReflectionProperty::hasType","doc":"<p>Checks if property has type</p>"},
         {"type":"Method","fromName":"ReflectionProperty","fromLink":"ReflectionProperty.html","link":"ReflectionProperty.html#method_isInitialized","name":"ReflectionProperty::isInitialized","doc":"<p>Checks if property is initialized</p>"},
