@@ -31,10 +31,16 @@ class Version
      */
     protected $longname;
 
+    /**
+     * @var string
+     */
+    protected $urlEncoded;
+
     public function __construct(string $name, ?string $longname = null)
     {
         $this->name     = $name;
         $this->longname = null === $longname ? $name : $longname;
+        $this->urlEncoded = rawurlencode($name);
         $this->isFrozen = false;
     }
 
