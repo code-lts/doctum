@@ -74,13 +74,15 @@
 
     
     <p>        class
-    <strong>BucketManager</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php">View source</a>)
+    <strong>BucketManager</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php">View source</a>)
 </p>
 
         
     
         
 
+            <div class="description">
+            <p><p>Provides management capabilities for the Couchbase Bucket</p></p>                    </div>
             
         
     
@@ -90,13 +92,12 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_createBucket">createBucket</a>(<a href="../Couchbase/BucketSettings.html"><abbr title="Couchbase\BucketSettings">BucketSettings</abbr></a> $settings)
+                    <a href="#method_info">info</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Returns information about the bucket</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -104,21 +105,9 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_removeBucket">removeBucket</a>(string $name)
+                    <a href="#method_flush">flush</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../Couchbase/BucketSettings.html"><abbr title="Couchbase\BucketSettings">BucketSettings</abbr></a>
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_getBucket">getBucket</a>(string $name)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Flushes the bucket (clears all data)</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -126,10 +115,19 @@
                     array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getAllBuckets">getAllBuckets</a>()
+                    <a href="#method_listDesignDocuments">listDesignDocuments</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Returns all design documents of the bucket.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getDesignDocument">getDesignDocument</a>(string $name)
+        
+                                            <p><p>Get design document by its name</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -137,10 +135,79 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_flush">flush</a>(string $name)
+                    <a href="#method_removeDesignDocument">removeDesignDocument</a>(string $name)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Removes design document by its name</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_upsertDesignDocument">upsertDesignDocument</a>(string $name, array $document)
+        
+                                            <p><p>Creates or replaces design document.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_insertDesignDocument">insertDesignDocument</a>(string $name, array $document)
+        
+                                            <p><p>Inserts design document and fails if it is exist already.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_listN1qlIndexes">listN1qlIndexes</a>()
+        
+                                            <p><p>List all N1QL indexes that are registered for the current bucket.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createN1qlPrimaryIndex">createN1qlPrimaryIndex</a>(string $customName = &#039;&#039;, bool $ignoreIfExist = false, bool $defer = false)
+        
+                                            <p><p>Create a primary N1QL index.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createN1qlIndex">createN1qlIndex</a>(string $name, array $fields, string $whereClause = &#039;&#039;, bool $ignoreIfExist = false, bool $defer = false)
+        
+                                            <p><p>Create secondary N1QL index.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_dropN1qlPrimaryIndex">dropN1qlPrimaryIndex</a>(string $customName = &#039;&#039;, bool $ignoreIfNotExist = false)
+        
+                                            <p><p>Drop the given primary index</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_dropN1qlIndex">dropN1qlIndex</a>(string $name, bool $ignoreIfNotExist = false)
+        
+                                            <p><p>Drop the given secondary index</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -150,10 +217,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_createBucket">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1128">at line 1128</a></div>
-        <code>                    
-    <strong>createBucket</strong>(<a href="../Couchbase/BucketSettings.html"><abbr title="Couchbase\BucketSettings">BucketSettings</abbr></a> $settings)
+                    <h3 id="method_info">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1345">at line 1345</a></div>
+        <code>                    array
+    <strong>info</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -161,110 +228,44 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Returns information about the bucket</p></p>                <p><p>Returns an associative array of status information as seen by the cluster for
+this bucket. The exact structure of the returned data can be seen in the Couchbase
+Manual by looking at the bucket /info endpoint.</p></p>        
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../Couchbase/BucketSettings.html"><abbr title="Couchbase\BucketSettings">BucketSettings</abbr></a></td>
-                <td>$settings</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_removeBucket">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1130">at line 1130</a></div>
-        <code>                    
-    <strong>removeBucket</strong>(string $name)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$name</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getBucket">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1132">at line 1132</a></div>
-        <code>                    <a href="../Couchbase/BucketSettings.html"><abbr title="Couchbase\BucketSettings">BucketSettings</abbr></a>
-    <strong>getBucket</strong>(string $name)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$name</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../Couchbase/BucketSettings.html"><abbr title="Couchbase\BucketSettings">BucketSettings</abbr></a></td>
+            <td>array</td>
             <td></td>
         </tr>
     </table>
 
             
             
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="https://developer.couchbase.com/documentation/server/current/rest-api/rest-bucket-info.html">https://developer.couchbase.com/documentation/server/current/rest-api/rest-bucket-info.html</a>
+                                    </td>
+                <td>Getting Single Bucket Information</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getAllBuckets">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1134">at line 1134</a></div>
-        <code>                    array
-    <strong>getAllBuckets</strong>()
+                    <h3 id="method_flush">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1350">at line 1350</a></div>
+        <code>                    
+    <strong>flush</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -272,8 +273,30 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Flushes the bucket (clears all data)</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_listDesignDocuments">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1357">at line 1357</a></div>
+        <code>                    array
+    <strong>listDesignDocuments</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns all design documents of the bucket.</p></p>                        
         </div>
         <div class="tags">
             
@@ -294,10 +317,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_flush">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1136">at line 1136</a></div>
-        <code>                    
-    <strong>flush</strong>(string $name)
+                    <h3 id="method_getDesignDocument">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1365">at line 1365</a></div>
+        <code>                    array
+    <strong>getDesignDocument</strong>(string $name)
         </code>
     </h3>
     <div class="details">    
@@ -305,8 +328,7 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Get design document by its name</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -315,7 +337,333 @@
                     <tr>
                 <td>string</td>
                 <td>$name</td>
+                <td><p>name of the design document (without _design/ prefix)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeDesignDocument">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1372">at line 1372</a></div>
+        <code>                    
+    <strong>removeDesignDocument</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes design document by its name</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>name of the design document (without _design/ prefix)</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_upsertDesignDocument">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1380">at line 1380</a></div>
+        <code>                    
+    <strong>upsertDesignDocument</strong>(string $name, array $document)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates or replaces design document.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>name of the design document (without _design/ prefix)</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$document</td>
                 <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_insertDesignDocument">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1388">at line 1388</a></div>
+        <code>                    
+    <strong>insertDesignDocument</strong>(string $name, array $document)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Inserts design document and fails if it is exist already.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>name of the design document (without _design/ prefix)</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$document</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_listN1qlIndexes">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1395">at line 1395</a></div>
+        <code>                    array
+    <strong>listN1qlIndexes</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>List all N1QL indexes that are registered for the current bucket.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createN1qlPrimaryIndex">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1405">at line 1405</a></div>
+        <code>                    
+    <strong>createN1qlPrimaryIndex</strong>(string $customName = &#039;&#039;, bool $ignoreIfExist = false, bool $defer = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a primary N1QL index.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$customName</td>
+                <td><p>the custom name for the primary index.</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$ignoreIfExist</td>
+                <td><p>if a primary index already exists, an exception
+will be thrown unless this is set to true.</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$defer</td>
+                <td><p>true to defer index building.</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createN1qlIndex">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1417">at line 1417</a></div>
+        <code>                    
+    <strong>createN1qlIndex</strong>(string $name, array $fields, string $whereClause = &#039;&#039;, bool $ignoreIfExist = false, bool $defer = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create secondary N1QL index.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>name of the index</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$fields</td>
+                <td><p>list of JSON fields to index</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$whereClause</td>
+                <td><p>the WHERE clause of the index.</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$ignoreIfExist</td>
+                <td><p>if a secondary index already exists, an exception
+will be thrown unless this is set to true.</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$defer</td>
+                <td><p>true to defer index building.</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dropN1qlPrimaryIndex">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1426">at line 1426</a></div>
+        <code>                    
+    <strong>dropN1qlPrimaryIndex</strong>(string $customName = &#039;&#039;, bool $ignoreIfNotExist = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Drop the given primary index</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$customName</td>
+                <td><p>the custom name for the primary index</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$ignoreIfNotExist</td>
+                <td><p>if a primary index does not exist, an exception
+will be thrown unless this is set to true.</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dropN1qlIndex">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1435">at line 1435</a></div>
+        <code>                    
+    <strong>dropN1qlIndex</strong>(string $name, bool $ignoreIfNotExist = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Drop the given secondary index</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>the index name</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$ignoreIfNotExist</td>
+                <td><p>if a secondary index does not exist, an exception
+will be thrown unless this is set to true.</p></td>
             </tr>
             </table>
 
