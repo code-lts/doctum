@@ -673,30 +673,30 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    bool|<a href="Redis.html">Redis</a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setEx">setEx</a>(string $key, int $ttl, string|mixed $value)
+                    <a href="#method_setex">setex</a>(string $key, int $expire, string|mixed $value)
         
                                             <p><p>Set the string value in argument as value of the key, with a time to live.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    bool|<a href="Redis.html">Redis</a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_pSetEx">pSetEx</a>(string $key, int $ttl, string|mixed $value)
+                    <a href="#method_psetex">psetex</a>(string $key, int $expire, string|mixed $value)
         
                                             <p><p>Set the value and expiration in milliseconds of a key.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    bool|array|<a href="Redis.html">Redis</a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setNx">setNx</a>(string $key, string|mixed $value)
+                    <a href="#method_setnx">setnx</a>(string $key, mixed $value)
         
                                             <p><p>Set the string value in argument as value of the key if the key doesn't already exist in the database.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -1785,7 +1785,7 @@ the second byte's most significant bit is at position 8, and so forth.</p></p>  
                     int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_mSetNx">mSetNx</a>(array $array)
+                    <a href="#method_msetnx">msetnx</a>(array $array)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -3775,10 +3775,10 @@ $redis-&gt;set('key', 'value', ['xx', 'px' =&gt; 1000]);
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setEx">
+                    <h3 id="method_setex">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L454">at line 454</a></div>
-        <code>                    bool
-    <strong>setEx</strong>(string $key, int $ttl, string|mixed $value)
+        <code>                    bool|<a href="Redis.html">Redis</a>
+    <strong>setex</strong>(string $key, int $expire, string|mixed $value)
         </code>
     </h3>
     <div class="details">    
@@ -3799,7 +3799,7 @@ $redis-&gt;set('key', 'value', ['xx', 'px' =&gt; 1000]);
             </tr>
                     <tr>
                 <td>int</td>
-                <td>$ttl</td>
+                <td>$expire</td>
                 <td></td>
             </tr>
                     <tr>
@@ -3814,8 +3814,8 @@ $redis-&gt;set('key', 'value', ['xx', 'px' =&gt; 1000]);
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
-            <td><p>TRUE if the command is successful</p></td>
+            <td>bool|<a href="Redis.html">Redis</a></td>
+            <td></td>
         </tr>
     </table>
 
@@ -3826,7 +3826,7 @@ $redis-&gt;set('key', 'value', ['xx', 'px' =&gt; 1000]);
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">$redis-&gt;setEx(&#039;key&#039;, 3600, &#039;value&#039;); // sets key → value, with 1h TTL.</pre></td>
+                <td><pre class="examples">$redis-&gt;setex(&#039;key&#039;, 3600, &#039;value&#039;); // sets key → value, with 1h TTL.</pre></td>
             </tr>
             </table>
 
@@ -3835,10 +3835,10 @@ $redis-&gt;set('key', 'value', ['xx', 'px' =&gt; 1000]);
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_pSetEx">
+                    <h3 id="method_psetex">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L469">at line 469</a></div>
-        <code>                    bool
-    <strong>pSetEx</strong>(string $key, int $ttl, string|mixed $value)
+        <code>                    bool|<a href="Redis.html">Redis</a>
+    <strong>psetex</strong>(string $key, int $expire, string|mixed $value)
         </code>
     </h3>
     <div class="details">    
@@ -3859,7 +3859,7 @@ $redis-&gt;set('key', 'value', ['xx', 'px' =&gt; 1000]);
             </tr>
                     <tr>
                 <td>int</td>
-                <td>$ttl</td>
+                <td>$expire</td>
                 <td><p>in milliseconds.</p></td>
             </tr>
                     <tr>
@@ -3874,8 +3874,8 @@ $redis-&gt;set('key', 'value', ['xx', 'px' =&gt; 1000]);
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
-            <td><p>TRUE if the command is successful</p></td>
+            <td>bool|<a href="Redis.html">Redis</a></td>
+            <td></td>
         </tr>
     </table>
 
@@ -3886,7 +3886,7 @@ $redis-&gt;set('key', 'value', ['xx', 'px' =&gt; 1000]);
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            setEx()
+                                            setex()
                                     </td>
                 <td></td>
             </tr>
@@ -3897,7 +3897,7 @@ $redis-&gt;set('key', 'value', ['xx', 'px' =&gt; 1000]);
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">$redis-&gt;pSetEx(&#039;key&#039;, 1000, &#039;value&#039;); // sets key → value, with 1sec TTL.</pre></td>
+                <td><pre class="examples">$redis-&gt;psetex(&#039;key&#039;, 1000, &#039;value&#039;); // sets key → value, with 1sec TTL.</pre></td>
             </tr>
             </table>
 
@@ -3906,10 +3906,10 @@ $redis-&gt;set('key', 'value', ['xx', 'px' =&gt; 1000]);
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setNx">
+                    <h3 id="method_setnx">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L486">at line 486</a></div>
-        <code>                    bool
-    <strong>setNx</strong>(string $key, string|mixed $value)
+        <code>                    bool|array|<a href="Redis.html">Redis</a>
+    <strong>setnx</strong>(string $key, mixed $value)
         </code>
     </h3>
     <div class="details">    
@@ -3929,7 +3929,7 @@ $redis-&gt;set('key', 'value', ['xx', 'px' =&gt; 1000]);
                 <td></td>
             </tr>
                     <tr>
-                <td>string|mixed</td>
+                <td>mixed</td>
                 <td>$value</td>
                 <td></td>
             </tr>
@@ -3940,8 +3940,8 @@ $redis-&gt;set('key', 'value', ['xx', 'px' =&gt; 1000]);
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
-            <td><p>TRUE in case of success, FALSE in case of failure</p></td>
+            <td>bool|array|<a href="Redis.html">Redis</a></td>
+            <td></td>
         </tr>
     </table>
 
@@ -3953,8 +3953,8 @@ $redis-&gt;set('key', 'value', ['xx', 'px' =&gt; 1000]);
                     <table class="table table-condensed">
                     <tr>
                 <td><pre class="examples">&lt;pre&gt;<br />
-$redis-&gt;setNx(&#039;key&#039;, &#039;value&#039;);   // return TRUE<br />
-$redis-&gt;setNx(&#039;key&#039;, &#039;value&#039;);   // return FALSE<br />
+$redis-&gt;setnx(&#039;key&#039;, &#039;value&#039;);   // return TRUE<br />
+$redis-&gt;setnx(&#039;key&#039;, &#039;value&#039;);   // return FALSE<br />
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -7887,7 +7887,7 @@ $redis-&gt;get(&#039;x&#039;);   // → `FALSE`<br />
 
         <div class="method-description">
                             <p><p>Renames a key</p></p>                <p><p>Same as rename, but will not replace a key if the destination already exists.
-This is the same behaviour as setNx.</p></p>        
+This is the same behaviour as setnx.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -10136,10 +10136,10 @@ var_dump($redis-&gt;mget(array(&#039;x&#039;, &#039;y&#039;, &#039;z&#039;, &#03
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_mSetNx">
+                    <h3 id="method_msetnx">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L2636">at line 2636</a></div>
         <code>                    int
-    <strong>mSetNx</strong>(array $array)
+    <strong>msetnx</strong>(array $array)
         </code>
     </h3>
     <div class="details">    
