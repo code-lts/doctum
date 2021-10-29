@@ -6880,6 +6880,15 @@
         {"type":"Method","fromName":"PDO","fromLink":"PDO.html","link":"PDO.html#method___sleep","name":"PDO::__sleep","doc":null},
         {"type":"Method","fromName":"PDO","fromLink":"PDO.html","link":"PDO.html#method_getAvailableDrivers","name":"PDO::getAvailableDrivers","doc":"<p>(PHP 5 &gt;= 5.1.3, PHP 7, PECL pdo &gt;= 1.0.3)<br/>\nReturn an array of available PDO drivers</p>"},
         {"type":"Method","fromName":"PDO","fromLink":"PDO.html","link":"PDO.html#method_sqliteCreateFunction","name":"PDO::sqliteCreateFunction","doc":"<p>(PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo_sqlite &gt;= 1.0.0)<br/>\nRegisters a User Defined Function for use in SQL statements</p>"},
+        {"type":"Method","fromName":"PDO","fromLink":"PDO.html","link":"PDO.html#method_pgsqlCopyFromArray","name":"PDO::pgsqlCopyFromArray","doc":"<p>(PHP 5 &gt;= 5.3.3, PHP 7, PHP 8)<br/>\nCopy data from PHP array into table</p>"},
+        {"type":"Method","fromName":"PDO","fromLink":"PDO.html","link":"PDO.html#method_pgsqlCopyFromFile","name":"PDO::pgsqlCopyFromFile","doc":"<p>(PHP 5 &gt;= 5.3.3, PHP 7, PHP 8)<br/>\nCopy data from file into table</p>"},
+        {"type":"Method","fromName":"PDO","fromLink":"PDO.html","link":"PDO.html#method_pgsqlCopyToArray","name":"PDO::pgsqlCopyToArray","doc":"<p>(PHP 5 &gt;= 5.3.3, PHP 7, PHP 8)<br/>\nCopy data from database table into PHP array</p>"},
+        {"type":"Method","fromName":"PDO","fromLink":"PDO.html","link":"PDO.html#method_pgsqlCopyToFile","name":"PDO::pgsqlCopyToFile","doc":"<p>(PHP 5 &gt;= 5.3.3, PHP 7, PHP 8)<br/>\nCopy data from table into file</p>"},
+        {"type":"Method","fromName":"PDO","fromLink":"PDO.html","link":"PDO.html#method_pgsqlLOBCreate","name":"PDO::pgsqlLOBCreate","doc":"<p>(PHP 5 &gt;= 5.1.2, PHP 7, PHP 8, PECL pdo_pgsql &gt;= 1.0.2)<br/>\nCreates a new large object</p>"},
+        {"type":"Method","fromName":"PDO","fromLink":"PDO.html","link":"PDO.html#method_pgsqlLOBOpen","name":"PDO::pgsqlLOBOpen","doc":"<p>(PHP 5 &gt;= 5.1.2, PHP 7, PHP 8, PECL pdo_pgsql &gt;= 1.0.2)<br/>\nOpens an existing large object stream</p>"},
+        {"type":"Method","fromName":"PDO","fromLink":"PDO.html","link":"PDO.html#method_pgsqlLOBUnlink","name":"PDO::pgsqlLOBUnlink","doc":"<p>(PHP 5 &gt;= 5.1.2, PHP 7, PHP 8, PECL pdo_pgsql &gt;= 1.0.2)<br/>\nDeletes the large object</p>"},
+        {"type":"Method","fromName":"PDO","fromLink":"PDO.html","link":"PDO.html#method_pgsqlGetNotify","name":"PDO::pgsqlGetNotify","doc":"<p>(PHP 5 &gt;= 5.6.0, PHP 7, PHP 8)<br/>\nGet asynchronous notification</p>"},
+        {"type":"Method","fromName":"PDO","fromLink":"PDO.html","link":"PDO.html#method_pgsqlGetPid","name":"PDO::pgsqlGetPid","doc":"<p>(PHP 5 &gt;= 5.6.0, PHP 7, PHP 8)<br/>\nGet the server PID</p>"},
             
                     {"type":"Class","link":"PDOException.html","name":"PDOException","doc":"<p>Represents an error raised by PDO. You should not throw a\n<b>PDOException</b> from your own code.</p>"},
                 
