@@ -103,8 +103,10 @@ class MethodReflection extends Reflection
     {
         $exceptions = [];
         foreach ($this->exceptions as $exception) {
-            $exception[0] = $this->class->getProject()->getClass($exception[0]);
-            $exceptions[] = $exception;
+            $exceptions[] = [
+                $this->class->getProject()->getClass(is_array($exception) ? $exception[0] : $exception),
+                '',
+            ];
         }
 
         return $exceptions;
