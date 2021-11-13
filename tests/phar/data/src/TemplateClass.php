@@ -114,6 +114,15 @@ class Collection {
     function add($v): void {
 
     }
+
+    /**
+     * @throws \InvalidArgumentException.
+     * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException.
+     */
+    function del($k): void
+    {
+
+    }
 }
 
 /**
