@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix a PHP error when the `@throws` tag is invalid
 - Fix some texts that got escaped into `<p>` tags when it was not worth it
 - Do not print the error summary for frozen versions (ex: git tags) and add CLI `--print-frozen-errors` to reverse this change
+- Implement source line and remote links on functions of the global namespace
+- Internal: rename `ClassTraverser` to `ProjectTraverser`
+- Internal: add "file" and "relative_file" property on cached file for a function
 
 ## [5.4.1] - 2021-04-22
 
