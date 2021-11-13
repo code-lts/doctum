@@ -306,13 +306,17 @@ class DocBlockParserTest extends TestCase
                  */
                 ',
                 [
-                    'shortDesc' => null,
-                    'longDesc' => null,
-                    'tags' => [],
-                    'errors' => [
-                        '"\InvalidArgumentException." is not a valid Fqsen.'
+                    [
+                        'shortDesc' => '',
+                        'longDesc' => '',
+                        'tags' => [
+                            'throws' => [
+                                '\InvalidArgumentException.',
+                                '\Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException.'
+                            ],
+                        ],
                     ],
-                ],
+                ]
             ],
             [
                 '
