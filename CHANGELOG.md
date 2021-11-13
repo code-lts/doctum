@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix HTML markup missing close tag `<a>` on a function in the global namespace
 - Fix a PHP error when the `@throws` tag is invalid
 - Fix some texts that got escaped into `<p>` tags when it was not worth it
+- Do not print the error summary for frozen versions (ex: git tags) and add CLI `--print-frozen-errors` to reverse this change
 
 ## [5.4.1] - 2021-04-22
 
