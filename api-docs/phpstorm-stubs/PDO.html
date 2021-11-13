@@ -82,15 +82,6 @@
             <h2>Constants</h2>    <table class="table table-condensed">
                     <tr>
                 <td>
-                                                                                                                        PARAM_BOOL
-                                    </td>
-                <td class="last">
-                    <p><em><p>Represents a boolean data type.</p></em></p>
-                    <p></p>
-                </td>
-            </tr>
-                    <tr>
-                <td>
                                                                                                                         PARAM_NULL
                                     </td>
                 <td class="last">
@@ -113,6 +104,33 @@
                                     </td>
                 <td class="last">
                     <p><em><p>Represents the SQL CHAR, VARCHAR, or other string data type.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PARAM_LOB
+                                    </td>
+                <td class="last">
+                    <p><em><p>Represents the SQL large object data type.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PARAM_STMT
+                                    </td>
+                <td class="last">
+                    <p><em><p>Represents a recordset type. Not currently supported by any drivers.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PARAM_BOOL
+                                    </td>
+                <td class="last">
+                    <p><em><p>Represents a boolean data type.</p></em></p>
                     <p></p>
                 </td>
             </tr>
@@ -201,24 +219,6 @@
                                     </td>
                 <td class="last">
                     <p><em></em></p>
-                    <p></p>
-                </td>
-            </tr>
-                    <tr>
-                <td>
-                                                                                                                        PARAM_LOB
-                                    </td>
-                <td class="last">
-                    <p><em><p>Represents the SQL large object data type.</p></em></p>
-                    <p></p>
-                </td>
-            </tr>
-                    <tr>
-                <td>
-                                                                                                                        PARAM_STMT
-                                    </td>
-                <td class="last">
-                    <p><em><p>Represents a recordset type. Not currently supported by any drivers.</p></em></p>
                     <p></p>
                 </td>
             </tr>
@@ -2158,7 +2158,7 @@ Retrieve a database connection attribute</p></p>                </div>
                     string|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_quote">quote</a>(string $string, int $type = PDO::PARAM_INT)
+                    <a href="#method_quote">quote</a>(string $string, int $type = PDO::PARAM_STR)
         
                                             <p><p>(PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.2.1)<br/>
 Quotes a string for use in a query.</p></p>                </div>
@@ -3041,7 +3041,7 @@ An unsuccessful call returns null.</p></td>
                     <h3 id="method_quote">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1239">at line 1239</a></div>
         <code>                    string|false
-    <strong>quote</strong>(string $string, int $type = PDO::PARAM_INT)
+    <strong>quote</strong>(string $string, int $type = PDO::PARAM_STR)
         </code>
     </h3>
     <div class="details">    

@@ -3924,8 +3924,7 @@
         {"type":"Method","fromName":"Fiber","fromLink":"Fiber.html","link":"Fiber.html#method_isRunning","name":"Fiber::isRunning","doc":""},
         {"type":"Method","fromName":"Fiber","fromLink":"Fiber.html","link":"Fiber.html#method_isTerminated","name":"Fiber::isTerminated","doc":""},
         {"type":"Method","fromName":"Fiber","fromLink":"Fiber.html","link":"Fiber.html#method_getReturn","name":"Fiber::getReturn","doc":""},
-        {"type":"Method","fromName":"Fiber","fromLink":"Fiber.html","link":"Fiber.html#method_getCurrent","name":"Fiber::getCurrent","doc":null},
-        {"type":"Method","fromName":"Fiber","fromLink":"Fiber.html","link":"Fiber.html#method_this","name":"Fiber::this","doc":""},
+        {"type":"Method","fromName":"Fiber","fromLink":"Fiber.html","link":"Fiber.html#method_getCurrent","name":"Fiber::getCurrent","doc":""},
         {"type":"Method","fromName":"Fiber","fromLink":"Fiber.html","link":"Fiber.html#method_suspend","name":"Fiber::suspend","doc":"<p>Suspend execution of the fiber. The fiber may be resumed with {<a href=\"Fiber.html\">Fiber::resume()}</a> or {<a href=\"Fiber.html\">Fiber::throw()}.</a></p>"},
             
                     {"type":"Class","link":"FiberError.html","name":"FiberError","doc":""},
@@ -4152,7 +4151,7 @@
         {"type":"Method","fromName":"GearmanWorker","fromLink":"GearmanWorker.html","link":"GearmanWorker.html#method_addFunction","name":"GearmanWorker::addFunction","doc":"<p>Registers a function name with the job server and specifies a callback\ncorresponding to that function. Optionally specify extra application context\ndata to be used when the callback is called and a timeout.</p>"},
         {"type":"Method","fromName":"GearmanWorker","fromLink":"GearmanWorker.html","link":"GearmanWorker.html#method_work","name":"GearmanWorker::work","doc":"<p>Waits for a job to be assigned and then calls the appropriate callback function.</p>"},
             
-                    {"type":"Class","link":"Generator.html","name":"Generator","doc":"<p>Generator objects are returned from generators, cannot be instantiated via new.</p>"},
+                    {"type":"Class","link":"Generator.html","name":"Generator","doc":""},
                                 {"type":"Method","fromName":"Generator","fromLink":"Generator.html","link":"Generator.html#method_rewind","name":"Generator::rewind","doc":"<p>Throws an exception if the generator is currently after the first yield.</p>"},
         {"type":"Method","fromName":"Generator","fromLink":"Generator.html","link":"Generator.html#method_valid","name":"Generator::valid","doc":"<p>Returns false if the generator has been closed, true otherwise.</p>"},
         {"type":"Method","fromName":"Generator","fromLink":"Generator.html","link":"Generator.html#method_current","name":"Generator::current","doc":"<p>Returns whatever was passed to yield or null if nothing was passed or the generator is already closed.</p>"},
@@ -9105,7 +9104,7 @@
             
                     {"type":"Class","link":"SplBool.html","name":"SplBool","doc":"<p>The SplBool class is used to enforce strong typing of the bool type.</p>"},
                 
-                    {"type":"Class","link":"SplDoublyLinkedList.html","name":"SplDoublyLinkedList","doc":"<p>The SplDoublyLinkedList class provides the main functionalities of a doubly linked list.</p>"},
+                    {"type":"Class","link":"SplDoublyLinkedList.html","name":"SplDoublyLinkedList","doc":""},
                                 {"type":"Method","fromName":"SplDoublyLinkedList","fromLink":"SplDoublyLinkedList.html","link":"SplDoublyLinkedList.html#method_add","name":"SplDoublyLinkedList::add","doc":"<p>Add/insert a new value at the specified index</p>"},
         {"type":"Method","fromName":"SplDoublyLinkedList","fromLink":"SplDoublyLinkedList.html","link":"SplDoublyLinkedList.html#method_pop","name":"SplDoublyLinkedList::pop","doc":"<p>Pops a node from the end of the doubly linked list</p>"},
         {"type":"Method","fromName":"SplDoublyLinkedList","fromLink":"SplDoublyLinkedList.html","link":"SplDoublyLinkedList.html#method_shift","name":"SplDoublyLinkedList::shift","doc":"<p>Shifts a node from the beginning of the doubly linked list</p>"},
@@ -9205,7 +9204,7 @@
         {"type":"Method","fromName":"SplFileObject","fromLink":"SplFileObject.html","link":"SplFileObject.html#method_getCurrentLine","name":"SplFileObject::getCurrentLine","doc":"<p>Alias of <b>SplFileObject::fgets</b></p>"},
         {"type":"Method","fromName":"SplFileObject","fromLink":"SplFileObject.html","link":"SplFileObject.html#method___toString","name":"SplFileObject::__toString","doc":"<p>Alias of <b>SplFileObject::current</b></p>"},
             
-                    {"type":"Class","link":"SplFixedArray.html","name":"SplFixedArray","doc":"<p>The SplFixedArray class provides the main functionalities of array. The\nmain differences between a SplFixedArray and a normal PHP array is that\nthe SplFixedArray is of fixed length and allows only integers within\nthe range as indexes. The advantage is that it allows a faster array\nimplementation.</p>"},
+                    {"type":"Class","link":"SplFixedArray.html","name":"SplFixedArray","doc":""},
                                 {"type":"Method","fromName":"SplFixedArray","fromLink":"SplFixedArray.html","link":"SplFixedArray.html#method___construct","name":"SplFixedArray::__construct","doc":"<p>Constructs a new fixed array</p>"},
         {"type":"Method","fromName":"SplFixedArray","fromLink":"SplFixedArray.html","link":"SplFixedArray.html#method_count","name":"SplFixedArray::count","doc":"<p>Returns the size of the array</p>"},
         {"type":"Method","fromName":"SplFixedArray","fromLink":"SplFixedArray.html","link":"SplFixedArray.html#method_toArray","name":"SplFixedArray::toArray","doc":"<p>Returns a PHP array from the fixed array</p>"},
@@ -9227,7 +9226,7 @@
             
                     {"type":"Class","link":"SplFloat.html","name":"SplFloat","doc":"<p>The SplFloat class is used to enforce strong typing of the float type.</p>"},
                 
-                    {"type":"Class","link":"SplHeap.html","name":"SplHeap","doc":"<p>The SplHeap class provides the main functionalities of an Heap.</p>"},
+                    {"type":"Class","link":"SplHeap.html","name":"SplHeap","doc":""},
                                 {"type":"Method","fromName":"SplHeap","fromLink":"SplHeap.html","link":"SplHeap.html#method_extract","name":"SplHeap::extract","doc":"<p>Extracts a node from top of the heap and sift up.</p>"},
         {"type":"Method","fromName":"SplHeap","fromLink":"SplHeap.html","link":"SplHeap.html#method_insert","name":"SplHeap::insert","doc":"<p>Inserts an element in the heap by sifting it up.</p>"},
         {"type":"Method","fromName":"SplHeap","fromLink":"SplHeap.html","link":"SplHeap.html#method_top","name":"SplHeap::top","doc":"<p>Peeks at the node from the top of the heap</p>"},
@@ -9245,10 +9244,10 @@
             
                     {"type":"Class","link":"SplInt.html","name":"SplInt","doc":"<p>The SplInt class is used to enforce strong typing of the integer type.</p>"},
                 
-                    {"type":"Class","link":"SplMaxHeap.html","name":"SplMaxHeap","doc":"<p>The SplMaxHeap class provides the main functionalities of a heap, keeping the maximum on the top.</p>"},
+                    {"type":"Class","link":"SplMaxHeap.html","name":"SplMaxHeap","doc":""},
                                 {"type":"Method","fromName":"SplMaxHeap","fromLink":"SplMaxHeap.html","link":"SplMaxHeap.html#method_compare","name":"SplMaxHeap::compare","doc":"<p>Compare elements in order to place them correctly in the heap while sifting up.</p>"},
             
-                    {"type":"Class","link":"SplMinHeap.html","name":"SplMinHeap","doc":"<p>The SplMinHeap class provides the main functionalities of a heap, keeping the minimum on the top.</p>"},
+                    {"type":"Class","link":"SplMinHeap.html","name":"SplMinHeap","doc":""},
                                 {"type":"Method","fromName":"SplMinHeap","fromLink":"SplMinHeap.html","link":"SplMinHeap.html#method_compare","name":"SplMinHeap::compare","doc":"<p>Compare elements in order to place them correctly in the heap while sifting up.</p>"},
         {"type":"Method","fromName":"SplMinHeap","fromLink":"SplMinHeap.html","link":"SplMinHeap.html#method_extract","name":"SplMinHeap::extract","doc":"<p>Extracts a node from top of the heap and sift up.</p>"},
         {"type":"Method","fromName":"SplMinHeap","fromLink":"SplMinHeap.html","link":"SplMinHeap.html#method_insert","name":"SplMinHeap::insert","doc":"<p>Inserts an element in the heap by sifting it up.</p>"},
@@ -9262,7 +9261,7 @@
         {"type":"Method","fromName":"SplMinHeap","fromLink":"SplMinHeap.html","link":"SplMinHeap.html#method_valid","name":"SplMinHeap::valid","doc":"<p>Check whether the heap contains more nodes</p>"},
         {"type":"Method","fromName":"SplMinHeap","fromLink":"SplMinHeap.html","link":"SplMinHeap.html#method_recoverFromCorruption","name":"SplMinHeap::recoverFromCorruption","doc":"<p>Recover from the corrupted state and allow further actions on the heap.</p>"},
             
-                    {"type":"Class","link":"SplObjectStorage.html","name":"SplObjectStorage","doc":"<p>The SplObjectStorage class provides a map from objects to data or, by\nignoring data, an object set. This dual purpose can be useful in many\ncases involving the need to uniquely identify objects.</p>"},
+                    {"type":"Class","link":"SplObjectStorage.html","name":"SplObjectStorage","doc":""},
                                 {"type":"Method","fromName":"SplObjectStorage","fromLink":"SplObjectStorage.html","link":"SplObjectStorage.html#method_attach","name":"SplObjectStorage::attach","doc":"<p>Adds an object in the storage</p>"},
         {"type":"Method","fromName":"SplObjectStorage","fromLink":"SplObjectStorage.html","link":"SplObjectStorage.html#method_detach","name":"SplObjectStorage::detach","doc":"<p>Removes an object from the storage</p>"},
         {"type":"Method","fromName":"SplObjectStorage","fromLink":"SplObjectStorage.html","link":"SplObjectStorage.html#method_contains","name":"SplObjectStorage::contains","doc":"<p>Checks if the storage contains a specific object</p>"},
@@ -9291,7 +9290,7 @@
                     {"type":"Class","link":"SplObserver.html","name":"SplObserver","doc":"<p>The <b>SplObserver</b> interface is used alongside\n<b>SplSubject</b> to implement the Observer Design Pattern.</p>"},
                                 {"type":"Method","fromName":"SplObserver","fromLink":"SplObserver.html","link":"SplObserver.html#method_update","name":"SplObserver::update","doc":"<p>Receive update from subject</p>"},
             
-                    {"type":"Class","link":"SplPriorityQueue.html","name":"SplPriorityQueue","doc":"<p>The SplPriorityQueue class provides the main functionalities of an\nprioritized queue, implemented using a heap.</p>"},
+                    {"type":"Class","link":"SplPriorityQueue.html","name":"SplPriorityQueue","doc":""},
                                 {"type":"Method","fromName":"SplPriorityQueue","fromLink":"SplPriorityQueue.html","link":"SplPriorityQueue.html#method___construct","name":"SplPriorityQueue::__construct","doc":"<p>Construct a new SplPriorityQueue object</p>"},
         {"type":"Method","fromName":"SplPriorityQueue","fromLink":"SplPriorityQueue.html","link":"SplPriorityQueue.html#method_compare","name":"SplPriorityQueue::compare","doc":"<p>Compare priorities in order to place elements correctly in the heap while sifting up.</p>"},
         {"type":"Method","fromName":"SplPriorityQueue","fromLink":"SplPriorityQueue.html","link":"SplPriorityQueue.html#method_insert","name":"SplPriorityQueue::insert","doc":"<p>Inserts an element in the queue by sifting it up.</p>"},
@@ -9310,12 +9309,12 @@
         {"type":"Method","fromName":"SplPriorityQueue","fromLink":"SplPriorityQueue.html","link":"SplPriorityQueue.html#method_getExtractFlags","name":"SplPriorityQueue::getExtractFlags","doc":""},
         {"type":"Method","fromName":"SplPriorityQueue","fromLink":"SplPriorityQueue.html","link":"SplPriorityQueue.html#method___debugInfo","name":"SplPriorityQueue::__debugInfo","doc":""},
             
-                    {"type":"Class","link":"SplQueue.html","name":"SplQueue","doc":"<p>The SplQueue class provides the main functionalities of a queue implemented using a doubly linked list.</p>"},
+                    {"type":"Class","link":"SplQueue.html","name":"SplQueue","doc":""},
                                 {"type":"Method","fromName":"SplQueue","fromLink":"SplQueue.html","link":"SplQueue.html#method_enqueue","name":"SplQueue::enqueue","doc":"<p>Adds an element to the queue.</p>"},
         {"type":"Method","fromName":"SplQueue","fromLink":"SplQueue.html","link":"SplQueue.html#method_dequeue","name":"SplQueue::dequeue","doc":"<p>Dequeues a node from the queue</p>"},
         {"type":"Method","fromName":"SplQueue","fromLink":"SplQueue.html","link":"SplQueue.html#method_setIteratorMode","name":"SplQueue::setIteratorMode","doc":"<p>Sets the mode of iteration</p>"},
             
-                    {"type":"Class","link":"SplStack.html","name":"SplStack","doc":"<p>The SplStack class provides the main functionalities of a stack implemented using a doubly linked list.</p>"},
+                    {"type":"Class","link":"SplStack.html","name":"SplStack","doc":""},
                                 {"type":"Method","fromName":"SplStack","fromLink":"SplStack.html","link":"SplStack.html#method_setIteratorMode","name":"SplStack::setIteratorMode","doc":"<p>Sets the mode of iteration</p>"},
             
                     {"type":"Class","link":"SplString.html","name":"SplString","doc":"<p>The SplString class is used to enforce strong typing of the string type.</p>"},
