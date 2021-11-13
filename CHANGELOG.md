@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix PHP 8.1 errors on ArrayAccess methods signatures
 - Fix HTML markup missing close tag `<a>` on a function in the global namespace
 - Fix a PHP error when the `@throws` tag is invalid
+- Fix some texts that got escaped into `<p>` tags when it was not worth it
 
 ## [5.4.1] - 2021-04-22
 
