@@ -301,6 +301,22 @@ class DocBlockParserTest extends TestCase
             [
                 '
                 /**
+                 * @throws \InvalidArgumentException.
+                 * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException.
+                 */
+                ',
+                [
+                    'shortDesc' => null,
+                    'longDesc' => null,
+                    'tags' => [],
+                    'errors' => [
+                        '"\InvalidArgumentException." is not a valid Fqsen.'
+                    ],
+                ],
+            ],
+            [
+                '
+                /**
                  * @return SingleClass|\MultipleClass[] Return Description
                  */
                 ',
@@ -645,6 +661,11 @@ class DocBlockParserTest extends TestCase
             switch ($key) {
                 case 'tags':
                     $docblock = $this->addDocblockForTags($docblock, $value);
+                    break;
+                case 'errors':
+                    foreach ($value as $value) {
+                        $docblock->addError($value);
+                    }
                     break;
                 default:
                     $method = 'set' . $key;
