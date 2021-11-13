@@ -25,6 +25,7 @@ use Doctum\Parser\Transaction;
 use Doctum\Project;
 use Doctum\Renderer\Diff;
 use Doctum\Doctum;
+use Doctum\Version\Version;
 use Symfony\Component\Console\Command\Command as BaseCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -43,7 +44,7 @@ abstract class Command extends BaseCommand
     protected $doctum;
 
     /**
-     * @var string
+     * @var string|Version
      */
     protected $version;
 
@@ -129,6 +130,13 @@ abstract class Command extends BaseCommand
     {
         $this->getDefinition()->addOption(
             new InputOption('ignore-parse-errors', '', InputOption::VALUE_NONE, 'Ignores parse errors and exits 0', null)
+        );
+    }
+
+    protected function addPrintFrozenErrors(): void
+    {
+        $this->getDefinition()->addOption(
+            new InputOption('print-frozen-errors', '', InputOption::VALUE_NONE, 'Enables printing errors for frozen versions', null)
         );
     }
 
@@ -387,7 +395,13 @@ abstract class Command extends BaseCommand
             . AnsiEscapeSequences::ERASE_TO_LINE_END . "\n"
             . AnsiEscapeSequences::ERASE_TO_LINE_END . "\n" . AnsiEscapeSequences::MOVE_CURSOR_UP_1 : 'Parsing done' . "\n"
         );
-        if ($this->output->isVerbose() && count($this->errors) > 0) {
+
+        $isFrozenVersion = $this->version instanceof Version
+                            && $this->version->isFrozen()
+                            && ! $this->input->getOption('print-frozen-errors');
+
+        // Do not display errors for frozen versions, it makes no sense (except if the user explicitly wants it)
+        if ($this->output->isVerbose() && count($this->errors) > 0 && $isFrozenVersion === false) {
             $this->output->writeLineFormatted('');
             $analysisResult = new AnalysisResult(
                 $this->errors,

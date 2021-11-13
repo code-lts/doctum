@@ -31,6 +31,7 @@ class UpdateCommand extends Command
         $this->addOutputFormatOption();
         $this->addNoProgressOption();
         $this->addIgnoreParseErrors();
+        $this->addPrintFrozenErrors();
 
         $this
             ->setName('update')

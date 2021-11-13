@@ -32,6 +32,7 @@ class ParseCommand extends Command
         $this->addOutputFormatOption();
         $this->addNoProgressOption();
         $this->addIgnoreParseErrors();
+        $this->addPrintFrozenErrors();
 
         $defaultVersionName = Doctum::$defaultVersionName;
         $this
