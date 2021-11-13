@@ -20,8 +20,10 @@ class FunctionReflection extends Reflection
     protected $parameters = [];
     protected $byRef;
     protected $project;
-    protected $file;
-    protected $relativeFilePath;
+    /** @var string|null */
+    protected $file = null;
+    /** @var string|null */
+    protected $relativeFilePath = null;
     protected $exceptions = [];
 
     public function __toString()
@@ -149,22 +151,22 @@ class FunctionReflection extends Reflection
         return $this->exceptions;
     }
 
-    public function getFile()
+    public function getFile(): ?string
     {
         return $this->file;
     }
 
-    public function setFile($file)
+    public function setFile(?string $file): void
     {
         $this->file = $file;
     }
 
-    public function setRelativeFilePath($relativeFilePath)
+    public function setRelativeFilePath(?string $relativeFilePath): void
     {
         $this->relativeFilePath = $relativeFilePath;
     }
 
-    public function getRelativeFilePath()
+    public function getRelativeFilePath(): ?string
     {
         return $this->relativeFilePath;
     }
