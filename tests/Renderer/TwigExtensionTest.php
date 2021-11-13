@@ -29,11 +29,15 @@ class TwigExtensionTest extends AbstractTestCase
             ],
             [
                 '<p>text</p>',
-                '<p>text</p>'
+                'text'
             ],
             [
                 '<p><p>text</p></p>',
-                '<p><p>text</p></p>'
+                '<p>text</p>'
+            ],
+            [
+                '<p><p>some text</p></p>',
+                '<p><p>some text</p></p>'
             ],
             [
                 'Constructor. Set DB Object and set {@link $return_statements return_statements}.',
@@ -58,7 +62,7 @@ class TwigExtensionTest extends AbstractTestCase
             ],
             [
                 '@see \PDO',
-                '<p>\PDO</p>'
+                '\PDO'
             ],
             [
                 '@see \PDO',

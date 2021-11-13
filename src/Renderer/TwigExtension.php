@@ -170,8 +170,15 @@ class TwigExtension extends AbstractExtension
             $desc
         );
 
+        $outputMarkdown = $this->markdown->text($desc);
 
-        return $this->markdown->text($desc);
+        $matches = [];
+        // Values without a space do not need to be forced into a <p> tag
+        if (preg_match('#^<p>(\S+)</p>$#', $outputMarkdown, $matches) === 1) {
+            return $matches[1] ?? $outputMarkdown;
+        }
+
+        return $outputMarkdown;
     }
 
     public function transformContentsIntoLinks(string $data, Reflection $classOrFunctionRefl): string
