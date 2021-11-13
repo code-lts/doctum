@@ -45,7 +45,7 @@ class Project
     protected $classes;
 
     /** @var array<string,array<string,FunctionReflection>> */
-    protected $functions;
+    protected $functions = [];
 
     protected $namespaceClasses;
     protected $namespaceInterfaces;
@@ -330,7 +330,7 @@ class Project
     {
         $functions = [];
 
-        foreach (($this->functions ?? []) as $allFunctionsOfNamespace) {
+        foreach ($this->functions as $allFunctionsOfNamespace) {
             foreach ($allFunctionsOfNamespace as $functionInNamespace) {
                 $functions[] = $functionInNamespace;
             }
