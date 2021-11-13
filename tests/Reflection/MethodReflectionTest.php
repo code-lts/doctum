@@ -4,10 +4,12 @@ declare(strict_types = 1);
 
 namespace Doctum\Tests\Reflection;
 
-use PHPUnit\Framework\TestCase;
+use Doctum\Reflection\ClassReflection;
+use Doctum\Reflection\LazyClassReflection;
 use Doctum\Reflection\MethodReflection;
+use Doctum\Tests\AbstractTestCase;
 
-class MethodReflectionTest extends TestCase
+class MethodReflectionTest extends AbstractTestCase
 {
 
     public function testSetGetModifiers(): void
@@ -28,6 +30,45 @@ class MethodReflectionTest extends TestCase
         $method->setModifiers(MethodReflection::MODIFIER_ABSTRACT);
         $this->assertTrue($method->isPublic());
         $this->assertTrue($method->isAbstract());
+    }
+
+    public function testGetExceptions(): void
+    {
+        $method          = new MethodReflection('foo', 0);
+        $inputExceptions = [
+            [
+                '\\Illuminate\\Database\\Eloquent\\ModelNotFoundException',
+                '',
+            ],
+            '\\Drupal\\Component\\Plugin\\Exception\\InvalidPluginDefinitionException',
+        ];
+
+        $method->setExceptions($inputExceptions);
+
+        $class = new ClassReflection('FooClass', 0);
+        $class->setProject($this->getProject());
+        $method->setClass($class);
+        $exceptions = $method->getExceptions();
+        $this->assertArrayHasKey(0, $exceptions);
+        $this->assertInstanceOf(LazyClassReflection::class, $exceptions[0][0]);
+        $exceptions[0][0] = (string) $exceptions[0][0];// Force cast the class to a string (testing purpose)
+        $this->assertArrayHasKey(1, $exceptions);
+        $this->assertInstanceOf(LazyClassReflection::class, $exceptions[1][0]);
+        $exceptions[1][0] = (string) $exceptions[1][0];// Force cast the class to a string (testing purpose)
+        $this->assertEquals(
+            [
+                [
+                    'Illuminate\\Database\\Eloquent\\ModelNotFoundException',
+                    '',
+                ],
+                [
+                    'Drupal\\Component\\Plugin\\Exception\\InvalidPluginDefinitionException',
+                    '',
+                ]
+            ],
+            $exceptions
+        );
+        $this->assertEquals($inputExceptions, $method->getRawExceptions());
     }
 
 }
