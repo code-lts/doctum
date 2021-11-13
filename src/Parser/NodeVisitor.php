@@ -101,6 +101,7 @@ class NodeVisitor extends NodeVisitorAbstract
         $function = new FunctionReflection($node->name->__toString(), $node->getLine());
         $function->setNamespace($namespace !== null ? $namespace : '');
         $function->setByRef((string) $node->byRef);
+        $function->setFile($this->context->getFile());
 
         foreach ($node->params as $param) {
             if ($param->var instanceof ExprError) {

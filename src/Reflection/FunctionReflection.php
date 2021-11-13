@@ -20,6 +20,7 @@ class FunctionReflection extends Reflection
     protected $parameters = [];
     protected $byRef;
     protected $project;
+    protected $file;
     protected $relativeFilePath;
     protected $exceptions = [];
 
@@ -148,6 +149,16 @@ class FunctionReflection extends Reflection
         return $this->exceptions;
     }
 
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
     public function setRelativeFilePath($relativeFilePath)
     {
         $this->relativeFilePath = $relativeFilePath;
@@ -173,6 +184,8 @@ class FunctionReflection extends Reflection
             'namespace' => $this->namespace,
             'name' => $this->name,
             'line' => $this->line,
+            'file' => $this->file,
+            'relative_file' => $this->relativeFilePath,
             'short_desc' => $this->shortDesc,
             'long_desc' => $this->longDesc,
             'hint' => $this->hint,
@@ -196,17 +209,19 @@ class FunctionReflection extends Reflection
      */
     public static function fromArray(Project $project, array $array)
     {
-        $method             = new self($array['name'], $array['line']);
-        $method->shortDesc  = $array['short_desc'];
-        $method->longDesc   = $array['long_desc'];
-        $method->hint       = $array['hint'];
-        $method->hintDesc   = $array['hint_desc'];
-        $method->tags       = $array['tags'];
-        $method->modifiers  = $array['modifiers'];
-        $method->byRef      = $array['is_by_ref'];
-        $method->exceptions = $array['exceptions'];
-        $method->errors     = $array['errors'];
-        $method->namespace  = $array['namespace'] ?? '';// New in 5.4.0
+        $method                   = new self($array['name'], $array['line']);
+        $method->shortDesc        = $array['short_desc'];
+        $method->longDesc         = $array['long_desc'];
+        $method->hint             = $array['hint'];
+        $method->hintDesc         = $array['hint_desc'];
+        $method->tags             = $array['tags'];
+        $method->modifiers        = $array['modifiers'];
+        $method->byRef            = $array['is_by_ref'];
+        $method->exceptions       = $array['exceptions'];
+        $method->errors           = $array['errors'];
+        $method->namespace        = $array['namespace'] ?? '';// New in 5.4.0
+        $method->file             = $array['file'] ?? '';// New in 5.5.0
+        $method->relativeFilePath = $array['relative_file'] ?? '';// New in 5.5.0
 
         foreach ($array['parameters'] as $parameter) {
             $method->addParameter(ParameterReflection::fromArray($project, $parameter));

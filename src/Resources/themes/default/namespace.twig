@@ -1,5 +1,5 @@
 {% extends "layout/layout.twig" %}
-{% from "macros.twig" import breadcrumbs, render_classes, class_link, namespace_link, hint_link, deprecated, function_parameters_signature %}
+{% from "macros.twig" import breadcrumbs, render_classes, class_link, namespace_link, hint_link, deprecated, function_parameters_signature, method_source_link %}
 {% block title %}{{ namespace == '' ? global_namespace_name() : namespace|raw }} | {{ parent() }}{% endblock %}
 {% block body_class 'namespace' %}
 {% block page_id 'namespace:' ~ (namespace|replace({'\\': '_'})) %}
@@ -65,9 +65,11 @@
                         {%- endif %}
                     </div>
                     <div class="col-md-2">
+                        <div class="location">
                         {%- if function.namespace is not same as(namespace) -%}
                             <em><a href="{{ function_path(function) }}">{{ function|raw }}</a></em>
-                        {%- endif -%}
+                        {%- endif -%}{{ method_source_link(function) }}
+                        </div>
                     </div>
                 </div>
             {% endfor %}
