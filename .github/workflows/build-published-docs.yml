@@ -20,11 +20,12 @@ jobs:
                   fetch-depth: 0
                   ssh-key: ${{ secrets.SSH_KEY_DEPLOY }}
             - name: Import GPG key
-              uses: crazy-max/ghaction-import-gpg@c8906e451f398a510633c8bf0d6150b2fb2cb7c9
+              # v4 - 8c43807e82148a7bafc633cc9584d04bf54be8d0
+              uses: crazy-max/ghaction-import-gpg@8c43807e82148a7bafc633cc9584d04bf54be8d0
               with:
-                  gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+                  gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
                   passphrase: ${{ secrets.GPG_PASSPHRASE }}
-                  git-user-signingkey: true
-                  git-commit-gpgsign: true
+                  git_user_signingkey: true
+                  git_commit_gpgsign: true
             - name: Build docs and push changes
               run: ./scripts/update-built-docs.sh
