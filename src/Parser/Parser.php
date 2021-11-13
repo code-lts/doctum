@@ -29,10 +29,10 @@ class Parser
     protected $iterator;
     /** @var CodeParser */
     protected $parser;
-    /** @var ClassTraverser */
+    /** @var ProjectTraverser */
     protected $traverser;
 
-    public function __construct($iterator, StoreInterface $store, CodeParser $parser, ClassTraverser $traverser)
+    public function __construct($iterator, StoreInterface $store, CodeParser $parser, ProjectTraverser $traverser)
     {
         $this->iterator  = $this->createIterator($iterator);
         $this->store     = $store;

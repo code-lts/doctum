@@ -14,13 +14,13 @@ declare(strict_types = 1);
 namespace Doctum\Tests\Parser;
 
 use PHPUnit\Framework\TestCase;
-use Doctum\Parser\ClassTraverser;
+use Doctum\Parser\ProjectTraverser;
 use Doctum\Parser\ClassVisitorInterface;
 use Doctum\Project;
 use Doctum\Reflection\ClassReflection;
 use Doctum\Store\ArrayStore;
 
-class ClassTraverserTest extends TestCase
+class ProjectTraverserTest extends TestCase
 {
 
     /**
@@ -46,7 +46,7 @@ class ClassTraverserTest extends TestCase
             [$project->loadClass($className)]
         );
 
-        $traverser = new ClassTraverser();
+        $traverser = new ProjectTraverser();
         /** @var ClassVisitorInterface $visitor */
         $traverser->addVisitor($visitor);
 

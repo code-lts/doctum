@@ -15,7 +15,7 @@ namespace Doctum\Parser;
 
 use Doctum\Project;
 
-class ClassTraverser
+class ProjectTraverser
 {
     protected $visitors;
 

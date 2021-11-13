@@ -20,7 +20,7 @@ use PhpParser\NodeVisitor\NameResolver;
 use PhpParser\ParserFactory;
 use PhpParser\PrettyPrinter\Standard as PrettyPrinter;
 use PhpParser\Parser as PhpParser;
-use Doctum\Parser\ClassTraverser;
+use Doctum\Parser\ProjectTraverser;
 use Doctum\Parser\ClassVisitor;
 use Doctum\Parser\CodeParser;
 use Doctum\Parser\DocBlockParser;
@@ -95,7 +95,7 @@ class Doctum implements ArrayAccess
     private $tree;
 
     /**
-     * @var ClassTraverser
+     * @var ProjectTraverser
      */
     private $traverser;
 
@@ -437,7 +437,7 @@ class Doctum implements ArrayAccess
         return $versions;
     }
 
-    private function getTraverser(): ClassTraverser
+    private function getTraverser(): ProjectTraverser
     {
         $visitors = [
             new ClassVisitor\InheritdocClassVisitor(),
@@ -449,7 +449,7 @@ class Doctum implements ArrayAccess
             $visitors[] = new ClassVisitor\ViewSourceClassVisitor($this['remote_repository']);
         }
 
-        return new ClassTraverser($visitors);
+        return new ProjectTraverser($visitors);
     }
 
     private function getThemes(): ThemeSet
