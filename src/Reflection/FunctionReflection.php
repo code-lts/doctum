@@ -24,7 +24,9 @@ class FunctionReflection extends Reflection
     protected $file = null;
     /** @var string|null */
     protected $relativeFilePath = null;
-    protected $exceptions = [];
+    protected $exceptions       = [];
+    /** @var bool */
+    protected $fromCache = false;
 
     public function __toString()
     {
@@ -180,6 +182,11 @@ class FunctionReflection extends Reflection
         return $this->project->getViewSourceUrl($this->relativeFilePath, $this->line);
     }
 
+    public function isFromCache(): bool
+    {
+        return $this->fromCache;
+    }
+
     public function toArray()
     {
         return [
@@ -224,6 +231,7 @@ class FunctionReflection extends Reflection
         $method->namespace        = $array['namespace'] ?? '';// New in 5.4.0
         $method->file             = $array['file'] ?? '';// New in 5.5.0
         $method->relativeFilePath = $array['relative_file'] ?? '';// New in 5.5.0
+        $method->fromCache        = true;
 
         foreach ($array['parameters'] as $parameter) {
             $method->addParameter(ParameterReflection::fromArray($project, $parameter));

@@ -14,29 +14,54 @@ declare(strict_types = 1);
 namespace Doctum\Parser;
 
 use Doctum\Project;
+use SplObjectStorage;
 
 class ProjectTraverser
 {
-    protected $visitors;
+    /**
+     * The class visitors
+     *
+     * @var ClassVisitorInterface[]
+     */
+    protected $classVisitors = [];
 
+    /**
+     * The function visitors
+     *
+     * @var FunctionVisitorInterface[]
+     */
+    protected $functionVisitors = [];
+
+    /**
+     * @param (ClassVisitorInterface|FunctionVisitorInterface)[] $visitors
+     */
     public function __construct(array $visitors = [])
     {
-        $this->visitors = [];
         foreach ($visitors as $visitor) {
-            $this->addVisitor($visitor);
+            if ($visitor instanceof ClassVisitorInterface) {
+                $this->addClassVisitor($visitor);
+            }
+            if ($visitor instanceof FunctionVisitorInterface) {
+                $this->addFunctionVisitor($visitor);
+            }
         }
     }
 
-    public function addVisitor(ClassVisitorInterface $visitor)
+    public function addClassVisitor(ClassVisitorInterface $visitor): void
     {
-        $this->visitors[] = $visitor;
+        $this->classVisitors[] = $visitor;
     }
 
-    public function traverse(Project $project)
+    public function addFunctionVisitor(FunctionVisitorInterface $visitor): void
+    {
+        $this->functionVisitors[] = $visitor;
+    }
+
+    public function traverse(Project $project): SplObjectStorage
     {
         // parent classes/interfaces are visited before their "children"
         $classes  = $project->getProjectClasses();
-        $modified = new \SplObjectStorage();
+        $modified = new SplObjectStorage();
         while ($class = array_shift($classes)) {
             // re-push the class at the end if parent class/interfaces have not been visited yet
             if (($parent = $class->getParent()) && isset($classes[$parent->getName()])) {
@@ -70,12 +95,28 @@ class ProjectTraverser
             }
 
             $isModified = false;
-            foreach ($this->visitors as $visitor) {
+            foreach ($this->classVisitors as $visitor) {
                 $isModified = $visitor->visit($class) || $isModified;
             }
 
             if ($isModified) {
                 $modified->attach($class);
+            }
+        }
+
+        $functions = $project->getProjectFunctions();
+        foreach ($functions as $function) {
+            if ($function->isFromCache()) {
+                continue;
+            }
+
+            $isModifiedFunction = false;
+            foreach ($this->functionVisitors as $visitor) {
+                $isModifiedFunction = $visitor->visit($function) || $isModifiedFunction;
+            }
+
+            if ($isModifiedFunction) {
+                $modified->attach($function);
             }
         }
 

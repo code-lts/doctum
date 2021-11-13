@@ -48,7 +48,7 @@ class ProjectTraverserTest extends TestCase
 
         $traverser = new ProjectTraverser();
         /** @var ClassVisitorInterface $visitor */
-        $traverser->addVisitor($visitor);
+        $traverser->addClassVisitor($visitor);
 
         $traverser->traverse($project);
         $proj = $store->readProject($project);

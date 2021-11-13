@@ -44,7 +44,7 @@ class Project
     /** @var ClassReflection[] */
     protected $classes;
 
-    /** @var array<string,array<string,FunctionReflection[]>> */
+    /** @var array<string,array<string,FunctionReflection>> */
     protected $functions;
 
     protected $namespaceClasses;
@@ -197,7 +197,7 @@ class Project
     }
 
     /**
-      * @return array<string,FunctionReflection[]>
+      * @return array<string,FunctionReflection>
       */
     public function getNamespaceFunctions($namespace): array
     {
@@ -321,6 +321,22 @@ class Project
         ksort($classes);
 
         return $classes;
+    }
+
+    /**
+     * @return FunctionReflection[]
+     */
+    public function getProjectFunctions(): array
+    {
+        $functions = [];
+
+        foreach ($this->functions as $allFunctionsOfNamespace) {
+            foreach ($allFunctionsOfNamespace as $functionInNamespace) {
+                $functions[] = $functionInNamespace;
+            }
+        }
+
+        return $functions;
     }
 
     public function getClass(string $name): ClassReflection

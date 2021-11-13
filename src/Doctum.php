@@ -22,6 +22,7 @@ use PhpParser\PrettyPrinter\Standard as PrettyPrinter;
 use PhpParser\Parser as PhpParser;
 use Doctum\Parser\ProjectTraverser;
 use Doctum\Parser\ClassVisitor;
+use Doctum\Parser\FunctionVisitor;
 use Doctum\Parser\CodeParser;
 use Doctum\Parser\DocBlockParser;
 use Doctum\Parser\Filter\DefaultFilter;
@@ -447,6 +448,7 @@ class Doctum implements ArrayAccess
 
         if ($this['remote_repository'] instanceof AbstractRemoteRepository) {
             $visitors[] = new ClassVisitor\ViewSourceClassVisitor($this['remote_repository']);
+            $visitors[] = new FunctionVisitor\ViewSourceFunctionVisitor($this['remote_repository']);
         }
 
         return new ProjectTraverser($visitors);
