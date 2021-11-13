@@ -330,7 +330,7 @@ class Project
     {
         $functions = [];
 
-        foreach ($this->functions as $allFunctionsOfNamespace) {
+        foreach (($this->functions ?? []) as $allFunctionsOfNamespace) {
             foreach ($allFunctionsOfNamespace as $functionInNamespace) {
                 $functions[] = $functionInNamespace;
             }
