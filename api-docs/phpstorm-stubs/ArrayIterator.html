@@ -69,7 +69,7 @@
     
     <p>        class
     <strong>ArrayIterator</strong>        implements
-        <a href="SeekableIterator.html">SeekableIterator</a>, <a href="ArrayAccess.html">ArrayAccess</a>, <a href="Serializable.html">Serializable</a>, <a href="Countable.html">Countable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL.php">View source</a>)
+        <a href="SeekableIterator.html">SeekableIterator</a>, <a target="_blank" rel="noopener" href="https://www.php.net/ArrayAccess">ArrayAccess</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Serializable">Serializable</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Countable">Countable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL.php">View source</a>)
 </p>
 
         
@@ -142,7 +142,7 @@ over Arrays and Objects.</p></p>                    </div>
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetSet">offsetSet</a>(string $key, TValue $value)
+                    <a href="#method_offsetSet">offsetSet</a>(string $key, string $value)
         
                                             <p><p>Set value for an offset</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -279,7 +279,7 @@ over Arrays and Objects.</p></p>                    </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string|null
+                    string
                 </div>
                 <div class="col-md-8">
                     <a href="#method_serialize">serialize</a>()
@@ -309,7 +309,7 @@ over Arrays and Objects.</p></p>                    </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    mixed
+                    string|int|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_key">key</a>()
@@ -474,10 +474,7 @@ The offset being checked.
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>true on success or false on failure.
-</p></p>
-<p>
-The return value will be casted to boolean if non-boolean was returned.</td>
+            <td><p>true if the offset exists, otherwise false</p></td>
         </tr>
     </table>
 
@@ -521,7 +518,7 @@ The offset to get the value from.
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>Can return all value types.</p></td>
+            <td><p>The value at offset <i>index</i>.</p></td>
         </tr>
     </table>
 
@@ -536,7 +533,7 @@ The offset to get the value from.
                     <h3 id="method_offsetSet">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL.php#L1884">at line 1884</a></div>
         <code>                    void
-    <strong>offsetSet</strong>(string $key, TValue $value)
+    <strong>offsetSet</strong>(string $key, string $value)
         </code>
     </h3>
     <div class="details">    
@@ -558,10 +555,10 @@ The index to set for.
 </p></td>
             </tr>
                     <tr>
-                <td>TValue</td>
+                <td>string</td>
                 <td>$value</td>
                 <td><p>
-The value to set.
+The new value to store at the index.
 </p></td>
             </tr>
             </table>
@@ -725,10 +722,8 @@ if ArrayIterator refers to an object.</p></td>
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td><p>The custom count as an integer.</p>
-<p>
-The return value is cast to an integer.
-</p></td>
+            <td><p>The number of elements or public properties in the associated
+array or object, respectively.</p></td>
         </tr>
     </table>
 
@@ -1075,7 +1070,9 @@ The compare function used for the sort.
                     <tr>
                 <td>string</td>
                 <td>$data</td>
-                <td><p>The string representation of the object.</p></td>
+                <td><p>
+The serialized ArrayIterator object to be unserialized.
+</p></td>
             </tr>
             </table>
 
@@ -1085,7 +1082,7 @@ The compare function used for the sort.
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td></td>
+            <td><p>The <b>ArrayIterator</b>.</p></td>
         </tr>
     </table>
 
@@ -1099,7 +1096,7 @@ The compare function used for the sort.
                     <div class="method-item">
                     <h3 id="method_serialize">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL.php#L2024">at line 2024</a></div>
-        <code>                    string|null
+        <code>                    string
     <strong>serialize</strong>()
         </code>
     </h3>
@@ -1116,8 +1113,8 @@ The compare function used for the sort.
 
                     <table class="table table-condensed">
         <tr>
-            <td>string|null</td>
-            <td><p>The string representation of the object or null</p></td>
+            <td>string</td>
+            <td><p>The serialized <b>ArrayIterator</b>.</p></td>
         </tr>
     </table>
 
@@ -1149,7 +1146,7 @@ The compare function used for the sort.
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td><p>Any returned value is ignored.</p></td>
+            <td></td>
         </tr>
     </table>
 
@@ -1181,7 +1178,7 @@ The compare function used for the sort.
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>Can return any type.</p></td>
+            <td><p>The current array entry.</p></td>
         </tr>
     </table>
 
@@ -1195,7 +1192,7 @@ The compare function used for the sort.
                     <div class="method-item">
                     <h3 id="method_key">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL.php#L2048">at line 2048</a></div>
-        <code>                    mixed
+        <code>                    string|int|null
     <strong>key</strong>()
         </code>
     </h3>
@@ -1212,8 +1209,8 @@ The compare function used for the sort.
 
                     <table class="table table-condensed">
         <tr>
-            <td>mixed</td>
-            <td><p>TKey on success, or null on failure.</p></td>
+            <td>string|int|null</td>
+            <td><p>The current array key.</p></td>
         </tr>
     </table>
 
@@ -1245,7 +1242,7 @@ The compare function used for the sort.
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td><p>Any returned value is ignored.</p></td>
+            <td></td>
         </tr>
     </table>
 
@@ -1277,8 +1274,7 @@ The compare function used for the sort.
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>The return value will be casted to boolean and then evaluated.
-Returns true on success or false on failure.</p></td>
+            <td></td>
         </tr>
     </table>
 

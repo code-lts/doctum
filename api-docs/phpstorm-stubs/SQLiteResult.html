@@ -69,7 +69,7 @@
     
     <p>final         class
     <strong>SQLiteResult</strong>        implements
-        <a href="Iterator.html">Iterator</a>, <a href="Countable.html">Countable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SQLite/SQLite.php">View source</a>)
+        <a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Countable">Countable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SQLite/SQLite.php">View source</a>)
 </p>
 
         
@@ -162,7 +162,7 @@ Returns the name of a particular field</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    mixed
+                    array
                 </div>
                 <div class="col-md-8">
                     <a href="#method_current">current</a>(int $result_type = SQLITE_BOTH, bool $decode_binary = true)
@@ -183,7 +183,7 @@ Fetches the current row from a result set as an array</p></p>                </d
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    void
+                    bool
                 </div>
                 <div class="col-md-8">
                     <a href="#method_next">next</a>()
@@ -629,7 +629,7 @@ option.</p></td>
                     <div class="method-item">
                     <h3 id="method_current">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SQLite/SQLite.php#L373">at line 373</a></div>
-        <code>                    mixed
+        <code>                    array
     <strong>current</strong>(int $result_type = SQLITE_BOTH, bool $decode_binary = true)
         </code>
     </h3>
@@ -673,8 +673,16 @@ other sqlite capable applications.</p></p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td>mixed</td>
-            <td><p>Can return any type.</p></td>
+            <td>array</td>
+            <td><p>
+Returns an array of the current row from a result set; <b>FALSE</b> if the
+current position is beyond the final row.
+</p>
+<p>The column names returned by
+<b>SQLITE_ASSOC</b> and <b>SQLITE_BOTH</b> will be
+case-folded according to the value of the
+https://php.net/manual/en/sqlite.configuration.php#ini.sqlite.assoc-case sqlite.assoc_case configuration
+option.</p></td>
         </tr>
     </table>
 
@@ -707,7 +715,7 @@ other sqlite capable applications.</p></p></td>
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>TKey on success, or null on failure.</p></td>
+            <td><p>scalar on success, or null on failure.</p></td>
         </tr>
     </table>
 
@@ -721,7 +729,7 @@ other sqlite capable applications.</p></p></td>
                     <div class="method-item">
                     <h3 id="method_next">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SQLite/SQLite.php#L387">at line 387</a></div>
-        <code>                    void
+        <code>                    bool
     <strong>next</strong>()
         </code>
     </h3>
@@ -739,8 +747,8 @@ other sqlite capable applications.</p></p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td>void</td>
-            <td><p>Any returned value is ignored.</p></td>
+            <td>bool</td>
+            <td><p>Returns <b>TRUE</b> on success, or <b>FALSE</b> if there are no more rows.</p></td>
         </tr>
     </table>
 
@@ -773,8 +781,10 @@ other sqlite capable applications.</p></p></td>
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>The return value will be casted to boolean and then evaluated.
-Returns true on success or false on failure.</p></td>
+            <td><p>
+Returns <b>TRUE</b> if there are more rows available from the
+<i>result</i> handle, or <b>FALSE</b> otherwise.
+</p></td>
         </tr>
     </table>
 
@@ -840,7 +850,8 @@ Returns true on success or false on failure.</p></td>
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td><p>The custom count as an integer.</p>
+            <td><p>The custom count as an integer.
+</p>
 <p>
 The return value is cast to an integer.
 </p></td>
