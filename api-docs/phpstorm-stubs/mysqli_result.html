@@ -104,7 +104,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_lengths">
-                                                                                array
+                                                                                array|null
                                                                                 
                                     </td>
                 <td>$lengths</td>
@@ -140,7 +140,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="mysqli.html">mysqli</a> $mysql = null, int $result_mode = 0)
+                    <a href="#method___construct">__construct</a>(<a href="mysqli.html">mysqli</a> $mysql = null, int $result_mode = MYSQLI_STORE_RESULT)
         
                                             <p><p>Constructor (no docs available)</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -222,7 +222,7 @@
                 <div class="col-md-8">
                     <a href="#method_fetch_array">fetch_array</a>(int $mode = MYSQLI_BOTH)
         
-                                            <p><p>Fetch a result row as an associative, a numeric array, or both</p></p>                </div>
+                                            <p><p>Fetch the next row of a result set as an associative, a numeric array, or both</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -232,7 +232,7 @@
                 <div class="col-md-8">
                     <a href="#method_fetch_assoc">fetch_assoc</a>()
         
-                                            <p><p>Fetch a result row as an associative array</p></p>                </div>
+                                            <p><p>Fetch the next row of a result set as an associative array</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -242,7 +242,7 @@
                 <div class="col-md-8">
                     <a href="#method_fetch_object">fetch_object</a>(string $class = &#039;stdClass&#039;, array $constructor_args = null)
         
-                                            <p><p>Returns the current row of a result set as an object</p></p>                </div>
+                                            <p><p>Fetch the next row of a result set as an object</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -252,7 +252,7 @@
                 <div class="col-md-8">
                     <a href="#method_fetch_row">fetch_row</a>()
         
-                                            <p><p>Get a result row as an enumerated array</p></p>                </div>
+                                            <p><p>Fetch the next row of a result set as an enumerated array</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -260,10 +260,9 @@
                     string|int|float|false|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_fetch_column">fetch_column</a>(int $column = null)
+                    <a href="#method_fetch_column">fetch_column</a>(int $column = 0)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Fetch a single column from the next row of a result set</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -305,9 +304,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L941">at line 941</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L953">at line 953</a></div>
         <code>                    
-    <strong>__construct</strong>(<a href="mysqli.html">mysqli</a> $mysql = null, int $result_mode = 0)
+    <strong>__construct</strong>(<a href="mysqli.html">mysqli</a> $mysql = null, int $result_mode = MYSQLI_STORE_RESULT)
         </code>
     </h3>
     <div class="details">    
@@ -343,7 +342,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_close">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L951">at line 951</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L963">at line 963</a></div>
         <code>                    void
     <strong>close</strong>()
         </code>
@@ -375,7 +374,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_free">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L959">at line 959</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L971">at line 971</a></div>
         <code>                    void
     <strong>free</strong>()
         </code>
@@ -407,7 +406,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_data_seek">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L971">at line 971</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L983">at line 983</a></div>
         <code>                    bool
     <strong>data_seek</strong>(int $offset)
         </code>
@@ -452,7 +451,7 @@ minus one (0..<b>mysqli_num_rows</b> - 1).
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch_field">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1041">at line 1041</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1053">at line 1053</a></div>
         <code>                    object|false
     <strong>fetch_field</strong>()
         </code>
@@ -546,7 +545,7 @@ Object properties
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch_fields">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1102">at line 1102</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1114">at line 1114</a></div>
         <code>                    array
     <strong>fetch_fields</strong>()
         </code>
@@ -565,7 +564,7 @@ Object properties
                     <table class="table table-condensed">
         <tr>
             <td>array</td>
-            <td><p>an array of objects which contains field definition information.
+            <td><p>an array of objects containing field definition information.
 </p></p>
 <p>
 <table>
@@ -631,7 +630,7 @@ Object properties
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch_field_direct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1169">at line 1169</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1181">at line 1181</a></div>
         <code>                    object|false
     <strong>fetch_field_direct</strong>(int $index)
         </code>
@@ -731,7 +730,7 @@ Object attributes
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch_all">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1183">at line 1183</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1195">at line 1195</a></div>
         <code>                    array
     <strong>fetch_all</strong>(int $mode = MYSQLI_NUM)
         </code>
@@ -778,7 +777,7 @@ MYSQLI_NUM, or MYSQLI_BOTH.
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch_array">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1206">at line 1206</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1218">at line 1218</a></div>
         <code>                    array|false|null
     <strong>fetch_array</strong>(int $mode = MYSQLI_BOTH)
         </code>
@@ -788,7 +787,7 @@ MYSQLI_NUM, or MYSQLI_BOTH.
             
 
         <div class="method-description">
-                            <p><p>Fetch a result row as an associative, a numeric array, or both</p></p>                        
+                            <p><p>Fetch the next row of a result set as an associative, a numeric array, or both</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -820,8 +819,8 @@ attributes of both.
                     <table class="table table-condensed">
         <tr>
             <td>array|false|null</td>
-            <td><p>an array of strings that corresponds to the fetched row or null if there
-are no more rows in resultset.</p></td>
+            <td><p>an array representing the fetched row, null if there
+are no more rows in the result set, or false on failure.</p></td>
         </tr>
     </table>
 
@@ -834,7 +833,7 @@ are no more rows in resultset.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch_assoc">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1222">at line 1222</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1228">at line 1228</a></div>
         <code>                    array|false|null
     <strong>fetch_assoc</strong>()
         </code>
@@ -844,7 +843,7 @@ are no more rows in resultset.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Fetch a result row as an associative array</p></p>                        
+                            <p><p>Fetch the next row of a result set as an associative array</p></p>                        
         </div>
         <div class="tags">
             
@@ -853,15 +852,9 @@ are no more rows in resultset.</p></td>
                     <table class="table table-condensed">
         <tr>
             <td>array|false|null</td>
-            <td><p>an associative array of strings representing the fetched row in the result
-set, where each key in the array represents the name of one of the result
-set's columns or null if there are no more rows in resultset.
-</p></p>
-<p>
-If two or more columns of the result have the same field names, the last
-column will take precedence. To access the other column(s) of the same
-name, you either need to access the result with numeric indices by using
-<b>mysqli_fetch_row</b> or add alias names.</td>
+            <td><p>an associative array representing the fetched row,
+where each key in the array represents the name of one of the result set's columns, null if there
+are no more rows in the result set, or false on failure.</p></td>
         </tr>
     </table>
 
@@ -874,7 +867,7 @@ name, you either need to access the result with numeric indices by using
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch_object">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1239">at line 1239</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1246">at line 1246</a></div>
         <code>                    object|false|null
     <strong>fetch_object</strong>(string $class = &#039;stdClass&#039;, array $constructor_args = null)
         </code>
@@ -884,7 +877,7 @@ name, you either need to access the result with numeric indices by using
             
 
         <div class="method-description">
-                            <p><p>Returns the current row of a result set as an object</p></p>                        
+                            <p><p>Fetch the next row of a result set as an object</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -914,8 +907,9 @@ for <i>class_name</i> objects.
                     <table class="table table-condensed">
         <tr>
             <td>object|false|null</td>
-            <td><p>an object with string properties that corresponds to the fetched
-row or null if there are no more rows in resultset.</p></td>
+            <td><p>an object representing the fetched row, where each property
+represents the name of the result set's column, null if there
+are no more rows in the result set, or false on failure.</p></td>
         </tr>
     </table>
 
@@ -928,7 +922,7 @@ row or null if there are no more rows in resultset.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch_row">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1248">at line 1248</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1256">at line 1256</a></div>
         <code>                    array|false|null
     <strong>fetch_row</strong>()
         </code>
@@ -938,7 +932,7 @@ row or null if there are no more rows in resultset.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Get a result row as an enumerated array</p></p>                        
+                            <p><p>Fetch the next row of a result set as an enumerated array</p></p>                        
         </div>
         <div class="tags">
             
@@ -947,8 +941,9 @@ row or null if there are no more rows in resultset.</p></td>
                     <table class="table table-condensed">
         <tr>
             <td>array|false|null</td>
-            <td><p>mysqli_fetch_row returns an array of strings that corresponds to the fetched row
-or null if there are no more rows in result set.</p></td>
+            <td><p>an enumerated array representing
+the fetched row, null if there
+are no more rows in the result set, or false on failure.</p></td>
         </tr>
     </table>
 
@@ -961,9 +956,9 @@ or null if there are no more rows in result set.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch_column">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1251">at line 1251</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1269">at line 1269</a></div>
         <code>                    string|int|float|false|null
-    <strong>fetch_column</strong>(int $column = null)
+    <strong>fetch_column</strong>(int $column = 0)
         </code>
     </h3>
     <div class="details">    
@@ -971,8 +966,7 @@ or null if there are no more rows in result set.</p></td>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Fetch a single column from the next row of a result set</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -981,7 +975,10 @@ or null if there are no more rows in result set.</p></td>
                     <tr>
                 <td>int</td>
                 <td>$column</td>
-                <td></td>
+                <td><p>[optional] <p>
+0-indexed number of the column you wish to retrieve from the row.
+If no value is supplied, the first column will be returned.
+</p></p></td>
             </tr>
             </table>
 
@@ -991,7 +988,8 @@ or null if there are no more rows in result set.</p></td>
                     <table class="table table-condensed">
         <tr>
             <td>string|int|float|false|null</td>
-            <td></td>
+            <td><p>a single column from
+the next row of a result set or false if there are no more rows.</p></td>
         </tr>
     </table>
 
@@ -1004,7 +1002,7 @@ or null if there are no more rows in result set.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_field_seek">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1263">at line 1263</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1281">at line 1281</a></div>
         <code>                    bool
     <strong>field_seek</strong>(int $index)
         </code>
@@ -1049,7 +1047,7 @@ The field number. This value must be in the range from
             </div>
                     <div class="method-item">
                     <h3 id="method_free_result">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1271">at line 1271</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1289">at line 1289</a></div>
         <code>                    void
     <strong>free_result</strong>()
         </code>
@@ -1081,7 +1079,7 @@ The field number. This value must be in the range from
             </div>
                     <div class="method-item">
                     <h3 id="method_getIterator">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1278">at line 1278</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L1296">at line 1296</a></div>
         <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a>
     <strong>getIterator</strong>()
         </code>
