@@ -4141,7 +4141,9 @@
             
                     {"type":"Class","link":"GMP.html","name":"GMP","doc":null},
                                 {"type":"Method","fromName":"GMP","fromLink":"GMP.html","link":"GMP.html#method_serialize","name":"GMP::serialize","doc":"<p>String representation of object</p>"},
+        {"type":"Method","fromName":"GMP","fromLink":"GMP.html","link":"GMP.html#method___serialize","name":"GMP::__serialize","doc":null},
         {"type":"Method","fromName":"GMP","fromLink":"GMP.html","link":"GMP.html#method_unserialize","name":"GMP::unserialize","doc":"<p>Constructs the object</p>"},
+        {"type":"Method","fromName":"GMP","fromLink":"GMP.html","link":"GMP.html#method___unserialize","name":"GMP::__unserialize","doc":null},
             
                     {"type":"Class","link":"GdFont.html","name":"GdFont","doc":""},
                 
