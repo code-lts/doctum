@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Implement source line and remote links on functions of the global namespace
 - Internal: rename `ClassTraverser` to `ProjectTraverser`
 - Internal: add "file" and "relative_file" property on cached file for a function
+- Themes: all calls to the `|desc(function)` filter will now need to add `|md_to_html` filter to convert the Markdown output to HTML
 
 ## [5.4.1] - 2021-04-22
 
