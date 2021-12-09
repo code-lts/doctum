@@ -11,7 +11,7 @@
                     fromLink: from_link,
                     link: method_path(meth),
                     name: meth.__toString(),
-                    doc: meth.shortdesc|desc(class),
+                    doc: meth.shortdesc|desc(class)|md_to_html,
                 }|json_encode(prettyJsonOptions)|raw
             -}},
         {% endfor %}
@@ -51,7 +51,7 @@
                         type: 'Interface'|trans,
                         link: class_path(class),
                         name: class.name,
-                        doc: class.shortdesc|desc(class),
+                        doc: class.shortdesc|desc(class)|md_to_html,
             } %}
             {% if class.namespace %}
                 {% set interface = {
@@ -73,7 +73,7 @@
                         type: class.isTrait ? 'Trait'|trans : 'Class'|trans,
                         link: class_path(class),
                         name: class.name,
-                        doc: class.shortdesc|desc(class),
+                        doc: class.shortdesc|desc(class)|md_to_html,
             } %}
             {% if class.namespace %}
                 {% set classOrTrait = {

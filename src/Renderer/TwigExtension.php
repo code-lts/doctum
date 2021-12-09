@@ -40,7 +40,8 @@ class TwigExtension extends AbstractExtension
     public function getFilters()
     {
         return [
-            new TwigFilter('desc', [$this, 'parseDesc'], ['needs_context' => true, 'is_safe' => ['html']]),
+            new TwigFilter('desc', [$this, 'parseDesc'], ['needs_context' => false, 'is_safe' => ['html']]),
+            new TwigFilter('md_to_html', [$this, 'markdownToHtml'], ['needs_context' => false, 'is_safe' => ['html']]),
             new TwigFilter('snippet', [$this, 'getSnippet']),
         ];
     }
@@ -141,17 +142,11 @@ class TwigExtension extends AbstractExtension
         return sprintf('<abbr title="%s">%s</abbr>', htmlentities($class, ENT_QUOTES), htmlspecialchars($short));
     }
 
-    public function parseDesc(array $context, ?string $desc, Reflection $classOrFunctionRefl)
+    public function parseDesc(?string $desc, Reflection $classOrFunctionRefl): ?string
     {
         if ($desc === null || $desc === '') {
             return $desc;
         }
-
-        if (null === $this->markdown) {
-            $this->markdown = new Parsedown();
-        }
-
-        $desc = str_replace(['<code>', '</code>'], ['```', '```'], $desc);
 
         $desc = (string) preg_replace_callback(
             '/@see ([^ ]+)/', // Match until a whitespace is found
@@ -170,6 +165,20 @@ class TwigExtension extends AbstractExtension
             $desc
         );
 
+        return $desc;
+    }
+
+    public function markdownToHtml(?string $desc): ?string
+    {
+        if ($desc === null || $desc === '') {
+            return $desc;
+        }
+
+        if (null === $this->markdown) {
+            $this->markdown = new Parsedown();
+        }
+
+        $desc           = str_replace(['<code>', '</code>'], ['```', '```'], $desc);
         $outputMarkdown = $this->markdown->text($desc);
 
         $matches = [];

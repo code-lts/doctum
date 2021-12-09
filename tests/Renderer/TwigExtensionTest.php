@@ -28,6 +28,202 @@ class TwigExtensionTest extends AbstractTestCase
                 ''
             ],
             [
+                'text',
+                'text'
+            ],
+            [
+                '<p><p>text</p></p>',
+                '<p><p>text</p></p>',
+            ],
+            [
+                '<p><p>some text</p></p>',
+                '<p><p>some text</p></p>'
+            ],
+            [
+                'Constructor. Set DB Object and set {@link $return_statements return_statements}.',
+                'Constructor. Set DB Object and set $return_statements return_statements.'
+            ],
+            [
+                'Constructor. Set DB Object and set {@link $return_statements return_statements}',
+                'Constructor. Set DB Object and set $return_statements return_statements'
+            ],
+            [
+                'Hi {@link \PDO}',
+                'Hi \PDO'
+            ],
+            [
+                'Hi {@link https://doctum.long-term.support}',
+                'Hi https://doctum.long-term.support'
+            ],
+            [
+                'Hi {@link \PDO}',
+                'Hi [PDO](https://www.php.net/PDO)',
+                $ref1
+            ],
+            [
+                '@see \PDO',
+                '\PDO'
+            ],
+            [
+                '@see \PDO',
+                '[PDO](https://www.php.net/PDO)',
+                $ref1
+            ],
+            [
+                '# H1' . "\n"
+                . 'Some text' . "\n"
+                . '## H2' . "\n"
+                . 'Some text h2' . "\n",
+                '# H1' . "\n"
+                . 'Some text' . "\n"
+                . '## H2' . "\n"
+                . 'Some text h2' . "\n",
+            ],
+            [
+                '# H1' . "\n"
+                . 'Some text' . "\n"
+                . '## H2' . "\n"
+                . 'Some text h2' . "\n"
+                . '[malicious link](https://example.com)' . "\n",
+                '# H1' . "\n"
+                . 'Some text' . "\n"
+                . '## H2' . "\n"
+                . 'Some text h2' . "\n"
+                . '[malicious link](https://example.com)' . "\n",
+            ],
+            [
+                '# H1' . "\n"
+                . 'Some text' . "\n"
+                . '## H2' . "\n"
+                . 'Some text h2' . "\n"
+                . '[malicious link](https://example.com)' . "\n"
+                . '<script>alert(1);</script>' . "\n",
+                '# H1' . "\n"
+                . 'Some text' . "\n"
+                . '## H2' . "\n"
+                . 'Some text h2' . "\n"
+                . '[malicious link](https://example.com)' . "\n"
+                . '<script>alert(1);</script>' . "\n",
+            ],
+            [
+                '<b>PDO::prepare</b> returns a'
+                    . '<b>PDOStatement</b> object.' . "\n"
+                    . 'If the database server cannot successfully prepare the statement,' . "\n"
+                    . '<b>PDO::prepare</b> returns <b>FALSE</b> or emits' . "\n"
+                    . '<b>PDOException</b> (depending on error handling).' . "\n"
+                    . '</p>' . "\n"
+                    . '<p>' . "\n"
+                    . 'Emulated prepared statements does not communicate with the database server' . "\n"
+                    . 'so <b>PDO::prepare</b> does not check the statement.',
+                '<b>PDO::prepare</b> returns a'
+                    . '<b>PDOStatement</b> object.' . "\n"
+                    . 'If the database server cannot successfully prepare the statement,' . "\n"
+                    . '<b>PDO::prepare</b> returns <b>FALSE</b> or emits' . "\n"
+                    . '<b>PDOException</b> (depending on error handling).' . "\n"
+                    . '</p>' . "\n"
+                    . '<p>' . "\n"
+                    . 'Emulated prepared statements does not communicate with the database server' . "\n"
+                    . 'so <b>PDO::prepare</b> does not check the statement.',
+            ],
+            [
+                'Collects rows for insert into a database until the buffer size is reached.' . "\n"
+                . ' Then flushes the buffer to the database and starts over again.' . "\n"
+                . '' . "\n"
+                . ' Benefits over collecting a (possibly huge) insert array and then using' . "\n"
+                . ' $db->sql_multi_insert() include:' . "\n"
+                . '' . "\n"
+                . '  - Going over max packet size of the database connection is usually prevented' . "\n"
+                . '    because the data is submitted in batches.' . "\n"
+                . '' . "\n"
+                . '  - Reaching database connection timeout is usually prevented because' . "\n"
+                . '    submission of batches talks to the database every now and then.' . "\n"
+                . '' . "\n"
+                . '  - Usage of less PHP memory because data no longer needed is discarded on' . "\n"
+                . '    buffer flush.' . "\n"
+                . '' . "\n"
+                . ' Attention:' . "\n"
+                . ' Please note that users of this class have to call flush() to flush the' . "\n"
+                . ' remaining rows to the database after their batch insert operation is' . "\n"
+                . ' finished.' . "\n"
+                . '' . "\n"
+                . ' Usage:' . "\n"
+                . ' <code>' . "\n"
+                . '	$buffer = new \phpbb\db\sql_insert_buffer($db, \'test_table\', 1234);' . "\n"
+                . '' . "\n"
+                . '	while (do_stuff())' . "\n"
+                . '	{' . "\n"
+                . '		$buffer->insert(array(' . "\n"
+                . '			\'column1\' => \'value1\',' . "\n"
+                . '			\'column2\' => \'value2\',' . "\n"
+                . '		));' . "\n"
+                . '	}' . "\n"
+                . '' . "\n"
+                . '	$buffer->flush();' . "\n"
+                . ' </code>' . "\n",
+                'Collects rows for insert into a database until the buffer size is reached.' . "\n"
+                . ' Then flushes the buffer to the database and starts over again.' . "\n"
+                . '' . "\n"
+                . ' Benefits over collecting a (possibly huge) insert array and then using' . "\n"
+                . ' $db->sql_multi_insert() include:' . "\n"
+                . '' . "\n"
+                . '  - Going over max packet size of the database connection is usually prevented' . "\n"
+                . '    because the data is submitted in batches.' . "\n"
+                . '' . "\n"
+                . '  - Reaching database connection timeout is usually prevented because' . "\n"
+                . '    submission of batches talks to the database every now and then.' . "\n"
+                . '' . "\n"
+                . '  - Usage of less PHP memory because data no longer needed is discarded on' . "\n"
+                . '    buffer flush.' . "\n"
+                . '' . "\n"
+                . ' Attention:' . "\n"
+                . ' Please note that users of this class have to call flush() to flush the' . "\n"
+                . ' remaining rows to the database after their batch insert operation is' . "\n"
+                . ' finished.' . "\n"
+                . '' . "\n"
+                . ' Usage:' . "\n"
+                . ' <code>' . "\n"
+                . '	$buffer = new \phpbb\db\sql_insert_buffer($db, \'test_table\', 1234);' . "\n"
+                . '' . "\n"
+                . '	while (do_stuff())' . "\n"
+                . '	{' . "\n"
+                . '		$buffer->insert(array(' . "\n"
+                . '			\'column1\' => \'value1\',' . "\n"
+                . '			\'column2\' => \'value2\',' . "\n"
+                . '		));' . "\n"
+                . '	}' . "\n"
+                . '' . "\n"
+                . '	$buffer->flush();' . "\n"
+                . ' </code>' . "\n",
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider dataProviderParseDesc
+     */
+    public function testParseDesc(string $intput, string $expectedOutput, ?Reflection $ref = null): void
+    {
+        $extension = new TwigExtension();
+        $this->assertSame(
+            $expectedOutput,
+            $extension->parseDesc(
+                $intput,
+                $ref === null ? new FunctionReflection('', 0) : $ref
+            )
+        );
+    }
+
+    /**
+     * @return array<int,string[]>
+     */
+    public function dataProviderMarkdownToHtml(): array
+    {
+        return [
+            [
+                '',
+                ''
+            ],
+            [
                 '<p>text</p>',
                 'text'
             ],
@@ -41,33 +237,31 @@ class TwigExtensionTest extends AbstractTestCase
             ],
             [
                 'Constructor. Set DB Object and set {@link $return_statements return_statements}.',
-                '<p>Constructor. Set DB Object and set $return_statements return_statements.</p>'
+                '<p>Constructor. Set DB Object and set {@link $return_statements return_statements}.</p>'
             ],
             [
                 'Constructor. Set DB Object and set {@link $return_statements return_statements}',
-                '<p>Constructor. Set DB Object and set $return_statements return_statements</p>'
+                '<p>Constructor. Set DB Object and set {@link $return_statements return_statements}</p>'
             ],
             [
                 'Hi {@link \PDO}',
-                '<p>Hi \PDO</p>'
+                '<p>Hi {@link \PDO}</p>'
             ],
             [
                 'Hi {@link https://doctum.long-term.support}',
-                '<p>Hi <a href="https://doctum.long-term.support">https://doctum.long-term.support</a></p>'
+                '<p>Hi {@link <a href="https://doctum.long-term.support">https://doctum.long-term.support</a>}</p>'
             ],
             [
                 'Hi {@link \PDO}',
-                '<p>Hi <a href="https://www.php.net/PDO">PDO</a></p>',
-                $ref1
+                '<p>Hi {@link \PDO}</p>'
             ],
             [
                 '@see \PDO',
-                '\PDO'
+                '<p>@see \PDO</p>'
             ],
             [
                 '@see \PDO',
-                '<p><a href="https://www.php.net/PDO">PDO</a></p>',
-                $ref1
+                '<p>@see \PDO</p>'
             ],
             [
                 '# H1' . "\n"
@@ -203,17 +397,15 @@ class TwigExtensionTest extends AbstractTestCase
     }
 
     /**
-     * @dataProvider dataProviderParseDesc
+     * @dataProvider dataProviderMarkdownToHtml
      */
-    public function testParseDesc(string $intput, string $expectedOutput, ?Reflection $ref = null): void
+    public function testMarkdownToHtml(string $intput, string $expectedOutput): void
     {
         $extension = new TwigExtension();
         $this->assertSame(
             $expectedOutput,
-            $extension->parseDesc(
-                [],
-                $intput,
-                $ref === null ? new FunctionReflection('', 0) : $ref
+            $extension->markdownToHtml(
+                $intput
             )
         );
     }

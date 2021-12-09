@@ -29,17 +29,17 @@
                     <dt>{{ class_link(value) }}{% if has_namespaces %} &mdash; <em>{{'Class in namespace %s'|trans|format(
                         namespace_link(value.namespace)
                     )|raw}}{% endif %}</em></dt>
-                    <dd>{{ value.shortdesc|desc(value) }}</dd>
+                    <dd>{{ value.shortdesc|desc(value)|md_to_html }}</dd>
                 {%- elseif 'method' == type -%}
                     <dt>{{ method_link(value) }}() &mdash; <em>{{ 'Method in class %s'|trans|format(
                         class_link(value.class)
                     )|raw }}</em></dt>
-                    <dd>{{ value.shortdesc|desc(value.class) }}</dd>
+                    <dd>{{ value.shortdesc|desc(value.class)|md_to_html }}</dd>
                 {%- elseif 'property' == type -%}
                     <dt>${{ property_link(value) }} &mdash; <em>{{ 'Property in class %s'|trans|format(
                         class_link(value.class)
                     )|raw}}</em></dt>
-                    <dd>{{ value.shortdesc|desc(value.class) }}</dd>
+                    <dd>{{ value.shortdesc|desc(value.class)|md_to_html }}</dd>
                 {%- endif %}
             {%- endfor %}
         </dl>
