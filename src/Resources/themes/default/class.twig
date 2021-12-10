@@ -84,10 +84,10 @@
     {{ class_category_name(class.getCategoryId()) }}
     <strong>{{ class.shortname|raw }}</strong>
     {%- if class.parent %}
-        extends {{ class_link(class.parent) }}
+        {% trans 'extends' %} {{ class_link(class.parent) }}
     {%- endif %}
     {%- if class.interfaces|length > 0 %}
-        implements
+        {% trans 'implements' %}
         {% for interface in class.interfaces %}
             {{- class_link(interface) }}
             {%- if not loop.last %}, {% endif %}
