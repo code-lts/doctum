@@ -359,15 +359,18 @@ class Doctum implements ArrayAccess
         return isset($this->{$offset}) ? $this->{$offset} : null;
     }
 
+    private function getLanguageFromConfig(): string
+    {
+        return $this->config['language'] ?? 'en';
+    }
+
     private function getTwig(): Environment
     {
         $dataDir  = __DIR__ . '/../locale/';
         $moReader = new MoReader(
             ['localeDir' => $dataDir]
         );
-        /** @var string $configLanguage */
-        $configLanguage = $this->config['language'] ?? 'en';
-        $moReader->readFile($dataDir . $configLanguage . '.mo');
+        $moReader->readFile($dataDir . $this->getLanguageFromConfig() . '.mo');
         Launcher::setPlugin($moReader);
         $twig = new Environment(
             new FilesystemLoader(['/']),
@@ -415,6 +418,7 @@ class Doctum implements ArrayAccess
             'sort_class_constants' => $this->sort_class_constants,
             'sort_class_traits' => $this->sort_class_traits,
             'sort_class_interfaces' => $this->sort_class_interfaces,
+            'language' => $this->getLanguageFromConfig(),
             ]
         );
         $project->setRenderer($this['renderer']);
