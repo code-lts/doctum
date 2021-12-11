@@ -90,6 +90,16 @@
             -}},
             {{ add_class_methods_index(class, prettyJsonOptions) }}
         {% endfor %}
+        {% for function in functions -%}
+            {{-
+                {
+                    type: 'Function'|trans,
+                    link: function_path(function),
+                    name: function.__toString(),
+                    doc: function.shortdesc|desc(function)|md_to_html,
+                }|json_encode(prettyJsonOptions)|raw
+            -}},
+        {% endfor %}
         {# Override this block, search_index_extra, to add custom search entries! #}
         {% block search_index_extra '' %}
         // Fix trailing commas in the index

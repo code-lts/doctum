@@ -18,6 +18,7 @@ class Indexer
     private const TYPE_CLASS     = 1;
     private const TYPE_METHOD    = 2;
     private const TYPE_NAMESPACE = 3;
+    private const TYPE_FUNCTION  = 4;
 
     public function getIndex(Project $project)
     {
@@ -41,6 +42,11 @@ class Indexer
                 $index['searchIndex'][] = $this->getSearchString((string) $method);
                 $index['info'][]        = [self::TYPE_METHOD, $method];
             }
+        }
+
+        foreach ($project->getProjectFunctions() as $function) {
+            $index['searchIndex'][] = $this->getSearchString((string) $function);
+            $index['info'][]        = [self::TYPE_FUNCTION, $function];
         }
 
         return $index;

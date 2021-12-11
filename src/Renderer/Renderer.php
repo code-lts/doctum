@@ -120,6 +120,7 @@ class Renderer
             'namespaces' => $project->getNamespaces(),
             'interfaces' => $project->getProjectInterfaces(),
             'classes' => $project->getProjectClasses(),
+            'functions' => $project->getProjectFunctions(),
             'items' => $this->getIndex($project),
             'index' => $this->indexer->getIndex($project),
             'tree' => $this->getTree($project),
