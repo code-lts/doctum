@@ -361,7 +361,9 @@ class Doctum implements ArrayAccess
 
     private function getLanguageFromConfig(): string
     {
-        return $this->config['language'] ?? 'en';
+        /** @var string $language */
+        $language = $this->config['language'] ?? 'en';
+        return $language;
     }
 
     private function getTwig(): Environment
