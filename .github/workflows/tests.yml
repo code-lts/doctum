@@ -14,20 +14,19 @@ jobs:
         continue-on-error: ${{ matrix.experimental }}
         strategy:
             matrix:
-                php-version: ["7.2", "7.3", "7.4", "8.0"]
+                php-version: ["7.2", "7.3", "7.4", "8.0", "8.1"]
                 os: [ubuntu-latest]
                 experimental: [false]
                 composer-options: ['']
                 include:
-                    - { php-version: '8.1', experimental: true, os: ubuntu-latest, composer-options: '--ignore-platform-reqs' }
+                    - { php-version: 'nightly', experimental: true, os: ubuntu-latest, composer-options: '--ignore-platform-reqs' }
         steps:
             - uses: actions/checkout@v2
             - name: Use php ${{ matrix.php-version }}
               uses: shivammathur/setup-php@v2
               with:
                   php-version: ${{ matrix.php-version }}
-                  extensions: posix, mbstring
-                  coverage: xdebug
+                  coverage: pcov
             - name: Get Composer Cache Directory
               id: composer-cache
               run: |
