@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Allow to search for non class functions on the search box and search page
 - Added more strings to translate and updated the French translation
 - Fixed the HTML node `lang` attribute according to the currently used language
+- Added a version selector for small displays not having the left sidebar
+- Fixed CSS striping in the left sidebar having some off-alignment with the text on some browsers
 
 ## [5.4.1] - 2021-04-22
 
