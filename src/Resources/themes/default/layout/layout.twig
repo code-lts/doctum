@@ -31,6 +31,19 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
+                    {% if project.versions|length > 1 %}
+                    <li role="presentation" class="dropdown visible-xs-block visible-sm-block">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="true" aria-expanded="false">
+                        {%- trans 'Versions' %}&nbsp;<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                        {% for version in project.versions -%}
+                            <li {{ version == project.version ? 'class="active"' : ''}}><a href="{{ path('../' ~ version|url_encode ~ '/index.html') }}" data-version="{{ version }}">{{ version.longname }}</a></li>
+                        {% endfor -%}
+                        </ul>
+                    </li>
+                    {% endif %}
                     <li><a href="{{ path('classes.html') }}">{% trans 'Classes' %}</a></li>
                     {% if has_namespaces -%}
                     {#  #}<li><a href="{{ path('namespaces.html') }}">{% trans 'Namespaces' %}</a></li>
@@ -53,9 +66,11 @@
     <div id="control-panel">
         {% if project.versions|length > 1 %}
             <form action="#">
-                <select  class="form-control" id="version-switcher" name="version">
+                <select class="form-control" id="version-switcher" name="version">
                     {% for version in project.versions %}
-                        <option value="{{ path('../' ~ version|url_encode ~ '/index.html') }}" data-version="{{ version }}">{{ version.longname }}</option>
+                        <option
+                            value="{{ path('../' ~ version|url_encode ~ '/index.html') }}"
+                            data-version="{{ version }}" {{ version == project.version ? 'selected' : ''}}>{{ version.longname }}</option>
                     {% endfor %}
                 </select>
             </form>
