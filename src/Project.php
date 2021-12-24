@@ -336,9 +336,12 @@ class Project
             }
         }
 
-        usort($functions, function (FunctionReflection $a, FunctionReflection $b): int {
-            return strcmp($a->__toString(), $b->__toString());
-        });
+        usort(
+            $functions,
+            static function (FunctionReflection $a, FunctionReflection $b): int {
+                return strcmp($a->__toString(), $b->__toString());
+            }
+        );
 
         return $functions;
     }
