@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed the HTML node `lang` attribute according to the currently used language
 - Added a version selector for small displays not having the left sidebar
 - Fixed CSS striping in the left sidebar having some off-alignment with the text on some browsers
+- `GitLabRemoteRepository` class now uses the separator `/-/` in source URLs, a new constructor parameter can change this back
+- `AbstractRemoteRepository` class now has types in the signatures
 
 ## [5.4.1] - 2021-04-22
 
