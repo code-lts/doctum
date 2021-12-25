@@ -26,6 +26,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `GitLabRemoteRepository` class now uses the separator `/-/` in source URLs, a new constructor parameter can change this back
 - `AbstractRemoteRepository` class now has types in the signatures
 - Filter out in a non case sensitive way the tags on `GitVersionCollection` class and document filtering on the README
+- Reduce the size of the tree, create a new class `TreeNode` and build the tree using JS code and not injected HTML code
+- Select the global namespace in the tree while viewing it
 
 ## [5.4.1] - 2021-04-22
 
