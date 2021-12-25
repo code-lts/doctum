@@ -129,8 +129,8 @@ And here is how you can configure different versions:
 
     // generate documentation for all v2.0.* tags, the 2.0 branch, and the main one
     $versions = GitVersionCollection::create($dir)
-        // In a non case-sensitive way tags containing "PR", "RC", "BETA" and "ALPHA" will be filtered out
-        // Use `$versions->setFilter(static function (string $version): bool { // ... });` to change this
+        // In a non case-sensitive way, tags containing "PR", "RC", "BETA" and "ALPHA" will be filtered out
+        // To change this, use: `$versions->setFilter(static function (string $version): bool { // ... });`
         ->addFromTags('v2.0.*')
         ->add('2.0', '2.0 branch')
         ->add('main', 'main branch');
