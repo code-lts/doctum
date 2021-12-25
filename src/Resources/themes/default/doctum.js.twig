@@ -22,7 +22,7 @@
 
     var bhIndex = null;
     var rootPath = '';
-    var treeHtml = '{{ element(tree, project.config('default_opened_level'), 0)|replace({"'": "\\'", "\n": ''})|spaceless|raw }}';
+    var treeJson = {{ tree|raw }};
 
     var searchTypeClasses = {
         '{{ 'Namespace'|trans|escape('js') }}': 'label-default',
@@ -195,18 +195,51 @@
         getSearchClass: function(type) {
             return searchTypeClasses[type] || searchTypeClasses['_'];
         },
+        buildTreeNode: function (treeNode, rootPath, htmlNode, treeOpenLevel) {
+            var ulNode = document.createElement('ul');
+            for (var childKey in treeNode.c) {
+                var child = treeNode.c[childKey];
+                var liClass = document.createElement('li');
+                var hasChildren = child.hasOwnProperty('c');
+                var nodeSpecialName = (hasChildren ? 'namespace:' : 'class:') + child.p.replace(/\//g, '_');
+                liClass.setAttribute('data-name', nodeSpecialName);
 
-        /** Add the left-nav tree to the site */
-        injectApiTree: function(ele) {
-            ele.html(treeHtml);
+                // Create the node that will have the text
+                var divHd = document.createElement('div');
+                var levelCss = child.l - 1;
+                divHd.className = hasChildren ? 'hd' : 'hd leaf';
+                divHd.style.paddingLeft = (hasChildren ? (levelCss * 18) : (8 + (levelCss * 18))) + 'px';
+                if (hasChildren) {
+                    if (child.l <= treeOpenLevel) {
+                        liClass.className = 'opened';
+                    }
+                    var spanIcon = document.createElement('span');
+                    spanIcon.className = 'icon icon-play';
+                    divHd.appendChild(spanIcon);
+                }
+                var aLink = document.createElement('a');
+                aLink.href = rootPath + child.p + '.html';
+                aLink.text = child.n;
+                divHd.appendChild(aLink);
+                liClass.appendChild(divHd);
+
+                // It has children
+                if (hasChildren) {
+                    var divBd = document.createElement('div');
+                    divBd.className = 'bd';
+                    Doctum.buildTreeNode(child, rootPath, divBd, treeOpenLevel);
+                    liClass.appendChild(divBd);
+                }
+                ulNode.appendChild(liClass);
+            }
+            htmlNode.appendChild(ulNode);
         }
     };
 
     $(function() {
         // Modify the HTML to work correctly based on the current depth
-        rootPath = $('body').attr('data-root-path');
-        treeHtml = treeHtml.replace(/href="/g, 'href="' + rootPath);
-        Doctum.injectApiTree($('#api-tree'));
+        rootPath = document.body.getAttribute('data-root-path');
+        Doctum.buildTreeNode(treeJson.tree, rootPath, document.getElementById('api-tree'), treeJson.treeOpenLevel);
     });
 
     return root.Doctum;
@@ -277,30 +310,3 @@ $(function() {
 
     {% endverbatim %}
 });
-
-
-{% macro element(tree, opened, depth) %}
-    {% from _self import element %}
-
-    <ul>
-        {%- for element in tree -%}
-            {%- if element[2] -%}
-                <li data-name="namespace:{{ element[1]|replace({'\\': '_'})|raw }}" {% if depth < opened %}class="opened"{% endif %}>
-                    <div style="padding-left:{{ (depth * 18)|raw }}px" class="hd">
-                        <span class="icon icon-play"></span>
-                        <a href="{{ namespace_path(element[1]) }}">{{ element[0]|raw }}</a>
-                    </div>
-                    <div class="bd">
-                        {{ element(element[2], opened, depth + 1) -}}
-                    </div>
-                </li>
-            {%- else -%}
-                <li data-name="class:{{ element[1]|replace({'\\': '_'}) }}" {% if depth < opened %}class="opened"{% endif %}>
-                    <div style="padding-left:{{ 8 + (depth * 18) }}px" class="hd leaf">
-                        <a href="{{ class_path(element[1]) }}">{{ element[0] }}</a>
-                    </div>
-                </li>
-            {%- endif -%}
-        {%- endfor %}
-    </ul>
-{% endmacro %}

@@ -28,10 +28,7 @@ class Tree
         return Launcher::gettext('[Global Namespace]');
     }
 
-    /**
-     * @return array[]
-     */
-    public function getTree(Project $project)
+    public function getTree(Project $project): TreeNode
     {
         $namespaces = [];
         $ns         = $project->getNamespaces();
@@ -43,20 +40,21 @@ class Tree
             }
         }
 
-        return $this->generateClassTreeLevel($project, 1, $namespaces, []);
+        return new TreeNode(0, '', '', $this->generateClassTreeLevel($project, 1, $namespaces, []));
     }
 
     /**
      * @param int $level
-     * @param array $namespaces
+     * @param array<string,string[]> $namespaces
      * @param \Doctum\Reflection\ClassReflection[] $classes
-     * @return array[]
+     * @return TreeNode[]
      */
     protected function generateClassTreeLevel(Project $project, $level, array $namespaces, array $classes)
     {
         ++$level;
 
-        $tree = [];
+        $treeNodes         = [];
+        $currentHumanLevel = $level - 1;
         foreach ($namespaces as $namespace => $subnamespaces) {
             // classes
             $cl = $project->getNamespaceAllClasses($namespace);
@@ -65,7 +63,7 @@ class Tree
             $ns = [];
             foreach ($subnamespaces as $subnamespace) {
                 $parts = explode('\\', $subnamespace);
-                if (!isset($parts[$level - 1])) {
+                if (!isset($parts[$currentHumanLevel])) {
                     continue;
                 }
 
@@ -73,22 +71,24 @@ class Tree
             }
 
             $parts = explode('\\', $namespace);
-            $url   = '';
-            $url   = $parts[count($parts) - 1]
-                    && $project->hasNamespace($namespace)
-                    && (count($subnamespaces) || count($cl)) ? $namespace : '';
-            $short = $parts[count($parts) - 1] ? $parts[count($parts) - 1] : self::getGlobalNamespaceName();
+            $url   = Tree::getGlobalNamespacePageName();
 
-            $tree[] = [$short, $url, $this->generateClassTreeLevel($project, $level, $ns, $cl)];
+            $namespaceParentPart = $parts[count($parts) - 1] ?? null;
+
+            if ($namespaceParentPart && $project->hasNamespace($namespace) && (count($subnamespaces) || count($cl))) {
+                $url = $namespace;
+            }
+
+            $short = $namespaceParentPart ? $namespaceParentPart : self::getGlobalNamespaceName();
+
+            $treeNodes[] = new TreeNode($currentHumanLevel, $short, $url, $this->generateClassTreeLevel($project, $level, $ns, $cl));
         }
 
         foreach ($classes as $class) {
-            $short = $class->getShortName();
-
-            $tree[] = [$short, $class, []];
+            $treeNodes[] = new TreeNode($currentHumanLevel, $class->getShortName(), $class->getName(), null);
         }
 
-        return $tree;
+        return $treeNodes;
     }
 
 }

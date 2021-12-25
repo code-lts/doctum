@@ -9,6 +9,7 @@ use Doctum\Project;
 use Doctum\Reflection\ClassReflection;
 use Doctum\Store\ArrayStore;
 use Doctum\Tree;
+use Doctum\TreeNode;
 
 /**
  * @author Tomasz Struczyński <t.struczynski@gmail.com>
@@ -35,21 +36,30 @@ class TreeTest extends TestCase
         $tree = new Tree();
 
         $generated = $tree->getTree($project);
-        $this->assertCount(3, $generated);
+        $this->assertTrue($generated->hasChildren());
+        $this->assertCount(3, $generated->getChildren() ?? []);
 
-        $this->assertEquals('[Global Namespace]', $generated[0][0]);
-        $this->assertEquals('', $generated[0][1]);
+        $globalNs = $generated->getChildren()[0] ?? null;
+        $this->assertInstanceOf(TreeNode::class, $globalNs);
+        $this->assertEquals('[Global Namespace]', $globalNs->getName());
+        $this->assertEquals('[Global_Namespace]', $globalNs->getPath());
 
-        $this->assertEquals('C21', $generated[1][0]);
-        $this->assertEquals('C21', $generated[1][1]);
+        $firstNs = $generated->getChildren()[1] ?? null;
+        $this->assertInstanceOf(TreeNode::class, $firstNs);
+        $this->assertEquals('C21', $firstNs->getName());
+        $this->assertEquals('C21', $firstNs->getPath());
 
-        $this->assertEquals('C31', $generated[2][0]);
-        $this->assertEquals('C31', $generated[2][1]);
+        $secondNs = $generated->getChildren()[2] ?? null;
+        $this->assertInstanceOf(TreeNode::class, $secondNs);
+        $this->assertEquals('C31', $secondNs->getName());
+        $this->assertEquals('C31', $secondNs->getPath());
+        $this->assertTrue($secondNs->hasChildren());
 
-        $this->assertCount(3, $generated[2]);
-        $this->assertCount(1, $generated[2][2]);
-        $this->assertEquals('C32', $generated[2][2][0][0]);
-        $this->assertEquals('C31\C32', $generated[2][2][0][1]);
+        $this->assertCount(1, $secondNs->getChildren() ?? []);
+        $firstChildOfSecondNs = $secondNs->getChildren()[0] ?? null;
+        $this->assertInstanceOf(TreeNode::class, $firstChildOfSecondNs);
+        $this->assertEquals('C32', $firstChildOfSecondNs->getName());
+        $this->assertEquals('C31\C32', $firstChildOfSecondNs->getPath());
     }
 
 }
