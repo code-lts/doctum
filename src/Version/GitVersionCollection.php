@@ -43,7 +43,7 @@ class GitVersionCollection extends VersionCollection
         $this->repo    = $repo;
         $this->filter  = static function (string $version): bool {
             foreach (['PR', 'RC', 'BETA', 'ALPHA'] as $str) {
-                if (strpos($version, $str) !== false) {
+                if (stripos($version, $str) !== false) {
                     return false;
                 }
             }

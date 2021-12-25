@@ -77,6 +77,72 @@ class GitVersionCollectionTest extends AbstractTestCase
         );
     }
 
+    public function testConstructAddFromTagsNonSensitiveMatchIgnore(): void
+    {
+        $o = $this->getMockBuilder(GitVersionCollection::class)
+            ->setMethods(['execute'])
+            ->setConstructorArgs([''])
+            ->getMock();
+        $o->expects($this->exactly(1))
+            ->method('execute')
+            ->withConsecutive(
+                [
+                    [
+                        'tag'
+                    ]
+                ]
+            )->willReturnOnConsecutiveCalls(
+                'RC' . "\n"
+                . 'rc' . "\n"
+                . 'v5.0.0' . "\n"
+                . 'v5.0.1' . "\n"
+                . 'v5.0.1-RC' . "\n"
+                . 'rc-v5.0.1' . "\n"
+                . 'v5.0.2' . "\n"
+                . 'v5.0.3' . "\n"
+                . 'v5.1.0' . "\n"
+                . 'v5.1.0-beta' . "\n"
+                . 'beta-v5.1.0' . "\n"
+                . 'v5.2.0' . "\n"
+                . '' . "\n"
+                . 'ALPHA' . "\n"
+                . 'alpha' . "\n"
+                . 'v5.2.1' . "\n"
+                . 'v5.2.1-alpha1' . "\n"
+                . 'v5.3.0' . "\n"
+                . 'PR' . "\n"
+                . 'pr' . "\n"
+                . 'v5.3.1' . "\n"
+                . 'v5.3.1-pr2' . "\n"
+                . 'v5.3.2' . "\n"
+                . 'v5.3.2beta1' . "\n"
+                . 'betav5.3.2beta1' . "\n"
+                . 'betav5.3.2' . "\n"
+                . 'BETA' . "\n"
+                . 'beta' . "\n"
+                . 'v5.4.0'
+            );
+        /** @var GitVersionCollection $o */
+        $o->addFromTags();
+        $this->assertSame(11, $o->count());
+        $this->assertEquals(
+            [
+                $this->getVersion('v5.0.0'),
+                $this->getVersion('v5.0.1'),
+                $this->getVersion('v5.0.2'),
+                $this->getVersion('v5.0.3'),
+                $this->getVersion('v5.1.0'),
+                $this->getVersion('v5.2.0'),
+                $this->getVersion('v5.2.1'),
+                $this->getVersion('v5.3.0'),
+                $this->getVersion('v5.3.1'),
+                $this->getVersion('v5.3.2'),
+                $this->getVersion('v5.4.0'),
+            ],
+            $o->getVersions()
+        );
+    }
+
     public function testConstructAddVersionReorder(): void
     {
         $o = $this->getMockBuilder(GitVersionCollection::class)
