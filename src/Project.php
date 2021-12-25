@@ -759,7 +759,7 @@ class Project
         $remoteRepository = $this->getConfig('remote_repository');
 
         if ($remoteRepository instanceof AbstractRemoteRepository) {
-            return $remoteRepository->getFileUrl($this->version, $relativePath, $line);
+            return $remoteRepository->getFileUrl($this->version ?? '', $relativePath, $line);
         }
 
         return '';

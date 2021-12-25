@@ -18,6 +18,6 @@ return new Doctum(
     'title'                => 'Doctum',
     'build_dir'            => '/tmp/doctum-build',
     'cache_dir'            => '/tmp/doctum-cache',
-    'remote_repository'    => new GitHubRemoteRepository('code-lts/doctum', realpath($dir . '/../')),
+    'remote_repository'    => new GitHubRemoteRepository('code-lts/doctum', (string) realpath($dir . '/../')),
     ]
 );

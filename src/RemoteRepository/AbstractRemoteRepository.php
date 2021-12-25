@@ -15,18 +15,29 @@ namespace Doctum\RemoteRepository;
 
 abstract class AbstractRemoteRepository
 {
+    /** @var string */
     protected $name;
+    /** @var string */
     protected $localPath;
 
-    public function __construct($name, $localPath)
+    public function __construct(string $name, string $localPath)
     {
         $this->name      = $name;
         $this->localPath = $localPath;
     }
 
+    /**
+     * Get an URL for a file
+     *
+     * @param string $projectVersion
+     * @param string $relativePath
+     * @param int $line
+     *
+     * @return string
+     */
     abstract public function getFileUrl($projectVersion, $relativePath, $line);
 
-    public function getRelativePath($file)
+    public function getRelativePath(string $file): string
     {
         $replacementCount = 0;
         $filePath         = str_replace($this->localPath, '', $file, $replacementCount);

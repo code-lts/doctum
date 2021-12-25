@@ -29,9 +29,9 @@ class ViewSourceFunctionVisitor implements FunctionVisitorInterface
 
     public function visit(FunctionReflection $class): bool
     {
-        $filePath = $this->remoteRepository->getRelativePath($class->getFile());
+        $filePath = $this->remoteRepository->getRelativePath($class->getFile() ?? '');
 
-        if ($class->getRelativeFilePath() != $filePath) {
+        if ($class->getRelativeFilePath() !== $filePath) {
             $class->setRelativeFilePath($filePath);
 
             return true;
