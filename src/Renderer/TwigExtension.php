@@ -55,6 +55,7 @@ class TwigExtension extends AbstractExtension
     {
         return [
             new TwigFunction('global_namespace_name', [Tree::class, 'getGlobalNamespaceName']),
+            new TwigFunction('global_namespace_page_name', [Tree::class, 'getGlobalNamespacePageName']),
             new TwigFunction('function_path', [$this, 'pathForFunction'], ['needs_context' => true, 'is_safe' => ['html']]),
             new TwigFunction('namespace_path', [$this, 'pathForNamespace'], ['needs_context' => true, 'is_safe' => ['html']]),
             new TwigFunction('class_path', [$this, 'pathForClass'], ['needs_context' => true, 'is_safe' => ['html']]),
