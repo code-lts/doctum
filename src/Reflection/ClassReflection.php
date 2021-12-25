@@ -25,6 +25,7 @@ class ClassReflection extends Reflection
     protected $project;
 
     protected $hash;
+    /** @var string */
     protected $namespace;
     /** @var PropertyReflection[] */
     protected $properties = [];
@@ -71,7 +72,7 @@ class ClassReflection extends Reflection
         parent::setName(ltrim($name, '\\'));
     }
 
-    public function getShortName()
+    public function getShortName(): string
     {
         $pos = strrpos($this->name, '\\');
         if ($pos !== false) {
@@ -136,15 +137,12 @@ class ClassReflection extends Reflection
         $this->project = $project;
     }
 
-    /**
-     * @return void
-     */
     public function setNamespace(string $namespace): void
     {
         $this->namespace = ltrim($namespace, '\\');
     }
 
-    public function getNamespace()
+    public function getNamespace(): ?string
     {
         return $this->namespace;
     }

@@ -44,12 +44,11 @@ class Tree
     }
 
     /**
-     * @param int $level
      * @param array<string,string[]> $namespaces
      * @param \Doctum\Reflection\ClassReflection[] $classes
      * @return TreeNode[]
      */
-    protected function generateClassTreeLevel(Project $project, $level, array $namespaces, array $classes)
+    protected function generateClassTreeLevel(Project $project, int $level, array $namespaces, array $classes): array
     {
         ++$level;
 

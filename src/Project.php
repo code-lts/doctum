@@ -50,6 +50,7 @@ class Project
     protected $namespaceClasses;
     protected $namespaceInterfaces;
     protected $namespaceExceptions;
+    /** @var array<string,string> */
     protected $namespaces;
     protected $config;
     /** @var string|null */
@@ -189,6 +190,9 @@ class Project
         return array_key_exists($namespace, $this->namespaces);
     }
 
+    /**
+     * @return string[]
+     */
     public function getNamespaces(): array
     {
         ksort($this->namespaces);
@@ -642,7 +646,7 @@ class Project
     {
         $name = $class->getName();
 
-        $this->namespaces[$class->getNamespace()] = $class->getNamespace();
+        $this->namespaces[$class->getNamespace() ?? ''] = $class->getNamespace() ?? '';
         // add sub-namespaces
         $namespace = $class->getNamespace() ?? '';
         while ($namespace = substr($namespace, 0, (int) strrpos($namespace, '\\'))) {
@@ -650,12 +654,12 @@ class Project
         }
 
         if ($class->isException()) {
-            $this->namespaceExceptions[$class->getNamespace()][$name] = $class;
+            $this->namespaceExceptions[$class->getNamespace() ?? ''][$name] = $class;
         } elseif ($class->isInterface()) {
-            $this->namespaceInterfaces[$class->getNamespace()][$name] = $class;
-            $this->interfaces[$name]                                  = $class;
+            $this->namespaceInterfaces[$class->getNamespace() ?? ''][$name] = $class;
+            $this->interfaces[$name]                                        = $class;
         } else {
-            $this->namespaceClasses[$class->getNamespace()][$name] = $class;
+            $this->namespaceClasses[$class->getNamespace() ?? ''][$name] = $class;
         }
     }
 

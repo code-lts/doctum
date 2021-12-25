@@ -33,6 +33,7 @@ class Renderer
     protected $step;
     protected $tree;
     protected $indexer;
+    /** @var array<string,array<string,int|\Doctum\TreeNode>> */
     protected $cachedTree;
 
     public function __construct(\Twig\Environment $twig, ThemeSet $themes, Tree $tree, Indexer $indexer)
@@ -302,19 +303,21 @@ class Renderer
 
     /**
      * Get tree for the given project.
-     *
-     * @param Project $project
-     *
-     * @return array
      */
-    private function getTree(Project $project)
+    private function getTree(Project $project): string
     {
         $key = $project->getBuildDir();
-        if (!isset($this->cachedTree[$key])) {
-            $this->cachedTree[$key] = $this->tree->getTree($project);
+        if (! isset($this->cachedTree[$key])) {
+            $this->cachedTree[$key] = [
+                'tree' => $this->tree->getTree($project),
+                'treeOpenLevel' => $project->getConfig('default_opened_level')
+            ];
         }
 
-        return $this->cachedTree[$key];
+        return (string) json_encode(
+            $this->cachedTree[$key],
+            JSON_UNESCAPED_SLASHES
+        );
     }
 
 }
