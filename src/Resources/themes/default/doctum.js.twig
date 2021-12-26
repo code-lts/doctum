@@ -24,15 +24,6 @@
     var rootPath = '';
     var treeJson = {{ tree|raw }};
 
-    var searchTypeClasses = {
-        '{{ 'Namespace'|trans|escape('js') }}': 'label-default',
-        '{{ 'Class'|trans|escape('js') }}': 'label-info',
-        '{{ 'Interface'|trans|escape('js') }}': 'label-primary',
-        '{{ 'Trait'|trans|escape('js') }}': 'label-success',
-        '{{ 'Method'|trans|escape('js') }}': 'label-danger',
-        '_': 'label-warning'
-    };
-
     var searchIndex = [
         {% from _self import add_class_methods_index %}
         {% set prettyJsonOptions = constant('JSON_UNESCAPED_SLASHES') b-or constant('JSON_UNESCAPED_UNICODE') %}
@@ -135,25 +126,6 @@
     };
 
     root.Doctum = {
-        /**
-         * Cleans the provided term. If no term is provided, then one is
-         * grabbed from the query string "search" parameter.
-         */
-        cleanSearchTerm: function(term) {
-            // Grab from the query string
-            if (typeof term === 'undefined') {
-                var name = 'search';
-                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
-                var results = regex.exec(location.search);
-                if (results === null) {
-                    return null;
-                }
-                term = decodeURIComponent(results[1].replace(/\+/g, " "));
-            }
-
-            return term.replace(/<(?:.|\n)*?>/gm, '');
-        },
-
         /** Searches through the index for a given term */
         search: function(term) {
             // Create a new search index if needed
@@ -189,11 +161,6 @@
                 }
                 return ele;
             });
-        },
-
-        /** Get a search class for a specific type */
-        getSearchClass: function(type) {
-            return searchTypeClasses[type] || searchTypeClasses['_'];
         },
         buildTreeNode: function (treeNode, rootPath, htmlNode, treeOpenLevel) {
             var ulNode = document.createElement('ul');

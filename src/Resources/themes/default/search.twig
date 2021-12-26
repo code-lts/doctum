@@ -35,8 +35,41 @@
 {% block js_search %}
     <script type="text/javascript">
 
+        var searchTypeClasses = {
+            '{{ 'Namespace'|trans|escape('js') }}': 'label-default',
+            '{{ 'Class'|trans|escape('js') }}': 'label-info',
+            '{{ 'Interface'|trans|escape('js') }}': 'label-primary',
+            '{{ 'Trait'|trans|escape('js') }}': 'label-success',
+            '{{ 'Method'|trans|escape('js') }}': 'label-danger',
+            '_': 'label-warning'
+        };
+        /**
+         * Cleans the provided term. If no term is provided, then one is
+         * grabbed from the query string "search" parameter.
+         */
+        var cleanSearchTerm = function(term) {
+            // Grab from the query string
+            if (typeof term === 'undefined') {
+                var name = 'search';
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+                var results = regex.exec(location.search);
+                if (results === null) {
+                    return null;
+                }
+                term = decodeURIComponent(results[1].replace(/\+/g, " "));
+            }
+
+            return term.replace(/<(?:.|\n)*?>/gm, '');
+        };
+        /**
+         * Get a search class for a specific type
+         */
+        var getSearchClass = function(type) {
+            return searchTypeClasses[type] || searchTypeClasses['_'];
+        };
+
         (function() {
-            var term = Doctum.cleanSearchTerm();
+            var term = cleanSearchTerm();
 
             if (!term) {
                 $('h2').hide();
@@ -57,7 +90,7 @@
 
                 var ele = results[i];
                 var contents = '<li><h2 class="clearfix">';
-                var class_name = Doctum.getSearchClass(ele.type);
+                var class_name = getSearchClass(ele.type);
                 contents += '<a href="' + ele.link + '">' + ele.name + '</a>';
                 contents += '<div class="search-type type-' + ele.type + '"><span class="pull-right label ' + class_name + '">' + ele.type + '</span></div>';
                 contents += '</h2>';
