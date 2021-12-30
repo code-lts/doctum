@@ -11,9 +11,9 @@
         <link rel="stylesheet" type="text/css" href="{{ path('css/doctum.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ path('fonts/doctum-font.css') }}">
         <script src="{{ path('js/jquery-3.5.1.slim.min.js') }}"></script>
+        <script async defer src="{{ path('doctum.js') }}"></script>
         <script async defer src="{{ path('js/bootstrap.min.js') }}"></script>
-        <script src="{{ path('js/typeahead.min.js') }}"></script>
-        <script src="{{ path('doctum.js') }}"></script>
+        <script async defer src="{{ path('js/autocomplete.min.js') }}"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -34,7 +34,7 @@
 </head>
 
 {% block html %}
-    <body id="{% block body_class '' %}" data-name="{% block page_id '' %}" data-root-path="{{ root_path }}">
+    <body id="{% block body_class '' %}" data-name="{% block page_id '' %}" data-root-path="{{ root_path }}" data-search-index-url="{{ path('doctum-search.json') }}">
         {% block content '' %}
     </body>
 {% endblock %}

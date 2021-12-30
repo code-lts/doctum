@@ -35,6 +35,8 @@ class Renderer
     protected $indexer;
     /** @var array<string,array<string,int|\Doctum\TreeNode>> */
     protected $cachedTree;
+    /** @var array<string,array<string,mixed>> */
+    protected $cachedSearchIndex;
 
     public function __construct(\Twig\Environment $twig, ThemeSet $themes, Tree $tree, Indexer $indexer)
     {
@@ -125,6 +127,7 @@ class Renderer
             'items' => $this->getIndex($project),
             'index' => $this->indexer->getIndex($project),
             'tree' => $this->getTree($project),
+            'search_index' => $this->getSearchIndex($project),
         ];
 
         foreach ($this->theme->getTemplates('global') as $template => $target) {
@@ -316,6 +319,98 @@ class Renderer
 
         return (string) json_encode(
             $this->cachedTree[$key],
+            JSON_UNESCAPED_SLASHES
+        );
+    }
+
+    private function getSearchIndex(Project $project): string
+    {
+        $key = $project->getBuildDir();
+        if (! isset($this->cachedSearchIndex[$key])) {
+            $twigExtension = new TwigExtension();
+            $items         = [];
+            /** @var \Doctum\Reflection\MethodReflection[] $methods */
+            $methods = [];
+
+            foreach ($project->getProjectFunctions() as $function) {
+                $items[] = [
+                    't' => 'F',
+                    'n' => $function->__toString(),
+                    'p' => $twigExtension->pathForFunction([], $function),
+                    'd' => $twigExtension->markdownToHtml(
+                        $twigExtension->parseDesc($function->getShortDesc(), $function)
+                    ),
+                ];
+            }
+
+            foreach ($project->getProjectClasses() as $class) {
+                $classItem = [
+                    't' => $class->isTrait() ? 'T' : 'C',
+                    'n' => $class->__toString(),
+                    'p' => $twigExtension->pathForClass([], $class->__toString()),
+                    'd' => $twigExtension->markdownToHtml(
+                        $twigExtension->parseDesc($class->getShortDesc(), $class)
+                    ),
+                ];
+                if ($class->getNamespace() !== null) {
+                    $classItem['f'] = [
+                        'n' => $class->getNamespace() === '' ? Tree::getGlobalNamespaceName() : $class->getNamespace(),
+                        'p' => $twigExtension->pathForNamespace([], $class->getNamespace()),
+                    ];
+                }
+                $items[] = $classItem;
+                array_push($methods, ...array_values($class->getMethods()));
+            }
+
+            foreach ($project->getProjectInterfaces() as $interface) {
+                $nsItem = [
+                    't' => 'I',
+                    'n' => $interface->__toString(),
+                    'p' => $twigExtension->pathForClass([], $interface->__toString()),
+                ];
+                if ($interface->getNamespace() !== null) {
+                    $nsItem['f'] = [
+                        'n' => $interface->getNamespace() === '' ? Tree::getGlobalNamespaceName() : $interface->getNamespace(),
+                        'p' => $twigExtension->pathForNamespace([], $interface->getNamespace()),
+                    ];
+                }
+                $items[] = $nsItem;
+                array_push($methods, ...array_values($interface->getMethods()));
+            }
+
+            foreach ($methods as $method) {
+                $methodItem = [
+                    't' => 'M',
+                    'n' => $method->__toString(),
+                    'p' => $twigExtension->pathForMethod([], $method),
+                    'd' => $twigExtension->markdownToHtml(
+                        $twigExtension->parseDesc($method->getShortDesc(), $method)
+                    ),
+                ];
+                if ($method->getClass() !== null) {
+                    $nsItem['f'] = [
+                        'n' => $method->getClass()->__toString(),
+                        'p' => $twigExtension->pathForClass([], $method->getClass()->__toString()),
+                    ];
+                }
+                $items[] = $methodItem;
+            }
+
+            foreach ($project->getNamespaces() as $namespace) {
+                $items[] = [
+                    't' => 'N',
+                    'n' => $namespace,
+                    'p' => $twigExtension->pathForNamespace([], $namespace),
+                ];
+            }
+
+            $this->cachedSearchIndex[$key] = [
+                'items' => $items,
+            ];
+        }
+
+        return (string) json_encode(
+            $this->cachedSearchIndex[$key],
             JSON_UNESCAPED_SLASHES
         );
     }

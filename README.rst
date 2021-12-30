@@ -300,7 +300,7 @@ the default theme:
         'fonts/doctum.eot': 'fonts/doctum.eot'
         'js/jquery-3.5.1.slim.min.js': 'js/jquery-3.5.1.slim.min.js'
         'js/bootstrap.min.js': 'js/bootstrap.min.js'
-        'js/typeahead.min.js': 'js/typeahead.min.js'
+        'js/autocomplete.min.js': 'js/autocomplete.min.js'
 
     global:
         'index.twig':      'index.html'

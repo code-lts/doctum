@@ -25,7 +25,7 @@ class ClassReflection extends Reflection
     protected $project;
 
     protected $hash;
-    /** @var string */
+    /** @var string|null */
     protected $namespace;
     /** @var PropertyReflection[] */
     protected $properties = [];
