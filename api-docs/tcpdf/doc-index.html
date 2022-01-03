@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="doc-index" data-name="" data-root-path="">
+    <body id="doc-index" data-name="" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
                     <li><a href="doc-index.html">Index</a></li>
@@ -189,7 +201,7 @@ TCPDFBarcode::barcode_code93</a>() &mdash; <em>Method in class <a href="TCPDFBar
                     <dd><p>CODE 93 - USS-93
 Compact code similar to Code 39</p></dd><dt><a href="TCPDFBarcode.html#method_barcode_msi">
 TCPDFBarcode::barcode_msi</a>() &mdash; <em>Method in class <a href="TCPDFBarcode.html">TCPDFBarcode</a></em></dt>
-                    <dd><p>MSI.</p></dd><dt><a href="TCPDFBarcode.html#method_barcode_s25">
+                    <dd>MSI.</dd><dt><a href="TCPDFBarcode.html#method_barcode_s25">
 TCPDFBarcode::barcode_s25</a>() &mdash; <em>Method in class <a href="TCPDFBarcode.html">TCPDFBarcode</a></em></dt>
                     <dd><p>Standard 2 of 5 barcodes.</p></dd><dt><a href="TCPDFBarcode.html#method_binseq_to_array">
 TCPDFBarcode::binseq_to_array</a>() &mdash; <em>Method in class <a href="TCPDFBarcode.html">TCPDFBarcode</a></em></dt>
@@ -872,7 +884,7 @@ TCPDF#header_logo_width</a> &mdash; <em>Property in class <a href="TCPDF.html">T
 TCPDF#header_title</a> &mdash; <em>Property in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Title to be printed on default page header.</p></dd><dt>$<a href="TCPDF.html#property_header_string">
 TCPDF#header_string</a> &mdash; <em>Property in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>String to pring on page header after title.</p></dd><dt>$<a href="TCPDF.html#property_header_text_color">
+                    <dd><p>String to print on page header after title.</p></dd><dt>$<a href="TCPDF.html#property_header_text_color">
 TCPDF#header_text_color</a> &mdash; <em>Property in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Color for header text (RGB array).</p></dd><dt>$<a href="TCPDF.html#property_header_line_color">
 TCPDF#header_line_color</a> &mdash; <em>Property in class <a href="TCPDF.html">TCPDF</a></em></dt>
@@ -1279,42 +1291,42 @@ TCPDF::setTempRTL</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</
 TCPDF::setLastH</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Set the last cell height.</p></dd><dt><a href="TCPDF.html#method_setImageScale">
 TCPDF::setImageScale</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Set the adjusting factor to convert pixels to user units.</p></dd><dt><a href="TCPDF.html#method_SetMargins">
-TCPDF::SetMargins</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the left, top and right margins.</p></dd><dt><a href="TCPDF.html#method_SetLeftMargin">
-TCPDF::SetLeftMargin</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the left margin. The method can be called before creating the first page. If the current abscissa gets out of page, it is brought back to the margin.</p></dd><dt><a href="TCPDF.html#method_SetTopMargin">
-TCPDF::SetTopMargin</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the top margin. The method can be called before creating the first page.</p></dd><dt><a href="TCPDF.html#method_SetRightMargin">
-TCPDF::SetRightMargin</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the right margin. The method can be called before creating the first page.</p></dd><dt><a href="TCPDF.html#method_SetCellPadding">
-TCPDF::SetCellPadding</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Set the adjusting factor to convert pixels to user units.</p></dd><dt><a href="TCPDF.html#method_setMargins">
+TCPDF::setMargins</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the left, top and right margins.</p></dd><dt><a href="TCPDF.html#method_setLeftMargin">
+TCPDF::setLeftMargin</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the left margin. The method can be called before creating the first page. If the current abscissa gets out of page, it is brought back to the margin.</p></dd><dt><a href="TCPDF.html#method_setTopMargin">
+TCPDF::setTopMargin</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the top margin. The method can be called before creating the first page.</p></dd><dt><a href="TCPDF.html#method_setRightMargin">
+TCPDF::setRightMargin</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the right margin. The method can be called before creating the first page.</p></dd><dt><a href="TCPDF.html#method_setCellPadding">
+TCPDF::setCellPadding</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Set the same internal Cell padding for top, right, bottom, left-</p></dd><dt><a href="TCPDF.html#method_setCellPaddings">
 TCPDF::setCellPaddings</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Set the internal Cell paddings.</p></dd><dt><a href="TCPDF.html#method_setCellMargins">
 TCPDF::setCellMargins</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Set the internal Cell margins.</p></dd><dt><a href="TCPDF.html#method_SetAutoPageBreak">
-TCPDF::SetAutoPageBreak</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Enables or disables the automatic page breaking mode. When enabling, the second parameter is the distance from the bottom of the page that defines the triggering limit. By default, the mode is on and the margin is 2 cm.</p></dd><dt><a href="TCPDF.html#method_SetDisplayMode">
-TCPDF::SetDisplayMode</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the way the document is to be displayed by the viewer.</p></dd><dt><a href="TCPDF.html#method_SetCompression">
-TCPDF::SetCompression</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Set the internal Cell margins.</p></dd><dt><a href="TCPDF.html#method_setAutoPageBreak">
+TCPDF::setAutoPageBreak</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Enables or disables the automatic page breaking mode. When enabling, the second parameter is the distance from the bottom of the page that defines the triggering limit. By default, the mode is on and the margin is 2 cm.</p></dd><dt><a href="TCPDF.html#method_setDisplayMode">
+TCPDF::setDisplayMode</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the way the document is to be displayed by the viewer.</p></dd><dt><a href="TCPDF.html#method_setCompression">
+TCPDF::setCompression</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Activates or deactivates page compression. When activated, the internal representation of each page is compressed, which leads to a compression ratio of about 2 for the resulting document. Compression is on by default.</p></dd><dt><a href="TCPDF.html#method_setSRGBmode">
 TCPDF::setSRGBmode</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Set flag to force sRGB_IEC61966-2.1 black scaled ICC color profile for the whole document.</p></dd><dt><a href="TCPDF.html#method_SetDocInfoUnicode">
-TCPDF::SetDocInfoUnicode</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Turn on/off Unicode mode for document information dictionary (meta tags).</p></dd><dt><a href="TCPDF.html#method_SetTitle">
-TCPDF::SetTitle</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the title of the document.</p></dd><dt><a href="TCPDF.html#method_SetSubject">
-TCPDF::SetSubject</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the subject of the document.</p></dd><dt><a href="TCPDF.html#method_SetAuthor">
-TCPDF::SetAuthor</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the author of the document.</p></dd><dt><a href="TCPDF.html#method_SetKeywords">
-TCPDF::SetKeywords</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Associates keywords with the document, generally in the form 'keyword1 keyword2 ...'.</p></dd><dt><a href="TCPDF.html#method_SetCreator">
-TCPDF::SetCreator</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the creator of the document. This is typically the name of the application that generates the PDF.</p></dd><dt><a href="TCPDF.html#method_SetAllowLocalFiles">
-TCPDF::SetAllowLocalFiles</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Set flag to force sRGB_IEC61966-2.1 black scaled ICC color profile for the whole document.</p></dd><dt><a href="TCPDF.html#method_setDocInfoUnicode">
+TCPDF::setDocInfoUnicode</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Turn on/off Unicode mode for document information dictionary (meta tags).</p></dd><dt><a href="TCPDF.html#method_setTitle">
+TCPDF::setTitle</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the title of the document.</p></dd><dt><a href="TCPDF.html#method_setSubject">
+TCPDF::setSubject</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the subject of the document.</p></dd><dt><a href="TCPDF.html#method_setAuthor">
+TCPDF::setAuthor</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the author of the document.</p></dd><dt><a href="TCPDF.html#method_setKeywords">
+TCPDF::setKeywords</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Associates keywords with the document, generally in the form 'keyword1 keyword2 ...'.</p></dd><dt><a href="TCPDF.html#method_setCreator">
+TCPDF::setCreator</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the creator of the document. This is typically the name of the application that generates the PDF.</p></dd><dt><a href="TCPDF.html#method_setAllowLocalFiles">
+TCPDF::setAllowLocalFiles</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Whether to allow local file path in image html tags, when prefixed with file://</p></dd><dt><a href="TCPDF.html#method_setPage">
 TCPDF::setPage</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Move pointer at the specified document page and update page dimensions.</p></dd><dt><a href="TCPDF.html#method_startPage">
@@ -1345,48 +1357,48 @@ TCPDF::setFooter</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a
 TCPDF::setTableHeader</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>This method is used to render the table header on new page (if any).</p></dd><dt><a href="TCPDF.html#method_setSpotColor">
 TCPDF::setSpotColor</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Set the spot color for the specified type ('draw', 'fill', 'text').</p></dd><dt><a href="TCPDF.html#method_SetDrawSpotColor">
-TCPDF::SetDrawSpotColor</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the spot color used for all drawing operations (lines, rectangles and cell borders).</p></dd><dt><a href="TCPDF.html#method_SetFillSpotColor">
-TCPDF::SetFillSpotColor</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the spot color used for all filling operations (filled rectangles and cell backgrounds).</p></dd><dt><a href="TCPDF.html#method_SetTextSpotColor">
-TCPDF::SetTextSpotColor</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Set the spot color for the specified type ('draw', 'fill', 'text').</p></dd><dt><a href="TCPDF.html#method_setDrawSpotColor">
+TCPDF::setDrawSpotColor</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the spot color used for all drawing operations (lines, rectangles and cell borders).</p></dd><dt><a href="TCPDF.html#method_setFillSpotColor">
+TCPDF::setFillSpotColor</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the spot color used for all filling operations (filled rectangles and cell backgrounds).</p></dd><dt><a href="TCPDF.html#method_setTextSpotColor">
+TCPDF::setTextSpotColor</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Defines the spot color used for text.</p></dd><dt><a href="TCPDF.html#method_setColorArray">
 TCPDF::setColorArray</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Set the color array for the specified type ('draw', 'fill', 'text').</p></dd><dt><a href="TCPDF.html#method_SetDrawColorArray">
-TCPDF::SetDrawColorArray</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the color used for all drawing operations (lines, rectangles and cell borders).</p></dd><dt><a href="TCPDF.html#method_SetFillColorArray">
-TCPDF::SetFillColorArray</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the color used for all filling operations (filled rectangles and cell backgrounds).</p></dd><dt><a href="TCPDF.html#method_SetTextColorArray">
-TCPDF::SetTextColorArray</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Set the color array for the specified type ('draw', 'fill', 'text').</p></dd><dt><a href="TCPDF.html#method_setDrawColorArray">
+TCPDF::setDrawColorArray</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the color used for all drawing operations (lines, rectangles and cell borders).</p></dd><dt><a href="TCPDF.html#method_setFillColorArray">
+TCPDF::setFillColorArray</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the color used for all filling operations (filled rectangles and cell backgrounds).</p></dd><dt><a href="TCPDF.html#method_setTextColorArray">
+TCPDF::setTextColorArray</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Defines the color used for text. It can be expressed in RGB components or gray scale.</p></dd><dt><a href="TCPDF.html#method_setColor">
 TCPDF::setColor</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the color used by the specified type ('draw', 'fill', 'text').</p></dd><dt><a href="TCPDF.html#method_SetDrawColor">
-TCPDF::SetDrawColor</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the color used for all drawing operations (lines, rectangles and cell borders). It can be expressed in RGB components or gray scale. The method can be called before the first page is created and the value is retained from page to page.</p></dd><dt><a href="TCPDF.html#method_SetFillColor">
-TCPDF::SetFillColor</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the color used for all filling operations (filled rectangles and cell backgrounds). It can be expressed in RGB components or gray scale. The method can be called before the first page is created and the value is retained from page to page.</p></dd><dt><a href="TCPDF.html#method_SetTextColor">
-TCPDF::SetTextColor</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the color used for text. It can be expressed in RGB components or gray scale. The method can be called before the first page is created and the value is retained from page to page.</p></dd><dt><a href="TCPDF.html#method_SetFont">
-TCPDF::SetFont</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Sets the font used to print character strings.</p></dd><dt><a href="TCPDF.html#method_SetFontSize">
-TCPDF::SetFontSize</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the size of the current font.</p></dd><dt><a href="TCPDF.html#method_SetDefaultMonospacedFont">
-TCPDF::SetDefaultMonospacedFont</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the default monospaced font.</p></dd><dt><a href="TCPDF.html#method_SetLink">
-TCPDF::SetLink</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the page and position a link points to.</p></dd><dt><a href="TCPDF.html#method_SetX">
-TCPDF::SetX</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the abscissa of the current position.</p></dd><dt><a href="TCPDF.html#method_SetY">
-TCPDF::SetY</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Moves the current abscissa back to the left margin and sets the ordinate.</p></dd><dt><a href="TCPDF.html#method_SetXY">
-TCPDF::SetXY</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the abscissa and ordinate of the current position.</p></dd><dt><a href="TCPDF.html#method_SetAbsX">
-TCPDF::SetAbsX</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Set the absolute X coordinate of the current pointer.</p></dd><dt><a href="TCPDF.html#method_SetAbsY">
-TCPDF::SetAbsY</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Set the absolute Y coordinate of the current pointer.</p></dd><dt><a href="TCPDF.html#method_SetAbsXY">
-TCPDF::SetAbsXY</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the color used by the specified type ('draw', 'fill', 'text').</p></dd><dt><a href="TCPDF.html#method_setDrawColor">
+TCPDF::setDrawColor</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the color used for all drawing operations (lines, rectangles and cell borders). It can be expressed in RGB components or gray scale. The method can be called before the first page is created and the value is retained from page to page.</p></dd><dt><a href="TCPDF.html#method_setFillColor">
+TCPDF::setFillColor</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the color used for all filling operations (filled rectangles and cell backgrounds). It can be expressed in RGB components or gray scale. The method can be called before the first page is created and the value is retained from page to page.</p></dd><dt><a href="TCPDF.html#method_setTextColor">
+TCPDF::setTextColor</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the color used for text. It can be expressed in RGB components or gray scale. The method can be called before the first page is created and the value is retained from page to page.</p></dd><dt><a href="TCPDF.html#method_setFont">
+TCPDF::setFont</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Sets the font used to print character strings.</p></dd><dt><a href="TCPDF.html#method_setFontSize">
+TCPDF::setFontSize</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the size of the current font.</p></dd><dt><a href="TCPDF.html#method_setDefaultMonospacedFont">
+TCPDF::setDefaultMonospacedFont</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the default monospaced font.</p></dd><dt><a href="TCPDF.html#method_setLink">
+TCPDF::setLink</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the page and position a link points to.</p></dd><dt><a href="TCPDF.html#method_setX">
+TCPDF::setX</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the abscissa of the current position.</p></dd><dt><a href="TCPDF.html#method_setY">
+TCPDF::setY</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Moves the current abscissa back to the left margin and sets the ordinate.</p></dd><dt><a href="TCPDF.html#method_setXY">
+TCPDF::setXY</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the abscissa and ordinate of the current position.</p></dd><dt><a href="TCPDF.html#method_setAbsX">
+TCPDF::setAbsX</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Set the absolute X coordinate of the current pointer.</p></dd><dt><a href="TCPDF.html#method_setAbsY">
+TCPDF::setAbsY</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Set the absolute Y coordinate of the current pointer.</p></dd><dt><a href="TCPDF.html#method_setAbsXY">
+TCPDF::setAbsXY</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Set the absolute X and Y coordinates of the current pointer.</p></dd><dt><a href="TCPDF.html#method_setPageBoxTypes">
 TCPDF::setPageBoxTypes</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Set page boxes to be included on page descriptions.</p></dd><dt><a href="TCPDF.html#method_setExtraXMP">
@@ -1403,8 +1415,8 @@ TCPDF::setHeaderFont</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPD
 TCPDF::setFooterFont</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Set footer font.</p></dd><dt><a href="TCPDF.html#method_setLanguageArray">
 TCPDF::setLanguageArray</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Set language array.</p></dd><dt><a href="TCPDF.html#method_SetProtection">
-TCPDF::SetProtection</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Set language array.</p></dd><dt><a href="TCPDF.html#method_setProtection">
+TCPDF::setProtection</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Set document protection
 Remark: the protection against modification is for people who have the full Acrobat product.</p></dd><dt><a href="TCPDF.html#method_StartTransform">
 TCPDF::StartTransform</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
@@ -1424,10 +1436,10 @@ TCPDF::SkewX</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></e
 TCPDF::SkewY</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Skew vertically.</p></dd><dt><a href="TCPDF.html#method_Skew">
 TCPDF::Skew</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Skew.</p></dd><dt><a href="TCPDF.html#method_SetLineWidth">
-TCPDF::SetLineWidth</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Defines the line width. By default, the value equals 0.2 mm. The method can be called before the first page is created and the value is retained from page to page.</p></dd><dt><a href="TCPDF.html#method_SetLineStyle">
-TCPDF::SetLineStyle</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd>Skew.</dd><dt><a href="TCPDF.html#method_setLineWidth">
+TCPDF::setLineWidth</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Defines the line width. By default, the value equals 0.2 mm. The method can be called before the first page is created and the value is retained from page to page.</p></dd><dt><a href="TCPDF.html#method_setLineStyle">
+TCPDF::setLineStyle</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Set line style.</p></dd><dt><a href="TCPDF.html#method_StarPolygon">
 TCPDF::StarPolygon</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Draws a star polygon</p></dd><dt><a href="TCPDF.html#method_setDestination">
@@ -1477,8 +1489,8 @@ TCPDF::setBarcode</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</
 TCPDF::serializeTCPDFtagParameters</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Serialize an array of parameters to be used with TCPDF tag in HTML code.</p></dd><dt><a href="TCPDF.html#method_setLIsymbol">
 TCPDF::setLIsymbol</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Set the default bullet to be used as LI bullet symbol</p></dd><dt><a href="TCPDF.html#method_SetBooklet">
-TCPDF::SetBooklet</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Set the default bullet to be used as LI bullet symbol</p></dd><dt><a href="TCPDF.html#method_setBooklet">
+TCPDF::setBooklet</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Set the booklet mode for double-sided pages.</p></dd><dt><a href="TCPDF.html#method_swapMargins">
 TCPDF::swapMargins</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Swap the left and right margins.</p></dd><dt><a href="TCPDF.html#method_setHtmlVSpace">

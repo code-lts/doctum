@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:TCPDF_STATIC" data-root-path="">
+    <body id="class" data-name="class:TCPDF_STATIC" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
                     <li><a href="doc-index.html">Index</a></li>
@@ -475,7 +487,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
                     static&nbsp;string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_fixHTMLCode">fixHTMLCode</a>(string $html, string $default_css, array $tagvs, array $tidy_options, array $tagvspaces)
+                    <a href="#method_fixHTMLCode">fixHTMLCode</a>(string $html, string $default_css, array|null $tagvs, array|null $tidy_options, array $tagvspaces)
         
                                             <p><p>Cleanup HTML code (requires HTML Tidy library).</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -725,7 +737,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
                     static&nbsp;int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method__freadint">_freadint</a>(string $f)
+                    <a href="#method__freadint">_freadint</a>(resource $f)
         
                                             <p><p>Read a 4-byte (32 bit) integer from file.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -1151,7 +1163,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td><p>filename.</p></td>
+            <td>filename.</td>
         </tr>
     </table>
 
@@ -1413,7 +1425,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td><p>seconds.</p></td>
+            <td>seconds.</td>
         </tr>
     </table>
 
@@ -1603,7 +1615,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method__AESnopad">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L472">at line 472</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L476">at line 476</a></div>
         <code>        static            string
     <strong>_AESnopad</strong>(string $key, string $text)
         </code>
@@ -1651,7 +1663,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method__RC4">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L495">at line 495</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L503">at line 503</a></div>
         <code>        static            string
     <strong>_RC4</strong>(string $key, string $text, string $last_enc_key, string $last_enc_key_c)
         </code>
@@ -1709,7 +1721,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_getUserPermissionCode">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L539">at line 539</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L547">at line 547</a></div>
         <code>        static            
     <strong>getUserPermissionCode</strong>(array $permissions, int $mode = 0)
         </code>
@@ -1748,7 +1760,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_convertHexStringToString">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L576">at line 576</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L584">at line 584</a></div>
         <code>        static            string
     <strong>convertHexStringToString</strong>(string $bs)
         </code>
@@ -1791,7 +1803,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_convertStringToHexString">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L598">at line 598</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L606">at line 606</a></div>
         <code>        static            string
     <strong>convertStringToHexString</strong>(string $s)
         </code>
@@ -1834,7 +1846,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_getEncPermissionsString">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L615">at line 615</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L623">at line 623</a></div>
         <code>        static            string
     <strong>getEncPermissionsString</strong>(string $protection)
         </code>
@@ -1877,7 +1889,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_encodeNameObject">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L632">at line 632</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L640">at line 640</a></div>
         <code>        static            string
     <strong>encodeNameObject</strong>(string $name)
         </code>
@@ -1920,7 +1932,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_getAnnotOptFromJSProp">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L656">at line 656</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L664">at line 664</a></div>
         <code>        static            array
     <strong>getAnnotOptFromJSProp</strong>(array $prop, array $spot_colors, bool $rtl = false)
         </code>
@@ -1973,7 +1985,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_formatPageNumber">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1023">at line 1023</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1031">at line 1031</a></div>
         <code>        static            string
     <strong>formatPageNumber</strong>(int $num)
         </code>
@@ -2016,7 +2028,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_formatTOCPageNumber">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1036">at line 1036</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1044">at line 1044</a></div>
         <code>        static            string
     <strong>formatTOCPageNumber</strong>(int $num)
         </code>
@@ -2076,7 +2088,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_extractCSSproperties">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1048">at line 1048</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1056">at line 1056</a></div>
         <code>        static            array
     <strong>extractCSSproperties</strong>(string $cssdata)
         </code>
@@ -2119,9 +2131,9 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_fixHTMLCode">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1144">at line 1144</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1152">at line 1152</a></div>
         <code>        static            string
-    <strong>fixHTMLCode</strong>(string $html, string $default_css, array $tagvs, array $tidy_options, array $tagvspaces)
+    <strong>fixHTMLCode</strong>(string $html, string $default_css, array|null $tagvs, array|null $tidy_options, array $tagvspaces)
         </code>
     </h3>
     <div class="details"><i>Since: 5.9.017 (2010-11-16)</i>
@@ -2147,12 +2159,12 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
                 <td><p>CSS commands to add</p></td>
             </tr>
                     <tr>
-                <td>array</td>
+                <td>array|null</td>
                 <td>$tagvs</td>
                 <td><p>parameters for setHtmlVSpace method</p></td>
             </tr>
                     <tr>
-                <td>array</td>
+                <td>array|null</td>
                 <td>$tidy_options</td>
                 <td><p>options for tidy_parse_string function</p></td>
             </tr>
@@ -2193,7 +2205,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_isValidCSSSelectorForTag">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1210">at line 1210</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1218">at line 1218</a></div>
         <code>        static            true
     <strong>isValidCSSSelectorForTag</strong>(array $dom, int $key, string $selector)
         </code>
@@ -2246,7 +2258,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_getCSSdataArray">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1370">at line 1370</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1378">at line 1378</a></div>
         <code>        static            array
     <strong>getCSSdataArray</strong>(array $dom, int $key, array $css)
         </code>
@@ -2299,7 +2311,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_getTagStyleFromCSSarray">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1415">at line 1415</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1423">at line 1423</a></div>
         <code>        static            string
     <strong>getTagStyleFromCSSarray</strong>(array $css)
         </code>
@@ -2342,7 +2354,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_intToRoman">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1446">at line 1446</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1454">at line 1454</a></div>
         <code>        static            string
     <strong>intToRoman</strong>(int $number)
         </code>
@@ -2385,7 +2397,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_revstrpos">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1516">at line 1516</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1524">at line 1524</a></div>
         <code>        static            int|false
     <strong>revstrpos</strong>(string $haystack, string $needle, int $offset = 0)
         </code>
@@ -2438,7 +2450,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_getHyphenPatternsFromTEX">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1531">at line 1531</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1539">at line 1539</a></div>
         <code>        static            array
     <strong>getHyphenPatternsFromTEX</strong>(string $file)
         </code>
@@ -2481,7 +2493,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_getPathPaintOperator">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1578">at line 1578</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1586">at line 1586</a></div>
         <code>        static            string
     <strong>getPathPaintOperator</strong>(string $style, string $default = &#039;S&#039;)
         </code>
@@ -2542,7 +2554,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_getTransformationMatrixProduct">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1657">at line 1657</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1665">at line 1665</a></div>
         <code>        static            array
     <strong>getTransformationMatrixProduct</strong>(array $ta, array $tb)
         </code>
@@ -2590,7 +2602,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_getSVGTransformMatrix">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1676">at line 1676</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1684">at line 1684</a></div>
         <code>        static            array
     <strong>getSVGTransformMatrix</strong>(string $attribute)
         </code>
@@ -2610,7 +2622,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
                     <tr>
                 <td>string</td>
                 <td>$attribute</td>
-                <td><p>transformation</p></td>
+                <td>transformation</td>
             </tr>
             </table>
 
@@ -2633,7 +2645,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_getVectorsAngle">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1773">at line 1773</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1781">at line 1781</a></div>
         <code>        static            
     <strong>getVectorsAngle</strong>(int $x1, int $y1, int $x2, int $y2)
         </code>
@@ -2682,7 +2694,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_pregSplit">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1800">at line 1800</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1808">at line 1808</a></div>
         <code>        static            array
     <strong>pregSplit</strong>(string $pattern, string $modifiers, string $subject, int $limit = NULL, int $flags = NULL)
         </code>
@@ -2745,7 +2757,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_fopenLocal">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1828">at line 1828</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1836">at line 1836</a></div>
         <code>        static            resource|false
     <strong>fopenLocal</strong>(string $filename, string $mode)
         </code>
@@ -2792,7 +2804,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_url_exists">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1844">at line 1844</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1852">at line 1852</a></div>
         <code>        static            bool
     <strong>url_exists</strong>(string $url)
         </code>
@@ -2835,7 +2847,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_encodeUrlQuery">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1877">at line 1877</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1885">at line 1885</a></div>
         <code>        static            string
     <strong>encodeUrlQuery</strong>(string $url)
         </code>
@@ -2878,7 +2890,7 @@ measures are calculated in this way: (inches <em> 72) or (millimeters </em> 72 /
             </div>
                     <div class="method-item">
                     <h3 id="method_file_exists">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1897">at line 1897</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1905">at line 1905</a></div>
         <code>        static            bool
     <strong>file_exists</strong>(string $filename)
         </code>
@@ -2921,7 +2933,7 @@ Only allows some protocols and local files.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_fileGetContents">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1916">at line 1916</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L1924">at line 1924</a></div>
         <code>        static            string|false
     <strong>fileGetContents</strong>(string $file)
         </code>
@@ -2964,7 +2976,7 @@ Only allows some protocols and local files.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method__getULONG">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2017">at line 2017</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2025">at line 2025</a></div>
         <code>        static            int
     <strong>_getULONG</strong>(string $str, int $offset)
         </code>
@@ -3012,7 +3024,7 @@ Only allows some protocols and local files.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method__getUSHORT">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2031">at line 2031</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2039">at line 2039</a></div>
         <code>        static            int
     <strong>_getUSHORT</strong>(string $str, int $offset)
         </code>
@@ -3060,7 +3072,7 @@ Only allows some protocols and local files.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method__getSHORT">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2045">at line 2045</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2053">at line 2053</a></div>
         <code>        static            int
     <strong>_getSHORT</strong>(string $str, int $offset)
         </code>
@@ -3108,7 +3120,7 @@ Only allows some protocols and local files.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method__getFWORD">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2059">at line 2059</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2067">at line 2067</a></div>
         <code>        static            int
     <strong>_getFWORD</strong>(string $str, int $offset)
         </code>
@@ -3156,7 +3168,7 @@ Only allows some protocols and local files.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method__getUFWORD">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2076">at line 2076</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2084">at line 2084</a></div>
         <code>        static            int
     <strong>_getUFWORD</strong>(string $str, int $offset)
         </code>
@@ -3204,7 +3216,7 @@ Only allows some protocols and local files.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method__getFIXED">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2090">at line 2090</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2098">at line 2098</a></div>
         <code>        static            int
     <strong>_getFIXED</strong>(string $str, int $offset)
         </code>
@@ -3252,7 +3264,7 @@ Only allows some protocols and local files.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method__getBYTE">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2108">at line 2108</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2116">at line 2116</a></div>
         <code>        static            int
     <strong>_getBYTE</strong>(string $str, int $offset)
         </code>
@@ -3300,7 +3312,7 @@ Only allows some protocols and local files.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_rfread">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2122">at line 2122</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2130">at line 2130</a></div>
         <code>        static            string|false
     <strong>rfread</strong>(resource $handle, int $length)
         </code>
@@ -3348,9 +3360,9 @@ Only allows some protocols and local files.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method__freadint">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2140">at line 2140</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2148">at line 2148</a></div>
         <code>        static            int
-    <strong>_freadint</strong>(string $f)
+    <strong>_freadint</strong>(resource $f)
         </code>
     </h3>
     <div class="details">    
@@ -3365,9 +3377,9 @@ Only allows some protocols and local files.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>resource</td>
                 <td>$f</td>
-                <td><p>file name.</p></td>
+                <td><p>file resource.</p></td>
             </tr>
             </table>
 
@@ -3390,7 +3402,7 @@ Only allows some protocols and local files.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPageSizeFromFormat">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2511">at line 2511</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2519">at line 2519</a></div>
         <code>        static            array
     <strong>getPageSizeFromFormat</strong>(mixed $format)
         </code>
@@ -3433,7 +3445,7 @@ Only allows some protocols and local files.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setPageBoxes">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2533">at line 2533</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2541">at line 2541</a></div>
         <code>        static            array
     <strong>setPageBoxes</strong>(int $page, string $type, float $llx, float $lly, float $urx, float $ury, bool $points, float $k, array $pagedim = array())
         </code>
@@ -3516,7 +3528,7 @@ Only allows some protocols and local files.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_swapPageBoxCoordinates">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2559">at line 2559</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2567">at line 2567</a></div>
         <code>        static            array
     <strong>swapPageBoxCoordinates</strong>(int $page, array $pagedim)
         </code>
@@ -3564,7 +3576,7 @@ Only allows some protocols and local files.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPageLayoutMode">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2580">at line 2580</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2588">at line 2588</a></div>
         <code>        static            string
     <strong>getPageLayoutMode</strong>(string $layout = &#039;SinglePage&#039;)
         </code>
@@ -3606,7 +3618,7 @@ Only allows some protocols and local files.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPageMode">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2623">at line 2623</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/include/tcpdf_static.php#L2631">at line 2631</a></div>
         <code>        static            string
     <strong>getPageMode</strong>(string $mode = &#039;UseNone&#039;)
         </code>
