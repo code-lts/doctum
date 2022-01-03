@@ -39,7 +39,7 @@ doDocsUpdate() {
     rm -rfd "$BUILD_DIR"
 
     # Render
-    ./releases/latest/doctum.phar update --no-ansi --no-progress --ignore-parse-errors -v api-docs/doctum-php-$FOLDER_NAME.php --force
+    ./releases/dev/doctum.phar update --no-ansi --no-progress --ignore-parse-errors -v api-docs/doctum-php-$FOLDER_NAME.php --force
 
     # Local source folder cleanup
     rm -rfd $SOURCE_DIR
