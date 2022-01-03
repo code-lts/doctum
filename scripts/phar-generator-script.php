@@ -168,6 +168,7 @@ final class PharFilterIterator extends RecursiveFilterIterator
      * @var string[]
      */
     private static $excludedFolderPaths = [
+        'vendor/symfony/service-contracts/Test',
         'src/Resources/themes/default/data',
         'vendor/symfony/yaml/Resources/bin',
         'vendor/bin',
