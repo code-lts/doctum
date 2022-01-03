@@ -48,6 +48,7 @@ class TreeNode implements JsonSerializable
     /**
      * @return array<string,mixed>
      */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         if ($this->children === null) {
