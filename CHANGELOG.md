@@ -28,6 +28,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Filter out in a non case sensitive way the tags on `GitVersionCollection` class and document filtering on the README
 - Reduce the size of the tree, create a new class `TreeNode` and build the tree using JS code and not injected HTML code
 - Select the global namespace in the tree while viewing it
+- Disable "spellcheck", "autocorrect", "autocomplete" and "autocapitalize" on the search input
+- Completely refactor the search box to drop "typeahead.js" and replace it by "autocomplete.js"
+- Reduce the loading times by a lot by spliting out the search index into "doctum-search.json" and loading it only when needed
 
 ## [5.4.1] - 2021-04-22
 
