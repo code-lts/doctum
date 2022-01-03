@@ -358,8 +358,11 @@ class Renderer
                         'p' => $twigExtension->pathForNamespace([], $class->getNamespace()),
                     ];
                 }
-                $items[] = $classItem;
-                array_push($methods, ...array_values($class->getMethods()));
+                $items[]      = $classItem;
+                $classMethods = array_values($class->getMethods());
+                if (count($classMethods) > 0) {
+                    array_push($methods, ...$classMethods);
+                }
             }
 
             foreach ($project->getProjectInterfaces() as $interface) {
@@ -374,8 +377,11 @@ class Renderer
                         'p' => $twigExtension->pathForNamespace([], $interface->getNamespace()),
                     ];
                 }
-                $items[] = $nsItem;
-                array_push($methods, ...array_values($interface->getMethods()));
+                $items[]          = $nsItem;
+                $interfaceMethods = array_values($interface->getMethods())
+                if (count($interfaceMethods) > 0) {
+                    array_push($methods, ...$interfaceMethods);
+                }
             }
 
             foreach ($methods as $method) {
