@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:SplStack" data-root-path="">
+    <body id="class" data-name="class:SplStack" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -268,7 +280,7 @@ SplDoublyLinkedList</a></small></div>
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetSet">offsetSet</a>(mixed $index, mixed $value)
+                    <a href="#method_offsetSet">offsetSet</a>(mixed $index, TValue $value)
         
                                             <p><p>Sets the value at the specified $index to $newval</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="SplDoublyLinkedList.html#method_offsetSet">
@@ -309,7 +321,7 @@ SplDoublyLinkedList</a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_key">key</a>()
@@ -364,7 +376,7 @@ SplDoublyLinkedList</a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    string|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_serialize">serialize</a>()
@@ -708,7 +720,10 @@ SplDoublyLinkedList</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blo
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td><p>the number of elements in the doubly linked list.</p></td>
+            <td><p>The custom count as an integer.</p>
+<p>
+The return value is cast to an integer.
+</p></td>
         </tr>
     </table>
 
@@ -865,7 +880,10 @@ The index being checked.
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>true if the requested <i>index</i> exists, otherwise false</p></td>
+            <td><p>true on success or false on failure.
+</p></p>
+<p>
+The return value will be casted to boolean if non-boolean was returned.</td>
         </tr>
     </table>
 
@@ -910,7 +928,7 @@ The index with the value.
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>The value at the specified <i>index</i>.</p></td>
+            <td><p>Can return all value types.</p></td>
         </tr>
     </table>
 
@@ -926,7 +944,7 @@ The index with the value.
         <div class="location">in <a href="SplDoublyLinkedList.html#method_offsetSet">
 SplDoublyLinkedList</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL_c1.php#L1194">at line 1194</a></div>
         <code>                    void
-    <strong>offsetSet</strong>(mixed $index, mixed $value)
+    <strong>offsetSet</strong>(mixed $index, TValue $value)
         </code>
     </h3>
     <div class="details">    
@@ -948,10 +966,10 @@ The index being set.
 </p></td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td>TValue</td>
                 <td>$value</td>
                 <td><p>
-The new value for the <i>index</i>.
+The value to set.
 </p></td>
             </tr>
             </table>
@@ -1040,7 +1058,7 @@ SplDoublyLinkedList</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blo
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td></td>
+            <td><p>Any returned value is ignored.</p></td>
         </tr>
     </table>
 
@@ -1073,7 +1091,7 @@ SplDoublyLinkedList</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blo
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>The current node value.</p></td>
+            <td><p>Can return any type.</p></td>
         </tr>
     </table>
 
@@ -1088,7 +1106,7 @@ SplDoublyLinkedList</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blo
                     <h3 id="method_key">
         <div class="location">in <a href="SplDoublyLinkedList.html#method_key">
 SplDoublyLinkedList</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL_c1.php#L1229">at line 1229</a></div>
-        <code>                    int
+        <code>                    mixed
     <strong>key</strong>()
         </code>
     </h3>
@@ -1105,8 +1123,8 @@ SplDoublyLinkedList</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blo
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
-            <td><p>The current node index.</p></td>
+            <td>mixed</td>
+            <td><p>TKey on success, or null on failure.</p></td>
         </tr>
     </table>
 
@@ -1139,7 +1157,7 @@ SplDoublyLinkedList</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blo
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td></td>
+            <td><p>Any returned value is ignored.</p></td>
         </tr>
     </table>
 
@@ -1205,7 +1223,8 @@ SplDoublyLinkedList</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blo
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>true if the doubly linked list contains any more nodes, false otherwise.</p></td>
+            <td><p>The return value will be casted to boolean and then evaluated.
+Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -1239,7 +1258,7 @@ SplDoublyLinkedList</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blo
                     <tr>
                 <td>string</td>
                 <td>$data</td>
-                <td><p>The serialized string.</p></td>
+                <td><p>The string representation of the object.</p></td>
             </tr>
             </table>
 
@@ -1264,7 +1283,7 @@ SplDoublyLinkedList</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blo
                     <h3 id="method_serialize">
         <div class="location">in <a href="SplDoublyLinkedList.html#method_serialize">
 SplDoublyLinkedList</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL_c1.php#L1272">at line 1272</a></div>
-        <code>                    string
+        <code>                    string|null
     <strong>serialize</strong>()
         </code>
     </h3>
@@ -1282,8 +1301,8 @@ SplDoublyLinkedList</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blo
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
-            <td><p>The serialized string.</p></td>
+            <td>string|null</td>
+            <td><p>The string representation of the object or null</p></td>
         </tr>
     </table>
 

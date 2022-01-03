@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../fonts/doctum-font.css">
         <script src="../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../doctum.js"></script>
         <script async defer src="../js/bootstrap.min.js"></script>
-        <script src="../js/typeahead.min.js"></script>
-        <script src="../doctum.js"></script>
+        <script async defer src="../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:Cassandra_Rows" data-root-path="../">
+    <body id="class" data-name="class:Cassandra_Rows" data-root-path="../" data-search-index-url="../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="../classes.html">Classes</a></li>
+                                        <li><a href="../classes.html">Classes</a></li>
                     <li><a href="../namespaces.html">Namespaces</a></li>
                     <li><a href="../interfaces.html">Interfaces</a></li>
                     <li><a href="../traits.html">Traits</a></li>
@@ -74,8 +86,7 @@
 
     
     <p>final         class
-    <strong>Rows</strong>        implements
-        <a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a>, <a target="_blank" rel="noopener" href="https://www.php.net/ArrayAccess">ArrayAccess</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/cassandra/cassandra.php">View source</a>)
+    <strong>Rows</strong>        implements        <a href="../Iterator.html">Iterator</a>, <a href="../ArrayAccess.html">ArrayAccess</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/cassandra/cassandra.php">View source</a>)
 </p>
 
         
@@ -124,7 +135,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_current">current</a>()
@@ -134,7 +145,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_key">key</a>()
@@ -167,17 +178,17 @@
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetExists">offsetExists</a>(int $offset)
+                    <a href="#method_offsetExists">offsetExists</a>(mixed $offset)
         
                                             <p><p>Returns existence of a given row.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array|null
+                    mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetGet">offsetGet</a>(int $offset)
+                    <a href="#method_offsetGet">offsetGet</a>(mixed $offset)
         
                                             <p><p>Returns a row at given index.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -187,7 +198,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetSet">offsetSet</a>(int $offset, array $value)
+                    <a href="#method_offsetSet">offsetSet</a>(TKey $offset, TValue $value)
         
                                             <p><p>Sets a row at given index.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -197,7 +208,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetUnset">offsetUnset</a>(int $offset)
+                    <a href="#method_offsetUnset">offsetUnset</a>(TKey $offset)
         
                                             <p><p>Removes a row at given index.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -314,7 +325,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            \Countable::count()
+                                            <a href="../Countable.html#method_count">
+Countable::count</a>
                                     </td>
                 <td></td>
             </tr>
@@ -346,7 +358,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td></td>
+            <td><p>Any returned value is ignored.</p></td>
         </tr>
     </table>
 
@@ -357,7 +369,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            \Iterator::rewind()
+                                            <a href="../Iterator.html#method_rewind">
+Iterator::rewind</a>
                                     </td>
                 <td></td>
             </tr>
@@ -371,7 +384,7 @@
                     <div class="method-item">
                     <h3 id="method_current">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/cassandra/cassandra.php#L1495">at line 1495</a></div>
-        <code>                    array
+        <code>                    mixed
     <strong>current</strong>()
         </code>
     </h3>
@@ -388,8 +401,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
-            <td><p>current row</p></td>
+            <td>mixed</td>
+            <td><p>Can return any type.</p></td>
         </tr>
     </table>
 
@@ -400,7 +413,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            \Iterator::current()
+                                            <a href="../Iterator.html#method_current">
+Iterator::current</a>
                                     </td>
                 <td></td>
             </tr>
@@ -414,7 +428,7 @@
                     <div class="method-item">
                     <h3 id="method_key">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/cassandra/cassandra.php#L1505">at line 1505</a></div>
-        <code>                    int
+        <code>                    mixed
     <strong>key</strong>()
         </code>
     </h3>
@@ -431,8 +445,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
-            <td><p>index</p></td>
+            <td>mixed</td>
+            <td><p>TKey on success, or null on failure.</p></td>
         </tr>
     </table>
 
@@ -443,7 +457,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            \Iterator::key()
+                                            <a href="../Iterator.html#method_key">
+Iterator::key</a>
                                     </td>
                 <td></td>
             </tr>
@@ -475,7 +490,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td></td>
+            <td><p>Any returned value is ignored.</p></td>
         </tr>
     </table>
 
@@ -486,7 +501,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            \Iterator::next()
+                                            <a href="../Iterator.html#method_next">
+Iterator::next</a>
                                     </td>
                 <td></td>
             </tr>
@@ -518,7 +534,8 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>whether there are more rows available for iteration</p></td>
+            <td><p>The return value will be casted to boolean and then evaluated.
+Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -529,7 +546,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            \Iterator::valid()
+                                            <a href="../Iterator.html#method_valid">
+Iterator::valid</a>
                                     </td>
                 <td></td>
             </tr>
@@ -544,7 +562,7 @@
                     <h3 id="method_offsetExists">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/cassandra/cassandra.php#L1537">at line 1537</a></div>
         <code>                    bool
-    <strong>offsetExists</strong>(int $offset)
+    <strong>offsetExists</strong>(mixed $offset)
         </code>
     </h3>
     <div class="details">    
@@ -559,9 +577,11 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
+                <td>mixed</td>
                 <td>$offset</td>
-                <td><p>row index</p></td>
+                <td><p>
+An offset to check for.
+</p></td>
             </tr>
             </table>
 
@@ -571,7 +591,10 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>whether a row at a given index exists</p></td>
+            <td><p>true on success or false on failure.
+</p></p>
+<p>
+The return value will be casted to boolean if non-boolean was returned.</td>
         </tr>
     </table>
 
@@ -582,7 +605,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            \ArrayAccess::offsetExists()
+                                            <a href="../ArrayAccess.html#method_offsetExists">
+ArrayAccess::offsetExists</a>
                                     </td>
                 <td></td>
             </tr>
@@ -596,8 +620,8 @@
                     <div class="method-item">
                     <h3 id="method_offsetGet">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/cassandra/cassandra.php#L1549">at line 1549</a></div>
-        <code>                    array|null
-    <strong>offsetGet</strong>(int $offset)
+        <code>                    mixed
+    <strong>offsetGet</strong>(mixed $offset)
         </code>
     </h3>
     <div class="details">    
@@ -612,9 +636,11 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
+                <td>mixed</td>
                 <td>$offset</td>
-                <td><p>row index</p></td>
+                <td><p>
+The offset to retrieve.
+</p></td>
             </tr>
             </table>
 
@@ -623,8 +649,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>array|null</td>
-            <td><p>row at a given index</p></td>
+            <td>mixed</td>
+            <td><p>Can return all value types.</p></td>
         </tr>
     </table>
 
@@ -635,7 +661,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            \ArrayAccess::offsetGet()
+                                            <a href="../ArrayAccess.html#method_offsetGet">
+ArrayAccess::offsetGet</a>
                                     </td>
                 <td></td>
             </tr>
@@ -650,7 +677,7 @@
                     <h3 id="method_offsetSet">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/cassandra/cassandra.php#L1564">at line 1564</a></div>
         <code>                    void
-    <strong>offsetSet</strong>(int $offset, array $value)
+    <strong>offsetSet</strong>(TKey $offset, TValue $value)
         </code>
     </h3>
     <div class="details">    
@@ -665,14 +692,18 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
+                <td>TKey</td>
                 <td>$offset</td>
-                <td><p>row index</p></td>
+                <td><p>
+The offset to assign the value to.
+</p></td>
             </tr>
                     <tr>
-                <td>array</td>
+                <td>TValue</td>
                 <td>$value</td>
-                <td><p>row value</p></td>
+                <td><p>
+The value to set.
+</p></td>
             </tr>
             </table>
 
@@ -702,7 +733,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            \ArrayAccess::offsetSet()
+                                            <a href="../ArrayAccess.html#method_offsetSet">
+ArrayAccess::offsetSet</a>
                                     </td>
                 <td></td>
             </tr>
@@ -717,7 +749,7 @@
                     <h3 id="method_offsetUnset">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/cassandra/cassandra.php#L1578">at line 1578</a></div>
         <code>                    void
-    <strong>offsetUnset</strong>(int $offset)
+    <strong>offsetUnset</strong>(TKey $offset)
         </code>
     </h3>
     <div class="details">    
@@ -732,9 +764,11 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
+                <td>TKey</td>
                 <td>$offset</td>
-                <td><p>row index</p></td>
+                <td><p>
+The offset to unset.
+</p></td>
             </tr>
             </table>
 
@@ -764,7 +798,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            \ArrayAccess::offsetUnset()
+                                            <a href="../ArrayAccess.html#method_offsetUnset">
+ArrayAccess::offsetUnset</a>
                                     </td>
                 <td></td>
             </tr>

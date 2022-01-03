@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:RRDCreator" data-root-path="">
+    <body id="class" data-name="class:RRDCreator" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -148,7 +160,7 @@ RRD can accept input from several data sources (DS), e.g incoming and outgoing t
 
         <div class="method-description">
                             <p><p>Adds RRA - archive of data values for each data source. <p>
-Archive consists of a number of data values or statistics for each of the defined data-sources (DS). Data sources are defined by method RRDCreator::addDataSource(). You need call this method for each requested archive.</p></p>                <p><p></p></p></p>        
+Archive consists of a number of data values or statistics for each of the defined data-sources (DS). Data sources are defined by method RRDCreator::addDataSource(). You need call this method for each requested archive.</p></p>                <p></p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -206,7 +218,7 @@ RRDCreator::addDataSource</a>
 
         <div class="method-description">
                             <p><p>Adds data source definition for RRD database.<p>
-RRD can accept input from several data sources (DS), e.g incoming and outgoing traffic. This method adds data source by description. You need call this method for each data source.</p></p>                <p><p></p></p></p>        
+RRD can accept input from several data sources (DS), e.g incoming and outgoing traffic. This method adds data source by description. You need call this method for each data source.</p></p>                <p></p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>

@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:EventDnsBase" data-root-path="">
+    <body id="class" data-name="class:EventDnsBase" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -76,7 +88,7 @@
         
 
             <div class="description">
-            <p><p>EventDnsBase.</p></p>            <p><p>Represents Libevent's DNS base structure. Used to resolve DNS asyncronously, parse configuration files like resolv.conf etc.</p></p>        </div>
+            <p>EventDnsBase.</p>            <p><p>Represents Libevent's DNS base structure. Used to resolve DNS asyncronously, parse configuration files like resolv.conf etc.</p></p>        </div>
             
         
             <h2>Constants</h2>    <table class="table table-condensed">
@@ -139,7 +151,7 @@
                 <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(<a href="EventBase.html">EventBase</a> $base, bool $initialize)
         
-                                            <p><p>__construct.</p></p>                </div>
+                                            <p>__construct.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -149,7 +161,7 @@
                 <div class="col-md-8">
                     <a href="#method_addNameserverIp">addNameserverIp</a>(string $ip)
         
-                                            <p><p>addNameserverIp.</p></p>                </div>
+                                            <p>addNameserverIp.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -159,7 +171,7 @@
                 <div class="col-md-8">
                     <a href="#method_addSearch">addSearch</a>(string $domain)
         
-                                            <p><p>addSearch.</p></p>                </div>
+                                            <p>addSearch.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -169,7 +181,7 @@
                 <div class="col-md-8">
                     <a href="#method_clearSearch">clearSearch</a>()
         
-                                            <p><p>clearSearch.</p></p>                </div>
+                                            <p>clearSearch.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -179,7 +191,7 @@
                 <div class="col-md-8">
                     <a href="#method_countNameservers">countNameservers</a>()
         
-                                            <p><p>countNameservers.</p></p>                </div>
+                                            <p>countNameservers.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -189,7 +201,7 @@
                 <div class="col-md-8">
                     <a href="#method_loadHosts">loadHosts</a>(string $hosts)
         
-                                            <p><p>loadHosts.</p></p>                </div>
+                                            <p>loadHosts.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -199,7 +211,7 @@
                 <div class="col-md-8">
                     <a href="#method_parseResolvConf">parseResolvConf</a>(int $flags, string $filename)
         
-                                            <p><p>parseResolvConf.</p></p>                </div>
+                                            <p>parseResolvConf.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -209,7 +221,7 @@
                 <div class="col-md-8">
                     <a href="#method_setOption">setOption</a>(string $option, string $value)
         
-                                            <p><p>setOption.</p></p>                </div>
+                                            <p>setOption.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -219,7 +231,7 @@
                 <div class="col-md-8">
                     <a href="#method_setSearchNdots">setSearchNdots</a>(int $ndots)
         
-                                            <p><p>setSearchNdots.</p></p>                </div>
+                                            <p>setSearchNdots.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -240,7 +252,7 @@
             
 
         <div class="method-description">
-                            <p><p>__construct.</p></p>                <p><p>Constructs EventDnsBase object.</p></p>        
+                            <p>__construct.</p>                <p><p>Constructs EventDnsBase object.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -289,7 +301,7 @@
             
 
         <div class="method-description">
-                            <p><p>addNameserverIp.</p></p>                <p><p>Adds a nameserver to the DNS base.</p></p>        
+                            <p>addNameserverIp.</p>                <p><p>Adds a nameserver to the DNS base.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -342,7 +354,7 @@
             
 
         <div class="method-description">
-                            <p><p>addSearch.</p></p>                <p><p>Adds a domain to the list of search domains.</p></p>        
+                            <p>addSearch.</p>                <p><p>Adds a domain to the list of search domains.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -395,7 +407,7 @@
             
 
         <div class="method-description">
-                            <p><p>clearSearch.</p></p>                <p><p>Removes all current search suffixes.</p></p>        
+                            <p>clearSearch.</p>                <p><p>Removes all current search suffixes.</p></p>        
         </div>
         <div class="tags">
             
@@ -438,7 +450,7 @@
             
 
         <div class="method-description">
-                            <p><p>countNameservers.</p></p>                <p><p>Gets the number of configured nameservers.</p></p>        
+                            <p>countNameservers.</p>                <p><p>Gets the number of configured nameservers.</p></p>        
         </div>
         <div class="tags">
             
@@ -481,7 +493,7 @@
             
 
         <div class="method-description">
-                            <p><p>loadHosts.</p></p>                <p><p>Loads a hosts file (in the same format as /etc/hosts) from hosts file.</p></p>        
+                            <p>loadHosts.</p>                <p><p>Loads a hosts file (in the same format as /etc/hosts) from hosts file.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -534,7 +546,7 @@
             
 
         <div class="method-description">
-                            <p><p>parseResolvConf.</p></p>                <p><p>Scans the resolv.conf-formatted file.</p></p>        
+                            <p>parseResolvConf.</p>                <p><p>Scans the resolv.conf-formatted file.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -592,7 +604,7 @@
             
 
         <div class="method-description">
-                            <p><p>setOption.</p></p>                <p><p>Set the value of a configuration option.</p></p>        
+                            <p>setOption.</p>                <p><p>Set the value of a configuration option.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -650,7 +662,7 @@
             
 
         <div class="method-description">
-                            <p><p>setSearchNdots.</p></p>                <p><p>Set the 'ndots' parameter for searches.</p></p>        
+                            <p>setSearchNdots.</p>                <p><p>Set the 'ndots' parameter for searches.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>

@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
         <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
         <script async defer src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/typeahead.min.js"></script>
-        <script src="../../doctum.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:Elastic_Apm_ElasticApm" data-root-path="../../">
+    <body id="class" data-name="class:Elastic_Apm_ElasticApm" data-root-path="../../" data-search-index-url="../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="../../classes.html">Classes</a></li>
+                                        <li><a href="../../classes.html">Classes</a></li>
                     <li><a href="../../namespaces.html">Namespaces</a></li>
                     <li><a href="../../interfaces.html">Interfaces</a></li>
                     <li><a href="../../traits.html">Traits</a></li>
@@ -117,7 +129,7 @@
                     static&nbsp;mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_captureCurrentTransaction">captureCurrentTransaction</a>(string $name, string $type, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback, float|null $timestamp = null, string|null $serializedDistTracingData = null)
+                    <a href="#method_captureCurrentTransaction">captureCurrentTransaction</a>(string $name, string $type, <a href="../../Closure.html">Closure</a> $callback, float|null $timestamp = null, string|null $serializedDistTracingData = null)
         
                                             <p><p>Begins a new transaction, sets as the current transaction,
 runs the provided callback as the new transaction and automatically ends the new transaction.</p></p>                </div>
@@ -158,7 +170,7 @@ runs the provided callback as the new transaction and automatically ends the new
                     static&nbsp;mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_captureTransaction">captureTransaction</a>(string $name, string $type, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback, float|null $timestamp = null, string|null $serializedDistTracingData = null)
+                    <a href="#method_captureTransaction">captureTransaction</a>(string $name, string $type, <a href="../../Closure.html">Closure</a> $callback, float|null $timestamp = null, string|null $serializedDistTracingData = null)
         
                                             <p><p>Begins a new transaction,
 runs the provided callback as the new transaction and automatically ends the new transaction.</p></p>                </div>
@@ -179,7 +191,7 @@ runs the provided callback as the new transaction and automatically ends the new
                     static&nbsp;string|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_createErrorFromThrowable">createErrorFromThrowable</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $throwable)
+                    <a href="#method_createErrorFromThrowable">createErrorFromThrowable</a>(<a href="../../Throwable.html">Throwable</a> $throwable)
         
                                             <p><p>Creates an error based on the given Throwable instance
 with the current execution segment (if there is one) as the parent.</p></p>                </div>
@@ -320,7 +332,7 @@ use newTransaction()-&gt;distributedTracingHeaderExtractor() instead</li>
                     <h3 id="method_captureCurrentTransaction">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/elastic_apm/elastic_apm.php#L53">at line 53</a></div>
         <code>        static            mixed
-    <strong>captureCurrentTransaction</strong>(string $name, string $type, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback, float|null $timestamp = null, string|null $serializedDistTracingData = null)
+    <strong>captureCurrentTransaction</strong>(string $name, string $type, <a href="../../Closure.html">Closure</a> $callback, float|null $timestamp = null, string|null $serializedDistTracingData = null)
         </code>
     </h3>
     <div class="details">    
@@ -346,7 +358,7 @@ runs the provided callback as the new transaction and automatically ends the new
                 <td><p>New transaction's type</p></td>
             </tr>
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td><a href="../../Closure.html">Closure</a></td>
                 <td>$callback</td>
                 <td><p>Callback to execute as the new transaction</p></td>
             </tr>
@@ -557,7 +569,7 @@ use newTransaction()-&gt;distributedTracingHeaderExtractor() instead</li>
                     <h3 id="method_captureTransaction">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/elastic_apm/elastic_apm.php#L116">at line 116</a></div>
         <code>        static            mixed
-    <strong>captureTransaction</strong>(string $name, string $type, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback, float|null $timestamp = null, string|null $serializedDistTracingData = null)
+    <strong>captureTransaction</strong>(string $name, string $type, <a href="../../Closure.html">Closure</a> $callback, float|null $timestamp = null, string|null $serializedDistTracingData = null)
         </code>
     </h3>
     <div class="details">    
@@ -583,7 +595,7 @@ runs the provided callback as the new transaction and automatically ends the new
                 <td><p>New transaction's type</p></td>
             </tr>
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td><a href="../../Closure.html">Closure</a></td>
                 <td>$callback</td>
                 <td><p>Callback to execute as the new transaction</p></td>
             </tr>
@@ -710,7 +722,7 @@ use newTransaction()-&gt;distributedTracingHeaderExtractor() instead</li>
                     <h3 id="method_createErrorFromThrowable">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/elastic_apm/elastic_apm.php#L148">at line 148</a></div>
         <code>        static            string|null
-    <strong>createErrorFromThrowable</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $throwable)
+    <strong>createErrorFromThrowable</strong>(<a href="../../Throwable.html">Throwable</a> $throwable)
         </code>
     </h3>
     <div class="details">    
@@ -726,7 +738,7 @@ with the current execution segment (if there is one) as the parent.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a></td>
+                <td><a href="../../Throwable.html">Throwable</a></td>
                 <td>$throwable</td>
                 <td></td>
             </tr>

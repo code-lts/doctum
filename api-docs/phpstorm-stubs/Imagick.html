@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:Imagick" data-root-path="">
+    <body id="class" data-name="class:Imagick" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -68,8 +80,7 @@
 
     
     <p>        class
-    <strong>Imagick</strong>        implements
-        <a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Countable">Countable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/imagick/imagick.php">View source</a>)
+    <strong>Imagick</strong>        implements        <a href="Iterator.html">Iterator</a>, <a href="Countable.html">Countable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/imagick/imagick.php">View source</a>)
 </p>
 
         
@@ -6071,13 +6082,12 @@ The Imagick constructor</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    int
                 </div>
                 <div class="col-md-8">
                     <a href="#method_count">count</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Count elements of an object</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -8748,35 +8758,32 @@ Sets the image type attribute</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_key">key</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Return the key of the current element</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8">
                     <a href="#method_next">next</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Move forward to next element</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8">
                     <a href="#method_rewind">rewind</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Rewind the Iterator to the first element</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -8792,7 +8799,7 @@ Checks if the current item is valid</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="Imagick.html">Imagick</a>
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_current">current</a>()
@@ -9172,7 +9179,7 @@ Removes repeated portions of images to optimize</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -9226,7 +9233,7 @@ One of the layer method constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -9280,7 +9287,7 @@ A string containing the image.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -9341,7 +9348,7 @@ Optional filename for this image.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -9383,7 +9390,7 @@ Creates a vertical mirror image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -9425,7 +9432,7 @@ Creates a horizontal mirror image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -9483,7 +9490,7 @@ on the quantum range.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -9544,7 +9551,7 @@ The length of the wave.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -9619,7 +9626,7 @@ Y offset of the ellipse
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -9661,7 +9668,7 @@ Discards all but one of any pixel color</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -9703,7 +9710,7 @@ Return if the image has a matte channel</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -9757,7 +9764,7 @@ True activates the matte channel and false disables it.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -9829,7 +9836,7 @@ The behavior of the parameter bestfit changed in Imagick 3.0.0. Before this vers
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>Throws ImagickException on error</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -9897,7 +9904,7 @@ Apply the effect along this angle.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -9965,7 +9972,7 @@ Defines the light source direction.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -10007,7 +10014,7 @@ Returns the size offset</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -10075,7 +10082,7 @@ The image offset.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -10144,7 +10151,7 @@ Provide any channel constant that is valid for your channel mode. To apply to mo
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -10215,7 +10222,7 @@ list of channel constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -10283,7 +10290,7 @@ Provide any channel constant that is valid for your channel mode. To apply to mo
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -10354,7 +10361,7 @@ list of channel constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -10396,17 +10403,17 @@ list of channel constants.
                     <tr>
                 <td></td>
                 <td>$strokeWidth</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$displace</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$sizeCorrection</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -10417,7 +10424,7 @@ list of channel constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -10500,7 +10507,7 @@ size correction
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -10554,7 +10561,7 @@ The position to set the iterator to
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -10648,7 +10655,7 @@ An image geometry string. This geometry defines the final size of the image.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -10703,7 +10710,7 @@ transparent.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -10767,7 +10774,7 @@ list of channel constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -10828,7 +10835,7 @@ The polaroid angle
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -10883,7 +10890,7 @@ property with the given name does not exist.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -10940,7 +10947,7 @@ Sets an image property</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -10994,7 +11001,7 @@ The method is one of the <b>Imagick::INTERPOLATE_*</b> constants
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -11036,7 +11043,7 @@ Returns the interpolation method</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -11097,7 +11104,7 @@ The image white point
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -11139,7 +11146,7 @@ Returns the image length in bytes</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -11214,7 +11221,7 @@ Y position for the new size
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -11256,7 +11263,7 @@ Gets the image orientation</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -11310,7 +11317,7 @@ One of the orientation constants
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -11401,7 +11408,7 @@ Provide any channel constant that is valid for your channel mode. To apply to mo
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -11464,7 +11471,7 @@ constant. When not supplied, default channels are replaced.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -11525,7 +11532,7 @@ Whether to return only property names. If <b>FALSE</b> then also the values are 
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -11586,7 +11593,7 @@ Whether to return only profile names. If <b>FALSE</b> then only profile names wi
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -11654,7 +11661,7 @@ Attempt to resize destination to fit distorted source
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -11708,7 +11715,7 @@ Filehandle where to write the image
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -11762,7 +11769,7 @@ Filehandle where to write the images
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -11816,7 +11823,7 @@ The page definition. For example 7168x5147+0+0
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -11903,7 +11910,7 @@ Gets image clip mask</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -11957,7 +11964,7 @@ X server address
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -12011,7 +12018,7 @@ The matrix containing the color values
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -12065,7 +12072,7 @@ Font name or a filename
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -12152,7 +12159,7 @@ Point size
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -12293,7 +12300,7 @@ One of the <b>Imagick::ALPHACHANNEL_*</b> constants
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -12389,7 +12396,7 @@ Provide any channel constant that is valid for your channel mode. To apply to mo
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -12471,7 +12478,7 @@ Provide any channel constant that is valid for your channel mode. To apply to mo
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -12546,7 +12553,7 @@ If <b>TRUE</b> paints any pixel that does not match the target color.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -12623,7 +12630,7 @@ typically 0.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -12677,7 +12684,7 @@ The passphrase
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -12731,7 +12738,7 @@ The passphrase
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -12786,7 +12793,7 @@ gravity constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -12874,7 +12881,7 @@ Provide any channel constant that is valid for your channel mode. To apply to mo
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -12917,7 +12924,7 @@ list of alpha channel constants.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -12985,7 +12992,7 @@ Provide any channel constant that is valid for your channel mode. To apply to mo
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -13040,7 +13047,7 @@ gravity constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -13083,7 +13090,7 @@ gravity constants.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -13182,7 +13189,7 @@ The array of pixels
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -13236,7 +13243,7 @@ Deskew threshold
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -13312,7 +13319,7 @@ Whether to output detailed information about recognised classes.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -13359,7 +13366,7 @@ The array is in format array(1,1, 2,45)
                     <tr>
                 <td>int</td>
                 <td>$channel</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -13379,7 +13386,7 @@ The array is in format array(1,1, 2,45)
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -13440,7 +13447,7 @@ Refer to this list of dither method constants
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -13530,7 +13537,7 @@ Refer to this list of pixel type constants
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -13585,7 +13592,7 @@ members.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -13631,7 +13638,7 @@ Array of arguments to pass to this function.
                     <tr>
                 <td>int</td>
                 <td>$channel</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -13651,7 +13658,7 @@ Array of arguments to pass to this function.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -13702,7 +13709,7 @@ Array of arguments to pass to this function.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -13763,7 +13770,7 @@ Provide any channel constant that is valid for your channel mode. To apply to mo
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -13794,7 +13801,7 @@ Provide any channel constant that is valid for your channel mode. To apply to mo
                     <tr>
                 <td></td>
                 <td>$CHANNEL</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -13814,7 +13821,7 @@ Provide any channel constant that is valid for your channel mode. To apply to mo
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -13846,7 +13853,7 @@ Provide any channel constant that is valid for your channel mode. To apply to mo
                     <tr>
                 <td>float</td>
                 <td>$factor</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -13866,7 +13873,7 @@ Provide any channel constant that is valid for your channel mode. To apply to mo
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -13920,7 +13927,7 @@ The name of the artifact
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -13981,7 +13988,7 @@ The value of the artifact
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -14035,7 +14042,7 @@ The name of the artifact to delete
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -14145,7 +14152,7 @@ One of the COLORSPACE constants
                     <tr>
                 <td></td>
                 <td>$CHANNEL</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -14156,7 +14163,7 @@ One of the COLORSPACE constants
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -14213,7 +14220,7 @@ One of the COLORSPACE constants
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -14259,7 +14266,7 @@ wildcards for file names, or can be URLs.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>Throws ImagickException on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -14305,7 +14312,7 @@ wildcards for file names, or can be URLs.
                     <div class="method-item">
                     <h3 id="method_count">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/imagick/imagick.php#L1873">at line 1873</a></div>
-        <code>                    
+        <code>                    int
     <strong>count</strong>()
         </code>
     </h3>
@@ -14314,11 +14321,22 @@ wildcards for file names, or can be URLs.
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Count elements of an object</p></p>                        
         </div>
         <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>The custom count as an integer.</p>
+<p>
+The return value is cast to an integer.
+</p></td>
+        </tr>
+    </table>
+
             
             
             
@@ -14358,11 +14376,11 @@ Returns a MagickPixelIterator</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="ImagickPixelIteratorException.html">ImagickPixelIteratorException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -14437,11 +14455,11 @@ The height of the region.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="ImagickPixelIteratorException.html">ImagickPixelIteratorException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -14493,7 +14511,7 @@ Reads image from filename</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>Throws ImagickException on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -14536,7 +14554,7 @@ Reads image from filename</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>Throws ImagickException on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -14573,7 +14591,7 @@ Reads image from a binary string</p></p>
                     <tr>
                 <td>string</td>
                 <td>$filename</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -14593,7 +14611,7 @@ Reads image from a binary string</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>Throws ImagickException on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -14648,7 +14666,7 @@ depends on the ImageMagick installation.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -14717,7 +14735,7 @@ If false, the calculations should produce the same results as ImageMagick CLI do
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>Throws ImagickException on error</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -14774,7 +14792,7 @@ for example &quot;jpg:test.png&quot;.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -14831,7 +14849,7 @@ Writes an image or image sequence</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -14900,7 +14918,7 @@ constant. When not supplied, all channels are blurred.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -14958,7 +14976,7 @@ The behavior of the parameter bestfit changed in Imagick 3.0.0. Before this vers
                     <tr>
                 <td>bool</td>
                 <td>$fill</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td>bool</td>
@@ -14983,7 +15001,7 @@ The behavior of the parameter bestfit changed in Imagick 3.0.0. Before this vers
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -15046,7 +15064,7 @@ If false it uses the correct behaviour.</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>Throws ImagickException on error</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -15088,7 +15106,7 @@ Returns the filename of a particular image in a sequence</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -15140,7 +15158,7 @@ Sets the filename of a particular image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -15182,7 +15200,7 @@ Returns the format of a particular image in a sequence</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -15224,7 +15242,7 @@ Returns the format of a particular image in a sequence</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -15266,7 +15284,7 @@ Removes an image from the image list</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -15374,7 +15392,7 @@ Returns the image length in bytes</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -15416,7 +15434,7 @@ Returns the image sequence as a blob</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -15458,7 +15476,7 @@ Returns all image sequences as a blob</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on failure</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -15736,7 +15754,7 @@ The position to set the iterator to
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -15823,7 +15841,7 @@ The comment to add
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -15898,7 +15916,7 @@ The Y coordinate of the cropped region's top left corner
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -15952,7 +15970,7 @@ The label to add
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -15994,7 +16012,7 @@ Gets the width and height as an associative array</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -16048,7 +16066,7 @@ The drawing operations to render on the image.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -16102,7 +16120,7 @@ The image compression quality as an integer
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -16217,7 +16235,7 @@ The string to draw
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -16299,7 +16317,7 @@ bitwise operators. Refer to this list of channel constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -16361,7 +16379,7 @@ Control the brightness, saturation, and hue</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -16403,7 +16421,7 @@ Gets the number of unique colors in the image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -16487,7 +16505,7 @@ frame color is that of the thumbnail's matte color.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -16519,7 +16537,7 @@ Identifies an image and fetches attributes</p></p>
                     <tr>
                 <td>bool</td>
                 <td>$appendRawOutput</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -16540,7 +16558,7 @@ the image width, height, size, and others.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -16577,7 +16595,7 @@ Changes the value of individual pixels based on a threshold</p></p>
                     <tr>
                 <td>int</td>
                 <td>$channel</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -16597,7 +16615,7 @@ Changes the value of individual pixels based on a threshold</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -16665,7 +16683,7 @@ The mean offset
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -16719,7 +16737,7 @@ The threshold below which everything turns black
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -16771,7 +16789,7 @@ Force all pixels above the threshold into white</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -16827,7 +16845,7 @@ If <i>stack</i> is <b>TRUE</b>, images are stacked top-to-bottom.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -16888,7 +16906,7 @@ The standard deviation of the Gaussian, in pixels
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -16945,7 +16963,7 @@ list of channel constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -16999,7 +17017,7 @@ The radius of the circular neighborhood.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -17056,7 +17074,7 @@ Reduces the image to a limited number of color level</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -17093,7 +17111,7 @@ Radial blurs an image</p></p>
                     <tr>
                 <td>int</td>
                 <td>$channel</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -17113,7 +17131,7 @@ Radial blurs an image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -17185,7 +17203,7 @@ Creates a simulated 3d button-like effect</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -17252,7 +17270,7 @@ Resample image to desired resolution</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -17334,7 +17352,7 @@ In Imagick 3.0.0 and later the image would be scaled up to size 400x300 as this 
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -17395,7 +17413,7 @@ The Y offset.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -17456,7 +17474,7 @@ The number of degrees to rotate the image
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -17513,7 +17531,7 @@ Scales an image with pixel sampling</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -17565,7 +17583,7 @@ Applies a solarizing effect to the image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -17632,7 +17650,7 @@ Simulates an image shadow</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -17689,7 +17707,7 @@ Simulates an image shadow</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -17741,7 +17759,7 @@ Sets the image background color</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -17793,7 +17811,7 @@ Sets the image composite operator</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -17847,7 +17865,7 @@ One of the <b>COMPRESSION</b> constants
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -17903,7 +17921,7 @@ value of 20 would be 20/100 of a second aka 1/5th of a second.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -17955,7 +17973,7 @@ Sets the image depth</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -18007,7 +18025,7 @@ Sets the image gamma</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -18062,7 +18080,7 @@ continuously.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -18114,7 +18132,7 @@ Sets the image matte color</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -18181,7 +18199,7 @@ Sets the page geometry of the image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -18224,7 +18242,7 @@ Sets the page geometry of the image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -18281,7 +18299,7 @@ Sets the image resolution</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -18333,7 +18351,7 @@ Sets the image scene</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -18388,7 +18406,7 @@ per second.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -18440,7 +18458,7 @@ Sets the image type</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -18492,7 +18510,7 @@ Sets the image units of resolution</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -18534,7 +18552,7 @@ Sharpens an image</p></p>
                     <tr>
                 <td>int</td>
                 <td>$channel</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -18554,7 +18572,7 @@ Sharpens an image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -18611,7 +18629,7 @@ Shaves pixels from the image edges</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -18679,7 +18697,7 @@ The number of degrees to shear on the y axis
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -18746,7 +18764,7 @@ Splices a solid color into the image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -18800,7 +18818,7 @@ The filename to read the information from.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -18837,7 +18855,7 @@ Reads image from open filehandle</p></p>
                     <tr>
                 <td>string</td>
                 <td>$fileName</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -18857,7 +18875,7 @@ Reads image from open filehandle</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -18911,7 +18929,7 @@ The X server name
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -18965,7 +18983,7 @@ The X server name
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -19017,7 +19035,7 @@ Randomly displaces each pixel in a block</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -19069,7 +19087,7 @@ Swirls the pixels about the center of the image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -19111,7 +19129,7 @@ Strips an image of all profiles and comments</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -19143,7 +19161,7 @@ Returns formats supported by Imagick</p></p>
                     <tr>
                 <td>string</td>
                 <td>$pattern</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -19267,7 +19285,7 @@ Multiline parameter. If left empty it is autodetected
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -19324,7 +19342,7 @@ Hides a digital watermark within the image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -19386,7 +19404,7 @@ Provide any channel constant that is valid for your channel mode. To apply to mo
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -19466,7 +19484,7 @@ The channel argument affects only if Imagick is compiled against ImageMagick ver
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -19508,7 +19526,7 @@ Forms a mosaic from images</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -19563,11 +19581,11 @@ Throw an <b>ImagickException</b> on error.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -19609,7 +19627,7 @@ Scales an image proportionally to half its size</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -19663,7 +19681,7 @@ The affine matrix
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -19705,7 +19723,7 @@ Average a set of images</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -19773,7 +19791,7 @@ Border height
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -19848,7 +19866,7 @@ Y origo of the chopped area
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -19890,7 +19908,7 @@ Clips along the first path from the 8BIM profile</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -19952,7 +19970,7 @@ Otherwise later operations take effect outside clipping path.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -19999,7 +20017,7 @@ Otherwise later operations take effect outside clipping path.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -20041,7 +20059,7 @@ Composites a set of images</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -20125,7 +20143,7 @@ Y start position of the floodfill
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -20193,7 +20211,7 @@ ImagickPixel object or an float containing the opacity value.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>Throws ImagickException on error</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -20265,7 +20283,7 @@ distortion.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -20328,7 +20346,7 @@ reconstructed image and a float representing the difference.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>Throws ImagickException on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -20382,7 +20400,7 @@ The sharpen value
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -20439,7 +20457,7 @@ list of channel constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -20503,7 +20521,7 @@ list of channel constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -20557,7 +20575,7 @@ The amount to displace the colormap.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -20599,7 +20617,7 @@ Returns certain pixel differences between images</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -20641,7 +20659,7 @@ Reduces the speckle noise in an image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -20695,7 +20713,7 @@ The radius of the operation.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -20756,7 +20774,7 @@ The sigma of the effect
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -20798,7 +20816,7 @@ Improves the quality of a noisy image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -20840,7 +20858,7 @@ Equalizes the image histogram</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -20911,7 +20929,7 @@ list of channel constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -20956,7 +20974,7 @@ $im = $im->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN)
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>Throws ImagickException on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -20998,7 +21016,7 @@ Creates a vertical mirror image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -21040,7 +21058,7 @@ Creates a horizontal mirror image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -21122,7 +21140,7 @@ The outer bevel width
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -21186,7 +21204,7 @@ list of channel constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -21250,7 +21268,7 @@ list of channel constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -21321,7 +21339,7 @@ list of channel constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -21406,7 +21424,7 @@ Returns the image background color</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -21448,7 +21466,7 @@ Returns the chromaticy blue primary point</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -21490,7 +21508,7 @@ Returns the image border color</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -21544,7 +21562,7 @@ Provide any channel constant that is valid for your channel mode. To apply to mo
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -21615,7 +21633,7 @@ One of the metric type constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -21672,7 +21690,7 @@ list of channel constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -21729,7 +21747,7 @@ list of channel constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -21771,7 +21789,7 @@ Returns statistics for each channel in the image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -21825,7 +21843,7 @@ The offset into the image colormap.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -21867,7 +21885,7 @@ Gets the image colorspace</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -21909,7 +21927,7 @@ Returns the composite operator associated with the image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -21951,7 +21969,7 @@ Gets the image delay</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -21993,7 +22011,7 @@ Gets the image depth</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22055,7 +22073,7 @@ thereof).</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22097,7 +22115,7 @@ Gets the extrema for the image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22139,7 +22157,7 @@ Gets the image disposal method</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22181,7 +22199,7 @@ Gets the image gamma</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22223,11 +22241,11 @@ Returns the chromaticy green primary point</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on failure</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22269,7 +22287,7 @@ Returns the image height</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22311,7 +22329,7 @@ Gets the image histogram</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22354,7 +22372,7 @@ Trhow an <b>ImagickException</b> on error.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22396,7 +22414,7 @@ Gets the image iterations</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22438,7 +22456,7 @@ Returns the image matte color</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22481,7 +22499,7 @@ keys &quot;width&quot;, &quot;height&quot;, &quot;x&quot;, and &quot;y&quot;.</p
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22542,7 +22560,7 @@ The y-coordinate of the pixel
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22596,7 +22614,7 @@ The name of the profile to return.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22640,7 +22658,7 @@ Throw an <b>ImagickException</b> on error.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22682,7 +22700,7 @@ Gets the image rendering intent</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22724,7 +22742,7 @@ Gets the image X and Y resolution</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22766,7 +22784,7 @@ Gets the image scene</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22808,7 +22826,7 @@ Generates an SHA-256 message digest</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22850,7 +22868,7 @@ Gets the image ticks-per-second</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22903,7 +22921,7 @@ Gets the potential image type</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22945,7 +22963,7 @@ Gets the image units of resolution</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -22987,7 +23005,7 @@ Returns the virtual pixel method</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -23030,7 +23048,7 @@ Returns the chromaticity white point</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -23072,7 +23090,7 @@ Returns the image width</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -23148,11 +23166,11 @@ Throw an <b>ImagickException</b> on error.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -23227,7 +23245,7 @@ Y-coordinate of the top-left corner of the extracted region.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -23281,7 +23299,7 @@ The radius of the implode
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -23359,7 +23377,7 @@ list of channel constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -23401,7 +23419,7 @@ Scales an image proportionally 2x</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -23458,7 +23476,7 @@ Replaces the colors of an image with the closest color from a reference image.</
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -23542,7 +23560,7 @@ The starting y coordinate of the operation.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -23596,7 +23614,7 @@ The radius of the pixel neighborhood.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -23660,7 +23678,7 @@ list of channel constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -23740,7 +23758,7 @@ list of channel constants.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -23810,7 +23828,7 @@ consider two colors as the same.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -23864,7 +23882,7 @@ Preview type. See Preview type constants
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -23921,7 +23939,7 @@ Adds or removes a profile from an image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -23993,7 +24011,7 @@ Analyzes the colors within a reference image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -24065,7 +24083,7 @@ Analyzes the colors within a sequence of images</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -24117,7 +24135,7 @@ Smooths the contours of an image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -24169,7 +24187,7 @@ Removes the named image profile and returns it</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -24221,7 +24239,7 @@ Separates a channel from the image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -24273,7 +24291,7 @@ Sepia tones an image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -24373,7 +24391,7 @@ Sets the image chromaticity blue primary point</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -24427,7 +24445,7 @@ The border color
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -24484,7 +24502,7 @@ Sets the depth of a particular image channel</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -24541,7 +24559,7 @@ Sets the color of the specified colormap index</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -24595,7 +24613,7 @@ One of the COLORSPACE constants
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -24647,7 +24665,7 @@ Sets the image disposal method</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -24704,7 +24722,7 @@ Sets the image size</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -24761,7 +24779,7 @@ Sets the image chromaticity green primary point</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -24813,7 +24831,7 @@ Sets the image compression</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -24870,7 +24888,7 @@ Adds a named profile to the Imagick object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -24927,7 +24945,7 @@ Sets the image chromaticity red primary point</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -24979,7 +24997,7 @@ Sets the image rendering intent</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -25031,7 +25049,7 @@ Sets the image virtual pixel method</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -25088,7 +25106,7 @@ Sets the image chromaticity white point</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -25135,7 +25153,7 @@ Adjusts the contrast of an image</p></p>
                     <tr>
                 <td>int</td>
                 <td>$channel</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -25155,7 +25173,7 @@ Adjusts the contrast of an image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -25207,7 +25225,7 @@ Composites two images</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -25259,7 +25277,7 @@ Repeatedly tiles the texture image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -25301,7 +25319,7 @@ Repeatedly tiles the texture image</p></p>
                     <tr>
                 <td>bool</td>
                 <td>$legacy</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -25321,7 +25339,7 @@ Repeatedly tiles the texture image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>Throws ImagickException on error</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -25373,7 +25391,7 @@ Sharpens an image</p></p>
                     <tr>
                 <td>int</td>
                 <td>$channel</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -25393,7 +25411,7 @@ Sharpens an image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -25435,7 +25453,7 @@ Returns a new Imagick object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -25489,7 +25507,7 @@ The source Imagick object
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -25543,7 +25561,7 @@ The replace Imagick object
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -25618,7 +25636,7 @@ Image format. This parameter was added in Imagick version 2.0.1.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -25686,7 +25704,7 @@ string containing pseudo image definition.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -26041,7 +26059,7 @@ throwing ImagickException on error.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -26307,7 +26325,7 @@ keys &quot;columns&quot; and &quot;rows&quot;.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -26392,7 +26410,7 @@ Sets the object's default background color</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -26444,7 +26462,7 @@ Sets the object's default compression type</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -26496,7 +26514,7 @@ Sets the object's default compression quality</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -26548,7 +26566,7 @@ Sets the filename before you read or write the image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -26600,7 +26618,7 @@ Sets the format of the Imagick object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -26652,7 +26670,7 @@ Sets the image compression</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -26709,7 +26727,7 @@ Set an option</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -26776,7 +26794,7 @@ Sets the page geometry of the Imagick object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -26837,7 +26855,7 @@ The resource limit. The unit depends on the type of the resource being limited.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -26898,7 +26916,7 @@ The vertical resolution.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -26950,7 +26968,7 @@ Sets the image sampling factors</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -27007,7 +27025,7 @@ Sets the size of the Imagick object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -27059,7 +27077,7 @@ Sets the image type attribute</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -27072,7 +27090,7 @@ Sets the image type attribute</p></p>
                     <div class="method-item">
                     <h3 id="method_key">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/imagick/imagick.php#L4887">at line 4887</a></div>
-        <code>                    
+        <code>                    mixed
     <strong>key</strong>()
         </code>
     </h3>
@@ -27081,11 +27099,19 @@ Sets the image type attribute</p></p>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Return the key of the current element</p></p>                        
         </div>
         <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>TKey on success, or null on failure.</p></td>
+        </tr>
+    </table>
+
             
             
             
@@ -27096,7 +27122,7 @@ Sets the image type attribute</p></p>
                     <div class="method-item">
                     <h3 id="method_next">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/imagick/imagick.php#L4889">at line 4889</a></div>
-        <code>                    
+        <code>                    void
     <strong>next</strong>()
         </code>
     </h3>
@@ -27105,11 +27131,19 @@ Sets the image type attribute</p></p>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Move forward to next element</p></p>                        
         </div>
         <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td><p>Any returned value is ignored.</p></td>
+        </tr>
+    </table>
+
             
             
             
@@ -27120,7 +27154,7 @@ Sets the image type attribute</p></p>
                     <div class="method-item">
                     <h3 id="method_rewind">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/imagick/imagick.php#L4891">at line 4891</a></div>
-        <code>                    
+        <code>                    void
     <strong>rewind</strong>()
         </code>
     </h3>
@@ -27129,11 +27163,19 @@ Sets the image type attribute</p></p>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Rewind the Iterator to the first element</p></p>                        
         </div>
         <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td><p>Any returned value is ignored.</p></td>
+        </tr>
+    </table>
+
             
             
             
@@ -27163,7 +27205,8 @@ Checks if the current item is valid</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p><b>TRUE</b> on success.</p></td>
+            <td><p>The return value will be casted to boolean and then evaluated.
+Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -27173,7 +27216,7 @@ Checks if the current item is valid</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -27186,7 +27229,7 @@ Checks if the current item is valid</p></p>
                     <div class="method-item">
                     <h3 id="method_current">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/imagick/imagick.php#L4908">at line 4908</a></div>
-        <code>                    <a href="Imagick.html">Imagick</a>
+        <code>                    mixed
     <strong>current</strong>()
         </code>
     </h3>
@@ -27204,8 +27247,8 @@ Returns a reference to the current Imagick object</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="Imagick.html">Imagick</a></td>
-            <td><p>self on success.</p></td>
+            <td>mixed</td>
+            <td><p>Can return any type.</p></td>
         </tr>
     </table>
 
@@ -27248,7 +27291,7 @@ Returns a reference to the current Imagick object</p></p>
                     <tr>
                 <td>int</td>
                 <td>$CHANNEL</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -27268,7 +27311,7 @@ Returns a reference to the current Imagick object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -27315,7 +27358,7 @@ Returns a reference to the current Imagick object</p></p>
                     <tr>
                 <td>int</td>
                 <td>$CHANNEL</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -27335,11 +27378,11 @@ Returns a reference to the current Imagick object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="ImagickKernelException.html">ImagickKernelException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -27396,7 +27439,7 @@ Returns a reference to the current Imagick object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -27448,7 +27491,7 @@ Returns a reference to the current Imagick object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -27500,7 +27543,7 @@ Returns a reference to the current Imagick object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -27552,7 +27595,7 @@ Returns a reference to the current Imagick object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -27637,7 +27680,7 @@ Returns a reference to the current Imagick object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>Since version &gt;= 3.4.3. Throws an exception if the key does not exist, rather than terminating the program.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -27722,7 +27765,7 @@ Returns a reference to the current Imagick object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -27790,7 +27833,7 @@ Returns a reference to the current Imagick object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -27880,7 +27923,7 @@ Returns a reference to the current Imagick object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -27947,7 +27990,7 @@ Returns a reference to the current Imagick object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -27999,7 +28042,7 @@ Returns a reference to the current Imagick object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -28099,7 +28142,7 @@ The values passed to the callback function are not consistent. In particular the
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -28194,7 +28237,7 @@ The values passed to the callback function are not consistent. In particular the
                     <tr>
                 <td>int</td>
                 <td>$channel</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -28214,7 +28257,7 @@ The values passed to the callback function are not consistent. In particular the
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -28254,7 +28297,7 @@ bestMatch will contain an associative array with elements x, y, width, height th
                     <tr>
                 <td>array</td>
                 <td>$bestMatch</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td>float</td>
@@ -28289,7 +28332,7 @@ bestMatch will contain an associative array with elements x, y, width, height th
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -28326,7 +28369,7 @@ bestMatch will contain an associative array with elements x, y, width, height th
                     <tr>
                 <td>array</td>
                 <td>$bestMatch</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td>float</td>
@@ -28336,12 +28379,12 @@ bestMatch will contain an associative array with elements x, y, width, height th
                     <tr>
                 <td>float</td>
                 <td>$similarity_threshold</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td>int</td>
                 <td>$metric</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -28361,7 +28404,7 @@ bestMatch will contain an associative array with elements x, y, width, height th
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -28516,7 +28559,7 @@ Imagick::subImageMatch</a>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -28568,7 +28611,7 @@ Imagick::subImageMatch</a>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -28631,7 +28674,7 @@ Imagick::subImageMatch</a>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -28673,7 +28716,7 @@ Imagick::subImageMatch</a>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -28735,7 +28778,7 @@ Imagick::subImageMatch</a>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -28792,7 +28835,7 @@ Imagick::subImageMatch</a>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -28834,7 +28877,7 @@ Imagick::subImageMatch</a>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -28886,7 +28929,7 @@ Imagick::subImageMatch</a>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 

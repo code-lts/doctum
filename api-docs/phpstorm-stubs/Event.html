@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:Event" data-root-path="">
+    <body id="class" data-name="class:Event" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -76,7 +88,7 @@
         
 
             <div class="description">
-            <p><p>Event.</p></p>            <p><p>Event class represents and event firing on a file descriptor being ready to read from or write to; a file descriptor becoming ready to read from or write to(edge-triggered I/O only); a timeout expiring; a signal occurring; a user-triggered event.
+            <p>Event.</p>            <p><p>Event class represents and event firing on a file descriptor being ready to read from or write to; a file descriptor becoming ready to read from or write to(edge-triggered I/O only); a timeout expiring; a signal occurring; a user-triggered event.
 Every event is associated with EventBase . However, event will never fire until it is added (via Event::add() ). An added event remains in pending state until the registered event occurs, thus turning it to active state. To handle events user may register a callback which is called when event becomes active. If event is configured persistent , it remains pending. If it is not persistent, it stops being pending when it's callback runs. Event::del() method deletes event, thus making it non-pending. By means of Event::add() method it could be added again.</p></p>        </div>
             
         
@@ -163,7 +175,7 @@ Every event is associated with EventBase . However, event will never fire until 
                 <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(<a href="EventBase.html">EventBase</a> $base, mixed $fd, int $what, callable $cb, mixed $arg = null)
         
-                                            <p><p>__construct.</p></p>                </div>
+                                            <p>__construct.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -173,7 +185,7 @@ Every event is associated with EventBase . However, event will never fire until 
                 <div class="col-md-8">
                     <a href="#method_add">add</a>(float $timeout = -1)
         
-                                            <p><p>add.</p></p>                </div>
+                                            <p>add.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -183,7 +195,7 @@ Every event is associated with EventBase . However, event will never fire until 
                 <div class="col-md-8">
                     <a href="#method_addSignal">addSignal</a>(float $timeout = -1)
         
-                                            <p><p>addSignal.</p></p>                </div>
+                                            <p>addSignal.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -193,7 +205,7 @@ Every event is associated with EventBase . However, event will never fire until 
                 <div class="col-md-8">
                     <a href="#method_addTimer">addTimer</a>(float $timeout = -1)
         
-                                            <p><p>addTimer.</p></p>                </div>
+                                            <p>addTimer.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -203,7 +215,7 @@ Every event is associated with EventBase . However, event will never fire until 
                 <div class="col-md-8">
                     <a href="#method_del">del</a>()
         
-                                            <p><p>del.</p></p>                </div>
+                                            <p>del.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -213,7 +225,7 @@ Every event is associated with EventBase . However, event will never fire until 
                 <div class="col-md-8">
                     <a href="#method_delSignal">delSignal</a>()
         
-                                            <p><p>delSignal.</p></p>                </div>
+                                            <p>delSignal.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -223,7 +235,7 @@ Every event is associated with EventBase . However, event will never fire until 
                 <div class="col-md-8">
                     <a href="#method_delTimer">delTimer</a>()
         
-                                            <p><p>delTimer.</p></p>                </div>
+                                            <p>delTimer.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -233,7 +245,7 @@ Every event is associated with EventBase . However, event will never fire until 
                 <div class="col-md-8">
                     <a href="#method_free">free</a>()
         
-                                            <p><p>free.</p></p>                </div>
+                                            <p>free.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -243,7 +255,7 @@ Every event is associated with EventBase . However, event will never fire until 
                 <div class="col-md-8">
                     <a href="#method_getSupportedMethods">getSupportedMethods</a>()
         
-                                            <p><p>getSupportedMethods.</p></p>                </div>
+                                            <p>getSupportedMethods.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -253,7 +265,7 @@ Every event is associated with EventBase . However, event will never fire until 
                 <div class="col-md-8">
                     <a href="#method_pending">pending</a>(int $flags)
         
-                                            <p><p>pending.</p></p>                </div>
+                                            <p>pending.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -263,7 +275,7 @@ Every event is associated with EventBase . However, event will never fire until 
                 <div class="col-md-8">
                     <a href="#method_set">set</a>(<a href="EventBase.html">EventBase</a> $base, mixed $fd, int $what, callable $cb, mixed $arg)
         
-                                            <p><p>set.</p></p>                </div>
+                                            <p>set.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -273,7 +285,7 @@ Every event is associated with EventBase . However, event will never fire until 
                 <div class="col-md-8">
                     <a href="#method_setPriority">setPriority</a>(int $priority)
         
-                                            <p><p>setPriority.</p></p>                </div>
+                                            <p>setPriority.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -283,7 +295,7 @@ Every event is associated with EventBase . However, event will never fire until 
                 <div class="col-md-8">
                     <a href="#method_setTimer">setTimer</a>(<a href="EventBase.html">EventBase</a> $base, callable $cb, mixed $arg)
         
-                                            <p><p>setTimer.</p></p>                </div>
+                                            <p>setTimer.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -293,7 +305,7 @@ Every event is associated with EventBase . However, event will never fire until 
                 <div class="col-md-8">
                     <a href="#method_signal">signal</a>(<a href="EventBase.html">EventBase</a> $base, int $signum, callable $cb, mixed $arg)
         
-                                            <p><p>signal.</p></p>                </div>
+                                            <p>signal.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -303,7 +315,7 @@ Every event is associated with EventBase . However, event will never fire until 
                 <div class="col-md-8">
                     <a href="#method_timer">timer</a>(<a href="EventBase.html">EventBase</a> $base, callable $cb, mixed $arg)
         
-                                            <p><p>timer.</p></p>                </div>
+                                            <p>timer.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -324,7 +336,7 @@ Every event is associated with EventBase . However, event will never fire until 
             
 
         <div class="method-description">
-                            <p><p>__construct.</p></p>                <p><p>Constructs Event object.</p></p>        
+                            <p>__construct.</p>                <p><p>Constructs Event object.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -388,7 +400,7 @@ Every event is associated with EventBase . However, event will never fire until 
             
 
         <div class="method-description">
-                            <p><p>add.</p></p>                <p><p>Makes event pending.</p></p>        
+                            <p>add.</p>                <p><p>Makes event pending.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -397,7 +409,7 @@ Every event is associated with EventBase . However, event will never fire until 
                     <tr>
                 <td>float</td>
                 <td>$timeout</td>
-                <td><p>(optional)</p></td>
+                <td>(optional)</td>
             </tr>
             </table>
 
@@ -441,7 +453,7 @@ Every event is associated with EventBase . However, event will never fire until 
             
 
         <div class="method-description">
-                            <p><p>addSignal.</p></p>                <p><p>Makes signal event pending.</p></p>        
+                            <p>addSignal.</p>                <p><p>Makes signal event pending.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -450,7 +462,7 @@ Every event is associated with EventBase . However, event will never fire until 
                     <tr>
                 <td>float</td>
                 <td>$timeout</td>
-                <td><p>(optional)</p></td>
+                <td>(optional)</td>
             </tr>
             </table>
 
@@ -494,7 +506,7 @@ Every event is associated with EventBase . However, event will never fire until 
             
 
         <div class="method-description">
-                            <p><p>addTimer.</p></p>                <p><p>Makes timer event pending.</p></p>        
+                            <p>addTimer.</p>                <p><p>Makes timer event pending.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -503,7 +515,7 @@ Every event is associated with EventBase . However, event will never fire until 
                     <tr>
                 <td>float</td>
                 <td>$timeout</td>
-                <td><p>(optional)</p></td>
+                <td>(optional)</td>
             </tr>
             </table>
 
@@ -547,7 +559,7 @@ Every event is associated with EventBase . However, event will never fire until 
             
 
         <div class="method-description">
-                            <p><p>del.</p></p>                <p><p>Makes event non-pending.</p></p>        
+                            <p>del.</p>                <p><p>Makes event non-pending.</p></p>        
         </div>
         <div class="tags">
             
@@ -590,7 +602,7 @@ Every event is associated with EventBase . However, event will never fire until 
             
 
         <div class="method-description">
-                            <p><p>delSignal.</p></p>                <p><p>Makes signal event non-pending.</p></p>        
+                            <p>delSignal.</p>                <p><p>Makes signal event non-pending.</p></p>        
         </div>
         <div class="tags">
             
@@ -633,7 +645,7 @@ Every event is associated with EventBase . However, event will never fire until 
             
 
         <div class="method-description">
-                            <p><p>delTimer.</p></p>                <p><p>Makes timer event non-pending.</p></p>        
+                            <p>delTimer.</p>                <p><p>Makes timer event non-pending.</p></p>        
         </div>
         <div class="tags">
             
@@ -676,7 +688,7 @@ Every event is associated with EventBase . However, event will never fire until 
             
 
         <div class="method-description">
-                            <p><p>free.</p></p>                <p><p>Make event non-pending and free resources allocated for this event.</p></p>        
+                            <p>free.</p>                <p><p>Make event non-pending and free resources allocated for this event.</p></p>        
         </div>
         <div class="tags">
             
@@ -719,7 +731,7 @@ Every event is associated with EventBase . However, event will never fire until 
             
 
         <div class="method-description">
-                            <p><p>getSupportedMethods.</p></p>                <p><p>Returns array with of the names of the methods supported in this version of Libevent.</p></p>        
+                            <p>getSupportedMethods.</p>                <p><p>Returns array with of the names of the methods supported in this version of Libevent.</p></p>        
         </div>
         <div class="tags">
             
@@ -762,7 +774,7 @@ Every event is associated with EventBase . However, event will never fire until 
             
 
         <div class="method-description">
-                            <p><p>pending.</p></p>                <p><p>Detects whether event is pending or scheduled.</p></p>        
+                            <p>pending.</p>                <p><p>Detects whether event is pending or scheduled.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -815,7 +827,7 @@ Every event is associated with EventBase . However, event will never fire until 
             
 
         <div class="method-description">
-                            <p><p>set.</p></p>                <p><p>Re-configures event.</p></p>        
+                            <p>set.</p>                <p><p>Re-configures event.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -834,17 +846,17 @@ Every event is associated with EventBase . However, event will never fire until 
                     <tr>
                 <td>int</td>
                 <td>$what</td>
-                <td><p>(optional)</p></td>
+                <td>(optional)</td>
             </tr>
                     <tr>
                 <td>callable</td>
                 <td>$cb</td>
-                <td><p>(optional)</p></td>
+                <td>(optional)</td>
             </tr>
                     <tr>
                 <td>mixed</td>
                 <td>$arg</td>
-                <td><p>(optional)</p></td>
+                <td>(optional)</td>
             </tr>
             </table>
 
@@ -888,7 +900,7 @@ Every event is associated with EventBase . However, event will never fire until 
             
 
         <div class="method-description">
-                            <p><p>setPriority.</p></p>                <p><p>Set event priority.</p></p>        
+                            <p>setPriority.</p>                <p><p>Set event priority.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -941,7 +953,7 @@ Every event is associated with EventBase . However, event will never fire until 
             
 
         <div class="method-description">
-                            <p><p>setTimer.</p></p>                <p><p>Re-configures timer event.</p></p>        
+                            <p>setTimer.</p>                <p><p>Re-configures timer event.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -960,7 +972,7 @@ Every event is associated with EventBase . However, event will never fire until 
                     <tr>
                 <td>mixed</td>
                 <td>$arg</td>
-                <td><p>(optional)</p></td>
+                <td>(optional)</td>
             </tr>
             </table>
 
@@ -1004,7 +1016,7 @@ Every event is associated with EventBase . However, event will never fire until 
             
 
         <div class="method-description">
-                            <p><p>signal.</p></p>                <p><p>Constructs signal event object.</p></p>        
+                            <p>signal.</p>                <p><p>Constructs signal event object.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1028,7 +1040,7 @@ Every event is associated with EventBase . However, event will never fire until 
                     <tr>
                 <td>mixed</td>
                 <td>$arg</td>
-                <td><p>(optional)</p></td>
+                <td>(optional)</td>
             </tr>
             </table>
 
@@ -1072,7 +1084,7 @@ Every event is associated with EventBase . However, event will never fire until 
             
 
         <div class="method-description">
-                            <p><p>timer.</p></p>                <p><p>Constructs timer event object.</p></p>        
+                            <p>timer.</p>                <p><p>Constructs timer event object.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1091,7 +1103,7 @@ Every event is associated with EventBase . However, event will never fire until 
                     <tr>
                 <td>mixed</td>
                 <td>$arg</td>
-                <td><p>(optional)</p></td>
+                <td>(optional)</td>
             </tr>
             </table>
 

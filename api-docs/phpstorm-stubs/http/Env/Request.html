@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
         <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
         <script async defer src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/typeahead.min.js"></script>
-        <script src="../../doctum.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:http_Env_Request" data-root-path="../../">
+    <body id="class" data-name="class:http_Env_Request" data-root-path="../../" data-search-index-url="../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="../../classes.html">Classes</a></li>
+                                        <li><a href="../../classes.html">Classes</a></li>
                     <li><a href="../../namespaces.html">Namespaces</a></li>
                     <li><a href="../../interfaces.html">Interfaces</a></li>
                     <li><a href="../../traits.html">Traits</a></li>
@@ -318,7 +330,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a>
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_current">current</a>()
@@ -472,7 +484,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_key">key</a>()
@@ -483,7 +495,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8">
                     <a href="#method_next">next</a>()
@@ -516,7 +528,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8">
                     <a href="#method_rewind">rewind</a>()
@@ -527,7 +539,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    string|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_serialize">serialize</a>()
@@ -692,7 +704,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8">
                     <a href="#method_unserialize">unserialize</a>(string $data)
@@ -860,7 +872,7 @@
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -908,7 +920,7 @@
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -956,7 +968,7 @@
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -989,7 +1001,10 @@
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td><p>the count of messages in the chain above the current message.</p></td>
+            <td><p>The custom count as an integer.</p>
+<p>
+The return value is cast to an integer.
+</p></td>
         </tr>
     </table>
 
@@ -1004,7 +1019,7 @@
                     <h3 id="method_current">
         <div class="location">in <a href="../../http/Message.html#method_current">
 <abbr title="http\Message">Message</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/http/http3.php#L1030">at line 1030</a></div>
-        <code>                    <a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a>
+        <code>                    mixed
     <strong>current</strong>()
         </code>
     </h3>
@@ -1021,8 +1036,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a></td>
-            <td><p>the current message in the iterated message chain.</p></td>
+            <td>mixed</td>
+            <td><p>Can return any type.</p></td>
         </tr>
     </table>
 
@@ -1055,7 +1070,7 @@
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a></td>
-            <td><p>clone.</p></td>
+            <td>clone.</td>
         </tr>
     </table>
 
@@ -1541,7 +1556,7 @@ or false if the message is not of type response.</p></td>
                     <h3 id="method_key">
         <div class="location">in <a href="../../http/Message.html#method_key">
 <abbr title="http\Message">Message</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/http/http3.php#L1149">at line 1149</a></div>
-        <code>                    int
+        <code>                    mixed
     <strong>key</strong>()
         </code>
     </h3>
@@ -1558,8 +1573,8 @@ or false if the message is not of type response.</p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
-            <td><p>a non-sequential integer key.</p></td>
+            <td>mixed</td>
+            <td><p>TKey on success, or null on failure.</p></td>
         </tr>
     </table>
 
@@ -1574,7 +1589,7 @@ or false if the message is not of type response.</p></td>
                     <h3 id="method_next">
         <div class="location">in <a href="../../http/Message.html#method_next">
 <abbr title="http\Message">Message</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/http/http3.php#L1154">at line 1154</a></div>
-        <code>                    
+        <code>                    void
     <strong>next</strong>()
         </code>
     </h3>
@@ -1587,6 +1602,15 @@ or false if the message is not of type response.</p></td>
         </div>
         <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td><p>Any returned value is ignored.</p></td>
+        </tr>
+    </table>
+
             
             
             
@@ -1632,7 +1656,7 @@ The message chains must not overlap.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -1704,7 +1728,7 @@ Message chains are ordered in reverse-parsed order by default, i.e. the last par
                     <h3 id="method_rewind">
         <div class="location">in <a href="../../http/Message.html#method_rewind">
 <abbr title="http\Message">Message</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/http/http3.php#L1183">at line 1183</a></div>
-        <code>                    
+        <code>                    void
     <strong>rewind</strong>()
         </code>
     </h3>
@@ -1717,6 +1741,15 @@ Message chains are ordered in reverse-parsed order by default, i.e. the last par
         </div>
         <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td><p>Any returned value is ignored.</p></td>
+        </tr>
+    </table>
+
             
             
             
@@ -1728,7 +1761,7 @@ Message chains are ordered in reverse-parsed order by default, i.e. the last par
                     <h3 id="method_serialize">
         <div class="location">in <a href="../../http/Message.html#method_serialize">
 <abbr title="http\Message">Message</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/http/http3.php#L1189">at line 1189</a></div>
-        <code>                    string
+        <code>                    string|null
     <strong>serialize</strong>()
         </code>
     </h3>
@@ -1745,8 +1778,8 @@ Message chains are ordered in reverse-parsed order by default, i.e. the last par
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
-            <td><p>the serialized HTTP message.</p></td>
+            <td>string|null</td>
+            <td><p>The string representation of the object or null</p></td>
         </tr>
     </table>
 
@@ -1789,7 +1822,7 @@ Message chains are ordered in reverse-parsed order by default, i.e. the last par
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -1853,7 +1886,7 @@ header with values concatenated by comma.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -1899,7 +1932,7 @@ header with values concatenated by comma.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a></td>
-            <td><p>null.</p></td>
+            <td>null.</td>
         </tr>
     </table>
 
@@ -1942,7 +1975,7 @@ header with values concatenated by comma.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -1998,7 +2031,7 @@ header with values concatenated by comma.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -2054,7 +2087,7 @@ header with values concatenated by comma.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -2110,7 +2143,7 @@ header with values concatenated by comma.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -2173,7 +2206,7 @@ This method also resets the response status phrase to the default for that code.
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -2229,7 +2262,7 @@ This method also resets the response status phrase to the default for that code.
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -2285,7 +2318,7 @@ This method also resets the response status phrase to the default for that code.
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -2378,7 +2411,7 @@ This method also resets the response status phrase to the default for that code.
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -2421,7 +2454,7 @@ This method also resets the response status phrase to the default for that code.
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../http/Message.html"><abbr title="http\Message">Message</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -2479,7 +2512,7 @@ This method also resets the response status phrase to the default for that code.
                     <h3 id="method_unserialize">
         <div class="location">in <a href="../../http/Message.html#method_unserialize">
 <abbr title="http\Message">Message</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/http/http3.php#L1333">at line 1333</a></div>
-        <code>                    
+        <code>                    void
     <strong>unserialize</strong>(string $data)
         </code>
     </h3>
@@ -2497,11 +2530,20 @@ This method also resets the response status phrase to the default for that code.
                     <tr>
                 <td>string</td>
                 <td>$data</td>
-                <td><p>The serialized message.</p></td>
+                <td><p>The string representation of the object.</p></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
             
@@ -2531,7 +2573,8 @@ This method also resets the response status phrase to the default for that code.
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>whether http\Message::current() would not return NULL.</p></td>
+            <td><p>The return value will be casted to boolean and then evaluated.
+Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 

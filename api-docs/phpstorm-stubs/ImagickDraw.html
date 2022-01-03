@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:ImagickDraw" data-root-path="">
+    <body id="class" data-name="class:ImagickDraw" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -1816,7 +1828,7 @@ ImagickPixel to use to set the color
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickDrawException.html">ImagickDrawException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1917,7 +1929,7 @@ fill alpha
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickDrawException.html">ImagickDrawException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1971,7 +1983,7 @@ the stroke color
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickDrawException.html">ImagickDrawException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -2228,7 +2240,7 @@ The text to draw on the image
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickDrawException.html">ImagickDrawException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -2368,11 +2380,11 @@ Sets the fully-specified font to use when annotating with text</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickDrawException.html">ImagickDrawException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -2426,11 +2438,11 @@ the font family
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickDrawException.html">ImagickDrawException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -2572,7 +2584,7 @@ Sets the font weight</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickDrawException.html">ImagickDrawException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -3386,7 +3398,7 @@ multidimensional array like array( array( 'x' => 3, 'y' => 4 ), array( 'x' => 2,
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickDrawException.html">ImagickDrawException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -3764,7 +3776,7 @@ the under color
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickDrawException.html">ImagickDrawException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -3884,7 +3896,7 @@ Affine matrix parameters
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickDrawException.html">ImagickDrawException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -3939,7 +3951,7 @@ array( 'x' => 3, 'y' => 4 ) )
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickDrawException.html">ImagickDrawException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -4028,7 +4040,7 @@ the Imagick object where composition image is taken from
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -4802,7 +4814,7 @@ Returns the text under color</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickDrawException.html">ImagickDrawException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -6045,7 +6057,7 @@ array of x and y coordinates: array( array( 'x' => 4, 'y' => 6 ), array( 'x' => 
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickDrawException.html">ImagickDrawException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -6153,7 +6165,7 @@ Terminates a pattern definition</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -6346,7 +6358,7 @@ Renders all preceding drawing commands onto the image</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -6497,7 +6509,7 @@ the clipping path name
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -6686,7 +6698,7 @@ URL to use to obtain fill pattern.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -6820,7 +6832,7 @@ stroke URL
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>imagick.imagickdraw.return.success;</p></td>
+            <td>imagick.imagickdraw.return.success;</td>
         </tr>
     </table>
 
@@ -6830,7 +6842,7 @@ stroke URL
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -7142,7 +7154,7 @@ Destroys the current ImagickDraw in the stack, and returns to the previously pus
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -7184,7 +7196,7 @@ Clones the current ImagickDraw and pushes it to the stack</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -7362,7 +7374,7 @@ array of floats
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -7404,7 +7416,7 @@ array of floats
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -7565,7 +7577,7 @@ array of floats
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickDrawException.html">ImagickDrawException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -7650,7 +7662,7 @@ array of floats
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ImagickException.html">ImagickException</a></td>
-                <td><p>on error.</p></td>
+                <td></td>
             </tr>
             </table>
 

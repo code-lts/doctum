@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:HttpRequest" data-root-path="">
+    <body id="class" data-name="class:HttpRequest" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -999,7 +1011,7 @@ Get response header(s)</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a target="_blank" rel="noopener" href="https://www.php.net/stdClass">stdClass</a>[]
+                    <a href="stdClass.html">stdClass</a>[]
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getResponseCookies">getResponseCookies</a>(int $flags = null, array|null $allowed_extras = null)
@@ -2377,7 +2389,7 @@ an associative array as parameter containing the post fields
                     <tr>
                 <td></td>
                 <td>$request_body_data</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -3028,7 +3040,7 @@ FALSE on failure, or an associative array containing all response headers.</p></
                     <div class="method-item">
                     <h3 id="method_getResponseCookies">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/http/http.php#L1323">at line 1323</a></div>
-        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/stdClass">stdClass</a>[]
+        <code>                    <a href="stdClass.html">stdClass</a>[]
     <strong>getResponseCookies</strong>(int $flags = null, array|null $allowed_extras = null)
         </code>
     </h3>
@@ -3065,7 +3077,7 @@ allowed keys treated as extra information instead of cookie names
 
                     <table class="table table-condensed">
         <tr>
-            <td><a target="_blank" rel="noopener" href="https://www.php.net/stdClass">stdClass</a>[]</td>
+            <td><a href="stdClass.html">stdClass</a>[]</td>
             <td><p>an array of stdClass objects like http_parse_cookie would return.</p></td>
         </tr>
     </table>
@@ -3444,22 +3456,22 @@ Clear history</p></p>
                     <tr>
                 <td></td>
                 <td>$url</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$method</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$options</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$class_name</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -3498,12 +3510,12 @@ Clear history</p></p>
                     <tr>
                 <td></td>
                 <td>$options</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$info</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -3542,12 +3554,12 @@ Clear history</p></p>
                     <tr>
                 <td></td>
                 <td>$options</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$info</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -3591,12 +3603,12 @@ Clear history</p></p>
                     <tr>
                 <td></td>
                 <td>$options</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$info</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -3640,12 +3652,12 @@ Clear history</p></p>
                     <tr>
                 <td></td>
                 <td>$options</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$info</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -3689,12 +3701,12 @@ Clear history</p></p>
                     <tr>
                 <td></td>
                 <td>$options</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$info</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -3738,12 +3750,12 @@ Clear history</p></p>
                     <tr>
                 <td></td>
                 <td>$options</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$info</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -3787,12 +3799,12 @@ Clear history</p></p>
                     <tr>
                 <td></td>
                 <td>$options</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$info</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 

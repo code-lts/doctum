@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:SimpleXMLElement" data-root-path="">
+    <body id="class" data-name="class:SimpleXMLElement" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -68,8 +80,7 @@
 
     
     <p>        class
-    <strong>SimpleXMLElement</strong>        implements
-        <a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a>, <a target="_blank" rel="noopener" href="https://www.php.net/ArrayAccess">ArrayAccess</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Countable">Countable</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Stringable">Stringable</a>, <a href="RecursiveIterator.html">RecursiveIterator</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SimpleXML/SimpleXML.php">View source</a>)
+    <strong>SimpleXMLElement</strong>        implements        <a href="Traversable.html">Traversable</a>, <a href="ArrayAccess.html">ArrayAccess</a>, <a href="Countable.html">Countable</a>, <a href="Iterator.html">Iterator</a>, <a href="Stringable.html">Stringable</a>, <a href="RecursiveIterator.html">RecursiveIterator</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SimpleXML/SimpleXML.php">View source</a>)
 </p>
 
         
@@ -232,7 +243,7 @@ Returns the string content</p></p>                </div>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetExists">offsetExists</a>(string|int $offset)
+                    <a href="#method_offsetExists">offsetExists</a>(mixed $offset)
         
                                             <p><p>Class provides access to children by position, and attributes by name
 private Method not callable directly, stub exists for typehint only</p></p>                </div>
@@ -240,21 +251,10 @@ private Method not callable directly, stub exists for typehint only</p></p>     
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="SimpleXMLElement.html">SimpleXMLElement</a>
+                    mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetGet">offsetGet</a>(string|int $offset)
-        
-                                            <p><p>Class provides access to children by position, and attributes by name
-private Method not callable directly, stub exists for typehint only</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    void
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_offsetSet">offsetSet</a>(string|int $offset, mixed $value)
+                    <a href="#method_offsetGet">offsetGet</a>(mixed $offset)
         
                                             <p><p>Class provides access to children by position, and attributes by name
 private Method not callable directly, stub exists for typehint only</p></p>                </div>
@@ -265,7 +265,18 @@ private Method not callable directly, stub exists for typehint only</p></p>     
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetUnset">offsetUnset</a>(string|int $offset)
+                    <a href="#method_offsetSet">offsetSet</a>(TKey $offset, TValue $value)
+        
+                                            <p><p>Class provides access to children by position, and attributes by name
+private Method not callable directly, stub exists for typehint only</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_offsetUnset">offsetUnset</a>(TKey $offset)
         
                                             <p><p>Class provides access to children by position, and attributes by name
 private Method not callable directly, stub exists for typehint only</p></p>                </div>
@@ -293,7 +304,7 @@ private Method not callable directly, stub exists for typehint only</p></p>     
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="SimpleXMLElement.html">SimpleXMLElement</a>|null
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_current">current</a>()
@@ -303,7 +314,7 @@ private Method not callable directly, stub exists for typehint only</p></p>     
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string|false
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_key">key</a>()
@@ -402,8 +413,8 @@ Use TRUE to specify that data is a path or URL to an XML document instead of str
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a></td>
-                <td><p>if the XML data could not be parsed.</p></td>
+                <td><a href="Exception.html">Exception</a></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1000,7 +1011,8 @@ Returns the string content</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td><p>the string content on success or an empty string on failure.</p></td>
+            <td><p>Returns string representation of the object that
+implements this interface (and/or &quot;__toString&quot; magic method).</p></td>
         </tr>
     </table>
 
@@ -1032,7 +1044,10 @@ Returns the string content</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td><p>the number of elements of an element.</p></td>
+            <td><p>The custom count as an integer.</p>
+<p>
+The return value is cast to an integer.
+</p></td>
         </tr>
     </table>
 
@@ -1047,7 +1062,7 @@ Returns the string content</p></p>
                     <h3 id="method_offsetExists">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SimpleXML/SimpleXML.php#L273">at line 273</a></div>
         <code>                    bool
-    <strong>offsetExists</strong>(string|int $offset)
+    <strong>offsetExists</strong>(mixed $offset)
         </code>
     </h3>
     <div class="details">    
@@ -1063,9 +1078,11 @@ private Method not callable directly, stub exists for typehint only</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|int</td>
+                <td>mixed</td>
                 <td>$offset</td>
-                <td></td>
+                <td><p>
+An offset to check for.
+</p></td>
             </tr>
             </table>
 
@@ -1075,7 +1092,10 @@ private Method not callable directly, stub exists for typehint only</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>true on success or false on failure.</p></td>
+            <td><p>true on success or false on failure.
+</p></p>
+<p>
+The return value will be casted to boolean if non-boolean was returned.</td>
         </tr>
     </table>
 
@@ -1089,8 +1109,8 @@ private Method not callable directly, stub exists for typehint only</p></p>
                     <div class="method-item">
                     <h3 id="method_offsetGet">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SimpleXML/SimpleXML.php#L282">at line 282</a></div>
-        <code>                    <a href="SimpleXMLElement.html">SimpleXMLElement</a>
-    <strong>offsetGet</strong>(string|int $offset)
+        <code>                    mixed
+    <strong>offsetGet</strong>(mixed $offset)
         </code>
     </h3>
     <div class="details">    
@@ -1106,9 +1126,11 @@ private Method not callable directly, stub exists for typehint only</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|int</td>
+                <td>mixed</td>
                 <td>$offset</td>
-                <td></td>
+                <td><p>
+The offset to retrieve.
+</p></td>
             </tr>
             </table>
 
@@ -1117,8 +1139,8 @@ private Method not callable directly, stub exists for typehint only</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="SimpleXMLElement.html">SimpleXMLElement</a></td>
-            <td><p>Either a named attribute or an element from a list of children</p></td>
+            <td>mixed</td>
+            <td><p>Can return all value types.</p></td>
         </tr>
     </table>
 
@@ -1133,7 +1155,7 @@ private Method not callable directly, stub exists for typehint only</p></p>
                     <h3 id="method_offsetSet">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SimpleXML/SimpleXML.php#L292">at line 292</a></div>
         <code>                    void
-    <strong>offsetSet</strong>(string|int $offset, mixed $value)
+    <strong>offsetSet</strong>(TKey $offset, TValue $value)
         </code>
     </h3>
     <div class="details">    
@@ -1149,14 +1171,18 @@ private Method not callable directly, stub exists for typehint only</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|int</td>
+                <td>TKey</td>
                 <td>$offset</td>
-                <td></td>
+                <td><p>
+The offset to assign the value to.
+</p></td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td>TValue</td>
                 <td>$value</td>
-                <td></td>
+                <td><p>
+The value to set.
+</p></td>
             </tr>
             </table>
 
@@ -1181,7 +1207,7 @@ private Method not callable directly, stub exists for typehint only</p></p>
                     <h3 id="method_offsetUnset">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SimpleXML/SimpleXML.php#L300">at line 300</a></div>
         <code>                    void
-    <strong>offsetUnset</strong>(string|int $offset)
+    <strong>offsetUnset</strong>(TKey $offset)
         </code>
     </h3>
     <div class="details">    
@@ -1197,9 +1223,11 @@ private Method not callable directly, stub exists for typehint only</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|int</td>
+                <td>TKey</td>
                 <td>$offset</td>
-                <td></td>
+                <td><p>
+The offset to unset.
+</p></td>
             </tr>
             </table>
 
@@ -1241,7 +1269,7 @@ private Method not callable directly, stub exists for typehint only</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td><p>No value is returned.</p></td>
+            <td><p>Any returned value is ignored.</p></td>
         </tr>
     </table>
 
@@ -1273,7 +1301,8 @@ private Method not callable directly, stub exists for typehint only</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p><b>TRUE</b> if the current element is valid, otherwise <b>FALSE</b></p></td>
+            <td><p>The return value will be casted to boolean and then evaluated.
+Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -1287,7 +1316,7 @@ private Method not callable directly, stub exists for typehint only</p></p>
                     <div class="method-item">
                     <h3 id="method_current">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SimpleXML/SimpleXML.php#L324">at line 324</a></div>
-        <code>                    <a href="SimpleXMLElement.html">SimpleXMLElement</a>|null
+        <code>                    mixed
     <strong>current</strong>()
         </code>
     </h3>
@@ -1304,8 +1333,8 @@ private Method not callable directly, stub exists for typehint only</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="SimpleXMLElement.html">SimpleXMLElement</a>|null</td>
-            <td><p>the current element as a <b>SimpleXMLElement</b> object or <b>NULL</b> on failure.</p></td>
+            <td>mixed</td>
+            <td><p>Can return any type.</p></td>
         </tr>
     </table>
 
@@ -1319,7 +1348,7 @@ private Method not callable directly, stub exists for typehint only</p></p>
                     <div class="method-item">
                     <h3 id="method_key">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SimpleXML/SimpleXML.php#L333">at line 333</a></div>
-        <code>                    string|false
+        <code>                    mixed
     <strong>key</strong>()
         </code>
     </h3>
@@ -1336,8 +1365,8 @@ private Method not callable directly, stub exists for typehint only</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>string|false</td>
-            <td><p>the XML tag name of the element referenced by the current <b>SimpleXMLIterator</b> object</p></td>
+            <td>mixed</td>
+            <td><p>TKey on success, or null on failure.</p></td>
         </tr>
     </table>
 
@@ -1369,7 +1398,7 @@ private Method not callable directly, stub exists for typehint only</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td><p>No value is returned.</p></td>
+            <td><p>Any returned value is ignored.</p></td>
         </tr>
     </table>
 

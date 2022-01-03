@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:Redis" data-root-path="">
+    <body id="class" data-name="class:Redis" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -103,7 +115,7 @@
                                                                                                                         OPT_SERIALIZER
                                     </td>
                 <td class="last">
-                    <p><em><p>Options</p></em></p>
+                    <p><em>Options</em></p>
                     <p></p>
                 </td>
             </tr>
@@ -260,7 +272,7 @@
                                                                                                                         SERIALIZER_NONE
                                     </td>
                 <td class="last">
-                    <p><em><p>Serializers</p></em></p>
+                    <p><em>Serializers</em></p>
                     <p></p>
                 </td>
             </tr>
@@ -305,7 +317,7 @@
                                                                                                                         COMPRESSION_NONE
                                     </td>
                 <td class="last">
-                    <p><em><p>Compressions</p></em></p>
+                    <p><em>Compressions</em></p>
                     <p></p>
                 </td>
             </tr>
@@ -368,7 +380,7 @@
                                                                                                                         ATOMIC
                                     </td>
                 <td class="last">
-                    <p><em><p>Multi</p></em></p>
+                    <p><em>Multi</em></p>
                     <p></p>
                 </td>
             </tr>
@@ -395,7 +407,7 @@
                                                                                                                         REDIS_NOT_FOUND
                                     </td>
                 <td class="last">
-                    <p><em><p>Type</p></em></p>
+                    <p><em>Type</em></p>
                     <p></p>
                 </td>
             </tr>
@@ -1697,7 +1709,7 @@ the second byte's most significant bit is at position 8, and so forth.</p></p>  
                 <div class="col-md-8">
                     <a href="#method_sort">sort</a>(string $key, array $option = null)
         
-                                            <p><p>Sort</p></p>                </div>
+                                            <p>Sort</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -2773,7 +2785,7 @@ of the union of the observed Sets of the source HyperLogLog structures.</p></p> 
                     <tr>
                 <td>int</td>
                 <td>$port</td>
-                <td><p>optional</p></td>
+                <td>optional</td>
             </tr>
                     <tr>
                 <td>float</td>
@@ -2853,7 +2865,7 @@ $redis-&gt;connect(&#039;/tmp/redis.sock&#039;);      // unix domain socket.<br 
                     <tr>
                 <td>int</td>
                 <td>$port</td>
-                <td><p>optional</p></td>
+                <td>optional</td>
             </tr>
                     <tr>
                 <td>float</td>
@@ -3188,7 +3200,7 @@ equivalents.</p></p>
                     <tr>
                 <td>int</td>
                 <td>$port</td>
-                <td><p>optional</p></td>
+                <td>optional</td>
             </tr>
                     <tr>
                 <td>float</td>
@@ -3565,7 +3577,7 @@ $redis-&gt;getOption(Redis::OPT_SERIALIZER);</pre></td>
                     <tr>
                 <td>string</td>
                 <td>$message</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -4617,7 +4629,7 @@ function psubscribe($redis, $pattern, $chan, $msg) {<br />
                     <tr>
                 <td>string</td>
                 <td>$message</td>
-                <td><p>string</p></td>
+                <td>string</td>
             </tr>
             </table>
 
@@ -4973,7 +4985,7 @@ $redis-&gt;get(&#039;x&#039;);                // float(4.5)<br />
                     <tr>
                 <td>string</td>
                 <td>$key</td>
-                <td><p>key</p></td>
+                <td>key</td>
             </tr>
                     <tr>
                 <td>int</td>
@@ -5954,7 +5966,7 @@ $redis-&gt;lIndex(&#039;key1&#039;, 0);     // &#039;X&#039;<br />
         <div class="method-description">
                             <p><p>Returns the specified elements of the list stored at the specified key in
 the range [start, end]. start and stop are interpretated as indices: 0 the first element,
-1 the second ... -1 the last element, -2 the penultimate .</p></p>                <p><p>..</p></p>        
+1 the second ... -1 the last element, -2 the penultimate .</p></p>                <p>..</p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -6782,7 +6794,7 @@ $redis-&gt;sCard(&#039;keyX&#039;);           // 0<br />
                     <tr>
                 <td>int</td>
                 <td>$count</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -6854,7 +6866,7 @@ var_dump( $redis-&gt;sPop(&#039;key2&#039;, 3) ); // Will return all members but
                     <tr>
                 <td>int</td>
                 <td>$count</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -8466,12 +8478,12 @@ Either host and port, or no parameter to stop being a slave.</p></p>
                     <tr>
                 <td>string</td>
                 <td>$host</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td>int</td>
                 <td>$port</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -8744,7 +8756,7 @@ If a save is already running, this command will fail and return FALSE</p></td>
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td><p>timestamp</p></td>
+            <td>timestamp</td>
         </tr>
     </table>
 
@@ -9591,7 +9603,7 @@ $redis-&gt;bitOp(&#039;XOR&#039;, &#039;bit&#039;, &#039;bit1&#039;, &#039;bit2&
             
 
         <div class="method-description">
-                            <p><p>Sort</p></p>                        
+                            <p>Sort</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -10451,7 +10463,7 @@ with values in the range [start, end]. start and stop are interpreted as zero-ba
 0 the first element,
 1 the second ...
 -1 the last element,
--2 the penultimate .</p></p>                <p><p>..</p></p>        
+-2 the penultimate .</p></p>                <p>..</p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -10650,7 +10662,7 @@ in reverse order. start and stop are interpretated as zero-based indices:
 0 the first element,
 1 the second ...
 -1 the last element,
--2 the penultimate .</p></p>                <p><p>..</p></p>        
+-2 the penultimate .</p></p>                <p>..</p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -12023,7 +12035,7 @@ while ($members = $redis-zscan(&#039;zset&#039;, $iterator)) {<br />
                     <tr>
                 <td>string|array</td>
                 <td>$key2</td>
-                <td><p>...</p></td>
+                <td>...</td>
             </tr>
                     <tr>
                 <td>int</td>
@@ -12094,7 +12106,7 @@ $redis-&gt;bzPopMax(&#039;zs1&#039;, &#039;zs2&#039;, 5);<br />
                     <tr>
                 <td>string|array</td>
                 <td>$key2</td>
-                <td><p>...</p></td>
+                <td>...</td>
             </tr>
                     <tr>
                 <td>int</td>
@@ -13969,7 +13981,7 @@ $redis-&gt;eval(&quot;return {1,2,3,redis.call(&#039;lrange&#039;,&#039;mylist&#
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>eval()</p></td>
+            <td>eval()</td>
         </tr>
     </table>
 
@@ -14022,7 +14034,7 @@ the SCRIPT LOAD command.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>eval()</p></td>
+            <td>eval()</td>
         </tr>
     </table>
 
@@ -14230,7 +14242,7 @@ $err = $redis-&gt;getLastError();<br />
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>true</p></td>
+            <td>true</td>
         </tr>
     </table>
 

@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="namespace" data-name="namespace:Couchbase" data-root-path="">
+    <body id="namespace" data-name="namespace:Couchbase" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -923,7 +935,10 @@ during a MutateIn operation.</p></div>
                     <div class="col-md-8">
                         basicDecoderV1(string $bytes, int $flags, int $datatype, array $options)<br>
                                                                                                                             <p><p>Decodes value according to Common Flags (RFC-20)</p></p>                    </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-md-2">
+                        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L197">at line 197</a>
+                        </div>
+                    </div>
                 </div>
                             <div class="row" id="function_basicEncoderV1">
                     <div class="col-md-2 type">
@@ -932,7 +947,10 @@ during a MutateIn operation.</p></div>
                     <div class="col-md-8">
                         basicEncoderV1(mixed $value, array $options)<br>
                                                                                                                             <p><p>Encodes value according to Common Flags (RFC-20)</p></p>                    </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-md-2">
+                        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L212">at line 212</a>
+                        </div>
+                    </div>
                 </div>
                             <div class="row" id="function_defaultDecoder">
                     <div class="col-md-2 type">
@@ -941,7 +959,10 @@ during a MutateIn operation.</p></div>
                     <div class="col-md-8">
                         defaultDecoder(string $bytes, int $flags, int $datatype)<br>
                                                                                                                             <p><p>Decodes value using \Couchbase\basicDecoderV1.</p></p>                    </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-md-2">
+                        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L171">at line 171</a>
+                        </div>
+                    </div>
                 </div>
                             <div class="row" id="function_defaultEncoder">
                     <div class="col-md-2 type">
@@ -950,7 +971,10 @@ during a MutateIn operation.</p></div>
                     <div class="col-md-8">
                         defaultEncoder(mixed $value)<br>
                                                                                                                             <p><p>Encodes value using \Couchbase\basicDecoderV1.</p></p>                    </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-md-2">
+                        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L184">at line 184</a>
+                        </div>
+                    </div>
                 </div>
                             <div class="row" id="function_fastlzCompress">
                     <div class="col-md-2 type">
@@ -959,7 +983,10 @@ during a MutateIn operation.</p></div>
                     <div class="col-md-8">
                         fastlzCompress(string $data)<br>
                                                                                                                             <p><p>Compress input using FastLZ algorithm.</p></p>                    </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-md-2">
+                        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L103">at line 103</a>
+                        </div>
+                    </div>
                 </div>
                             <div class="row" id="function_fastlzDecompress">
                     <div class="col-md-2 type">
@@ -968,7 +995,10 @@ during a MutateIn operation.</p></div>
                     <div class="col-md-8">
                         fastlzDecompress(string $data)<br>
                                                                                                                             <p><p>Decompress input using FastLZ algorithm.</p></p>                    </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-md-2">
+                        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L111">at line 111</a>
+                        </div>
+                    </div>
                 </div>
                             <div class="row" id="function_passthruDecoder">
                     <div class="col-md-2 type">
@@ -977,7 +1007,10 @@ during a MutateIn operation.</p></div>
                     <div class="col-md-8">
                         passthruDecoder(string $bytes, int $flags, int $datatype)<br>
                                                                                                                             <p><p>Returns value as it received from the server without any transformations.</p></p>                    </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-md-2">
+                        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L143">at line 143</a>
+                        </div>
+                    </div>
                 </div>
                             <div class="row" id="function_passthruEncoder">
                     <div class="col-md-2 type">
@@ -986,7 +1019,10 @@ during a MutateIn operation.</p></div>
                     <div class="col-md-8">
                         passthruEncoder(string $value)<br>
                                                                                                                             <p><p>Returns the value, which has been passed and zero as flags and datatype.</p></p>                    </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-md-2">
+                        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L156">at line 156</a>
+                        </div>
+                    </div>
                 </div>
                             <div class="row" id="function_zlibCompress">
                     <div class="col-md-2 type">
@@ -995,7 +1031,10 @@ during a MutateIn operation.</p></div>
                     <div class="col-md-8">
                         zlibCompress(string $data)<br>
                                                                                                                             <p><p>Compress input using zlib. Raises Exception when extension compiled without zlib support.</p></p>                    </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-md-2">
+                        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L120">at line 120</a>
+                        </div>
+                    </div>
                 </div>
                             <div class="row" id="function_zlibDecompress">
                     <div class="col-md-2 type">
@@ -1004,7 +1043,10 @@ during a MutateIn operation.</p></div>
                     <div class="col-md-8">
                         zlibDecompress(string $data)<br>
                                                                                                                             <p><p>Compress input using zlib. Raises Exception when extension compiled without zlib support.</p></p>                    </div>
-                    <div class="col-md-2"></div>
+                    <div class="col-md-2">
+                        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L129">at line 129</a>
+                        </div>
+                    </div>
                 </div>
                     </div>
     

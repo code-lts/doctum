@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:ReflectionFunction" data-root-path="">
+    <body id="class" data-name="class:ReflectionFunction" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -451,7 +463,7 @@ ReflectionFunctionAbstract</a></small></div>
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(string|<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $function)
+                    <a href="#method___construct">__construct</a>(string|<a href="Closure.html">Closure</a> $function)
         
                                             <p><p>Constructs a ReflectionFunction object</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -508,7 +520,7 @@ ReflectionFunctionAbstract</a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>
+                    <a href="Closure.html">Closure</a>
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getClosure">getClosure</a>()
@@ -1549,7 +1561,7 @@ ReflectionFunctionAbstract</a> <a href="https://github.com/JetBrains/phpstorm-st
                     <h3 id="method___construct">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Reflection/ReflectionFunction.php#L37">at line 37</a></div>
         <code>                    
-    <strong>__construct</strong>(string|<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $function)
+    <strong>__construct</strong>(string|<a href="Closure.html">Closure</a> $function)
         </code>
     </h3>
     <div class="details">    
@@ -1564,7 +1576,7 @@ ReflectionFunctionAbstract</a> <a href="https://github.com/JetBrains/phpstorm-st
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>string|<a href="Closure.html">Closure</a></td>
                 <td>$function</td>
                 <td><p>The name of the function to reflect or a closure.</p></td>
             </tr>
@@ -1577,7 +1589,7 @@ ReflectionFunctionAbstract</a> <a href="https://github.com/JetBrains/phpstorm-st
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="ReflectionException.html">ReflectionException</a></td>
-                <td><p>if the function does not exist.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1608,7 +1620,8 @@ ReflectionFunctionAbstract</a> <a href="https://github.com/JetBrains/phpstorm-st
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td></td>
+            <td><p>Returns string representation of the object that
+implements this interface (and/or &quot;__toString&quot; magic method).</p></td>
         </tr>
     </table>
 
@@ -1790,7 +1803,7 @@ like {\call_user_func_array} works.</p></td>
                     <div class="method-item">
                     <h3 id="method_getClosure">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Reflection/ReflectionFunction.php#L102">at line 102</a></div>
-        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>
+        <code>                    <a href="Closure.html">Closure</a>
     <strong>getClosure</strong>()
         </code>
     </h3>
@@ -1807,7 +1820,7 @@ like {\call_user_func_array} works.</p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+            <td><a href="Closure.html">Closure</a></td>
             <td><p>Returns {\Closure} or {\null} in case of an error.</p></td>
         </tr>
     </table>

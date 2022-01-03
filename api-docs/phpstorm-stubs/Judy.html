@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:Judy" data-root-path="">
+    <body id="class" data-name="class:Judy" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -68,8 +80,7 @@
 
     
     <p>        class
-    <strong>Judy</strong>        implements
-        <a target="_blank" rel="noopener" href="https://www.php.net/ArrayAccess">ArrayAccess</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php">View source</a>)
+    <strong>Judy</strong>        implements        <a href="ArrayAccess.html">ArrayAccess</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php">View source</a>)
 </p>
 
         
@@ -300,10 +311,10 @@ Returns the value at specified offset.</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetSet">offsetSet</a>(mixed $offset, mixed $value)
+                    <a href="#method_offsetSet">offsetSet</a>(TKey $offset, TValue $value)
         
                                             <p><p>(PECL judy &gt;= 0.1.1)<br/>
 Assigns a value to the specified offset.</p></p>                </div>
@@ -311,10 +322,10 @@ Assigns a value to the specified offset.</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetUnset">offsetUnset</a>(mixed $offset)
+                    <a href="#method_offsetUnset">offsetUnset</a>(TKey $offset)
         
                                             <p><p>(PECL judy &gt;= 0.1.1)<br/>
 Unsets an offset.</p></p>                </div>
@@ -879,7 +890,9 @@ Whether or not an offset exists.</p></p>
                     <tr>
                 <td>mixed</td>
                 <td>$offset</td>
-                <td><p>An offset to check for.</p></td>
+                <td><p>
+An offset to check for.
+</p></td>
             </tr>
             </table>
 
@@ -889,7 +902,10 @@ Whether or not an offset exists.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>Returns <b>TRUE</b> on success or <b>FALSE</b> on failure.</p></td>
+            <td><p>true on success or false on failure.
+</p></p>
+<p>
+The return value will be casted to boolean if non-boolean was returned.</td>
         </tr>
     </table>
 
@@ -922,7 +938,9 @@ Returns the value at specified offset.</p></p>
                     <tr>
                 <td>mixed</td>
                 <td>$offset</td>
-                <td><p>An offset to check for.</p></td>
+                <td><p>
+The offset to retrieve.
+</p></td>
             </tr>
             </table>
 
@@ -946,8 +964,8 @@ Returns the value at specified offset.</p></p>
                     <div class="method-item">
                     <h3 id="method_offsetSet">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L173">at line 173</a></div>
-        <code>                    
-    <strong>offsetSet</strong>(mixed $offset, mixed $value)
+        <code>                    void
+    <strong>offsetSet</strong>(TKey $offset, TValue $value)
         </code>
     </h3>
     <div class="details">    
@@ -963,18 +981,31 @@ Assigns a value to the specified offset.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
+                <td>TKey</td>
                 <td>$offset</td>
-                <td><p>The offset to assign the value to.</p></td>
+                <td><p>
+The offset to assign the value to.
+</p></td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td>TValue</td>
                 <td>$value</td>
-                <td><p>The value to set.</p></td>
+                <td><p>
+The value to set.
+</p></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
             
@@ -985,8 +1016,8 @@ Assigns a value to the specified offset.</p></p>
                     <div class="method-item">
                     <h3 id="method_offsetUnset">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L181">at line 181</a></div>
-        <code>                    
-    <strong>offsetUnset</strong>(mixed $offset)
+        <code>                    void
+    <strong>offsetUnset</strong>(TKey $offset)
         </code>
     </h3>
     <div class="details">    
@@ -1002,13 +1033,24 @@ Unsets an offset.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
+                <td>TKey</td>
                 <td>$offset</td>
-                <td><p>The offset to assign the value to.</p></td>
+                <td><p>
+The offset to unset.
+</p></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
             

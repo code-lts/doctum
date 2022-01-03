@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:EventBufferEvent" data-root-path="">
+    <body id="class" data-name="class:EventBufferEvent" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -76,7 +88,7 @@
         
 
             <div class="description">
-            <p><p>EventBufferEvent.</p></p>            <p><p>Represents Libevent's buffer event.
+            <p>EventBufferEvent.</p>            <p><p>Represents Libevent's buffer event.
 Usually an application wants to perform some amount of data buffering in addition to just responding to events. When we want to write data, for example, the usual pattern looks like:
 Decide that we want to write some data to a connection; put that data in a buffer.
 Wait for the connection to become writable
@@ -258,7 +270,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(<a href="EventBase.html">EventBase</a> $base, mixed $socket = null, int $options = 0, callable|null $readcb = null, callable|null $writecb = null, callable|null $eventcb = null)
         
-                                            <p><p>__construct.</p></p>                </div>
+                                            <p>__construct.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -268,7 +280,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_close">close</a>()
         
-                                            <p><p>close.</p></p>                </div>
+                                            <p>close.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -278,7 +290,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_connect">connect</a>(string $addr)
         
-                                            <p><p>connect.</p></p>                </div>
+                                            <p>connect.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -288,7 +300,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_connectHost">connectHost</a>(<a href="EventDnsBase.html">EventDnsBase</a>|null $dns_base, string $hostname, int $port, int $family = EventUtil::AF_UNSPEC)
         
-                                            <p><p>connectHost.</p></p>                </div>
+                                            <p>connectHost.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -298,7 +310,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_createSslFilter">createSslFilter</a>(<a href="EventBufferEvent.html">EventBufferEvent</a> $underlying, <a href="EventSslContext.html">EventSslContext</a> $ctx, int $state, int $options = 0)
         
-                                            <p><p>createSslFilter</p></p>                </div>
+                                            <p>createSslFilter</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -308,7 +320,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_createPair">createPair</a>(<a href="EventBase.html">EventBase</a> $base, int $options = 0)
         
-                                            <p><p>createPair.</p></p>                </div>
+                                            <p>createPair.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -318,7 +330,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_disable">disable</a>(int $events)
         
-                                            <p><p>disable.</p></p>                </div>
+                                            <p>disable.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -328,7 +340,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_enable">enable</a>(int $events)
         
-                                            <p><p>enable.</p></p>                </div>
+                                            <p>enable.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -338,7 +350,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_free">free</a>()
         
-                                            <p><p>free.</p></p>                </div>
+                                            <p>free.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -348,7 +360,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_getDnsErrorString">getDnsErrorString</a>()
         
-                                            <p><p>getDnsErrorString.</p></p>                </div>
+                                            <p>getDnsErrorString.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -358,7 +370,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_getEnabled">getEnabled</a>()
         
-                                            <p><p>getEnabled.</p></p>                </div>
+                                            <p>getEnabled.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -368,7 +380,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_getInput">getInput</a>()
         
-                                            <p><p>getInput.</p></p>                </div>
+                                            <p>getInput.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -378,7 +390,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_getOutput">getOutput</a>()
         
-                                            <p><p>getOutput.</p></p>                </div>
+                                            <p>getOutput.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -388,7 +400,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_read">read</a>(int $size)
         
-                                            <p><p>read.</p></p>                </div>
+                                            <p>read.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -398,7 +410,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_readBuffer">readBuffer</a>(<a href="EventBuffer.html">EventBuffer</a> $buf)
         
-                                            <p><p>readBuffer.</p></p>                </div>
+                                            <p>readBuffer.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -408,7 +420,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_setCallbacks">setCallbacks</a>(callable $readcb, callable $writecb, callable $eventcb, mixed $arg = null)
         
-                                            <p><p>setCallbacks.</p></p>                </div>
+                                            <p>setCallbacks.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -418,7 +430,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_setPriority">setPriority</a>(int $priority)
         
-                                            <p><p>setPriority.</p></p>                </div>
+                                            <p>setPriority.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -428,7 +440,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_setTimeouts">setTimeouts</a>(float $timeout_read, float $timeout_write)
         
-                                            <p><p>setTimeouts.</p></p>                </div>
+                                            <p>setTimeouts.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -438,7 +450,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_setWatermark">setWatermark</a>(int $events, int $lowmark, int $highmark)
         
-                                            <p><p>setWatermark.</p></p>                </div>
+                                            <p>setWatermark.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -448,7 +460,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_sslError">sslError</a>()
         
-                                            <p><p>sslError.</p></p>                </div>
+                                            <p>sslError.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -458,7 +470,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_sslFilter">sslFilter</a>(<a href="EventBase.html">EventBase</a> $base, <a href="EventBufferEvent.html">EventBufferEvent</a> $underlying, <a href="EventSslContext.html">EventSslContext</a> $ctx, int $state, int $options = 0)
         
-                                            <p><p>sslFilter.</p></p>                </div>
+                                            <p>sslFilter.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -468,7 +480,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_sslGetCipherInfo">sslGetCipherInfo</a>()
         
-                                            <p><p>sslGetCipherInfo.</p></p>                </div>
+                                            <p>sslGetCipherInfo.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -478,7 +490,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_sslGetCipherName">sslGetCipherName</a>()
         
-                                            <p><p>sslGetCipherName.</p></p>                </div>
+                                            <p>sslGetCipherName.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -488,7 +500,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_sslGetCipherVersion">sslGetCipherVersion</a>()
         
-                                            <p><p>sslGetCipherVersion.</p></p>                </div>
+                                            <p>sslGetCipherVersion.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -498,7 +510,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_sslGetProtocol">sslGetProtocol</a>()
         
-                                            <p><p>sslGetProtocol.</p></p>                </div>
+                                            <p>sslGetProtocol.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -508,7 +520,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_sslRenegotiate">sslRenegotiate</a>()
         
-                                            <p><p>sslRenegotiate.</p></p>                </div>
+                                            <p>sslRenegotiate.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -518,7 +530,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_sslSocket">sslSocket</a>(<a href="EventBase.html">EventBase</a> $base, mixed $socket, <a href="EventSslContext.html">EventSslContext</a> $ctx, int $state, int $options = 0)
         
-                                            <p><p>sslSocket.</p></p>                </div>
+                                            <p>sslSocket.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -528,7 +540,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_write">write</a>(string $data)
         
-                                            <p><p>write.</p></p>                </div>
+                                            <p>write.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -538,7 +550,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                 <div class="col-md-8">
                     <a href="#method_writeBuffer">writeBuffer</a>(<a href="EventBuffer.html">EventBuffer</a> $buf)
         
-                                            <p><p>writeBuffer.</p></p>                </div>
+                                            <p>writeBuffer.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -559,7 +571,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>__construct.</p></p>                <p><p>Constructs EventBufferEvent object.</p></p>        
+                            <p>__construct.</p>                <p><p>Constructs EventBufferEvent object.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -628,7 +640,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>close.</p></p>                <p><p>Closes file descriptor associated with the current buffer event.</p></p>        
+                            <p>close.</p>                <p><p>Closes file descriptor associated with the current buffer event.</p></p>        
         </div>
         <div class="tags">
             
@@ -671,7 +683,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>connect.</p></p>                <p><p>Connect buffer event's file descriptor to given address or UNIX socket.</p></p>        
+                            <p>connect.</p>                <p><p>Connect buffer event's file descriptor to given address or UNIX socket.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -724,7 +736,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>connectHost.</p></p>                <p><p>Connects to a hostname with optionally asyncronous DNS.</p></p>        
+                            <p>connectHost.</p>                <p><p>Connects to a hostname with optionally asyncronous DNS.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -792,7 +804,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>createSslFilter</p></p>                        
+                            <p>createSslFilter</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -860,7 +872,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>createPair.</p></p>                <p><p>Creates two buffer events connected to each other.</p></p>        
+                            <p>createPair.</p>                <p><p>Creates two buffer events connected to each other.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -918,7 +930,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>disable.</p></p>                <p><p>Disable events read, write, or both on a buffer event.</p></p>        
+                            <p>disable.</p>                <p><p>Disable events read, write, or both on a buffer event.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -971,7 +983,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>enable.</p></p>                <p><p>Enable events read, write, or both on a buffer event.</p></p>        
+                            <p>enable.</p>                <p><p>Enable events read, write, or both on a buffer event.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1024,7 +1036,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>free.</p></p>                <p><p>Free a buffer event.</p></p>        
+                            <p>free.</p>                <p><p>Free a buffer event.</p></p>        
         </div>
         <div class="tags">
             
@@ -1067,7 +1079,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>getDnsErrorString.</p></p>                <p><p>Returns string describing the last failed DNS lookup attempt.</p></p>        
+                            <p>getDnsErrorString.</p>                <p><p>Returns string describing the last failed DNS lookup attempt.</p></p>        
         </div>
         <div class="tags">
             
@@ -1110,7 +1122,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>getEnabled.</p></p>                <p><p>Returns bitmask of events currently enabled on the buffer event.</p></p>        
+                            <p>getEnabled.</p>                <p><p>Returns bitmask of events currently enabled on the buffer event.</p></p>        
         </div>
         <div class="tags">
             
@@ -1153,7 +1165,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>getInput.</p></p>                <p><p>Returns underlying input buffer associated with current buffer event.</p></p>        
+                            <p>getInput.</p>                <p><p>Returns underlying input buffer associated with current buffer event.</p></p>        
         </div>
         <div class="tags">
             
@@ -1196,7 +1208,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>getOutput.</p></p>                <p><p>Returns underlying output buffer associated with current buffer event.</p></p>        
+                            <p>getOutput.</p>                <p><p>Returns underlying output buffer associated with current buffer event.</p></p>        
         </div>
         <div class="tags">
             
@@ -1239,7 +1251,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>read.</p></p>                <p><p>Read buffer's data.</p></p>        
+                            <p>read.</p>                <p><p>Read buffer's data.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1292,7 +1304,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>readBuffer.</p></p>                <p><p>Drains the entire contents of the input buffer and places them into buf.</p></p>        
+                            <p>readBuffer.</p>                <p><p>Drains the entire contents of the input buffer and places them into buf.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1345,7 +1357,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>setCallbacks.</p></p>                <p><p>Assigns read, write and event(status) callbacks.</p></p>        
+                            <p>setCallbacks.</p>                <p><p>Assigns read, write and event(status) callbacks.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1369,7 +1381,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                     <tr>
                 <td>mixed</td>
                 <td>$arg</td>
-                <td><p>(optional)</p></td>
+                <td>(optional)</td>
             </tr>
             </table>
 
@@ -1413,7 +1425,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>setPriority.</p></p>                <p><p>Assign a priority to a bufferevent.</p></p>        
+                            <p>setPriority.</p>                <p><p>Assign a priority to a bufferevent.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1466,7 +1478,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>setTimeouts.</p></p>                <p><p>Set the read and write timeout for a buffer event.</p></p>        
+                            <p>setTimeouts.</p>                <p><p>Set the read and write timeout for a buffer event.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1524,7 +1536,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>setWatermark.</p></p>                <p><p>Adjusts read and/or write watermarks.</p></p>        
+                            <p>setWatermark.</p>                <p><p>Adjusts read and/or write watermarks.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1587,7 +1599,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>sslError.</p></p>                <p><p>Returns most recent OpenSSL error reported on the buffer event.</p></p>        
+                            <p>sslError.</p>                <p><p>Returns most recent OpenSSL error reported on the buffer event.</p></p>        
         </div>
         <div class="tags">
             
@@ -1630,7 +1642,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>sslFilter.</p></p>                <p><p>Create a new SSL buffer event to send its data over another buffer event.</p></p>        
+                            <p>sslFilter.</p>                <p><p>Create a new SSL buffer event to send its data over another buffer event.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1703,7 +1715,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>sslGetCipherInfo.</p></p>                <p><p>Returns a textual description of the cipher.</p></p>        
+                            <p>sslGetCipherInfo.</p>                <p><p>Returns a textual description of the cipher.</p></p>        
         </div>
         <div class="tags">
             
@@ -1746,7 +1758,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>sslGetCipherName.</p></p>                <p><p>Returns the current cipher name of the SSL connection.</p></p>        
+                            <p>sslGetCipherName.</p>                <p><p>Returns the current cipher name of the SSL connection.</p></p>        
         </div>
         <div class="tags">
             
@@ -1789,7 +1801,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>sslGetCipherVersion.</p></p>                <p><p>Returns version of cipher used by current SSL connection.</p></p>        
+                            <p>sslGetCipherVersion.</p>                <p><p>Returns version of cipher used by current SSL connection.</p></p>        
         </div>
         <div class="tags">
             
@@ -1832,7 +1844,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>sslGetProtocol.</p></p>                <p><p>Returns the name of the protocol used for current SSL.</p></p>        
+                            <p>sslGetProtocol.</p>                <p><p>Returns the name of the protocol used for current SSL.</p></p>        
         </div>
         <div class="tags">
             
@@ -1875,7 +1887,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>sslRenegotiate.</p></p>                <p><p>Tells a bufferevent to begin SSL renegotiation.</p></p>        
+                            <p>sslRenegotiate.</p>                <p><p>Tells a bufferevent to begin SSL renegotiation.</p></p>        
         </div>
         <div class="tags">
             
@@ -1918,7 +1930,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>sslSocket.</p></p>                <p><p>Creates a new SSL buffer event to send its data over an SSL on a socket.</p></p>        
+                            <p>sslSocket.</p>                <p><p>Creates a new SSL buffer event to send its data over an SSL on a socket.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1947,7 +1959,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
                     <tr>
                 <td>int</td>
                 <td>$options</td>
-                <td><p>(optional)</p></td>
+                <td>(optional)</td>
             </tr>
             </table>
 
@@ -1991,7 +2003,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>write.</p></p>                <p><p>Adds data to a buffer event's output buffer.</p></p>        
+                            <p>write.</p>                <p><p>Adds data to a buffer event's output buffer.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -2044,7 +2056,7 @@ This buffered I/O pattern is common enough that Libevent provides a generic mech
             
 
         <div class="method-description">
-                            <p><p>writeBuffer.</p></p>                <p><p>Adds contents of the entire buffer to a buffer event's output buffer.</p></p>        
+                            <p>writeBuffer.</p>                <p><p>Adds contents of the entire buffer to a buffer event's output buffer.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>

@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:SQLiteResult" data-root-path="">
+    <body id="class" data-name="class:SQLiteResult" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -68,8 +80,7 @@
 
     
     <p>final         class
-    <strong>SQLiteResult</strong>        implements
-        <a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Countable">Countable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SQLite/SQLite.php">View source</a>)
+    <strong>SQLiteResult</strong>        implements        <a href="Iterator.html">Iterator</a>, <a href="Countable.html">Countable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SQLite/SQLite.php">View source</a>)
 </p>
 
         
@@ -162,7 +173,7 @@ Returns the name of a particular field</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_current">current</a>(int $result_type = SQLITE_BOTH, bool $decode_binary = true)
@@ -183,7 +194,7 @@ Fetches the current row from a result set as an array</p></p>                </d
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    void
                 </div>
                 <div class="col-md-8">
                     <a href="#method_next">next</a>()
@@ -362,17 +373,17 @@ Fetches the next row from a result set as an object</p></p>
                     <tr>
                 <td>string</td>
                 <td>$class_name</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$ctor_params</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td>bool</td>
                 <td>$decode_binary</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -415,7 +426,7 @@ Fetches the first column of a result set as a string</p></p>
                     <tr>
                 <td>bool</td>
                 <td>$decode_binary</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -629,7 +640,7 @@ option.</p></td>
                     <div class="method-item">
                     <h3 id="method_current">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SQLite/SQLite.php#L373">at line 373</a></div>
-        <code>                    array
+        <code>                    mixed
     <strong>current</strong>(int $result_type = SQLITE_BOTH, bool $decode_binary = true)
         </code>
     </h3>
@@ -673,16 +684,8 @@ other sqlite capable applications.</p></p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
-            <td><p>
-Returns an array of the current row from a result set; <b>FALSE</b> if the
-current position is beyond the final row.
-</p>
-<p>The column names returned by
-<b>SQLITE_ASSOC</b> and <b>SQLITE_BOTH</b> will be
-case-folded according to the value of the
-https://php.net/manual/en/sqlite.configuration.php#ini.sqlite.assoc-case sqlite.assoc_case configuration
-option.</p></td>
+            <td>mixed</td>
+            <td><p>Can return any type.</p></td>
         </tr>
     </table>
 
@@ -715,7 +718,7 @@ option.</p></td>
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>scalar on success, or null on failure.</p></td>
+            <td><p>TKey on success, or null on failure.</p></td>
         </tr>
     </table>
 
@@ -729,7 +732,7 @@ option.</p></td>
                     <div class="method-item">
                     <h3 id="method_next">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SQLite/SQLite.php#L387">at line 387</a></div>
-        <code>                    bool
+        <code>                    void
     <strong>next</strong>()
         </code>
     </h3>
@@ -747,8 +750,8 @@ option.</p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
-            <td><p>Returns <b>TRUE</b> on success, or <b>FALSE</b> if there are no more rows.</p></td>
+            <td>void</td>
+            <td><p>Any returned value is ignored.</p></td>
         </tr>
     </table>
 
@@ -781,10 +784,8 @@ option.</p></td>
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>
-Returns <b>TRUE</b> if there are more rows available from the
-<i>result</i> handle, or <b>FALSE</b> otherwise.
-</p></td>
+            <td><p>The return value will be casted to boolean and then evaluated.
+Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -850,8 +851,7 @@ Returns <b>TRUE</b> if there are more rows available from the
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td><p>The custom count as an integer.
-</p>
+            <td><p>The custom count as an integer.</p>
 <p>
 The return value is cast to an integer.
 </p></td>

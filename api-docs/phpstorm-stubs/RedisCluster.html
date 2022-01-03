@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:RedisCluster" data-root-path="">
+    <body id="class" data-name="class:RedisCluster" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -103,7 +115,7 @@
                                                                                                                         OPT_SERIALIZER
                                     </td>
                 <td class="last">
-                    <p><em><p>Options</p></em></p>
+                    <p><em>Options</em></p>
                     <p></p>
                 </td>
             </tr>
@@ -224,7 +236,7 @@
                                                                                                                         SERIALIZER_NONE
                                     </td>
                 <td class="last">
-                    <p><em><p>Serializers</p></em></p>
+                    <p><em>Serializers</em></p>
                     <p></p>
                 </td>
             </tr>
@@ -269,7 +281,7 @@
                                                                                                                         ATOMIC
                                     </td>
                 <td class="last">
-                    <p><em><p>Multi</p></em></p>
+                    <p><em>Multi</em></p>
                     <p></p>
                 </td>
             </tr>
@@ -296,7 +308,7 @@
                                                                                                                         REDIS_NOT_FOUND
                                     </td>
                 <td class="last">
-                    <p><em><p>Type</p></em></p>
+                    <p><em>Type</em></p>
                     <p></p>
                 </td>
             </tr>
@@ -1496,7 +1508,7 @@ range [start,end]. Adding a parenthesis before start or end excludes it from the
                 <div class="col-md-8">
                     <a href="#method_sort">sort</a>(string $key, array $option = null)
         
-                                            <p><p>Sort</p></p>                </div>
+                                            <p>Sort</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -3226,12 +3238,12 @@ var_dump($redisCluster-&gt;sMembers(&#039;key1&#039;));// &#039;key1&#039; =&gt;
                     <tr>
                 <td>string</td>
                 <td>$value2</td>
-                <td><p>Optional</p></td>
+                <td>Optional</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$valueN</td>
-                <td><p>Optional</p></td>
+                <td>Optional</td>
             </tr>
             </table>
 
@@ -3301,12 +3313,12 @@ var_dump( $redisCluster-&gt;lRange(&#039;l&#039;, 0, -1) );<br />
                     <tr>
                 <td>string</td>
                 <td>$value2</td>
-                <td><p>Optional</p></td>
+                <td>Optional</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$valueN</td>
-                <td><p>Optional</p></td>
+                <td>Optional</td>
             </tr>
             </table>
 
@@ -3375,7 +3387,7 @@ Or STRING Key1 STRING Key2 STRING Key3 ... STRING Keyn</p></td>
                     <tr>
                 <td>int</td>
                 <td>$timeout</td>
-                <td><p>Timeout</p></td>
+                <td>Timeout</td>
             </tr>
             </table>
 
@@ -3462,7 +3474,7 @@ Or STRING Key1 STRING Key2 STRING Key3 ... STRING Keyn</p></td>
                     <tr>
                 <td>int</td>
                 <td>$timeout</td>
-                <td><p>Timeout</p></td>
+                <td>Timeout</td>
             </tr>
             </table>
 
@@ -4465,12 +4477,12 @@ var_dump( $redisCluster-&gt;sMembers(&#039;k&#039;) );<br />
                     <tr>
                 <td>string</td>
                 <td>$key2</td>
-                <td><p>...</p></td>
+                <td>...</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$keyN</td>
-                <td><p>...</p></td>
+                <td>...</td>
             </tr>
             </table>
 
@@ -4554,12 +4566,12 @@ var_dump($redisCluster-&gt;sUnion(&#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;
                     <tr>
                 <td>string</td>
                 <td>$key2</td>
-                <td><p>...</p></td>
+                <td>...</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$keyN</td>
-                <td><p>...</p></td>
+                <td>...</td>
             </tr>
             </table>
 
@@ -4642,12 +4654,12 @@ produces the members of this set. If one of the keys is missing, FALSE is return
                     <tr>
                 <td>string</td>
                 <td>$key2</td>
-                <td><p>...</p></td>
+                <td>...</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$keyN</td>
-                <td><p>...</p></td>
+                <td>...</td>
             </tr>
             </table>
 
@@ -4730,12 +4742,12 @@ var_dump($redisCluster-&gt;sInter(&#039;key1&#039;, &#039;key2&#039;, &#039;key3
                     <tr>
                 <td>string</td>
                 <td>$key2</td>
-                <td><p>...</p></td>
+                <td>...</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$keyN</td>
-                <td><p>...</p></td>
+                <td>...</td>
             </tr>
             </table>
 
@@ -4814,12 +4826,12 @@ var_dump($redisCluster-&gt;sMembers(&#039;output&#039;));<br />
                     <tr>
                 <td>string</td>
                 <td>$key2</td>
-                <td><p>...</p></td>
+                <td>...</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$keyN</td>
-                <td><p>...</p></td>
+                <td>...</td>
             </tr>
             </table>
 
@@ -4900,12 +4912,12 @@ var_dump($redisCluster-&gt;sDiff(&#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;)
                     <tr>
                 <td>string</td>
                 <td>$key2</td>
-                <td><p>...</p></td>
+                <td>...</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$keyN</td>
-                <td><p>...</p></td>
+                <td>...</td>
             </tr>
             </table>
 
@@ -4983,7 +4995,7 @@ var_dump($redisCluster-&gt;sMembers(&#039;dst&#039;));<br />
                     <tr>
                 <td>int</td>
                 <td>$count</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -6807,7 +6819,7 @@ value of the increment.</p></p>
                     <tr>
                 <td>string</td>
                 <td>$key</td>
-                <td><p>key</p></td>
+                <td>key</td>
             </tr>
                     <tr>
                 <td>int</td>
@@ -7805,7 +7817,7 @@ $redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1); // array(&#039;A&#039;, &#039
         <div class="method-description">
                             <p><p>Returns the specified elements of the list stored at the specified key in
 the range [start, end]. start and stop are interpretated as indices: 0 the first element,
-1 the second ... -1 the last element, -2 the penultimate .</p></p>                <p><p>..</p></p>        
+1 the second ... -1 the last element, -2 the penultimate .</p></p>                <p>..</p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -7950,7 +7962,7 @@ $redisCluster-&gt;zRange(&#039;key&#039;, 0, -1, true); // array(&#039;three&#03
                     <tr>
                 <td>string</td>
                 <td>$message</td>
-                <td><p>string</p></td>
+                <td>string</td>
             </tr>
             </table>
 
@@ -8486,7 +8498,7 @@ with values in the range [start, end]. start and stop are interpreted as zero-ba
 0 the first element,
 1 the second ...
 -1 the last element,
--2 the penultimate .</p></p>                <p><p>..</p></p>        
+-2 the penultimate .</p></p>                <p>..</p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -8563,7 +8575,7 @@ in reverse order. start and stop are interpretated as zero-based indices:
 0 the first element,
 1 the second ...
 -1 the last element,
--2 the penultimate .</p></p>                <p><p>..</p></p>        
+-2 the penultimate .</p></p>                <p>..</p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -9322,7 +9334,7 @@ var_dump( $redisCluster-&gt;zRange(&#039;z&#039;, 0, -1) );<br />
             
 
         <div class="method-description">
-                            <p><p>Sort</p></p>                        
+                            <p>Sort</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -9704,7 +9716,7 @@ the SCRIPT LOAD command.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>eval()</p></td>
+            <td>eval()</td>
         </tr>
     </table>
 
@@ -10131,7 +10143,7 @@ $err = $redisCluster-&gt;getLastError();<br />
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>true</p></td>
+            <td>true</td>
         </tr>
     </table>
 
@@ -10179,7 +10191,7 @@ $err = $redisCluster-&gt;getLastError();<br />
                     <tr>
                 <td>int</td>
                 <td>$option</td>
-                <td><p>parameter</p></td>
+                <td>parameter</td>
             </tr>
             </table>
 
@@ -10230,7 +10242,7 @@ $redisCluster-&gt;getOption(RedisCluster::OPT_SERIALIZER);</pre></td>
                     <tr>
                 <td>int</td>
                 <td>$option</td>
-                <td><p>parameter</p></td>
+                <td>parameter</td>
             </tr>
                     <tr>
                 <td>int|string</td>
@@ -11034,7 +11046,7 @@ echo &quot;Redis has $count keys\n&quot;;<br />
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td><p>timestamp.</p></td>
+            <td>timestamp.</td>
         </tr>
     </table>
 

@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../fonts/doctum-font.css">
         <script src="../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../doctum.js"></script>
         <script async defer src="../js/bootstrap.min.js"></script>
-        <script src="../js/typeahead.min.js"></script>
-        <script src="../doctum.js"></script>
+        <script async defer src="../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:Decimal_Decimal" data-root-path="../">
+    <body id="class" data-name="class:Decimal_Decimal" data-root-path="../" data-search-index-url="../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="../classes.html">Classes</a></li>
+                                        <li><a href="../classes.html">Classes</a></li>
                     <li><a href="../namespaces.html">Namespaces</a></li>
                     <li><a href="../interfaces.html">Interfaces</a></li>
                     <li><a href="../traits.html">Traits</a></li>
@@ -74,8 +86,7 @@
 
     
     <p>final         class
-    <strong>Decimal</strong>        implements
-        <a href="../JsonSerializable.html">JsonSerializable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/decimal/decimal.php">View source</a>)
+    <strong>Decimal</strong>        implements        <a href="../JsonSerializable.html">JsonSerializable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/decimal/decimal.php">View source</a>)
 </p>
 
         
@@ -216,7 +227,7 @@
                 <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(<a href="../Decimal/Decimal.html"><abbr title="Decimal\Decimal">Decimal</abbr></a>|string|int $value, int $precision = Decimal::DEFAULT_PRECISION)
         
-                                            <p><p>Constructor</p></p>                </div>
+                                            <p>Constructor</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -224,9 +235,9 @@
                     static&nbsp;<a href="../Decimal/Decimal.html"><abbr title="Decimal\Decimal">Decimal</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_sum">sum</a>(array|<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a> $values, int $precision = Decimal::DEFAULT_PRECISION)
+                    <a href="#method_sum">sum</a>(array|<a href="../Traversable.html">Traversable</a> $values, int $precision = Decimal::DEFAULT_PRECISION)
         
-                                            <p><p>Sum</p></p>                </div>
+                                            <p>Sum</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -234,9 +245,9 @@
                     static&nbsp;<a href="../Decimal/Decimal.html"><abbr title="Decimal\Decimal">Decimal</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_avg">avg</a>(array|<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a> $values, int $precision = Decimal::DEFAULT_PRECISION)
+                    <a href="#method_avg">avg</a>(array|<a href="../Traversable.html">Traversable</a> $values, int $precision = Decimal::DEFAULT_PRECISION)
         
-                                            <p><p>Average</p></p>                </div>
+                                            <p>Average</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -246,7 +257,7 @@
                 <div class="col-md-8">
                     <a href="#method_copy">copy</a>(int|null $precision = null)
         
-                                            <p><p>Copy</p></p>                </div>
+                                            <p>Copy</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -256,7 +267,7 @@
                 <div class="col-md-8">
                     <a href="#method_add">add</a>(<a href="../Decimal/Decimal.html"><abbr title="Decimal\Decimal">Decimal</abbr></a>|string|int $value)
         
-                                            <p><p>Add</p></p>                </div>
+                                            <p>Add</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -266,7 +277,7 @@
                 <div class="col-md-8">
                     <a href="#method_sub">sub</a>(<a href="../Decimal/Decimal.html"><abbr title="Decimal\Decimal">Decimal</abbr></a>|string|int $value)
         
-                                            <p><p>Subtract</p></p>                </div>
+                                            <p>Subtract</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -276,7 +287,7 @@
                 <div class="col-md-8">
                     <a href="#method_mul">mul</a>(<a href="../Decimal/Decimal.html"><abbr title="Decimal\Decimal">Decimal</abbr></a>|string|int $value)
         
-                                            <p><p>Multiply</p></p>                </div>
+                                            <p>Multiply</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -286,7 +297,7 @@
                 <div class="col-md-8">
                     <a href="#method_div">div</a>(<a href="../Decimal/Decimal.html"><abbr title="Decimal\Decimal">Decimal</abbr></a>|string|int $value)
         
-                                            <p><p>Divide</p></p>                </div>
+                                            <p>Divide</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -306,7 +317,7 @@
                 <div class="col-md-8">
                     <a href="#method_rem">rem</a>(<a href="../Decimal/Decimal.html"><abbr title="Decimal\Decimal">Decimal</abbr></a>|string|int $value)
         
-                                            <p><p>Remainder</p></p>                </div>
+                                            <p>Remainder</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -316,7 +327,7 @@
                 <div class="col-md-8">
                     <a href="#method_pow">pow</a>(<a href="../Decimal/Decimal.html"><abbr title="Decimal\Decimal">Decimal</abbr></a>|string|int $exponent)
         
-                                            <p><p>Power</p></p>                </div>
+                                            <p>Power</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -336,7 +347,7 @@
                 <div class="col-md-8">
                     <a href="#method_exp">exp</a>()
         
-                                            <p><p>Exponent</p></p>                </div>
+                                            <p>Exponent</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -366,7 +377,7 @@
                 <div class="col-md-8">
                     <a href="#method_floor">floor</a>()
         
-                                            <p><p>Floor</p></p>                </div>
+                                            <p>Floor</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -376,7 +387,7 @@
                 <div class="col-md-8">
                     <a href="#method_ceil">ceil</a>()
         
-                                            <p><p>Ceiling</p></p>                </div>
+                                            <p>Ceiling</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -386,7 +397,7 @@
                 <div class="col-md-8">
                     <a href="#method_truncate">truncate</a>()
         
-                                            <p><p>Truncate</p></p>                </div>
+                                            <p>Truncate</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -396,7 +407,7 @@
                 <div class="col-md-8">
                     <a href="#method_round">round</a>(int $places = 0, int $mode = Decimal::DEFAULT_ROUNDING)
         
-                                            <p><p>Round</p></p>                </div>
+                                            <p>Round</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -426,7 +437,7 @@
                 <div class="col-md-8">
                     <a href="#method_precision">precision</a>()
         
-                                            <p><p>Precision</p></p>                </div>
+                                            <p>Precision</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -436,7 +447,7 @@
                 <div class="col-md-8">
                     <a href="#method_signum">signum</a>()
         
-                                            <p><p>Signum</p></p>                </div>
+                                            <p>Signum</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -456,7 +467,7 @@
                 <div class="col-md-8">
                     <a href="#method_abs">abs</a>()
         
-                                            <p><p>Absolute</p></p>                </div>
+                                            <p>Absolute</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -466,7 +477,7 @@
                 <div class="col-md-8">
                     <a href="#method_negate">negate</a>()
         
-                                            <p><p>Negate</p></p>                </div>
+                                            <p>Negate</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -605,7 +616,7 @@
                 <div class="col-md-8">
                     <a href="#method_equals">equals</a>(mixed $other)
         
-                                            <p><p>Equality</p></p>                </div>
+                                            <p>Equality</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -615,7 +626,7 @@
                 <div class="col-md-8">
                     <a href="#method_compareTo">compareTo</a>(mixed $other)
         
-                                            <p><p>Ordering</p></p>                </div>
+                                            <p>Ordering</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -635,7 +646,7 @@
                 <div class="col-md-8">
                     <a href="#method_jsonSerialize">jsonSerialize</a>()
         
-                                            <p><p>JSON</p></p>                </div>
+                                            <p>JSON</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -656,7 +667,7 @@
             
 
         <div class="method-description">
-                            <p><p>Constructor</p></p>                <p><p>Initializes a new instance using a given value and minimum precision.</p></p>        
+                            <p>Constructor</p>                <p><p>Initializes a new instance using a given value and minimum precision.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -681,16 +692,15 @@
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../BadMethodCallException.html">BadMethodCallException</a></td>
-                <td><p>if already constructed.</p></td>
+                <td></td>
             </tr>
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/TypeError">TypeError</a></td>
-                <td><p>if the value is not a decimal, string, or integer.</p></td>
+                <td><a href="../TypeError.html">TypeError</a></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="../DomainException.html">DomainException</a></td>
-                <td><p>is the type is supported but the value could not
-be converted to decimal.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -704,7 +714,7 @@ be converted to decimal.</p></td>
                     <h3 id="method_sum">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/decimal/decimal.php#L58">at line 58</a></div>
         <code>        static            <a href="../Decimal/Decimal.html"><abbr title="Decimal\Decimal">Decimal</abbr></a>
-    <strong>sum</strong>(array|<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a> $values, int $precision = Decimal::DEFAULT_PRECISION)
+    <strong>sum</strong>(array|<a href="../Traversable.html">Traversable</a> $values, int $precision = Decimal::DEFAULT_PRECISION)
         </code>
     </h3>
     <div class="details">    
@@ -712,7 +722,7 @@ be converted to decimal.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Sum</p></p>                <p><p>The precision of the result will be the max of all precisions that were
+                            <p>Sum</p>                <p><p>The precision of the result will be the max of all precisions that were
 encountered during the calculation. The given precision should therefore
 be considered the minimum precision of the result.</p>
 <p>This method is equivalent to adding each value individually.</p></p>        
@@ -722,7 +732,7 @@ be considered the minimum precision of the result.</p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array|<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a></td>
+                <td>array|<a href="../Traversable.html">Traversable</a></td>
                 <td>$values</td>
                 <td></td>
             </tr>
@@ -748,12 +758,12 @@ be considered the minimum precision of the result.</p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/TypeError">TypeError</a></td>
-                <td><p>if an unsupported type is encountered.</p></td>
+                <td><a href="../TypeError.html">TypeError</a></td>
+                <td></td>
             </tr>
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/ArithmeticError">ArithmeticError</a></td>
-                <td><p>if addition is undefined, eg. INF + -INF</p></td>
+                <td><a href="../ArithmeticError.html">ArithmeticError</a></td>
+                <td></td>
             </tr>
             </table>
 
@@ -767,7 +777,7 @@ be considered the minimum precision of the result.</p>
                     <h3 id="method_avg">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/decimal/decimal.php#L78">at line 78</a></div>
         <code>        static            <a href="../Decimal/Decimal.html"><abbr title="Decimal\Decimal">Decimal</abbr></a>
-    <strong>avg</strong>(array|<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a> $values, int $precision = Decimal::DEFAULT_PRECISION)
+    <strong>avg</strong>(array|<a href="../Traversable.html">Traversable</a> $values, int $precision = Decimal::DEFAULT_PRECISION)
         </code>
     </h3>
     <div class="details">    
@@ -775,7 +785,7 @@ be considered the minimum precision of the result.</p>
             
 
         <div class="method-description">
-                            <p><p>Average</p></p>                <p><p>The precision of the result will be the max of all precisions that were
+                            <p>Average</p>                <p><p>The precision of the result will be the max of all precisions that were
 encountered during the calculation. The given precision should therefore
 be considered the minimum precision of the result.</p>
 <p>This method is equivalent to adding each value individually,
@@ -786,7 +796,7 @@ then dividing by the number of values.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array|<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a></td>
+                <td>array|<a href="../Traversable.html">Traversable</a></td>
                 <td>$values</td>
                 <td></td>
             </tr>
@@ -812,12 +822,12 @@ then dividing by the number of values.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/TypeError">TypeError</a></td>
-                <td><p>if an unsupported type is encountered.</p></td>
+                <td><a href="../TypeError.html">TypeError</a></td>
+                <td></td>
             </tr>
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/ArithmeticError">ArithmeticError</a></td>
-                <td><p>if addition is undefined, eg. INF + -INF</p></td>
+                <td><a href="../ArithmeticError.html">ArithmeticError</a></td>
+                <td></td>
             </tr>
             </table>
 
@@ -839,7 +849,7 @@ then dividing by the number of values.</p></p>
             
 
         <div class="method-description">
-                            <p><p>Copy</p></p>                        
+                            <p>Copy</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -882,7 +892,7 @@ to the precision of this decimal.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Add</p></p>                <p><p>This method is equivalent to the <code>+</code> operator.</p>
+                            <p>Add</p>                <p><p>This method is equivalent to the <code>+</code> operator.</p>
 <p>The precision of the result will be the max of this decimal's precision
 and the given value's precision, where scalar values assume the default.</p></p>        
         </div>
@@ -912,8 +922,8 @@ and the given value's precision, where scalar values assume the default.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/TypeError">TypeError</a></td>
-                <td><p>if the value is not a decimal, string or integer.</p></td>
+                <td><a href="../TypeError.html">TypeError</a></td>
+                <td></td>
             </tr>
             </table>
 
@@ -935,7 +945,7 @@ and the given value's precision, where scalar values assume the default.</p></p>
             
 
         <div class="method-description">
-                            <p><p>Subtract</p></p>                <p><p>This method is equivalent to the <code>-</code> operator.</p>
+                            <p>Subtract</p>                <p><p>This method is equivalent to the <code>-</code> operator.</p>
 <p>The precision of the result will be the max of this decimal's precision
 and the given value's precision, where scalar values assume the default.</p></p>        
         </div>
@@ -965,8 +975,8 @@ and the given value's precision, where scalar values assume the default.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/TypeError">TypeError</a></td>
-                <td><p>if the value is not a decimal, string or integer.</p></td>
+                <td><a href="../TypeError.html">TypeError</a></td>
+                <td></td>
             </tr>
             </table>
 
@@ -988,7 +998,7 @@ and the given value's precision, where scalar values assume the default.</p></p>
             
 
         <div class="method-description">
-                            <p><p>Multiply</p></p>                <p><p>This method is equivalent to the <code>*</code> operator.</p>
+                            <p>Multiply</p>                <p><p>This method is equivalent to the <code>*</code> operator.</p>
 <p>The precision of the result will be the max of this decimal's precision
 and the given value's precision, where scalar values assume the default.</p></p>        
         </div>
@@ -1018,8 +1028,8 @@ and the given value's precision, where scalar values assume the default.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/TypeError">TypeError</a></td>
-                <td><p>if the given value is not a decimal, string or integer.</p></td>
+                <td><a href="../TypeError.html">TypeError</a></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1041,7 +1051,7 @@ and the given value's precision, where scalar values assume the default.</p></p>
             
 
         <div class="method-description">
-                            <p><p>Divide</p></p>                <p><p>This method is equivalent to the <code>/</code> operator.</p>
+                            <p>Divide</p>                <p><p>This method is equivalent to the <code>/</code> operator.</p>
 <p>The precision of the result will be the max of this decimal's precision
 and the given value's precision, where scalar values assume the default.</p></p>        
         </div>
@@ -1071,16 +1081,16 @@ and the given value's precision, where scalar values assume the default.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/TypeError">TypeError</a></td>
-                <td><p>if the value is not a decimal, string or integer.</p></td>
+                <td><a href="../TypeError.html">TypeError</a></td>
+                <td></td>
             </tr>
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/DivisionByZeroError">DivisionByZeroError</a></td>
-                <td><p>if dividing by zero.</p></td>
+                <td><a href="../DivisionByZeroError.html">DivisionByZeroError</a></td>
+                <td></td>
             </tr>
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/ArithmeticError">ArithmeticError</a></td>
-                <td><p>if division is undefined, eg. INF / -INF</p></td>
+                <td><a href="../ArithmeticError.html">ArithmeticError</a></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1133,16 +1143,16 @@ decimal by the integer value of the given value</p></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/TypeError">TypeError</a></td>
-                <td><p>if the value is not a decimal, string or integer.</p></td>
+                <td><a href="../TypeError.html">TypeError</a></td>
+                <td></td>
             </tr>
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/DivisionByZeroError">DivisionByZeroError</a></td>
-                <td><p>if the integer value of $value is zero.</p></td>
+                <td><a href="../DivisionByZeroError.html">DivisionByZeroError</a></td>
+                <td></td>
             </tr>
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/ArithmeticError">ArithmeticError</a></td>
-                <td><p>if the operation is undefined, eg. INF % -INF</p></td>
+                <td><a href="../ArithmeticError.html">ArithmeticError</a></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1175,7 +1185,7 @@ decimal by the integer value of the given value</p></td>
             
 
         <div class="method-description">
-                            <p><p>Remainder</p></p>                <p><p>The precision of the result will be the max of this decimal's precision
+                            <p>Remainder</p>                <p><p>The precision of the result will be the max of this decimal's precision
 and the given value's precision, where scalar values assume the default.</p></p>        
         </div>
         <div class="tags">
@@ -1204,16 +1214,16 @@ and the given value's precision, where scalar values assume the default.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/TypeError">TypeError</a></td>
-                <td><p>if the value is not a decimal, string or integer.</p></td>
+                <td><a href="../TypeError.html">TypeError</a></td>
+                <td></td>
             </tr>
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/DivisionByZeroError">DivisionByZeroError</a></td>
-                <td><p>if the integer value of $value is zero.</p></td>
+                <td><a href="../DivisionByZeroError.html">DivisionByZeroError</a></td>
+                <td></td>
             </tr>
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/ArithmeticError">ArithmeticError</a></td>
-                <td><p>if the operation is undefined, eg. INF, -INF</p></td>
+                <td><a href="../ArithmeticError.html">ArithmeticError</a></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1235,7 +1245,7 @@ and the given value's precision, where scalar values assume the default.</p></p>
             
 
         <div class="method-description">
-                            <p><p>Power</p></p>                <p><p>This method is equivalent to the <code>**</code> operator.</p>
+                            <p>Power</p>                <p><p>This method is equivalent to the <code>**</code> operator.</p>
 <p>The precision of the result will be the max of this decimal's precision
 and the given value's precision, where scalar values assume the default.</p></p>        
         </div>
@@ -1265,8 +1275,8 @@ and the given value's precision, where scalar values assume the default.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/TypeError">TypeError</a></td>
-                <td><p>if the exponent is not a decimal, string or integer.</p></td>
+                <td><a href="../TypeError.html">TypeError</a></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1321,7 +1331,7 @@ with the same precision as this decimal.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Exponent</p></p>                        
+                            <p>Exponent</p>                        
         </div>
         <div class="tags">
             
@@ -1420,7 +1430,7 @@ as this decimal.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Floor</p></p>                        
+                            <p>Floor</p>                        
         </div>
         <div class="tags">
             
@@ -1452,7 +1462,7 @@ as this decimal.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Ceiling</p></p>                        
+                            <p>Ceiling</p>                        
         </div>
         <div class="tags">
             
@@ -1484,7 +1494,7 @@ as this decimal.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Truncate</p></p>                        
+                            <p>Truncate</p>                        
         </div>
         <div class="tags">
             
@@ -1516,7 +1526,7 @@ as this decimal.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Round</p></p>                        
+                            <p>Round</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1552,7 +1562,7 @@ places and rounding mode</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../InvalidArgumentException.html">InvalidArgumentException</a></td>
-                <td><p>if the rounding mode is not supported.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1650,7 +1660,7 @@ a negative shift moves the decimal point to the left.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Precision</p></p>                        
+                            <p>Precision</p>                        
         </div>
         <div class="tags">
             
@@ -1682,7 +1692,7 @@ a negative shift moves the decimal point to the left.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Signum</p></p>                        
+                            <p>Signum</p>                        
         </div>
         <div class="tags">
             
@@ -1747,7 +1757,7 @@ Special numbers like NAN and INF will return 1.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Absolute</p></p>                        
+                            <p>Absolute</p>                        
         </div>
         <div class="tags">
             
@@ -1779,7 +1789,7 @@ Special numbers like NAN and INF will return 1.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Negate</p></p>                        
+                            <p>Negate</p>                        
         </div>
         <div class="tags">
             
@@ -2187,7 +2197,7 @@ fixed or scientific form, depending on the value.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../OverflowException.html">OverflowException</a></td>
-                <td><p>if the value is greater than PHP_INT_MAX.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -2229,11 +2239,11 @@ fixed or scientific form, depending on the value.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../OverflowException.html">OverflowException</a></td>
-                <td><p>if the value is greater than PHP_FLOAT_MAX.</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="../UnderflowException.html">UnderflowException</a></td>
-                <td><p>if the value is smaller than PHP_FLOAT_MIN.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -2255,7 +2265,7 @@ fixed or scientific form, depending on the value.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Equality</p></p>                <p><p>This method is equivalent to the <code>==</code> operator.</p></p>        
+                            <p>Equality</p>                <p><p>This method is equivalent to the <code>==</code> operator.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -2298,7 +2308,7 @@ Equal decimal values tie-break on precision.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Ordering</p></p>                <p><p>This method is equivalent to the <code>&lt;=&gt;</code> operator.</p></p>        
+                            <p>Ordering</p>                <p><p>This method is equivalent to the <code>&lt;=&gt;</code> operator.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -2375,7 +2385,7 @@ fixed or scientific form, depending on the value.</p></td>
             
 
         <div class="method-description">
-                            <p><p>JSON</p></p>                <p><p>This method is only here to honour the interface, and is equivalent to
+                            <p>JSON</p>                <p><p>This method is only here to honour the interface, and is equivalent to
 <code>toString</code>. JSON does not have a decimal type so all decimals are encoded
 as strings in the same format as <code>toString</code>.</p></p>        
         </div>

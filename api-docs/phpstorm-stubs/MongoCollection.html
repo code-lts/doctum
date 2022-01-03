@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:MongoCollection" data-root-path="">
+    <body id="class" data-name="class:MongoCollection" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -406,7 +418,7 @@ Remove records from this collection</p></p>                </div>
                     int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_count">count</a>(array|<a target="_blank" rel="noopener" href="https://www.php.net/stdClass">stdClass</a> $query = [])
+                    <a href="#method_count">count</a>(array|<a href="stdClass.html">stdClass</a> $query = [])
         
                                             <p><p>Counts the number of documents in this collection</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -504,7 +516,7 @@ Remove records from this collection</p></p>                </div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a></td>
+                <td><a href="Exception.html">Exception</a></td>
                 <td></td>
             </tr>
             </table>
@@ -754,7 +766,7 @@ by the https://php.net/manual/en/mongocollection.find.php MongoCollection::find(
                             <p><p>(PECL mongo &gt;= 1.1.0)<br/></p>
 <p>
 See https://secure.php.net/manual/en/mongo.queries.php the query section of this manual for
-information on distributing reads to secondaries.</p>                <p><p></p></p></p>        
+information on distributing reads to secondaries.</p>                <p></p></p>        
         </div>
         <div class="tags">
             
@@ -789,7 +801,7 @@ information on distributing reads to secondaries.</p>                <p><p></p><
                             <p><p>(PECL mongo &gt;= 1.1.0)<br/></p>
 <p>
 See https://secure.php.net/manual/en/mongo.queries.php the query section of this manual for
-information on distributing reads to secondaries.</p>                <p><p></p></p></p>        
+information on distributing reads to secondaries.</p>                <p></p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1059,15 +1071,15 @@ If an array is returned, the following keys may be present:</p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="MongoException.html">MongoException</a></td>
-                <td><p>if the inserted document is empty or if it contains zero-length keys. Attempting to insert an object with protected and private properties will cause a zero-length key error.</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="MongoCursorException.html">MongoCursorException</a></td>
-                <td><p>if the &quot;w&quot; option is set and the write fails.</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="MongoCursorTimeoutException.html">MongoCursorTimeoutException</a></td>
-                <td><p>if the &quot;w&quot; option is set to a value greater than one and the operation takes longer than MongoCursor::$timeout milliseconds to complete. This does not kill the operation on the server, it is a client-side timeout. The operation in MongoCollection::$wtimeout is milliseconds.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1719,7 +1731,7 @@ MongoCollection::createIndex</a>
                     <h3 id="method_count">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongo/mongo.php#L1215">at line 1215</a></div>
         <code>                    int
-    <strong>count</strong>(array|<a target="_blank" rel="noopener" href="https://www.php.net/stdClass">stdClass</a> $query = [])
+    <strong>count</strong>(array|<a href="stdClass.html">stdClass</a> $query = [])
         </code>
     </h3>
     <div class="details">    
@@ -1734,7 +1746,7 @@ MongoCollection::createIndex</a>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array|<a target="_blank" rel="noopener" href="https://www.php.net/stdClass">stdClass</a></td>
+                <td>array|<a href="stdClass.html">stdClass</a></td>
                 <td>$query</td>
                 <td></td>
             </tr>
@@ -1816,15 +1828,15 @@ Otherwise, returns a boolean representing if the array was not empty (an empty a
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="MongoException.html">MongoException</a></td>
-                <td><p>if the inserted document is empty or if it contains zero-length keys. Attempting to insert an object with protected and private properties will cause a zero-length key error.</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="MongoCursorException.html">MongoCursorException</a></td>
-                <td><p>if the &quot;w&quot; option is set and the write fails.</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="MongoCursorTimeoutException.html">MongoCursorTimeoutException</a></td>
-                <td><p>if the &quot;w&quot; option is set to a value greater than one and the operation takes longer than MongoCursor::$timeout milliseconds to complete. This does not kill the operation on the server, it is a client-side timeout. The operation in MongoCollection::$wtimeout is milliseconds.</p></td>
+                <td></td>
             </tr>
             </table>
 

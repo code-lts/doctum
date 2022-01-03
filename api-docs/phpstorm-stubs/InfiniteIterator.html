@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:InfiniteIterator" data-root-path="">
+    <body id="class" data-name="class:InfiniteIterator" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -91,14 +103,14 @@ rewind the iterator upon reaching its end.</p></p>                    </div>
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a> $iterator)
+                    <a href="#method___construct">__construct</a>(<a href="Traversable.html">Traversable</a> $iterator)
         
                                             <p><p>Constructs an InfiniteIterator</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a>|null
+                    <a href="Iterator.html">Iterator</a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getInnerIterator">getInnerIterator</a>()
@@ -171,7 +183,7 @@ IteratorIterator</a></small></div>
                     <h3 id="method___construct">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL.php#L1116">at line 1116</a></div>
         <code>                    
-    <strong>__construct</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a> $iterator)
+    <strong>__construct</strong>(<a href="Traversable.html">Traversable</a> $iterator)
         </code>
     </h3>
     <div class="details">    
@@ -186,7 +198,7 @@ IteratorIterator</a></small></div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a></td>
+                <td><a href="Traversable.html">Traversable</a></td>
                 <td>$iterator</td>
                 <td></td>
             </tr>
@@ -204,7 +216,7 @@ IteratorIterator</a></small></div>
                     <h3 id="method_getInnerIterator">
         <div class="location">in <a href="IteratorIterator.html#method_getInnerIterator">
 IteratorIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL.php#L456">at line 456</a></div>
-        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a>|null
+        <code>                    <a href="Iterator.html">Iterator</a>|null
     <strong>getInnerIterator</strong>()
         </code>
     </h3>
@@ -221,7 +233,7 @@ IteratorIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/m
 
                     <table class="table table-condensed">
         <tr>
-            <td><a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a>|null</td>
+            <td><a href="Iterator.html">Iterator</a>|null</td>
             <td><p>The inner iterator for the current entry.</p></td>
         </tr>
     </table>
@@ -255,7 +267,7 @@ IteratorIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/m
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td></td>
+            <td><p>Any returned value is ignored.</p></td>
         </tr>
     </table>
 
@@ -288,7 +300,8 @@ IteratorIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/m
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>true if the iterator is valid, otherwise false</p></td>
+            <td><p>The return value will be casted to boolean and then evaluated.
+Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -321,7 +334,7 @@ IteratorIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/m
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>The key of the current element.</p></td>
+            <td><p>TKey on success, or null on failure.</p></td>
         </tr>
     </table>
 
@@ -354,7 +367,7 @@ IteratorIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/m
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>The value of the current element.</p></td>
+            <td><p>Can return any type.</p></td>
         </tr>
     </table>
 
@@ -386,7 +399,7 @@ IteratorIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/m
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td></td>
+            <td><p>Any returned value is ignored.</p></td>
         </tr>
     </table>
 

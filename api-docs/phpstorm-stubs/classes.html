@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="classes" data-name="" data-root-path="">
+    <body id="classes" data-name="" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -181,6 +193,23 @@ as_string.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                    <a href="ArgumentCountError.html"><abbr title="ArgumentCountError">ArgumentCountError</abbr></a>    </div>
+                <div class="col-md-6"><p>ArgumentCountError is thrown when too few arguments are passed to a user
+defined routine.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="ArithmeticError.html"><abbr title="ArithmeticError">ArithmeticError</abbr></a>    </div>
+                <div class="col-md-6"><p>ArithmeticError is thrown when an error occurs while performing mathematical operations.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="ArrayAccess.html"><abbr title="ArrayAccess">ArrayAccess</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Interface to provide accessing objects as arrays.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="ArrayIterator.html"><abbr title="ArrayIterator">ArrayIterator</abbr></a>    </div>
                 <div class="col-md-6"><p>This iterator allows to unset and modify values and keys while iterating
 over Arrays and Objects.</p></div>
@@ -194,6 +223,17 @@ over Arrays and Objects.</p></div>
                 <div class="col-md-6">
                     <a href="AssertionError.html"><abbr title="AssertionError">AssertionError</abbr></a>    </div>
                 <div class="col-md-6"><p>AssertionError is thrown when an assertion made via {assert()} fails.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="Attribute.html"><abbr title="Attribute">Attribute</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="BackedEnum.html"><abbr title="BackedEnum">BackedEnum</abbr></a></em>
+                        </div>
+                <div class="col-md-6"></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -795,6 +835,11 @@ composite type of one or more types accessed by name.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                    <a href="Closure.html"><abbr title="Closure">Closure</abbr></a>    </div>
+                <div class="col-md-6"><p>Class used to represent anonymous functions.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="Collator.html"><abbr title="Collator">Collator</abbr></a>    </div>
                 <div class="col-md-6"></div>
             </div>
@@ -804,6 +849,11 @@ composite type of one or more types accessed by name.</p></div>
                         </div>
                 <div class="col-md-6"><p>(PECL pthreads &gt;= 2.0.8)<br/>
 Represents a garbage-collectable object.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="CompileError.html"><abbr title="CompileError">CompileError</abbr></a>    </div>
+                <div class="col-md-6"><p>Class CompileError</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -1834,6 +1884,13 @@ inclusiveness of each bound can be configured.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                                            <em><a href="Countable.html"><abbr title="Countable">Countable</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Classes implementing <b>Countable</b> can be used with the
+<b>count</b> function.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="Crypto/Base64.html"><abbr title="Crypto\Base64">Base64</abbr></a>    </div>
                 <div class="col-md-6"><p>Class for base64 encoding and docoding</p></div>
             </div>
@@ -2161,6 +2218,11 @@ the contents of filesystem directories.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                    <a href="DivisionByZeroError.html"><abbr title="DivisionByZeroError">DivisionByZeroError</abbr></a>    </div>
+                <div class="col-md-6"><p>DivisionByZeroError is thrown when an attempt is made to divide a number by zero.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="DomainException.html"><abbr title="DomainException">DomainException</abbr></a>    </div>
                 <div class="col-md-6"><p>Exception thrown if a value does not adhere to a defined valid data domain.</p></div>
             </div>
@@ -2357,6 +2419,16 @@ and the growth factor isn't bound to a specific multiple or exponent.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                    <a href="Error.html"><abbr title="Error">Error</abbr></a>    </div>
+                <div class="col-md-6"><p>Error is the base class for all internal PHP error exceptions.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="ErrorException.html"><abbr title="ErrorException">ErrorException</abbr></a>    </div>
+                <div class="col-md-6"><p>An Error Exception.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="Ev.html"><abbr title="Ev">Ev</abbr></a>    </div>
                 <div class="col-md-6"><p>Ev is a singleton providing access to the default loop and to some common operations.</p></div>
             </div>
@@ -2428,42 +2500,42 @@ and the growth factor isn't bound to a specific multiple or exponent.</p></div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="Event.html"><abbr title="Event">Event</abbr></a>    </div>
-                <div class="col-md-6"><p>Event.</p></div>
+                <div class="col-md-6">Event.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="EventBase.html"><abbr title="EventBase">EventBase</abbr></a>    </div>
-                <div class="col-md-6"><p>EventBase.</p></div>
+                <div class="col-md-6">EventBase.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="EventBuffer.html"><abbr title="EventBuffer">EventBuffer</abbr></a>    </div>
-                <div class="col-md-6"><p>EventBuffer.</p></div>
+                <div class="col-md-6">EventBuffer.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="EventBufferEvent.html"><abbr title="EventBufferEvent">EventBufferEvent</abbr></a>    </div>
-                <div class="col-md-6"><p>EventBufferEvent.</p></div>
+                <div class="col-md-6">EventBufferEvent.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="EventConfig.html"><abbr title="EventConfig">EventConfig</abbr></a>    </div>
-                <div class="col-md-6"><p>EventConfig.</p></div>
+                <div class="col-md-6">EventConfig.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="EventDnsBase.html"><abbr title="EventDnsBase">EventDnsBase</abbr></a>    </div>
-                <div class="col-md-6"><p>EventDnsBase.</p></div>
+                <div class="col-md-6">EventDnsBase.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="EventHttp.html"><abbr title="EventHttp">EventHttp</abbr></a>    </div>
-                <div class="col-md-6"><p>EventHttp.</p></div>
+                <div class="col-md-6">EventHttp.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="EventHttpConnection.html"><abbr title="EventHttpConnection">EventHttpConnection</abbr></a>    </div>
-                <div class="col-md-6"><p>EventHttpConnection.</p></div>
+                <div class="col-md-6">EventHttpConnection.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -2473,17 +2545,23 @@ and the growth factor isn't bound to a specific multiple or exponent.</p></div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="EventListener.html"><abbr title="EventListener">EventListener</abbr></a>    </div>
-                <div class="col-md-6"><p>EventListener.</p></div>
+                <div class="col-md-6">EventListener.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="EventSslContext.html"><abbr title="EventSslContext">EventSslContext</abbr></a>    </div>
-                <div class="col-md-6"><p>EventSslContext.</p></div>
+                <div class="col-md-6">EventSslContext.</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="EventUtil.html"><abbr title="EventUtil">EventUtil</abbr></a>    </div>
-                <div class="col-md-6"><p>EventUtil.</p></div>
+                <div class="col-md-6">EventUtil.</div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="Exception.html"><abbr title="Exception">Exception</abbr></a>    </div>
+                <div class="col-md-6"><p>Exception is the base class for
+all Exceptions.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -2520,6 +2598,16 @@ in C language.</p></div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="FTP/Connection.html"><abbr title="FTP\Connection">Connection</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="Fiber.html"><abbr title="Fiber">Fiber</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="FiberError.html"><abbr title="FiberError">FiberError</abbr></a>    </div>
                 <div class="col-md-6"></div>
             </div>
                     <div class="row">
@@ -2859,6 +2947,17 @@ rewind the iterator upon reaching its end.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                                            <em><a href="IntBackedEnum.html"><abbr title="IntBackedEnum">IntBackedEnum</abbr></a></em>
+                        </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="InternalIterator.html"><abbr title="InternalIterator">InternalIterator</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="IntlBreakIterator.html"><abbr title="IntlBreakIterator">IntlBreakIterator</abbr></a>    </div>
                 <div class="col-md-6"></div>
             </div>
@@ -2922,6 +3021,19 @@ rewind the iterator upon reaching its end.</p></div>
                 <div class="col-md-6">
                     <a href="InvalidArgumentException.html"><abbr title="InvalidArgumentException">InvalidArgumentException</abbr></a>    </div>
                 <div class="col-md-6"><p>Exception thrown if an argument is not of the expected type.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Iterator.html"><abbr title="Iterator">Iterator</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Interface for external iterators or objects that can be iterated
+themselves internally.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="IteratorAggregate.html"><abbr title="IteratorAggregate">IteratorAggregate</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Interface to create an external Iterator.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -3885,6 +3997,26 @@ associated result set.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                    <a href="ParseError.html"><abbr title="ParseError">ParseError</abbr></a>    </div>
+                <div class="col-md-6"><p>ParseError is thrown when an error occurs while parsing PHP code, such as when {eval()} is called.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="PgSql/Connection.html"><abbr title="PgSql\Connection">Connection</abbr></a>    </div>
+                <div class="col-md-6"><p>A fully opaque class which replaces a pgsql link resource as of PHP 8.1.0.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="PgSql/Lob.html"><abbr title="PgSql\Lob">Lob</abbr></a>    </div>
+                <div class="col-md-6"><p>A fully opaque class which replaces a pgsql large object resource as of PHP 8.1.0.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="PgSql/Result.html"><abbr title="PgSql\Result">Result</abbr></a>    </div>
+                <div class="col-md-6"><p>A fully opaque class which replaces a pgsql result resource as of PHP 8.1.0.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="Phar.html"><abbr title="Phar">Phar</abbr></a>    </div>
                 <div class="col-md-6"><p>The Phar class provides a high-level interface to accessing and creating
 phar archives.</p></div>
@@ -4305,6 +4437,11 @@ exportable Reflection classes.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                    <a href="ReturnTypeWillChange.html"><abbr title="ReturnTypeWillChange">ReturnTypeWillChange</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="RuntimeException.html"><abbr title="RuntimeException">RuntimeException</abbr></a>    </div>
                 <div class="col-md-6"><p>Exception thrown if an error which can only be found on runtime occurs.</p></div>
             </div>
@@ -4507,6 +4644,14 @@ exportable Reflection classes.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                                            <em><a href="Serializable.html"><abbr title="Serializable">Serializable</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Interface for customized serializing.<br>
+As of PHP 8.1.0, a class which implements Serializable without also implementing <code>__serialize()</code> and <code>__unserialize()</code>
+will generate a deprecation warning.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="SessionHandler.html"><abbr title="SessionHandler">SessionHandler</abbr></a>    </div>
                 <div class="col-md-6"><p><b>SessionHandler</b> a special class that can
 be used to expose the current internal PHP session
@@ -4525,7 +4670,7 @@ a prototype for creating a custom session handler.</p></div>
                 <div class="col-md-6">
                                             <em><a href="SessionIdInterface.html"><abbr title="SessionIdInterface">SessionIdInterface</abbr></a></em>
                         </div>
-                <div class="col-md-6"><p><b>SessionIdInterface</b></p></div>
+                <div class="col-md-6"><b>SessionIdInterface</b></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -4537,6 +4682,86 @@ defines a prototype for updating the life time of an existing session.</p></div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="Shmop.html"><abbr title="Shmop">Shmop</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="SimpleKafkaClient.html"><abbr title="SimpleKafkaClient">SimpleKafkaClient</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="SimpleKafkaClient/Configuration.html"><abbr title="SimpleKafkaClient\Configuration">Configuration</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="SimpleKafkaClient/Consumer.html"><abbr title="SimpleKafkaClient\Consumer">Consumer</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="SimpleKafkaClient/ConsumerTopic.html"><abbr title="SimpleKafkaClient\ConsumerTopic">ConsumerTopic</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="SimpleKafkaClient/Exception.html"><abbr title="SimpleKafkaClient\Exception">Exception</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="SimpleKafkaClient/KafkaErrorException.html"><abbr title="SimpleKafkaClient\KafkaErrorException">KafkaErrorException</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="SimpleKafkaClient/Message.html"><abbr title="SimpleKafkaClient\Message">Message</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="SimpleKafkaClient/Metadata.html"><abbr title="SimpleKafkaClient\Metadata">Metadata</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="SimpleKafkaClient/Metadata/Broker.html"><abbr title="SimpleKafkaClient\Metadata\Broker">Broker</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="SimpleKafkaClient/Metadata/Collection.html"><abbr title="SimpleKafkaClient\Metadata\Collection">Collection</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="SimpleKafkaClient/Metadata/Partition.html"><abbr title="SimpleKafkaClient\Metadata\Partition">Partition</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="SimpleKafkaClient/Metadata/Topic.html"><abbr title="SimpleKafkaClient\Metadata\Topic">Topic</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="SimpleKafkaClient/Producer.html"><abbr title="SimpleKafkaClient\Producer">Producer</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="SimpleKafkaClient/ProducerTopic.html"><abbr title="SimpleKafkaClient\ProducerTopic">ProducerTopic</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="SimpleKafkaClient/Topic.html"><abbr title="SimpleKafkaClient\Topic">Topic</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="SimpleKafkaClient/TopicPartition.html"><abbr title="SimpleKafkaClient\TopicPartition">TopicPartition</abbr></a>    </div>
                 <div class="col-md-6"></div>
             </div>
                     <div class="row">
@@ -4873,6 +5098,19 @@ information for an individual file.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                                            <em><a href="StringBackedEnum.html"><abbr title="StringBackedEnum">StringBackedEnum</abbr></a></em>
+                        </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Stringable.html"><abbr title="Stringable">Stringable</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Stringable interface marks classes as available for serialization
+in a string.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="StubTests/BaseClassesTest.html"><abbr title="StubTests\BaseClassesTest">BaseClassesTest</abbr></a>    </div>
                 <div class="col-md-6"></div>
             </div>
@@ -5190,27 +5428,27 @@ information for an individual file.</p></div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="SyncEvent.html"><abbr title="SyncEvent">SyncEvent</abbr></a>    </div>
-                <div class="col-md-6"><p>SyncEvent</p></div>
+                <div class="col-md-6">SyncEvent</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="SyncMutex.html"><abbr title="SyncMutex">SyncMutex</abbr></a>    </div>
-                <div class="col-md-6"><p>SyncMutex</p></div>
+                <div class="col-md-6">SyncMutex</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="SyncReaderWriter.html"><abbr title="SyncReaderWriter">SyncReaderWriter</abbr></a>    </div>
-                <div class="col-md-6"><p>SyncReaderWriter</p></div>
+                <div class="col-md-6">SyncReaderWriter</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="SyncSemaphore.html"><abbr title="SyncSemaphore">SyncSemaphore</abbr></a>    </div>
-                <div class="col-md-6"><p>SyncSemaphore</p></div>
+                <div class="col-md-6">SyncSemaphore</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="SyncSharedMemory.html"><abbr title="SyncSharedMemory">SyncSharedMemory</abbr></a>    </div>
-                <div class="col-md-6"><p>SyncSharedMemory</p></div>
+                <div class="col-md-6">SyncSharedMemory</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -5247,8 +5485,26 @@ all operations on the object scope are safe.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                                            <em><a href="Throwable.html"><abbr title="Throwable">Throwable</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Throwable is the base interface for any object that can be thrown via a throw statement in PHP 7,
+including Error and Exception.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="Transliterator.html"><abbr title="Transliterator">Transliterator</abbr></a>    </div>
                 <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Traversable.html"><abbr title="Traversable">Traversable</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Interface to detect if a class is traversable using foreach.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="TypeError.html"><abbr title="TypeError">TypeError</abbr></a>    </div>
+                <div class="col-md-6"><p>There are three scenarios where a TypeError may be thrown.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -5272,6 +5528,17 @@ all operations on the object scope are safe.</p></div>
 this happens when a function calls another function and expects the return
 value to be of a certain type or value not including arithmetic or buffer
 related errors.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="UnhandledMatchError.html"><abbr title="UnhandledMatchError">UnhandledMatchError</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="UnitEnum.html"><abbr title="UnitEnum">UnitEnum</abbr></a></em>
+                        </div>
+                <div class="col-md-6"></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -5300,6 +5567,11 @@ related errors.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                    <a href="ValueError.html"><abbr title="ValueError">ValueError</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="Volatile.html"><abbr title="Volatile">Volatile</abbr></a>    </div>
                 <div class="col-md-6"><p>(PECL pthreads &gt;= 3.0.0)<br/>
 The Volatile class is new to pthreads v3. Its introduction is a consequence of
@@ -5316,6 +5588,20 @@ used to store PHP arrays in Threaded contexts.</p></div>
                 <div class="col-md-6">
                     <a href="Vtiful/Kernel/Format.html"><abbr title="Vtiful\Kernel\Format">Format</abbr></a>    </div>
                 <div class="col-md-6"><p>Class Format</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="WeakMap.html"><abbr title="WeakMap">WeakMap</abbr></a>    </div>
+                <div class="col-md-6"><p>Weak maps allow creating a map from objects to arbitrary values
+(similar to SplObjectStorage) without preventing the objects that are used
+as keys from being garbage collected. If an object key is garbage collected,
+it will simply be removed from the map.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="WeakReference.html"><abbr title="WeakReference">WeakReference</abbr></a>    </div>
+                <div class="col-md-6"><p>Weak references allow the programmer to retain a reference to an
+object which does not prevent the object from being destroyed.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -6294,6 +6580,12 @@ $oLayer-&gt;grid-&gt;set(&quot;labelformat&quot;, &quot;DDMMSS&quot;);</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                                            <em><a href="iterable.html"><abbr title="iterable">iterable</abbr></a></em>
+                        </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="java.html"><abbr title="java">java</abbr></a>    </div>
                 <div class="col-md-6"></div>
             </div>
@@ -6523,7 +6815,7 @@ layer created.</p></div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="mysqli_sql_exception.html"><abbr title="mysqli_sql_exception">mysqli_sql_exception</abbr></a>    </div>
-                <div class="col-md-6"><p>mysqli_sql_exception</p></div>
+                <div class="col-md-6">mysqli_sql_exception</div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -6879,6 +7171,11 @@ also be created with:</p></div>
                 <div class="col-md-6">
                     <a href="shapefileObj.html"><abbr title="shapefileObj">shapefileObj</abbr></a>    </div>
                 <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="stdClass.html"><abbr title="stdClass">stdClass</abbr></a>    </div>
+                <div class="col-md-6"><p>Created by typecasting to object.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">

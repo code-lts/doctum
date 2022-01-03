@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:HttpQueryString" data-root-path="">
+    <body id="class" data-name="class:HttpQueryString" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -68,8 +80,7 @@
 
     
     <p>        class
-    <strong>HttpQueryString</strong>        implements
-        <a target="_blank" rel="noopener" href="https://www.php.net/Serializable">Serializable</a>, <a target="_blank" rel="noopener" href="https://www.php.net/ArrayAccess">ArrayAccess</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/http/http.php">View source</a>)
+    <strong>HttpQueryString</strong>        implements        <a href="Serializable.html">Serializable</a>, <a href="ArrayAccess.html">ArrayAccess</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/http/http.php">View source</a>)
 </p>
 
         
@@ -318,7 +329,7 @@ Change query strings charset</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    string|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_serialize">serialize</a>()
@@ -361,7 +372,7 @@ Change query strings charset</p></p>                </div>
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetSet">offsetSet</a>(mixed $offset, mixed $value)
+                    <a href="#method_offsetSet">offsetSet</a>(TKey $offset, TValue $value)
         
                                             <p><p>Offset to set</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -371,7 +382,7 @@ Change query strings charset</p></p>                </div>
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetUnset">offsetUnset</a>(mixed $offset)
+                    <a href="#method_offsetUnset">offsetUnset</a>(TKey $offset)
         
                                             <p><p>Offset to unset</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -708,12 +719,12 @@ query string params to add
                     <tr>
                 <td></td>
                 <td>$defval</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$delete</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -752,12 +763,12 @@ query string params to add
                     <tr>
                 <td></td>
                 <td>$defval</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$delete</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -796,12 +807,12 @@ query string params to add
                     <tr>
                 <td></td>
                 <td>$defval</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$delete</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -840,12 +851,12 @@ query string params to add
                     <tr>
                 <td></td>
                 <td>$defval</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$delete</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -884,12 +895,12 @@ query string params to add
                     <tr>
                 <td></td>
                 <td>$defval</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$delete</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -928,12 +939,12 @@ query string params to add
                     <tr>
                 <td></td>
                 <td>$defval</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$delete</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -967,17 +978,17 @@ query string params to add
                     <tr>
                 <td></td>
                 <td>$global</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$params</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$class_name</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -1090,7 +1101,7 @@ output encoding
                     <div class="method-item">
                     <h3 id="method_serialize">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/http/http.php#L730">at line 730</a></div>
-        <code>                    string
+        <code>                    string|null
     <strong>serialize</strong>()
         </code>
     </h3>
@@ -1108,8 +1119,8 @@ output encoding
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
-            <td><p>the string representation of the object or null</p></td>
+            <td>string|null</td>
+            <td><p>The string representation of the object or null</p></td>
         </tr>
     </table>
 
@@ -1262,7 +1273,7 @@ The return value will be casted to boolean if non-boolean was returned.</td>
                     <h3 id="method_offsetSet">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/http/http.php#L780">at line 780</a></div>
         <code>                    void
-    <strong>offsetSet</strong>(mixed $offset, mixed $value)
+    <strong>offsetSet</strong>(TKey $offset, TValue $value)
         </code>
     </h3>
     <div class="details"><i>Since: 5.0.0</i>
@@ -1278,14 +1289,14 @@ The return value will be casted to boolean if non-boolean was returned.</td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
+                <td>TKey</td>
                 <td>$offset</td>
                 <td><p>
 The offset to assign the value to.
 </p></td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td>TValue</td>
                 <td>$value</td>
                 <td><p>
 The value to set.
@@ -1314,7 +1325,7 @@ The value to set.
                     <h3 id="method_offsetUnset">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/http/http.php#L791">at line 791</a></div>
         <code>                    void
-    <strong>offsetUnset</strong>(mixed $offset)
+    <strong>offsetUnset</strong>(TKey $offset)
         </code>
     </h3>
     <div class="details"><i>Since: 5.0.0</i>
@@ -1330,7 +1341,7 @@ The value to set.
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
+                <td>TKey</td>
                 <td>$offset</td>
                 <td><p>
 The offset to unset.

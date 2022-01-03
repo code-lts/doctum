@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:MultipleIterator" data-root-path="">
+    <body id="class" data-name="class:MultipleIterator" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -68,8 +80,7 @@
 
     
     <p>        class
-    <strong>MultipleIterator</strong>        implements
-        <a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL_c1.php">View source</a>)
+    <strong>MultipleIterator</strong>        implements        <a href="Iterator.html">Iterator</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL_c1.php">View source</a>)
 </p>
 
         
@@ -159,7 +170,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_attachIterator">attachIterator</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a> $iterator, int|string|null $info = null)
+                    <a href="#method_attachIterator">attachIterator</a>(<a href="Iterator.html">Iterator</a> $iterator, int|string|null $info = null)
         
                                             <p><p>Attaches iterator information</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -169,7 +180,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_detachIterator">detachIterator</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a> $iterator)
+                    <a href="#method_detachIterator">detachIterator</a>(<a href="Iterator.html">Iterator</a> $iterator)
         
                                             <p><p>Detaches an iterator</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -179,7 +190,7 @@
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_containsIterator">containsIterator</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a> $iterator)
+                    <a href="#method_containsIterator">containsIterator</a>(<a href="Iterator.html">Iterator</a> $iterator)
         
                                             <p><p>Checks if an iterator is attached</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -216,7 +227,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_key">key</a>()
@@ -226,7 +237,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_current">current</a>()
@@ -375,7 +386,7 @@ Flag Constants
                     <h3 id="method_attachIterator">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL_c1.php#L2329">at line 2329</a></div>
         <code>                    void
-    <strong>attachIterator</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a> $iterator, int|string|null $info = null)
+    <strong>attachIterator</strong>(<a href="Iterator.html">Iterator</a> $iterator, int|string|null $info = null)
         </code>
     </h3>
     <div class="details">    
@@ -390,7 +401,7 @@ Flag Constants
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a></td>
+                <td><a href="Iterator.html">Iterator</a></td>
                 <td>$iterator</td>
                 <td><p>
 The new iterator to attach.
@@ -412,7 +423,7 @@ integer, a string, or null.
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td><p>Description...</p></td>
+            <td>Description...</td>
         </tr>
     </table>
 
@@ -427,7 +438,7 @@ integer, a string, or null.
                     <h3 id="method_detachIterator">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL_c1.php#L2340">at line 2340</a></div>
         <code>                    void
-    <strong>detachIterator</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a> $iterator)
+    <strong>detachIterator</strong>(<a href="Iterator.html">Iterator</a> $iterator)
         </code>
     </h3>
     <div class="details">    
@@ -442,7 +453,7 @@ integer, a string, or null.
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a></td>
+                <td><a href="Iterator.html">Iterator</a></td>
                 <td>$iterator</td>
                 <td><p>
 The iterator to detach.
@@ -471,7 +482,7 @@ The iterator to detach.
                     <h3 id="method_containsIterator">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL_c1.php#L2351">at line 2351</a></div>
         <code>                    bool
-    <strong>containsIterator</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a> $iterator)
+    <strong>containsIterator</strong>(<a href="Iterator.html">Iterator</a> $iterator)
         </code>
     </h3>
     <div class="details">    
@@ -486,7 +497,7 @@ The iterator to detach.
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a></td>
+                <td><a href="Iterator.html">Iterator</a></td>
                 <td>$iterator</td>
                 <td><p>
 The iterator to check.
@@ -564,7 +575,7 @@ The iterator to check.
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td></td>
+            <td><p>Any returned value is ignored.</p></td>
         </tr>
     </table>
 
@@ -596,8 +607,8 @@ The iterator to check.
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>true if one or all sub iterators are valid depending on flags,
-otherwise false</p></td>
+            <td><p>The return value will be casted to boolean and then evaluated.
+Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -611,7 +622,7 @@ otherwise false</p></td>
                     <div class="method-item">
                     <h3 id="method_key">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL_c1.php#L2385">at line 2385</a></div>
-        <code>                    array
+        <code>                    mixed
     <strong>key</strong>()
         </code>
     </h3>
@@ -628,9 +639,8 @@ otherwise false</p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
-            <td><p>An array of all registered iterator instances,
-or false if no sub iterator is attached.</p></td>
+            <td>mixed</td>
+            <td><p>TKey on success, or null on failure.</p></td>
         </tr>
     </table>
 
@@ -644,7 +654,7 @@ or false if no sub iterator is attached.</p></td>
                     <div class="method-item">
                     <h3 id="method_current">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL_c1.php#L2396">at line 2396</a></div>
-        <code>                    array
+        <code>                    mixed
     <strong>current</strong>()
         </code>
     </h3>
@@ -661,9 +671,8 @@ or false if no sub iterator is attached.</p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
-            <td><p>An array containing the current values of each attached iterator,
-or false if no iterators are attached.</p></td>
+            <td>mixed</td>
+            <td><p>Can return any type.</p></td>
         </tr>
     </table>
 
@@ -673,11 +682,11 @@ or false if no iterators are attached.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="RuntimeException.html">RuntimeException</a></td>
-                <td><p>if mode MIT_NEED_ALL is set and at least one attached iterator is not valid.</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="InvalidArgumentException.html">InvalidArgumentException</a></td>
-                <td><p>if a key is NULL and MIT_KEYS_ASSOC is set.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -708,7 +717,7 @@ or false if no iterators are attached.</p></td>
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td></td>
+            <td><p>Any returned value is ignored.</p></td>
         </tr>
     </table>
 

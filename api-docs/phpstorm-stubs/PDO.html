@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:PDO" data-root-path="">
+    <body id="class" data-name="class:PDO" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -946,7 +958,7 @@ array when constructing a new database handle.
                     <p><em><p>
 Maximum buffer size. Defaults to 1 MiB. This constant is not supported when
 compiled against mysqlnd.</em></p>
-                    <p><p></p></p></p>
+                    <p></p></p>
                 </td>
             </tr>
                     <tr>
@@ -959,7 +971,7 @@ Read options from the named option file instead of from
 my.cnf. This option is not available if
 mysqlnd is used, because mysqlnd does not read the mysql
 configuration files.</em></p>
-                    <p><p></p></p></p>
+                    <p></p></p>
                 </td>
             </tr>
                     <tr>
@@ -972,7 +984,7 @@ Read options from the named group from my.cnf or the
 file specified with <b>MYSQL_READ_DEFAULT_FILE</b>. This option
 is not available if mysqlnd is used, because mysqlnd does not read the mysql
 configuration files.</em></p>
-                    <p><p></p></p></p>
+                    <p></p></p>
                 </td>
             </tr>
                     <tr>
@@ -983,7 +995,7 @@ configuration files.</em></p>
                     <p><em><p>
 Enable network communication compression. This is not supported when
 compiled against mysqlnd.</em></p>
-                    <p><p></p></p></p>
+                    <p></p></p>
                 </td>
             </tr>
                     <tr>
@@ -993,7 +1005,7 @@ compiled against mysqlnd.</em></p>
                 <td class="last">
                     <p><em><p>
 Perform direct queries, don't use prepared statements.</em></p>
-                    <p><p></p></p></p>
+                    <p></p></p>
                 </td>
             </tr>
                     <tr>
@@ -1004,7 +1016,7 @@ Perform direct queries, don't use prepared statements.</em></p>
                     <p><em><p>
 Return the number of found (matched) rows, not the
 number of changed rows.</em></p>
-                    <p><p></p></p></p>
+                    <p></p></p>
                 </td>
             </tr>
                     <tr>
@@ -1015,7 +1027,7 @@ number of changed rows.</em></p>
                     <p><em><p>
 Permit spaces after function names. Makes all functions
 names reserved words.</em></p>
-                    <p><p></p></p></p>
+                    <p></p></p>
                 </td>
             </tr>
                     <tr>
@@ -1036,7 +1048,7 @@ names reserved words.</em></p>
                 <td class="last">
                     <p><em><p>
 The file path to the SSL key.</em></p>
-                    <p><p></p></p></p>
+                    <p></p></p>
                 </td>
             </tr>
                     <tr>
@@ -1048,7 +1060,7 @@ The file path to the SSL key.</em></p>
                 <td class="last">
                     <p><em><p>
 The file path to the SSL certificate.</em></p>
-                    <p><p></p></p></p>
+                    <p></p></p>
                 </td>
             </tr>
                     <tr>
@@ -1060,7 +1072,7 @@ The file path to the SSL certificate.</em></p>
                 <td class="last">
                     <p><em><p>
 The file path to the SSL certificate authority.</em></p>
-                    <p><p></p></p></p>
+                    <p></p></p>
                 </td>
             </tr>
                     <tr>
@@ -1073,7 +1085,7 @@ The file path to the SSL certificate authority.</em></p>
                     <p><em><p>
 The file path to the directory that contains the trusted SSL
 CA certificates, which are stored in PEM format.</em></p>
-                    <p><p></p></p></p>
+                    <p></p></p>
                 </td>
             </tr>
                     <tr>
@@ -1114,7 +1126,7 @@ Note, this constant can only be used in the driver_options array when constructi
                 <td class="last">
                     <p><em><p>
 Disables SSL peer verification when set to FALSE.</em></p>
-                    <p><p></p></p></p>
+                    <p></p></p>
                 </td>
             </tr>
                     <tr>
@@ -2340,17 +2352,17 @@ Creates a PDO instance representing a connection to a database</p></p>
                     <tr>
                 <td>string</td>
                 <td>$username</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$password</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -2361,7 +2373,7 @@ Creates a PDO instance representing a connection to a database</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="PDOException.html">PDOException</a></td>
-                <td><p>if the attempt to connect to the requested database fails.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -2483,10 +2495,7 @@ within the transaction boundary.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="PDOException.html">PDOException</a></td>
-                <td><p>If there is already a transaction started or
-the driver does not support transactions <br/>
-<b>Note</b>: An exception is raised even when the <b>PDO::ATTR_ERRMODE</b>
-attribute is not <b>PDO::ERRMODE_EXCEPTION</b>.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -2528,7 +2537,7 @@ Commits a transaction</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="PDOException.html">PDOException</a></td>
-                <td><p>if there is no active transaction.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -2570,7 +2579,7 @@ Rolls back a transaction</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="PDOException.html">PDOException</a></td>
-                <td><p>if there is no active transaction.</p></td>
+                <td></td>
             </tr>
             </table>
 

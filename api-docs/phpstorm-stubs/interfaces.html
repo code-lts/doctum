@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="interfaces" data-name="" data-root-path="">
+    <body id="interfaces" data-name="" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -66,6 +78,18 @@
 
     
     <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="ArrayAccess.html"><abbr title="ArrayAccess">ArrayAccess</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Interface to provide accessing objects as arrays.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="BackedEnum.html"><abbr title="BackedEnum">BackedEnum</abbr></a></em>
+                        </div>
+                <div class="col-md-6"></div>
+            </div>
                     <div class="row">
                 <div class="col-md-6">
                                             <em><a href="Cassandra/Aggregate.html"><abbr title="Cassandra\Aggregate">Aggregate</abbr></a></em>
@@ -416,6 +440,13 @@ during a MutateIn operation.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                                            <em><a href="Countable.html"><abbr title="Countable">Countable</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Classes implementing <b>Countable</b> can be used with the
+<b>count</b> function.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                                             <em><a href="DOMChildNode.html"><abbr title="DOMChildNode">DOMChildNode</abbr></a></em>
                         </div>
                 <div class="col-md-6"></div>
@@ -541,6 +572,25 @@ Use cases:</p>
                                             <em><a href="Elastic/Apm/TransactionInterface.html"><abbr title="Elastic\Apm\TransactionInterface">TransactionInterface</abbr></a></em>
                         </div>
                 <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="IntBackedEnum.html"><abbr title="IntBackedEnum">IntBackedEnum</abbr></a></em>
+                        </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Iterator.html"><abbr title="Iterator">Iterator</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Interface for external iterators or objects that can be iterated
+themselves internally.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="IteratorAggregate.html"><abbr title="IteratorAggregate">IteratorAggregate</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Interface to create an external Iterator.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -687,6 +737,14 @@ exportable Reflection classes.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                                            <em><a href="Serializable.html"><abbr title="Serializable">Serializable</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Interface for customized serializing.<br>
+As of PHP 8.1.0, a class which implements Serializable without also implementing <code>__serialize()</code> and <code>__unserialize()</code>
+will generate a deprecation warning.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                                             <em><a href="SessionHandlerInterface.html"><abbr title="SessionHandlerInterface">SessionHandlerInterface</abbr></a></em>
                         </div>
                 <div class="col-md-6"><p><b>SessionHandlerInterface</b> is an interface which defines
@@ -696,7 +754,7 @@ a prototype for creating a custom session handler.</p></div>
                 <div class="col-md-6">
                                             <em><a href="SessionIdInterface.html"><abbr title="SessionIdInterface">SessionIdInterface</abbr></a></em>
                         </div>
-                <div class="col-md-6"><p><b>SessionIdInterface</b></p></div>
+                <div class="col-md-6"><b>SessionIdInterface</b></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -721,7 +779,39 @@ defines a prototype for updating the life time of an existing session.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                                            <em><a href="StringBackedEnum.html"><abbr title="StringBackedEnum">StringBackedEnum</abbr></a></em>
+                        </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Stringable.html"><abbr title="Stringable">Stringable</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Stringable interface marks classes as available for serialization
+in a string.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                                             <em><a href="StubTests/Model/StubProblemType.html"><abbr title="StubTests\Model\StubProblemType">StubProblemType</abbr></a></em>
+                        </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Throwable.html"><abbr title="Throwable">Throwable</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Throwable is the base interface for any object that can be thrown via a throw statement in PHP 7,
+including Error and Exception.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Traversable.html"><abbr title="Traversable">Traversable</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Interface to detect if a class is traversable using foreach.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="UnitEnum.html"><abbr title="UnitEnum">UnitEnum</abbr></a></em>
                         </div>
                 <div class="col-md-6"></div>
             </div>
@@ -760,6 +850,12 @@ defines a prototype for updating the life time of an existing session.</p></div>
                                             <em><a href="http/Exception.html"><abbr title="http\Exception">Exception</abbr></a></em>
                         </div>
                 <div class="col-md-6"><p>The http extension's Exception interface.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="iterable.html"><abbr title="iterable">iterable</abbr></a></em>
+                        </div>
+                <div class="col-md-6"></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">

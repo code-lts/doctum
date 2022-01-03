@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../fonts/doctum-font.css">
         <script src="../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../doctum.js"></script>
         <script async defer src="../js/bootstrap.min.js"></script>
-        <script src="../js/typeahead.min.js"></script>
-        <script src="../doctum.js"></script>
+        <script async defer src="../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:http_Client" data-root-path="../">
+    <body id="class" data-name="class:http_Client" data-root-path="../" data-search-index-url="../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="../classes.html">Classes</a></li>
+                                        <li><a href="../classes.html">Classes</a></li>
                     <li><a href="../namespaces.html">Namespaces</a></li>
                     <li><a href="../interfaces.html">Interfaces</a></li>
                     <li><a href="../traits.html">Traits</a></li>
@@ -74,8 +86,7 @@
 
     
     <p>        class
-    <strong>Client</strong>        implements
-        <a href="../SplSubject.html">SplSubject</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Countable">Countable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/http/http3.php">View source</a>)
+    <strong>Client</strong>        implements        <a href="../SplSubject.html">SplSubject</a>, <a href="../Countable.html">Countable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/http/http3.php">View source</a>)
 </p>
 
         
@@ -593,7 +604,7 @@ Persisted resources identified by $persistent_handle_id will be re-used if avail
                     <table class="table table-condensed">
         <tr>
             <td><a href="../http/Client.html"><abbr title="http\Client">Client</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -644,7 +655,7 @@ Persisted resources identified by $persistent_handle_id will be re-used if avail
                     <table class="table table-condensed">
         <tr>
             <td><a href="../http/Client.html"><abbr title="http\Client">Client</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -754,7 +765,7 @@ See f.e. the <a href="http/Client/Curl#Configuration:">configuration options for
                     <table class="table table-condensed">
         <tr>
             <td><a href="../http/Client.html"><abbr title="http\Client">Client</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -800,7 +811,10 @@ The enqueued requests are counted without regard whether they are finished or no
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td><p>number of enqueued requests.</p></td>
+            <td><p>The custom count as an integer.</p>
+<p>
+The return value is cast to an integer.
+</p></td>
         </tr>
     </table>
 
@@ -842,7 +856,7 @@ The enqueued requests are counted without regard whether they are finished or no
                     <table class="table table-condensed">
         <tr>
             <td><a href="../http/Client.html"><abbr title="http\Client">Client</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -958,7 +972,7 @@ The <b>SplObserver</b> to detach.
                     <table class="table table-condensed">
         <tr>
             <td><a href="../http/Client.html"><abbr title="http\Client">Client</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -1025,7 +1039,7 @@ The <b>SplObserver</b> to detach.
                     <table class="table table-condensed">
         <tr>
             <td><a href="../http/Client.html"><abbr title="http\Client">Client</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -1105,7 +1119,7 @@ A callback to automatically call when the request has finished.</p></td>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../http/Client.html"><abbr title="http\Client">Client</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -1387,7 +1401,7 @@ The history is only recorded while http\Client::$recordHistory is true.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>array</td>
-            <td><p>options.</p></td>
+            <td>options.</td>
         </tr>
     </table>
 
@@ -1727,7 +1741,7 @@ A callback to automatically call when the request has finished.</p></td>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../http/Client.html"><abbr title="http\Client">Client</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -1772,7 +1786,7 @@ A callback to automatically call when the request has finished.</p></td>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../http/Client.html"><abbr title="http\Client">Client</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -1804,7 +1818,7 @@ A callback to automatically call when the request has finished.</p></td>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../http/Client.html"><abbr title="http\Client">Client</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -1859,7 +1873,7 @@ A callback to automatically call when the request has finished.</p></td>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../http/Client.html"><abbr title="http\Client">Client</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -1912,7 +1926,7 @@ The debug callback. For $type see http\Client::DEBUG_* constants.</p></td>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../http/Client.html"><abbr title="http\Client">Client</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -1965,7 +1979,7 @@ Only options specified prior enqueueing a request are applied to the request.</p
                     <table class="table table-condensed">
         <tr>
             <td><a href="../http/Client.html"><abbr title="http\Client">Client</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -2016,7 +2030,7 @@ Only options specified prior enqueueing a request are applied to the request.</p
                     <table class="table table-condensed">
         <tr>
             <td><a href="../http/Client.html"><abbr title="http\Client">Client</abbr></a></td>
-            <td><p>self.</p></td>
+            <td>self.</td>
         </tr>
     </table>
 
@@ -2067,7 +2081,7 @@ Only options specified prior enqueueing a request are applied to the request.</p
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>success.</p></td>
+            <td>success.</td>
         </tr>
     </table>
 

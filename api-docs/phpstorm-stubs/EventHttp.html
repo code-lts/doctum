@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:EventHttp" data-root-path="">
+    <body id="class" data-name="class:EventHttp" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -76,7 +88,7 @@
         
 
             <div class="description">
-            <p><p>EventHttp.</p></p>            <p><p>Represents HTTP server.</p></p>        </div>
+            <p>EventHttp.</p>            <p><p>Represents HTTP server.</p></p>        </div>
             
         
     
@@ -91,7 +103,7 @@
                 <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(<a href="EventBase.html">EventBase</a> $base, <a href="EventSslContext.html">EventSslContext</a>|null $ctx = null)
         
-                                            <p><p>__construct.</p></p>                </div>
+                                            <p>__construct.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -101,7 +113,7 @@
                 <div class="col-md-8">
                     <a href="#method_accept">accept</a>(mixed $socket)
         
-                                            <p><p>accept.</p></p>                </div>
+                                            <p>accept.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -111,7 +123,7 @@
                 <div class="col-md-8">
                     <a href="#method_addServerAlias">addServerAlias</a>(string $alias)
         
-                                            <p><p>addServerAlias.</p></p>                </div>
+                                            <p>addServerAlias.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -121,7 +133,7 @@
                 <div class="col-md-8">
                     <a href="#method_bind">bind</a>(string $address, int $port)
         
-                                            <p><p>bind.</p></p>                </div>
+                                            <p>bind.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -131,7 +143,7 @@
                 <div class="col-md-8">
                     <a href="#method_removeServerAlias">removeServerAlias</a>(string $alias)
         
-                                            <p><p>removeServerAlias.</p></p>                </div>
+                                            <p>removeServerAlias.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -141,7 +153,7 @@
                 <div class="col-md-8">
                     <a href="#method_setAllowedMethods">setAllowedMethods</a>(int $methods)
         
-                                            <p><p>setAllowedMethods.</p></p>                </div>
+                                            <p>setAllowedMethods.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -151,7 +163,7 @@
                 <div class="col-md-8">
                     <a href="#method_setCallback">setCallback</a>(string $path, string $cb, string|null $arg = null)
         
-                                            <p><p>setCallback.</p></p>                </div>
+                                            <p>setCallback.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -161,7 +173,7 @@
                 <div class="col-md-8">
                     <a href="#method_setDefaultCallback">setDefaultCallback</a>(string $cb, string|null $arg = null)
         
-                                            <p><p>setDefaultCallback.</p></p>                </div>
+                                            <p>setDefaultCallback.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -171,7 +183,7 @@
                 <div class="col-md-8">
                     <a href="#method_setMaxBodySize">setMaxBodySize</a>(int $value)
         
-                                            <p><p>setMaxBodySize.</p></p>                </div>
+                                            <p>setMaxBodySize.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -181,7 +193,7 @@
                 <div class="col-md-8">
                     <a href="#method_setMaxHeadersSize">setMaxHeadersSize</a>(int $value)
         
-                                            <p><p>setMaxHeadersSize.</p></p>                </div>
+                                            <p>setMaxHeadersSize.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -191,7 +203,7 @@
                 <div class="col-md-8">
                     <a href="#method_setTimeout">setTimeout</a>(int $value)
         
-                                            <p><p>setTimeout.</p></p>                </div>
+                                            <p>setTimeout.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -212,7 +224,7 @@
             
 
         <div class="method-description">
-                            <p><p>__construct.</p></p>                <p><p>Constructs EventHttp object(the HTTP server).</p></p>        
+                            <p>__construct.</p>                <p><p>Constructs EventHttp object(the HTTP server).</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -261,7 +273,7 @@
             
 
         <div class="method-description">
-                            <p><p>accept.</p></p>                <p><p>Makes an HTTP server accept connections on the specified socket stream or resource.</p></p>        
+                            <p>accept.</p>                <p><p>Makes an HTTP server accept connections on the specified socket stream or resource.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -314,7 +326,7 @@
             
 
         <div class="method-description">
-                            <p><p>addServerAlias.</p></p>                <p><p>Adds a server alias to the HTTP server object.</p></p>        
+                            <p>addServerAlias.</p>                <p><p>Adds a server alias to the HTTP server object.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -367,7 +379,7 @@
             
 
         <div class="method-description">
-                            <p><p>bind.</p></p>                <p><p>Binds an HTTP server on the specified address and port.</p></p>        
+                            <p>bind.</p>                <p><p>Binds an HTTP server on the specified address and port.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -425,7 +437,7 @@
             
 
         <div class="method-description">
-                            <p><p>removeServerAlias.</p></p>                <p><p>Removes server alias.</p></p>        
+                            <p>removeServerAlias.</p>                <p><p>Removes server alias.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -478,7 +490,7 @@
             
 
         <div class="method-description">
-                            <p><p>setAllowedMethods.</p></p>                <p><p>Sets the what HTTP methods are supported in requests accepted by this server, and passed to user callbacks.</p></p>        
+                            <p>setAllowedMethods.</p>                <p><p>Sets the what HTTP methods are supported in requests accepted by this server, and passed to user callbacks.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -531,7 +543,7 @@
             
 
         <div class="method-description">
-                            <p><p>setCallback.</p></p>                <p><p>Sets a callback for specified URI.</p></p>        
+                            <p>setCallback.</p>                <p><p>Sets a callback for specified URI.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -550,7 +562,7 @@
                     <tr>
                 <td>string|null</td>
                 <td>$arg</td>
-                <td><p>(optional)</p></td>
+                <td>(optional)</td>
             </tr>
             </table>
 
@@ -594,7 +606,7 @@
             
 
         <div class="method-description">
-                            <p><p>setDefaultCallback.</p></p>                <p><p>Sets default callback to handle requests that are not caught by specific callbacks.</p></p>        
+                            <p>setDefaultCallback.</p>                <p><p>Sets default callback to handle requests that are not caught by specific callbacks.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -608,7 +620,7 @@
                     <tr>
                 <td>string|null</td>
                 <td>$arg</td>
-                <td><p>(optional)</p></td>
+                <td>(optional)</td>
             </tr>
             </table>
 
@@ -652,7 +664,7 @@
             
 
         <div class="method-description">
-                            <p><p>setMaxBodySize.</p></p>                <p><p>Sets maximum request body size.</p></p>        
+                            <p>setMaxBodySize.</p>                <p><p>Sets maximum request body size.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -705,7 +717,7 @@
             
 
         <div class="method-description">
-                            <p><p>setMaxHeadersSize.</p></p>                <p><p>Sets maximum HTTP header size.</p></p>        
+                            <p>setMaxHeadersSize.</p>                <p><p>Sets maximum HTTP header size.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -758,7 +770,7 @@
             
 
         <div class="method-description">
-                            <p><p>setTimeout.</p></p>                <p><p>Sets the timeout for an HTTP request.</p></p>        
+                            <p>setTimeout.</p>                <p><p>Sets the timeout for an HTTP request.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>

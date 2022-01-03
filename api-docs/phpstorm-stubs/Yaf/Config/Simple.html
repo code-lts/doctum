@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
         <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
         <script async defer src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/typeahead.min.js"></script>
-        <script src="../../doctum.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:Yaf_Config_Simple" data-root-path="../../">
+    <body id="class" data-name="class:Yaf_Config_Simple" data-root-path="../../" data-search-index-url="../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="../../classes.html">Classes</a></li>
+                                        <li><a href="../../classes.html">Classes</a></li>
                     <li><a href="../../namespaces.html">Namespaces</a></li>
                     <li><a href="../../interfaces.html">Interfaces</a></li>
                     <li><a href="../../traits.html">Traits</a></li>
@@ -74,8 +86,7 @@
 
     
     <p>        class
-    <strong>Simple</strong>        extends <a href="../../Yaf/Config_Abstract.html"><abbr title="Yaf\Config_Abstract">Config_Abstract</abbr></a>        implements
-        <a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a>, <a target="_blank" rel="noopener" href="https://www.php.net/ArrayAccess">ArrayAccess</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Countable">Countable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf_namespace.php">View source</a>)
+    <strong>Simple</strong>        extends <a href="../../Yaf/Config_Abstract.html"><abbr title="Yaf\Config_Abstract">Config_Abstract</abbr></a>        implements        <a href="../../Iterator.html">Iterator</a>, <a href="../../Traversable.html">Traversable</a>, <a href="../../ArrayAccess.html">ArrayAccess</a>, <a href="../../Countable.html">Countable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf_namespace.php">View source</a>)
 </p>
 
         
@@ -204,7 +215,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    int
                 </div>
                 <div class="col-md-8">
                     <a href="#method_count">count</a>()
@@ -215,7 +226,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8">
                     <a href="#method_rewind">rewind</a>()
@@ -226,7 +237,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_current">current</a>()
@@ -237,7 +248,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8">
                     <a href="#method_next">next</a>()
@@ -248,7 +259,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    bool
                 </div>
                 <div class="col-md-8">
                     <a href="#method_valid">valid</a>()
@@ -259,7 +270,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_key">key</a>()
@@ -270,7 +281,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8">
                     <a href="#method_offsetUnset">offsetUnset</a>($name)
@@ -281,7 +292,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_offsetGet">offsetGet</a>($name)
@@ -292,7 +303,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    bool
                 </div>
                 <div class="col-md-8">
                     <a href="#method_offsetExists">offsetExists</a>($name)
@@ -303,10 +314,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetSet">offsetSet</a>($name, $value)
+                    <a href="#method_offsetSet">offsetSet</a>($name, TValue $value)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -690,7 +701,7 @@
                     <div class="method-item">
                     <h3 id="method_count">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf_namespace.php#L2334">at line 2334</a></div>
-        <code>                    
+        <code>                    int
     <strong>count</strong>()
         </code>
     </h3>
@@ -704,6 +715,18 @@
         </div>
         <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>The custom count as an integer.</p>
+<p>
+The return value is cast to an integer.
+</p></td>
+        </tr>
+    </table>
+
             
             
                             <h4>See also</h4>
@@ -725,7 +748,7 @@
                     <div class="method-item">
                     <h3 id="method_rewind">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf_namespace.php#L2339">at line 2339</a></div>
-        <code>                    
+        <code>                    void
     <strong>rewind</strong>()
         </code>
     </h3>
@@ -739,6 +762,15 @@
         </div>
         <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td><p>Any returned value is ignored.</p></td>
+        </tr>
+    </table>
+
             
             
                             <h4>See also</h4>
@@ -760,7 +792,7 @@
                     <div class="method-item">
                     <h3 id="method_current">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf_namespace.php#L2344">at line 2344</a></div>
-        <code>                    
+        <code>                    mixed
     <strong>current</strong>()
         </code>
     </h3>
@@ -774,6 +806,15 @@
         </div>
         <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>Can return any type.</p></td>
+        </tr>
+    </table>
+
             
             
                             <h4>See also</h4>
@@ -795,7 +836,7 @@
                     <div class="method-item">
                     <h3 id="method_next">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf_namespace.php#L2349">at line 2349</a></div>
-        <code>                    
+        <code>                    void
     <strong>next</strong>()
         </code>
     </h3>
@@ -809,6 +850,15 @@
         </div>
         <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td><p>Any returned value is ignored.</p></td>
+        </tr>
+    </table>
+
             
             
                             <h4>See also</h4>
@@ -830,7 +880,7 @@
                     <div class="method-item">
                     <h3 id="method_valid">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf_namespace.php#L2354">at line 2354</a></div>
-        <code>                    
+        <code>                    bool
     <strong>valid</strong>()
         </code>
     </h3>
@@ -844,6 +894,16 @@
         </div>
         <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>The return value will be casted to boolean and then evaluated.
+Returns true on success or false on failure.</p></td>
+        </tr>
+    </table>
+
             
             
                             <h4>See also</h4>
@@ -865,7 +925,7 @@
                     <div class="method-item">
                     <h3 id="method_key">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf_namespace.php#L2359">at line 2359</a></div>
-        <code>                    
+        <code>                    mixed
     <strong>key</strong>()
         </code>
     </h3>
@@ -879,6 +939,15 @@
         </div>
         <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>TKey on success, or null on failure.</p></td>
+        </tr>
+    </table>
+
             
             
                             <h4>See also</h4>
@@ -900,7 +969,7 @@
                     <div class="method-item">
                     <h3 id="method_offsetUnset">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf_namespace.php#L2364">at line 2364</a></div>
-        <code>                    
+        <code>                    void
     <strong>offsetUnset</strong>($name)
         </code>
     </h3>
@@ -924,6 +993,15 @@
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                             <h4>See also</h4>
@@ -945,7 +1023,7 @@
                     <div class="method-item">
                     <h3 id="method_offsetGet">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf_namespace.php#L2369">at line 2369</a></div>
-        <code>                    
+        <code>                    mixed
     <strong>offsetGet</strong>($name)
         </code>
     </h3>
@@ -969,6 +1047,15 @@
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>Can return all value types.</p></td>
+        </tr>
+    </table>
+
             
             
                             <h4>See also</h4>
@@ -990,7 +1077,7 @@
                     <div class="method-item">
                     <h3 id="method_offsetExists">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf_namespace.php#L2374">at line 2374</a></div>
-        <code>                    
+        <code>                    bool
     <strong>offsetExists</strong>($name)
         </code>
     </h3>
@@ -1014,6 +1101,18 @@
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true on success or false on failure.
+</p></p>
+<p>
+The return value will be casted to boolean if non-boolean was returned.</td>
+        </tr>
+    </table>
+
             
             
                             <h4>See also</h4>
@@ -1035,8 +1134,8 @@
                     <div class="method-item">
                     <h3 id="method_offsetSet">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf_namespace.php#L2379">at line 2379</a></div>
-        <code>                    
-    <strong>offsetSet</strong>($name, $value)
+        <code>                    void
+    <strong>offsetSet</strong>($name, TValue $value)
         </code>
     </h3>
     <div class="details">    
@@ -1057,13 +1156,24 @@
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>TValue</td>
                 <td>$value</td>
-                <td></td>
+                <td><p>
+The value to set.
+</p></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                             <h4>See also</h4>

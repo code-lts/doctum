@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:Threaded" data-root-path="">
+    <body id="class" data-name="class:Threaded" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -68,8 +80,7 @@
 
     
     <p>        class
-    <strong>Threaded</strong>        implements
-        <a href="Collectable.html">Collectable</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Countable">Countable</a>, <a target="_blank" rel="noopener" href="https://www.php.net/ArrayAccess">ArrayAccess</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/pthreads/pthreads.php">View source</a>)
+    <strong>Threaded</strong>        implements        <a href="Collectable.html">Collectable</a>, <a href="Traversable.html">Traversable</a>, <a href="Countable.html">Countable</a>, <a href="ArrayAccess.html">ArrayAccess</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/pthreads/pthreads.php">View source</a>)
 </p>
 
         
@@ -277,7 +288,7 @@ Shifts an item from the objects property table</p></p>                </div>
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_synchronized">synchronized</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $block, mixed ...$_)
+                    <a href="#method_synchronized">synchronized</a>(<a href="Closure.html">Closure</a> $block, mixed ...$_)
         
                                             <p><p>(PECL pthreads &gt;= 2.0.0)<br/>
 Executes the block while retaining the referenced objects
@@ -298,10 +309,10 @@ referenced object</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetExists">offsetExists</a>($offset)
+                    <a href="#method_offsetExists">offsetExists</a>(mixed $offset)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -309,10 +320,10 @@ referenced object</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetGet">offsetGet</a>($offset)
+                    <a href="#method_offsetGet">offsetGet</a>(mixed $offset)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -320,10 +331,10 @@ referenced object</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetSet">offsetSet</a>($offset, $value)
+                    <a href="#method_offsetSet">offsetSet</a>(TKey $offset, TValue $value)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -331,10 +342,10 @@ referenced object</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetUnset">offsetUnset</a>($offset)
+                    <a href="#method_offsetUnset">offsetUnset</a>(TKey $offset)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -450,7 +461,10 @@ Returns the number of properties for this object</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td><p>The number of properties for this object</p></td>
+            <td><p>The custom count as an integer.</p>
+<p>
+The return value is cast to an integer.
+</p></td>
         </tr>
     </table>
 
@@ -901,7 +915,7 @@ Shifts an item from the objects property table</p></p>
                     <h3 id="method_synchronized">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/pthreads/pthreads.php#L318">at line 318</a></div>
         <code>                    mixed
-    <strong>synchronized</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $block, mixed ...$_)
+    <strong>synchronized</strong>(<a href="Closure.html">Closure</a> $block, mixed ...$_)
         </code>
     </h3>
     <div class="details">    
@@ -918,7 +932,7 @@ synchronization lock for the calling context</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td><a href="Closure.html">Closure</a></td>
                 <td>$block</td>
                 <td><p>The block of code to execute</p></td>
             </tr>
@@ -994,8 +1008,8 @@ referenced object</p></p>
                     <div class="method-item">
                     <h3 id="method_offsetExists">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/pthreads/pthreads.php#L334">at line 334</a></div>
-        <code>                    
-    <strong>offsetExists</strong>($offset)
+        <code>                    bool
+    <strong>offsetExists</strong>(mixed $offset)
         </code>
     </h3>
     <div class="details">    
@@ -1011,13 +1025,27 @@ referenced object</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>mixed</td>
                 <td>$offset</td>
-                <td></td>
+                <td><p>
+An offset to check for.
+</p></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true on success or false on failure.
+</p></p>
+<p>
+The return value will be casted to boolean if non-boolean was returned.</td>
+        </tr>
+    </table>
+
             
             
                             <h4>See also</h4>
@@ -1025,7 +1053,8 @@ referenced object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            \ArrayAccess::offsetExists()
+                                            <a href="ArrayAccess.html#method_offsetExists">
+ArrayAccess::offsetExists</a>
                                     </td>
                 <td></td>
             </tr>
@@ -1039,8 +1068,8 @@ referenced object</p></p>
                     <div class="method-item">
                     <h3 id="method_offsetGet">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/pthreads/pthreads.php#L340">at line 340</a></div>
-        <code>                    
-    <strong>offsetGet</strong>($offset)
+        <code>                    mixed
+    <strong>offsetGet</strong>(mixed $offset)
         </code>
     </h3>
     <div class="details">    
@@ -1056,13 +1085,24 @@ referenced object</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>mixed</td>
                 <td>$offset</td>
-                <td></td>
+                <td><p>
+The offset to retrieve.
+</p></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>Can return all value types.</p></td>
+        </tr>
+    </table>
+
             
             
                             <h4>See also</h4>
@@ -1070,7 +1110,8 @@ referenced object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            \ArrayAccess::offsetGet()
+                                            <a href="ArrayAccess.html#method_offsetGet">
+ArrayAccess::offsetGet</a>
                                     </td>
                 <td></td>
             </tr>
@@ -1084,8 +1125,8 @@ referenced object</p></p>
                     <div class="method-item">
                     <h3 id="method_offsetSet">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/pthreads/pthreads.php#L346">at line 346</a></div>
-        <code>                    
-    <strong>offsetSet</strong>($offset, $value)
+        <code>                    void
+    <strong>offsetSet</strong>(TKey $offset, TValue $value)
         </code>
     </h3>
     <div class="details">    
@@ -1101,18 +1142,31 @@ referenced object</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>TKey</td>
                 <td>$offset</td>
-                <td></td>
+                <td><p>
+The offset to assign the value to.
+</p></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>TValue</td>
                 <td>$value</td>
-                <td></td>
+                <td><p>
+The value to set.
+</p></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                             <h4>See also</h4>
@@ -1120,7 +1174,8 @@ referenced object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            \ArrayAccess::offsetSet()
+                                            <a href="ArrayAccess.html#method_offsetSet">
+ArrayAccess::offsetSet</a>
                                     </td>
                 <td></td>
             </tr>
@@ -1134,8 +1189,8 @@ referenced object</p></p>
                     <div class="method-item">
                     <h3 id="method_offsetUnset">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/pthreads/pthreads.php#L352">at line 352</a></div>
-        <code>                    
-    <strong>offsetUnset</strong>($offset)
+        <code>                    void
+    <strong>offsetUnset</strong>(TKey $offset)
         </code>
     </h3>
     <div class="details">    
@@ -1151,13 +1206,24 @@ referenced object</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>TKey</td>
                 <td>$offset</td>
-                <td></td>
+                <td><p>
+The offset to unset.
+</p></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                             <h4>See also</h4>
@@ -1165,7 +1231,8 @@ referenced object</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            \ArrayAccess::offsetUnset()
+                                            <a href="ArrayAccess.html#method_offsetUnset">
+ArrayAccess::offsetUnset</a>
                                     </td>
                 <td></td>
             </tr>

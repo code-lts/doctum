@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
         <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
         <script async defer src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/typeahead.min.js"></script>
-        <script src="../../doctum.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:MongoDB_Driver_Cursor" data-root-path="../../">
+    <body id="class" data-name="class:MongoDB_Driver_Cursor" data-root-path="../../" data-search-index-url="../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="../../classes.html">Classes</a></li>
+                                        <li><a href="../../classes.html">Classes</a></li>
                     <li><a href="../../namespaces.html">Namespaces</a></li>
                     <li><a href="../../interfaces.html">Interfaces</a></li>
                     <li><a href="../../traits.html">Traits</a></li>
@@ -74,8 +86,7 @@
 
     
     <p>final         class
-    <strong>Cursor</strong>        implements
-        <a href="../../MongoDB/Driver/CursorInterface.html"><abbr title="MongoDB\Driver\CursorInterface">CursorInterface</abbr></a>, <a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/mongodb.php">View source</a>)
+    <strong>Cursor</strong>        implements        <a href="../../MongoDB/Driver/CursorInterface.html"><abbr title="MongoDB\Driver\CursorInterface">CursorInterface</abbr></a>, <a href="../../Iterator.html">Iterator</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/mongodb.php">View source</a>)
 </p>
 
         
@@ -104,7 +115,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array|object
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_current">current</a>()
@@ -144,7 +155,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_key">key</a>()
@@ -235,7 +246,7 @@
                     <div class="method-item">
                     <h3 id="method_current">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/mongodb.php#L706">at line 706</a></div>
-        <code>                    array|object
+        <code>                    mixed
     <strong>current</strong>()
         </code>
     </h3>
@@ -252,8 +263,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>array|object</td>
-            <td></td>
+            <td>mixed</td>
+            <td><p>Can return any type.</p></td>
         </tr>
     </table>
 
@@ -295,7 +306,7 @@
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td><p>on argument parsing errors.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -336,7 +347,7 @@
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td><p>on argument parsing errors.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -377,7 +388,7 @@
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td><p>On argument parsing errors</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -390,7 +401,7 @@
                     <div class="method-item">
                     <h3 id="method_key">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/mongodb.php#L737">at line 737</a></div>
-        <code>                    int
+        <code>                    mixed
     <strong>key</strong>()
         </code>
     </h3>
@@ -407,8 +418,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
-            <td></td>
+            <td>mixed</td>
+            <td><p>TKey on success, or null on failure.</p></td>
         </tr>
     </table>
 
@@ -440,7 +451,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td></td>
+            <td><p>Any returned value is ignored.</p></td>
         </tr>
     </table>
 
@@ -450,15 +461,15 @@
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td><p>on argument parsing errors.</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="../../MongoDB/Driver/Exception/ConnectionException.html"><abbr title="MongoDB\Driver\Exception\ConnectionException">ConnectionException</abbr></a></td>
-                <td><p>if connection to the server fails (for reasons other than authentication).</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="../../MongoDB/Driver/Exception/AuthenticationException.html"><abbr title="MongoDB\Driver\Exception\AuthenticationException">AuthenticationException</abbr></a></td>
-                <td><p>if authentication is needed and fails.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -489,7 +500,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td></td>
+            <td><p>Any returned value is ignored.</p></td>
         </tr>
     </table>
 
@@ -499,19 +510,19 @@
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td><p>on argument parsing errors.</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="../../MongoDB/Driver/Exception/ConnectionException.html"><abbr title="MongoDB\Driver\Exception\ConnectionException">ConnectionException</abbr></a></td>
-                <td><p>if connection to the server fails (for reasons other than authentication).</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="../../MongoDB/Driver/Exception/AuthenticationException.html"><abbr title="MongoDB\Driver\Exception\AuthenticationException">AuthenticationException</abbr></a></td>
-                <td><p>if authentication is needed and fails.</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="../../MongoDB/Driver/Exception/LogicException.html"><abbr title="MongoDB\Driver\Exception\LogicException">LogicException</abbr></a></td>
-                <td><p>if this method is called after the cursor has advanced beyond its first position.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -562,8 +573,7 @@
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td><p>On argument parsing errors or if a class in the type map cannot
-be instantiated or does not implement MongoDB\BSON\Unserializable</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -604,7 +614,7 @@ be instantiated or does not implement MongoDB\BSON\Unserializable</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td><p>On argument parsing errors</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -635,7 +645,8 @@ be instantiated or does not implement MongoDB\BSON\Unserializable</p></td>
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>The return value will be casted to boolean and then evaluated.
+Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 

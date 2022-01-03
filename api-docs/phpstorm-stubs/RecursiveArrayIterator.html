@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:RecursiveArrayIterator" data-root-path="">
+    <body id="class" data-name="class:RecursiveArrayIterator" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -68,8 +80,7 @@
 
     
     <p>        class
-    <strong>RecursiveArrayIterator</strong>        extends <a href="ArrayIterator.html">ArrayIterator</a>        implements
-        <a href="RecursiveIterator.html">RecursiveIterator</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL.php">View source</a>)
+    <strong>RecursiveArrayIterator</strong>        extends <a href="ArrayIterator.html">ArrayIterator</a>        implements        <a href="RecursiveIterator.html">RecursiveIterator</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL.php">View source</a>)
 </p>
 
         
@@ -155,7 +166,7 @@ ArrayIterator</a></small></div>
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetSet">offsetSet</a>(string $key, string $value)
+                    <a href="#method_offsetSet">offsetSet</a>(string $key, TValue $value)
         
                                             <p><p>Set value for an offset</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="ArrayIterator.html#method_offsetSet">
@@ -300,18 +311,18 @@ ArrayIterator</a></small></div>
                 <div class="col-md-8">
                     <a href="#method_unserialize">unserialize</a>(string $data)
         
-                                            <p><p>Unserialize</p></p>                </div>
+                                            <p>Unserialize</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="ArrayIterator.html#method_unserialize">
 ArrayIterator</a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    string|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_serialize">serialize</a>()
         
-                                            <p><p>Serialize</p></p>                </div>
+                                            <p>Serialize</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="ArrayIterator.html#method_serialize">
 ArrayIterator</a></small></div>
             </div>
@@ -339,7 +350,7 @@ ArrayIterator</a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string|int|null
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_key">key</a>()
@@ -533,7 +544,10 @@ The offset being checked.
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>true if the offset exists, otherwise false</p></td>
+            <td><p>true on success or false on failure.
+</p></p>
+<p>
+The return value will be casted to boolean if non-boolean was returned.</td>
         </tr>
     </table>
 
@@ -578,7 +592,7 @@ The offset to get the value from.
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>The value at offset <i>index</i>.</p></td>
+            <td><p>Can return all value types.</p></td>
         </tr>
     </table>
 
@@ -594,7 +608,7 @@ The offset to get the value from.
         <div class="location">in <a href="ArrayIterator.html#method_offsetSet">
 ArrayIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL.php#L1884">at line 1884</a></div>
         <code>                    void
-    <strong>offsetSet</strong>(string $key, string $value)
+    <strong>offsetSet</strong>(string $key, TValue $value)
         </code>
     </h3>
     <div class="details">    
@@ -616,10 +630,10 @@ The index to set for.
 </p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>TValue</td>
                 <td>$value</td>
                 <td><p>
-The new value to store at the index.
+The value to set.
 </p></td>
             </tr>
             </table>
@@ -787,8 +801,10 @@ ArrayIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/mast
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td><p>The number of elements or public properties in the associated
-array or object, respectively.</p></td>
+            <td><p>The custom count as an integer.</p>
+<p>
+The return value is cast to an integer.
+</p></td>
         </tr>
     </table>
 
@@ -902,7 +918,7 @@ ArrayIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/mast
                     <tr>
                 <td>int</td>
                 <td>$flags</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -945,7 +961,7 @@ ArrayIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/mast
                     <tr>
                 <td>int</td>
                 <td>$flags</td>
-                <td><p>[optional]</p></td>
+                <td>[optional]</td>
             </tr>
             </table>
 
@@ -1135,7 +1151,7 @@ ArrayIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/mast
             
 
         <div class="method-description">
-                            <p><p>Unserialize</p></p>                        
+                            <p>Unserialize</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1144,9 +1160,7 @@ ArrayIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/mast
                     <tr>
                 <td>string</td>
                 <td>$data</td>
-                <td><p>
-The serialized ArrayIterator object to be unserialized.
-</p></td>
+                <td><p>The string representation of the object.</p></td>
             </tr>
             </table>
 
@@ -1171,7 +1185,7 @@ The serialized ArrayIterator object to be unserialized.
                     <h3 id="method_serialize">
         <div class="location">in <a href="ArrayIterator.html#method_serialize">
 ArrayIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL.php#L2024">at line 2024</a></div>
-        <code>                    string
+        <code>                    string|null
     <strong>serialize</strong>()
         </code>
     </h3>
@@ -1180,7 +1194,7 @@ ArrayIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/mast
             
 
         <div class="method-description">
-                            <p><p>Serialize</p></p>                        
+                            <p>Serialize</p>                        
         </div>
         <div class="tags">
             
@@ -1188,8 +1202,8 @@ ArrayIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/mast
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
-            <td><p>The serialized <b>ArrayIterator</b>.</p></td>
+            <td>string|null</td>
+            <td><p>The string representation of the object or null</p></td>
         </tr>
     </table>
 
@@ -1222,7 +1236,7 @@ ArrayIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/mast
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td></td>
+            <td><p>Any returned value is ignored.</p></td>
         </tr>
     </table>
 
@@ -1255,7 +1269,7 @@ ArrayIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/mast
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>The current array entry.</p></td>
+            <td><p>Can return any type.</p></td>
         </tr>
     </table>
 
@@ -1270,7 +1284,7 @@ ArrayIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/mast
                     <h3 id="method_key">
         <div class="location">in <a href="ArrayIterator.html#method_key">
 ArrayIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL.php#L2048">at line 2048</a></div>
-        <code>                    string|int|null
+        <code>                    mixed
     <strong>key</strong>()
         </code>
     </h3>
@@ -1287,8 +1301,8 @@ ArrayIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/mast
 
                     <table class="table table-condensed">
         <tr>
-            <td>string|int|null</td>
-            <td><p>The current array key.</p></td>
+            <td>mixed</td>
+            <td><p>TKey on success, or null on failure.</p></td>
         </tr>
     </table>
 
@@ -1321,7 +1335,7 @@ ArrayIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/mast
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td></td>
+            <td><p>Any returned value is ignored.</p></td>
         </tr>
     </table>
 
@@ -1354,7 +1368,8 @@ ArrayIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/mast
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>The return value will be casted to boolean and then evaluated.
+Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 

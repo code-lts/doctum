@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
         <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
         <script async defer src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/typeahead.min.js"></script>
-        <script src="../../doctum.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:Elastic_Apm_TransactionInterface" data-root-path="../../">
+    <body id="class" data-name="class:Elastic_Apm_TransactionInterface" data-root-path="../../" data-search-index-url="../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="../../classes.html">Classes</a></li>
+                                        <li><a href="../../classes.html">Classes</a></li>
                     <li><a href="../../namespaces.html">Namespaces</a></li>
                     <li><a href="../../interfaces.html">Interfaces</a></li>
                     <li><a href="../../traits.html">Traits</a></li>
@@ -74,8 +86,7 @@
 
     
     <p>        interface
-    <strong>TransactionInterface</strong>        implements
-        <a href="../../Elastic/Apm/ExecutionSegmentInterface.html"><abbr title="Elastic\Apm\ExecutionSegmentInterface">ExecutionSegmentInterface</abbr></a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/elastic_apm/elastic_apm.php">View source</a>)
+    <strong>TransactionInterface</strong>        implements        <a href="../../Elastic/Apm/ExecutionSegmentInterface.html"><abbr title="Elastic\Apm\ExecutionSegmentInterface">ExecutionSegmentInterface</abbr></a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/elastic_apm/elastic_apm.php">View source</a>)
 </p>
 
         
@@ -138,7 +149,7 @@
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_captureChildSpan">captureChildSpan</a>(string $name, string $type, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback, string|null $subtype = null, string|null $action = null, float|null $timestamp = null)
+                    <a href="#method_captureChildSpan">captureChildSpan</a>(string $name, string $type, <a href="../../Closure.html">Closure</a> $callback, string|null $subtype = null, string|null $action = null, float|null $timestamp = null)
         
                                             <p><p>Begins a new span with this execution segment as the new span's parent,
 runs the provided callback as the new span and automatically ends the new span.</p></p>                </div>
@@ -191,7 +202,7 @@ e.g.,</p>
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_injectDistributedTracingHeaders">injectDistributedTracingHeaders</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $headerInjector)
+                    <a href="#method_injectDistributedTracingHeaders">injectDistributedTracingHeaders</a>(<a href="../../Closure.html">Closure</a> $headerInjector)
         
                                             <p><p>Returns distributed tracing data for the current span/transaction</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Elastic/Apm/ExecutionSegmentInterface.html#method_injectDistributedTracingHeaders">
@@ -224,7 +235,7 @@ e.g.,</p>
                     string|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_createErrorFromThrowable">createErrorFromThrowable</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $throwable)
+                    <a href="#method_createErrorFromThrowable">createErrorFromThrowable</a>(<a href="../../Throwable.html">Throwable</a> $throwable)
         
                                             <p><p>Creates an error based on the given Throwable instance with this execution segment as the parent.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Elastic/Apm/ExecutionSegmentInterface.html#method_createErrorFromThrowable">
@@ -323,7 +334,7 @@ as the new span's parent and sets as the new span as the current span for this t
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_captureCurrentSpan">captureCurrentSpan</a>(string $name, string $type, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback, string|null $subtype = null, string|null $action = null, float|null $timestamp = null)
+                    <a href="#method_captureCurrentSpan">captureCurrentSpan</a>(string $name, string $type, <a href="../../Closure.html">Closure</a> $callback, string|null $subtype = null, string|null $action = null, float|null $timestamp = null)
         
                                             <p><p>Begins a new span with the current execution segment as the new span's parent and
 sets the new span as the current span for this transaction.</p></p>                </div>
@@ -593,7 +604,7 @@ UTC based and in microseconds since Unix epoch.</p></p>
         <div class="location">in <a href="../../Elastic/Apm/ExecutionSegmentInterface.html#method_captureChildSpan">
 <abbr title="Elastic\Apm\ExecutionSegmentInterface">ExecutionSegmentInterface</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/elastic_apm/elastic_apm.php#L575">at line 575</a></div>
         <code>                    mixed
-    <strong>captureChildSpan</strong>(string $name, string $type, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback, string|null $subtype = null, string|null $action = null, float|null $timestamp = null)
+    <strong>captureChildSpan</strong>(string $name, string $type, <a href="../../Closure.html">Closure</a> $callback, string|null $subtype = null, string|null $action = null, float|null $timestamp = null)
         </code>
     </h3>
     <div class="details">    
@@ -619,7 +630,7 @@ runs the provided callback as the new span and automatically ends the new span.<
                 <td><p>New span's type</p></td>
             </tr>
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td><a href="../../Closure.html">Closure</a></td>
                 <td>$callback</td>
                 <td><p>Callback to execute as the new span</p></td>
             </tr>
@@ -854,7 +865,7 @@ Returns distributed tracing data</td>
         <div class="location">in <a href="../../Elastic/Apm/ExecutionSegmentInterface.html#method_injectDistributedTracingHeaders">
 <abbr title="Elastic\Apm\ExecutionSegmentInterface">ExecutionSegmentInterface</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/elastic_apm/elastic_apm.php#L633">at line 633</a></div>
         <code>                    void
-    <strong>injectDistributedTracingHeaders</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $headerInjector)
+    <strong>injectDistributedTracingHeaders</strong>(<a href="../../Closure.html">Closure</a> $headerInjector)
         </code>
     </h3>
     <div class="details">    
@@ -870,7 +881,7 @@ Returns distributed tracing data</td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td><a href="../../Closure.html">Closure</a></td>
                 <td>$headerInjector</td>
                 <td><p>Callback that actually injects header(s) for the underlying transport</p></td>
             </tr>
@@ -976,7 +987,7 @@ For example, end() is a mutating method as well.</p></p>
         <div class="location">in <a href="../../Elastic/Apm/ExecutionSegmentInterface.html#method_createErrorFromThrowable">
 <abbr title="Elastic\Apm\ExecutionSegmentInterface">ExecutionSegmentInterface</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/elastic_apm/elastic_apm.php#L661">at line 661</a></div>
         <code>                    string|null
-    <strong>createErrorFromThrowable</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $throwable)
+    <strong>createErrorFromThrowable</strong>(<a href="../../Throwable.html">Throwable</a> $throwable)
         </code>
     </h3>
     <div class="details">    
@@ -991,7 +1002,7 @@ For example, end() is a mutating method as well.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a></td>
+                <td><a href="../../Throwable.html">Throwable</a></td>
                 <td>$throwable</td>
                 <td></td>
             </tr>
@@ -1384,7 +1395,7 @@ as the new span's parent and sets as the new span as the current span for this t
                     <h3 id="method_captureCurrentSpan">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/elastic_apm/elastic_apm.php#L296">at line 296</a></div>
         <code>                    mixed
-    <strong>captureCurrentSpan</strong>(string $name, string $type, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback, string|null $subtype = null, string|null $action = null, float|null $timestamp = null)
+    <strong>captureCurrentSpan</strong>(string $name, string $type, <a href="../../Closure.html">Closure</a> $callback, string|null $subtype = null, string|null $action = null, float|null $timestamp = null)
         </code>
     </h3>
     <div class="details">    
@@ -1410,7 +1421,7 @@ sets the new span as the current span for this transaction.</p></p>             
                 <td><p>New span's type</p></td>
             </tr>
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td><a href="../../Closure.html">Closure</a></td>
                 <td>$callback</td>
                 <td><p>Callback to execute as the new span</p></td>
             </tr>

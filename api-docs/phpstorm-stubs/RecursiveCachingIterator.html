@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:RecursiveCachingIterator" data-root-path="">
+    <body id="class" data-name="class:RecursiveCachingIterator" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -68,8 +80,7 @@
 
     
     <p>        class
-    <strong>RecursiveCachingIterator</strong>        extends <a href="CachingIterator.html">CachingIterator</a>        implements
-        <a href="RecursiveIterator.html">RecursiveIterator</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL.php">View source</a>)
+    <strong>RecursiveCachingIterator</strong>        extends <a href="CachingIterator.html">CachingIterator</a>        implements        <a href="RecursiveIterator.html">RecursiveIterator</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL.php">View source</a>)
 </p>
 
         
@@ -77,7 +88,7 @@
         
 
             <div class="description">
-                        <p><p>...</p></p>        </div>
+                        <p>...</p>        </div>
             
         
             <h2>Constants</h2>    <table class="table table-condensed">
@@ -147,14 +158,14 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a> $iterator, int $flags = self::CALL_TOSTRING)
+                    <a href="#method___construct">__construct</a>(<a href="Traversable.html">Traversable</a> $iterator, int $flags = self::CALL_TOSTRING)
         
                                             <p><p>Constructs a new RecursiveCachingIterator.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a>|null
+                    <a href="Iterator.html">Iterator</a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getInnerIterator">getInnerIterator</a>()
@@ -278,7 +289,7 @@ CachingIterator</a></small></div>
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetSet">offsetSet</a>(string $key, string $value)
+                    <a href="#method_offsetSet">offsetSet</a>(string $key, TValue $value)
         
                                             <p><p>Set an element on the internal cache array.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="CachingIterator.html#method_offsetSet">
@@ -358,7 +369,7 @@ CachingIterator</a></small></div>
                     <h3 id="method___construct">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL.php#L937">at line 937</a></div>
         <code>                    
-    <strong>__construct</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a> $iterator, int $flags = self::CALL_TOSTRING)
+    <strong>__construct</strong>(<a href="Traversable.html">Traversable</a> $iterator, int $flags = self::CALL_TOSTRING)
         </code>
     </h3>
     <div class="details">    
@@ -373,7 +384,7 @@ CachingIterator</a></small></div>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a></td>
+                <td><a href="Traversable.html">Traversable</a></td>
                 <td>$iterator</td>
                 <td></td>
             </tr>
@@ -396,7 +407,7 @@ CachingIterator</a></small></div>
                     <h3 id="method_getInnerIterator">
         <div class="location">in <a href="CachingIterator.html#method_getInnerIterator">
 CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL.php#L845">at line 845</a></div>
-        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a>|null
+        <code>                    <a href="Iterator.html">Iterator</a>|null
     <strong>getInnerIterator</strong>()
         </code>
     </h3>
@@ -413,7 +424,7 @@ CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
 
                     <table class="table table-condensed">
         <tr>
-            <td><a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a>|null</td>
+            <td><a href="Iterator.html">Iterator</a>|null</td>
             <td><p>The inner iterator for the current entry.</p></td>
         </tr>
     </table>
@@ -447,7 +458,7 @@ CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td></td>
+            <td><p>Any returned value is ignored.</p></td>
         </tr>
     </table>
 
@@ -480,7 +491,8 @@ CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>true if the iterator is valid, otherwise false</p></td>
+            <td><p>The return value will be casted to boolean and then evaluated.
+Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -513,7 +525,7 @@ CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>The key of the current element.</p></td>
+            <td><p>TKey on success, or null on failure.</p></td>
         </tr>
     </table>
 
@@ -546,7 +558,7 @@ CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>The value of the current element.</p></td>
+            <td><p>Can return any type.</p></td>
         </tr>
     </table>
 
@@ -579,7 +591,7 @@ CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td></td>
+            <td><p>Any returned value is ignored.</p></td>
         </tr>
     </table>
 
@@ -645,7 +657,8 @@ CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td><p>The string representation of the current iteration based on the flag being used.</p></td>
+            <td><p>Returns string representation of the object that
+implements this interface (and/or &quot;__toString&quot; magic method).</p></td>
         </tr>
     </table>
 
@@ -764,7 +777,7 @@ CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td></td>
+            <td><p>Can return all value types.</p></td>
         </tr>
     </table>
 
@@ -774,7 +787,7 @@ CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="BadMethodCallException.html">BadMethodCallException</a></td>
-                <td><p>when the {<a href="https://www.php.net/CachingIterator">CachingIterator</a> flag is not being used.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -789,7 +802,7 @@ CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         <div class="location">in <a href="CachingIterator.html#method_offsetSet">
 CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL.php#L882">at line 882</a></div>
         <code>                    void
-    <strong>offsetSet</strong>(string $key, string $value)
+    <strong>offsetSet</strong>(string $key, TValue $value)
         </code>
     </h3>
     <div class="details">    
@@ -809,9 +822,11 @@ CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                 <td><p>The index of the element to be set.</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>TValue</td>
                 <td>$value</td>
-                <td><p>The new value for the <i>index</i>.</p></td>
+                <td><p>
+The value to set.
+</p></td>
             </tr>
             </table>
 
@@ -831,7 +846,7 @@ CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="BadMethodCallException.html">BadMethodCallException</a></td>
-                <td><p>when the {<a href="https://www.php.net/CachingIterator">CachingIterator</a> flag is not being used.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -883,7 +898,7 @@ CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="BadMethodCallException.html">BadMethodCallException</a></td>
-                <td><p>when the {<a href="https://www.php.net/CachingIterator">CachingIterator</a> flag is not being used.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -925,7 +940,10 @@ CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p>true if an entry referenced by the offset exists, false otherwise.</p></td>
+            <td><p>true on success or false on failure.
+</p></p>
+<p>
+The return value will be casted to boolean if non-boolean was returned.</td>
         </tr>
     </table>
 
@@ -935,7 +953,7 @@ CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="BadMethodCallException.html">BadMethodCallException</a></td>
-                <td><p>when the {<a href="https://www.php.net/CachingIterator">CachingIterator</a> flag is not being used.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -977,7 +995,7 @@ CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="BadMethodCallException.html">BadMethodCallException</a></td>
-                <td><p>when the {<a href="https://www.php.net/CachingIterator">CachingIterator</a> flag is not being used.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1010,7 +1028,10 @@ CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td><p>The count of the elements iterated over.</p></td>
+            <td><p>The custom count as an integer.</p>
+<p>
+The return value is cast to an integer.
+</p></td>
         </tr>
     </table>
 
@@ -1020,7 +1041,7 @@ CachingIterator</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="BadMethodCallException.html">BadMethodCallException</a></td>
-                <td><p>when the {<a href="https://www.php.net/CachingIterator">CachingIterator</a> flag is not being used.</p></td>
+                <td></td>
             </tr>
             </table>
 

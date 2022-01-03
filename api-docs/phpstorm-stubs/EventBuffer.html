@@ -10,25 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 
     </head>
 
-    <body id="class" data-name="class:EventBuffer" data-root-path="">
+    <body id="class" data-name="class:EventBuffer" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -49,7 +61,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="classes.html">Classes</a></li>
                     <li><a href="namespaces.html">Namespaces</a></li>
                     <li><a href="interfaces.html">Interfaces</a></li>
                     <li><a href="traits.html">Traits</a></li>
@@ -76,7 +88,7 @@
         
 
             <div class="description">
-            <p><p>EventBuffer.</p></p>            <p><p>EventBuffer represents Libevent's &quot;evbuffer&quot;, an utility functionality for buffered I/O.
+            <p>EventBuffer.</p>            <p><p>EventBuffer represents Libevent's &quot;evbuffer&quot;, an utility functionality for buffered I/O.
 Event buffers are meant to be generally useful for doing the &quot;buffer&quot; part of buffered network I/O.</p></p>        </div>
             
         
@@ -181,7 +193,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method___construct">__construct</a>()
         
-                                            <p><p>__construct.</p></p>                </div>
+                                            <p>__construct.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -191,7 +203,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_add">add</a>(string $data)
         
-                                            <p><p>add.</p></p>                </div>
+                                            <p>add.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -201,7 +213,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_addBuffer">addBuffer</a>(<a href="EventBuffer.html">EventBuffer</a> $buf)
         
-                                            <p><p>addBuffer.</p></p>                </div>
+                                            <p>addBuffer.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -211,7 +223,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_appendFrom">appendFrom</a>(<a href="EventBuffer.html">EventBuffer</a> $buf, int $len)
         
-                                            <p><p>appendFrom.</p></p>                </div>
+                                            <p>appendFrom.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -221,7 +233,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_copyout">copyout</a>(string $data, int $max_bytes)
         
-                                            <p><p>copyout.</p></p>                </div>
+                                            <p>copyout.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -231,7 +243,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_drain">drain</a>(int $len)
         
-                                            <p><p>drain.</p></p>                </div>
+                                            <p>drain.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -241,7 +253,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_enableLocking">enableLocking</a>()
         
-                                            <p><p>enableLocking.</p></p>                </div>
+                                            <p>enableLocking.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -251,7 +263,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_expand">expand</a>(int $len)
         
-                                            <p><p>expand.</p></p>                </div>
+                                            <p>expand.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -261,7 +273,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_freeze">freeze</a>(bool $at_front)
         
-                                            <p><p>freeze.</p></p>                </div>
+                                            <p>freeze.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -271,7 +283,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_lock">lock</a>()
         
-                                            <p><p>lock.</p></p>                </div>
+                                            <p>lock.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -281,7 +293,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_prepend">prepend</a>(string $data)
         
-                                            <p><p>prepend.</p></p>                </div>
+                                            <p>prepend.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -291,7 +303,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_prependBuffer">prependBuffer</a>(<a href="EventBuffer.html">EventBuffer</a> $buf)
         
-                                            <p><p>prependBuffer.</p></p>                </div>
+                                            <p>prependBuffer.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -301,7 +313,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_pullup">pullup</a>(int $size)
         
-                                            <p><p>pullup.</p></p>                </div>
+                                            <p>pullup.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -311,7 +323,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_read">read</a>(int $max_bytes)
         
-                                            <p><p>read.</p></p>                </div>
+                                            <p>read.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -321,7 +333,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_readFrom">readFrom</a>(mixed $fd, int $howmuch)
         
-                                            <p><p>readFrom.</p></p>                </div>
+                                            <p>readFrom.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -331,7 +343,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_readLine">readLine</a>(int $eol_style)
         
-                                            <p><p>readLine.</p></p>                </div>
+                                            <p>readLine.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -341,7 +353,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_search">search</a>(string $what, int $start = 1, int $end = 1)
         
-                                            <p><p>search.</p></p>                </div>
+                                            <p>search.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -351,7 +363,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_searchEol">searchEol</a>(int $start = 1, int $eol_style = EventBuffer::EOL_ANY)
         
-                                            <p><p>searchEol.</p></p>                </div>
+                                            <p>searchEol.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -361,7 +373,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_substr">substr</a>(int $start, int $length)
         
-                                            <p><p>substr.</p></p>                </div>
+                                            <p>substr.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -371,7 +383,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_unfreeze">unfreeze</a>(bool $at_front)
         
-                                            <p><p>unfreeze.</p></p>                </div>
+                                            <p>unfreeze.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -381,7 +393,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_unlock">unlock</a>()
         
-                                            <p><p>unlock.</p></p>                </div>
+                                            <p>unlock.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -391,7 +403,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                 <div class="col-md-8">
                     <a href="#method_write">write</a>(mixed $fd, int $howmuch)
         
-                                            <p><p>write.</p></p>                </div>
+                                            <p>write.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -412,7 +424,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>__construct.</p></p>                <p><p>Constructs EventBuffer object.</p></p>        
+                            <p>__construct.</p>                <p><p>Constructs EventBuffer object.</p></p>        
         </div>
         <div class="tags">
             
@@ -446,7 +458,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>add.</p></p>                <p><p>Append data to the end of an event buffer.</p></p>        
+                            <p>add.</p>                <p><p>Append data to the end of an event buffer.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -499,7 +511,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>addBuffer.</p></p>                <p><p>Move all data from a buffer provided to the current instance of EventBuffer.</p></p>        
+                            <p>addBuffer.</p>                <p><p>Move all data from a buffer provided to the current instance of EventBuffer.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -552,7 +564,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>appendFrom.</p></p>                <p><p>Moves the specified number of bytes from a source buffer to the end of the current buffer.</p></p>        
+                            <p>appendFrom.</p>                <p><p>Moves the specified number of bytes from a source buffer to the end of the current buffer.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -610,7 +622,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>copyout.</p></p>                <p><p>Copies out specified number of bytes from the front of the buffer.</p></p>        
+                            <p>copyout.</p>                <p><p>Copies out specified number of bytes from the front of the buffer.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -668,7 +680,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>drain.</p></p>                <p><p>Removes specified number of bytes from the front of the buffer without copying it anywhere.</p></p>        
+                            <p>drain.</p>                <p><p>Removes specified number of bytes from the front of the buffer without copying it anywhere.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -721,7 +733,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>enableLocking.</p></p>                        
+                            <p>enableLocking.</p>                        
         </div>
         <div class="tags">
             
@@ -764,7 +776,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>expand.</p></p>                <p><p>Reserves space in buffer.</p></p>        
+                            <p>expand.</p>                <p><p>Reserves space in buffer.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -817,7 +829,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>freeze.</p></p>                <p><p>Prevent calls that modify an event buffer from succeeding.</p></p>        
+                            <p>freeze.</p>                <p><p>Prevent calls that modify an event buffer from succeeding.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -870,7 +882,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>lock.</p></p>                <p><p>Acquires a lock on buffer.</p></p>        
+                            <p>lock.</p>                <p><p>Acquires a lock on buffer.</p></p>        
         </div>
         <div class="tags">
             
@@ -913,7 +925,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>prepend.</p></p>                <p><p>Prepend data to the front of the buffer.</p></p>        
+                            <p>prepend.</p>                <p><p>Prepend data to the front of the buffer.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -966,7 +978,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>prependBuffer.</p></p>                <p><p>Moves all data from source buffer to the front of current buffer.</p></p>        
+                            <p>prependBuffer.</p>                <p><p>Moves all data from source buffer to the front of current buffer.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1019,7 +1031,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>pullup.</p></p>                <p><p>Linearizes data within buffer and returns it's contents as a string.</p></p>        
+                            <p>pullup.</p>                <p><p>Linearizes data within buffer and returns it's contents as a string.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1072,7 +1084,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>read.</p></p>                <p><p>Read data from an evbuffer and drain the bytes read.</p></p>        
+                            <p>read.</p>                <p><p>Read data from an evbuffer and drain the bytes read.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1114,7 +1126,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>readFrom.</p></p>                <p><p>Read data from a file onto the end of the buffer.</p></p>        
+                            <p>readFrom.</p>                <p><p>Read data from a file onto the end of the buffer.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1172,7 +1184,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>readLine.</p></p>                <p><p>Extracts a line from the front of the buffer.</p></p>        
+                            <p>readLine.</p>                <p><p>Extracts a line from the front of the buffer.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1225,7 +1237,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>search.</p></p>                <p><p>Scans the buffer for an occurrence of a string.</p></p>        
+                            <p>search.</p>                <p><p>Scans the buffer for an occurrence of a string.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1288,7 +1300,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>searchEol.</p></p>                <p><p>Scans the buffer for an occurrence of an end of line.</p></p>        
+                            <p>searchEol.</p>                <p><p>Scans the buffer for an occurrence of an end of line.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1346,7 +1358,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>substr.</p></p>                <p><p>Substracts a portion of the buffer data.</p></p>        
+                            <p>substr.</p>                <p><p>Substracts a portion of the buffer data.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1360,7 +1372,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                     <tr>
                 <td>int</td>
                 <td>$length</td>
-                <td><p>(optional)</p></td>
+                <td>(optional)</td>
             </tr>
             </table>
 
@@ -1404,7 +1416,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>unfreeze.</p></p>                <p><p>Re-enable calls that modify an event buffer.</p></p>        
+                            <p>unfreeze.</p>                <p><p>Re-enable calls that modify an event buffer.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1457,7 +1469,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>unlock.</p></p>                <p><p>Releases lock acquired by EventBuffer::lock.</p></p>        
+                            <p>unlock.</p>                <p><p>Releases lock acquired by EventBuffer::lock.</p></p>        
         </div>
         <div class="tags">
             
@@ -1500,7 +1512,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
             
 
         <div class="method-description">
-                            <p><p>write.</p></p>                <p><p>Write contents of the buffer to a file or socket.</p></p>        
+                            <p>write.</p>                <p><p>Write contents of the buffer to a file or socket.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1514,7 +1526,7 @@ Event buffers are meant to be generally useful for doing the &quot;buffer&quot; 
                     <tr>
                 <td>int</td>
                 <td>$howmuch</td>
-                <td><p>(optional)</p></td>
+                <td>(optional)</td>
             </tr>
             </table>
 
