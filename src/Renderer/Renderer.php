@@ -378,7 +378,7 @@ class Renderer
                     ];
                 }
                 $items[]          = $nsItem;
-                $interfaceMethods = array_values($interface->getMethods())
+                $interfaceMethods = array_values($interface->getMethods());
                 if (count($interfaceMethods) > 0) {
                     array_push($methods, ...$interfaceMethods);
                 }
