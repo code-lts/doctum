@@ -23,7 +23,12 @@
     </form>
 
     <h2 id="search-results-header">{% trans 'Search Results' %}</h2>
-
+    <div class="search-bar hidden" id="search-page-progress-bar-container">
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" id="search-page-progress-bar"
+                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+        </div>
+    </div>
     <div class="container-fluid" id="search-results-container">
     </div>
 
@@ -34,10 +39,16 @@
 {% block js_search %}
     <script type="text/javascript">
         var DoctumSearch = {
+            /** @var boolean */
+            pageFullyLoaded: false,
             /** @var string|null */
             searchTerm: null,
             /** @var autoComplete|null */
             autoCompleteJS: null,
+            /** @var HTMLElement|null */
+            doctumSearchPageAutoCompleteProgressBarContainer: null,
+            /** @var HTMLElement|null */
+            doctumSearchPageAutoCompleteProgressBar: null,
             searchTypeClasses: {
                 '{{ 'Namespace'|trans|escape('js') }}': 'label-default',
                 '{{ 'Class'|trans|escape('js') }}': 'label-info',
@@ -88,11 +99,21 @@
             },
             pageFullyLoaded: function (event) {// Will get fired by the main doctum.js script
                 DoctumSearch.searchTerm = DoctumSearch.cleanSearchTerm();
+                DoctumSearch.doctumSearchPageAutoCompleteProgressBarContainer = document.getElementById('search-page-progress-bar-container');
+                DoctumSearch.doctumSearchPageAutoCompleteProgressBar = document.getElementById('search-page-progress-bar');
+                DoctumSearch.pageFullyLoaded = true;
                 DoctumSearch.launchSearch();
             },
+            showNoResults: function() {
+                document.getElementById('search-results-container').innerText = '{{ 'No results were found'|trans|escape('js') }}';
+            },
             launchSearch: function (event) {
-                if (! DoctumSearch.searchTerm) {
-                    document.getElementById('search-results-header').class = 'hidden';
+                if (
+                    DoctumSearch.searchTerm === null
+                    || (typeof DoctumSearch.searchTerm === 'string' && DoctumSearch.searchTerm.length === 0)
+                    || typeof DoctumSearch.searchTerm !== 'string'
+                ) {
+                    document.getElementById('search-results-header').className = 'hidden';
                     // Stop the process here
                     return;
                 }
@@ -182,8 +203,7 @@
                 DoctumSearch.autoCompleteJS.unInit();// Stop the work, wait for the user to hit submit
                 document.getElementById('search').addEventListener('results', function (event) {
                     if (event.detail.results.length === 0) {
-                        // TODO: here
-                        // container.html('{% trans 'No results were found'%}');
+                        DoctumSearch.showNoResults();
                     }
                 });
             }
