@@ -159,11 +159,19 @@ var Doctum = {
             }
             Doctum.doctumSearchAutoCompleteProgressBarContainer.className = 'search-bar';
             Doctum.doctumSearchAutoCompleteProgressBar.className = 'progress-bar indeterminate';
+            if (typeof DoctumSearch === 'object' && DoctumSearch.pageFullyLoaded) {
+                DoctumSearch.doctumSearchPageAutoCompleteProgressBarContainer.className = 'search-bar';
+                DoctumSearch.doctumSearchPageAutoCompleteProgressBar.className = 'progress-bar indeterminate';
+            }
             function reqListener() {
                 Doctum.autoCompleteLoading = false;
                 Doctum.autoCompleteData = JSON.parse(this.responseText).items;
                 Doctum.doctumSearchAutoCompleteProgressBarContainer.className = 'search-bar hidden';
                 Doctum.doctumSearchAutoCompleteProgressBar.className = 'progress-bar';
+                if (typeof DoctumSearch === 'object' && DoctumSearch.pageFullyLoaded) {
+                    DoctumSearch.doctumSearchPageAutoCompleteProgressBarContainer.className = 'search-bar hidden';
+                    DoctumSearch.doctumSearchPageAutoCompleteProgressBar.className = 'progress-bar';
+                }
 
                 resolve(Doctum.autoCompleteData);
             }
@@ -179,21 +187,45 @@ var Doctum = {
             oReq.onerror = reqError;
             oReq.onprogress = function (pe) {
                 if (pe.lengthComputable) {
-                Doctum.doctumSearchAutoCompleteProgressBar.className = 'progress-bar';
                     Doctum.doctumSearchAutoCompleteProgressBarPercent = parseInt(pe.loaded / pe.total * 100, 10);
-                    Doctum.doctumSearchAutoCompleteProgressBar.style.width = Doctum.doctumSearchAutoCompleteProgressBarPercent + '%';
-                    Doctum.doctumSearchAutoCompleteProgressBar.setAttribute(
-                        'aria-valuenow', Doctum.doctumSearchAutoCompleteProgressBarPercent
+                    Doctum.makeProgressOnProgressBar(
+                        Doctum.doctumSearchAutoCompleteProgressBarPercent,
+                        Doctum.doctumSearchAutoCompleteProgressBar
                     );
+                    if (typeof DoctumSearch === 'object' && DoctumSearch.pageFullyLoaded) {
+                        Doctum.makeProgressOnProgressBar(
+                            Doctum.doctumSearchAutoCompleteProgressBarPercent,
+                            DoctumSearch.doctumSearchPageAutoCompleteProgressBar
+                        );
+                    }
                 }
             }
             oReq.onloadend = function (_) {
                 Doctum.doctumSearchAutoCompleteProgressBarContainer.className = 'search-bar hidden';
                 Doctum.doctumSearchAutoCompleteProgressBar.className = 'progress-bar';
+                if (typeof DoctumSearch === 'object' && DoctumSearch.pageFullyLoaded) {
+                    DoctumSearch.doctumSearchPageAutoCompleteProgressBarContainer.className = 'search-bar hidden';
+                    DoctumSearch.doctumSearchPageAutoCompleteProgressBar.className = 'progress-bar';
+                }
             }
             oReq.open('get', Doctum.autoCompleteDataUrl, true);
             oReq.send();
         });
+    },
+    /**
+     * Make some progress on a progress bar
+     *
+     * @param number percentage
+     * @param HTMLElement progressBar
+     * @return void
+     */
+    makeProgressOnProgressBar: function(percentage, progressBar) {
+        progressBar.className = 'progress-bar';
+        progressBar.style.width = percentage + '%';
+        progressBar.setAttribute(
+            'aria-valuenow', percentage
+        );
+
     },
     bootAutoComplete: function () {
         Doctum.autoCompleteJS = new autoComplete(
