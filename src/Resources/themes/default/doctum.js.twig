@@ -145,11 +145,8 @@ var Doctum = {
             Doctum.doctumSearchAutoComplete.addEventListener('init', function (_) {
                 Doctum.autoCompleteLoaded = true;
                 Doctum.doctumSearchAutoComplete.addEventListener('selection', function (event) {
-                    // Set selection in text box
-                    if (typeof event.detail.selection.value === 'object') {
-                        Doctum.doctumSearchAutoComplete.value = event.detail.selection.value.n;
-                    }
-                    document.getElementById('search-form').submit();
+                    // Go to selection page
+                    window.location = Doctum.rootPath + event.detail.selection.value.p;
                 });
                 Doctum.doctumSearchAutoComplete.addEventListener('navigate', function (event) {
                     // Set selection in text box
@@ -267,7 +264,7 @@ var Doctum = {
             Data: net_sample, ample, glamples, notDateSa
             Result <mark>n</mark>e<mark>t</mark>_<mark>sa</mark>mple, <mark>n</mark>o<mark>t</mark>Da<mark>t</mark>e<mark>Sa</mark>
         #}
-        {% verbatim %}
+        {%- verbatim %}
         if (record.match(new RegExp('(' + query.replace(/\s/g, ').*(') + ')', 'gi')) === null) {
             return '';// Does not match
         }
