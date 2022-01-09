@@ -160,7 +160,8 @@
                 return DoctumSearch.longTypes[type] || DoctumSearch.longTypes['_'];
             },
             pageFullyLoaded: function (event) {// Will get fired by the main doctum.js script
-                DoctumSearch.searchTerm = Doctum.cleanSearchQuery(DoctumSearch.cleanSearchTerm());
+                DoctumSearch.searchTerm = DoctumSearch.cleanSearchTerm();
+                DoctumSearch.searchTermForEngine = Doctum.cleanSearchQuery(DoctumSearch.searchTerm);
                 DoctumSearch.doctumSearchPageAutoCompleteProgressBarContainer = document.getElementById('search-page-progress-bar-container');
                 DoctumSearch.doctumSearchPageAutoCompleteProgressBar = document.getElementById('search-page-progress-bar');
                 DoctumSearch.pageFullyLoaded = true;
@@ -171,15 +172,16 @@
             },
             launchSearch: function (event) {
                 if (
-                    DoctumSearch.searchTerm === null
-                    || (typeof DoctumSearch.searchTerm === 'string' && DoctumSearch.searchTerm.length === 0)
-                    || typeof DoctumSearch.searchTerm !== 'string'
+                    DoctumSearch.searchTermForEngine === null
+                    || (typeof DoctumSearch.searchTermForEngine === 'string' && DoctumSearch.searchTermForEngine.length === 0)
+                    || typeof DoctumSearch.searchTermForEngine !== 'string'
                 ) {
                     document.getElementById('search-results-header').className = 'hidden';
                     // Stop the process here
                     return;
                 }
-                document.getElementById('search').value = DoctumSearch.searchTerm;
+                // Set back backslashes to non escaped backslashes
+                document.getElementById('search').value = DoctumSearch.searchTermForEngine.replace(/\\\\/g, '\\');
 
                 // Check if the lib is loaded
                 if (typeof autoComplete === 'function') {
