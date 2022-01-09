@@ -128,7 +128,9 @@
                 DoctumSearch.autoCompleteJS = new autoComplete(
                     {
                         selector: '#search',
-                        searchEngine: 'loose',
+                        searchEngine: function (query, record) {
+                            return Doctum.searchEngine(query, record);
+                        },
                         submit: true,
                         data: {
                             src: function (q) {
@@ -137,12 +139,15 @@
                             keys: ['n'],// Data 'Object' key to be searched
                             cache: false, // Is not compatible with async fetch of data
                         },
+                        query: (input) => {
+                            return Doctum.cleanSearchQuery(input);
+                        },
                         resultsList: {
                             tag: 'ul',
                             class: 'search-results',
                             destination: '#search-results-container',
                             position: 'afterbegin',
-                            maxResults: 99999,
+                            maxResults: 500,
                             noResults: false,
                         },
                         resultItem: {
@@ -199,9 +204,11 @@
                         },
                     }
                 );
+                Doctum.markInProgress();
                 DoctumSearch.autoCompleteJS.start(DoctumSearch.searchTerm);
                 DoctumSearch.autoCompleteJS.unInit();// Stop the work, wait for the user to hit submit
                 document.getElementById('search').addEventListener('results', function (event) {
+                    Doctum.markProgressFinished();
                     if (event.detail.results.length === 0) {
                         DoctumSearch.showNoResults();
                     }

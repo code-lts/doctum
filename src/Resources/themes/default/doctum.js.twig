@@ -24,6 +24,7 @@ var Doctum = {
     doctumSearchAutoCompleteProgressBarPercent: 0,
     /** @var autoComplete|null */
     autoCompleteJS: null,
+    querySearchSecurityRegex: /([^a-zA-Z:\\\\_\s])/gi,
     buildTreeNode: function (treeNode, htmlNode, treeOpenLevel) {
         var ulNode = document.createElement('ul');
         for (var childKey in treeNode.c) {
@@ -151,10 +152,14 @@ var Doctum = {
                     document.getElementById('search-form').submit();
                 });
                 Doctum.doctumSearchAutoComplete.addEventListener('navigate', function (event) {
+                    Doctum.markInProgress();
                     // Set selection in text box
                     if (typeof event.detail.selection.value === 'object') {
                         Doctum.doctumSearchAutoComplete.value = event.detail.selection.value.n;
                     }
+                });
+                Doctum.doctumSearchAutoComplete.addEventListener('results', function (event) {
+                    Doctum.markProgressFinished();
                 });
             });
         }
@@ -163,29 +168,49 @@ var Doctum = {
             Doctum.bootAutoComplete();
         }
     },
-    loadAutoCompleteData: function (query) {
-        return new Promise(function (resolve, reject) {
-            if (Doctum.autoCompleteData !== null) {
-                resolve(Doctum.autoCompleteData);
-                return;
-            }
+    markInProgress: function () {
             Doctum.doctumSearchAutoCompleteProgressBarContainer.className = 'search-bar';
             Doctum.doctumSearchAutoCompleteProgressBar.className = 'progress-bar indeterminate';
             if (typeof DoctumSearch === 'object' && DoctumSearch.pageFullyLoaded) {
                 DoctumSearch.doctumSearchPageAutoCompleteProgressBarContainer.className = 'search-bar';
                 DoctumSearch.doctumSearchPageAutoCompleteProgressBar.className = 'progress-bar indeterminate';
             }
+    },
+    markProgressFinished: function () {
+        Doctum.doctumSearchAutoCompleteProgressBarContainer.className = 'search-bar hidden';
+        Doctum.doctumSearchAutoCompleteProgressBar.className = 'progress-bar';
+        if (typeof DoctumSearch === 'object' && DoctumSearch.pageFullyLoaded) {
+            DoctumSearch.doctumSearchPageAutoCompleteProgressBarContainer.className = 'search-bar hidden';
+            DoctumSearch.doctumSearchPageAutoCompleteProgressBar.className = 'progress-bar';
+        }
+    },
+    makeProgess: function () {
+        Doctum.makeProgressOnProgressBar(
+            Doctum.doctumSearchAutoCompleteProgressBarPercent,
+            Doctum.doctumSearchAutoCompleteProgressBar
+        );
+        if (typeof DoctumSearch === 'object' && DoctumSearch.pageFullyLoaded) {
+            Doctum.makeProgressOnProgressBar(
+                Doctum.doctumSearchAutoCompleteProgressBarPercent,
+                DoctumSearch.doctumSearchPageAutoCompleteProgressBar
+            );
+        }
+    },
+    loadAutoCompleteData: function (query) {
+        return new Promise(function (resolve, reject) {
+            if (Doctum.autoCompleteData !== null) {
+                resolve(Doctum.autoCompleteData);
+                return;
+            }
+            Doctum.markInProgress();
             function reqListener() {
                 Doctum.autoCompleteLoading = false;
                 Doctum.autoCompleteData = JSON.parse(this.responseText).items;
-                Doctum.doctumSearchAutoCompleteProgressBarContainer.className = 'search-bar hidden';
-                Doctum.doctumSearchAutoCompleteProgressBar.className = 'progress-bar';
-                if (typeof DoctumSearch === 'object' && DoctumSearch.pageFullyLoaded) {
-                    DoctumSearch.doctumSearchPageAutoCompleteProgressBarContainer.className = 'search-bar hidden';
-                    DoctumSearch.doctumSearchPageAutoCompleteProgressBar.className = 'progress-bar';
-                }
+                Doctum.markProgressFinished();
 
-                resolve(Doctum.autoCompleteData);
+                setTimeout(function () {
+                    resolve(Doctum.autoCompleteData);
+                }, 50);// Let the UI render once before sending the results for processing. This gives time to the progress bar to hide
             }
             function reqError(err) {
                 Doctum.autoCompleteLoading = false;
@@ -200,26 +225,12 @@ var Doctum = {
             oReq.onprogress = function (pe) {
                 if (pe.lengthComputable) {
                     Doctum.doctumSearchAutoCompleteProgressBarPercent = parseInt(pe.loaded / pe.total * 100, 10);
-                    Doctum.makeProgressOnProgressBar(
-                        Doctum.doctumSearchAutoCompleteProgressBarPercent,
-                        Doctum.doctumSearchAutoCompleteProgressBar
-                    );
-                    if (typeof DoctumSearch === 'object' && DoctumSearch.pageFullyLoaded) {
-                        Doctum.makeProgressOnProgressBar(
-                            Doctum.doctumSearchAutoCompleteProgressBarPercent,
-                            DoctumSearch.doctumSearchPageAutoCompleteProgressBar
-                        );
-                    }
+                    Doctum.makeProgess();
                 }
-            }
+            };
             oReq.onloadend = function (_) {
-                Doctum.doctumSearchAutoCompleteProgressBarContainer.className = 'search-bar hidden';
-                Doctum.doctumSearchAutoCompleteProgressBar.className = 'progress-bar';
-                if (typeof DoctumSearch === 'object' && DoctumSearch.pageFullyLoaded) {
-                    DoctumSearch.doctumSearchPageAutoCompleteProgressBarContainer.className = 'search-bar hidden';
-                    DoctumSearch.doctumSearchPageAutoCompleteProgressBar.className = 'progress-bar';
-                }
-            }
+                Doctum.markProgressFinished();
+            };
             oReq.open('get', Doctum.autoCompleteDataUrl, true);
             oReq.send();
         });
@@ -237,27 +248,78 @@ var Doctum = {
         progressBar.setAttribute(
             'aria-valuenow', percentage
         );
+    },
+    searchEngine: function (query, record) {
+        if (typeof query !== 'string') {
+            return '';
+        }
+        // replace all (mode = g) spaces and non breaking spaces (\s) by pipes
+        // g = global mode to mark also the second word searched
+        // i = case insensitive
+        // how this function works:
+        // First: search if the query has the keywords in sequence
+        // Second: replace the keywords by a mark and leave all the text in between non marked
+        {% endverbatim -%}
+        {#
+            Case 1: search for "net sample"
+            Data: net_sample
+            Result <mark>net</mark>_<mark>sample</mark>
+            Case 1: search for "n t sa"
+            Data: net_sample, ample, glamples, notDateSa
+            Result <mark>n</mark>e<mark>t</mark>_<mark>sa</mark>mple, <mark>n</mark>o<mark>t</mark>Da<mark>t</mark>e<mark>Sa</mark>
+        #}
+        {% verbatim %}
+        if (record.match(new RegExp('(' + query.replace(/\s/g, ').*(') + ')', 'gi')) === null) {
+            return '';// Does not match
+        }
 
+        var replacedRecord = record.replace(new RegExp('(' + query.replace(/\s/g, '|') + ')', 'gi'), function (group) {
+            return '<mark class="auto-complete-highlight">' + group + '</mark>';
+        });
+
+        if (replacedRecord !== record) {
+            return replacedRecord;// This should not happen but just in case there was no match done
+        }
+
+        return '';
+    },
+    /**
+     * Clean the search query
+     *
+     * @param string query
+     * @return string
+     */
+    cleanSearchQuery: function (query) {
+        // replace any chars that could lead to injecting code in our regex
+        // remove start or end spaces
+        // replace backslashes by an escaped version, use case in search: \myRootFunction
+        return query.replace(Doctum.querySearchSecurityRegex, '').trim().replace(/\\/g, '\\\\');
     },
     bootAutoComplete: function () {
         Doctum.autoCompleteJS = new autoComplete(
             {
                 selector: '#doctum-search-auto-complete',
-                searchEngine: 'loose',
+                searchEngine: function (query, record) {
+                    return Doctum.searchEngine(query, record);
+                },
                 submit: true,
                 data: {
                     src: function (q) {
+                        Doctum.markInProgress();
                         return Doctum.loadAutoCompleteData(q);
                     },
                     keys: ['n'],// Data 'Object' key to be searched
                     cache: false, // Is not compatible with async fetch of data
+                },
+                query: (input) => {
+                    return Doctum.cleanSearchQuery(input);
                 },
                 resultsList: {
                     tag: 'ul',
                     class: 'auto-complete-dropdown-menu',
                     destination: '#auto-complete-results',
                     position: 'afterbegin',
-                    maxResults: 99999,
+                    maxResults: 500,
                     noResults: false,
                 },
                 resultItem: {
