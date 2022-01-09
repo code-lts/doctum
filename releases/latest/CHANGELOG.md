@@ -1,4 +1,5 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
@@ -6,10 +7,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
+## [5.5.0] - 2022-01-09
+
+- Fixed PHP errors when non configuration file was given, now it displays the error message
+- Adjust error handler for PHP 8.0 silenced errors
+- Fix PHP 8.1 errors on ArrayAccess methods signatures
+- Fix HTML markup missing close tag `<a>` on a function in the global namespace
+- Fix a PHP error when the `@throws` tag is invalid
+- Fix some texts that got escaped into `<p>` tags when it was not worth it
+- Do not print the error summary for frozen versions (ex: git tags) and add CLI `--print-frozen-errors` to reverse this change
+- Implement source line and remote links on functions of the global namespace
+- Internal: rename `ClassTraverser` to `ProjectTraverser`
+- Internal: add "file" and "relative_file" property on cached file for a function
+- Themes: all calls to the `|desc(function)` filter will now need to add `|md_to_html` filter to convert the Markdown output to HTML
+- Allow to search for non class functions on the search box and search page
+- Added more strings to translate and updated the French translation
+- Fixed the HTML node `lang` attribute according to the currently used language
+- Added a version selector for small displays not having the left sidebar
+- Fixed CSS striping in the left sidebar having some off-alignment with the text on some browsers
+- `GitLabRemoteRepository` class now uses the separator `/-/` in source URLs, a new constructor parameter can change this back
+- `AbstractRemoteRepository` class now has types in the signatures
+- Filter out in a non case sensitive way the tags on `GitVersionCollection` class and document filtering on the README
+- Reduce the size of the tree, create a new class `TreeNode` and build the tree using JS code and not injected HTML code
+- Select the global namespace in the tree while viewing it
+- Disable "spellcheck", "autocorrect", "autocomplete" and "autocapitalize" on the search input
+- Completely refactor the search box to drop "typeahead.js" and replace it by "autocomplete.js"
+- Reduce the loading times by a lot by spliting out the search index into "doctum-search.json" and loading it only when needed
+- Fix missing namespaces in the global namespace for non namespace functions
+
 ## [5.4.1] - 2021-04-22
 
 - Fixed Search results descriptions render
-- Fixed PHP 8.0 usort does not want bool anymore on `GitVersionCollection` setups
+- Fixed PHP 8.0 `usort` does not want a boolean anymore on `GitVersionCollection` setups
 - Fixed CSS issues with method descriptions
 - Fixed phpdoc blocks render having `<code>` HTML tags
 - Fixed composer autoload warnings on PSR-4 classes
@@ -61,7 +90,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 _LTS release (PHP 7.1 only)_
 
 - Fixed Search results descriptions render
-- Fixed PHP 8.0 usort does not want bool anymore on `GitVersionCollection` setups
+- Fixed PHP 8.0 `usort` does not want a boolean anymore on `GitVersionCollection` setups
 - Fixed CSS issues with method descriptions
 - Fixed phpdoc blocks render having `<code>` HTML tags
 - Fixed composer autoload warnings on PSR-4 classes
