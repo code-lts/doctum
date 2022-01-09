@@ -160,7 +160,7 @@
                 return DoctumSearch.longTypes[type] || DoctumSearch.longTypes['_'];
             },
             pageFullyLoaded: function (event) {// Will get fired by the main doctum.js script
-                DoctumSearch.searchTerm = DoctumSearch.cleanSearchTerm();
+                DoctumSearch.searchTerm = Doctum.cleanSearchQuery(DoctumSearch.cleanSearchTerm());
                 DoctumSearch.doctumSearchPageAutoCompleteProgressBarContainer = document.getElementById('search-page-progress-bar-container');
                 DoctumSearch.doctumSearchPageAutoCompleteProgressBar = document.getElementById('search-page-progress-bar');
                 DoctumSearch.pageFullyLoaded = true;
@@ -203,6 +203,9 @@
                         },
                         query: (input) => {
                             return Doctum.cleanSearchQuery(input);
+                        },
+                        trigger: (query) => {
+                            return Doctum.cleanSearchQuery(query).length > 0;
                         },
                         resultsList: {
                             tag: 'ul',
