@@ -51,7 +51,7 @@ class TreeNode implements JsonSerializable
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-        if ($this->children === null) {
+        if ($this->children === null || $this->children === []) {
             return [
                 'l' => $this->level,
                 'n' => $this->name,
