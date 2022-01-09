@@ -133,11 +133,8 @@ var Doctum = {
             Doctum.doctumSearchAutoComplete.addEventListener('init', function (_) {
                 Doctum.autoCompleteLoaded = true;
                 Doctum.doctumSearchAutoComplete.addEventListener('selection', function (event) {
-                    // Set selection in text box
-                    if (typeof event.detail.selection.value === 'object') {
-                        Doctum.doctumSearchAutoComplete.value = event.detail.selection.value.n;
-                    }
-                    document.getElementById('search-form').submit();
+                    // Go to selection page
+                    window.location = Doctum.rootPath + event.detail.selection.value.p;
                 });
                 Doctum.doctumSearchAutoComplete.addEventListener('navigate', function (event) {
                     // Set selection in text box
@@ -246,7 +243,7 @@ var Doctum = {
         // how this function works:
         // First: search if the query has the keywords in sequence
         // Second: replace the keywords by a mark and leave all the text in between non marked
-                
+        
         if (record.match(new RegExp('(' + query.replace(/\s/g, ').*(') + ')', 'gi')) === null) {
             return '';// Does not match
         }
