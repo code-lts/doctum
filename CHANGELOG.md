@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Disable "spellcheck", "autocorrect", "autocomplete" and "autocapitalize" on the search input
 - Completely refactor the search box to drop "typeahead.js" and replace it by "autocomplete.js"
 - Reduce the loading times by a lot by spliting out the search index into "doctum-search.json" and loading it only when needed
+- Fix missing namespaces in the global namespace for non namespace functions
 
 ## [5.4.1] - 2021-04-22
 
