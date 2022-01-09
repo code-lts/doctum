@@ -200,6 +200,16 @@ class Project
         return array_keys($this->namespaces);
     }
 
+    public function addNamespace(string $namespace): void
+    {
+        $this->namespaces[$namespace] = $namespace;
+        // add sub-namespaces
+
+        while ($namespace = substr($namespace, 0, (int) strrpos($namespace, '\\'))) {
+            $this->namespaces[$namespace] = $namespace;
+        }
+    }
+
     /**
       * @return array<string,FunctionReflection>
       */
@@ -280,6 +290,7 @@ class Project
     {
         $this->functions[$fun->getNamespace()][$fun->getName()] = $fun;
         $fun->setProject($this);
+        $this->addNamespace($fun->getNamespace() ?? '');
     }
 
     public function addClass(ClassReflection $class): void
@@ -646,12 +657,7 @@ class Project
     {
         $name = $class->getName();
 
-        $this->namespaces[$class->getNamespace() ?? ''] = $class->getNamespace() ?? '';
-        // add sub-namespaces
-        $namespace = $class->getNamespace() ?? '';
-        while ($namespace = substr($namespace, 0, (int) strrpos($namespace, '\\'))) {
-            $this->namespaces[$namespace] = $namespace;
-        }
+        $this->addNamespace($class->getNamespace() ?? '');
 
         if ($class->isException()) {
             $this->namespaceExceptions[$class->getNamespace() ?? ''][$name] = $class;
