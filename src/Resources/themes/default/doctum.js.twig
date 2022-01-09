@@ -24,7 +24,7 @@ var Doctum = {
     doctumSearchAutoCompleteProgressBarPercent: 0,
     /** @var autoComplete|null */
     autoCompleteJS: null,
-    querySearchSecurityRegex: /([^a-zA-Z:\\\\_\s])/gi,
+    querySearchSecurityRegex: /([^0-9a-zA-Z:\\\\_\s])/gi,
     buildTreeNode: function (treeNode, htmlNode, treeOpenLevel) {
         var ulNode = document.createElement('ul');
         for (var childKey in treeNode.c) {
@@ -152,7 +152,6 @@ var Doctum = {
                     document.getElementById('search-form').submit();
                 });
                 Doctum.doctumSearchAutoComplete.addEventListener('navigate', function (event) {
-                    Doctum.markInProgress();
                     // Set selection in text box
                     if (typeof event.detail.selection.value === 'object') {
                         Doctum.doctumSearchAutoComplete.value = event.detail.selection.value.n;
@@ -313,6 +312,9 @@ var Doctum = {
                 },
                 query: (input) => {
                     return Doctum.cleanSearchQuery(input);
+                },
+                trigger: (query) => {
+                    return Doctum.cleanSearchQuery(query).length > 0;
                 },
                 resultsList: {
                     tag: 'ul',
