@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
+## [5.5.1] - 2022-02-17
+
+- Allow new/more versions of symfony (^5|^6)
+- Upgrade `phpdocumentor/reflection-docblock` to `~5.3`
+
 ## [5.5.0] - 2022-01-09
 
 - Fixed PHP errors when non configuration file was given, now it displays the error message
