@@ -52,7 +52,7 @@ class Doctum implements ArrayAccess
 {
     public const VERSION_MAJOR = 5;
     public const VERSION_MINOR = 5;
-    public const VERSION_PATCH = 0;
+    public const VERSION_PATCH = 1;
     public const IS_DEV        = false;
 
     //@phpstan-ignore-next-line
