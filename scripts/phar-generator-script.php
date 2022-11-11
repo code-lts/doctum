@@ -183,6 +183,7 @@ final class PharFilterIterator extends RecursiveFilterIterator
         'docs/cache',
     ];
 
+    #[\ReturnTypeWillChange]
     public function accept()
     {
         global $srcRoot;
