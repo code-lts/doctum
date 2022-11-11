@@ -279,7 +279,7 @@ $manifest = [
     'phar' => [
         'sha256' => $phar->getSignature()['hash'],
         'numberOfFiles' => $phar->count(),
-    ]
+    ],
 ];
 
 file_put_contents($buildRoot . '/manifest.json', json_encode($manifest, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));

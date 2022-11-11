@@ -37,8 +37,8 @@ class GitVersionCollectionTest extends AbstractTestCase
             ->withConsecutive(
                 [
                     [
-                        'tag'
-                    ]
+                        'tag',
+                    ],
                 ]
             )->willReturnOnConsecutiveCalls(
                 'RC' . "\n"
@@ -88,8 +88,8 @@ class GitVersionCollectionTest extends AbstractTestCase
             ->withConsecutive(
                 [
                     [
-                        'tag'
-                    ]
+                        'tag',
+                    ],
                 ]
             )->willReturnOnConsecutiveCalls(
                 'RC' . "\n"
@@ -154,8 +154,8 @@ class GitVersionCollectionTest extends AbstractTestCase
             ->withConsecutive(
                 [
                     [
-                        'tag'
-                    ]
+                        'tag',
+                    ],
                 ]
             )->willReturnOnConsecutiveCalls(
                 'RC' . "\n"
@@ -209,8 +209,8 @@ class GitVersionCollectionTest extends AbstractTestCase
             ->withConsecutive(
                 [
                     [
-                        'tag'
-                    ]
+                        'tag',
+                    ],
                 ]
             )->willReturnOnConsecutiveCalls(
                 'RC' . "\n"
@@ -272,8 +272,8 @@ class GitVersionCollectionTest extends AbstractTestCase
             ->withConsecutive(
                 [
                     [
-                        'tag'
-                    ]
+                        'tag',
+                    ],
                 ]
             )->willReturnOnConsecutiveCalls(
                 'RC' . "\n"
@@ -323,8 +323,8 @@ class GitVersionCollectionTest extends AbstractTestCase
             ->withConsecutive(
                 [
                     [
-                        'tag'
-                    ]
+                        'tag',
+                    ],
                 ]
             )->willReturnOnConsecutiveCalls(
                 'RC' . "\n"
@@ -375,8 +375,8 @@ class GitVersionCollectionTest extends AbstractTestCase
             ->withConsecutive(
                 [
                     [
-                        'tag'
-                    ]
+                        'tag',
+                    ],
                 ]
             )->willReturnOnConsecutiveCalls(
                 'RC' . "\n"
@@ -430,8 +430,8 @@ class GitVersionCollectionTest extends AbstractTestCase
             ->withConsecutive(
                 [
                     [
-                        'tag'
-                    ]
+                        'tag',
+                    ],
                 ]
             )->willReturnOnConsecutiveCalls(
                 'RC' . "\n"

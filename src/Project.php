@@ -469,7 +469,7 @@ class Project
                 'double',
                 'float',
                 'callable',
-                '$this'
+                '$this',
             ]
         );
     }

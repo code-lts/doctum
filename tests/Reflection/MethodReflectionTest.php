@@ -64,7 +64,7 @@ class MethodReflectionTest extends AbstractTestCase
                 [
                     'Drupal\\Component\\Plugin\\Exception\\InvalidPluginDefinitionException',
                     '',
-                ]
+                ],
             ],
             $exceptions
         );

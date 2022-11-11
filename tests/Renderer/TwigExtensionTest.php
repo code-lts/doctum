@@ -25,11 +25,11 @@ class TwigExtensionTest extends AbstractTestCase
         return [
             [
                 '',
-                ''
+                '',
             ],
             [
                 'text',
-                'text'
+                'text',
             ],
             [
                 '<p><p>text</p></p>',
@@ -37,37 +37,37 @@ class TwigExtensionTest extends AbstractTestCase
             ],
             [
                 '<p><p>some text</p></p>',
-                '<p><p>some text</p></p>'
+                '<p><p>some text</p></p>',
             ],
             [
                 'Constructor. Set DB Object and set {@link $return_statements return_statements}.',
-                'Constructor. Set DB Object and set $return_statements return_statements.'
+                'Constructor. Set DB Object and set $return_statements return_statements.',
             ],
             [
                 'Constructor. Set DB Object and set {@link $return_statements return_statements}',
-                'Constructor. Set DB Object and set $return_statements return_statements'
+                'Constructor. Set DB Object and set $return_statements return_statements',
             ],
             [
                 'Hi {@link \PDO}',
-                'Hi \PDO'
+                'Hi \PDO',
             ],
             [
                 'Hi {@link https://doctum.long-term.support}',
-                'Hi https://doctum.long-term.support'
+                'Hi https://doctum.long-term.support',
             ],
             [
                 'Hi {@link \PDO}',
                 'Hi [PDO](https://www.php.net/PDO)',
-                $ref1
+                $ref1,
             ],
             [
                 '@see \PDO',
-                '\PDO'
+                '\PDO',
             ],
             [
                 '@see \PDO',
                 '[PDO](https://www.php.net/PDO)',
-                $ref1
+                $ref1,
             ],
             [
                 '# H1' . "\n"
@@ -221,47 +221,47 @@ class TwigExtensionTest extends AbstractTestCase
         return [
             [
                 '',
-                ''
+                '',
             ],
             [
                 '<p>text</p>',
-                'text'
+                'text',
             ],
             [
                 '<p><p>text</p></p>',
-                '<p>text</p>'
+                '<p>text</p>',
             ],
             [
                 '<p><p>some text</p></p>',
-                '<p><p>some text</p></p>'
+                '<p><p>some text</p></p>',
             ],
             [
                 'Constructor. Set DB Object and set {@link $return_statements return_statements}.',
-                '<p>Constructor. Set DB Object and set {@link $return_statements return_statements}.</p>'
+                '<p>Constructor. Set DB Object and set {@link $return_statements return_statements}.</p>',
             ],
             [
                 'Constructor. Set DB Object and set {@link $return_statements return_statements}',
-                '<p>Constructor. Set DB Object and set {@link $return_statements return_statements}</p>'
+                '<p>Constructor. Set DB Object and set {@link $return_statements return_statements}</p>',
             ],
             [
                 'Hi {@link \PDO}',
-                '<p>Hi {@link \PDO}</p>'
+                '<p>Hi {@link \PDO}</p>',
             ],
             [
                 'Hi {@link https://doctum.long-term.support}',
-                '<p>Hi {@link <a href="https://doctum.long-term.support">https://doctum.long-term.support</a>}</p>'
+                '<p>Hi {@link <a href="https://doctum.long-term.support">https://doctum.long-term.support</a>}</p>',
             ],
             [
                 'Hi {@link \PDO}',
-                '<p>Hi {@link \PDO}</p>'
+                '<p>Hi {@link \PDO}</p>',
             ],
             [
                 '@see \PDO',
-                '<p>@see \PDO</p>'
+                '<p>@see \PDO</p>',
             ],
             [
                 '@see \PDO',
-                '<p>@see \PDO</p>'
+                '<p>@see \PDO</p>',
             ],
             [
                 '# H1' . "\n"
@@ -317,7 +317,7 @@ class TwigExtensionTest extends AbstractTestCase
                     . '</p></p>' . "\n"
                     . '<p>' . "\n"
                     . 'Emulated prepared statements does not communicate with the database server' . "\n"
-                    . 'so <b>PDO::prepare</b> does not check the statement.'
+                    . 'so <b>PDO::prepare</b> does not check the statement.',
             ],
             [
                 'Collects rows for insert into a database until the buffer size is reached.' . "\n"
@@ -391,7 +391,7 @@ class TwigExtensionTest extends AbstractTestCase
                 . '' . "\n"
                 . '$buffer-&gt;flush();</code></pre>' . "\n"
                 . '</li>' . "\n"
-                . '</ul>'
+                . '</ul>',
             ],
         ];
     }
@@ -430,72 +430,72 @@ class TwigExtensionTest extends AbstractTestCase
             [
                 'https://doctum.long-term.support',
                 'https://doctum.long-term.support',
-                $ref
+                $ref,
             ],
             [
                 '\PDO',
                 '[PDO](https://www.php.net/PDO)',
-                $ref
+                $ref,
             ],
             [
                 'PDO',
                 '[PDO](https://www.php.net/PDO)',
-                $ref
+                $ref,
             ],
             [
                 '\Foo::methodName',
                 '\Foo::methodName',
-                $ref
+                $ref,
             ],
             [
                 'my_function',
                 'my_function',
-                $ref2
+                $ref2,
             ],
             [
                 'my_class_name',
                 'my_class_name',
-                $ref3
+                $ref3,
             ],
             [
                 'my_class',
                 '[my_class](my_class.html)',
-                $ref3
+                $ref3,
             ],
             [
                 'my_class::myMethod',
                 '[my_class::myMethod](my_class.html#method_myMethod)',
-                $ref3
+                $ref3,
             ],
             [
                 'myMethod',
                 'myMethod',
-                $ref3
+                $ref3,
             ],
             [
                 'myMethod',
                 '[myMethod](my_class.html#method_myMethod)',
-                $ref4
+                $ref4,
             ],
             [
                 'my_class::myMethod',
                 'my_class::myMethod',
-                new MethodReflection('myMethod', 0)
+                new MethodReflection('myMethod', 0),
             ],
             [
                 'my_class',
                 'my_class',
-                new ClassReflection('my_class', 0)
+                new ClassReflection('my_class', 0),
             ],
             [
                 '$return_statements return_statements.',
                 '$return_statements return_statements.',
-                new ClassReflection('my_class', 0)
+                new ClassReflection('my_class', 0),
             ],
             [
                 '$return_statements return_statements',
                 '$return_statements return_statements',
-                new ClassReflection('my_class', 0)
+                new ClassReflection('my_class', 0),
             ],
         ];
     }

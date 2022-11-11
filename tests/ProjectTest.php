@@ -150,7 +150,7 @@ class ProjectTest extends AbstractTestCase
 
         $project = $this->getProject(
             [
-            'base_url' => 'https://github.com/code-lts/doctum'
+            'base_url' => 'https://github.com/code-lts/doctum',
             ]
         );
 
@@ -161,7 +161,7 @@ class ProjectTest extends AbstractTestCase
 
         $project = $this->getProject(
             [
-            'base_url' => 'https://github.com/code-lts/doctum/'
+            'base_url' => 'https://github.com/code-lts/doctum/',
             ]
         );
 
@@ -172,7 +172,7 @@ class ProjectTest extends AbstractTestCase
 
         $project = $this->getProject(
             [
-            'base_url' => 'https://github.com/code-lts/doctum//'
+            'base_url' => 'https://github.com/code-lts/doctum//',
             ]
         );
 

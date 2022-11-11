@@ -70,7 +70,7 @@ $cache  = new FilesystemCache($options['twig-cache-dir']);
 $twig   = new TwigEnvironment(
     $loader,
     [
-    'cache' => $cache
+    'cache' => $cache,
     ]
 );
 Doctum::addTwigExtensions($twig);

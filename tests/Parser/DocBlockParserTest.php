@@ -312,11 +312,11 @@ class DocBlockParserTest extends TestCase
                         'tags' => [
                             'throws' => [
                                 '\InvalidArgumentException.',
-                                '\Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException.'
+                                '\Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException.',
                             ],
                         ],
                     ],
-                ]
+                ],
             ],
             [
                 '
@@ -484,8 +484,8 @@ class DocBlockParserTest extends TestCase
                             'see' => [
                                 [
                                     self::NAMESPACE . 'SomeClass::SomeMethod This is a description.',
-                                    self::NAMESPACE . 'SomeClass::SomeMethod', 'This is a description.'
-                                ]
+                                    self::NAMESPACE . 'SomeClass::SomeMethod', 'This is a description.',
+                                ],
                             ],
                             'since' => ['1.0.1 First time this was introduced.'],
                             'source' => ['2 1 Check that ensures lazy counting.'],
@@ -544,7 +544,7 @@ class DocBlockParserTest extends TestCase
                             'see' => [[
                                 self::ALIASES['SomeClass'] . '::SomeMethod This is a description.',
                                 self::ALIASES['SomeClass'] . '::SomeMethod',
-                                'This is a description.'
+                                'This is a description.',
                             ]],
                             'since' => ['1.0.1 First time this was introduced.'],
                             'source' => ['2 1 Check that ensures lazy counting.'],
@@ -573,8 +573,8 @@ class DocBlockParserTest extends TestCase
                                 [
                                     [
                                         'string',
-                                        false
-                                    ]
+                                        false,
+                                    ],
                                 ],
                                 'db',
                                 'database name',
@@ -588,11 +588,11 @@ class DocBlockParserTest extends TestCase
                                         false,
                                     ],
                                 ],
-                                ''
+                                '',
                             ],
-                        ]
+                        ],
                     ],
-                ]]
+                ]],
             ],
             [
                 '/**
@@ -613,8 +613,8 @@ class DocBlockParserTest extends TestCase
                                 [
                                     [
                                         'bool',
-                                        false
-                                    ]
+                                        false,
+                                    ],
                                 ],
                                 '_error',
                                 'whether user create or not',
@@ -623,8 +623,8 @@ class DocBlockParserTest extends TestCase
                                 [
                                     [
                                         'string',
-                                        false
-                                    ]
+                                        false,
+                                    ],
                                 ],
                                 'real_sql_query',
                                 'SQL query for add a user',
@@ -632,7 +632,7 @@ class DocBlockParserTest extends TestCase
                         ],
                         'return' => [
                             'array, $message',
-                        ]
+                        ],
                     ],
                 ]],
             ],

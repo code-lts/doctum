@@ -53,7 +53,7 @@ class DoctumTest extends TestCase
                 new Version(
                     'master',
                     'Main Branch'
-                )
+                ),
             ],
             $project->getVersions()
         );
@@ -88,7 +88,7 @@ class DoctumTest extends TestCase
                 new Version(
                     'main',
                     'main'
-                )
+                ),
             ],
             $project->getVersions()
         );
@@ -124,7 +124,7 @@ class DoctumTest extends TestCase
             new Version(
                 'blob-blob-says-the-fish',
                 'blob-blob-says-the-fish'
-            )
+            ),
             ],
             $project->getVersions()
         );
@@ -222,7 +222,7 @@ class DoctumTest extends TestCase
             new Version(
                 'fouBar',
                 'fouBar'
-            )
+            ),
             ],
             $project->getVersions()
         );
@@ -264,7 +264,7 @@ class DoctumTest extends TestCase
             new Version(
                 'blob-blob-says-the-fish',
                 'blob-blob-says-the-fish'
-            )
+            ),
             ],
             $project->getVersions()
         );

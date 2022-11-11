@@ -313,7 +313,7 @@ class Renderer
         if (! isset($this->cachedTree[$key])) {
             $this->cachedTree[$key] = [
                 'tree' => $this->tree->getTree($project),
-                'treeOpenLevel' => $project->getConfig('default_opened_level')
+                'treeOpenLevel' => $project->getConfig('default_opened_level'),
             ];
         }
 

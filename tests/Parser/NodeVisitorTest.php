@@ -113,7 +113,7 @@ class NodeVisitorTest extends AbstractTestCase
         $method             = new ClassMethod(
             'testMethod',
             [
-            'returnType' => 'string'
+            'returnType' => 'string',
             ]
         );
 
@@ -154,7 +154,7 @@ class NodeVisitorTest extends AbstractTestCase
         return [
             $classReflection,
             $method,
-            $expectedReturnType
+            $expectedReturnType,
         ];
     }
 
@@ -180,7 +180,7 @@ class NodeVisitorTest extends AbstractTestCase
         return [
             $classReflection,
             $method,
-            $expectedReturnType
+            $expectedReturnType,
         ];
     }
 
@@ -399,7 +399,7 @@ class NodeVisitorTest extends AbstractTestCase
                 'updateMethodParametersFromTags',
                 [
                 $function,
-                $docBlockNode->getTag('param')
+                $docBlockNode->getTag('param'),
                 ]
             )
         );
@@ -433,7 +433,7 @@ class NodeVisitorTest extends AbstractTestCase
                 'updateMethodParametersFromTags',
                 [
                 $function,
-                $docBlockNode->getTag('param')
+                $docBlockNode->getTag('param'),
                 ]
             )
         );
@@ -480,7 +480,7 @@ class NodeVisitorTest extends AbstractTestCase
                 'updateMethodParametersFromTags',
                 [
                 $function,
-                $docBlockNode->getTag('param')
+                $docBlockNode->getTag('param'),
                 ]
             )
         );
@@ -517,7 +517,7 @@ class NodeVisitorTest extends AbstractTestCase
                 'updateMethodParametersFromTags',
                 [
                 $function,
-                $docBlockNode->getTag('param')
+                $docBlockNode->getTag('param'),
                 ]
             )
         );
@@ -548,12 +548,12 @@ class NodeVisitorTest extends AbstractTestCase
             'var',
             $docBlockNode,
             $property,
-            &$errors
+            &$errors,
             ]
         );
         $this->assertSame(
             [
-                'The hint on "prop1" at @var is invalid: "\Illuminate\Support\Carbon;"'
+                'The hint on "prop1" at @var is invalid: "\Illuminate\Support\Carbon;"',
             ],
             $errors
         );
@@ -584,7 +584,7 @@ class NodeVisitorTest extends AbstractTestCase
             'var',
             $docBlockNode,
             $property,
-            &$errors
+            &$errors,
             ]
         );
         $this->assertSame(
@@ -618,7 +618,7 @@ class NodeVisitorTest extends AbstractTestCase
                 'return',
                 $docBlockNode,
                 $property,
-                &$errors
+                &$errors,
             ]
         );
         $this->assertSame('comment', $property->getHintDesc());
@@ -653,7 +653,7 @@ class NodeVisitorTest extends AbstractTestCase
                 'return',
                 $docBlockNode,
                 $property,
-                &$errors
+                &$errors,
             ]
         );
         $this->assertSame('', $property->getHintDesc());
@@ -689,13 +689,13 @@ class NodeVisitorTest extends AbstractTestCase
                 'var',
                 $docBlockNode,
                 $property,
-                &$errors
+                &$errors,
             ]
         );
         $this->assertSame('', $property->getHintDesc());
         $this->assertSame(
             [
-                'Too much @var tags on "myProperty" at @var found: 2 @var tags'
+                'Too much @var tags on "myProperty" at @var found: 2 @var tags',
             ],
             $errors
         );
@@ -727,13 +727,13 @@ class NodeVisitorTest extends AbstractTestCase
                 'return',
                 $docBlockNode,
                 $property,
-                &$errors
+                &$errors,
             ]
         );
         $this->assertSame('', $property->getHintDesc());
         $this->assertSame(
             [
-                'Too much @return tags on "functionName" at @return found: 2 @return tags'
+                'Too much @return tags on "functionName" at @return found: 2 @return tags',
             ],
             $errors
         );
@@ -752,7 +752,7 @@ class NodeVisitorTest extends AbstractTestCase
             'getParsedSeeEntry',
             [
                 'https://foo.tld',
-                ''
+                '',
             ]
         );
         $this->assertSame(
@@ -771,7 +771,7 @@ class NodeVisitorTest extends AbstractTestCase
             'getParsedSeeEntry',
             [
                 'Class::method()',
-                ''
+                '',
             ]
         );
         $this->assertSame(
@@ -790,7 +790,7 @@ class NodeVisitorTest extends AbstractTestCase
             'getParsedSeeEntry',
             [
                 'FooClass',
-                ''
+                '',
             ]
         );
         $this->assertSame(
@@ -819,7 +819,7 @@ class NodeVisitorTest extends AbstractTestCase
             [
                 [
                     'Net_Sample::$foo, Net_Other::someMethod()',
-                    'https://example.com,      http://foo.bar.tld/folder/'
+                    'https://example.com,      http://foo.bar.tld/folder/',
                 ],
             ]
         );

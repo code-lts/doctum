@@ -16,7 +16,7 @@ class IndexTest extends AbstractTestCase
         $index   = new Index($project);
         $this->assertSame(
             [
-            'main'
+            'main',
             ],
             $index->getVersions()
         );
