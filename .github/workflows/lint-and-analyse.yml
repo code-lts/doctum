@@ -1,17 +1,17 @@
 name: Lint and analyse files
 
+permissions:
+  contents: read
+
 on:
   push:
   pull_request:
-    types: [opened, synchronize, reopened]
-    branches:
-      - main
 
 jobs:
     lint-php:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
             - name: Use php 7.2
               uses: shivammathur/setup-php@v2
               with:
@@ -24,7 +24,7 @@ jobs:
               run: |
                 echo "::set-output name=dir::$(composer config cache-files-dir)"
             - name: Restore cache
-              uses: actions/cache@v2
+              uses: actions/cache@v3
               with:
                 path: ${{ steps.composer-cache.outputs.dir }}
                 key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -38,7 +38,7 @@ jobs:
     analyse-php:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
             - name: Use php 7.4
               uses: shivammathur/setup-php@v2
               with:
@@ -49,7 +49,7 @@ jobs:
               run: |
                 echo "::set-output name=dir::$(composer config cache-files-dir)"
             - name: Restore cache
-              uses: actions/cache@v2
+              uses: actions/cache@v3
               with:
                 path: ${{ steps.composer-cache.outputs.dir }}
                 key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}

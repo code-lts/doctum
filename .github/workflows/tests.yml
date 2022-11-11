@@ -1,11 +1,11 @@
 name: Run tests
 
+permissions:
+  contents: read
+
 on:
   push:
   pull_request:
-    types: [opened, synchronize, reopened]
-    branches:
-      - main
 
 jobs:
     test-php:
@@ -21,7 +21,7 @@ jobs:
                 include:
                     - { php-version: 'nightly', experimental: true, os: ubuntu-latest, composer-options: '--ignore-platform-reqs' }
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
             - name: Use php ${{ matrix.php-version }}
               uses: shivammathur/setup-php@v2
               with:
@@ -32,7 +32,7 @@ jobs:
               run: |
                 echo "::set-output name=dir::$(composer config cache-files-dir)"
             - name: Restore cache
-              uses: actions/cache@v2
+              uses: actions/cache@v3
               with:
                 path: ${{ steps.composer-cache.outputs.dir }}
                 key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -59,13 +59,13 @@ jobs:
                 include:
                     - { php-version: '8.1', experimental: true, os: ubuntu-latest, composer-options: '--ignore-platform-reqs' }
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
             - name: Use php ${{ matrix.php-version }}
               uses: shivammathur/setup-php@v2
               with:
                   php-version: ${{ matrix.php-version }}
             - name: Cache module
-              uses: actions/cache@v2
+              uses: actions/cache@v3
               with:
                   path: ~/v2.1.8.tar.gz
                   key: shunit2-cache
@@ -90,7 +90,7 @@ jobs:
                 include:
                     - { php-version: '8.1', experimental: true, os: ubuntu-latest, composer-options: '--ignore-platform-reqs' }
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
             - name: Use php ${{ matrix.php-version }}
               uses: shivammathur/setup-php@v2
               with:
@@ -100,7 +100,7 @@ jobs:
               run: |
                 echo "::set-output name=dir::$(composer config cache-files-dir)"
             - name: Restore cache
-              uses: actions/cache@v2
+              uses: actions/cache@v3
               with:
                 path: ${{ steps.composer-cache.outputs.dir }}
                 key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -125,7 +125,7 @@ jobs:
                 include:
                     - { php-version: '8.1', experimental: true, os: ubuntu-latest, composer-options: '--ignore-platform-reqs' }
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
             - name: Use php ${{ matrix.php-version }}
               uses: shivammathur/setup-php@v2
               with:
@@ -135,7 +135,7 @@ jobs:
               run: |
                 echo "::set-output name=dir::$(composer config cache-files-dir)"
             - name: Restore cache
-              uses: actions/cache@v2
+              uses: actions/cache@v3
               with:
                 path: ${{ steps.composer-cache.outputs.dir }}
                 key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
