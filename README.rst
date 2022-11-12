@@ -23,7 +23,7 @@ Installation
 
 .. caution::
 
-    Doctum requires **PHP 7.2.20** or later.
+    Doctum requires **PHP 8.1** or later.
 
 Get Doctum as a `phar file`_:
 
