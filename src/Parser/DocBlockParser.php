@@ -15,6 +15,10 @@ namespace Doctum\Parser;
 
 use Doctum\Parser\Node\DocBlockNode;
 use phpDocumentor\Reflection\DocBlock;
+use phpDocumentor\Reflection\DocBlock\Tags\Author;
+use phpDocumentor\Reflection\DocBlock\Tags\Covers;
+use phpDocumentor\Reflection\DocBlock\Tags\Deprecated;
+use phpDocumentor\Reflection\DocBlock\Tags\Generic;
 use phpDocumentor\Reflection\DocBlock\Tags\Param;
 use phpDocumentor\Reflection\DocBlock\Tags\PropertyRead;
 use phpDocumentor\Reflection\DocBlock\Tags\Property;
@@ -24,6 +28,10 @@ use phpDocumentor\Reflection\DocBlock\Tags\See;
 use phpDocumentor\Reflection\DocBlock\Tags\Throws;
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use phpDocumentor\Reflection\DocBlock\Tags\InvalidTag;
+use phpDocumentor\Reflection\DocBlock\Tags\Link;
+use phpDocumentor\Reflection\DocBlock\Tags\Since;
+use phpDocumentor\Reflection\DocBlock\Tags\Uses;
+use phpDocumentor\Reflection\DocBlock\Tags\Version;
 use phpDocumentor\Reflection\DocBlockFactory;
 use phpDocumentor\Reflection\Types\Context;
 
@@ -115,6 +123,31 @@ class DocBlockParser
                 ];
             case InvalidTag::class:
                 /** @var \phpDocumentor\Reflection\DocBlock\Tags\InvalidTag $tag */
+                return $tag->__toString();
+            case Deprecated::class:
+                /** @var Deprecated $tag */
+                return $tag->__toString();
+            case Covers::class:
+                /** @var Covers $tag */
+                return $tag->__toString();
+            case Author::class:
+                /** @var Author $tag */
+                return $tag->__toString();
+            case Version::class:
+                /** @var Version $tag */
+                return $tag->__toString();
+            case Link::class:
+                /** @var Link $tag */
+                return $tag->__toString();
+            case Since::class:
+                /** @var Since $tag */
+                return $tag->__toString();
+            case Uses::class:
+                /** @var Uses $tag */
+                return $tag->__toString();
+            case Generic::class:
+                //TODO: better handling
+                /** @var Generic $tag */
                 return $tag->__toString();
             default:
                 return $tag->__toString();
