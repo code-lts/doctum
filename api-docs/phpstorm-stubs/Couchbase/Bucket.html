@@ -146,14 +146,7 @@
                                                                                 
                                     </td>
                 <td>$operationTimeout</td>
-                <td class="last"><p>The operation timeout (in microseconds) is the maximum amount of time the
-library will wait for an operation to receive a response before invoking
-its callback with a failure status.</p>
-<p>An operation may timeout if:</p>
-<ul>
-<li>A server is taking too long to respond</li>
-<li>An updated cluster configuration has not been promptly received</li>
-</ul></td>
+                <td class="last"></td>
                 <td></td>
             </tr>
                     <tr>
@@ -162,7 +155,7 @@ its callback with a failure status.</p>
                                                                                 
                                     </td>
                 <td>$viewTimeout</td>
-                <td class="last"><p>The I/O timeout (in microseconds) for HTTP requests to Couchbase Views API</p></td>
+                <td class="last"></td>
                 <td></td>
             </tr>
                     <tr>
@@ -171,7 +164,7 @@ its callback with a failure status.</p>
                                                                                 
                                     </td>
                 <td>$n1qlTimeout</td>
-                <td class="last"><p>The I/O timeout (in microseconds) for N1QL queries.</p></td>
+                <td class="last"></td>
                 <td></td>
             </tr>
                     <tr>
@@ -180,7 +173,7 @@ its callback with a failure status.</p>
                                                                                 
                                     </td>
                 <td>$httpTimeout</td>
-                <td class="last"><p>The I/O timeout (in microseconds) for HTTP queries (management API).</p></td>
+                <td class="last"></td>
                 <td></td>
             </tr>
                     <tr>
@@ -189,8 +182,7 @@ its callback with a failure status.</p>
                                                                                 
                                     </td>
                 <td>$configTimeout</td>
-                <td class="last"><p>How long (in microseconds) the client will wait to obtain the initial
-configuration.</p></td>
+                <td class="last"></td>
                 <td></td>
             </tr>
                     <tr>
@@ -199,13 +191,7 @@ configuration.</p></td>
                                                                                 
                                     </td>
                 <td>$configNodeTimeout</td>
-                <td class="last"><p>Per-node configuration timeout (in microseconds).</p>
-<p>This timeout sets the amount of time to wait for each node within
-the bootstrap/configuration process. This interval is a subset of
-the $configTimeout option mentioned above and is intended to ensure
-that the bootstrap process does not wait too long for a given node.
-Nodes that are physically offline may never respond and it may take
-a long time until they are detected as being offline.</p></td>
+                <td class="last"></td>
                 <td></td>
             </tr>
                     <tr>
@@ -214,13 +200,7 @@ a long time until they are detected as being offline.</p></td>
                                                                                 
                                     </td>
                 <td>$configDelay</td>
-                <td class="last"><p>Config refresh throttling</p>
-<p>Modify the amount of time (in microseconds) before the configiration
-error threshold will forcefully be set to its maximum number forcing
-a configuration refresh.</p>
-<p>Note that if you expect a high number of timeouts in your operations,
-you should set this to a high number. If you are using the default
-timeout setting, then this value is likely optimal.</p></td>
+                <td class="last"></td>
                 <td></td>
             </tr>
                     <tr>
@@ -229,24 +209,7 @@ timeout setting, then this value is likely optimal.</p></td>
                                                                                 
                                     </td>
                 <td>$htconfigIdleTimeout</td>
-                <td class="last"><p>Idling/Persistence for HTTP bootstrap (in microseconds)</p>
-<p>By default the behavior of the library for HTTP bootstrap is to keep
-the stream open at all times (opening a new stream on a different host
-if the existing one is broken) in order to proactively receive
-configuration updates.</p>
-<p>The default value for this setting is -1. Changing this to another
-number invokes the following semantics:</p>
-<ul>
-<li>
-<p>The configuration stream is not kept alive indefinitely. It is kept
-open for the number of seconds specified in this setting. The socket
-is closed after a period of inactivity (indicated by this setting).</p>
-</li>
-<li>
-<p>If the stream is broken (and no current refresh was requested by
-the client) then a new stream is not opened.</p>
-</li>
-</ul></td>
+                <td class="last"></td>
                 <td></td>
             </tr>
                     <tr>
@@ -255,8 +218,7 @@ the client) then a new stream is not opened.</p>
                                                                                 
                                     </td>
                 <td>$durabilityInterval</td>
-                <td class="last"><p>The time (in microseconds) the client will wait between repeated probes
-to a given server.</p></td>
+                <td class="last"></td>
                 <td></td>
             </tr>
                     <tr>
@@ -265,9 +227,7 @@ to a given server.</p></td>
                                                                                 
                                     </td>
                 <td>$durabilityTimeout</td>
-                <td class="last"><p>The time (in microseconds) the client will spend sending repeated probes
-to a given key's vBucket masters and replicas before they are deemed not
-to have satisfied the durability requirements</p></td>
+                <td class="last"></td>
                 <td></td>
             </tr>
             </table>
@@ -869,12 +829,10 @@ to have satisfied the durability requirements</p></td>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;lockTime&quot; non zero if the documents have to be locked</li>
-<li>&quot;expiry&quot; non zero if the expiration time should be updated</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
+                <td><p>options
+&quot;lockTime&quot; non zero if the documents have to be locked
+&quot;expiry&quot; non zero if the expiration time should be updated
+&quot;groupid&quot; override value for hashing (not recommended to use)</p></td>
             </tr>
             </table>
 
@@ -973,10 +931,8 @@ automatically or it will be done manually with \Couchbase\Bucket::unlock() opera
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
+                <td><p>options
+&quot;groupid&quot; override value for hashing (not recommended to use)</p></td>
             </tr>
             </table>
 
@@ -1060,10 +1016,8 @@ server as absolute UNIX time (seconds from epoch 1970-01-01T00:00:00).</p></td>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
+                <td><p>options
+&quot;groupid&quot; override value for hashing (not recommended to use)</p></td>
             </tr>
             </table>
 
@@ -1127,12 +1081,10 @@ server as absolute UNIX time (seconds from epoch 1970-01-01T00:00:00).</p></td>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;index&quot; the replica index. If the index is zero, it will return
-first successful replica, otherwise it will read only selected node.</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
+                <td><p>options
+&quot;index&quot; the replica index. If the index is zero, it will return
+first successful replica, otherwise it will read only selected node.
+&quot;groupid&quot; override value for hashing (not recommended to use)</p></td>
             </tr>
             </table>
 
@@ -1207,22 +1159,20 @@ first successful replica, otherwise it will read only selected node.</li>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;expiry&quot; document expiration time in seconds. If larger than 30 days (60<em>60</em>24*30),
+                <td><p>options
+&quot;expiry&quot; document expiration time in seconds. If larger than 30 days (60<em>60</em>24*30),
 it will be interpreted by the server as absolute UNIX time (seconds from epoch
-1970-01-01T00:00:00).</li>
-<li>&quot;persist_to&quot; how many nodes the key should be persisted to (including master).
+1970-01-01T00:00:00).
+&quot;persist_to&quot; how many nodes the key should be persisted to (including master).
 If set to 0 then persistence will not be checked. If set to a negative
 number, will be set to the maximum number of nodes to which persistence
-is possible (which will always contain at least the master node).</li>
-<li>&quot;replicate_to&quot; how many nodes the key should be persisted to (excluding master).
+is possible (which will always contain at least the master node).
+&quot;replicate_to&quot; how many nodes the key should be persisted to (excluding master).
 If set to 0 then replication will not be checked. If set to a negative
 number, will be set to the maximum number of nodes to which replication
-is possible (which may be 0 if the bucket is not configured for replicas).</li>
-<li>&quot;flags&quot; override flags (not recommended to use)</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
+is possible (which may be 0 if the bucket is not configured for replicas).
+&quot;flags&quot; override flags (not recommended to use)
+&quot;groupid&quot; override value for hashing (not recommended to use)</p></td>
             </tr>
             </table>
 
@@ -1291,22 +1241,20 @@ is possible (which may be 0 if the bucket is not configured for replicas).</li>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;expiry&quot; document expiration time in seconds. If larger than 30 days (60<em>60</em>24*30),
+                <td><p>options
+&quot;expiry&quot; document expiration time in seconds. If larger than 30 days (60<em>60</em>24*30),
 it will be interpreted by the server as absolute UNIX time (seconds from epoch
-1970-01-01T00:00:00).</li>
-<li>&quot;persist_to&quot; how many nodes the key should be persisted to (including master).
+1970-01-01T00:00:00).
+&quot;persist_to&quot; how many nodes the key should be persisted to (including master).
 If set to 0 then persistence will not be checked. If set to a negative
 number, will be set to the maximum number of nodes to which persistence
-is possible (which will always contain at least the master node).</li>
-<li>&quot;replicate_to&quot; how many nodes the key should be persisted to (excluding master).
+is possible (which will always contain at least the master node).
+&quot;replicate_to&quot; how many nodes the key should be persisted to (excluding master).
 If set to 0 then replication will not be checked. If set to a negative
 number, will be set to the maximum number of nodes to which replication
-is possible (which may be 0 if the bucket is not configured for replicas).</li>
-<li>&quot;flags&quot; override flags (not recommended to use)</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
+is possible (which may be 0 if the bucket is not configured for replicas).
+&quot;flags&quot; override flags (not recommended to use)
+&quot;groupid&quot; override value for hashing (not recommended to use)</p></td>
             </tr>
             </table>
 
@@ -1375,23 +1323,21 @@ is possible (which may be 0 if the bucket is not configured for replicas).</li>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;cas&quot; last known document CAS, which serves for optimistic locking.</li>
-<li>&quot;expiry&quot; document expiration time in seconds. If larger than 30 days (60<em>60</em>24*30),
+                <td><p>options
+&quot;cas&quot; last known document CAS, which serves for optimistic locking.
+&quot;expiry&quot; document expiration time in seconds. If larger than 30 days (60<em>60</em>24*30),
 it will be interpreted by the server as absolute UNIX time (seconds from epoch
-1970-01-01T00:00:00).</li>
-<li>&quot;persist_to&quot; how many nodes the key should be persisted to (including master).
+1970-01-01T00:00:00).
+&quot;persist_to&quot; how many nodes the key should be persisted to (including master).
 If set to 0 then persistence will not be checked. If set to a negative
 number, will be set to the maximum number of nodes to which persistence
-is possible (which will always contain at least the master node).</li>
-<li>&quot;replicate_to&quot; how many nodes the key should be persisted to (excluding master).
+is possible (which will always contain at least the master node).
+&quot;replicate_to&quot; how many nodes the key should be persisted to (excluding master).
 If set to 0 then replication will not be checked. If set to a negative
 number, will be set to the maximum number of nodes to which replication
-is possible (which may be 0 if the bucket is not configured for replicas).</li>
-<li>&quot;flags&quot; override flags (not recommended to use)</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
+is possible (which may be 0 if the bucket is not configured for replicas).
+&quot;flags&quot; override flags (not recommended to use)
+&quot;groupid&quot; override value for hashing (not recommended to use)</p></td>
             </tr>
             </table>
 
@@ -1462,22 +1408,20 @@ for partial updates of the JSON documents.</p></p>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;cas&quot; last known document CAS, which serves for optimistic locking.</li>
-<li>&quot;expiry&quot; document expiration time in seconds. If larger than 30 days (60<em>60</em>24*30),
+                <td><p>options
+&quot;cas&quot; last known document CAS, which serves for optimistic locking.
+&quot;expiry&quot; document expiration time in seconds. If larger than 30 days (60<em>60</em>24*30),
 it will be interpreted by the server as absolute UNIX time (seconds from epoch
-1970-01-01T00:00:00).</li>
-<li>&quot;persist_to&quot; how many nodes the key should be persisted to (including master).
+1970-01-01T00:00:00).
+&quot;persist_to&quot; how many nodes the key should be persisted to (including master).
 If set to 0 then persistence will not be checked. If set to a negative
 number, will be set to the maximum number of nodes to which persistence
-is possible (which will always contain at least the master node).</li>
-<li>&quot;replicate_to&quot; how many nodes the key should be persisted to (excluding master).
+is possible (which will always contain at least the master node).
+&quot;replicate_to&quot; how many nodes the key should be persisted to (excluding master).
 If set to 0 then replication will not be checked. If set to a negative
 number, will be set to the maximum number of nodes to which replication
-is possible (which may be 0 if the bucket is not configured for replicas).</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
+is possible (which may be 0 if the bucket is not configured for replicas).
+&quot;groupid&quot; override value for hashing (not recommended to use)</p></td>
             </tr>
             </table>
 
@@ -1555,22 +1499,20 @@ for partial updates of the JSON documents.</p></p>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;cas&quot; last known document CAS, which serves for optimistic locking.</li>
-<li>&quot;expiry&quot; document expiration time in seconds. If larger than 30 days (60<em>60</em>24*30),
+                <td><p>options
+&quot;cas&quot; last known document CAS, which serves for optimistic locking.
+&quot;expiry&quot; document expiration time in seconds. If larger than 30 days (60<em>60</em>24*30),
 it will be interpreted by the server as absolute UNIX time (seconds from epoch
-1970-01-01T00:00:00).</li>
-<li>&quot;persist_to&quot; how many nodes the key should be persisted to (including master).
+1970-01-01T00:00:00).
+&quot;persist_to&quot; how many nodes the key should be persisted to (including master).
 If set to 0 then persistence will not be checked. If set to a negative
 number, will be set to the maximum number of nodes to which persistence
-is possible (which will always contain at least the master node).</li>
-<li>&quot;replicate_to&quot; how many nodes the key should be persisted to (excluding master).
+is possible (which will always contain at least the master node).
+&quot;replicate_to&quot; how many nodes the key should be persisted to (excluding master).
 If set to 0 then replication will not be checked. If set to a negative
 number, will be set to the maximum number of nodes to which replication
-is possible (which may be 0 if the bucket is not configured for replicas).</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
+is possible (which may be 0 if the bucket is not configured for replicas).
+&quot;groupid&quot; override value for hashing (not recommended to use)</p></td>
             </tr>
             </table>
 
@@ -1641,11 +1583,9 @@ is possible (which may be 0 if the bucket is not configured for replicas).</li>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;cas&quot; last known document CAS, which serves for optimistic locking.</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
+                <td><p>options
+&quot;cas&quot; last known document CAS, which serves for optimistic locking.
+&quot;groupid&quot; override value for hashing (not recommended to use)</p></td>
             </tr>
             </table>
 
@@ -1709,11 +1649,9 @@ is possible (which may be 0 if the bucket is not configured for replicas).</li>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;cas&quot; last known document CAS, which has been returned by locking command.</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
+                <td><p>options
+&quot;cas&quot; last known document CAS, which has been returned by locking command.
+&quot;groupid&quot; override value for hashing (not recommended to use)</p></td>
             </tr>
             </table>
 
@@ -1798,10 +1736,8 @@ server as absolute UNIX time (seconds from epoch 1970-01-01T00:00:00).</p></td>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
+                <td><p>options
+&quot;groupid&quot; override value for hashing (not recommended to use)</p></td>
             </tr>
             </table>
 
@@ -1870,14 +1806,12 @@ server as absolute UNIX time (seconds from epoch 1970-01-01T00:00:00).</p></td>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;initial&quot; initial value of the counter if it does not exist</li>
-<li>&quot;expiry&quot; time after which the document will not be accessible.
+                <td><p>options
+&quot;initial&quot; initial value of the counter if it does not exist
+&quot;expiry&quot; time after which the document will not be accessible.
 If larger than 30 days (60<em>60</em>24*30), it will be interpreted by the
-server as absolute UNIX time (seconds from epoch 1970-01-01T00:00:00).</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
+server as absolute UNIX time (seconds from epoch 1970-01-01T00:00:00).
+&quot;groupid&quot; override value for hashing (not recommended to use)</p></td>
             </tr>
             </table>
 

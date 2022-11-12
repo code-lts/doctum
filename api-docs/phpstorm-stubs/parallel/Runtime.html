@@ -230,45 +230,7 @@ bootstrapping</p></p>        </div>
                 <td>array|null</td>
                 <td>$argv</td>
                 <td><p>An array of arguments with specific characteristics to be passed to task at execution
-time.</p>
-<h3>Task Characteristics</h3>
-<hr />
-<p>Closures scheduled for parallel execution must not:</p>
-<ul>
-<li>accept or return by reference</li>
-<li>accept or return internal objects (see notes)</li>
-<li>execute a limited set of instructions</li>
-</ul>
-<p>Instructions prohibited in Closures intended for parallel execution are:</p>
-<ul>
-<li>yield</li>
-<li>use by-reference</li>
-<li>declare class</li>
-<li>declare named function</li>
-</ul>
-<p>Note: Nested closures may yield or use by-reference, but must not contain class or named function declarations.
-Note: No instructions are prohibited in the files which the task may include.</p>
-<h3>Arguments Characteristics</h3>
-<hr />
-<p>Arguments must not:</p>
-<ul>
-<li>contain references</li>
-<li>contain resources</li>
-<li>contain internal objects (see notes)</li>
-</ul>
-<p>Note: In the case of file stream resources, the resource will be cast to the file descriptor and passed as int
-where possible, this is unsupported on Windows</p>
-<h3>Internal Objects Notes</h3>
-<hr />
-<p>Internal objects generally use a custom structure which cannot be copied by value safely, PHP currently lacks
-the mechanics to do this (without serialization) and so only objects that do not use a custom structure may
-be shared.</p>
-<p>Some internal objects do not use a custom structure, for example <a href="../parallel/Events/Event.html">\parallel\Events\Event</a> and so may be
-shared. Closures are a special kind of internal object and support being copied by value, and so may be
-shared. Channels are central to writing parallel code and support concurrent access and execution by
-necessity, and so may be shared.</p>
-<p>Warning: A user class that extends an internal class may use a custom structure as defined by the internal
-class, in which case they cannot be copied by value safely, and so may not be shared.</p></td>
+time.</p></td>
             </tr>
             </table>
 

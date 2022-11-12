@@ -664,7 +664,10 @@ the value should be replaced by.</p></td>
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td></td>
+            <td><p>The custom count as an integer.</p>
+<p>
+The return value is cast to an integer.
+</p></td>
         </tr>
     </table>
 
@@ -1413,8 +1416,7 @@ resulting map.
         <tr>
             <td><a href="../Ds/Map.html"><abbr title="Ds\Map">Map</abbr></a></td>
             <td><p>The result of applying a callback to each value in the
-map.</p>
-<p><b>Note:</b> The keys and values of the current instance won't be affected.</p></td>
+map.</p></td>
         </tr>
     </table>
 
@@ -1460,8 +1462,7 @@ current instance.</p></p>
             <td><a href="../Ds/Map.html"><abbr title="Ds\Map">Map</abbr></a></td>
             <td><p>The result of associating all keys of a given traversable
 object or array with their corresponding values, combined with the
-current instance.</p>
-<p><b>Note:</b> The current instance won't be affected.</p></td>
+current instance.</p></td>
         </tr>
     </table>
 
@@ -1531,17 +1532,7 @@ one exists.</p></p>
                     <tr>
                 <td>mixed</td>
                 <td>$value</td>
-                <td><p>The value to be associated with the key.</p>
-<p><b>Note:</b> Keys of type object are supported. If an object implements
-Ds\Hashable, equality will be determined by the object's equals
-function. If an object does not implement Ds\Hashable, objects must
-be references to the same instance to be considered equal.</p>
-<p><b>Note:</b> You can also use array syntax to associate values by key, eg.
-$map[&quot;key&quot;] = $value.</p>
-<p><b>Caution:</b> Be careful when using array syntax. Scalar keys will be
-coerced to integers by the engine. For example, $map[&quot;1&quot;] will
-attempt to access int(1), while $map-&gt;get(&quot;1&quot;) will correctly look up
-the string key.</p></td>
+                <td><p>The value to be associated with the key.</p></td>
             </tr>
             </table>
 
@@ -1611,11 +1602,7 @@ considered equal.</p></p>
                     <tr>
                 <td>callable</td>
                 <td>$callback</td>
-                <td><p><code>callback ( mixed $carry , mixed $key , mixed $value ) : mixed</code>
-<b>carry</b> The return value of the previous callback, or initial if
-it's the first iteration.
-<b>key</b> The key of the current iteration.
-<b>value</b> The value of the current iteration.</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td>mixed</td>
@@ -1661,18 +1648,7 @@ value if the key could not be found.</p></p>
                 <td>mixed</td>
                 <td>$default</td>
                 <td><p>The optional default value, returned if the key
-could not be found.</p>
-<p><b>Note:</b> Keys of type object are supported. If an object implements
-Ds\Hashable, equality will be determined
-by the object's equals function. If an object does not implement
-Ds\Hashable, objects must be references to the same instance to be
-considered equal.</p>
-<p><b>Note:</b> You can also use array syntax to access values by key, eg.
-$map[&quot;key&quot;].</p>
-<p><b>Caution:</b> Be careful when using array syntax. Scalar keys will be
-coerced to integers by the engine. For example, $map[&quot;1&quot;] will
-attempt to access int(1), while $map-&gt;get(&quot;1&quot;) will correctly look up
-the string key.</p></td>
+could not be found.</p></td>
             </tr>
             </table>
 
@@ -1747,8 +1723,7 @@ provided and the key could not be found in the map.</p></td>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../Ds/Map.html"><abbr title="Ds\Map">Map</abbr></a></td>
-            <td><p>A reversed copy of the map.</p>
-<p><b>Note:</b> The current instance is not affected.</p></td>
+            <td><p>A reversed copy of the map.</p></td>
         </tr>
     </table>
 
@@ -1892,13 +1867,7 @@ function.</p></p>
 an integer less than, equal to, or greater than zero if the first
 argument is considered to be respectively less than, equal to, or
 greater than the second. Note that before PHP 7.0.0 this integer had
-to be in the range from -2147483648 to 2147483647.</p>
-<p><code>callback ( mixed $a, mixed $b ) : int</code></p>
-<p><b>Caution:</b> Returning non-integer values from the comparison function,
-such as float, will result in an internal cast to integer of the
-callback's return value. So values such as 0.99 and 0.1 will both be
-cast to an integer value of 0, which will compare such values as
-equal.</p></td>
+to be in the range from -2147483648 to 2147483647.</p></td>
             </tr>
             </table>
 
@@ -1935,13 +1904,7 @@ equal.</p></td>
 an integer less than, equal to, or greater than zero if the first
 argument is considered to be respectively less than, equal to, or
 greater than the second. Note that before PHP 7.0.0 this integer had
-to be in the range from -2147483648 to 2147483647.</p>
-<p><code>callback ( mixed $a, mixed $b ) : int</code></p>
-<p><b>Caution:</b> Returning non-integer values from the comparison function,
-such as float, will result in an internal cast to integer of the
-callback's return value. So values such as 0.99 and 0.1 will both be
-cast to an integer value of 0, which will compare such values as
-equal.</p></td>
+to be in the range from -2147483648 to 2147483647.</p></td>
             </tr>
             </table>
 

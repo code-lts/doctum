@@ -792,25 +792,6 @@ If <b>OPAQUE_SPECIAL_TYPES</b> was defined while compiling the SNMP library, the
 <p>
 Most of these will use the obvious corresponding ASN.1 type.  's', 'x', 'd' and 'b' are all different ways of specifying an OCTET STRING value, and
 the 'u' unsigned type is also used for handling Gauge32 values.
-</p>
-<p>
-If the MIB-Files are loaded by into the MIB Tree with "snmp_read_mib" or by specifying it in the libsnmp config, '=' may be used as
-the <i>type</i> parameter for all object ids as the type can then be automatically read from the MIB.
-</p>
-<p>
-Note that there are two ways to set a variable of the type BITS like e.g.
-"SYNTAX    BITS {telnet(0), ftp(1), http(2), icmp(3), snmp(4), ssh(5), https(6)}":
-</p>
-<ul>
-<li>
-Using type "b" and a list of bit numbers. This method is not recommended since GET query for the same OID would return e.g. 0xF8.
-</li>
-<li>
-Using type "x" and a hex number but without(!) the usual "0x" prefix.
-</li>
-</ul>
-<p>
-See examples section for more details.
 </p></td>
             </tr>
                     <tr>

@@ -103,12 +103,13 @@ or ```LuaSandbox::loadBinary()```.</p></p>        </div>
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    array|bool
+                    
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_call">call</a>(string[] $arguments)
+                    <a href="#method_call">call</a>($arguments)
         
-                                            <p><p>Call a Lua function.</p></p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -130,73 +131,30 @@ or ```LuaSandbox::loadBinary()```.</p></p>        </div>
                     <div class="method-item">
                     <h3 id="method_call">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/LuaSandbox/LuaSandbox.php#L374">at line 374</a></div>
-        <code>                    array|bool
-    <strong>call</strong>(string[] $arguments)
+        <code>                    
+    <strong>call</strong>($arguments)
         </code>
     </h3>
-    <div class="details"><i>Since: luasandbox &gt;= 1.0.0</i>
-            <br>    
+    <div class="details">    
     
             
 
         <div class="method-description">
-                            <p><p>Call a Lua function.</p></p>                <p><p>Errors considered to be the fault of the PHP code will result in the
-function returning false and <i>E_WARNING</i> being raised, for example,
-a resource type being used as an argument. Lua errors will result
-in a LuaSandboxRuntimeError exception being thrown.</p>
-<p>PHP and Lua types are converted as follows:</p>
-<ul>
-<li>PHP NULL is Lua nil, and vice versa.</li>
-<li>PHP integers and floats are converted to Lua numbers. Infinity and NAN are supported.</li>
-<li>Lua numbers without a fractional part between approximately -2**53 and 2**53 are
-converted to PHP integers, with others being converted to PHP floats.</li>
-<li>PHP booleans are Lua booleans, and vice versa.</li>
-<li>PHP strings are Lua strings, and vice versa.</li>
-<li>Lua functions are PHP LuaSandboxFunction objects, and vice versa.
-General PHP callables are not supported.</li>
-<li>PHP arrays are converted to Lua tables, and vice versa.</li>
-<ul>
-  <li>Note that Lua typically indexes arrays from 1, while PHP indexes arrays from 0.
-  No adjustment is made for these differing conventions.</li>
-  <li>Self-referential arrays are not supported in either direction.</li>
-  <li>PHP references are dereferenced.</li>
-  <li>Lua <i>__pairs</i> and <i>__ipairs</i> are processed. <i>__index</i> is ignored.</li>
-  <li>When converting from PHP to Lua, integer keys between -2**53 and 2**53 are represented as Lua numbers.
-  All other keys are represented as Lua strings.</li>
-  <li>When converting from Lua to PHP, keys other than strings and numbers will result in an error,
-  as will collisions when converting numbers to strings or vice versa
-  (since PHP considers things like ```$a[0]``` and ```$a["0"]``` as being equivalent).</li>
-</ul>
-<li>All other types are unsupported and will raise an error/exception,
-including general PHP objects and Lua userdata and thread types.</li>
-</ul>
-<p>Lua functions inherently return a list of results. So on success,
-this method returns an array containing all of the values returned by Lua,
-with integer keys starting from zero.
-Lua may return no results, in which case an empty array is returned.</p></p>        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string[]</td>
+                <td></td>
                 <td>$arguments</td>
-                <td><p>Arguments passed to the function.</p></td>
+                <td></td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array|bool</td>
-            <td><p>Returns an array of values returned by the function,
-which may be empty, or false on error.</p></td>
-        </tr>
-    </table>
-
             
             
             
