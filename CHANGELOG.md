@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
+- Fixed a JS null pointer error on Doctum.cleanSearchQuery
+
 ## [5.5.1] - 2022-02-17
 
 - Allow new/more versions of symfony (^5|^6)
