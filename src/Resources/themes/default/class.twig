@@ -1,5 +1,5 @@
 {% extends "layout/layout.twig" %}
-{% from "macros.twig" import render_classes, breadcrumbs, namespace_link, class_link, property_link, method_link, hint_link, source_link, method_source_link, deprecated, deprecations, internals, todo, todos, class_category_name %}
+{% from "macros.twig" import render_classes, breadcrumbs, namespace_link, class_link, property_link, method_link, hint_link, source_link, method_source_link, deprecated, deprecations, internals, categories, todo, todos, class_category_name %}
 {% block title %}{{ class|raw }} | {{ parent() }}{% endblock %}
 {% block body_class 'class' %}
 {% block page_id 'class:' ~ (class.name|replace({'\\': '_'})) %}
@@ -284,6 +284,7 @@
             <i>{{ 'Since:'|trans }} {{ method.getSince() }}</i>
             <br>
         {%- endif -%}
+        {{ categories(method) }}
         {{ deprecations(method) }}
         {{ internals(method) }}
 
