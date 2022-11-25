@@ -218,9 +218,10 @@ See MongoClient::__construct() and the section on connecting for more informatio
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(string $server = &quot;mongodb://localhost:27017&quot;, array $options = [&quot;connect&quot; =&gt; true], array $driver_options)
+                    <a href="#method___construct">__construct</a>($server = &quot;mongodb://localhost:27017&quot;, array $options = [&quot;connect&quot; =&gt; true], $driver_options)
         
-                                            <p><p>Creates a new database connection object</p></p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -237,12 +238,13 @@ This method does not need to be called, except in unusual circumstances.</p></p>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8">
                     <a href="#method_connect">connect</a>()
         
-                                            <p><p>Connects to a database server</p></p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -335,24 +337,24 @@ Lists all of the databases available</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="MongoCollection.html">MongoCollection</a>
+                    
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_selectCollection">selectCollection</a>(string $db, string $collection)
+                    <a href="#method_selectCollection">selectCollection</a>($db, $collection)
         
-                                            <p><p>(PECL mongo &gt;= 1.3.0)<br/>
-Gets a database collection</p></p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="MongoDB.html">MongoDB</a>
+                    
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_selectDB">selectDB</a>(string $name)
+                    <a href="#method_selectDB">selectDB</a>($name)
         
-                                            <p><p>(PECL mongo &gt;= 1.3.0)<br/>
-Gets a database</p></p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -368,13 +370,13 @@ Set read preference</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    
                 </div>
                 <div class="col-md-8">
                     <a href="#method_switchSlave">switchSlave</a>()
         
-                                            <p><p>(PECL mongo &gt;= 1.1.0)<br/>
-Choose a new secondary for slaveOkay reads</p></p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -397,7 +399,7 @@ Choose a new secondary for slaveOkay reads</p></p>                </div>
                     <h3 id="method___construct">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongo/mongo.php#L105">at line 105</a></div>
         <code>                    
-    <strong>__construct</strong>(string $server = &quot;mongodb://localhost:27017&quot;, array $options = [&quot;connect&quot; =&gt; true], array $driver_options)
+    <strong>__construct</strong>($server = &quot;mongodb://localhost:27017&quot;, array $options = [&quot;connect&quot; =&gt; true], $driver_options)
         </code>
     </h3>
     <div class="details">    
@@ -405,102 +407,32 @@ Choose a new secondary for slaveOkay reads</p></p>                </div>
             
 
         <div class="method-description">
-                            <p><p>Creates a new database connection object</p></p>                        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td></td>
                 <td>$server</td>
-                <td><p>[optional] The server name.</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>[optional] An array of options for the connection. Currently
-available options include: &quot;connect&quot; If the constructor should connect before
-returning. Default is true. &quot;timeout&quot; For how long the driver should try to
-connect to the database (in milliseconds). &quot;replicaSet&quot; The name of the replica
-set to connect to. If this is given, the master will be determined by using the
-ismaster database command on the seeds, so the driver may end up connecting to a
-server that was not even listed. See the replica set example below for details.
-&quot;username&quot; The username can be specified here, instead of including it in the
-host list. This is especially useful if a username has a &quot;:&quot; in it. This
-overrides a username set in the host list. &quot;password&quot; The password can be
-specified here, instead of including it in the host list. This is especially
-useful if a password has a &quot;@&quot; in it. This overrides a password set in the host
-list. &quot;db&quot; The database to authenticate against can be specified here, instead
-of including it in the host list. This overrides a database given in the host
-list  &quot;fsync&quot; When &quot;fsync&quot; is set, all write operations will block until the database has flushed the changes to disk. This makes the write operations slower, but it guarantees that writes have succeeded and that the operations can be recovered in case of total system failure.
-If the MongoDB server has journaling enabled, this option is identical to &quot;journal&quot;. If journaling is not enabled, this option ensures that write operations will be synced to database files on disk.
-&quot;journal&quot;
-When &quot;journal&quot; is set, all write operations will block until the database has flushed the changes to the journal on disk. This makes the write operations slower, but it guarantees that writes have succeeded and that the operations can be recovered in case of total system failure.
-Note: If this option is used and journaling is disabled, MongoDB 2.6+ will raise an error and the write will fail; older server versions will simply ignore the option.
-&quot;gssapiServiceName&quot;
-Sets the » Kerberos service principal. Only applicable when authMechanism=GSSAPI. Defaults to &quot;mongodb&quot;.
-&quot;password&quot;
-The password can be specified here, instead of including it in the host list. This is especially useful if a password has a &quot;@&quot; in it. This overrides a password set in the host list.
-&quot;readPreference&quot;
-Specifies the read preference type. Read preferences provide you with control from which secondaries data can be read from.
-Allowed values are: MongoClient::RP_PRIMARY, MongoClient::RP_PRIMARY_PREFERRED, MongoClient::RP_SECONDARY, MongoClient::RP_SECONDARY_PREFERRED and MongoClient::RP_NEAREST.
-See the documentation on read preferences for more information.
-&quot;readPreferenceTags&quot;
-Specifies the read preference tags as an array of strings. Tags can be used in combination with the readPreference option to further control which secondaries data might be read from.
-See the documentation on read preferences for more information.
-&quot;replicaSet&quot;
-The name of the replica set to connect to. If this is given, the primary will be automatically be determined. This means that the driver may end up connecting to a server that was not even listed. See the replica set example below for details.
-&quot;secondaryAcceptableLatencyMS&quot;
-When reading from a secondary (using ReadPreferences), do not read from secondaries known to be more then secondaryAcceptableLatencyMS away from us. Defaults to 15
-&quot;socketTimeoutMS&quot;
-How long a socket operation (read or write) can take before timing out in milliseconds. Defaults to 30000 (30 seconds).
-If -1 is specified, socket operations may block indefinitely. This option may also be set on a per-operation basis using MongoCursor::timeout() for queries or the &quot;socketTimeoutMS&quot; option for write methods.
-Note: This is a client-side timeout. If a write operation times out, there is no way to know if the server actually handled the write or not, as a MongoCursorTimeoutException will be thrown in lieu of returning a write result.
-&quot;ssl&quot;
-A boolean to specify whether you want to enable SSL for the connections to MongoDB. Extra options such as certificates can be set with SSL context options.
-&quot;username&quot;
-The username can be specified here, instead of including it in the host list. This is especially useful if a username has a &quot;:&quot; in it. This overrides a username set in the host list.
-&quot;w&quot;
-The w option specifies the Write Concern for the driver, which determines how long the driver blocks when writing. The default value is 1.
-This option is applicable when connecting to both single servers and replica sets. A positive value controls how many nodes must acknowledge the write instruction before the driver continues. A value of 1 would require the single server or primary (in a replica set) to acknowledge the write operation. A value of 3 would cause the driver to block until the write has been applied to the primary as well as two secondary servers (in a replica set).
-A string value is used to control which tag sets are taken into account for write concerns. &quot;majority&quot; is special and ensures that the write operation has been applied to the majority (more than 50%%) of the participating nodes.
-&quot;wTimeoutMS&quot; This option specifies the time limit, in milliseconds, for write concern acknowledgement. It is only applicable for write operations where &quot;w&quot; is greater than 1, as the timeout pertains to replication. If the write concern is not satisfied within the time limit, a MongoCursorException will be thrown. A value of 0 may be specified to block indefinitely. The default value is 10000 (ten seconds).</p></td>
+                <td></td>
             </tr>
                     <tr>
-                <td>array</td>
+                <td></td>
                 <td>$driver_options</td>
-                <td><p>[optional] <p>
-An array of options for the MongoDB driver. Options include setting
-connection <a href="https://php.net/manual/en/mongo.connecting.ssl.php#mongo.connecting.context.ssl">https://php.net/manual/en/mongo.connecting.ssl.php#mongo.connecting.context.ssl</a> context options for SSL
-or <a href="https://php.net/manual/en/context.mongodb.php">https://php.net/manual/en/context.mongodb.php</a> logging callbacks.
-</p><ul></p>
-<li>
-<p>
-<em>"context"</em>
-</p>
-<p>
-The Stream Context to attach to all new connections. This allows you
-for example to configure SSL certificates and are described at
-https://php.net/manual/en/context.ssl.php SSL context options. See the
-https://php.net/manual/en/mongo.connecting.ssl.php#mongo.connecting.context.ssl Connecting over SSL tutorial.
-</p>
-</li>
-<p></ul></p></td>
-            </tr>
-            </table>
-
-            
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="MongoConnectionException.html">MongoConnectionException</a></td>
                 <td></td>
             </tr>
             </table>
 
+            
+            
             
             
                     </div>
@@ -558,7 +490,7 @@ If connection is a string argument, then it will only close the connection ident
                     <div class="method-item">
                     <h3 id="method_connect">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongo/mongo.php#L130">at line 130</a></div>
-        <code>                    bool
+        <code>                    
     <strong>connect</strong>()
         </code>
     </h3>
@@ -567,29 +499,12 @@ If connection is a string argument, then it will only close the connection ident
             
 
         <div class="method-description">
-                            <p><p>Connects to a database server</p></p>                        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td><p>If the connection was successful.</p></td>
-        </tr>
-    </table>
-
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="MongoConnectionException.html">MongoConnectionException</a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
             
                     </div>
@@ -894,8 +809,8 @@ Lists all of the databases available</p></p>
                     <div class="method-item">
                     <h3 id="method_selectCollection">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongo/mongo.php#L217">at line 217</a></div>
-        <code>                    <a href="MongoCollection.html">MongoCollection</a>
-    <strong>selectCollection</strong>(string $db, string $collection)
+        <code>                    
+    <strong>selectCollection</strong>($db, $collection)
         </code>
     </h3>
     <div class="details">    
@@ -903,45 +818,27 @@ Lists all of the databases available</p></p>
             
 
         <div class="method-description">
-                            <p><p>(PECL mongo &gt;= 1.3.0)<br/>
-Gets a database collection</p></p>                        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td></td>
                 <td>$db</td>
-                <td><p>The database name.</p></td>
+                <td></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td></td>
                 <td>$collection</td>
-                <td><p>The collection name.</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="MongoCollection.html">MongoCollection</a></td>
-            <td><p>Returns a new collection object.</p></td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="Exception.html">Exception</a></td>
                 <td></td>
             </tr>
             </table>
 
+            
+            
             
             
                     </div>
@@ -951,8 +848,8 @@ Gets a database collection</p></p>
                     <div class="method-item">
                     <h3 id="method_selectDB">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongo/mongo.php#L227">at line 227</a></div>
-        <code>                    <a href="MongoDB.html">MongoDB</a>
-    <strong>selectDB</strong>(string $name)
+        <code>                    
+    <strong>selectDB</strong>($name)
         </code>
     </h3>
     <div class="details">    
@@ -960,40 +857,22 @@ Gets a database collection</p></p>
             
 
         <div class="method-description">
-                            <p><p>(PECL mongo &gt;= 1.3.0)<br/>
-Gets a database</p></p>                        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td></td>
                 <td>$name</td>
-                <td><p>The database name.</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="MongoDB.html">MongoDB</a></td>
-            <td><p>Returns a new db object.</p></td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="InvalidArgumentException.html">InvalidArgumentException</a></td>
                 <td></td>
             </tr>
             </table>
 
+            
+            
             
             
                     </div>
@@ -1051,7 +930,7 @@ Set read preference</p></p>
                     <div class="method-item">
                     <h3 id="method_switchSlave">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongo/mongo.php#L246">at line 246</a></div>
-        <code>                    string
+        <code>                    
     <strong>switchSlave</strong>()
         </code>
     </h3>
@@ -1060,31 +939,12 @@ Set read preference</p></p>
             
 
         <div class="method-description">
-                            <p><p>(PECL mongo &gt;= 1.1.0)<br/>
-Choose a new secondary for slaveOkay reads</p></p>                        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td><p>The address of the secondary this connection is using for reads. This may be the same as the previous address as addresses are randomly chosen. It may return only one address if only one secondary (or only the primary) is available.
-For example, if we had a three member replica set with a primary, secondary, and arbiter this method would always return the address of the secondary. If the secondary became unavailable, this method would always return the address of the primary. If the primary also became unavailable, this method would throw an exception, as an arbiter cannot handle reads.</p></td>
-        </tr>
-    </table>
-
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="MongoException.html">MongoException</a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
             
                     </div>

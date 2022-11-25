@@ -369,9 +369,10 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(string|null $name, array $seeds, float $timeout = null, float $readTimeout = null, bool $persistent = false, string|null $auth = null)
+                    <a href="#method___construct">__construct</a>($name, $seeds, $timeout = null, $readTimeout = null, $persistent = false, $auth = null)
         
-                                            <p><p>Creates a Redis Cluster client</p></p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -2033,6 +2034,17 @@ the MULTI/EXEC transaction will fail (return FALSE). unwatch cancels all the wat
                                             <p><p>Query a sorted set representing a geospatial index to fetch members matching a given maximum distance from a member</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_eval">eval</a>(mixed $script, mixed $args, mixed $numKeys)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -2043,7 +2055,7 @@ the MULTI/EXEC transaction will fail (return FALSE). unwatch cancels all the wat
                     <h3 id="method___construct">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisCluster.php#L108">at line 108</a></div>
         <code>                    
-    <strong>__construct</strong>(string|null $name, array $seeds, float $timeout = null, float $readTimeout = null, bool $persistent = false, string|null $auth = null)
+    <strong>__construct</strong>($name, $seeds, $timeout = null, $readTimeout = null, $persistent = false, $auth = null)
         </code>
     </h3>
     <div class="details">    
@@ -2051,39 +2063,40 @@ the MULTI/EXEC transaction will fail (return FALSE). unwatch cancels all the wat
             
 
         <div class="method-description">
-                            <p><p>Creates a Redis Cluster client</p></p>                        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|null</td>
+                <td></td>
                 <td>$name</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>array</td>
+                <td></td>
                 <td>$seeds</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>float</td>
+                <td></td>
                 <td>$timeout</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>float</td>
+                <td></td>
                 <td>$readTimeout</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>bool</td>
+                <td></td>
                 <td>$persistent</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>string|null</td>
+                <td></td>
                 <td>$auth</td>
                 <td></td>
             </tr>
@@ -2091,43 +2104,8 @@ the MULTI/EXEC transaction will fail (return FALSE). unwatch cancels all the wat
 
             
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="RedisClusterException.html">RedisClusterException</a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
             
-                            <h4>Examples</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-// Declaring a cluster with an array of seeds<br />
-$redisCluster = new RedisCluster(null,[&#039;127.0.0.1:6379&#039;]);<br />
-<br />
-// Loading a cluster configuration by name<br />
-// In order to load a named array, one must first define the seed nodes in redis.ini.<br />
-// The following lines would define the cluster &#039;mycluster&#039;, and be loaded automatically by phpredis.<br />
-<br />
-// # In redis.ini<br />
-// redis.clusters.seeds = &quot;mycluster[]=localhost:7000&amp;test[]=localhost:7001&quot;<br />
-// redis.clusters.timeout = &quot;mycluster=5&quot;<br />
-// redis.clusters.read_timeout = &quot;mycluster=10&quot;<br />
-// redis.clusters.auth = &quot;mycluster=password&quot; OR [&#039;user&#039; =&gt; &#039;foo&#039;, &#039;pass&#039; =&gt; &#039;bar] as example<br />
-<br />
-//Then, this cluster can be loaded by doing the following<br />
-<br />
-$redisClusterPro = new RedisCluster(&#039;mycluster&#039;);<br />
-$redisClusterDev = new RedisCluster(&#039;test&#039;);<br />
-&lt;/pre&gt;</pre></td>
-            </tr>
-            </table>
-
                     </div>
     </div>
 
@@ -2198,8 +2176,8 @@ returned.</p></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;get(&#039;key&#039;);<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;get(&#039;key&#039;);
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -2264,18 +2242,18 @@ $redisCluster-&gt;get(&#039;key&#039;);<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-// Simple key -&gt; value set<br />
-$redisCluster-&gt;set(&#039;key&#039;, &#039;value&#039;);<br />
-<br />
-// Will redirect, and actually make an SETEX call<br />
-$redisCluster-&gt;set(&#039;key&#039;,&#039;value&#039;, 10);<br />
-<br />
-// Will set the key, if it doesn&#039;t exist, with a ttl of 10 seconds<br />
-$redisCluster-&gt;set(&#039;key&#039;, &#039;value&#039;, Array(&#039;nx&#039;, &#039;ex&#039;=&gt;10));<br />
-<br />
-// Will set a key, if it does exist, with a ttl of 1000 milliseconds<br />
-$redisCluster-&gt;set(&#039;key&#039;, &#039;value&#039;, Array(&#039;xx&#039;, &#039;px&#039;=&gt;1000));<br />
+                <td><pre class="examples">&lt;pre&gt;
+// Simple key -&gt; value set
+$redisCluster-&gt;set(&#039;key&#039;, &#039;value&#039;);
+
+// Will redirect, and actually make an SETEX call
+$redisCluster-&gt;set(&#039;key&#039;,&#039;value&#039;, 10);
+
+// Will set the key, if it doesn&#039;t exist, with a ttl of 10 seconds
+$redisCluster-&gt;set(&#039;key&#039;, &#039;value&#039;, Array(&#039;nx&#039;, &#039;ex&#039;=&gt;10));
+
+// Will set a key, if it does exist, with a ttl of 1000 milliseconds
+$redisCluster-&gt;set(&#039;key&#039;, &#039;value&#039;, Array(&#039;xx&#039;, &#039;px&#039;=&gt;1000));
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -2327,22 +2305,22 @@ the special value false is returned. Because of this, the operation never fails.
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;x&#039;, &#039;y&#039;, &#039;z&#039;, &#039;h&#039;);    // remove x y z<br />
-$redisCluster-&gt;mset(array(&#039;x&#039; =&gt; &#039;a&#039;, &#039;y&#039; =&gt; &#039;b&#039;, &#039;z&#039; =&gt; &#039;c&#039;));<br />
-$redisCluster-&gt;hset(&#039;h&#039;, &#039;field&#039;, &#039;value&#039;);<br />
-var_dump($redisCluster-&gt;mget(array(&#039;x&#039;, &#039;y&#039;, &#039;z&#039;, &#039;h&#039;)));<br />
-// Output:<br />
-// array(3) {<br />
-// [0]=&gt;<br />
-// string(1) &quot;a&quot;<br />
-// [1]=&gt;<br />
-// string(1) &quot;b&quot;<br />
-// [2]=&gt;<br />
-// string(1) &quot;c&quot;<br />
-// [3]=&gt;<br />
-// bool(false)<br />
-// }<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;x&#039;, &#039;y&#039;, &#039;z&#039;, &#039;h&#039;);    // remove x y z
+$redisCluster-&gt;mset(array(&#039;x&#039; =&gt; &#039;a&#039;, &#039;y&#039; =&gt; &#039;b&#039;, &#039;z&#039; =&gt; &#039;c&#039;));
+$redisCluster-&gt;hset(&#039;h&#039;, &#039;field&#039;, &#039;value&#039;);
+var_dump($redisCluster-&gt;mget(array(&#039;x&#039;, &#039;y&#039;, &#039;z&#039;, &#039;h&#039;)));
+// Output:
+// array(3) {
+// [0]=&gt;
+// string(1) &quot;a&quot;
+// [1]=&gt;
+// string(1) &quot;b&quot;
+// [2]=&gt;
+// string(1) &quot;c&quot;
+// [3]=&gt;
+// bool(false)
+// }
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -2393,13 +2371,13 @@ var_dump($redisCluster-&gt;mget(array(&#039;x&#039;, &#039;y&#039;, &#039;z&#039
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;mset(array(&#039;key0&#039; =&gt; &#039;value0&#039;, &#039;key1&#039; =&gt; &#039;value1&#039;));<br />
-var_dump($redisCluster-&gt;get(&#039;key0&#039;));<br />
-var_dump($redisCluster-&gt;get(&#039;key1&#039;));<br />
-// Output:<br />
-// string(6) &quot;value0&quot;<br />
-// string(6) &quot;value1&quot;<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;mset(array(&#039;key0&#039; =&gt; &#039;value0&#039;, &#039;key1&#039; =&gt; &#039;value1&#039;));
+var_dump($redisCluster-&gt;get(&#039;key0&#039;));
+var_dump($redisCluster-&gt;get(&#039;key1&#039;));
+// Output:
+// string(6) &quot;value0&quot;
+// string(6) &quot;value1&quot;
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -2510,13 +2488,13 @@ var_dump($redisCluster-&gt;get(&#039;key1&#039;));<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;key1&#039;, &#039;val1&#039;);<br />
-$redisCluster-&gt;set(&#039;key2&#039;, &#039;val2&#039;);<br />
-$redisCluster-&gt;set(&#039;key3&#039;, &#039;val3&#039;);<br />
-$redisCluster-&gt;set(&#039;key4&#039;, &#039;val4&#039;);<br />
-$redisCluster-&gt;del(&#039;key1&#039;, &#039;key2&#039;);          // return 2<br />
-$redisCluster-&gt;del(array(&#039;key3&#039;, &#039;key4&#039;));   // return 2<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;key1&#039;, &#039;val1&#039;);
+$redisCluster-&gt;set(&#039;key2&#039;, &#039;val2&#039;);
+$redisCluster-&gt;set(&#039;key3&#039;, &#039;val3&#039;);
+$redisCluster-&gt;set(&#039;key4&#039;, &#039;val4&#039;);
+$redisCluster-&gt;del(&#039;key1&#039;, &#039;key2&#039;);          // return 2
+$redisCluster-&gt;del(array(&#039;key3&#039;, &#039;key4&#039;));   // return 2
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -2577,8 +2555,8 @@ $redisCluster-&gt;del(array(&#039;key3&#039;, &#039;key4&#039;));   // return 2<
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;setex(&#039;key&#039;, 3600, &#039;value&#039;); // sets key → value, with 1h TTL.<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;setex(&#039;key&#039;, 3600, &#039;value&#039;); // sets key → value, with 1h TTL.
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -2640,8 +2618,8 @@ instead of seconds.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;psetex(&#039;key&#039;, 1000, &#039;value&#039;); // sets key → value, with 1s TTL.<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;psetex(&#039;key&#039;, 1000, &#039;value&#039;); // sets key → value, with 1s TTL.
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -2697,9 +2675,9 @@ $redisCluster-&gt;psetex(&#039;key&#039;, 1000, &#039;value&#039;); // sets key 
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;setnx(&#039;key&#039;, &#039;value&#039;);   // return TRUE<br />
-$redisCluster-&gt;setnx(&#039;key&#039;, &#039;value&#039;);   // return FALSE<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;setnx(&#039;key&#039;, &#039;value&#039;);   // return TRUE
+$redisCluster-&gt;setnx(&#039;key&#039;, &#039;value&#039;);   // return FALSE
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -2755,10 +2733,10 @@ $redisCluster-&gt;setnx(&#039;key&#039;, &#039;value&#039;);   // return FALSE<b
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;x&#039;, &#039;42&#039;);<br />
-$exValue = $redisCluster-&gt;getSet(&#039;x&#039;, &#039;lol&#039;);   // return &#039;42&#039;, replaces x by &#039;lol&#039;<br />
-$newValue = $redisCluster-&gt;get(&#039;x&#039;);            // return &#039;lol&#039;<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;x&#039;, &#039;42&#039;);
+$exValue = $redisCluster-&gt;getSet(&#039;x&#039;, &#039;lol&#039;);   // return &#039;42&#039;, replaces x by &#039;lol&#039;
+$newValue = $redisCluster-&gt;get(&#039;x&#039;);            // return &#039;lol&#039;
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -2809,10 +2787,10 @@ $newValue = $redisCluster-&gt;get(&#039;x&#039;);            // return &#039;lol
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;key&#039;, &#039;value&#039;);<br />
-$redisCluster-&gt;exists(&#039;key&#039;);               //  TRUE<br />
-$redisCluster-&gt;exists(&#039;NonExistingKey&#039;);    // FALSE<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;key&#039;, &#039;value&#039;);
+$redisCluster-&gt;exists(&#039;key&#039;);               //  TRUE
+$redisCluster-&gt;exists(&#039;NonExistingKey&#039;);    // FALSE
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -2863,9 +2841,9 @@ $redisCluster-&gt;exists(&#039;NonExistingKey&#039;);    // FALSE<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$allKeys = $redisCluster-&gt;keys(&#039;*&#039;);   // all keys will match this.<br />
-$keyWithUserPrefix = $redisCluster-&gt;keys(&#039;user*&#039;);<br />
+                <td><pre class="examples">&lt;pre&gt;
+$allKeys = $redisCluster-&gt;keys(&#039;*&#039;);   // all keys will match this.
+$keyWithUserPrefix = $redisCluster-&gt;keys(&#039;user*&#039;);
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -2966,24 +2944,24 @@ $keyWithUserPrefix = $redisCluster-&gt;keys(&#039;user*&#039;);<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;A&#039;);<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;B&#039;);<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;C&#039;);<br />
-var_dump( $redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1) );<br />
-// Output:<br />
-// array(3) {<br />
-//   [0]=&gt; string(1) &quot;A&quot;<br />
-//   [1]=&gt; string(1) &quot;B&quot;<br />
-//   [2]=&gt; string(1) &quot;C&quot;<br />
-// }<br />
-$redisCluster-&gt;lPop(&#039;key1&#039;);<br />
-var_dump( $redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1) );<br />
-// Output:<br />
-// array(2) {<br />
-//   [0]=&gt; string(1) &quot;B&quot;<br />
-//   [1]=&gt; string(1) &quot;C&quot;<br />
-// }<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;A&#039;);
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;B&#039;);
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;C&#039;);
+var_dump( $redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1) );
+// Output:
+// array(3) {
+//   [0]=&gt; string(1) &quot;A&quot;
+//   [1]=&gt; string(1) &quot;B&quot;
+//   [2]=&gt; string(1) &quot;C&quot;
+// }
+$redisCluster-&gt;lPop(&#039;key1&#039;);
+var_dump( $redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1) );
+// Output:
+// array(2) {
+//   [0]=&gt; string(1) &quot;B&quot;
+//   [1]=&gt; string(1) &quot;C&quot;
+// }
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -3034,24 +3012,24 @@ var_dump( $redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1) );<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;A&#039;);<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;B&#039;);<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;C&#039;);<br />
-var_dump( $redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1) );<br />
-// Output:<br />
-// array(3) {<br />
-//   [0]=&gt; string(1) &quot;A&quot;<br />
-//   [1]=&gt; string(1) &quot;B&quot;<br />
-//   [2]=&gt; string(1) &quot;C&quot;<br />
-// }<br />
-$redisCluster-&gt;rPop(&#039;key1&#039;);<br />
-var_dump( $redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1) );<br />
-// Output:<br />
-// array(2) {<br />
-//   [0]=&gt; string(1) &quot;A&quot;<br />
-//   [1]=&gt; string(1) &quot;B&quot;<br />
-// }<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;A&#039;);
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;B&#039;);
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;C&#039;);
+var_dump( $redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1) );
+// Output:
+// array(3) {
+//   [0]=&gt; string(1) &quot;A&quot;
+//   [1]=&gt; string(1) &quot;B&quot;
+//   [2]=&gt; string(1) &quot;C&quot;
+// }
+$redisCluster-&gt;rPop(&#039;key1&#039;);
+var_dump( $redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1) );
+// Output:
+// array(2) {
+//   [0]=&gt; string(1) &quot;A&quot;
+//   [1]=&gt; string(1) &quot;B&quot;
+// }
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -3113,13 +3091,13 @@ is not a list.</p></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;A&#039;);<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;B&#039;);<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;C&#039;);  // key1 =&gt; [ &#039;A&#039;, &#039;B&#039;, &#039;C&#039; ]<br />
-$redisCluster-&gt;lGet(&#039;key1&#039;, 0);     // &#039;A&#039;<br />
-$redisCluster-&gt;lSet(&#039;key1&#039;, 0, &#039;X&#039;);<br />
-$redisCluster-&gt;lGet(&#039;key1&#039;, 0);     // &#039;X&#039;<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;A&#039;);
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;B&#039;);
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;C&#039;);  // key1 =&gt; [ &#039;A&#039;, &#039;B&#039;, &#039;C&#039; ]
+$redisCluster-&gt;lGet(&#039;key1&#039;, 0);     // &#039;A&#039;
+$redisCluster-&gt;lSet(&#039;key1&#039;, 0, &#039;X&#039;);
+$redisCluster-&gt;lGet(&#039;key1&#039;, 0);     // &#039;X&#039;
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -3171,15 +3149,15 @@ bool FALSE if set identified by key is empty or doesn't exist.</p></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set1&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set2&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set3&#039;);<br />
-var_dump($redisCluster-&gt;sMembers(&#039;key1&#039;));// &#039;key1&#039; =&gt; {&#039;set3&#039;, &#039;set1&#039;, &#039;set2&#039;}<br />
-$redisCluster-&gt;sPop(&#039;key1&#039;);// &#039;set1&#039;<br />
-var_dump($redisCluster-&gt;sMembers(&#039;key1&#039;));// &#039;key1&#039; =&gt; {&#039;set3&#039;, &#039;set2&#039;}<br />
-$redisCluster-&gt;sPop(&#039;key1&#039;);// &#039;set3&#039;,<br />
-var_dump($redisCluster-&gt;sMembers(&#039;key1&#039;));// &#039;key1&#039; =&gt; {&#039;set2&#039;}<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set1&#039;);
+$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set2&#039;);
+$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set3&#039;);
+var_dump($redisCluster-&gt;sMembers(&#039;key1&#039;));// &#039;key1&#039; =&gt; {&#039;set3&#039;, &#039;set1&#039;, &#039;set2&#039;}
+$redisCluster-&gt;sPop(&#039;key1&#039;);// &#039;set1&#039;
+var_dump($redisCluster-&gt;sMembers(&#039;key1&#039;));// &#039;key1&#039; =&gt; {&#039;set3&#039;, &#039;set2&#039;}
+$redisCluster-&gt;sPop(&#039;key1&#039;);// &#039;set3&#039;,
+var_dump($redisCluster-&gt;sMembers(&#039;key1&#039;));// &#039;key1&#039; =&gt; {&#039;set2&#039;}
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -3245,16 +3223,16 @@ var_dump($redisCluster-&gt;sMembers(&#039;key1&#039;));// &#039;key1&#039; =&gt;
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;lPush(&#039;l&#039;, &#039;v1&#039;, &#039;v2&#039;, &#039;v3&#039;, &#039;v4&#039;)   // int(4)<br />
-var_dump( $redisCluster-&gt;lRange(&#039;l&#039;, 0, -1) );<br />
-//// Output:<br />
-// array(4) {<br />
-//   [0]=&gt; string(2) &quot;v4&quot;<br />
-//   [1]=&gt; string(2) &quot;v3&quot;<br />
-//   [2]=&gt; string(2) &quot;v2&quot;<br />
-//   [3]=&gt; string(2) &quot;v1&quot;<br />
-// }<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;lPush(&#039;l&#039;, &#039;v1&#039;, &#039;v2&#039;, &#039;v3&#039;, &#039;v4&#039;)   // int(4)
+var_dump( $redisCluster-&gt;lRange(&#039;l&#039;, 0, -1) );
+//// Output:
+// array(4) {
+//   [0]=&gt; string(2) &quot;v4&quot;
+//   [1]=&gt; string(2) &quot;v3&quot;
+//   [2]=&gt; string(2) &quot;v2&quot;
+//   [3]=&gt; string(2) &quot;v1&quot;
+// }
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -3320,16 +3298,16 @@ var_dump( $redisCluster-&gt;lRange(&#039;l&#039;, 0, -1) );<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;rPush(&#039;r&#039;, &#039;v1&#039;, &#039;v2&#039;, &#039;v3&#039;, &#039;v4&#039;);    // int(4)<br />
-var_dump( $redisCluster-&gt;lRange(&#039;r&#039;, 0, -1) );<br />
-//// Output:<br />
-// array(4) {<br />
-//   [0]=&gt; string(2) &quot;v1&quot;<br />
-//   [1]=&gt; string(2) &quot;v2&quot;<br />
-//   [2]=&gt; string(2) &quot;v3&quot;<br />
-//   [3]=&gt; string(2) &quot;v4&quot;<br />
-// }<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;rPush(&#039;r&#039;, &#039;v1&#039;, &#039;v2&#039;, &#039;v3&#039;, &#039;v4&#039;);    // int(4)
+var_dump( $redisCluster-&gt;lRange(&#039;r&#039;, 0, -1) );
+//// Output:
+// array(4) {
+//   [0]=&gt; string(2) &quot;v1&quot;
+//   [1]=&gt; string(2) &quot;v2&quot;
+//   [2]=&gt; string(2) &quot;v3&quot;
+//   [3]=&gt; string(2) &quot;v4&quot;
+// }
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -3389,31 +3367,31 @@ Or STRING Key1 STRING Key2 STRING Key3 ... STRING Keyn</p></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-// Non blocking feature<br />
-$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);<br />
-$redisCluster-&gt;del(&#039;key2&#039;);<br />
-<br />
-$redisCluster-&gt;blPop(&#039;key1&#039;, &#039;key2&#039;, 10); // array(&#039;key1&#039;, &#039;A&#039;)<br />
-// OR<br />
-$redisCluster-&gt;blPop(array(&#039;key1&#039;, &#039;key2&#039;), 10); // array(&#039;key1&#039;, &#039;A&#039;)<br />
-<br />
-$redisCluster-&gt;brPop(&#039;key1&#039;, &#039;key2&#039;, 10); // array(&#039;key1&#039;, &#039;A&#039;)<br />
-// OR<br />
-$redisCluster-&gt;brPop(array(&#039;key1&#039;, &#039;key2&#039;), 10); // array(&#039;key1&#039;, &#039;A&#039;)<br />
-<br />
-// Blocking feature<br />
-<br />
-// process 1<br />
-$redisCluster-&gt;del(&#039;key1&#039;);<br />
-$redisCluster-&gt;blPop(&#039;key1&#039;, 10);<br />
-// blocking for 10 seconds<br />
-<br />
-// process 2<br />
-$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);<br />
-<br />
-// process 1<br />
-// array(&#039;key1&#039;, &#039;A&#039;) is returned<br />
+                <td><pre class="examples">&lt;pre&gt;
+// Non blocking feature
+$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);
+$redisCluster-&gt;del(&#039;key2&#039;);
+
+$redisCluster-&gt;blPop(&#039;key1&#039;, &#039;key2&#039;, 10); // array(&#039;key1&#039;, &#039;A&#039;)
+// OR
+$redisCluster-&gt;blPop(array(&#039;key1&#039;, &#039;key2&#039;), 10); // array(&#039;key1&#039;, &#039;A&#039;)
+
+$redisCluster-&gt;brPop(&#039;key1&#039;, &#039;key2&#039;, 10); // array(&#039;key1&#039;, &#039;A&#039;)
+// OR
+$redisCluster-&gt;brPop(array(&#039;key1&#039;, &#039;key2&#039;), 10); // array(&#039;key1&#039;, &#039;A&#039;)
+
+// Blocking feature
+
+// process 1
+$redisCluster-&gt;del(&#039;key1&#039;);
+$redisCluster-&gt;blPop(&#039;key1&#039;, 10);
+// blocking for 10 seconds
+
+// process 2
+$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);
+
+// process 1
+// array(&#039;key1&#039;, &#039;A&#039;) is returned
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -3476,31 +3454,31 @@ Or STRING Key1 STRING Key2 STRING Key3 ... STRING Keyn</p></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-// Non blocking feature<br />
-$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);<br />
-$redisCluster-&gt;del(&#039;key2&#039;);<br />
-<br />
-$redisCluster-&gt;blPop(&#039;key1&#039;, &#039;key2&#039;, 10); // array(&#039;key1&#039;, &#039;A&#039;)<br />
-// OR<br />
-$redisCluster-&gt;blPop(array(&#039;key1&#039;, &#039;key2&#039;), 10); // array(&#039;key1&#039;, &#039;A&#039;)<br />
-<br />
-$redisCluster-&gt;brPop(&#039;key1&#039;, &#039;key2&#039;, 10); // array(&#039;key1&#039;, &#039;A&#039;)<br />
-// OR<br />
-$redisCluster-&gt;brPop(array(&#039;key1&#039;, &#039;key2&#039;), 10); // array(&#039;key1&#039;, &#039;A&#039;)<br />
-<br />
-// Blocking feature<br />
-<br />
-// process 1<br />
-$redisCluster-&gt;del(&#039;key1&#039;);<br />
-$redisCluster-&gt;blPop(&#039;key1&#039;, 10);<br />
-// blocking for 10 seconds<br />
-<br />
-// process 2<br />
-$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);<br />
-<br />
-// process 1<br />
-// array(&#039;key1&#039;, &#039;A&#039;) is returned<br />
+                <td><pre class="examples">&lt;pre&gt;
+// Non blocking feature
+$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);
+$redisCluster-&gt;del(&#039;key2&#039;);
+
+$redisCluster-&gt;blPop(&#039;key1&#039;, &#039;key2&#039;, 10); // array(&#039;key1&#039;, &#039;A&#039;)
+// OR
+$redisCluster-&gt;blPop(array(&#039;key1&#039;, &#039;key2&#039;), 10); // array(&#039;key1&#039;, &#039;A&#039;)
+
+$redisCluster-&gt;brPop(&#039;key1&#039;, &#039;key2&#039;, 10); // array(&#039;key1&#039;, &#039;A&#039;)
+// OR
+$redisCluster-&gt;brPop(array(&#039;key1&#039;, &#039;key2&#039;), 10); // array(&#039;key1&#039;, &#039;A&#039;)
+
+// Blocking feature
+
+// process 1
+$redisCluster-&gt;del(&#039;key1&#039;);
+$redisCluster-&gt;blPop(&#039;key1&#039;, 10);
+// blocking for 10 seconds
+
+// process 2
+$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);
+
+// process 1
+// array(&#039;key1&#039;, &#039;A&#039;) is returned
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -3556,13 +3534,13 @@ $redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;key1&#039;);<br />
-$redisCluster-&gt;rPushx(&#039;key1&#039;, &#039;A&#039;); // returns 0<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;A&#039;); // returns 1<br />
-$redisCluster-&gt;rPushx(&#039;key1&#039;, &#039;B&#039;); // returns 2<br />
-$redisCluster-&gt;rPushx(&#039;key1&#039;, &#039;C&#039;); // returns 3<br />
-// key1 now points to the following list: [ &#039;A&#039;, &#039;B&#039;, &#039;C&#039; ]<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;key1&#039;);
+$redisCluster-&gt;rPushx(&#039;key1&#039;, &#039;A&#039;); // returns 0
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;A&#039;); // returns 1
+$redisCluster-&gt;rPushx(&#039;key1&#039;, &#039;B&#039;); // returns 2
+$redisCluster-&gt;rPushx(&#039;key1&#039;, &#039;C&#039;); // returns 3
+// key1 now points to the following list: [ &#039;A&#039;, &#039;B&#039;, &#039;C&#039; ]
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -3618,13 +3596,13 @@ $redisCluster-&gt;rPushx(&#039;key1&#039;, &#039;C&#039;); // returns 3<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;key1&#039;);<br />
-$redisCluster-&gt;lPushx(&#039;key1&#039;, &#039;A&#039;);     // returns 0<br />
-$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);      // returns 1<br />
-$redisCluster-&gt;lPushx(&#039;key1&#039;, &#039;B&#039;);     // returns 2<br />
-$redisCluster-&gt;lPushx(&#039;key1&#039;, &#039;C&#039;);     // returns 3<br />
-// key1 now points to the following list: [ &#039;C&#039;, &#039;B&#039;, &#039;A&#039; ]<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;key1&#039;);
+$redisCluster-&gt;lPushx(&#039;key1&#039;, &#039;A&#039;);     // returns 0
+$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);      // returns 1
+$redisCluster-&gt;lPushx(&#039;key1&#039;, &#039;B&#039;);     // returns 2
+$redisCluster-&gt;lPushx(&#039;key1&#039;, &#039;C&#039;);     // returns 3
+// key1 now points to the following list: [ &#039;C&#039;, &#039;B&#039;, &#039;A&#039; ]
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -3692,21 +3670,21 @@ or the pivot didn't exists, the value is not inserted.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;key1&#039;);<br />
-$redisCluster-&gt;lInsert(&#039;key1&#039;, RedisCluster::AFTER, &#039;A&#039;, &#039;X&#039;);    // 0<br />
-<br />
-$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);<br />
-$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;B&#039;);<br />
-$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;C&#039;);<br />
-<br />
-$redisCluster-&gt;lInsert(&#039;key1&#039;, RedisCluster::BEFORE, &#039;C&#039;, &#039;X&#039;);   // 4<br />
-$redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1);                      // array(&#039;X&#039;, &#039;C&#039;, &#039;B&#039;, &#039;A&#039;)<br />
-<br />
-$redisCluster-&gt;lInsert(&#039;key1&#039;, RedisCluster::AFTER, &#039;C&#039;, &#039;Y&#039;);    // 5<br />
-$redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1);                      // array(&#039;X&#039;, &#039;C&#039;, &#039;Y&#039;, &#039;B&#039;, &#039;A&#039;)<br />
-<br />
-$redisCluster-&gt;lInsert(&#039;key1&#039;, RedisCluster::AFTER, &#039;W&#039;, &#039;value&#039;); // -1<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;key1&#039;);
+$redisCluster-&gt;lInsert(&#039;key1&#039;, RedisCluster::AFTER, &#039;A&#039;, &#039;X&#039;);    // 0
+
+$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);
+$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;B&#039;);
+$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;C&#039;);
+
+$redisCluster-&gt;lInsert(&#039;key1&#039;, RedisCluster::BEFORE, &#039;C&#039;, &#039;X&#039;);   // 4
+$redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1);                      // array(&#039;X&#039;, &#039;C&#039;, &#039;B&#039;, &#039;A&#039;)
+
+$redisCluster-&gt;lInsert(&#039;key1&#039;, RedisCluster::AFTER, &#039;C&#039;, &#039;Y&#039;);    // 5
+$redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1);                      // array(&#039;X&#039;, &#039;C&#039;, &#039;Y&#039;, &#039;B&#039;, &#039;A&#039;)
+
+$redisCluster-&gt;lInsert(&#039;key1&#039;, RedisCluster::AFTER, &#039;W&#039;, &#039;value&#039;); // -1
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -3764,13 +3742,13 @@ Bool FALSE if the key identifies a non-string data type, or no value corresponds
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;A&#039;);<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;B&#039;);<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;C&#039;);  // key1 =&gt; [ &#039;A&#039;, &#039;B&#039;, &#039;C&#039; ]<br />
-$redisCluster-&gt;lGet(&#039;key1&#039;, 0);     // &#039;A&#039;<br />
-$redisCluster-&gt;lGet(&#039;key1&#039;, -1);    // &#039;C&#039;<br />
-$redisCluster-&gt;lGet(&#039;key1&#039;, 10);    // `FALSE`<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;A&#039;);
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;B&#039;);
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;C&#039;);  // key1 =&gt; [ &#039;A&#039;, &#039;B&#039;, &#039;C&#039; ]
+$redisCluster-&gt;lGet(&#039;key1&#039;, 0);     // &#039;A&#039;
+$redisCluster-&gt;lGet(&#039;key1&#039;, -1);    // &#039;C&#039;
+$redisCluster-&gt;lGet(&#039;key1&#039;, 10);    // `FALSE`
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -3833,16 +3811,16 @@ bool FALSE if the value identified by key is not a list.</p></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);<br />
-$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;B&#039;);<br />
-$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;C&#039;);<br />
-$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);<br />
-$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);<br />
-<br />
-$redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1);   // array(&#039;A&#039;, &#039;A&#039;, &#039;C&#039;, &#039;B&#039;, &#039;A&#039;)<br />
-$redisCluster-&gt;lRem(&#039;key1&#039;, &#039;A&#039;, 2);    // 2<br />
-$redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1);   // array(&#039;C&#039;, &#039;B&#039;, &#039;A&#039;)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);
+$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;B&#039;);
+$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;C&#039;);
+$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);
+$redisCluster-&gt;lPush(&#039;key1&#039;, &#039;A&#039;);
+
+$redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1);   // array(&#039;A&#039;, &#039;A&#039;, &#039;C&#039;, &#039;B&#039;, &#039;A&#039;)
+$redisCluster-&gt;lRem(&#039;key1&#039;, &#039;A&#039;, 2);    // 2
+$redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1);   // array(&#039;C&#039;, &#039;B&#039;, &#039;A&#039;)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -3951,34 +3929,34 @@ $redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1);   // array(&#039;C&#039;, &#0
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;x&#039;, &#039;y&#039;);<br />
-<br />
-$redisCluster-&gt;lPush(&#039;x&#039;, &#039;abc&#039;);<br />
-$redisCluster-&gt;lPush(&#039;x&#039;, &#039;def&#039;);<br />
-$redisCluster-&gt;lPush(&#039;y&#039;, &#039;123&#039;);<br />
-$redisCluster-&gt;lPush(&#039;y&#039;, &#039;456&#039;);<br />
-<br />
-// move the last of x to the front of y.<br />
-var_dump($redisCluster-&gt;rpoplpush(&#039;x&#039;, &#039;y&#039;));<br />
-var_dump($redisCluster-&gt;lRange(&#039;x&#039;, 0, -1));<br />
-var_dump($redisCluster-&gt;lRange(&#039;y&#039;, 0, -1));<br />
-<br />
-////Output:<br />
-//<br />
-//string(3) &quot;abc&quot;<br />
-//array(1) {<br />
-//  [0]=&gt;<br />
-//  string(3) &quot;def&quot;<br />
-//}<br />
-//array(3) {<br />
-//  [0]=&gt;<br />
-//  string(3) &quot;abc&quot;<br />
-//  [1]=&gt;<br />
-//  string(3) &quot;456&quot;<br />
-//  [2]=&gt;<br />
-//  string(3) &quot;123&quot;<br />
-//}<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;x&#039;, &#039;y&#039;);
+
+$redisCluster-&gt;lPush(&#039;x&#039;, &#039;abc&#039;);
+$redisCluster-&gt;lPush(&#039;x&#039;, &#039;def&#039;);
+$redisCluster-&gt;lPush(&#039;y&#039;, &#039;123&#039;);
+$redisCluster-&gt;lPush(&#039;y&#039;, &#039;456&#039;);
+
+// move the last of x to the front of y.
+var_dump($redisCluster-&gt;rpoplpush(&#039;x&#039;, &#039;y&#039;));
+var_dump($redisCluster-&gt;lRange(&#039;x&#039;, 0, -1));
+var_dump($redisCluster-&gt;lRange(&#039;y&#039;, 0, -1));
+
+////Output:
+//
+//string(3) &quot;abc&quot;
+//array(1) {
+//  [0]=&gt;
+//  string(3) &quot;def&quot;
+//}
+//array(3) {
+//  [0]=&gt;
+//  string(3) &quot;abc&quot;
+//  [1]=&gt;
+//  string(3) &quot;456&quot;
+//  [2]=&gt;
+//  string(3) &quot;123&quot;
+//}
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -4031,13 +4009,13 @@ bool FALSE if the data type identified by Key is not list</p></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;A&#039;);<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;B&#039;);<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;C&#039;);  // key1 =&gt; [ &#039;A&#039;, &#039;B&#039;, &#039;C&#039; ]<br />
-$redisCluster-&gt;lLen(&#039;key1&#039;);       // 3<br />
-$redisCluster-&gt;rPop(&#039;key1&#039;);<br />
-$redisCluster-&gt;lLen(&#039;key1&#039;);       // 2<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;A&#039;);
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;B&#039;);
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;C&#039;);  // key1 =&gt; [ &#039;A&#039;, &#039;B&#039;, &#039;C&#039; ]
+$redisCluster-&gt;lLen(&#039;key1&#039;);       // 3
+$redisCluster-&gt;rPop(&#039;key1&#039;);
+$redisCluster-&gt;lLen(&#039;key1&#039;);       // 2
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -4088,12 +4066,12 @@ $redisCluster-&gt;lLen(&#039;key1&#039;);       // 2<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set1&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set2&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set3&#039;);   // &#039;key1&#039; =&gt; {&#039;set1&#039;, &#039;set2&#039;, &#039;set3&#039;}<br />
-$redisCluster-&gt;sCard(&#039;key1&#039;);           // 3<br />
-$redisCluster-&gt;sCard(&#039;keyX&#039;);           // 0<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set1&#039;);
+$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set2&#039;);
+$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set3&#039;);   // &#039;key1&#039; =&gt; {&#039;set1&#039;, &#039;set2&#039;, &#039;set3&#039;}
+$redisCluster-&gt;sCard(&#039;key1&#039;);           // 3
+$redisCluster-&gt;sCard(&#039;keyX&#039;);           // 0
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -4144,25 +4122,25 @@ $redisCluster-&gt;sCard(&#039;keyX&#039;);           // 0<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;s&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s&#039;, &#039;a&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s&#039;, &#039;b&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s&#039;, &#039;a&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s&#039;, &#039;c&#039;);<br />
-var_dump($redisCluster-&gt;sMembers(&#039;s&#039;));<br />
-<br />
-////Output:<br />
-//<br />
-//array(3) {<br />
-//  [0]=&gt;<br />
-//  string(1) &quot;b&quot;<br />
-//  [1]=&gt;<br />
-//  string(1) &quot;c&quot;<br />
-//  [2]=&gt;<br />
-//  string(1) &quot;a&quot;<br />
-//}<br />
-// The order is random and corresponds to redis&#039; own internal representation of the set structure.<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;s&#039;);
+$redisCluster-&gt;sAdd(&#039;s&#039;, &#039;a&#039;);
+$redisCluster-&gt;sAdd(&#039;s&#039;, &#039;b&#039;);
+$redisCluster-&gt;sAdd(&#039;s&#039;, &#039;a&#039;);
+$redisCluster-&gt;sAdd(&#039;s&#039;, &#039;c&#039;);
+var_dump($redisCluster-&gt;sMembers(&#039;s&#039;));
+
+////Output:
+//
+//array(3) {
+//  [0]=&gt;
+//  string(1) &quot;b&quot;
+//  [1]=&gt;
+//  string(1) &quot;c&quot;
+//  [2]=&gt;
+//  string(1) &quot;a&quot;
+//}
+// The order is random and corresponds to redis&#039; own internal representation of the set structure.
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -4218,13 +4196,13 @@ var_dump($redisCluster-&gt;sMembers(&#039;s&#039;));<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set1&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set2&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set3&#039;); // &#039;key1&#039; =&gt; {&#039;set1&#039;, &#039;set2&#039;, &#039;set3&#039;}<br />
-<br />
-$redisCluster-&gt;sIsMember(&#039;key1&#039;, &#039;set1&#039;); // TRUE<br />
-$redisCluster-&gt;sIsMember(&#039;key1&#039;, &#039;setX&#039;); // FALSE<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set1&#039;);
+$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set2&#039;);
+$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set3&#039;); // &#039;key1&#039; =&gt; {&#039;set1&#039;, &#039;set2&#039;, &#039;set3&#039;}
+
+$redisCluster-&gt;sIsMember(&#039;key1&#039;, &#039;set1&#039;); // TRUE
+$redisCluster-&gt;sIsMember(&#039;key1&#039;, &#039;setX&#039;); // FALSE
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -4290,9 +4268,9 @@ $redisCluster-&gt;sIsMember(&#039;key1&#039;, &#039;setX&#039;); // FALSE<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;sAdd(&#039;k&#039;, &#039;v1&#039;);                // int(1)<br />
-$redisCluster-&gt;sAdd(&#039;k&#039;, &#039;v1&#039;, &#039;v2&#039;, &#039;v3&#039;);    // int(2)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;sAdd(&#039;k&#039;, &#039;v1&#039;);                // int(1)
+$redisCluster-&gt;sAdd(&#039;k&#039;, &#039;v1&#039;, &#039;v2&#039;, &#039;v3&#039;);    // int(2)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -4348,9 +4326,9 @@ $redisCluster-&gt;sAdd(&#039;k&#039;, &#039;v1&#039;, &#039;v2&#039;, &#039;v3&#
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;sAddArray(&#039;k&#039;, [&#039;v1&#039;, &#039;v2&#039;, &#039;v3&#039;]);<br />
-//This is a feature in php only. Same as $redisCluster-&gt;sAdd(&#039;k&#039;, &#039;v1&#039;, &#039;v2&#039;, &#039;v3&#039;);<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;sAddArray(&#039;k&#039;, [&#039;v1&#039;, &#039;v2&#039;, &#039;v3&#039;]);
+//This is a feature in php only. Same as $redisCluster-&gt;sAdd(&#039;k&#039;, &#039;v1&#039;, &#039;v2&#039;, &#039;v3&#039;);
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -4416,14 +4394,14 @@ $redisCluster-&gt;sAddArray(&#039;k&#039;, [&#039;v1&#039;, &#039;v2&#039;, &#03
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-var_dump( $redisCluster-&gt;sAdd(&#039;k&#039;, &#039;v1&#039;, &#039;v2&#039;, &#039;v3&#039;) );    // int(3)<br />
-var_dump( $redisCluster-&gt;sRem(&#039;k&#039;, &#039;v2&#039;, &#039;v3&#039;) );          // int(2)<br />
-var_dump( $redisCluster-&gt;sMembers(&#039;k&#039;) );<br />
-//// Output:<br />
-// array(1) {<br />
-//   [0]=&gt; string(2) &quot;v1&quot;<br />
-// }<br />
+                <td><pre class="examples">&lt;pre&gt;
+var_dump( $redisCluster-&gt;sAdd(&#039;k&#039;, &#039;v1&#039;, &#039;v2&#039;, &#039;v3&#039;) );    // int(3)
+var_dump( $redisCluster-&gt;sRem(&#039;k&#039;, &#039;v2&#039;, &#039;v3&#039;) );          // int(2)
+var_dump( $redisCluster-&gt;sMembers(&#039;k&#039;) );
+//// Output:
+// array(1) {
+//   [0]=&gt; string(2) &quot;v1&quot;
+// }
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -4484,30 +4462,30 @@ var_dump( $redisCluster-&gt;sMembers(&#039;k&#039;) );<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;);<br />
-<br />
-$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;1&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;2&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s1&#039;, &#039;3&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s1&#039;, &#039;1&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s2&#039;, &#039;3&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s2&#039;, &#039;4&#039;);<br />
-<br />
-var_dump($redisCluster-&gt;sUnion(&#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;));<br />
-<br />
-//// Output:<br />
-//<br />
-//array(4) {<br />
-//  [0]=&gt;<br />
-//  string(1) &quot;3&quot;<br />
-//  [1]=&gt;<br />
-//  string(1) &quot;4&quot;<br />
-//  [2]=&gt;<br />
-//  string(1) &quot;1&quot;<br />
-//  [3]=&gt;<br />
-//  string(1) &quot;2&quot;<br />
-//}<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;);
+
+$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;1&#039;);
+$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;2&#039;);
+$redisCluster-&gt;sAdd(&#039;s1&#039;, &#039;3&#039;);
+$redisCluster-&gt;sAdd(&#039;s1&#039;, &#039;1&#039;);
+$redisCluster-&gt;sAdd(&#039;s2&#039;, &#039;3&#039;);
+$redisCluster-&gt;sAdd(&#039;s2&#039;, &#039;4&#039;);
+
+var_dump($redisCluster-&gt;sUnion(&#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;));
+
+//// Output:
+//
+//array(4) {
+//  [0]=&gt;
+//  string(1) &quot;3&quot;
+//  [1]=&gt;
+//  string(1) &quot;4&quot;
+//  [2]=&gt;
+//  string(1) &quot;1&quot;
+//  [3]=&gt;
+//  string(1) &quot;2&quot;
+//}
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -4573,32 +4551,32 @@ var_dump($redisCluster-&gt;sUnion(&#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;);<br />
-<br />
-$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;1&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;2&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s1&#039;, &#039;3&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s1&#039;, &#039;1&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s2&#039;, &#039;3&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s2&#039;, &#039;4&#039;);<br />
-<br />
-var_dump($redisCluster-&gt;sUnionStore(&#039;dst&#039;, &#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;));<br />
-var_dump($redisCluster-&gt;sMembers(&#039;dst&#039;));<br />
-<br />
-//// Output:<br />
-//<br />
-//int(4)<br />
-//array(4) {<br />
-//  [0]=&gt;<br />
-//  string(1) &quot;3&quot;<br />
-//  [1]=&gt;<br />
-//  string(1) &quot;4&quot;<br />
-//  [2]=&gt;<br />
-//  string(1) &quot;1&quot;<br />
-//  [3]=&gt;<br />
-//  string(1) &quot;2&quot;<br />
-//}<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;);
+
+$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;1&#039;);
+$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;2&#039;);
+$redisCluster-&gt;sAdd(&#039;s1&#039;, &#039;3&#039;);
+$redisCluster-&gt;sAdd(&#039;s1&#039;, &#039;1&#039;);
+$redisCluster-&gt;sAdd(&#039;s2&#039;, &#039;3&#039;);
+$redisCluster-&gt;sAdd(&#039;s2&#039;, &#039;4&#039;);
+
+var_dump($redisCluster-&gt;sUnionStore(&#039;dst&#039;, &#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;));
+var_dump($redisCluster-&gt;sMembers(&#039;dst&#039;));
+
+//// Output:
+//
+//int(4)
+//array(4) {
+//  [0]=&gt;
+//  string(1) &quot;3&quot;
+//  [1]=&gt;
+//  string(1) &quot;4&quot;
+//  [2]=&gt;
+//  string(1) &quot;1&quot;
+//  [3]=&gt;
+//  string(1) &quot;2&quot;
+//}
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -4662,28 +4640,28 @@ If the intersection between the different sets is empty, the return value will b
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039;, &#039;val1&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039;, &#039;val2&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039;, &#039;val3&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039;, &#039;val4&#039;);<br />
-<br />
-$redisCluster-&gt;sAdd(&#039;key2&#039;, &#039;val3&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key2&#039;, &#039;val4&#039;);<br />
-<br />
-$redisCluster-&gt;sAdd(&#039;key3&#039;, &#039;val3&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key3&#039;, &#039;val4&#039;);<br />
-<br />
-var_dump($redisCluster-&gt;sInter(&#039;key1&#039;, &#039;key2&#039;, &#039;key3&#039;));<br />
-<br />
-// Output:<br />
-//<br />
-//array(2) {<br />
-//  [0]=&gt;<br />
-//  string(4) &quot;val4&quot;<br />
-//  [1]=&gt;<br />
-//  string(4) &quot;val3&quot;<br />
-//}<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;sAdd(&#039;key1&#039;, &#039;val1&#039;);
+$redisCluster-&gt;sAdd(&#039;key1&#039;, &#039;val2&#039;);
+$redisCluster-&gt;sAdd(&#039;key1&#039;, &#039;val3&#039;);
+$redisCluster-&gt;sAdd(&#039;key1&#039;, &#039;val4&#039;);
+
+$redisCluster-&gt;sAdd(&#039;key2&#039;, &#039;val3&#039;);
+$redisCluster-&gt;sAdd(&#039;key2&#039;, &#039;val4&#039;);
+
+$redisCluster-&gt;sAdd(&#039;key3&#039;, &#039;val3&#039;);
+$redisCluster-&gt;sAdd(&#039;key3&#039;, &#039;val4&#039;);
+
+var_dump($redisCluster-&gt;sInter(&#039;key1&#039;, &#039;key2&#039;, &#039;key3&#039;));
+
+// Output:
+//
+//array(2) {
+//  [0]=&gt;
+//  string(4) &quot;val4&quot;
+//  [1]=&gt;
+//  string(4) &quot;val3&quot;
+//}
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -4749,30 +4727,30 @@ var_dump($redisCluster-&gt;sInter(&#039;key1&#039;, &#039;key2&#039;, &#039;key3
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039;, &#039;val1&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039;, &#039;val2&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039;, &#039;val3&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039;, &#039;val4&#039;);<br />
-<br />
-$redisCluster-&gt;sAdd(&#039;key2&#039;, &#039;val3&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key2&#039;, &#039;val4&#039;);<br />
-<br />
-$redisCluster-&gt;sAdd(&#039;key3&#039;, &#039;val3&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key3&#039;, &#039;val4&#039;);<br />
-<br />
-var_dump($redisCluster-&gt;sInterStore(&#039;output&#039;, &#039;key1&#039;, &#039;key2&#039;, &#039;key3&#039;));<br />
-var_dump($redisCluster-&gt;sMembers(&#039;output&#039;));<br />
-<br />
-//// Output:<br />
-//<br />
-//int(2)<br />
-//array(2) {<br />
-//  [0]=&gt;<br />
-//  string(4) &quot;val4&quot;<br />
-//  [1]=&gt;<br />
-//  string(4) &quot;val3&quot;<br />
-//}<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;sAdd(&#039;key1&#039;, &#039;val1&#039;);
+$redisCluster-&gt;sAdd(&#039;key1&#039;, &#039;val2&#039;);
+$redisCluster-&gt;sAdd(&#039;key1&#039;, &#039;val3&#039;);
+$redisCluster-&gt;sAdd(&#039;key1&#039;, &#039;val4&#039;);
+
+$redisCluster-&gt;sAdd(&#039;key2&#039;, &#039;val3&#039;);
+$redisCluster-&gt;sAdd(&#039;key2&#039;, &#039;val4&#039;);
+
+$redisCluster-&gt;sAdd(&#039;key3&#039;, &#039;val3&#039;);
+$redisCluster-&gt;sAdd(&#039;key3&#039;, &#039;val4&#039;);
+
+var_dump($redisCluster-&gt;sInterStore(&#039;output&#039;, &#039;key1&#039;, &#039;key2&#039;, &#039;key3&#039;));
+var_dump($redisCluster-&gt;sMembers(&#039;output&#039;));
+
+//// Output:
+//
+//int(2)
+//array(2) {
+//  [0]=&gt;
+//  string(4) &quot;val4&quot;
+//  [1]=&gt;
+//  string(4) &quot;val3&quot;
+//}
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -4833,27 +4811,27 @@ var_dump($redisCluster-&gt;sMembers(&#039;output&#039;));<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;);<br />
-<br />
-$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;1&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;2&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;3&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;4&#039;);<br />
-<br />
-$redisCluster-&gt;sAdd(&#039;s1&#039;, &#039;1&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s2&#039;, &#039;3&#039;);<br />
-<br />
-var_dump($redisCluster-&gt;sDiff(&#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;));<br />
-<br />
-//// Output:<br />
-//<br />
-//array(2) {<br />
-//  [0]=&gt;<br />
-//  string(1) &quot;4&quot;<br />
-//  [1]=&gt;<br />
-//  string(1) &quot;2&quot;<br />
-//}<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;);
+
+$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;1&#039;);
+$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;2&#039;);
+$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;3&#039;);
+$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;4&#039;);
+
+$redisCluster-&gt;sAdd(&#039;s1&#039;, &#039;1&#039;);
+$redisCluster-&gt;sAdd(&#039;s2&#039;, &#039;3&#039;);
+
+var_dump($redisCluster-&gt;sDiff(&#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;));
+
+//// Output:
+//
+//array(2) {
+//  [0]=&gt;
+//  string(1) &quot;4&quot;
+//  [1]=&gt;
+//  string(1) &quot;2&quot;
+//}
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -4919,29 +4897,29 @@ var_dump($redisCluster-&gt;sDiff(&#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;)
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;);<br />
-<br />
-$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;1&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;2&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;3&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;4&#039;);<br />
-<br />
-$redisCluster-&gt;sAdd(&#039;s1&#039;, &#039;1&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;s2&#039;, &#039;3&#039;);<br />
-<br />
-var_dump($redisCluster-&gt;sDiffStore(&#039;dst&#039;, &#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;));<br />
-var_dump($redisCluster-&gt;sMembers(&#039;dst&#039;));<br />
-<br />
-//// Output:<br />
-//<br />
-//int(2)<br />
-//array(2) {<br />
-//  [0]=&gt;<br />
-//  string(1) &quot;4&quot;<br />
-//  [1]=&gt;<br />
-//  string(1) &quot;2&quot;<br />
-//}<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;);
+
+$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;1&#039;);
+$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;2&#039;);
+$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;3&#039;);
+$redisCluster-&gt;sAdd(&#039;s0&#039;, &#039;4&#039;);
+
+$redisCluster-&gt;sAdd(&#039;s1&#039;, &#039;1&#039;);
+$redisCluster-&gt;sAdd(&#039;s2&#039;, &#039;3&#039;);
+
+var_dump($redisCluster-&gt;sDiffStore(&#039;dst&#039;, &#039;s0&#039;, &#039;s1&#039;, &#039;s2&#039;));
+var_dump($redisCluster-&gt;sMembers(&#039;dst&#039;));
+
+//// Output:
+//
+//int(2)
+//array(2) {
+//  [0]=&gt;
+//  string(1) &quot;4&quot;
+//  [1]=&gt;
+//  string(1) &quot;2&quot;
+//}
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -4998,21 +4976,21 @@ bool FALSE if set identified by key is empty or doesn't exist and count argument
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;one&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;two&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;three&#039;);              // &#039;key1&#039; =&gt; {&#039;one&#039;, &#039;two&#039;, &#039;three&#039;}<br />
-<br />
-var_dump( $redisCluster-&gt;sRandMember(&#039;key1&#039;) );     // &#039;key1&#039; =&gt; {&#039;one&#039;, &#039;two&#039;, &#039;three&#039;}<br />
-<br />
-// string(5) &quot;three&quot;<br />
-<br />
-var_dump( $redisCluster-&gt;sRandMember(&#039;key1&#039;, 2) );  // &#039;key1&#039; =&gt; {&#039;one&#039;, &#039;two&#039;, &#039;three&#039;}<br />
-<br />
-// array(2) {<br />
-//   [0]=&gt; string(2) &quot;one&quot;<br />
-//   [1]=&gt; string(2) &quot;three&quot;<br />
-// }<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;one&#039;);
+$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;two&#039;);
+$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;three&#039;);              // &#039;key1&#039; =&gt; {&#039;one&#039;, &#039;two&#039;, &#039;three&#039;}
+
+var_dump( $redisCluster-&gt;sRandMember(&#039;key1&#039;) );     // &#039;key1&#039; =&gt; {&#039;one&#039;, &#039;two&#039;, &#039;three&#039;}
+
+// string(5) &quot;three&quot;
+
+var_dump( $redisCluster-&gt;sRandMember(&#039;key1&#039;, 2) );  // &#039;key1&#039; =&gt; {&#039;one&#039;, &#039;two&#039;, &#039;three&#039;}
+
+// array(2) {
+//   [0]=&gt; string(2) &quot;one&quot;
+//   [1]=&gt; string(2) &quot;three&quot;
+// }
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -5063,9 +5041,9 @@ var_dump( $redisCluster-&gt;sRandMember(&#039;key1&#039;, 2) );  // &#039;key1&#
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;key&#039;, &#039;value&#039;);<br />
-$redisCluster-&gt;strlen(&#039;key&#039;); // 5<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;key&#039;, &#039;value&#039;);
+$redisCluster-&gt;strlen(&#039;key&#039;); // 5
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -5273,11 +5251,11 @@ does not exist. Returns -1 if the key exists but has no associated expire.</p></
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 0, &#039;val0&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 2, &#039;val2&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 10, &#039;val10&#039;);<br />
-$redisCluster-&gt;zCard(&#039;key&#039;);            // 3<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;zAdd(&#039;key&#039;, 0, &#039;val0&#039;);
+$redisCluster-&gt;zAdd(&#039;key&#039;, 2, &#039;val2&#039;);
+$redisCluster-&gt;zAdd(&#039;key&#039;, 10, &#039;val10&#039;);
+$redisCluster-&gt;zCard(&#039;key&#039;);            // 3
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -5340,11 +5318,11 @@ from the range. +inf and -inf are also valid limits.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 0, &#039;val0&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 2, &#039;val2&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 10, &#039;val10&#039;);<br />
-$redisCluster-&gt;zCount(&#039;key&#039;, 0, 3); // 2, corresponding to array(&#039;val0&#039;, &#039;val2&#039;)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;zAdd(&#039;key&#039;, 0, &#039;val0&#039;);
+$redisCluster-&gt;zAdd(&#039;key&#039;, 2, &#039;val2&#039;);
+$redisCluster-&gt;zAdd(&#039;key&#039;, 10, &#039;val10&#039;);
+$redisCluster-&gt;zCount(&#039;key&#039;, 0, 3); // 2, corresponding to array(&#039;val0&#039;, &#039;val2&#039;)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -5405,11 +5383,11 @@ $redisCluster-&gt;zCount(&#039;key&#039;, 0, 3); // 2, corresponding to array(&#
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 0, &#039;val0&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 2, &#039;val2&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 10, &#039;val10&#039;);<br />
-$redisCluster-&gt;zRemRangeByScore(&#039;key&#039;, &#039;0&#039;, &#039;3&#039;); // 2<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;zAdd(&#039;key&#039;, 0, &#039;val0&#039;);
+$redisCluster-&gt;zAdd(&#039;key&#039;, 2, &#039;val2&#039;);
+$redisCluster-&gt;zAdd(&#039;key&#039;, 10, &#039;val10&#039;);
+$redisCluster-&gt;zRemRangeByScore(&#039;key&#039;, &#039;0&#039;, &#039;3&#039;); // 2
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -5465,9 +5443,9 @@ $redisCluster-&gt;zRemRangeByScore(&#039;key&#039;, &#039;0&#039;, &#039;3&#039;
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 2.5, &#039;val2&#039;);<br />
-$redisCluster-&gt;zScore(&#039;key&#039;, &#039;val2&#039;); // 2.5<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;zAdd(&#039;key&#039;, 2.5, &#039;val2&#039;);
+$redisCluster-&gt;zScore(&#039;key&#039;, &#039;val2&#039;); // 2.5
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -5548,15 +5526,15 @@ $redisCluster-&gt;zScore(&#039;key&#039;, &#039;val2&#039;); // 2.5<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;zAdd(&#039;z&#039;, 1, &#039;v2&#039;, 2, &#039;v2&#039;, 3, &#039;v3&#039;, 4, &#039;v4&#039; );  // int(3)<br />
-$redisCluster-&gt;zRem(&#039;z&#039;, &#039;v2&#039;, &#039;v3&#039;);                           // int(2)<br />
-var_dump( $redisCluster-&gt;zRange(&#039;z&#039;, 0, -1) );<br />
-<br />
-//// Output:<br />
-// array(1) {<br />
-//   [0]=&gt; string(2) &quot;v4&quot;<br />
-// }<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;zAdd(&#039;z&#039;, 1, &#039;v2&#039;, 2, &#039;v2&#039;, 3, &#039;v3&#039;, 4, &#039;v4&#039; );  // int(3)
+$redisCluster-&gt;zRem(&#039;z&#039;, &#039;v2&#039;, &#039;v3&#039;);                           // int(2)
+var_dump( $redisCluster-&gt;zRange(&#039;z&#039;, 0, -1) );
+
+//// Output:
+// array(1) {
+//   [0]=&gt; string(2) &quot;v4&quot;
+// }
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -5617,11 +5595,11 @@ var_dump( $redisCluster-&gt;zRange(&#039;z&#039;, 0, -1) );<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;key&#039;);<br />
-$redisCluster-&gt;zIncrBy(&#039;key&#039;, 2.5, &#039;member1&#039;);// key or member1 didn&#039;t exist, so member1&#039;s score is to 0 ;<br />
-                                             //before the increment and now has the value 2.5<br />
-$redisCluster-&gt;zIncrBy(&#039;key&#039;, 1, &#039;member1&#039;);    // 3.5<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;key&#039;);
+$redisCluster-&gt;zIncrBy(&#039;key&#039;, 2.5, &#039;member1&#039;);// key or member1 didn&#039;t exist, so member1&#039;s score is to 0 ;
+                                             //before the increment and now has the value 2.5
+$redisCluster-&gt;zIncrBy(&#039;key&#039;, 1, &#039;member1&#039;);    // 3.5
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -5672,11 +5650,11 @@ $redisCluster-&gt;zIncrBy(&#039;key&#039;, 1, &#039;member1&#039;);    // 3.5<br
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;h&#039;);<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;key1&#039;, &#039;hello&#039;);<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;key2&#039;, &#039;plop&#039;);<br />
-$redisCluster-&gt;hLen(&#039;h&#039;); // returns 2<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;h&#039;);
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;key1&#039;, &#039;hello&#039;);
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;key2&#039;, &#039;plop&#039;);
+$redisCluster-&gt;hLen(&#039;h&#039;); // returns 2
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -5727,27 +5705,27 @@ $redisCluster-&gt;hLen(&#039;h&#039;); // returns 2<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;h&#039;);<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;a&#039;, &#039;x&#039;);<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;b&#039;, &#039;y&#039;);<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;c&#039;, &#039;z&#039;);<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;d&#039;, &#039;t&#039;);<br />
-var_dump($redisCluster-&gt;hKeys(&#039;h&#039;));<br />
-<br />
-//// Output:<br />
-//<br />
-// array(4) {<br />
-// [0]=&gt;<br />
-// string(1) &quot;a&quot;<br />
-// [1]=&gt;<br />
-// string(1) &quot;b&quot;<br />
-// [2]=&gt;<br />
-// string(1) &quot;c&quot;<br />
-// [3]=&gt;<br />
-// string(1) &quot;d&quot;<br />
-// }<br />
-// The order is random and corresponds to redis&#039; own internal representation of the set structure.<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;h&#039;);
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;a&#039;, &#039;x&#039;);
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;b&#039;, &#039;y&#039;);
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;c&#039;, &#039;z&#039;);
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;d&#039;, &#039;t&#039;);
+var_dump($redisCluster-&gt;hKeys(&#039;h&#039;));
+
+//// Output:
+//
+// array(4) {
+// [0]=&gt;
+// string(1) &quot;a&quot;
+// [1]=&gt;
+// string(1) &quot;b&quot;
+// [2]=&gt;
+// string(1) &quot;c&quot;
+// [3]=&gt;
+// string(1) &quot;d&quot;
+// }
+// The order is random and corresponds to redis&#039; own internal representation of the set structure.
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -5798,27 +5776,27 @@ var_dump($redisCluster-&gt;hKeys(&#039;h&#039;));<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;h&#039;);<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;a&#039;, &#039;x&#039;);<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;b&#039;, &#039;y&#039;);<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;c&#039;, &#039;z&#039;);<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;d&#039;, &#039;t&#039;);<br />
-var_dump($redisCluster-&gt;hVals(&#039;h&#039;));<br />
-<br />
-//// Output:<br />
-//<br />
-// array(4) {<br />
-//   [0]=&gt;<br />
-//   string(1) &quot;x&quot;<br />
-//   [1]=&gt;<br />
-//   string(1) &quot;y&quot;<br />
-//   [2]=&gt;<br />
-//   string(1) &quot;z&quot;<br />
-//   [3]=&gt;<br />
-//   string(1) &quot;t&quot;<br />
-// }<br />
-// The order is random and corresponds to redis&#039; own internal representation of the set structure.<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;h&#039;);
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;a&#039;, &#039;x&#039;);
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;b&#039;, &#039;y&#039;);
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;c&#039;, &#039;z&#039;);
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;d&#039;, &#039;t&#039;);
+var_dump($redisCluster-&gt;hVals(&#039;h&#039;));
+
+//// Output:
+//
+// array(4) {
+//   [0]=&gt;
+//   string(1) &quot;x&quot;
+//   [1]=&gt;
+//   string(1) &quot;y&quot;
+//   [2]=&gt;
+//   string(1) &quot;z&quot;
+//   [3]=&gt;
+//   string(1) &quot;t&quot;
+// }
+// The order is random and corresponds to redis&#039; own internal representation of the set structure.
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -5874,10 +5852,10 @@ var_dump($redisCluster-&gt;hVals(&#039;h&#039;));<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;h&#039;);<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;a&#039;, &#039;x&#039;);<br />
-$redisCluster-&gt;hGet(&#039;h&#039;, &#039;a&#039;); // &#039;X&#039;<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;h&#039;);
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;a&#039;, &#039;x&#039;);
+$redisCluster-&gt;hGet(&#039;h&#039;, &#039;a&#039;); // &#039;X&#039;
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -5928,27 +5906,27 @@ $redisCluster-&gt;hGet(&#039;h&#039;, &#039;a&#039;); // &#039;X&#039;<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;h&#039;);<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;a&#039;, &#039;x&#039;);<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;b&#039;, &#039;y&#039;);<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;c&#039;, &#039;z&#039;);<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;d&#039;, &#039;t&#039;);<br />
-var_dump($redisCluster-&gt;hGetAll(&#039;h&#039;));<br />
-<br />
-//// Output:<br />
-//<br />
-// array(4) {<br />
-//   [&quot;a&quot;]=&gt;<br />
-//   string(1) &quot;x&quot;<br />
-//   [&quot;b&quot;]=&gt;<br />
-//   string(1) &quot;y&quot;<br />
-//   [&quot;c&quot;]=&gt;<br />
-//   string(1) &quot;z&quot;<br />
-//   [&quot;d&quot;]=&gt;<br />
-//   string(1) &quot;t&quot;<br />
-// }<br />
-// The order is random and corresponds to redis&#039; own internal representation of the set structure.<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;h&#039;);
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;a&#039;, &#039;x&#039;);
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;b&#039;, &#039;y&#039;);
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;c&#039;, &#039;z&#039;);
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;d&#039;, &#039;t&#039;);
+var_dump($redisCluster-&gt;hGetAll(&#039;h&#039;));
+
+//// Output:
+//
+// array(4) {
+//   [&quot;a&quot;]=&gt;
+//   string(1) &quot;x&quot;
+//   [&quot;b&quot;]=&gt;
+//   string(1) &quot;y&quot;
+//   [&quot;c&quot;]=&gt;
+//   string(1) &quot;z&quot;
+//   [&quot;d&quot;]=&gt;
+//   string(1) &quot;t&quot;
+// }
+// The order is random and corresponds to redis&#039; own internal representation of the set structure.
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -6004,10 +5982,10 @@ var_dump($redisCluster-&gt;hGetAll(&#039;h&#039;));<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;a&#039;, &#039;x&#039;);<br />
-$redisCluster-&gt;hExists(&#039;h&#039;, &#039;a&#039;);               //  TRUE<br />
-$redisCluster-&gt;hExists(&#039;h&#039;, &#039;NonExistingKey&#039;);  // FALSE<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;a&#039;, &#039;x&#039;);
+$redisCluster-&gt;hExists(&#039;h&#039;, &#039;a&#039;);               //  TRUE
+$redisCluster-&gt;hExists(&#039;h&#039;, &#039;NonExistingKey&#039;);  // FALSE
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -6068,10 +6046,10 @@ $redisCluster-&gt;hExists(&#039;h&#039;, &#039;NonExistingKey&#039;);  // FALSE<
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;h&#039;);<br />
-$redisCluster-&gt;hIncrBy(&#039;h&#039;, &#039;x&#039;, 2); // returns 2: h[x] = 2 now.<br />
-$redisCluster-&gt;hIncrBy(&#039;h&#039;, &#039;x&#039;, 1); // h[x] ← 2 + 1. Returns 3<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;h&#039;);
+$redisCluster-&gt;hIncrBy(&#039;h&#039;, &#039;x&#039;, 2); // returns 2: h[x] = 2 now.
+$redisCluster-&gt;hIncrBy(&#039;h&#039;, &#039;x&#039;, 1); // h[x] ← 2 + 1. Returns 3
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -6132,13 +6110,13 @@ $redisCluster-&gt;hIncrBy(&#039;h&#039;, &#039;x&#039;, 1); // h[x] ← 2 + 1. R
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;h&#039;)<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;key1&#039;, &#039;hello&#039;);  // 1, &#039;key1&#039; =&gt; &#039;hello&#039; in the hash at &quot;h&quot;<br />
-$redisCluster-&gt;hGet(&#039;h&#039;, &#039;key1&#039;);           // returns &quot;hello&quot;<br />
-<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;key1&#039;, &#039;plop&#039;);   // 0, value was replaced.<br />
-$redisCluster-&gt;hGet(&#039;h&#039;, &#039;key1&#039;);           // returns &quot;plop&quot;<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;h&#039;)
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;key1&#039;, &#039;hello&#039;);  // 1, &#039;key1&#039; =&gt; &#039;hello&#039; in the hash at &quot;h&quot;
+$redisCluster-&gt;hGet(&#039;h&#039;, &#039;key1&#039;);           // returns &quot;hello&quot;
+
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;key1&#039;, &#039;plop&#039;);   // 0, value was replaced.
+$redisCluster-&gt;hGet(&#039;h&#039;, &#039;key1&#039;);           // returns &quot;plop&quot;
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -6199,11 +6177,11 @@ $redisCluster-&gt;hGet(&#039;h&#039;, &#039;key1&#039;);           // returns &q
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;h&#039;)<br />
-$redisCluster-&gt;hSetNx(&#039;h&#039;, &#039;key1&#039;, &#039;hello&#039;); // TRUE, &#039;key1&#039; =&gt; &#039;hello&#039; in the hash at &quot;h&quot;<br />
-$redisCluster-&gt;hSetNx(&#039;h&#039;, &#039;key1&#039;, &#039;world&#039;); // FALSE, &#039;key1&#039; =&gt; &#039;hello&#039; in the hash at &quot;h&quot;. No change since the<br />
-field wasn&#039;t replaced.<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;h&#039;)
+$redisCluster-&gt;hSetNx(&#039;h&#039;, &#039;key1&#039;, &#039;hello&#039;); // TRUE, &#039;key1&#039; =&gt; &#039;hello&#039; in the hash at &quot;h&quot;
+$redisCluster-&gt;hSetNx(&#039;h&#039;, &#039;key1&#039;, &#039;world&#039;); // FALSE, &#039;key1&#039; =&gt; &#039;hello&#039; in the hash at &quot;h&quot;. No change since the
+field wasn&#039;t replaced.
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -6260,12 +6238,12 @@ with the hash keys as array keys.</p></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;h&#039;);<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;field1&#039;, &#039;value1&#039;);<br />
-$redisCluster-&gt;hSet(&#039;h&#039;, &#039;field2&#039;, &#039;value2&#039;);<br />
-$redisCluster-&gt;hMGet(&#039;h&#039;, array(&#039;field1&#039;, &#039;field2&#039;)); // returns array(&#039;field1&#039; =&gt; &#039;value1&#039;, &#039;field2&#039; =&gt;<br />
-&#039;value2&#039;)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;h&#039;);
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;field1&#039;, &#039;value1&#039;);
+$redisCluster-&gt;hSet(&#039;h&#039;, &#039;field2&#039;, &#039;value2&#039;);
+$redisCluster-&gt;hMGet(&#039;h&#039;, array(&#039;field1&#039;, &#039;field2&#039;)); // returns array(&#039;field1&#039; =&gt; &#039;value1&#039;, &#039;field2&#039; =&gt;
+&#039;value2&#039;)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -6321,10 +6299,10 @@ $redisCluster-&gt;hMGet(&#039;h&#039;, array(&#039;field1&#039;, &#039;field2&#0
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;user:1&#039;);<br />
-$redisCluster-&gt;hMSet(&#039;user:1&#039;, array(&#039;name&#039; =&gt; &#039;Joe&#039;, &#039;salary&#039; =&gt; 2000));<br />
-$redisCluster-&gt;hIncrBy(&#039;user:1&#039;, &#039;salary&#039;, 100); // Joe earns 100 more now.<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;user:1&#039;);
+$redisCluster-&gt;hMSet(&#039;user:1&#039;, array(&#039;name&#039; =&gt; &#039;Joe&#039;, &#039;salary&#039; =&gt; 2000));
+$redisCluster-&gt;hIncrBy(&#039;user:1&#039;, &#039;salary&#039;, 100); // Joe earns 100 more now.
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -6390,25 +6368,25 @@ $redisCluster-&gt;hIncrBy(&#039;user:1&#039;, &#039;salary&#039;, 100); // Joe e
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;hMSet(&#039;h&#039;,<br />
-              array(<br />
-                   &#039;f1&#039; =&gt; &#039;v1&#039;,<br />
-                   &#039;f2&#039; =&gt; &#039;v2&#039;,<br />
-                   &#039;f3&#039; =&gt; &#039;v3&#039;,<br />
-                   &#039;f4&#039; =&gt; &#039;v4&#039;,<br />
-              ));<br />
-<br />
-var_dump( $redisCluster-&gt;hDel(&#039;h&#039;, &#039;f1&#039;) );        // int(1)<br />
-var_dump( $redisCluster-&gt;hDel(&#039;h&#039;, &#039;f2&#039;, &#039;f3&#039;) );  // int(2)<br />
-<br />
-var_dump( $redisCluster-&gt;hGetAll(&#039;h&#039;) );<br />
-<br />
-//// Output:<br />
-//<br />
-//  array(1) {<br />
-//    [&quot;f4&quot;]=&gt; string(2) &quot;v4&quot;<br />
-//  }<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;hMSet(&#039;h&#039;,
+              array(
+                   &#039;f1&#039; =&gt; &#039;v1&#039;,
+                   &#039;f2&#039; =&gt; &#039;v2&#039;,
+                   &#039;f3&#039; =&gt; &#039;v3&#039;,
+                   &#039;f4&#039; =&gt; &#039;v4&#039;,
+              ));
+
+var_dump( $redisCluster-&gt;hDel(&#039;h&#039;, &#039;f1&#039;) );        // int(1)
+var_dump( $redisCluster-&gt;hDel(&#039;h&#039;, &#039;f2&#039;, &#039;f3&#039;) );  // int(2)
+
+var_dump( $redisCluster-&gt;hGetAll(&#039;h&#039;) );
+
+//// Output:
+//
+//  array(1) {
+//    [&quot;f4&quot;]=&gt; string(2) &quot;v4&quot;
+//  }
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -6469,21 +6447,21 @@ var_dump( $redisCluster-&gt;hGetAll(&#039;h&#039;) );<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;hset(&#039;h&#039;, &#039;float&#039;, 3);<br />
-$redisCluster-&gt;hset(&#039;h&#039;, &#039;int&#039;,   3);<br />
-var_dump( $redisCluster-&gt;hIncrByFloat(&#039;h&#039;, &#039;float&#039;, 1.5) ); // float(4.5)<br />
-<br />
-var_dump( $redisCluster-&gt;hGetAll(&#039;h&#039;) );<br />
-<br />
-//// Output:<br />
-//<br />
-// array(2) {<br />
-//   [&quot;float&quot;]=&gt;<br />
-//   string(3) &quot;4.5&quot;<br />
-//   [&quot;int&quot;]=&gt;<br />
-//   string(1) &quot;3&quot;<br />
-// }<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;hset(&#039;h&#039;, &#039;float&#039;, 3);
+$redisCluster-&gt;hset(&#039;h&#039;, &#039;int&#039;,   3);
+var_dump( $redisCluster-&gt;hIncrByFloat(&#039;h&#039;, &#039;float&#039;, 1.5) ); // float(4.5)
+
+var_dump( $redisCluster-&gt;hGetAll(&#039;h&#039;) );
+
+//// Output:
+//
+// array(2) {
+//   [&quot;float&quot;]=&gt;
+//   string(3) &quot;4.5&quot;
+//   [&quot;int&quot;]=&gt;
+//   string(1) &quot;3&quot;
+// }
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -6534,9 +6512,9 @@ var_dump( $redisCluster-&gt;hGetAll(&#039;h&#039;) );<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;foo&#039;, &#039;bar&#039;);<br />
-$val = $redisCluster-&gt;dump(&#039;foo&#039;); // $val will be the Redis encoded key value<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;foo&#039;, &#039;bar&#039;);
+$val = $redisCluster-&gt;dump(&#039;foo&#039;); // $val will be the Redis encoded key value
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -6593,14 +6571,14 @@ with the smallest score. zRevRank starts at 0 for the item with the largest scor
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;z&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 1, &#039;one&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 2, &#039;two&#039;);<br />
-$redisCluster-&gt;zRank(&#039;key&#039;, &#039;one&#039;);     // 0<br />
-$redisCluster-&gt;zRank(&#039;key&#039;, &#039;two&#039;);     // 1<br />
-$redisCluster-&gt;zRevRank(&#039;key&#039;, &#039;one&#039;);  // 1<br />
-$redisCluster-&gt;zRevRank(&#039;key&#039;, &#039;two&#039;);  // 0<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;z&#039;);
+$redisCluster-&gt;zAdd(&#039;key&#039;, 1, &#039;one&#039;);
+$redisCluster-&gt;zAdd(&#039;key&#039;, 2, &#039;two&#039;);
+$redisCluster-&gt;zRank(&#039;key&#039;, &#039;one&#039;);     // 0
+$redisCluster-&gt;zRank(&#039;key&#039;, &#039;two&#039;);     // 1
+$redisCluster-&gt;zRevRank(&#039;key&#039;, &#039;one&#039;);  // 1
+$redisCluster-&gt;zRevRank(&#039;key&#039;, &#039;two&#039;);  // 0
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -6710,11 +6688,11 @@ $redisCluster-&gt;zRevRank(&#039;key&#039;, &#039;two&#039;);  // 0<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;incr(&#039;key1&#039;); // key1 didn&#039;t exists, set to 0 before the increment and now has the value 1<br />
-$redisCluster-&gt;incr(&#039;key1&#039;); // 2<br />
-$redisCluster-&gt;incr(&#039;key1&#039;); // 3<br />
-$redisCluster-&gt;incr(&#039;key1&#039;); // 4<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;incr(&#039;key1&#039;); // key1 didn&#039;t exists, set to 0 before the increment and now has the value 1
+$redisCluster-&gt;incr(&#039;key1&#039;); // 2
+$redisCluster-&gt;incr(&#039;key1&#039;); // 3
+$redisCluster-&gt;incr(&#039;key1&#039;); // 4
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -6765,10 +6743,10 @@ $redisCluster-&gt;incr(&#039;key1&#039;); // 4<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;decr(&#039;key1&#039;); // key1 didn&#039;t exists, set to 0 before the increment and now has the value -1<br />
-$redisCluster-&gt;decr(&#039;key1&#039;); // -2<br />
-$redisCluster-&gt;decr(&#039;key1&#039;); // -3<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;decr(&#039;key1&#039;); // key1 didn&#039;t exists, set to 0 before the increment and now has the value -1
+$redisCluster-&gt;decr(&#039;key1&#039;); // -2
+$redisCluster-&gt;decr(&#039;key1&#039;); // -3
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -6825,12 +6803,12 @@ value of the increment.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;incr(&#039;key1&#039;);        // key1 didn&#039;t exists, set to 0 before the increment and now has the value 1<br />
-$redisCluster-&gt;incr(&#039;key1&#039;);        // 2<br />
-$redisCluster-&gt;incr(&#039;key1&#039;);        // 3<br />
-$redisCluster-&gt;incr(&#039;key1&#039;);        // 4<br />
-$redisCluster-&gt;incrBy(&#039;key1&#039;, 10);  // 14<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;incr(&#039;key1&#039;);        // key1 didn&#039;t exists, set to 0 before the increment and now has the value 1
+$redisCluster-&gt;incr(&#039;key1&#039;);        // 2
+$redisCluster-&gt;incr(&#039;key1&#039;);        // 3
+$redisCluster-&gt;incr(&#039;key1&#039;);        // 4
+$redisCluster-&gt;incrBy(&#039;key1&#039;, 10);  // 14
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -6887,11 +6865,11 @@ value of the decrement.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;decr(&#039;key1&#039;);        // key1 didn&#039;t exists, set to 0 before the increment and now has the value -1<br />
-$redisCluster-&gt;decr(&#039;key1&#039;);        // -2<br />
-$redisCluster-&gt;decr(&#039;key1&#039;);        // -3<br />
-$redisCluster-&gt;decrBy(&#039;key1&#039;, 10);  // -13<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;decr(&#039;key1&#039;);        // key1 didn&#039;t exists, set to 0 before the increment and now has the value -1
+$redisCluster-&gt;decr(&#039;key1&#039;);        // -2
+$redisCluster-&gt;decr(&#039;key1&#039;);        // -3
+$redisCluster-&gt;decrBy(&#039;key1&#039;, 10);  // -13
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -6947,11 +6925,11 @@ $redisCluster-&gt;decrBy(&#039;key1&#039;, 10);  // -13<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;x&#039;, 3);<br />
-var_dump( $redisCluster-&gt;incrByFloat(&#039;x&#039;, 1.5) );   // float(4.5)<br />
-<br />
-var_dump( $redisCluster-&gt;get(&#039;x&#039;) );                // string(3) &quot;4.5&quot;<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;x&#039;, 3);
+var_dump( $redisCluster-&gt;incrByFloat(&#039;x&#039;, 1.5) );   // float(4.5)
+
+var_dump( $redisCluster-&gt;get(&#039;x&#039;) );                // string(3) &quot;4.5&quot;
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -7007,11 +6985,11 @@ var_dump( $redisCluster-&gt;get(&#039;x&#039;) );                // string(3) &q
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;x&#039;, &#039;42&#039;);<br />
-$redisCluster-&gt;expire(&#039;x&#039;, 3);  // x will disappear in 3 seconds.<br />
-sleep(5);                    // wait 5 seconds<br />
-$redisCluster-&gt;get(&#039;x&#039;);            // will return `FALSE`, as &#039;x&#039; has expired.<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;x&#039;, &#039;42&#039;);
+$redisCluster-&gt;expire(&#039;x&#039;, 3);  // x will disappear in 3 seconds.
+sleep(5);                    // wait 5 seconds
+$redisCluster-&gt;get(&#039;x&#039;);            // will return `FALSE`, as &#039;x&#039; has expired.
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -7067,11 +7045,11 @@ $redisCluster-&gt;get(&#039;x&#039;);            // will return `FALSE`, as &#03
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;x&#039;, &#039;42&#039;);<br />
-$redisCluster-&gt;pExpire(&#039;x&#039;, 11500); // x will disappear in 11500 milliseconds.<br />
-$redisCluster-&gt;ttl(&#039;x&#039;);            // 12<br />
-$redisCluster-&gt;pttl(&#039;x&#039;);           // 11500<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;x&#039;, &#039;42&#039;);
+$redisCluster-&gt;pExpire(&#039;x&#039;, 11500); // x will disappear in 11500 milliseconds.
+$redisCluster-&gt;ttl(&#039;x&#039;);            // 12
+$redisCluster-&gt;pttl(&#039;x&#039;);           // 11500
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -7127,12 +7105,12 @@ $redisCluster-&gt;pttl(&#039;x&#039;);           // 11500<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;x&#039;, &#039;42&#039;);<br />
-$now = time();               // current timestamp<br />
-$redisCluster-&gt;expireAt(&#039;x&#039;, $now + 3); // x will disappear in 3 seconds.<br />
-sleep(5);                        // wait 5 seconds<br />
-$redisCluster-&gt;get(&#039;x&#039;);                // will return `FALSE`, as &#039;x&#039; has expired.<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;x&#039;, &#039;42&#039;);
+$now = time();               // current timestamp
+$redisCluster-&gt;expireAt(&#039;x&#039;, $now + 3); // x will disappear in 3 seconds.
+sleep(5);                        // wait 5 seconds
+$redisCluster-&gt;get(&#039;x&#039;);                // will return `FALSE`, as &#039;x&#039; has expired.
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -7188,11 +7166,11 @@ $redisCluster-&gt;get(&#039;x&#039;);                // will return `FALSE`, as 
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;x&#039;, &#039;42&#039;);<br />
-$redisCluster-&gt;pExpireAt(&#039;x&#039;, 1555555555005);<br />
-$redisCluster-&gt;ttl(&#039;x&#039;);                       // 218270121<br />
-$redisCluster-&gt;pttl(&#039;x&#039;);                      // 218270120575<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;x&#039;, &#039;42&#039;);
+$redisCluster-&gt;pExpireAt(&#039;x&#039;, 1555555555005);
+$redisCluster-&gt;ttl(&#039;x&#039;);                       // 218270121
+$redisCluster-&gt;pttl(&#039;x&#039;);                      // 218270120575
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -7248,10 +7226,10 @@ $redisCluster-&gt;pttl(&#039;x&#039;);                      // 218270120575<br /
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;key&#039;, &#039;value1&#039;);<br />
-$redisCluster-&gt;append(&#039;key&#039;, &#039;value2&#039;); // 12<br />
-$redisCluster-&gt;get(&#039;key&#039;);              // &#039;value1value2&#039;<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;key&#039;, &#039;value1&#039;);
+$redisCluster-&gt;append(&#039;key&#039;, &#039;value2&#039;); // 12
+$redisCluster-&gt;get(&#039;key&#039;);              // &#039;value1value2&#039;
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -7307,10 +7285,10 @@ $redisCluster-&gt;get(&#039;key&#039;);              // &#039;value1value2&#039;
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;key&#039;, &quot;\x7f&quot;);  // this is 0111 1111<br />
-$redisCluster-&gt;getBit(&#039;key&#039;, 0);    // 0<br />
-$redisCluster-&gt;getBit(&#039;key&#039;, 1);    // 1<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;key&#039;, &quot;\x7f&quot;);  // this is 0111 1111
+$redisCluster-&gt;getBit(&#039;key&#039;, 0);    // 0
+$redisCluster-&gt;getBit(&#039;key&#039;, 1);    // 1
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -7371,11 +7349,11 @@ $redisCluster-&gt;getBit(&#039;key&#039;, 1);    // 1<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;key&#039;, &quot;*&quot;);     // ord(&quot;*&quot;) = 42 = 0x2f = &quot;0010 1010&quot;<br />
-$redisCluster-&gt;setBit(&#039;key&#039;, 5, 1); // returns 0<br />
-$redisCluster-&gt;setBit(&#039;key&#039;, 7, 1); // returns 0<br />
-$redisCluster-&gt;get(&#039;key&#039;);          // chr(0x2f) = &quot;/&quot; = b(&quot;0010 1111&quot;)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;key&#039;, &quot;*&quot;);     // ord(&quot;*&quot;) = 42 = 0x2f = &quot;0010 1010&quot;
+$redisCluster-&gt;setBit(&#039;key&#039;, 5, 1); // returns 0
+$redisCluster-&gt;setBit(&#039;key&#039;, 7, 1); // returns 0
+$redisCluster-&gt;get(&#039;key&#039;);          // chr(0x2f) = &quot;/&quot; = b(&quot;0010 1111&quot;)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -7446,14 +7424,14 @@ $redisCluster-&gt;get(&#039;key&#039;);          // chr(0x2f) = &quot;/&quot; = 
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;bit1&#039;, &#039;1&#039;); // 11 0001<br />
-$redisCluster-&gt;set(&#039;bit2&#039;, &#039;2&#039;); // 11 0010<br />
-<br />
-$redisCluster-&gt;bitOp(&#039;AND&#039;, &#039;bit&#039;, &#039;bit1&#039;, &#039;bit2&#039;); // bit = 110000<br />
-$redisCluster-&gt;bitOp(&#039;OR&#039;,  &#039;bit&#039;, &#039;bit1&#039;, &#039;bit2&#039;); // bit = 110011<br />
-$redisCluster-&gt;bitOp(&#039;NOT&#039;, &#039;bit&#039;, &#039;bit1&#039;, &#039;bit2&#039;); // bit = 110011<br />
-$redisCluster-&gt;bitOp(&#039;XOR&#039;, &#039;bit&#039;, &#039;bit1&#039;, &#039;bit2&#039;); // bit = 11<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;bit1&#039;, &#039;1&#039;); // 11 0001
+$redisCluster-&gt;set(&#039;bit2&#039;, &#039;2&#039;); // 11 0010
+
+$redisCluster-&gt;bitOp(&#039;AND&#039;, &#039;bit&#039;, &#039;bit1&#039;, &#039;bit2&#039;); // bit = 110000
+$redisCluster-&gt;bitOp(&#039;OR&#039;,  &#039;bit&#039;, &#039;bit1&#039;, &#039;bit2&#039;); // bit = 110011
+$redisCluster-&gt;bitOp(&#039;NOT&#039;, &#039;bit&#039;, &#039;bit1&#039;, &#039;bit2&#039;); // bit = 110011
+$redisCluster-&gt;bitOp(&#039;XOR&#039;, &#039;bit&#039;, &#039;bit1&#039;, &#039;bit2&#039;); // bit = 11
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -7530,14 +7508,14 @@ function returns -1 as the user specified a clear range and there are no 0 bits 
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;key&#039;, &#039;\xff\xff&#039;);<br />
-$redisCluster-&gt;bitpos(&#039;key&#039;, 1); // int(0)<br />
-$redisCluster-&gt;bitpos(&#039;key&#039;, 1, 1); // int(8)<br />
-$redisCluster-&gt;bitpos(&#039;key&#039;, 1, 3); // int(-1)<br />
-$redisCluster-&gt;bitpos(&#039;key&#039;, 0); // int(16)<br />
-$redisCluster-&gt;bitpos(&#039;key&#039;, 0, 1); // int(16)<br />
-$redisCluster-&gt;bitpos(&#039;key&#039;, 0, 1, 5); // int(-1)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;key&#039;, &#039;\xff\xff&#039;);
+$redisCluster-&gt;bitpos(&#039;key&#039;, 1); // int(0)
+$redisCluster-&gt;bitpos(&#039;key&#039;, 1, 1); // int(8)
+$redisCluster-&gt;bitpos(&#039;key&#039;, 1, 3); // int(-1)
+$redisCluster-&gt;bitpos(&#039;key&#039;, 0); // int(16)
+$redisCluster-&gt;bitpos(&#039;key&#039;, 0, 1); // int(16)
+$redisCluster-&gt;bitpos(&#039;key&#039;, 0, 1, 5); // int(-1)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -7588,12 +7566,12 @@ $redisCluster-&gt;bitpos(&#039;key&#039;, 0, 1, 5); // int(-1)<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;bit&#039;, &#039;345&#039;); // // 11 0011  0011 0100  0011 0101<br />
-var_dump( $redisCluster-&gt;bitCount(&#039;bit&#039;, 0, 0) ); // int(4)<br />
-var_dump( $redisCluster-&gt;bitCount(&#039;bit&#039;, 1, 1) ); // int(3)<br />
-var_dump( $redisCluster-&gt;bitCount(&#039;bit&#039;, 2, 2) ); // int(4)<br />
-var_dump( $redisCluster-&gt;bitCount(&#039;bit&#039;, 0, 2) ); // int(11)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;bit&#039;, &#039;345&#039;); // // 11 0011  0011 0100  0011 0101
+var_dump( $redisCluster-&gt;bitCount(&#039;bit&#039;, 0, 0) ); // int(4)
+var_dump( $redisCluster-&gt;bitCount(&#039;bit&#039;, 1, 1) ); // int(3)
+var_dump( $redisCluster-&gt;bitCount(&#039;bit&#039;, 2, 2) ); // int(4)
+var_dump( $redisCluster-&gt;bitCount(&#039;bit&#039;, 0, 2) ); // int(11)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -7704,10 +7682,10 @@ var_dump( $redisCluster-&gt;bitCount(&#039;bit&#039;, 0, 2) ); // int(11)<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;key&#039;, &#039;string value&#039;);<br />
-$redisCluster-&gt;getRange(&#039;key&#039;, 0, 5);   // &#039;string&#039;<br />
-$redisCluster-&gt;getRange(&#039;key&#039;, -5, -1); // &#039;value&#039;<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;key&#039;, &#039;string value&#039;);
+$redisCluster-&gt;getRange(&#039;key&#039;, 0, 5);   // &#039;string&#039;
+$redisCluster-&gt;getRange(&#039;key&#039;, -5, -1); // &#039;value&#039;
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -7768,13 +7746,13 @@ $redisCluster-&gt;getRange(&#039;key&#039;, -5, -1); // &#039;value&#039;<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;A&#039;);<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;B&#039;);<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;C&#039;);<br />
-$redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1); // array(&#039;A&#039;, &#039;B&#039;, &#039;C&#039;)<br />
-$redisCluster-&gt;lTrim(&#039;key1&#039;, 0, 1);<br />
-$redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1); // array(&#039;A&#039;, &#039;B&#039;)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;A&#039;);
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;B&#039;);
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;C&#039;);
+$redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1); // array(&#039;A&#039;, &#039;B&#039;, &#039;C&#039;)
+$redisCluster-&gt;lTrim(&#039;key1&#039;, 0, 1);
+$redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1); // array(&#039;A&#039;, &#039;B&#039;)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -7837,11 +7815,11 @@ the range [start, end]. start and stop are interpretated as indices: 0 the first
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;A&#039;);<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;B&#039;);<br />
-$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;C&#039;);<br />
-$redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1); // array(&#039;A&#039;, &#039;B&#039;, &#039;C&#039;)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;A&#039;);
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;B&#039;);
+$redisCluster-&gt;rPush(&#039;key1&#039;, &#039;C&#039;);
+$redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1); // array(&#039;A&#039;, &#039;B&#039;, &#039;C&#039;)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -7902,12 +7880,12 @@ $redisCluster-&gt;lRange(&#039;key1&#039;, 0, -1); // array(&#039;A&#039;, &#039
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 1, &#039;one&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 2, &#039;two&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 3, &#039;three&#039;);<br />
-$redisCluster-&gt;zRemRangeByRank(&#039;key&#039;, 0, 1); // 2<br />
-$redisCluster-&gt;zRange(&#039;key&#039;, 0, -1, true); // array(&#039;three&#039; =&gt; 3)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;zAdd(&#039;key&#039;, 1, &#039;one&#039;);
+$redisCluster-&gt;zAdd(&#039;key&#039;, 2, &#039;two&#039;);
+$redisCluster-&gt;zAdd(&#039;key&#039;, 3, &#039;three&#039;);
+$redisCluster-&gt;zRemRangeByRank(&#039;key&#039;, 0, 1); // 2
+$redisCluster-&gt;zRange(&#039;key&#039;, 0, -1, true); // array(&#039;three&#039; =&gt; 3)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -8018,11 +7996,11 @@ $redisCluster-&gt;zRange(&#039;key&#039;, 0, -1, true); // array(&#039;three&#03
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;x&#039;, &#039;42&#039;);<br />
-$redisCluster-&gt;rename(&#039;x&#039;, &#039;y&#039;);<br />
-$redisCluster-&gt;get(&#039;y&#039;);   // → 42<br />
-$redisCluster-&gt;get(&#039;x&#039;);   // → `FALSE`<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;x&#039;, &#039;42&#039;);
+$redisCluster-&gt;rename(&#039;x&#039;, &#039;y&#039;);
+$redisCluster-&gt;get(&#039;y&#039;);   // → 42
+$redisCluster-&gt;get(&#039;x&#039;);   // → `FALSE`
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -8079,11 +8057,11 @@ This is the same behaviour as setNx.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;x&#039;, &#039;42&#039;);<br />
-$redisCluster-&gt;renameNx(&#039;x&#039;, &#039;y&#039;);<br />
-$redisCluster-&gt;get(&#039;y&#039;);   // → 42<br />
-$redisCluster-&gt;get(&#039;x&#039;);   // → `FALSE`<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;x&#039;, &#039;42&#039;);
+$redisCluster-&gt;renameNx(&#039;x&#039;, &#039;y&#039;);
+$redisCluster-&gt;get(&#039;y&#039;);   // → 42
+$redisCluster-&gt;get(&#039;x&#039;);   // → `FALSE`
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -8135,11 +8113,11 @@ structure stored at the specified variable, which is 0 if the variable does not 
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;pfAdd(&#039;key1&#039;, array(&#039;elem1&#039;, &#039;elem2&#039;));<br />
-$redisCluster-&gt;pfAdd(&#039;key2&#039;, array(&#039;elem3&#039;, &#039;elem2&#039;));<br />
-$redisCluster-&gt;pfCount(&#039;key1&#039;); // int(2)<br />
-$redisCluster-&gt;pfCount(array(&#039;key1&#039;, &#039;key2&#039;)); // int(3)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;pfAdd(&#039;key1&#039;, array(&#039;elem1&#039;, &#039;elem2&#039;));
+$redisCluster-&gt;pfAdd(&#039;key2&#039;, array(&#039;elem3&#039;, &#039;elem2&#039;));
+$redisCluster-&gt;pfCount(&#039;key1&#039;); // int(2)
+$redisCluster-&gt;pfCount(array(&#039;key1&#039;, &#039;key2&#039;)); // int(3)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -8251,11 +8229,11 @@ of the union of the observed Sets of the source HyperLogLog structures.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;pfAdd(&#039;key1&#039;, array(&#039;elem1&#039;, &#039;elem2&#039;));<br />
-$redisCluster-&gt;pfAdd(&#039;key2&#039;, array(&#039;elem3&#039;, &#039;elem2&#039;));<br />
-$redisCluster-&gt;pfMerge(&#039;key3&#039;, array(&#039;key1&#039;, &#039;key2&#039;));<br />
-$redisCluster-&gt;pfCount(&#039;key3&#039;); // int(3)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;pfAdd(&#039;key1&#039;, array(&#039;elem1&#039;, &#039;elem2&#039;));
+$redisCluster-&gt;pfAdd(&#039;key2&#039;, array(&#039;elem3&#039;, &#039;elem2&#039;));
+$redisCluster-&gt;pfMerge(&#039;key3&#039;, array(&#039;key1&#039;, &#039;key2&#039;));
+$redisCluster-&gt;pfCount(&#039;key3&#039;); // int(3)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -8316,10 +8294,10 @@ $redisCluster-&gt;pfCount(&#039;key3&#039;); // int(3)<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;key&#039;, &#039;Hello world&#039;);<br />
-$redisCluster-&gt;setRange(&#039;key&#039;, 6, &quot;redis&quot;); // returns 11<br />
-$redisCluster-&gt;get(&#039;key&#039;);                  // &quot;Hello redis&quot;<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;key&#039;, &#039;Hello world&#039;);
+$redisCluster-&gt;setRange(&#039;key&#039;, 6, &quot;redis&quot;); // returns 11
+$redisCluster-&gt;get(&#039;key&#039;);                  // &quot;Hello redis&quot;
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -8380,10 +8358,10 @@ $redisCluster-&gt;get(&#039;key&#039;);                  // &quot;Hello redis&qu
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;foo&#039;, &#039;bar&#039;);<br />
-$val = $redisCluster-&gt;dump(&#039;foo&#039;);<br />
-$redisCluster-&gt;restore(&#039;bar&#039;, 0, $val); // The key &#039;bar&#039;, will now be equal to the key &#039;foo&#039;<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;foo&#039;, &#039;bar&#039;);
+$val = $redisCluster-&gt;dump(&#039;foo&#039;);
+$redisCluster-&gt;restore(&#039;bar&#039;, 0, $val); // The key &#039;bar&#039;, will now be equal to the key &#039;foo&#039;
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -8445,14 +8423,14 @@ If the srcKey and/or dstKey didn't exist, and/or the member didn't exist in srcK
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set11&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set12&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set13&#039;);          // &#039;key1&#039; =&gt; {&#039;set11&#039;, &#039;set12&#039;, &#039;set13&#039;}<br />
-$redisCluster-&gt;sAdd(&#039;key2&#039; , &#039;set21&#039;);<br />
-$redisCluster-&gt;sAdd(&#039;key2&#039; , &#039;set22&#039;);          // &#039;key2&#039; =&gt; {&#039;set21&#039;, &#039;set22&#039;}<br />
-$redisCluster-&gt;sMove(&#039;key1&#039;, &#039;key2&#039;, &#039;set13&#039;);  // &#039;key1&#039; =&gt;  {&#039;set11&#039;, &#039;set12&#039;}<br />
-                                         // &#039;key2&#039; =&gt;  {&#039;set21&#039;, &#039;set22&#039;, &#039;set13&#039;}<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set11&#039;);
+$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set12&#039;);
+$redisCluster-&gt;sAdd(&#039;key1&#039; , &#039;set13&#039;);          // &#039;key1&#039; =&gt; {&#039;set11&#039;, &#039;set12&#039;, &#039;set13&#039;}
+$redisCluster-&gt;sAdd(&#039;key2&#039; , &#039;set21&#039;);
+$redisCluster-&gt;sAdd(&#039;key2&#039; , &#039;set22&#039;);          // &#039;key2&#039; =&gt; {&#039;set21&#039;, &#039;set22&#039;}
+$redisCluster-&gt;sMove(&#039;key1&#039;, &#039;key2&#039;, &#039;set13&#039;);  // &#039;key1&#039; =&gt;  {&#039;set11&#039;, &#039;set12&#039;}
+                                         // &#039;key2&#039; =&gt;  {&#039;set21&#039;, &#039;set22&#039;, &#039;set13&#039;}
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -8523,13 +8501,13 @@ with values in the range [start, end]. start and stop are interpreted as zero-ba
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;zAdd(&#039;key1&#039;, 0, &#039;val0&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;key1&#039;, 2, &#039;val2&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;key1&#039;, 10, &#039;val10&#039;);<br />
-$redisCluster-&gt;zRange(&#039;key1&#039;, 0, -1); // array(&#039;val0&#039;, &#039;val2&#039;, &#039;val10&#039;)<br />
-// with scores<br />
-$redisCluster-&gt;zRange(&#039;key1&#039;, 0, -1, true); // array(&#039;val0&#039; =&gt; 0, &#039;val2&#039; =&gt; 2, &#039;val10&#039; =&gt; 10)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;zAdd(&#039;key1&#039;, 0, &#039;val0&#039;);
+$redisCluster-&gt;zAdd(&#039;key1&#039;, 2, &#039;val2&#039;);
+$redisCluster-&gt;zAdd(&#039;key1&#039;, 10, &#039;val10&#039;);
+$redisCluster-&gt;zRange(&#039;key1&#039;, 0, -1); // array(&#039;val0&#039;, &#039;val2&#039;, &#039;val10&#039;)
+// with scores
+$redisCluster-&gt;zRange(&#039;key1&#039;, 0, -1, true); // array(&#039;val0&#039; =&gt; 0, &#039;val2&#039; =&gt; 2, &#039;val10&#039; =&gt; 10)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -8600,14 +8578,14 @@ in reverse order. start and stop are interpretated as zero-based indices:
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 0, &#039;val0&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 2, &#039;val2&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 10, &#039;val10&#039;);<br />
-$redisCluster-&gt;zRevRange(&#039;key&#039;, 0, -1); // array(&#039;val10&#039;, &#039;val2&#039;, &#039;val0&#039;)<br />
-<br />
-// with scores<br />
-$redisCluster-&gt;zRevRange(&#039;key&#039;, 0, -1, true); // array(&#039;val10&#039; =&gt; 10, &#039;val2&#039; =&gt; 2, &#039;val0&#039; =&gt; 0)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;zAdd(&#039;key&#039;, 0, &#039;val0&#039;);
+$redisCluster-&gt;zAdd(&#039;key&#039;, 2, &#039;val2&#039;);
+$redisCluster-&gt;zAdd(&#039;key&#039;, 10, &#039;val10&#039;);
+$redisCluster-&gt;zRevRange(&#039;key&#039;, 0, -1); // array(&#039;val10&#039;, &#039;val2&#039;, &#039;val0&#039;)
+
+// with scores
+$redisCluster-&gt;zRevRange(&#039;key&#039;, 0, -1, true); // array(&#039;val10&#039; =&gt; 10, &#039;val2&#039; =&gt; 2, &#039;val0&#039; =&gt; 0)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -8679,20 +8657,20 @@ range [start,end]. Adding a parenthesis before start or end excludes it from the
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 0, &#039;val0&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 2, &#039;val2&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;key&#039;, 10, &#039;val10&#039;);<br />
-$redisCluster-&gt;zRangeByScore(&#039;key&#039;, 0, 3);<br />
-// array(&#039;val0&#039;, &#039;val2&#039;)<br />
-$redisCluster-&gt;zRangeByScore(&#039;key&#039;, 0, 3, array(&#039;withscores&#039; =&gt; TRUE);<br />
-// array(&#039;val0&#039; =&gt; 0, &#039;val2&#039; =&gt; 2)<br />
-$redisCluster-&gt;zRangeByScore(&#039;key&#039;, 0, 3, array(&#039;limit&#039; =&gt; array(1, 1));<br />
-// array(&#039;val2&#039; =&gt; 2)<br />
-$redisCluster-&gt;zRangeByScore(&#039;key&#039;, 0, 3, array(&#039;limit&#039; =&gt; array(1, 1));<br />
-// array(&#039;val2&#039;)<br />
-$redisCluster-&gt;zRangeByScore(&#039;key&#039;, 0, 3, array(&#039;withscores&#039; =&gt; TRUE, &#039;limit&#039; =&gt; array(1, 1));<br />
-// array(&#039;val2&#039;=&gt; 2)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;zAdd(&#039;key&#039;, 0, &#039;val0&#039;);
+$redisCluster-&gt;zAdd(&#039;key&#039;, 2, &#039;val2&#039;);
+$redisCluster-&gt;zAdd(&#039;key&#039;, 10, &#039;val10&#039;);
+$redisCluster-&gt;zRangeByScore(&#039;key&#039;, 0, 3);
+// array(&#039;val0&#039;, &#039;val2&#039;)
+$redisCluster-&gt;zRangeByScore(&#039;key&#039;, 0, 3, array(&#039;withscores&#039; =&gt; TRUE);
+// array(&#039;val0&#039; =&gt; 0, &#039;val2&#039; =&gt; 2)
+$redisCluster-&gt;zRangeByScore(&#039;key&#039;, 0, 3, array(&#039;limit&#039; =&gt; array(1, 1));
+// array(&#039;val2&#039; =&gt; 2)
+$redisCluster-&gt;zRangeByScore(&#039;key&#039;, 0, 3, array(&#039;limit&#039; =&gt; array(1, 1));
+// array(&#039;val2&#039;)
+$redisCluster-&gt;zRangeByScore(&#039;key&#039;, 0, 3, array(&#039;withscores&#039; =&gt; TRUE, &#039;limit&#039; =&gt; array(1, 1));
+// array(&#039;val2&#039;=&gt; 2)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -8832,14 +8810,14 @@ $redisCluster-&gt;zRangeByScore(&#039;key&#039;, 0, 3, array(&#039;withscores&#0
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-foreach (array(&#039;a&#039;, &#039;b&#039;, &#039;c&#039;, &#039;d&#039;, &#039;e&#039;, &#039;f&#039;, &#039;g&#039;) as $k =&gt; $char) {<br />
-    $redisCluster-&gt;zAdd(&#039;key&#039;, $k, $char);<br />
-}<br />
-<br />
-$redisCluster-&gt;zRangeByLex(&#039;key&#039;, &#039;-&#039;, &#039;[c&#039;); // array(&#039;a&#039;, &#039;b&#039;, &#039;c&#039;)<br />
-$redisCluster-&gt;zRangeByLex(&#039;key&#039;, &#039;-&#039;, &#039;(c&#039;); // array(&#039;a&#039;, &#039;b&#039;)<br />
-$redisCluster-&gt;zRevRangeByLex(&#039;key&#039;, &#039;(c&#039;,&#039;-&#039;); // array(&#039;b&#039;, &#039;a&#039;)<br />
+                <td><pre class="examples">&lt;pre&gt;
+foreach (array(&#039;a&#039;, &#039;b&#039;, &#039;c&#039;, &#039;d&#039;, &#039;e&#039;, &#039;f&#039;, &#039;g&#039;) as $k =&gt; $char) {
+    $redisCluster-&gt;zAdd(&#039;key&#039;, $k, $char);
+}
+
+$redisCluster-&gt;zRangeByLex(&#039;key&#039;, &#039;-&#039;, &#039;[c&#039;); // array(&#039;a&#039;, &#039;b&#039;, &#039;c&#039;)
+$redisCluster-&gt;zRangeByLex(&#039;key&#039;, &#039;-&#039;, &#039;(c&#039;); // array(&#039;a&#039;, &#039;b&#039;)
+$redisCluster-&gt;zRevRangeByLex(&#039;key&#039;, &#039;(c&#039;,&#039;-&#039;); // array(&#039;b&#039;, &#039;a&#039;)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -8974,11 +8952,11 @@ $redisCluster-&gt;zRevRangeByLex(&#039;key&#039;, &#039;(c&#039;,&#039;-&#039;);
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-foreach (array(&#039;a&#039;, &#039;b&#039;, &#039;c&#039;, &#039;d&#039;, &#039;e&#039;, &#039;f&#039;, &#039;g&#039;) as $k =&gt; $char) {<br />
-    $redisCluster-&gt;zAdd(&#039;key&#039;, $k, $char);<br />
-}<br />
-$redisCluster-&gt;zLexCount(&#039;key&#039;, &#039;[b&#039;, &#039;[f&#039;); // 5<br />
+                <td><pre class="examples">&lt;pre&gt;
+foreach (array(&#039;a&#039;, &#039;b&#039;, &#039;c&#039;, &#039;d&#039;, &#039;e&#039;, &#039;f&#039;, &#039;g&#039;) as $k =&gt; $char) {
+    $redisCluster-&gt;zAdd(&#039;key&#039;, $k, $char);
+}
+$redisCluster-&gt;zLexCount(&#039;key&#039;, &#039;[b&#039;, &#039;[f&#039;); // 5
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -9039,12 +9017,12 @@ $redisCluster-&gt;zLexCount(&#039;key&#039;, &#039;[b&#039;, &#039;[f&#039;); //
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-foreach (array(&#039;a&#039;, &#039;b&#039;, &#039;c&#039;, &#039;d&#039;, &#039;e&#039;, &#039;f&#039;, &#039;g&#039;) as $k =&gt; $char) {<br />
-    $redisCluster-&gt;zAdd(&#039;key&#039;, $k, $char);<br />
-}<br />
-$redisCluster-&gt;zRemRangeByLex(&#039;key&#039;, &#039;(b&#039;,&#039;[d&#039;); // 2 , remove element &#039;c&#039; and &#039;d&#039;<br />
-$redisCluster-&gt;zRange(&#039;key&#039;,0,-1);// array(&#039;a&#039;,&#039;b&#039;,&#039;e&#039;,&#039;f&#039;,&#039;g&#039;)<br />
+                <td><pre class="examples">&lt;pre&gt;
+foreach (array(&#039;a&#039;, &#039;b&#039;, &#039;c&#039;, &#039;d&#039;, &#039;e&#039;, &#039;f&#039;, &#039;g&#039;) as $k =&gt; $char) {
+    $redisCluster-&gt;zAdd(&#039;key&#039;, $k, $char);
+}
+$redisCluster-&gt;zRemRangeByLex(&#039;key&#039;, &#039;(b&#039;,&#039;[d&#039;); // 2 , remove element &#039;c&#039; and &#039;d&#039;
+$redisCluster-&gt;zRange(&#039;key&#039;,0,-1);// array(&#039;a&#039;,&#039;b&#039;,&#039;e&#039;,&#039;f&#039;,&#039;g&#039;)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -9111,25 +9089,25 @@ duplicate entries during the zUnion.</p></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;k1&#039;);<br />
-$redisCluster-&gt;del(&#039;k2&#039;);<br />
-$redisCluster-&gt;del(&#039;k3&#039;);<br />
-$redisCluster-&gt;del(&#039;ko1&#039;);<br />
-$redisCluster-&gt;del(&#039;ko2&#039;);<br />
-$redisCluster-&gt;del(&#039;ko3&#039;);<br />
-<br />
-$redisCluster-&gt;zAdd(&#039;k1&#039;, 0, &#039;val0&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;k1&#039;, 1, &#039;val1&#039;);<br />
-<br />
-$redisCluster-&gt;zAdd(&#039;k2&#039;, 2, &#039;val2&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;k2&#039;, 3, &#039;val3&#039;);<br />
-<br />
-$redisCluster-&gt;zUnionStore(&#039;ko1&#039;, array(&#039;k1&#039;, &#039;k2&#039;)); // 4, &#039;ko1&#039; =&gt; array(&#039;val0&#039;, &#039;val1&#039;, &#039;val2&#039;, &#039;val3&#039;)<br />
-<br />
-// Weighted zUnionStore<br />
-$redisCluster-&gt;zUnionStore(&#039;ko2&#039;, array(&#039;k1&#039;, &#039;k2&#039;), array(1, 1)); // 4, &#039;ko2&#039; =&gt; array(&#039;val0&#039;, &#039;val1&#039;, &#039;val2&#039;,&#039;val3&#039;)<br />
-$redisCluster-&gt;zUnionStore(&#039;ko3&#039;, array(&#039;k1&#039;, &#039;k2&#039;), array(5, 1)); // 4, &#039;ko3&#039; =&gt; array(&#039;val0&#039;, &#039;val2&#039;, &#039;val3&#039;,&#039;val1&#039;)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;k1&#039;);
+$redisCluster-&gt;del(&#039;k2&#039;);
+$redisCluster-&gt;del(&#039;k3&#039;);
+$redisCluster-&gt;del(&#039;ko1&#039;);
+$redisCluster-&gt;del(&#039;ko2&#039;);
+$redisCluster-&gt;del(&#039;ko3&#039;);
+
+$redisCluster-&gt;zAdd(&#039;k1&#039;, 0, &#039;val0&#039;);
+$redisCluster-&gt;zAdd(&#039;k1&#039;, 1, &#039;val1&#039;);
+
+$redisCluster-&gt;zAdd(&#039;k2&#039;, 2, &#039;val2&#039;);
+$redisCluster-&gt;zAdd(&#039;k2&#039;, 3, &#039;val3&#039;);
+
+$redisCluster-&gt;zUnionStore(&#039;ko1&#039;, array(&#039;k1&#039;, &#039;k2&#039;)); // 4, &#039;ko1&#039; =&gt; array(&#039;val0&#039;, &#039;val1&#039;, &#039;val2&#039;, &#039;val3&#039;)
+
+// Weighted zUnionStore
+$redisCluster-&gt;zUnionStore(&#039;ko2&#039;, array(&#039;k1&#039;, &#039;k2&#039;), array(1, 1)); // 4, &#039;ko2&#039; =&gt; array(&#039;val0&#039;, &#039;val1&#039;, &#039;val2&#039;,&#039;val3&#039;)
+$redisCluster-&gt;zUnionStore(&#039;ko3&#039;, array(&#039;k1&#039;, &#039;k2&#039;), array(5, 1)); // 4, &#039;ko3&#039; =&gt; array(&#039;val0&#039;, &#039;val2&#039;, &#039;val3&#039;,&#039;val1&#039;)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -9196,29 +9174,29 @@ defines the behaviour to use on duplicate entries during the zInterStore.</p></t
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;k1&#039;);<br />
-$redisCluster-&gt;del(&#039;k2&#039;);<br />
-$redisCluster-&gt;del(&#039;k3&#039;);<br />
-<br />
-$redisCluster-&gt;del(&#039;ko1&#039;);<br />
-$redisCluster-&gt;del(&#039;ko2&#039;);<br />
-$redisCluster-&gt;del(&#039;ko3&#039;);<br />
-$redisCluster-&gt;del(&#039;ko4&#039;);<br />
-<br />
-$redisCluster-&gt;zAdd(&#039;k1&#039;, 0, &#039;val0&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;k1&#039;, 1, &#039;val1&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;k1&#039;, 3, &#039;val3&#039;);<br />
-<br />
-$redisCluster-&gt;zAdd(&#039;k2&#039;, 2, &#039;val1&#039;);<br />
-$redisCluster-&gt;zAdd(&#039;k2&#039;, 3, &#039;val3&#039;);<br />
-<br />
-$redisCluster-&gt;zInterStore(&#039;ko1&#039;, array(&#039;k1&#039;, &#039;k2&#039;));               // 2, &#039;ko1&#039; =&gt; array(&#039;val1&#039;, &#039;val3&#039;)<br />
-$redisCluster-&gt;zInterStore(&#039;ko2&#039;, array(&#039;k1&#039;, &#039;k2&#039;), array(1, 1));  // 2, &#039;ko2&#039; =&gt; array(&#039;val1&#039;, &#039;val3&#039;)<br />
-<br />
-// Weighted zInterStore<br />
-$redisCluster-&gt;zInterStore(&#039;ko3&#039;, array(&#039;k1&#039;, &#039;k2&#039;), array(1, 5), &#039;min&#039;); // 2, &#039;ko3&#039; =&gt; array(&#039;val1&#039;, &#039;val3&#039;)<br />
-$redisCluster-&gt;zInterStore(&#039;ko4&#039;, array(&#039;k1&#039;, &#039;k2&#039;), array(1, 5), &#039;max&#039;); // 2, &#039;ko4&#039; =&gt; array(&#039;val3&#039;, &#039;val1&#039;)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;k1&#039;);
+$redisCluster-&gt;del(&#039;k2&#039;);
+$redisCluster-&gt;del(&#039;k3&#039;);
+
+$redisCluster-&gt;del(&#039;ko1&#039;);
+$redisCluster-&gt;del(&#039;ko2&#039;);
+$redisCluster-&gt;del(&#039;ko3&#039;);
+$redisCluster-&gt;del(&#039;ko4&#039;);
+
+$redisCluster-&gt;zAdd(&#039;k1&#039;, 0, &#039;val0&#039;);
+$redisCluster-&gt;zAdd(&#039;k1&#039;, 1, &#039;val1&#039;);
+$redisCluster-&gt;zAdd(&#039;k1&#039;, 3, &#039;val3&#039;);
+
+$redisCluster-&gt;zAdd(&#039;k2&#039;, 2, &#039;val1&#039;);
+$redisCluster-&gt;zAdd(&#039;k2&#039;, 3, &#039;val3&#039;);
+
+$redisCluster-&gt;zInterStore(&#039;ko1&#039;, array(&#039;k1&#039;, &#039;k2&#039;));               // 2, &#039;ko1&#039; =&gt; array(&#039;val1&#039;, &#039;val3&#039;)
+$redisCluster-&gt;zInterStore(&#039;ko2&#039;, array(&#039;k1&#039;, &#039;k2&#039;), array(1, 1));  // 2, &#039;ko2&#039; =&gt; array(&#039;val1&#039;, &#039;val3&#039;)
+
+// Weighted zInterStore
+$redisCluster-&gt;zInterStore(&#039;ko3&#039;, array(&#039;k1&#039;, &#039;k2&#039;), array(1, 5), &#039;min&#039;); // 2, &#039;ko3&#039; =&gt; array(&#039;val1&#039;, &#039;val3&#039;)
+$redisCluster-&gt;zInterStore(&#039;ko4&#039;, array(&#039;k1&#039;, &#039;k2&#039;), array(1, 5), &#039;max&#039;); // 2, &#039;ko4&#039; =&gt; array(&#039;val3&#039;, &#039;val1&#039;)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -9284,16 +9262,16 @@ $redisCluster-&gt;zInterStore(&#039;ko4&#039;, array(&#039;k1&#039;, &#039;k2&#0
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;zAdd(&#039;z&#039;, 1, &#039;v1&#039;, 2, &#039;v2&#039;, 3, &#039;v3&#039;, 4, &#039;v4&#039; );  // int(2)<br />
-$redisCluster-&gt;zRem(&#039;z&#039;, &#039;v2&#039;, &#039;v3&#039;);                           // int(2)<br />
-var_dump( $redisCluster-&gt;zRange(&#039;z&#039;, 0, -1) );<br />
-//// Output:<br />
-//<br />
-// array(2) {<br />
-//   [0]=&gt; string(2) &quot;v1&quot;<br />
-//   [1]=&gt; string(2) &quot;v4&quot;<br />
-// }<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;zAdd(&#039;z&#039;, 1, &#039;v1&#039;, 2, &#039;v2&#039;, 3, &#039;v3&#039;, 4, &#039;v4&#039; );  // int(2)
+$redisCluster-&gt;zRem(&#039;z&#039;, &#039;v2&#039;, &#039;v3&#039;);                           // int(2)
+var_dump( $redisCluster-&gt;zRange(&#039;z&#039;, 0, -1) );
+//// Output:
+//
+// array(2) {
+//   [0]=&gt; string(2) &quot;v1&quot;
+//   [1]=&gt; string(2) &quot;v4&quot;
+// }
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -9357,17 +9335,17 @@ var_dump( $redisCluster-&gt;zRange(&#039;z&#039;, 0, -1) );<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;s&#039;);<br />
-$redisCluster-&gt;sadd(&#039;s&#039;, 5);<br />
-$redisCluster-&gt;sadd(&#039;s&#039;, 4);<br />
-$redisCluster-&gt;sadd(&#039;s&#039;, 2);<br />
-$redisCluster-&gt;sadd(&#039;s&#039;, 1);<br />
-$redisCluster-&gt;sadd(&#039;s&#039;, 3);<br />
-<br />
-var_dump($redisCluster-&gt;sort(&#039;s&#039;)); // 1,2,3,4,5<br />
-var_dump($redisCluster-&gt;sort(&#039;s&#039;, array(&#039;sort&#039; =&gt; &#039;desc&#039;))); // 5,4,3,2,1<br />
-var_dump($redisCluster-&gt;sort(&#039;s&#039;, array(&#039;sort&#039; =&gt; &#039;desc&#039;, &#039;store&#039; =&gt; &#039;out&#039;))); // (int)5<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;s&#039;);
+$redisCluster-&gt;sadd(&#039;s&#039;, 5);
+$redisCluster-&gt;sadd(&#039;s&#039;, 4);
+$redisCluster-&gt;sadd(&#039;s&#039;, 2);
+$redisCluster-&gt;sadd(&#039;s&#039;, 1);
+$redisCluster-&gt;sadd(&#039;s&#039;, 3);
+
+var_dump($redisCluster-&gt;sort(&#039;s&#039;)); // 1,2,3,4,5
+var_dump($redisCluster-&gt;sort(&#039;s&#039;, array(&#039;sort&#039; =&gt; &#039;desc&#039;))); // 5,4,3,2,1
+var_dump($redisCluster-&gt;sort(&#039;s&#039;, array(&#039;sort&#039; =&gt; &#039;desc&#039;, &#039;store&#039; =&gt; &#039;out&#039;))); // (int)5
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -9429,10 +9407,10 @@ Info can be one of the following:</p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;object(&quot;encoding&quot;, &quot;l&quot;); // → ziplist<br />
-$redisCluster-&gt;object(&quot;refcount&quot;, &quot;l&quot;); // → 1<br />
-$redisCluster-&gt;object(&quot;idletime&quot;, &quot;l&quot;); // → 400 (in seconds, with a precision of 10 seconds).<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;object(&quot;encoding&quot;, &quot;l&quot;); // → ziplist
+$redisCluster-&gt;object(&quot;refcount&quot;, &quot;l&quot;); // → 1
+$redisCluster-&gt;object(&quot;idletime&quot;, &quot;l&quot;); // → 400 (in seconds, with a precision of 10 seconds).
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -9490,24 +9468,24 @@ name, and the message.</p></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-function f($redisCluster, $chan, $msg) {<br />
- switch($chan) {<br />
-     case &#039;chan-1&#039;:<br />
-         ...<br />
-         break;<br />
-<br />
-     case &#039;chan-2&#039;:<br />
-                    ...<br />
-         break;<br />
-<br />
-     case &#039;chan-2&#039;:<br />
-         ...<br />
-         break;<br />
-     }<br />
-}<br />
-<br />
-$redisCluster-&gt;subscribe(array(&#039;chan-1&#039;, &#039;chan-2&#039;, &#039;chan-3&#039;), &#039;f&#039;); // subscribe to 3 chans<br />
+                <td><pre class="examples">&lt;pre&gt;
+function f($redisCluster, $chan, $msg) {
+ switch($chan) {
+     case &#039;chan-1&#039;:
+         ...
+         break;
+
+     case &#039;chan-2&#039;:
+                    ...
+         break;
+
+     case &#039;chan-2&#039;:
+         ...
+         break;
+     }
+}
+
+$redisCluster-&gt;subscribe(array(&#039;chan-1&#039;, &#039;chan-2&#039;, &#039;chan-3&#039;), &#039;f&#039;); // subscribe to 3 chans
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -9564,12 +9542,12 @@ The callback will get four arguments ($redis, $pattern, $channel, $message)</p><
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-function psubscribe($redisCluster, $pattern, $chan, $msg) {<br />
- echo &quot;Pattern: $pattern\n&quot;;<br />
- echo &quot;Channel: $chan\n&quot;;<br />
- echo &quot;Payload: $msg\n&quot;;<br />
-}<br />
+                <td><pre class="examples">&lt;pre&gt;
+function psubscribe($redisCluster, $pattern, $chan, $msg) {
+ echo &quot;Pattern: $pattern\n&quot;;
+ echo &quot;Channel: $chan\n&quot;;
+ echo &quot;Payload: $msg\n&quot;;
+}
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -9718,10 +9696,10 @@ the SCRIPT LOAD command.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$script = &#039;return 1&#039;;<br />
-$sha = $redisCluster-&gt;script(&#039;load&#039;, $script);<br />
-$redisCluster-&gt;evalSha($sha); // Returns 1<br />
+                <td><pre class="examples">&lt;pre&gt;
+$script = &#039;return 1&#039;;
+$sha = $redisCluster-&gt;script(&#039;load&#039;, $script);
+$redisCluster-&gt;evalSha($sha); // Returns 1
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -9787,13 +9765,13 @@ $redisCluster-&gt;evalSha($sha); // Returns 1<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$iterator = null;<br />
-while($keys = $redisCluster-&gt;scan($iterator)) {<br />
-    foreach($keys as $key) {<br />
-        echo $key . PHP_EOL;<br />
-    }<br />
-}<br />
+                <td><pre class="examples">&lt;pre&gt;
+$iterator = null;
+while($keys = $redisCluster-&gt;scan($iterator)) {
+    foreach($keys as $key) {
+        echo $key . PHP_EOL;
+    }
+}
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -9859,13 +9837,13 @@ while($keys = $redisCluster-&gt;scan($iterator)) {<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$iterator = null;<br />
-while ($members = $redisCluster-&gt;sScan(&#039;set&#039;, $iterator)) {<br />
-    foreach ($members as $member) {<br />
-        echo $member . PHP_EOL;<br />
-    }<br />
-}<br />
+                <td><pre class="examples">&lt;pre&gt;
+$iterator = null;
+while ($members = $redisCluster-&gt;sScan(&#039;set&#039;, $iterator)) {
+    foreach ($members as $member) {
+        echo $member . PHP_EOL;
+    }
+}
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -9931,13 +9909,13 @@ while ($members = $redisCluster-&gt;sScan(&#039;set&#039;, $iterator)) {<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$iterator = null;<br />
-while ($members = $redis-zscan(&#039;zset&#039;, $iterator)) {<br />
-    foreach ($members as $member =&gt; $score) {<br />
-        echo $member . &#039; =&gt; &#039; . $score . PHP_EOL;<br />
-    }<br />
-}<br />
+                <td><pre class="examples">&lt;pre&gt;
+$iterator = null;
+while ($members = $redis-zscan(&#039;zset&#039;, $iterator)) {
+    foreach ($members as $member =&gt; $score) {
+        echo $member . &#039; =&gt; &#039; . $score . PHP_EOL;
+    }
+}
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -10003,13 +9981,13 @@ while ($members = $redis-zscan(&#039;zset&#039;, $iterator)) {<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$iterator = null;<br />
-while($elements = $redisCluster-&gt;hscan(&#039;hash&#039;, $iterator)) {<br />
-   foreach($elements as $key =&gt; $value) {<br />
-        echo $key . &#039; =&gt; &#039; . $value . PHP_EOL;<br />
-    }<br />
-}<br />
+                <td><pre class="examples">&lt;pre&gt;
+$iterator = null;
+while($elements = $redisCluster-&gt;hscan(&#039;hash&#039;, $iterator)) {
+   foreach($elements as $key =&gt; $value) {
+        echo $key . &#039; =&gt; &#039; . $value . PHP_EOL;
+    }
+}
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -10090,10 +10068,10 @@ while($elements = $redisCluster-&gt;hscan(&#039;hash&#039;, $iterator)) {<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;eval(&#039;this-is-not-lua&#039;);<br />
-$err = $redisCluster-&gt;getLastError();<br />
-// &quot;ERR Error compiling script (new function): user_script:1: &#039;=&#039; expected near &#039;-&#039;&quot;<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;eval(&#039;this-is-not-lua&#039;);
+$err = $redisCluster-&gt;getLastError();
+// &quot;ERR Error compiling script (new function): user_script:1: &#039;=&#039; expected near &#039;-&#039;&quot;
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -10134,14 +10112,14 @@ $err = $redisCluster-&gt;getLastError();<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;set(&#039;x&#039;, &#039;a&#039;);<br />
-$redisCluster-&gt;incr(&#039;x&#039;);<br />
-$err = $redisCluster-&gt;getLastError();<br />
-// &quot;ERR value is not an integer or out of range&quot;<br />
-$redisCluster-&gt;clearLastError();<br />
-$err = $redisCluster-&gt;getLastError();<br />
-// NULL<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;set(&#039;x&#039;, &#039;a&#039;);
+$redisCluster-&gt;incr(&#039;x&#039;);
+$err = $redisCluster-&gt;getLastError();
+// &quot;ERR value is not an integer or out of range&quot;
+$redisCluster-&gt;clearLastError();
+$err = $redisCluster-&gt;getLastError();
+// NULL
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -10192,7 +10170,7 @@ $err = $redisCluster-&gt;getLastError();<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">// return RedisCluster::SERIALIZER_NONE, RedisCluster::SERIALIZER_PHP, or RedisCluster::SERIALIZER_IGBINARY.<br />
+                <td><pre class="examples">// return RedisCluster::SERIALIZER_NONE, RedisCluster::SERIALIZER_PHP, or RedisCluster::SERIALIZER_IGBINARY.
 $redisCluster-&gt;getOption(RedisCluster::OPT_SERIALIZER);</pre></td>
             </tr>
             </table>
@@ -10248,11 +10226,11 @@ $redisCluster-&gt;getOption(RedisCluster::OPT_SERIALIZER);</pre></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;setOption(RedisCluster::OPT_SERIALIZER, RedisCluster::SERIALIZER_NONE);        // don&#039;t serialize data<br />
-$redisCluster-&gt;setOption(RedisCluster::OPT_SERIALIZER, RedisCluster::SERIALIZER_PHP);         // use built-in serialize/unserialize<br />
-$redisCluster-&gt;setOption(RedisCluster::OPT_SERIALIZER, RedisCluster::SERIALIZER_IGBINARY);    // use igBinary serialize/unserialize<br />
-$redisCluster-&gt;setOption(RedisCluster::OPT_PREFIX, &#039;myAppName:&#039;);                             // use custom prefix on all keys<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;setOption(RedisCluster::OPT_SERIALIZER, RedisCluster::SERIALIZER_NONE);        // don&#039;t serialize data
+$redisCluster-&gt;setOption(RedisCluster::OPT_SERIALIZER, RedisCluster::SERIALIZER_PHP);         // use built-in serialize/unserialize
+$redisCluster-&gt;setOption(RedisCluster::OPT_SERIALIZER, RedisCluster::SERIALIZER_IGBINARY);    // use igBinary serialize/unserialize
+$redisCluster-&gt;setOption(RedisCluster::OPT_PREFIX, &#039;myAppName:&#039;);                             // use custom prefix on all keys
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -10303,9 +10281,9 @@ $redisCluster-&gt;setOption(RedisCluster::OPT_PREFIX, &#039;myAppName:&#039;);  
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;setOption(RedisCluster::OPT_PREFIX, &#039;my-prefix:&#039;);<br />
-$redisCluster-&gt;_prefix(&#039;my-value&#039;); // Will return &#039;my-prefix:my-value&#039;<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;setOption(RedisCluster::OPT_PREFIX, &#039;my-prefix:&#039;);
+$redisCluster-&gt;_prefix(&#039;my-value&#039;); // Will return &#039;my-prefix:my-value&#039;
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -10359,14 +10337,14 @@ set, phpredis will change Array values to 'Array', and Objects to 'Object'.</p><
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;setOption(RedisCluster::OPT_SERIALIZER, RedisCluster::SERIALIZER_NONE);<br />
-$redisCluster-&gt;_serialize(&quot;foo&quot;); // returns &quot;foo&quot;<br />
-$redisCluster-&gt;_serialize(Array()); // Returns &quot;Array&quot;<br />
-$redisCluster-&gt;_serialize(new stdClass()); // Returns &quot;Object&quot;<br />
-<br />
-$redisCluster-&gt;setOption(RedisCluster::OPT_SERIALIZER, RedisCluster::SERIALIZER_PHP);<br />
-$redisCluster-&gt;_serialize(&quot;foo&quot;); // Returns &#039;s:3:&quot;foo&quot;;&#039;<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;setOption(RedisCluster::OPT_SERIALIZER, RedisCluster::SERIALIZER_NONE);
+$redisCluster-&gt;_serialize(&quot;foo&quot;); // returns &quot;foo&quot;
+$redisCluster-&gt;_serialize(Array()); // Returns &quot;Array&quot;
+$redisCluster-&gt;_serialize(new stdClass()); // Returns &quot;Object&quot;
+
+$redisCluster-&gt;setOption(RedisCluster::OPT_SERIALIZER, RedisCluster::SERIALIZER_PHP);
+$redisCluster-&gt;_serialize(&quot;foo&quot;); // Returns &#039;s:3:&quot;foo&quot;;&#039;
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -10420,9 +10398,9 @@ redis in a LUA script that is serialized.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;setOption(RedisCluster::OPT_SERIALIZER, RedisCluster::SERIALIZER_PHP);<br />
-$redisCluster-&gt;_unserialize(&#039;a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}&#039;); // Will return Array(1,2,3)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;setOption(RedisCluster::OPT_SERIALIZER, RedisCluster::SERIALIZER_PHP);
+$redisCluster-&gt;_unserialize(&#039;a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}&#039;); // Will return Array(1,2,3)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -10463,8 +10441,8 @@ $redisCluster-&gt;_unserialize(&#039;a:3:{i:0;i:1;i:1;i:2;i:2;i:3;}&#039;); // W
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;_masters(); // Will return [[0=&gt;&#039;127.0.0.1&#039;,&#039;6379&#039;],[0=&gt;&#039;127.0.0.1&#039;,&#039;6380&#039;]]<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;_masters(); // Will return [[0=&gt;&#039;127.0.0.1&#039;,&#039;6379&#039;],[0=&gt;&#039;127.0.0.1&#039;,&#039;6380&#039;]]
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -10520,19 +10498,19 @@ Once in multi-mode, all subsequent method calls return the same object until exe
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$ret = $redisCluster-&gt;multi()<br />
-     -&gt;set(&#039;key1&#039;, &#039;val1&#039;)<br />
-     -&gt;get(&#039;key1&#039;)<br />
-     -&gt;set(&#039;key2&#039;, &#039;val2&#039;)<br />
-     -&gt;get(&#039;key2&#039;)<br />
-     -&gt;exec();<br />
-<br />
-//$ret == array (<br />
-//    0 =&gt; TRUE,<br />
-//    1 =&gt; &#039;val1&#039;,<br />
-//    2 =&gt; TRUE,<br />
-//    3 =&gt; &#039;val2&#039;);<br />
+                <td><pre class="examples">&lt;pre&gt;
+$ret = $redisCluster-&gt;multi()
+     -&gt;set(&#039;key1&#039;, &#039;val1&#039;)
+     -&gt;get(&#039;key1&#039;)
+     -&gt;set(&#039;key2&#039;, &#039;val2&#039;)
+     -&gt;get(&#039;key2&#039;)
+     -&gt;exec();
+
+//$ret == array (
+//    0 =&gt; TRUE,
+//    1 =&gt; &#039;val1&#039;,
+//    2 =&gt; TRUE,
+//    3 =&gt; &#039;val2&#039;);
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -10663,13 +10641,13 @@ the MULTI/EXEC transaction will fail (return FALSE). unwatch cancels all the wat
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;watch(&#039;x&#039;);<br />
-// long code here during the execution of which other clients could well modify `x`<br />
-$ret = $redisCluster-&gt;multi()<br />
-         -&gt;incr(&#039;x&#039;)<br />
-         -&gt;exec();<br />
-// $ret = FALSE if x has been modified between the call to WATCH and the call to EXEC.<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;watch(&#039;x&#039;);
+// long code here during the execution of which other clients could well modify `x`
+$ret = $redisCluster-&gt;multi()
+         -&gt;incr(&#039;x&#039;)
+         -&gt;exec();
+// $ret = FALSE if x has been modified between the call to WATCH and the call to EXEC.
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -10756,7 +10734,7 @@ If a save is already running, this command will fail and return FALSE.</p></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">$redisCluster-&gt;save(&#039;x&#039;); //key<br />
+                <td><pre class="examples">$redisCluster-&gt;save(&#039;x&#039;); //key
 $redisCluster-&gt;save([&#039;127.0.0.1&#039;,6379]); //[host,port]</pre></td>
             </tr>
             </table>
@@ -10934,9 +10912,9 @@ If a save is already running, this command will fail and return FALSE.</p></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$count = $redisCluster-&gt;dbSize(&#039;x&#039;);<br />
-echo &quot;Redis has $count keys\n&quot;;<br />
+                <td><pre class="examples">&lt;pre&gt;
+$count = $redisCluster-&gt;dbSize(&#039;x&#039;);
+echo &quot;Redis has $count keys\n&quot;;
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -11089,13 +11067,13 @@ SERVER | CLIENTS | MEMORY | PERSISTENCE | STATS | REPLICATION | CPU | CLASTER | 
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;info();<br />
-<br />
-or<br />
-<br />
-$redisCluster-&gt;info(&quot;COMMANDSTATS&quot;); //Information on the commands that have been run (&gt;=2.6 only)<br />
-$redisCluster-&gt;info(&quot;CPU&quot;); // just CPU information from Redis INFO<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;info();
+
+or
+
+$redisCluster-&gt;info(&quot;COMMANDSTATS&quot;); //Information on the commands that have been run (&gt;=2.6 only)
+$redisCluster-&gt;info(&quot;CPU&quot;); // just CPU information from Redis INFO
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -11149,9 +11127,9 @@ $redisCluster-&gt;info(&quot;CPU&quot;); // just CPU information from Redis INFO
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;role([&#039;127.0.0.1&#039;,6379]);<br />
-// [ 0=&gt;&#039;master&#039;,1 =&gt; 3129659, 2 =&gt; [ [&#039;127.0.0.1&#039;,&#039;9001&#039;,&#039;3129242&#039;], [&#039;127.0.0.1&#039;,&#039;9002&#039;,&#039;3129543&#039;] ] ]<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;role([&#039;127.0.0.1&#039;,6379]);
+// [ 0=&gt;&#039;master&#039;,1 =&gt; 3129659, 2 =&gt; [ [&#039;127.0.0.1&#039;,&#039;9001&#039;,&#039;3129242&#039;], [&#039;127.0.0.1&#039;,&#039;9002&#039;,&#039;3129543&#039;] ] ]
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -11202,9 +11180,9 @@ $redisCluster-&gt;role([&#039;127.0.0.1&#039;,6379]);<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$key = $redisCluster-&gt;randomKey(&#039;x&#039;);<br />
-$surprise = $redisCluster-&gt;get($key);  // who knows what&#039;s in there.<br />
+                <td><pre class="examples">&lt;pre&gt;
+$key = $redisCluster-&gt;randomKey(&#039;x&#039;);
+$surprise = $redisCluster-&gt;get($key);  // who knows what&#039;s in there.
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -11256,14 +11234,14 @@ unix timestamp, and element one being microseconds.</p></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-var_dump( $redisCluster-&gt;time(&#039;x&#039;) );<br />
-//// Output:<br />
-//<br />
-// array(2) {<br />
-//   [0] =&gt; string(10) &quot;1342364352&quot;<br />
-//   [1] =&gt; string(6) &quot;253002&quot;<br />
-// }<br />
+                <td><pre class="examples">&lt;pre&gt;
+var_dump( $redisCluster-&gt;time(&#039;x&#039;) );
+//// Output:
+//
+// array(2) {
+//   [0] =&gt; string(10) &quot;1342364352&quot;
+//   [1] =&gt; string(6) &quot;253002&quot;
+// }
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -11501,8 +11479,8 @@ Executes cluster command</i>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;cluster([&#039;127.0.0.1&#039;,6379],&#039;INFO&#039;);<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;cluster([&#039;127.0.0.1&#039;,6379],&#039;INFO&#039;);
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -11611,9 +11589,9 @@ $redisCluster-&gt;cluster([&#039;127.0.0.1&#039;,6379],&#039;INFO&#039;);<br />
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;config([&#039;127.0.0.1&#039;,6379], &quot;GET&quot;, &quot;*max-*-entries*&quot;);<br />
-$redisCluster-&gt;config([&#039;127.0.0.1&#039;,6379], &quot;SET&quot;, &quot;dir&quot;, &quot;/var/run/redis/dumps/&quot;);<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;config([&#039;127.0.0.1&#039;,6379], &quot;GET&quot;, &quot;*max-*-entries*&quot;);
+$redisCluster-&gt;config([&#039;127.0.0.1&#039;,6379], &quot;SET&quot;, &quot;dir&quot;, &quot;/var/run/redis/dumps/&quot;);
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -11682,12 +11660,12 @@ values are their counts.</li>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;pubsub([&#039;127.0.0.1&#039;,6379], &#039;channels&#039;); // All channels<br />
-$redisCluster-&gt;pubsub([&#039;127.0.0.1&#039;,6379], &#039;channels&#039;, &#039;*pattern*&#039;); // Just channels matching your pattern<br />
-$redisCluster-&gt;pubsub([&#039;127.0.0.1&#039;,6379], &#039;numsub&#039;, array(&#039;chan1&#039;, &#039;chan2&#039;)); // Get subscriber counts for<br />
-&#039;chan1&#039; and &#039;chan2&#039;<br />
-$redisCluster-&gt;pubsub([&#039;127.0.0.1&#039;,6379], &#039;numpat&#039;); // Get the number of pattern subscribers<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;pubsub([&#039;127.0.0.1&#039;,6379], &#039;channels&#039;); // All channels
+$redisCluster-&gt;pubsub([&#039;127.0.0.1&#039;,6379], &#039;channels&#039;, &#039;*pattern*&#039;); // Just channels matching your pattern
+$redisCluster-&gt;pubsub([&#039;127.0.0.1&#039;,6379], &#039;numsub&#039;, array(&#039;chan1&#039;, &#039;chan2&#039;)); // Get subscriber counts for
+&#039;chan1&#039; and &#039;chan2&#039;
+$redisCluster-&gt;pubsub([&#039;127.0.0.1&#039;,6379], &#039;numpat&#039;); // Get the number of pattern subscribers
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -11748,16 +11726,16 @@ $redisCluster-&gt;pubsub([&#039;127.0.0.1&#039;,6379], &#039;numpat&#039;); // G
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;script([&#039;127.0.0.1&#039;,6379], &#039;load&#039;, $script);<br />
-$redisCluster-&gt;script([&#039;127.0.0.1&#039;,6379], &#039;flush&#039;);<br />
-$redisCluster-&gt;script([&#039;127.0.0.1&#039;,6379], &#039;kill&#039;);<br />
-$redisCluster-&gt;script([&#039;127.0.0.1&#039;,6379], &#039;exists&#039;, $script1, [$script2, $script3, ...]);<br />
-&lt;/pre&gt;<br />
-<br />
-SCRIPT LOAD will return the SHA1 hash of the passed script on success, and FALSE on failure.<br />
-SCRIPT FLUSH should always return TRUE<br />
-SCRIPT KILL will return true if a script was able to be killed and false if not<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;script([&#039;127.0.0.1&#039;,6379], &#039;load&#039;, $script);
+$redisCluster-&gt;script([&#039;127.0.0.1&#039;,6379], &#039;flush&#039;);
+$redisCluster-&gt;script([&#039;127.0.0.1&#039;,6379], &#039;kill&#039;);
+$redisCluster-&gt;script([&#039;127.0.0.1&#039;,6379], &#039;exists&#039;, $script1, [$script2, $script3, ...]);
+&lt;/pre&gt;
+
+SCRIPT LOAD will return the SHA1 hash of the passed script on success, and FALSE on failure.
+SCRIPT FLUSH should always return TRUE
+SCRIPT KILL will return true if a script was able to be killed and false if not
 SCRIPT EXISTS will return an array with TRUE or FALSE for each passed script</pre></td>
             </tr>
             </table>
@@ -11809,8 +11787,8 @@ SCRIPT EXISTS will return an array with TRUE or FALSE for each passed script</pr
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;slowLog([&#039;127.0.0.1&#039;,6379],&#039;get&#039;,&#039;2&#039;);<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;slowLog([&#039;127.0.0.1&#039;,6379],&#039;get&#039;,&#039;2&#039;);
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -11867,9 +11845,9 @@ $redisCluster-&gt;slowLog([&#039;127.0.0.1&#039;,6379],&#039;get&#039;,&#039;2&#
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 13.361389, 38.115556, &#039;Palermo&#039;); // int(1)<br />
-$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 15.087269, 37.502669, &quot;Catania&quot;); // int(1)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 13.361389, 38.115556, &#039;Palermo&#039;); // int(1)
+$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 15.087269, 37.502669, &quot;Catania&quot;); // int(1)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -11926,10 +11904,10 @@ $redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 15.087269, 37.502669, &quot;Catania
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 13.361389, 38.115556, &#039;Palermo&#039;); // int(1)<br />
-$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 15.087269, 37.502669, &quot;Catania&quot;); // int(1)<br />
-$redisCluster-&gt;geohash(&#039;Sicily&#039;,&#039;Palermo&#039;,&#039;Catania&#039;);//[&#039;sqc8b49rny0&#039;,&#039;sqdtr74hyu0&#039;]<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 13.361389, 38.115556, &#039;Palermo&#039;); // int(1)
+$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 15.087269, 37.502669, &quot;Catania&quot;); // int(1)
+$redisCluster-&gt;geohash(&#039;Sicily&#039;,&#039;Palermo&#039;,&#039;Catania&#039;);//[&#039;sqc8b49rny0&#039;,&#039;sqdtr74hyu0&#039;]
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -11986,9 +11964,9 @@ $redisCluster-&gt;geohash(&#039;Sicily&#039;,&#039;Palermo&#039;,&#039;Catania&#
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 15.087269, 37.502669, &quot;Catania&quot;); // int(1)<br />
-$redisCluster-&gt;geopos(&#039;Sicily&#039;,&#039;Palermo&#039;);//[[&#039;13.36138933897018433&#039;,&#039;38.11555639549629859&#039;]]<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 15.087269, 37.502669, &quot;Catania&quot;); // int(1)
+$redisCluster-&gt;geopos(&#039;Sicily&#039;,&#039;Palermo&#039;);//[[&#039;13.36138933897018433&#039;,&#039;38.11555639549629859&#039;]]
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -12049,11 +12027,11 @@ ft for feet.</p></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 13.361389, 38.115556, &#039;Palermo&#039;); // int(1)<br />
-$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 15.087269, 37.502669, &quot;Catania&quot;); // int(1)<br />
-$redisCluster-&gt;geoDist(&#039;Sicily&#039;, &#039;Palermo&#039; ,&#039;Catania&#039;); // float(166274.1516)<br />
-$redisCluster-&gt;geoDist(&#039;Sicily&#039;, &#039;Palermo&#039;,&#039;Catania&#039;, &#039;km&#039;); // float(166.2742)<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 13.361389, 38.115556, &#039;Palermo&#039;); // int(1)
+$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 15.087269, 37.502669, &quot;Catania&quot;); // int(1)
+$redisCluster-&gt;geoDist(&#039;Sicily&#039;, &#039;Palermo&#039; ,&#039;Catania&#039;); // float(166274.1516)
+$redisCluster-&gt;geoDist(&#039;Sicily&#039;, &#039;Palermo&#039;,&#039;Catania&#039;, &#039;km&#039;); // float(166.2742)
 &lt;/pre&gt;</pre></td>
             </tr>
             </table>
@@ -12120,56 +12098,56 @@ $redisCluster-&gt;geoDist(&#039;Sicily&#039;, &#039;Palermo&#039;,&#039;Catania&
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;<br />
-$redisCluster-&gt;del(&#039;Sicily&#039;);<br />
-$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 12.361389, 35.115556, &#039;Palermo&#039;); // int(1)<br />
-$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 15.087269, 37.502669, &quot;Catania&quot;); // int(1)<br />
-$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 13.3585, 35.330022, &quot;Agrigento&quot;); // int(1)<br />
-<br />
-var_dump( $redisCluster-&gt;geoRadius(&#039;Sicily&#039;,13.3585, 35.330022, 300, &#039;km&#039;, [&#039;WITHDIST&#039; ,&#039;DESC&#039;]) );<br />
-<br />
-array(3) {<br />
-   [0]=&gt;<br />
-  array(2) {<br />
-       [0]=&gt;<br />
-    string(7) &quot;Catania&quot;<br />
-       [1]=&gt;<br />
-    string(8) &quot;286.9362&quot;<br />
-  }<br />
-  [1]=&gt;<br />
-  array(2) {<br />
-       [0]=&gt;<br />
-    string(7) &quot;Palermo&quot;<br />
-       [1]=&gt;<br />
-    string(7) &quot;93.6874&quot;<br />
-  }<br />
-  [2]=&gt;<br />
-  array(2) {<br />
-       [0]=&gt;<br />
-    string(9) &quot;Agrigento&quot;<br />
-       [1]=&gt;<br />
-    string(6) &quot;0.0002&quot;<br />
-  }<br />
-}<br />
-var_dump( $redisCluster-&gt;geoRadiusByMember(&#039;Sicily&#039;,&#039;Agrigento&#039;, 100, &#039;km&#039;, [&#039;WITHDIST&#039; ,&#039;DESC&#039;]) );<br />
-<br />
-* array(2) {<br />
-   [0]=&gt;<br />
-  array(2) {<br />
-       [0]=&gt;<br />
-    string(7) &quot;Palermo&quot;<br />
-       [1]=&gt;<br />
-    string(7) &quot;93.6872&quot;<br />
-  }<br />
-  [1]=&gt;<br />
-  array(2) {<br />
-       [0]=&gt;<br />
-    string(9) &quot;Agrigento&quot;<br />
-       [1]=&gt;<br />
-    string(6) &quot;0.0000&quot;<br />
-  }<br />
-}<br />
-<br />
+                <td><pre class="examples">&lt;pre&gt;
+$redisCluster-&gt;del(&#039;Sicily&#039;);
+$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 12.361389, 35.115556, &#039;Palermo&#039;); // int(1)
+$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 15.087269, 37.502669, &quot;Catania&quot;); // int(1)
+$redisCluster-&gt;geoAdd(&#039;Sicily&#039;, 13.3585, 35.330022, &quot;Agrigento&quot;); // int(1)
+
+var_dump( $redisCluster-&gt;geoRadius(&#039;Sicily&#039;,13.3585, 35.330022, 300, &#039;km&#039;, [&#039;WITHDIST&#039; ,&#039;DESC&#039;]) );
+
+array(3) {
+   [0]=&gt;
+  array(2) {
+       [0]=&gt;
+    string(7) &quot;Catania&quot;
+       [1]=&gt;
+    string(8) &quot;286.9362&quot;
+  }
+  [1]=&gt;
+  array(2) {
+       [0]=&gt;
+    string(7) &quot;Palermo&quot;
+       [1]=&gt;
+    string(7) &quot;93.6874&quot;
+  }
+  [2]=&gt;
+  array(2) {
+       [0]=&gt;
+    string(9) &quot;Agrigento&quot;
+       [1]=&gt;
+    string(6) &quot;0.0002&quot;
+  }
+}
+var_dump( $redisCluster-&gt;geoRadiusByMember(&#039;Sicily&#039;,&#039;Agrigento&#039;, 100, &#039;km&#039;, [&#039;WITHDIST&#039; ,&#039;DESC&#039;]) );
+
+* array(2) {
+   [0]=&gt;
+  array(2) {
+       [0]=&gt;
+    string(7) &quot;Palermo&quot;
+       [1]=&gt;
+    string(7) &quot;93.6872&quot;
+  }
+  [1]=&gt;
+  array(2) {
+       [0]=&gt;
+    string(9) &quot;Agrigento&quot;
+       [1]=&gt;
+    string(6) &quot;0.0000&quot;
+  }
+}
+
 &lt;pre&gt;</pre></td>
             </tr>
             </table>
@@ -12237,6 +12215,59 @@ var_dump( $redisCluster-&gt;geoRadiusByMember(&#039;Sicily&#039;,&#039;Agrigento
             </tr>
             </table>
 
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_eval">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisCluster.php#L12">at line 12</a></div>
+        <code>                    mixed
+    <strong>eval</strong>(mixed $script, mixed $args, mixed $numKeys)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$script</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$args</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$numKeys</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
             
                     </div>
     </div>
