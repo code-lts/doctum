@@ -2138,9 +2138,9 @@ Execute an SQL statement and return the number of affected rows</p></p>         
                     <a href="PDOStatement.html">PDOStatement</a>|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_query">query</a>(string $statement, int $mode = PDO::ATTR_DEFAULT_FETCH_MODE, mixed ...$fetch_mode_args)
+                    <a href="#method_query">query</a>(string $statement, int|null $mode = null, mixed ...$fetch_mode_args)
         
-                                            <p><p>(PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.2.0)<br/>
+                                            <p><p>(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8, PECL pdo &gt;= 0.2.0)<br/>
 Executes an SQL statement, returning a result set as a PDOStatement object</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -2712,7 +2712,7 @@ $db->exec() or die(print_r($db->errorInfo(), true));
                     <h3 id="method_query">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1120">at line 1120</a></div>
         <code>                    <a href="PDOStatement.html">PDOStatement</a>|false
-    <strong>query</strong>(string $statement, int $mode = PDO::ATTR_DEFAULT_FETCH_MODE, mixed ...$fetch_mode_args)
+    <strong>query</strong>(string $statement, int|null $mode = null, mixed ...$fetch_mode_args)
         </code>
     </h3>
     <div class="details">    
@@ -2720,7 +2720,7 @@ $db->exec() or die(print_r($db->errorInfo(), true));
             
 
         <div class="method-description">
-                            <p><p>(PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.2.0)<br/>
+                            <p><p>(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8, PECL pdo &gt;= 0.2.0)<br/>
 Executes an SQL statement, returning a result set as a PDOStatement object</p></p>                        
         </div>
         <div class="tags">
@@ -2738,7 +2738,7 @@ Data inside the query should be properly escaped.
 </p></td>
             </tr>
                     <tr>
-                <td>int</td>
+                <td>int|null</td>
                 <td>$mode</td>
                 <td><p>
 The fetch mode must be one of the PDO::FETCH_* constants.
@@ -2785,7 +2785,7 @@ on failure.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_lastInsertId">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1146">at line 1146</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1150">at line 1150</a></div>
         <code>                    string|false
     <strong>lastInsertId</strong>(string $name = null)
         </code>
@@ -2844,7 +2844,7 @@ IM001 SQLSTATE.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_errorCode">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1175">at line 1175</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1179">at line 1179</a></div>
         <code>                    string|null
     <strong>errorCode</strong>()
         </code>
@@ -2897,7 +2897,7 @@ Returns <b>NULL</b> if no operation has been run on the database handle.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_errorInfo">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1217">at line 1217</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1221">at line 1221</a></div>
         <code>                    array
     <strong>errorInfo</strong>()
         </code>
@@ -2963,7 +2963,7 @@ information for an operation performed on a particular statement handle.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getAttribute">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1244">at line 1244</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1248">at line 1248</a></div>
         <code>                    mixed
     <strong>getAttribute</strong>(int $attribute)
         </code>
@@ -3022,7 +3022,7 @@ An unsuccessful call returns null.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_quote">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1261">at line 1261</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1265">at line 1265</a></div>
         <code>                    string|false
     <strong>quote</strong>(string $string, int $type = PDO::PARAM_STR)
         </code>
@@ -3076,7 +3076,7 @@ this way.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method___wakeup">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1267">at line 1267</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1271">at line 1271</a></div>
         <code>final                    
     <strong>__wakeup</strong>()
         </code>
@@ -3100,7 +3100,7 @@ this way.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method___sleep">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1269">at line 1269</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1273">at line 1273</a></div>
         <code>final                    
     <strong>__sleep</strong>()
         </code>
@@ -3124,7 +3124,7 @@ this way.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getAvailableDrivers">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1278">at line 1278</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1282">at line 1282</a></div>
         <code>        static            array
     <strong>getAvailableDrivers</strong>()
         </code>
@@ -3158,7 +3158,7 @@ no drivers are available, it returns an empty array.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_sqliteCreateFunction">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1302">at line 1302</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1306">at line 1306</a></div>
         <code>                    bool
     <strong>sqliteCreateFunction</strong>(string $function_name, callable $callback, int $num_args = -1, int $flags = 0)
         </code>
@@ -3227,7 +3227,7 @@ a single SQL statement.
             </div>
                     <div class="method-item">
                     <h3 id="method_pgsqlCopyFromArray">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1325">at line 1325</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1329">at line 1329</a></div>
         <code>                    bool
     <strong>pgsqlCopyFromArray</strong>(string $tableName, array $rows, string $separator = &quot;\t&quot;, string $nullAs = &quot;\\\\N&quot;, string|null $fields = null)
         </code>
@@ -3300,7 +3300,7 @@ List of fields to insert
             </div>
                     <div class="method-item">
                     <h3 id="method_pgsqlCopyFromFile">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1348">at line 1348</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1352">at line 1352</a></div>
         <code>                    bool
     <strong>pgsqlCopyFromFile</strong>(string $tableName, string $filename, string $separator = &quot;\t&quot;, string $nullAs = &quot;\\\\N&quot;, string|null $fields = null)
         </code>
@@ -3373,7 +3373,7 @@ List of fields to insert
             </div>
                     <div class="method-item">
                     <h3 id="method_pgsqlCopyToArray">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1368">at line 1368</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1372">at line 1372</a></div>
         <code>                    array|false
     <strong>pgsqlCopyToArray</strong>(string $tableName, string $separator = &quot;\t&quot;, string $nullAs = &quot;\\\\N&quot;, string|null $fields = null)
         </code>
@@ -3439,7 +3439,7 @@ List of fields to insert
             </div>
                     <div class="method-item">
                     <h3 id="method_pgsqlCopyToFile">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1391">at line 1391</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1395">at line 1395</a></div>
         <code>                    bool
     <strong>pgsqlCopyToFile</strong>(string $tableName, string $filename, string $separator = &quot;\t&quot;, string $nullAs = &quot;\\\\N&quot;, string|null $fields = null)
         </code>
@@ -3512,7 +3512,7 @@ List of fields to insert
             </div>
                     <div class="method-item">
                     <h3 id="method_pgsqlLOBCreate">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1400">at line 1400</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1404">at line 1404</a></div>
         <code>                    string|false
     <strong>pgsqlLOBCreate</strong>()
         </code>
@@ -3546,7 +3546,7 @@ or <b>FALSE</b> on failure.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_pgsqlLOBOpen">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1414">at line 1414</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1418">at line 1418</a></div>
         <code>                    resource|false
     <strong>pgsqlLOBOpen</strong>(string $oid, string $mode = &quot;rb&quot;)
         </code>
@@ -3598,7 +3598,7 @@ If mode is r, open the stream for reading. If mode is w, open the stream for wri
             </div>
                     <div class="method-item">
                     <h3 id="method_pgsqlLOBUnlink">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1425">at line 1425</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1429">at line 1429</a></div>
         <code>                    bool
     <strong>pgsqlLOBUnlink</strong>(string $oid)
         </code>
@@ -3643,7 +3643,7 @@ A large object identifier.
             </div>
                     <div class="method-item">
                     <h3 id="method_pgsqlGetNotify">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1440">at line 1440</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1444">at line 1444</a></div>
         <code>                    array|false
     <strong>pgsqlGetNotify</strong>(int $fetchMode = PDO::FETCH_DEFAULT, int $timeoutMilliseconds = 0)
         </code>
@@ -3696,7 +3696,7 @@ with fields message and pid, otherwise <b>FALSE</b>.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_pgsqlGetPid">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1448">at line 1448</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1452">at line 1452</a></div>
         <code>                    int
     <strong>pgsqlGetPid</strong>()
         </code>
