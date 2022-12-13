@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed a JS null pointer error on Doctum.cleanSearchQuery
 - Don't inject `<br>` tags into `<pre>` for `@examples`
+- Support `@category` tags on classes and methods
 
 ## [5.5.1] - 2022-02-17
 
