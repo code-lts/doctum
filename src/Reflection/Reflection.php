@@ -323,9 +323,22 @@ abstract class Reflection
         return ! empty($this->getTags('internal'));
     }
 
+    public function hasCategories(): bool
+    {
+        return ! empty($this->getCategories());
+    }
+
     public function hasExamples(): bool
     {
         return ! empty($this->getExamples());
+    }
+
+    /**
+     * @return array[]
+     */
+    public function getCategories(): array
+    {
+        return $this->getTags('category');
     }
 
     /**

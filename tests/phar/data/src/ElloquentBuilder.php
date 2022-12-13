@@ -7,6 +7,9 @@ namespace Illuminate\Database\Eloquent;
  * @source https://github.com/netpok/larastan/blob/master/stubs/EloquentBuilder.stub
  * @license MIT
  * @copyright Nuno Maduro enunomaduro@gmail.com
+ *
+ * @category laravel
+ * @category builder
  */
 class Builder
 {
@@ -42,6 +45,7 @@ class Builder
      * @param  mixed  $id
      * @param  array<int, (model-property<TModelClass>|'*')>|model-property<TModelClass>|'*'  $columns
      * @phpstan-return TModelClass|\Illuminate\Database\Eloquent\Collection<TModelClass>|null
+     * @category find
      */
     public function find($id, $columns = ['*']);
 
@@ -51,6 +55,7 @@ class Builder
      * @param  \Illuminate\Contracts\Support\Arrayable|array<mixed>  $ids
      * @param  array<int, (model-property<TModelClass>|'*')>|model-property<TModelClass>|'*'  $columns
      * @phpstan-return \Illuminate\Database\Eloquent\Collection<TModelClass>
+     * @category find
      */
     public function findMany($ids, $columns = ['*']);
 
@@ -60,6 +65,7 @@ class Builder
      * @param  mixed  $id
      * @param  array<int, (model-property<TModelClass>|'*')>|model-property<TModelClass>|'*'  $columns
      * @phpstan-return TModelClass|\Illuminate\Database\Eloquent\Collection<TModelClass>
+     * @category find
      *
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      */
@@ -71,6 +77,7 @@ class Builder
      * @param  mixed  $id
      * @param  array<int, (model-property<TModelClass>|'*')>|model-property<TModelClass>|'*'  $columns
      * @phpstan-return TModelClass
+     * @category find
      */
     public function findOrNew($id, $columns = ['*']);
 

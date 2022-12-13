@@ -159,6 +159,18 @@
     {% endif %}
 {% endmacro %}
 
+{% macro categories(reflection) %}
+    {% if reflection.hasCategories() %}
+        <p>
+            {% for categoryTag in reflection.getCategories() %}
+                {% for category in categoryTag %}
+                    <span class="label label-default">{{ category }}</span>
+                {% endfor %}
+            {% endfor %}
+        </p>
+    {% endif %}
+{% endmacro %}
+
 {% macro todo(reflection) %}
         {% if project.config('insert_todos') == true %}
             {% if reflection.todo %}<small><span class="label label-info">{% trans 'todo' %}</span></small>{% endif %}
