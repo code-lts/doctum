@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Relay\Sentinel | PHP Jetbrains phpstorm-stubs</title>
+
+            <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../fonts/doctum-font.css">
+        <script src="../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../doctum.js"></script>
+        <script async defer src="../js/bootstrap.min.js"></script>
+        <script async defer src="../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:Relay_Sentinel" data-root-path="../" data-search-index-url="../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../index.html">PHP Jetbrains phpstorm-stubs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../classes.html">Classes</a></li>
+                    <li><a href="../namespaces.html">Namespaces</a></li>
+                    <li><a href="../interfaces.html">Interfaces</a></li>
+                    <li><a href="../traits.html">Traits</a></li>
+                    <li><a href="../doc-index.html">Index</a></li>
+                    <li><a href="../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../Relay.html">Relay</a></li><li class="backslash">\</li><li>Sentinel</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Sentinel    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Sentinel</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Sentinel.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            <div class="description">
+            <p><p>Relay Sentinel client.</p></p>                    </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        OPT_THROW_ON_ERR
+                                    </td>
+                <td class="last">
+                    <p><em><p>Whether to throw an exception on <code>-ERR</code> replies.  Default: false</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        OPT_AUTO_DISCOVER
+                                    </td>
+                <td class="last">
+                    <p><em><p>Whether \Relay\Sentinel should automatically discover other sentinels in the
+cluster, so it may use them if we fail to communicate with the first one.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(string $host, int $port = 26379, float $timeout = 0, mixed $persistent = null, int $retry_interval = 0, float $read_timeout = 0, mixed $auth = null)
+        
+                                            <p><p>Establishes a new connection to a Sentinel instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_ckquorum">ckquorum</a>(string $master)
+        
+                                            <p><p>Check if the current Sentinel configuration is able to reach the quorum needed
+to failover a master, and the majority needed to authorize the failover.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_failover">failover</a>(string $master)
+        
+                                            <p><p>Force a failover as if the master was not reachable,
+and without asking for agreement to other Sentinels.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushconfig">flushconfig</a>()
+        
+                                            <p><p>Force Sentinel to rewrite its configuration on disk,
+including the current Sentinel state.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Relay\array|false">array|false</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getMasterAddrByName">getMasterAddrByName</a>(string $master)
+        
+                                            <p><p>Returns the ip and port number of the master with that name.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Relay\array|false">array|false</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_master">master</a>(string $master)
+        
+                                            <p><p>Returns the state and info of the specified master.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Relay\array|false">array|false</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_masters">masters</a>()
+        
+                                            <p><p>Returns a list of monitored masters and their state.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_myid">myid</a>()
+        
+                                            <p><p>Returns the ID of the Sentinel instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Relay\string|bool">string|bool</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_ping">ping</a>(string|null $message = null)
+        
+                                            <p><p>Returns PONG if no message is provided, otherwise returns the message.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_reset">reset</a>(string $pattern)
+        
+                                            <p><p>Will reset all the masters with matching name.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Relay\array|false">array|false</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_sentinels">sentinels</a>(string $master)
+        
+                                            <p><p>Returns a list of sentinel instances for this master, and their state.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Relay\array|false">array|false</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_slaves">slaves</a>(string $master)
+        
+                                            <p><p>Show a list of replicas for this master, and their state.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Relay\string|null">string|null</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getLastError">getLastError</a>()
+        
+                                            <p><p>Returns the last error message, if any.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setOption">setOption</a>(int $option, mixed $value)
+        
+                                            <p><p>Sets a client option.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getOption">getOption</a>(int $option)
+        
+                                            <p><p>Returns a client option.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Sentinel.php#L38">at line 38</a></div>
+        <code>                    
+    <strong>__construct</strong>(string $host, int $port = 26379, float $timeout = 0, mixed $persistent = null, int $retry_interval = 0, float $read_timeout = 0, mixed $auth = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Establishes a new connection to a Sentinel instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$host</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$port</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$timeout</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$persistent</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$retry_interval</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$read_timeout</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$auth</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_ckquorum">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Sentinel.php#L56">at line 56</a></div>
+        <code>                    bool
+    <strong>ckquorum</strong>(string $master)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Check if the current Sentinel configuration is able to reach the quorum needed
+to failover a master, and the majority needed to authorize the failover.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$master</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_failover">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Sentinel.php#L66">at line 66</a></div>
+        <code>                    bool
+    <strong>failover</strong>(string $master)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Force a failover as if the master was not reachable,
+and without asking for agreement to other Sentinels.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$master</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushconfig">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Sentinel.php#L75">at line 75</a></div>
+        <code>                    bool
+    <strong>flushconfig</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Force Sentinel to rewrite its configuration on disk,
+including the current Sentinel state.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMasterAddrByName">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Sentinel.php#L84">at line 84</a></div>
+        <code>                    <abbr title="Relay\array|false">array|false</abbr>
+    <strong>getMasterAddrByName</strong>(string $master)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the ip and port number of the master with that name.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$master</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Relay\array|false">array|false</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_master">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Sentinel.php#L93">at line 93</a></div>
+        <code>                    <abbr title="Relay\array|false">array|false</abbr>
+    <strong>master</strong>(string $master)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the state and info of the specified master.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$master</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Relay\array|false">array|false</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_masters">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Sentinel.php#L101">at line 101</a></div>
+        <code>                    <abbr title="Relay\array|false">array|false</abbr>
+    <strong>masters</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a list of monitored masters and their state.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Relay\array|false">array|false</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_myid">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Sentinel.php#L109">at line 109</a></div>
+        <code>                    string
+    <strong>myid</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the ID of the Sentinel instance.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_ping">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Sentinel.php#L118">at line 118</a></div>
+        <code>                    <abbr title="Relay\string|bool">string|bool</abbr>
+    <strong>ping</strong>(string|null $message = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns PONG if no message is provided, otherwise returns the message.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Relay\string|bool">string|bool</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_reset">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Sentinel.php#L127">at line 127</a></div>
+        <code>                    int
+    <strong>reset</strong>(string $pattern)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Will reset all the masters with matching name.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$pattern</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sentinels">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Sentinel.php#L136">at line 136</a></div>
+        <code>                    <abbr title="Relay\array|false">array|false</abbr>
+    <strong>sentinels</strong>(string $master)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a list of sentinel instances for this master, and their state.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$master</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Relay\array|false">array|false</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_slaves">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Sentinel.php#L145">at line 145</a></div>
+        <code>                    <abbr title="Relay\array|false">array|false</abbr>
+    <strong>slaves</strong>(string $master)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Show a list of replicas for this master, and their state.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$master</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Relay\array|false">array|false</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLastError">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Sentinel.php#L153">at line 153</a></div>
+        <code>                    <abbr title="Relay\string|null">string|null</abbr>
+    <strong>getLastError</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the last error message, if any.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Relay\string|null">string|null</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setOption">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Sentinel.php#L163">at line 163</a></div>
+        <code>                    bool
+    <strong>setOption</strong>(int $option, mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets a client option.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$option</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getOption">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Sentinel.php#L172">at line 172</a></div>
+        <code>                    mixed
+    <strong>getOption</strong>(int $option)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a client option.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$option</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built using <a href="https://github.com/JetBrains/phpstorm-stubs#readme" rel="noreferrer noopener" target="_blank">phpstorm-stubs</a> from JetBrains.</div></div>
+    </div>
+    </body>
+
+</html>
