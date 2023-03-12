@@ -336,6 +336,22 @@ Files are contained into sections, depending on how Doctum needs to treat them:
 .. _MariaDB MySQL Kbs: https://williamdes.github.io/mariadb-mysql-kbs/
 .. _Laravel: https://laravel.com/api/master/index.html
 
+Theme configuration
+~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: php
+
+    <?php
+
+    return new Doctum($iterator, [
+        // [...]
+        'theme'         => 'my-theme-name',
+        // Add the path to the theme/themes
+        'template_dirs' => [__DIR__ . '/themes/my-theme-name'],
+        // [...]
+        ]
+    );
+
 Search Index
 ~~~~~~~~~~~~
 
