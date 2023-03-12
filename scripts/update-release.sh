@@ -90,11 +90,16 @@ doChangesForRelease() {
 
 doChangesForRelease "./build"
 
+echo 'Updating the version named folder'
 if [ ${IS_LTS_MODE} = "0" ]; then
-    echo 'Updating the version named folder'
     updateLatestFolders "./releases/${VERSION}"
 else
-    echo 'LTS mode, skipping update of version ENVs'
+    echo 'LTS mode !'
+    read -r -p "Make it the latest version ? [Y/n]" response
+    response=${response,,} # tolower
+    if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
+        updateLatestFolders "./releases/${VERSION}"
+    fi
 fi
 
 rm -rf build/*
