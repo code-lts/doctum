@@ -51,8 +51,8 @@ use Wdes\phpI18nL10n\Launcher;
 class Doctum implements ArrayAccess
 {
     public const VERSION_MAJOR = 5;
-    public const VERSION_MINOR = 6;
-    public const VERSION_PATCH = 0;
+    public const VERSION_MINOR = 5;
+    public const VERSION_PATCH = 2;
     public const IS_DEV        = true;
 
     //@phpstan-ignore-next-line
