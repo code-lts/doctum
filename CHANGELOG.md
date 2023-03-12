@@ -7,9 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
+- Support `@category` tags on classes and methods
+
+## [5.5.2] - 2023-03-12
+
 - Fixed a JS null pointer error on Doctum.cleanSearchQuery
 - Don't inject `<br>` tags into `<pre>` for `@examples`
-- Support `@category` tags on classes and methods
 
 ## [5.5.1] - 2022-02-17
 
