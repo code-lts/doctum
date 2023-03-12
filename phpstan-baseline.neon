@@ -225,7 +225,7 @@ parameters:
 		-
 			message: '#^Call to an undefined method PhpParser\\Node\\ComplexType\|PhpParser\\Node\\Identifier\|PhpParser\\Node\\Name\:\:__toString\(\)\.$#'
 			identifier: method.notFound
-			count: 1
+			count: 2
 			path: src/Parser/NodeVisitor.php
 
 		-
@@ -356,6 +356,12 @@ parameters:
 
 		-
 			message: '#^Method Doctum\\Parser\\NodeVisitor\:\:resolveSee\(\) has parameter \$see with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Parser/NodeVisitor.php
+
+		-
+			message: '#^Method Doctum\\Parser\\NodeVisitor\:\:typeToArray\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: src/Parser/NodeVisitor.php
@@ -2419,12 +2425,6 @@ parameters:
 			path: tests/Parser/NodeVisitorTest.php
 
 		-
-			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertSame\(\) with array\{''The hint on "prop1"…''\} and array\{\} will always evaluate to false\.$#'
-			identifier: method.impossibleType
-			count: 1
-			path: tests/Parser/NodeVisitorTest.php
-
-		-
 			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertSame\(\) with array\{''Too much @return…''\} and array\{\} will always evaluate to false\.$#'
 			identifier: method.impossibleType
 			count: 1
@@ -2439,7 +2439,7 @@ parameters:
 		-
 			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertSame\(\) with array\{\} and array\{\} will always evaluate to true\.$#'
 			identifier: method.alreadyNarrowedType
-			count: 3
+			count: 4
 			path: tests/Parser/NodeVisitorTest.php
 
 		-
