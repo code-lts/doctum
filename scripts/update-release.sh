@@ -18,7 +18,7 @@ IS_DEV_VERSION="$(echo "${VERSION_RANGE}" | grep -F -q -e '-dev' && echo '1' || 
 # Example: 5db49ae740e4d1fd8eb79a9de52c9aefc7906f1f
 PHAR_COMMIT="$(git rev-parse --verify HEAD)"
 # Manual switch
-IS_LTS_MODE="0"
+IS_LTS_MODE="1"
 
 git checkout gh-pages
 
