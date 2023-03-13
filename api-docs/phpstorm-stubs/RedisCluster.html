@@ -370,10 +370,9 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>($name, $seeds, $timeout = null, $readTimeout = null, $persistent = false, $auth = null)
+                    <a href="#method___construct">__construct</a>(string|null $name, array $seeds, float $timeout = null, float $readTimeout = null, bool $persistent = false, string|null $auth = null)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Creates a Redis Cluster client</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -2056,7 +2055,7 @@ the MULTI/EXEC transaction will fail (return FALSE). unwatch cancels all the wat
                     <h3 id="method___construct">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisCluster.php#L108">at line 108</a></div>
         <code>                    
-    <strong>__construct</strong>($name, $seeds, $timeout = null, $readTimeout = null, $persistent = false, $auth = null)
+    <strong>__construct</strong>(string|null $name, array $seeds, float $timeout = null, float $readTimeout = null, bool $persistent = false, string|null $auth = null)
         </code>
     </h3>
     <div class="details">    
@@ -2065,40 +2064,39 @@ the MULTI/EXEC transaction will fail (return FALSE). unwatch cancels all the wat
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Creates a Redis Cluster client</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string|null</td>
                 <td>$name</td>
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>array</td>
                 <td>$seeds</td>
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>float</td>
                 <td>$timeout</td>
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>float</td>
                 <td>$readTimeout</td>
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>bool</td>
                 <td>$persistent</td>
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>string|null</td>
                 <td>$auth</td>
                 <td></td>
             </tr>
@@ -2106,8 +2104,43 @@ the MULTI/EXEC transaction will fail (return FALSE). unwatch cancels all the wat
 
             
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="RedisClusterException.html">RedisClusterException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
+                            <h4>Examples</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><pre class="examples">&lt;pre&gt;
+// Declaring a cluster with an array of seeds
+$redisCluster = new RedisCluster(null,[&#039;127.0.0.1:6379&#039;]);
+
+// Loading a cluster configuration by name
+// In order to load a named array, one must first define the seed nodes in redis.ini.
+// The following lines would define the cluster &#039;mycluster&#039;, and be loaded automatically by phpredis.
+
+// # In redis.ini
+// redis.clusters.seeds = &quot;mycluster[]=localhost:7000&amp;test[]=localhost:7001&quot;
+// redis.clusters.timeout = &quot;mycluster=5&quot;
+// redis.clusters.read_timeout = &quot;mycluster=10&quot;
+// redis.clusters.auth = &quot;mycluster=password&quot; OR [&#039;user&#039; =&gt; &#039;foo&#039;, &#039;pass&#039; =&gt; &#039;bar] as example
+
+//Then, this cluster can be loaded by doing the following
+
+$redisClusterPro = new RedisCluster(&#039;mycluster&#039;);
+$redisClusterDev = new RedisCluster(&#039;test&#039;);
+&lt;/pre&gt;</pre></td>
+            </tr>
+            </table>
+
                     </div>
     </div>
 

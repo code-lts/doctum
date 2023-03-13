@@ -444,13 +444,12 @@ use Type;</code></pre></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <a href="../../Cassandra/Map.html"><abbr title="Cassandra\Map">Map</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_create">create</a>(...$value)
+                    <a href="#method_create">create</a>(mixed ...$value)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Creates a new Map from the given values.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -1557,8 +1556,8 @@ use Type;</code></pre></p>                <p><p>$userType = Type::userType(&quot
                     <div class="method-item">
                     <h3 id="method_create">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/cassandra/cassandra.php#L6019">at line 6019</a></div>
-        <code>                    
-    <strong>create</strong>(...$value)
+        <code>                    <a href="../../Cassandra/Map.html"><abbr title="Cassandra\Map">Map</abbr></a>
+    <strong>create</strong>(mixed ...$value)
         </code>
     </h3>
     <div class="details">    
@@ -1567,22 +1566,52 @@ use Type;</code></pre></p>                <p><p>$userType = Type::userType(&quot
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Creates a new Map from the given values.</p></p>                <p><pre><code class="language-&lt;?php">
+use Type;
+use Uuid;
+
+$type = Type::map(Type::uuid(), Type::varchar());
+$map = $type-&gt;create(new Uuid(), 'first uuid',
+                     new Uuid(), 'second uuid',
+                     new Uuid(), 'third uuid');
+
+var_dump($map);```
+
+                         is a key and each even value is a value for the
+                         map, e.g. `create(key, value, key, value)`.
+                         When no values given, creates an empty map.</code></pre></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>mixed</td>
                 <td>...$value</td>
-                <td></td>
+                <td><p>An even number of values, where each odd value</p></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Cassandra/Map.html"><abbr title="Cassandra\Map">Map</abbr></a></td>
+            <td><p>A set with given values.</p></td>
+        </tr>
+    </table>
+
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Cassandra/Exception/InvalidArgumentException.html"><abbr title="Cassandra\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>

@@ -118,10 +118,10 @@ associated result set.</p></p>                    </div>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_execute">execute</a>($params = null)
+                    <a href="#method_execute">execute</a>(array $params = null)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>(PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)<br/>
+Executes a prepared statement</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -365,7 +365,7 @@ Dump an SQL prepared command</p></p>                </div>
                     <h3 id="method_execute">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1492">at line 1492</a></div>
         <code>                    bool
-    <strong>execute</strong>($params = null)
+    <strong>execute</strong>(array $params = null)
         </code>
     </h3>
     <div class="details">    
@@ -374,17 +374,32 @@ Dump an SQL prepared command</p></p>                </div>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>(PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo &gt;= 0.1.0)<br/>
+Executes a prepared statement</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>array</td>
                 <td>$params</td>
-                <td></td>
+                <td><p>[optional] <p>
+An array of values with as many elements as there are bound
+parameters in the SQL statement being executed.
+All values are treated as <b>PDO::PARAM_STR</b>.
+</p></p>
+<p>
+You cannot bind multiple values to a single parameter; for example,
+you cannot bind two values to a single named parameter in an IN()
+clause.
+</p>
+<p>
+You cannot bind more values than specified; if more keys exist in
+<i>input_parameters</i> than in the SQL specified
+in the <b>PDO::prepare</b>, then the statement will
+fail and an error is emitted.
+</p></td>
             </tr>
             </table>
 
@@ -394,11 +409,20 @@ Dump an SQL prepared command</p></p>                </div>
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p></td>
         </tr>
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="PDOException.html">PDOException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -1482,7 +1506,8 @@ Dump an SQL prepared command</p></p>
                     <table class="table table-condensed">
         <tr>
             <td><a href="Traversable.html">Traversable</a></td>
-            <td></td>
+            <td><p>An instance of an object implementing <b>Iterator</b> or
+<b>Traversable</b></p></td>
         </tr>
     </table>
 

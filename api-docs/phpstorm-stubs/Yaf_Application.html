@@ -188,7 +188,7 @@ You may use &#64;backupGlobals annotation of PHPUnit to control the backup and r
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>($config, $environ = null)
+                    <a href="#method___construct">__construct</a>(string|array $config, string $environ = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -212,8 +212,7 @@ You may use &#64;backupGlobals annotation of PHPUnit to control the backup and r
                 <div class="col-md-8">
                     <a href="#method_run">run</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Run a Yaf_Application, let the Yaf_Application accept a request, and route the request, dispatch to controller/action, and render response.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -363,7 +362,7 @@ You may use &#64;backupGlobals annotation of PHPUnit to control the backup and r
                     <h3 id="method___construct">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/yaf/yaf.php#L124">at line 124</a></div>
         <code>                    
-    <strong>__construct</strong>($config, $environ = null)
+    <strong>__construct</strong>(string|array $config, string $environ = null)
         </code>
     </h3>
     <div class="details">    
@@ -380,19 +379,35 @@ You may use &#64;backupGlobals annotation of PHPUnit to control the backup and r
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string|array</td>
                 <td>$config</td>
-                <td></td>
+                <td><p>A ini config file path, or a config array</p>
+<p>
+If is a ini config file, there should be a section named as the one defined by yaf.environ, which is "product" by default.
+</p>
+<p><br/>
+<b>Note:</b></p>
+<p>If you use a ini configuration file as your application's config container. you would open the yaf.cache_config to improve performance.</p>
+<p>And the config entry(and there default value) list blow:</p></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$environ</td>
-                <td></td>
+                <td><p>Which section will be loaded as the final config</p></td>
             </tr>
             </table>
 
             
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Yaf_Exception_TypeError|\Yaf_Exception_StartupError">Yaf_Exception_StartupError</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -437,12 +452,20 @@ You may use &#64;backupGlobals annotation of PHPUnit to control the backup and r
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Run a Yaf_Application, let the Yaf_Application accept a request, and route the request, dispatch to controller/action, and render response.</p></p>                <p><p>return response to client finally.</p></p>        
         </div>
         <div class="tags">
             
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="Yaf_Exception_StartupError.html">Yaf_Exception_StartupError</a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>

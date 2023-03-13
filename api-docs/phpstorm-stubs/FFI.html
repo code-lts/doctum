@@ -108,8 +108,7 @@ in C language.</p></p>                    </div>
                 <div class="col-md-8">
                     <a href="#method_cdef">cdef</a>(string $code = &#039;&#039;, string|null $lib = null)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>The method creates a binding on the existing C function.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -148,10 +147,9 @@ files into a single scope.</p></p>                </div>
                     static&nbsp;<a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_new">new</a>($type, bool $owned = true, bool $persistent = false)
+                    <a href="#method_new">new</a>(string|<a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a> $type, bool $owned = true, bool $persistent = false)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Method that creates an arbitrary C structure.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -314,8 +312,12 @@ array of C chars.</p></p>                </div>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>The method creates a binding on the existing C function.</p></p>                <p><p>All variables and functions defined by first arguments are bound
+to corresponding native symbols in DSO library and then may be
+accessed as FFI object methods and properties. C types of argument,
+return value and variables are automatically converted to/from PHP
+types (if possible). Otherwise, they are wrapped in a special CData
+proxy object and may be accessed by elements.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -324,12 +326,12 @@ array of C chars.</p></p>                </div>
                     <tr>
                 <td>string</td>
                 <td>$code</td>
-                <td></td>
+                <td><p>The collection of C declarations.</p></td>
             </tr>
                     <tr>
                 <td>string|null</td>
                 <td>$lib</td>
-                <td></td>
+                <td><p>DSO library.</p></td>
             </tr>
             </table>
 
@@ -344,6 +346,15 @@ array of C chars.</p></p>                </div>
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="FFI/ParserException.html"><abbr title="FFI\ParserException">ParserException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -466,7 +477,7 @@ all C definition from the given scope.</p>
                     <h3 id="method_new">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/FFI/FFI.php#L107">at line 107</a></div>
         <code>        static            <a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a>|null
-    <strong>new</strong>($type, bool $owned = true, bool $persistent = false)
+    <strong>new</strong>(string|<a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a> $type, bool $owned = true, bool $persistent = false)
         </code>
     </h3>
     <div class="details">    
@@ -475,15 +486,14 @@ all C definition from the given scope.</p>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Method that creates an arbitrary C structure.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string|<a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a></td>
                 <td>$type</td>
                 <td></td>
             </tr>
@@ -510,6 +520,15 @@ all C definition from the given scope.</p>
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="FFI/ParserException.html"><abbr title="FFI\ParserException">ParserException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>

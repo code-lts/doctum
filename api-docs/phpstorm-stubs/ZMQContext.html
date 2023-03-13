@@ -109,24 +109,24 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    string|int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getOpt">getOpt</a>($key)
+                    <a href="#method_getOpt">getOpt</a>(string $key)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>(PECL zmq &gt;= 1.0.4)
+Returns the value of a context option.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <a href="ZMQSocket.html">ZMQSocket</a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getSocket">getSocket</a>($type, $persistent_id = null, $on_new_socket = null)
+                    <a href="#method_getSocket">getSocket</a>(int $type, string $persistent_id = null, callable $on_new_socket = null)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>(PECL zmq &gt;= 0.5.0)
+Shortcut for creating new sockets from the context.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -142,13 +142,13 @@ Whether the context is persistent.</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <a href="ZMQContext.html">ZMQContext</a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setOpt">setOpt</a>($key, $value)
+                    <a href="#method_setOpt">setOpt</a>(int $key, mixed $value)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>(PECL zmq &gt;= 1.0.4)
+Sets a ZMQ context option. The type of the value depends on the key.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -199,8 +199,8 @@ Whether the context is persistent.</p></p>                </div>
                     <div class="method-item">
                     <h3 id="method_getOpt">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zmq/zmq.php#L367">at line 367</a></div>
-        <code>                    
-    <strong>getOpt</strong>($key)
+        <code>                    string|int
+    <strong>getOpt</strong>(string $key)
         </code>
     </h3>
     <div class="details">    
@@ -209,22 +209,40 @@ Whether the context is persistent.</p></p>                </div>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>(PECL zmq &gt;= 1.0.4)
+Returns the value of a context option.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$key</td>
-                <td></td>
+                <td><p>An int representing the option. See the <b>ZMQ::CTXOPT_*</b> constants.</p></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|int</td>
+            <td><p>Returns either a string or an integer depending on key. Throws ZMQContextException on error.</p></td>
+        </tr>
+    </table>
+
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="ZMQContextException.html">ZMQContextException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -234,8 +252,8 @@ Whether the context is persistent.</p></p>                </div>
                     <div class="method-item">
                     <h3 id="method_getSocket">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zmq/zmq.php#L384">at line 384</a></div>
-        <code>                    
-    <strong>getSocket</strong>($type, $persistent_id = null, $on_new_socket = null)
+        <code>                    <a href="ZMQSocket.html">ZMQSocket</a>
+    <strong>getSocket</strong>(int $type, string $persistent_id = null, callable $on_new_socket = null)
         </code>
     </h3>
     <div class="details">    
@@ -244,32 +262,52 @@ Whether the context is persistent.</p></p>                </div>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>(PECL zmq &gt;= 0.5.0)
+Shortcut for creating new sockets from the context.</p></p>                <p><p>If the context is not persistent the persistent_id parameter is ignored
+and the socket falls back to being non-persistent.
+The on_new_socket is called only when a new underlying socket structure is created.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>int</td>
                 <td>$type</td>
-                <td></td>
+                <td><p><b>ZMQ::SOCKET_*</b> constant to specify socket type.</p></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$persistent_id</td>
-                <td></td>
+                <td><p>If persistent_id is specified the socket will be persisted over multiple requests.</p></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>callable</td>
                 <td>$on_new_socket</td>
-                <td></td>
+                <td><p>Callback function, which is executed when a new socket structure is created. This function does not get invoked if the underlying persistent connection is re-used. The callback takes ZMQSocket and persistent_id as two arguments.</p></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="ZMQSocket.html">ZMQSocket</a></td>
+            <td></td>
+        </tr>
+    </table>
+
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="ZMQSocketException.html">ZMQSocketException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -313,8 +351,8 @@ Whether the context is persistent.</p></p>                <p><p>Persistent conte
                     <div class="method-item">
                     <h3 id="method_setOpt">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zmq/zmq.php#L409">at line 409</a></div>
-        <code>                    
-    <strong>setOpt</strong>($key, $value)
+        <code>                    <a href="ZMQContext.html">ZMQContext</a>
+    <strong>setOpt</strong>(int $key, mixed $value)
         </code>
     </h3>
     <div class="details">    
@@ -323,27 +361,45 @@ Whether the context is persistent.</p></p>                <p><p>Persistent conte
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>(PECL zmq &gt;= 1.0.4)
+Sets a ZMQ context option. The type of the value depends on the key.</p></p>                <p><p>See ZMQ Constant Types for more information.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>int</td>
                 <td>$key</td>
-                <td></td>
+                <td><p>One of the <b>ZMQ::CTXOPT_*<b> constants.</p></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>mixed</td>
                 <td>$value</td>
-                <td></td>
+                <td><p>The value of the parameter.</p></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="ZMQContext.html">ZMQContext</a></td>
+            <td></td>
+        </tr>
+    </table>
+
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="ZMQContextException.html">ZMQContextException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>

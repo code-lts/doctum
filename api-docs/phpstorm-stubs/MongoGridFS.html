@@ -325,49 +325,45 @@ MongoCollection</a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    bool|array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_insert">insert</a>($a, array $options = [])
+                    <a href="#method_insert">insert</a>(array|object $a, array $options = [])
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Inserts an array into the collection</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="MongoCollection.html#method_insert">
 MongoCollection</a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    array|bool
                 </div>
                 <div class="col-md-8">
                     <a href="#method_batchInsert">batchInsert</a>(array $a, array $options = [])
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Inserts multiple documents into this collection</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="MongoCollection.html#method_batchInsert">
 MongoCollection</a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    bool
                 </div>
                 <div class="col-md-8">
                     <a href="#method_update">update</a>(array $criteria, array $newobj, array $options = [])
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Update records based on a given criteria</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="MongoCollection.html#method_update">
 MongoCollection</a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    bool|array
                 </div>
                 <div class="col-md-8">
                     <a href="#method_remove">remove</a>(array $criteria = [], array $options = [])
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Removes files from the collections</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -481,13 +477,12 @@ MongoCollection</a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    array|bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_save">save</a>($a, array $options = [])
+                    <a href="#method_save">save</a>(array|object $a, array $options = [])
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Saves an object to this collection</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="MongoCollection.html#method_save">
 MongoCollection</a></small></div>
             </div>
@@ -626,7 +621,7 @@ fs.files and fs.chunks are the collection names used.</p></p>
                     <tr>
                 <td><a href="MongoDB.html">MongoDB</a></td>
                 <td>$db</td>
-                <td></td>
+                <td><p>Parent database.</p></td>
             </tr>
                     <tr>
                 <td>string</td>
@@ -1135,8 +1130,8 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <h3 id="method_insert">
         <div class="location">in <a href="MongoCollection.html#method_insert">
 MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongo/mongo.php#L1050">at line 1050</a></div>
-        <code>                    
-    <strong>insert</strong>($a, array $options = [])
+        <code>                    bool|array
+    <strong>insert</strong>(array|object $a, array $options = [])
         </code>
     </h3>
     <div class="details">    
@@ -1145,27 +1140,88 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Inserts an array into the collection</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>array|object</td>
                 <td>$a</td>
-                <td></td>
+                <td><p>An array or object. If an object is used, it may not have protected or private properties.
+Note: If the parameter does not have an _id key or property, a new MongoId instance will be created and assigned to it.
+This special behavior does not mean that the parameter is passed by reference.</p></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td></td>
+                <td><p>Options for the insert.</p>
+<dl>
+<dt>"w"</dt>
+<dd>See WriteConcerns. The default value for MongoClient is 1.</dd>
+<dt>"fsync"</dt>
+<dd>Boolean, defaults to FALSE. Forces the insert to be synced to disk before returning success. If TRUE, an acknowledged insert is implied and will override setting w to 0.</dd>
+<dt>"timeout"</dt>
+<dd>Integer, defaults to MongoCursor::$timeout. If "safe" is set, this sets how long (in milliseconds) for the client to wait for a database response. If the database does not respond within the timeout period, a MongoCursorTimeoutException will be thrown.</dd>
+<dt>"safe"</dt>
+<dd>Deprecated. Please use the WriteConcern w option.</dd>
+</dl></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool|array</td>
+            <td><p>Returns an array containing the status of the insertion if the &quot;w&quot; option is set.
+Otherwise, returns TRUE if the inserted array is not empty (a MongoException will be thrown if the inserted array is empty).
+If an array is returned, the following keys may be present:</p>
+<dl>
+<dt>ok</dt>
+<dd>This should almost be 1 (unless last_error itself failed).</dd>
+<dt>err</dt>
+<dd>If this field is non-null, an error occurred on the previous operation. If this field is set, it will be a string describing the error that occurred.</dd>
+<dt>code</dt>
+<dd>If a database error occurred, the relevant error code will be passed back to the client.</dd>
+<dt>errmsg</dt>
+<dd>This field is set if something goes wrong with a database command. It is coupled with ok being 0. For example, if w is set and times out, errmsg will be set to "timed out waiting for slaves" and ok will be 0. If this field is set, it will be a string describing the error that occurred.</dd>
+<dt>n</dt>
+<dd>If the last operation was an update, upsert, or a remove, the number of documents affected will be returned. For insert operations, this value is always 0.</dd>
+<dt>wtimeout</dt>
+<dd>If the previous option timed out waiting for replication.</dd>
+<dt>waited</dt>
+<dd>How long the operation waited before timing out.</dd>
+<dt>wtime</dt>
+<dd>If w was set and the operation succeeded, how long it took to replicate to w servers.</dd>
+<dt>upserted</dt>
+<dd>If an upsert occurred, this field will contain the new record's _id field. For upserts, either this field or updatedExisting will be present (unless an error occurred).</dd>
+<dt>updatedExisting</dt>
+<dd>If an upsert updated an existing element, this field will be true. For upserts, either this field or upserted will be present (unless an error occurred).</dd>
+</dl></td>
+        </tr>
+    </table>
+
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="MongoException.html">MongoException</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="MongoCursorException.html">MongoCursorException</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="MongoCursorTimeoutException.html">MongoCursorTimeoutException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -1176,7 +1232,7 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <h3 id="method_batchInsert">
         <div class="location">in <a href="MongoCollection.html#method_batchInsert">
 MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongo/mongo.php#L1060">at line 1060</a></div>
-        <code>                    
+        <code>                    array|bool
     <strong>batchInsert</strong>(array $a, array $options = [])
         </code>
     </h3>
@@ -1186,8 +1242,7 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Inserts multiple documents into this collection</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1196,17 +1251,35 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <tr>
                 <td>array</td>
                 <td>$a</td>
-                <td></td>
+                <td><p>An array of arrays.</p></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td></td>
+                <td><p>Options for the inserts.</p></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|bool</td>
+            <td><p>if &quot;safe&quot; is set, returns an associative array with the status of the inserts (&quot;ok&quot;) and any error that may have occurred (&quot;err&quot;). Otherwise, returns TRUE if the batch insert was successfully sent, FALSE otherwise.</p></td>
+        </tr>
+    </table>
+
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="MongoCursorException.html">MongoCursorException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -1217,7 +1290,7 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <h3 id="method_update">
         <div class="location">in <a href="MongoCollection.html#method_update">
 MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongo/mongo.php#L1091">at line 1091</a></div>
-        <code>                    
+        <code>                    bool
     <strong>update</strong>(array $criteria, array $newobj, array $options = [])
         </code>
     </h3>
@@ -1227,8 +1300,7 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Update records based on a given criteria</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1237,22 +1309,41 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <tr>
                 <td>array</td>
                 <td>$criteria</td>
-                <td></td>
+                <td><p>Description of the objects to update.</p></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$newobj</td>
-                <td></td>
+                <td><p>The object with which to update the matching records.</p></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td></td>
+                <td><p>This parameter is an associative array of the form
+array(&quot;optionname&quot; =&gt; boolean, ...).</p></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="MongoCursorException.html">MongoCursorException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -1262,7 +1353,7 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <div class="method-item">
                     <h3 id="method_remove">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongo/mongo.php#L1773">at line 1773</a></div>
-        <code>                    
+        <code>                    bool|array
     <strong>remove</strong>(array $criteria = [], array $options = [])
         </code>
     </h3>
@@ -1272,8 +1363,7 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Removes files from the collections</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1282,17 +1372,59 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <tr>
                 <td>array</td>
                 <td>$criteria</td>
-                <td></td>
+                <td><p>[optional] <p>Query criteria for the documents to delete.</p></p></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td></td>
+                <td><p>[optional] <p>An array of options for the remove operation. Currently available options
+include:
+</p><ul></p>
+<li><p><em>"w"</em></p><p>See https://secure.php.net/manual/en/mongo.writeconcerns.php Write Concerns. The default value for <b>MongoClient</b> is <em>1</em>.</p></li>
+<li>
+<p>
+<em>"justOne"</em>
+</p>
+<p>
+Specify <strong>```TRUE```</strong> to limit deletion to just one document. If <strong>```FALSE```</strong> or
+omitted, all documents matching the criteria will be deleted.
+</p>
+</li>
+<li><p><em>"fsync"</em></p><p>Boolean, defaults to <b>FALSE</b>. If journaling is enabled, it works exactly like <em>"j"</em>. If journaling is not enabled, the write operation blocks until it is synced to database files on disk. If <strong>```TRUE```</strong>, an acknowledged insert is implied and this option will override setting <em>"w"</em> to <em>0</em>.</p><blockquote class="note"><p><strong class="note">Note</strong>: <span class="simpara">If journaling is enabled, users are strongly encouraged to use the <em>"j"</em> option instead of <em>"fsync"</em>. Do not use <em>"fsync"</em> and <em>"j"</em> simultaneously, as that will result in an error.</p></blockquote></li>
+<li><p><em>"j"</em></p><p>Boolean, defaults to <b>FALSE</b>. Forces the write operation to block until it is synced to the journal on disk. If <strong>```TRUE```</strong>, an acknowledged write is implied and this option will override setting <em>"w"</em> to <em>0</em>.</p><blockquote class="note"><p><strong class="note">Note</strong>: <span class="simpara">If this option is used and journaling is disabled, MongoDB 2.6+ will raise an error and the write will fail; older server versions will simply ignore the option.</p></blockquote></li>
+<li><p><em>"socketTimeoutMS"</em></p><p>This option specifies the time limit, in milliseconds, for socket communication. If the server does not respond within the timeout period, a <b>MongoCursorTimeoutException</b> will be thrown and there will be no way to determine if the server actually handled the write or not. A value of <em>-1</em> may be specified to block indefinitely. The default value for <b>MongoClient</b> is <em>30000</em> (30 seconds).</p></li>
+<li><p><em>"w"</em></p><p>See https://secure.php.net/manual/en/mongo.writeconcerns.php Write Concerns. The default value for <b>MongoClient</b> is <em>1</em>.</p></li>
+<li><p><em>"wTimeoutMS"</em></p><p>This option specifies the time limit, in milliseconds, for https://secure.php.net/manual/en/mongo.writeconcerns.php write concern} acknowledgement. It is only applicable when <em>"w"</em> is greater than <em>1</em>, as the timeout pertains to replication. If the write concern is not satisfied within the time limit, a <a href="class.mongocursorexception.php" class="classname">MongoCursorException</a> will be thrown. A value of <em>0</em> may be specified to block indefinitely. The default value for {@link https://secure.php.net/manual/en/class.mongoclient.php MongoClient is <em>10000</em> (ten seconds).</p></li>
+<p></ul></p></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool|array</td>
+            <td><p>Returns an array containing the status of the removal if the
+<em>"w"</em> option is set. Otherwise, returns <b>TRUE</b>.
+</p>
+<p>
+Fields in the status array are described in the documentation for
+<b>MongoCollection::insert()</b>.
+</p></td>
+        </tr>
+    </table>
+
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="MongoCursorException.html">MongoCursorException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -1774,8 +1906,8 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                     <h3 id="method_save">
         <div class="location">in <a href="MongoCollection.html#method_save">
 MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongo/mongo.php#L1248">at line 1248</a></div>
-        <code>                    
-    <strong>save</strong>($a, array $options = [])
+        <code>                    array|bool
+    <strong>save</strong>(array|object $a, array $options = [])
         </code>
     </h3>
     <div class="details">    
@@ -1784,27 +1916,65 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Saves an object to this collection</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>array|object</td>
                 <td>$a</td>
-                <td></td>
+                <td><p>Array to save. If an object is used, it may not have protected or private properties.
+Note: If the parameter does not have an _id key or property, a new MongoId instance will be created and assigned to it.
+See MongoCollection::insert() for additional information on this behavior.</p></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td></td>
+                <td><p>Options for the save.</p>
+<dl>
+<dt>"w"
+<dd>See WriteConcerns. The default value for MongoClient is 1.
+<dt>"fsync"
+<dd>Boolean, defaults to FALSE. Forces the insert to be synced to disk before returning success. If TRUE, an acknowledged insert is implied and will override setting w to 0.
+<dt>"timeout"
+<dd>Integer, defaults to MongoCursor::$timeout. If "safe" is set, this sets how long (in milliseconds) for the client to wait for a database response. If the database does not respond within the timeout period, a MongoCursorTimeoutException will be thrown.
+<dt>"safe"
+<dd>Deprecated. Please use the WriteConcern w option.
+</dl></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|bool</td>
+            <td><p>If w was set, returns an array containing the status of the save.
+Otherwise, returns a boolean representing if the array was not empty (an empty array will not be inserted).</p></td>
+        </tr>
+    </table>
+
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="MongoException.html">MongoException</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="MongoCursorException.html">MongoCursorException</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="MongoCursorTimeoutException.html">MongoCursorTimeoutException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>

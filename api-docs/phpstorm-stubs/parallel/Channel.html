@@ -140,8 +140,8 @@ Shall make an anonymous buffered channel with the given capacity</p></p>        
                 <div class="col-md-8">
                     <a href="#method_make">make</a>(string $name, int|null $capacity = null)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Shall make an unbuffered channel with the given name
+Shall make a buffered channel with the given name and capacity</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -151,8 +151,7 @@ Shall make an anonymous buffered channel with the given capacity</p></p>        
                 <div class="col-md-8">
                     <a href="#method_open">open</a>(string $name)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Shall open the channel with the given name</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -160,21 +159,19 @@ Shall make an anonymous buffered channel with the given capacity</p></p>        
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_send">send</a>($value)
+                    <a href="#method_send">send</a>(mixed $value)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Shall send the given value on this channel</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_recv">recv</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Shall recv a value from this channel</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -184,8 +181,7 @@ Shall make an anonymous buffered channel with the given capacity</p></p>        
                 <div class="col-md-8">
                     <a href="#method_close">close</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Shall close this channel</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -252,8 +248,8 @@ Shall make an anonymous buffered channel with the given capacity</p></p>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Shall make an unbuffered channel with the given name
+Shall make a buffered channel with the given name and capacity</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -262,12 +258,12 @@ Shall make an anonymous buffered channel with the given capacity</p></p>
                     <tr>
                 <td>string</td>
                 <td>$name</td>
-                <td></td>
+                <td><p>The name of the channel.</p></td>
             </tr>
                     <tr>
                 <td>int|null</td>
                 <td>$capacity</td>
-                <td></td>
+                <td><p>May be Channel::Infinite or a positive integer</p></td>
             </tr>
             </table>
 
@@ -282,6 +278,15 @@ Shall make an anonymous buffered channel with the given capacity</p></p>
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../parallel/Channel/Error/Existence.html"><abbr title="parallel\Channel\Error\Existence">Existence</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -301,8 +306,7 @@ Shall make an anonymous buffered channel with the given capacity</p></p>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Shall open the channel with the given name</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -326,6 +330,15 @@ Shall make an anonymous buffered channel with the given capacity</p></p>
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../parallel/Channel/Error/Existence.html"><abbr title="parallel\Channel\Error\Existence">Existence</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -336,7 +349,7 @@ Shall make an anonymous buffered channel with the given capacity</p></p>
                     <h3 id="method_send">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/parallel/parallel/Channel.php#L86">at line 86</a></div>
         <code>                    void
-    <strong>send</strong>($value)
+    <strong>send</strong>(mixed $value)
         </code>
     </h3>
     <div class="details">    
@@ -345,15 +358,14 @@ Shall make an anonymous buffered channel with the given capacity</p></p>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Shall send the given value on this channel</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>mixed</td>
                 <td>$value</td>
                 <td></td>
             </tr>
@@ -370,6 +382,19 @@ Shall make an anonymous buffered channel with the given capacity</p></p>
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../parallel/Channel/Error/Closed.html"><abbr title="parallel\Channel\Error\Closed">Closed</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../parallel/Channel/Error/IllegalValue.html"><abbr title="parallel\Channel\Error\IllegalValue">IllegalValue</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -379,7 +404,7 @@ Shall make an anonymous buffered channel with the given capacity</p></p>
                     <div class="method-item">
                     <h3 id="method_recv">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/parallel/parallel/Channel.php#L94">at line 94</a></div>
-        <code>                    
+        <code>                    mixed
     <strong>recv</strong>()
         </code>
     </h3>
@@ -389,12 +414,29 @@ Shall make an anonymous buffered channel with the given capacity</p></p>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Shall recv a value from this channel</p></p>                        
         </div>
         <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../parallel/Channel/Error/Closed.html"><abbr title="parallel\Channel\Error\Closed">Closed</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -414,8 +456,7 @@ Shall make an anonymous buffered channel with the given capacity</p></p>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Shall close this channel</p></p>                        
         </div>
         <div class="tags">
             
@@ -429,6 +470,15 @@ Shall make an anonymous buffered channel with the given capacity</p></p>
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../parallel/Channel/Error/Closed.html"><abbr title="parallel\Channel\Error\Closed">Closed</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
