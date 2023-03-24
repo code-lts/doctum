@@ -2242,6 +2242,28 @@ Return an array of available PDO drivers</p></p>                </div>
                     bool
                 </div>
                 <div class="col-md-8">
+                    <a href="#method_sqliteCreateAggregate">sqliteCreateAggregate</a>(string $function_name, callable $step_func, callable $finalize_func, int $num_args = -1)
+        
+                                            <p><p>(PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo_sqlite &gt;= 1.0.0)<br/>
+Registers an aggregating User Defined Function for use in SQL statements</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_sqliteCreateCollation">sqliteCreateCollation</a>(string $name, callable $callback)
+        
+                                            <p><p>(PHP 5 &gt;= 5.3.11, PHP 7)<br/>
+Registers a User Defined Function for use as a collating function in SQL statements</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
                     <a href="#method_sqliteCreateFunction">sqliteCreateFunction</a>(string $function_name, callable $callback, int $num_args = -1, int $flags = 0)
         
                                             <p><p>(PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo_sqlite &gt;= 1.0.0)<br/>
@@ -3228,8 +3250,128 @@ no drivers are available, it returns an empty array.</p></td>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_sqliteCreateAggregate">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1303">at line 1303</a></div>
+        <code>                    bool
+    <strong>sqliteCreateAggregate</strong>(string $function_name, callable $step_func, callable $finalize_func, int $num_args = -1)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PHP 5 &gt;= 5.1.0, PHP 7, PECL pdo_sqlite &gt;= 1.0.0)<br/>
+Registers an aggregating User Defined Function for use in SQL statements</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$function_name</td>
+                <td><p>
+The name of the function used in SQL statements.
+</p></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$step_func</td>
+                <td><p>
+Callback function called for each row of the result set. Your PHP function should accumulate the result and store it in the aggregation context.
+</p></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$finalize_func</td>
+                <td><p>
+Callback function to aggregate the "stepped" data from each row. Once all the rows have been processed, this function will be called and it should then take the data from the aggregation context and return the result. This callback function should return a type understood by SQLite (i.e. scalar type).
+</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$num_args</td>
+                <td><p>[optional] <p>
+Hint to the SQLite parser if the callback function accepts a predetermined number of arguments.
+</p></p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sqliteCreateCollation">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1317">at line 1317</a></div>
+        <code>                    bool
+    <strong>sqliteCreateCollation</strong>(string $name, callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>(PHP 5 &gt;= 5.3.11, PHP 7)<br/>
+Registers a User Defined Function for use as a collating function in SQL statements</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>
+Name of the SQL collating function to be created or redefined.
+</p></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td><p>
+The name of a PHP function or user-defined function to apply as a callback, defining the behavior of the collation. It should accept two strings and return as strcmp() does, i.e. it should return -1, 1, or 0 if the first string sorts before, sorts after, or is equal to the second.
+</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_sqliteCreateFunction">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1306">at line 1306</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1340">at line 1340</a></div>
         <code>                    bool
     <strong>sqliteCreateFunction</strong>(string $function_name, callable $callback, int $num_args = -1, int $flags = 0)
         </code>
@@ -3299,7 +3441,7 @@ a single SQL statement.
             </div>
                     <div class="method-item">
                     <h3 id="method_pgsqlCopyFromArray">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1329">at line 1329</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1363">at line 1363</a></div>
         <code>                    bool
     <strong>pgsqlCopyFromArray</strong>(string $tableName, array $rows, string $separator = &quot;\t&quot;, string $nullAs = &quot;\\\\N&quot;, string|null $fields = null)
         </code>
@@ -3373,7 +3515,7 @@ List of fields to insert
             </div>
                     <div class="method-item">
                     <h3 id="method_pgsqlCopyFromFile">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1352">at line 1352</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1386">at line 1386</a></div>
         <code>                    bool
     <strong>pgsqlCopyFromFile</strong>(string $tableName, string $filename, string $separator = &quot;\t&quot;, string $nullAs = &quot;\\\\N&quot;, string|null $fields = null)
         </code>
@@ -3447,7 +3589,7 @@ List of fields to insert
             </div>
                     <div class="method-item">
                     <h3 id="method_pgsqlCopyToArray">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1372">at line 1372</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1406">at line 1406</a></div>
         <code>                    array|false
     <strong>pgsqlCopyToArray</strong>(string $tableName, string $separator = &quot;\t&quot;, string $nullAs = &quot;\\\\N&quot;, string|null $fields = null)
         </code>
@@ -3514,7 +3656,7 @@ List of fields to insert
             </div>
                     <div class="method-item">
                     <h3 id="method_pgsqlCopyToFile">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1395">at line 1395</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1429">at line 1429</a></div>
         <code>                    bool
     <strong>pgsqlCopyToFile</strong>(string $tableName, string $filename, string $separator = &quot;\t&quot;, string $nullAs = &quot;\\\\N&quot;, string|null $fields = null)
         </code>
@@ -3588,7 +3730,7 @@ List of fields to insert
             </div>
                     <div class="method-item">
                     <h3 id="method_pgsqlLOBCreate">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1404">at line 1404</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1438">at line 1438</a></div>
         <code>                    string|false
     <strong>pgsqlLOBCreate</strong>()
         </code>
@@ -3623,7 +3765,7 @@ or <b>FALSE</b> on failure.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_pgsqlLOBOpen">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1418">at line 1418</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1452">at line 1452</a></div>
         <code>                    resource|false
     <strong>pgsqlLOBOpen</strong>(string $oid, string $mode = &quot;rb&quot;)
         </code>
@@ -3676,7 +3818,7 @@ If mode is r, open the stream for reading. If mode is w, open the stream for wri
             </div>
                     <div class="method-item">
                     <h3 id="method_pgsqlLOBUnlink">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1429">at line 1429</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1463">at line 1463</a></div>
         <code>                    bool
     <strong>pgsqlLOBUnlink</strong>(string $oid)
         </code>
@@ -3722,7 +3864,7 @@ A large object identifier.
             </div>
                     <div class="method-item">
                     <h3 id="method_pgsqlGetNotify">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1444">at line 1444</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1478">at line 1478</a></div>
         <code>                    array|false
     <strong>pgsqlGetNotify</strong>(int $fetchMode = PDO::FETCH_DEFAULT, int $timeoutMilliseconds = 0)
         </code>
@@ -3776,7 +3918,7 @@ with fields message and pid, otherwise <b>FALSE</b>.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_pgsqlGetPid">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1452">at line 1452</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1486">at line 1486</a></div>
         <code>                    int
     <strong>pgsqlGetPid</strong>()
         </code>
