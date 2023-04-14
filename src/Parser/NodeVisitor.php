@@ -41,6 +41,7 @@ use Doctum\Reflection\PropertyReflection;
 use Doctum\Parser\Node\DocBlockNode;
 use PhpParser\Node\Stmt\PropertyProperty;
 use PhpParser\Node\UnionType;
+use PhpParser\Node\IntersectionType;
 
 class NodeVisitor extends NodeVisitorAbstract
 {
@@ -187,12 +188,12 @@ class NodeVisitor extends NodeVisitorAbstract
     }
 
     /**
-     * @param \PhpParser\Node\Identifier|\PhpParser\Node\Name|NullableType|UnionType|null $type Type declaration
+     * @param \PhpParser\Node\Identifier|\PhpParser\Node\Name|NullableType|UnionType|IntersectionType|null $type Type declaration
      */
     protected function typeToString($type): ?string
     {
         $typeString = null;
-        if ($type !== null && ! ($type instanceof NullableType || $type instanceof UnionType)) {
+        if ($type !== null && ! ($type instanceof NullableType || $type instanceof UnionType || $type instanceof IntersectionType)) {
             $typeString = $type->__toString();
         } elseif ($type instanceof NullableType) {
             $typeString = $type->type->__toString();
@@ -202,6 +203,12 @@ class NodeVisitor extends NodeVisitorAbstract
                 $typeString[] = $type->__toString();
             }
             $typeString = implode('|', $typeString);
+        } elseif ($type instanceof IntersectionType) {
+            $typeString = [];
+            foreach ($type->types as $type) {
+                $typeString[] = $type->__toString();
+            }
+            $typeString = implode('&', $typeString);
         }
 
         if ($typeString === null) {
