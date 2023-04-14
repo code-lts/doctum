@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ##
 # @license http://unlicense.org/UNLICENSE The UNLICENSE
