@@ -158,8 +158,13 @@ echo "PHP version required: ${PHP_VERSION_REQUIRED}"
 
 echo "Lock composer php version"
 COMPOSER_FILE=$(cat composer.json)
+# Example: 5db49ae740e4d1fd8eb79a9de52c9aefc7906f1f
+GIT_COMMIT_HASH="$(git rev-parse --verify HEAD)"
+COMPOSER_AUTOLOADER_VERSION="$(echo "$VERSION" | tr '.' '_' | tr '-' '_')"
 
 ${COMPOSER_BIN} config platform.php "$PHP_VERSION_REQUIRED"
+echo "Setting composer autoload suffix to: ${COMPOSER_AUTOLOADER_VERSION}__${GIT_COMMIT_HASH}"
+${COMPOSER_BIN} config autoloader-suffix "${COMPOSER_AUTOLOADER_VERSION}__${GIT_COMMIT_HASH}"
 
 backupVendorFolder
 
