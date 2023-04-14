@@ -306,6 +306,7 @@ $manifest = [
     'excludedFolders' => PharFilterIterator::getExcludedFolders(),
     'phar' => [
         'sha256' => $phar->getSignature()['hash'],
+        'fileSha256' => hash_file('sha256', $buildRoot . '/doctum.phar'),
         'numberOfFiles' => $phar->count(),
     ],
 ];
