@@ -475,6 +475,32 @@ class NodeVisitor extends NodeVisitorAbstract
         $property->setShortDesc($comment->getShortDesc());
         $property->setLongDesc($comment->getLongDesc());
         $property->setSee($this->resolveSee($comment->getTag('see')));
+
+        $type = $node->type;
+
+        if ($type instanceof IntersectionType) {
+            $property->setIntersectionType(true);
+
+            $typeArr = [];
+            foreach ($type->types as $type) {
+                $typeStr   = $this->typeToString($type);
+                $typeArr[] = [$typeStr, false];
+            }
+
+            $property->setHint($this->resolveHint($typeArr));
+        } else {
+            $typeStr = $this->typeToString($type);
+
+            if (null !== $typeStr) {
+                $typeArr = [[$typeStr, false]];
+
+                if ($type instanceof NullableType) {
+                    $typeArr[] = ['null', false];
+                }
+                $property->setHint($this->resolveHint($typeArr));
+            }
+        }
+
         if ($errors = $comment->getErrors()) {
             $property->setErrors($errors);
         } else {
