@@ -31,7 +31,7 @@
 {#  #}</a>
 {%- endmacro %}
 
-{% macro hint_link(hints) -%}
+{% macro hint_link(hints, isIntersectionType = false) -%}
     {%- from _self import class_link %}
 
     {%- if hints %}
@@ -42,7 +42,7 @@
                 {{- abbr_class(hint.name) }}
             {%- endif %}
             {%- if hint.array %}[]{% endif %}
-            {%- if not loop.last %}|{% endif %}
+            {%- if not loop.last %}{%- if isIntersectionType %}&{% else %}|{% endif %}{% endif %}
         {%- endfor %}
     {%- endif %}
 {%- endmacro %}
@@ -71,7 +71,7 @@
     {%- from "macros.twig" import hint_link -%}
     (
         {%- for parameter in method.parameters %}
-            {%- if parameter.hashint %}{{ hint_link(parameter.hint) }} {% endif -%}
+            {%- if parameter.hashint %}{{ hint_link(parameter.hint, parameter.isIntersectionType()) }} {% endif -%}
             {%- if parameter.variadic %}...{% endif %}${{ parameter.name|raw }}
             {%- if parameter.default is not null %} = {{ parameter.default }}{% endif %}
             {%- if not loop.last %}, {% endif %}
@@ -83,7 +83,7 @@
     {%- from "macros.twig" import hint_link -%}
     (
         {%- for parameter in method.parameters %}
-            {%- if parameter.hashint %}{{ hint_link(parameter.hint) }} {% endif -%}
+            {%- if parameter.hashint %}{{ hint_link(parameter.hint, parameter.isIntersectionType()) }} {% endif -%}
             {%- if parameter.variadic %}...{% endif %}${{ parameter.name|raw }}
             {%- if parameter.default is not null %} = {{ parameter.default }}{% endif %}
             {%- if not loop.last %}, {% endif %}

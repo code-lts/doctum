@@ -131,18 +131,7 @@ class NodeVisitor extends NodeVisitorAbstract
 
             $parameter->setVariadic($param->variadic);
 
-            $type    = $param->type;
-            $typeStr = $this->typeToString($type);
-
-            if (null !== $typeStr) {
-                $typeArr = [[$typeStr, false]];
-
-                if ($param->type instanceof NullableType) {
-                    $typeArr[] = ['null', false];
-                }
-
-                $parameter->setHint($this->resolveHint($typeArr));
-            }
+            $this->manageHint($param->type, $parameter);
 
             $function->addParameter($parameter);
         }
@@ -167,18 +156,7 @@ class NodeVisitor extends NodeVisitorAbstract
         $function->setModifiersFromTags();
         $function->setErrors($errors);
 
-        $returnType    = $node->getReturnType();
-        $returnTypeStr = $this->typeToString($returnType);
-
-        if (null !== $returnTypeStr) {
-            $returnTypeArr = [[$returnTypeStr, false]];
-
-            if ($returnType instanceof NullableType) {
-                $returnTypeArr[] = ['null', false];
-            }
-
-            $function->setHint($this->resolveHint($returnTypeArr));
-        }
+        $this->manageHint($node->getReturnType(), $function);
 
         $this->context->addFunction($function);
 
@@ -188,7 +166,7 @@ class NodeVisitor extends NodeVisitorAbstract
     }
 
     /**
-     * @param \PhpParser\Node\Identifier|\PhpParser\Node\Name|NullableType|UnionType|IntersectionType|null $type Type declaration
+     * @param \PhpParser\Node\ComplexType|\PhpParser\Node\Identifier|\PhpParser\Node\Name|NullableType|UnionType|IntersectionType|null $type Type declaration
      */
     protected function typeToString($type): ?string
     {
@@ -206,9 +184,13 @@ class NodeVisitor extends NodeVisitorAbstract
         } elseif ($type instanceof IntersectionType) {
             $typeString = [];
             foreach ($type->types as $type) {
-                $typeString[] = $type->__toString();
+                $typeAsStr = $type->__toString();
+                if ($type instanceof FullyQualified && 0 !== strpos($typeAsStr, '\\')) {
+                    $typeAsStr = '\\' . $typeAsStr;
+                }
+                $typeString[] = $typeAsStr;
             }
-            $typeString = implode('&', $typeString);
+            return implode('&', $typeString);
         }
 
         if ($typeString === null) {
@@ -332,18 +314,7 @@ class NodeVisitor extends NodeVisitorAbstract
 
             $parameter->setVariadic($param->variadic);
 
-            $type    = $param->type;
-            $typeStr = $this->typeToString($type);
-
-            if (null !== $typeStr) {
-                $typeArr = [[$typeStr, false]];
-
-                if ($param->type instanceof NullableType) {
-                    $typeArr[] = ['null', false];
-                }
-
-                $parameter->setHint($this->resolveHint($typeArr));
-            }
+            $this->manageHint($param->type, $parameter);
 
             $method->addParameter($parameter);
         }
@@ -371,18 +342,7 @@ class NodeVisitor extends NodeVisitorAbstract
         $method->setModifiersFromTags();
         $method->setErrors($errors);
 
-        $returnType    = $node->getReturnType();
-        $returnTypeStr = $this->typeToString($returnType);
-
-        if (null !== $returnTypeStr) {
-            $returnTypeArr = [[$returnTypeStr, false]];
-
-            if ($returnType instanceof NullableType) {
-                $returnTypeArr[] = ['null', false];
-            }
-
-            $method->setHint($this->resolveHint($returnTypeArr));
-        }
+        $this->manageHint($node->getReturnType(), $method);
 
         if ($this->context->getFilter()->acceptMethod($method)) {
             $this->context->getClass()->addMethod($method);
@@ -417,6 +377,14 @@ class NodeVisitor extends NodeVisitorAbstract
                 if (is_array($firstTagFound)) {
                     $hint            = $firstTagFound[0];
                     $hintDescription = $firstTagFound[1] ?? null;
+                    if (is_array($hint) && isset($hint[0]) && stripos($hint[0][0] ?? '', '&') !== false) {// Detect intersection type
+                        $methodOrFunctionOrProperty->setIntersectionType(true);
+                        $intersectionParts = explode('&', $hint[0][0]);
+                        $hint              = [];
+                        foreach ($intersectionParts as $part) {
+                            $hint[] = [$part, false];
+                        }
+                    }
                     $methodOrFunctionOrProperty->setHint(is_array($hint) ? $this->resolveHint($hint) : $hint);
                     if ($hintDescription !== null) {
                         if (is_string($hintDescription)) {
@@ -458,6 +426,36 @@ class NodeVisitor extends NodeVisitorAbstract
     }
 
     /**
+     * @param \PhpParser\Node\ComplexType|\PhpParser\Node\Identifier|\PhpParser\Node\Name|NullableType|UnionType|IntersectionType|null $type Type declaration
+     * @param MethodReflection|FunctionReflection|ParameterReflection|PropertyReflection $object
+     */
+    protected function manageHint($type, Reflection $object): void
+    {
+        if ($type instanceof IntersectionType) {
+            $object->setIntersectionType(true);
+
+            $typeArr = [];
+            foreach ($type->types as $type) {
+                $typeStr   = $this->typeToString($type);
+                $typeArr[] = [$typeStr, false];
+            }
+
+            $object->setHint($this->resolveHint($typeArr));
+        } else {
+            $typeStr = $this->typeToString($type);
+
+            if (null !== $typeStr) {
+                $typeArr = [[$typeStr, false]];
+
+                if ($type instanceof NullableType) {
+                    $typeArr[] = ['null', false];
+                }
+                $object->setHint($this->resolveHint($typeArr));
+            }
+        }
+    }
+
+    /**
      * @return array<int,PropertyReflection|string[]>
      * @phpstan-return array{PropertyReflection,string[]}
      */
@@ -476,30 +474,7 @@ class NodeVisitor extends NodeVisitorAbstract
         $property->setLongDesc($comment->getLongDesc());
         $property->setSee($this->resolveSee($comment->getTag('see')));
 
-        $type = $node->type;
-
-        if ($type instanceof IntersectionType) {
-            $property->setIntersectionType(true);
-
-            $typeArr = [];
-            foreach ($type->types as $type) {
-                $typeStr   = $this->typeToString($type);
-                $typeArr[] = [$typeStr, false];
-            }
-
-            $property->setHint($this->resolveHint($typeArr));
-        } else {
-            $typeStr = $this->typeToString($type);
-
-            if (null !== $typeStr) {
-                $typeArr = [[$typeStr, false]];
-
-                if ($type instanceof NullableType) {
-                    $typeArr[] = ['null', false];
-                }
-                $property->setHint($this->resolveHint($typeArr));
-            }
-        }
+        $this->manageHint($node->type, $property);
 
         if ($errors = $comment->getErrors()) {
             $property->setErrors($errors);
@@ -643,6 +618,9 @@ class NodeVisitor extends NodeVisitorAbstract
         return $errors;
     }
 
+    /**
+     * @phpstan-param $hints array{0: string, 1: bool}
+     */
     protected function resolveHint(array $hints): array
     {
         foreach ($hints as $i => $hint) {
@@ -652,6 +630,9 @@ class NodeVisitor extends NodeVisitorAbstract
         return $hints;
     }
 
+    /**
+     * @phpstan-param $alias array{0: string, 1: bool}
+     */
     protected function resolveAlias($alias)
     {
         // not a class

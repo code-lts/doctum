@@ -21,7 +21,9 @@ class MethodReflection extends Reflection
     protected $class;
     protected $parameters = [];
     protected $byRef;
-    protected $exceptions = [];
+    /** @var bool */
+    protected $isIntersectionType = false;
+    protected $exceptions         = [];
 
     public function __toString()
     {
@@ -36,6 +38,16 @@ class MethodReflection extends Reflection
     public function isByRef()
     {
         return $this->byRef;
+    }
+
+    public function setIntersectionType(bool $boolean): void
+    {
+        $this->isIntersectionType = $boolean;
+    }
+
+    public function isIntersectionType(): bool
+    {
+        return $this->isIntersectionType;
     }
 
     /**
@@ -135,6 +147,7 @@ class MethodReflection extends Reflection
             'see'  => $this->see,
             'modifiers' => $this->modifiers,
             'is_by_ref' => $this->byRef,
+            'is_intersection_type' => $this->isIntersectionType(),
             'exceptions' => $this->exceptions,
             'errors' => $this->errors,
             'parameters' => array_map(
@@ -151,17 +164,19 @@ class MethodReflection extends Reflection
      */
     public static function fromArray(Project $project, array $array)
     {
-        $method             = new self($array['name'], $array['line']);
-        $method->shortDesc  = $array['short_desc'];
-        $method->longDesc   = $array['long_desc'];
-        $method->hint       = $array['hint'];
-        $method->hintDesc   = $array['hint_desc'];
-        $method->tags       = $array['tags'];
-        $method->modifiers  = $array['modifiers'];
-        $method->byRef      = $array['is_by_ref'];
-        $method->exceptions = $array['exceptions'];
-        $method->errors     = $array['errors'];
-        $method->see        = $array['see'] ?? [];// New in 5.4.0
+        $method                     = new self($array['name'], $array['line']);
+        $method->shortDesc          = $array['short_desc'];
+        $method->longDesc           = $array['long_desc'];
+        $method->hint               = $array['hint'];
+        $method->hintDesc           = $array['hint_desc'];
+        $method->tags               = $array['tags'];
+        $method->modifiers          = $array['modifiers'];
+        $method->byRef              = $array['is_by_ref'];
+        $method->exceptions         = $array['exceptions'];
+        $method->errors             = $array['errors'];
+        $method->see                = $array['see'] ?? [];// New in 5.4.0
+        $method->isIntersectionType = $array['is_intersection_type'] ?? false;// New in 5.5.3
+
 
         foreach ($array['parameters'] as $parameter) {
             $method->addParameter(ParameterReflection::fromArray($project, $parameter));
