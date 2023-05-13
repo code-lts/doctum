@@ -84,7 +84,6 @@
 </p>
 
         
-        
     
         
 
@@ -204,13 +203,13 @@ Registers a &quot;regular&quot; User Defined Function for use in SQL statements<
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_busyTimeout">busyTimeout</a>($milliseconds)
+                    <a href="#method_busyTimeout">busyTimeout</a>(int $milliseconds)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>(PHP 5 &lt; 5.4.0, PECL sqlite &gt;= 1.0.0)
+Set busy timeout duration, or disable busy handlers</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -249,7 +248,6 @@ Return an array of column types from a particular table</p></p>                <
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -293,7 +291,6 @@ Return an array of column types from a particular table</p></p>                <
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -370,7 +367,6 @@ recommended that you use the much higher performance
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -432,7 +428,6 @@ option.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -484,7 +479,13 @@ other sqlite capable applications.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>array|false</td>
-            <td></td>
+            <td><p>Returns an array of the entire result set; <b>FALSE</b> otherwise.
+</p></p>
+<p>The column names returned by
+<b>SQLITE_ASSOC</b> and <b>SQLITE_BOTH</b> will be
+case-folded according to the value of the
+https://php.net/manual/en/sqlite.configuration.php#ini.sqlite.assoc-case sqlite.assoc_case configuration
+option.</p></td>
         </tr>
     </table>
 
@@ -503,7 +504,6 @@ other sqlite capable applications.</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -557,7 +557,6 @@ Executes a query and returns either an array for one single column or the value 
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -620,7 +619,6 @@ Using <b>SQLITE_ASSOC</b> will return only associative indices (named fields) wh
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -654,7 +652,6 @@ Returns the rowid of the most recently inserted row</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -688,7 +685,6 @@ Returns the number of rows that were changed by the most recent SQL statement</p
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -738,7 +734,6 @@ Register an aggregating UDF for use in SQL statements</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -787,31 +782,40 @@ parameter is the first parameter to the function.</p></blockquote></p></td>
                     <div class="method-item">
                     <h3 id="method_busyTimeout">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SQLite/SQLite.php#L197">at line 197</a></div>
-        <code>                    
-    <strong>busyTimeout</strong>($milliseconds)
+        <code>                    int
+    <strong>busyTimeout</strong>(int $milliseconds)
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>(PHP 5 &lt; 5.4.0, PECL sqlite &gt;= 1.0.0)
+Set busy timeout duration, or disable busy handlers</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>int</td>
                 <td>$milliseconds</td>
-                <td></td>
+                <td><p> The number of milliseconds. When set to 0, busy handlers will be disabled and SQLite will return immediately with a <b>SQLITE_BUSY</b> status code if another process/thread has the database locked for an update.
+PHP sets the default busy timeout to be 60 seconds when the database is opened.</p></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>Returns an error code, or 0 if no error occurred.</p></td>
+        </tr>
+    </table>
+
             
             
             
@@ -827,7 +831,6 @@ parameter is the first parameter to the function.</p></blockquote></p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -861,7 +864,6 @@ Returns the error code of the last error for a database</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 

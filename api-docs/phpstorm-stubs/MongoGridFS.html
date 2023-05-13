@@ -84,7 +84,6 @@
 </p>
 
         
-        
     
         
 
@@ -605,7 +604,6 @@ MongoCollection</a></small></div>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -652,7 +650,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -686,7 +683,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -730,7 +726,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -795,7 +790,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -852,7 +846,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -886,7 +879,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -923,7 +915,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -974,7 +965,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1009,7 +999,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1057,7 +1046,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1091,7 +1079,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1135,7 +1122,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1237,7 +1223,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1295,7 +1280,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1320,7 +1304,21 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
                 <td>array</td>
                 <td>$options</td>
                 <td><p>This parameter is an associative array of the form
-array(&quot;optionname&quot; =&gt; boolean, ...).</p></td>
+array(&quot;optionname&quot; =&gt; boolean, ...).</p>
+<p>Currently supported options are:
+&quot;upsert&quot;: If no document matches $$criteria, a new document will be created from $$criteria and $$new_object (see upsert example).</p>
+<p>&quot;multiple&quot;: All documents matching $criteria will be updated. MongoCollection::update has exactly the opposite behavior of MongoCollection::remove- it updates one document by
+default, not all matching documents. It is recommended that you always specify whether you want to update multiple documents or a single document, as the
+database may change its default behavior at some point in the future.</p>
+<p>&quot;safe&quot; Can be a boolean or integer, defaults to false. If false, the program continues executing without waiting for a database response. If true, the program will wait for
+the database response and throw a MongoCursorException if the update did not succeed. If you are using replication and the master has changed, using &quot;safe&quot; will make the driver
+disconnect from the master, throw and exception, and attempt to find a new master on the next operation (your application must decide whether or not to retry the operation on the new master).
+If you do not use &quot;safe&quot; with a replica set and the master changes, there will be no way for the driver to know about the change so it will continuously and silently fail to write.
+If safe is an integer, will replicate the update to that many machines before returning success (or throw an exception if the replication times out, see wtimeout).
+This overrides the w variable set on the collection.</p>
+<p>&quot;fsync&quot;: Boolean, defaults to false. Forces the update to be synced to disk before returning success. If true, a safe update is implied and will override setting safe to false.</p>
+<p>&quot;timeout&quot; Integer, defaults to MongoCursor::$timeout. If &quot;safe&quot; is set, this sets how long (in milliseconds) for the client to wait for a database response. If the database does
+not respond within the timeout period, a MongoCursorTimeoutException will be thrown</p></td>
             </tr>
             </table>
 
@@ -1358,7 +1356,6 @@ array(&quot;optionname&quot; =&gt; boolean, ...).</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1395,7 +1392,13 @@ omitted, all documents matching the criteria will be deleted.
 <li><p><em>"socketTimeoutMS"</em></p><p>This option specifies the time limit, in milliseconds, for socket communication. If the server does not respond within the timeout period, a <b>MongoCursorTimeoutException</b> will be thrown and there will be no way to determine if the server actually handled the write or not. A value of <em>-1</em> may be specified to block indefinitely. The default value for <b>MongoClient</b> is <em>30000</em> (30 seconds).</p></li>
 <li><p><em>"w"</em></p><p>See https://secure.php.net/manual/en/mongo.writeconcerns.php Write Concerns. The default value for <b>MongoClient</b> is <em>1</em>.</p></li>
 <li><p><em>"wTimeoutMS"</em></p><p>This option specifies the time limit, in milliseconds, for https://secure.php.net/manual/en/mongo.writeconcerns.php write concern} acknowledgement. It is only applicable when <em>"w"</em> is greater than <em>1</em>, as the timeout pertains to replication. If the write concern is not satisfied within the time limit, a <a href="class.mongocursorexception.php" class="classname">MongoCursorException</a> will be thrown. A value of <em>0</em> may be specified to block indefinitely. The default value for {@link https://secure.php.net/manual/en/class.mongoclient.php MongoClient is <em>10000</em> (ten seconds).</p></li>
-<p></ul></p></td>
+<p></ul></p>
+<p>
+The following options are deprecated and should no longer be used:
+</p><ul>
+<li><p><em>"safe"</em></p><p>Deprecated. Please use the https://secure.php.net/manual/en/mongo.writeconcerns.php write concern <em>"w"</em> option.</p></li>
+<li><p><em>"timeout"</em></p><p>Deprecated alias for <em>"socketTimeoutMS"</em>.</p></li>
+<li><p><b>"wtimeout"</b></p><p>Deprecated alias for <em>"wTimeoutMS"</em>.</p></li></ul></td>
             </tr>
             </table>
 
@@ -1439,7 +1442,6 @@ Fields in the status array are described in the documentation for
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1489,7 +1491,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1538,7 +1539,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1596,7 +1596,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1645,7 +1644,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1694,7 +1692,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1755,7 +1752,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1799,7 +1795,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1833,7 +1828,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1867,7 +1861,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1911,7 +1904,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1990,7 +1982,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -2034,7 +2025,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -2078,7 +2068,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -2123,7 +2112,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -2181,7 +2169,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -2234,7 +2221,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -2287,7 +2273,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -2330,7 +2315,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -2378,7 +2362,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -2421,7 +2404,6 @@ MongoCollection</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/ma
         </code>
     </h3>
     <div class="details">    
-            
     
             
 

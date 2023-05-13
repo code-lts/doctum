@@ -90,7 +90,6 @@
 </p>
 
         
-        
     
         
 
@@ -482,7 +481,6 @@ another set, but not in both.</p></p>                </div>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -518,7 +516,6 @@ use the initial values.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -557,7 +554,6 @@ be references to the same instance to be considered equal.
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -572,7 +568,11 @@ be references to the same instance to be considered equal.
                 <td>int</td>
                 <td>$capacity</td>
                 <td><p>The number of values for which capacity should
-be allocated.</p></td>
+be allocated.</p>
+<p><b>Note:</b> Capacity will stay the same if this value is less than or
+equal to the current capacity.
+
+<p>Capacity will always be rounded up to the nearest power of 2.</td>
             </tr>
             </table>
 
@@ -592,7 +592,6 @@ be allocated.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -640,7 +639,6 @@ be references to the same instance to be considered equal.
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -673,7 +671,6 @@ be references to the same instance to be considered equal.
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -707,7 +704,6 @@ be references to the same instance to be considered equal.
     </h3>
     <div class="details"><i>Since: 5.1</i>
             <br>    
-            
     
             
 
@@ -743,7 +739,6 @@ The return value is cast to an integer.
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -776,7 +771,6 @@ The return value is cast to an integer.
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -820,7 +814,6 @@ other set.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -835,10 +828,7 @@ include</p></p>
                     <tr>
                 <td>callable|null</td>
                 <td>$callback</td>
-                <td><p>Optional callable which returns TRUE if the
-value should be included, FALSE otherwise.
-If a callback is not provided, only values which are TRUE (see
-converting to boolean) will be included.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -869,7 +859,6 @@ callback was not provided.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -902,7 +891,6 @@ callback was not provided.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -945,7 +933,6 @@ callback was not provided.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -988,7 +975,6 @@ callback was not provided.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1033,7 +1019,6 @@ instance with all values removed that are not in the other set.</p></p>         
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1066,7 +1051,6 @@ instance with all values removed that are not in the other set.</p></p>         
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1110,7 +1094,6 @@ between each value.</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1125,11 +1108,7 @@ the set.</p></p>
                     <tr>
                 <td>callable</td>
                 <td>$callback</td>
-                <td><p>A callable to apply to each value in the
-set.
-The callable should return what the new value will be in the new
-set.
-<code>callback ( mixed $value ) : mixed</code></p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1160,7 +1139,6 @@ the set.</p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1205,7 +1183,6 @@ that copy.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1254,7 +1231,6 @@ NULL.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1289,7 +1265,6 @@ the set.</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1313,7 +1288,6 @@ the set.</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1346,7 +1320,6 @@ the set.</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1402,7 +1375,6 @@ of the set.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1444,7 +1416,6 @@ of the set.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1458,17 +1429,7 @@ of the set.</p></td>
                     <tr>
                 <td>callable|null</td>
                 <td>$comparator</td>
-                <td><p>The comparison function must return
-an integer less than, equal to, or greater than zero if the first
-argument is considered to be respectively less than, equal to, or
-greater than the second. Note that before PHP 7.0.0 this integer had
-to be in the range from -2147483648 to 2147483647.
-<code>callback ( mixed $a, mixed $b ) : int</code></p>
-<note><b>Caution:</b> Returning non-integer values from the comparison
-function, such as float, will result in an internal cast to integer
-of the callback's return value. So values such as 0.99 and 0.1 will
-both be cast to an integer value of 0, which will compare such values
-as equal.</note></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1488,7 +1449,6 @@ as equal.</note></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1502,11 +1462,7 @@ as equal.</note></td>
                     <tr>
                 <td>callable|null</td>
                 <td>$comparator</td>
-                <td><p>The comparison function must return an
-integer less than, equal to, or greater than zero if the first
-argument is considered to be respectively less than, equal to, or
-greater than the second. Note  that before PHP 7.0.0 this integer had
-to be in the range from -2147483648 to 2147483647.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1535,7 +1491,6 @@ to be in the range from -2147483648 to 2147483647.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1570,7 +1525,6 @@ float or int depending on the values in the set.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1615,7 +1569,6 @@ instance as well as another set.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1660,7 +1613,6 @@ well as another set, but not in both.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1695,7 +1647,6 @@ the collection.</p></td>
     </h3>
     <div class="details"><i>Since: 5.4</i>
             <br>    
-            
     
             
 
@@ -1729,7 +1680,6 @@ which is a value of any type other than a resource.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1778,7 +1728,6 @@ The return value will be casted to boolean if non-boolean was returned.</td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1824,7 +1773,6 @@ The offset to retrieve.
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1877,7 +1825,6 @@ The value to set.
         </code>
     </h3>
     <div class="details">    
-            
     
             
 

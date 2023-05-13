@@ -84,7 +84,6 @@
 </p>
 
         
-        
     
         
 
@@ -351,7 +350,6 @@
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -397,7 +395,6 @@
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -442,7 +439,6 @@ broker.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -475,7 +471,6 @@ broker.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -499,7 +494,6 @@ broker.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -532,7 +526,6 @@ broker.</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -604,7 +597,6 @@ the QOS settings.</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -651,7 +643,6 @@ be called prior to this.</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -704,7 +695,6 @@ AMQPQueue::consume() or AMQPQueue::get().</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -737,7 +727,6 @@ AMQPQueue::consume() or AMQPQueue::get().</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -794,7 +783,6 @@ flag set, this setting will be ignored.</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -827,7 +815,6 @@ flag set, this setting will be ignored.</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -880,7 +867,6 @@ AMQPQueue::consume() or AMQPQueue::get().</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -913,7 +899,6 @@ AMQPQueue::consume() or AMQPQueue::get().</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -970,7 +955,6 @@ flag set, this setting will be ignored.</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1003,7 +987,6 @@ flag set, this setting will be ignored.</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1046,7 +1029,6 @@ AMQPChannel::commitTransaction() or AMQPChannel::rollbackTransaction().</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1079,7 +1061,6 @@ AMQPChannel::commitTransaction() or AMQPChannel::rollbackTransaction().</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1113,7 +1094,6 @@ AMQPChannel::commitTransaction() or AMQPChannel::rollbackTransaction().</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1137,7 +1117,6 @@ AMQPChannel::commitTransaction() or AMQPChannel::rollbackTransaction().</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1156,7 +1135,12 @@ AMQPChannel::commitTransaction() or AMQPChannel::rollbackTransaction().</p></p>
                     <tr>
                 <td>callable</td>
                 <td>$nack_callback</td>
-                <td></td>
+                <td><p>Callback functions with all arguments have the following signature:</p>
+<pre><code> function ack_callback(int $delivery_tag, bool $multiple) : bool;
+ function nack_callback(int $delivery_tag, bool $multiple, bool $requeue) : bool;</code></pre>
+<p>and should return boolean false when wait loop should be canceled.</p>
+<p>Note, basic.nack server method will only be delivered if an internal error occurs in the Erlang process
+responsible for a queue (see <a href="https://www.rabbitmq.com/confirms.html">https://www.rabbitmq.com/confirms.html</a> for details).</p></td>
             </tr>
             </table>
 
@@ -1176,7 +1160,6 @@ AMQPChannel::commitTransaction() or AMQPChannel::rollbackTransaction().</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1219,7 +1202,6 @@ AMQPChannel::commitTransaction() or AMQPChannel::rollbackTransaction().</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1233,7 +1215,14 @@ AMQPChannel::commitTransaction() or AMQPChannel::rollbackTransaction().</p></p>
                     <tr>
                 <td>callable</td>
                 <td>$return_callback</td>
-                <td></td>
+                <td><p>Callback function with all arguments has the following signature:</p>
+<pre><code> function callback(int $reply_code,
+                   string $reply_text,
+                   string $exchange,
+                   string $routing_key,
+                   AMQPBasicProperties $properties,
+                   string $body) : bool;</code></pre>
+<p>and should return boolean false when wait loop should be canceled.</p></td>
             </tr>
             </table>
 
@@ -1253,7 +1242,6 @@ AMQPChannel::commitTransaction() or AMQPChannel::rollbackTransaction().</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -1296,7 +1284,6 @@ AMQPChannel::commitTransaction() or AMQPChannel::rollbackTransaction().</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 

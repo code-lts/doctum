@@ -635,7 +635,8 @@ Log in to this database</p></dd><dt><a href="MongoDB/Driver/Exception/Authentica
 <abbr title="MongoDB\Driver\Session">Session</abbr>::advanceOperationTime</a>() &mdash; <em>Method in class <a href="MongoDB/Driver/Session.html"><abbr title="MongoDB\Driver\Session">Session</abbr></a></em></dt>
                     <dd><p>Advances the operation time for this session</p></dd><dt><a href="MongoWriteBatch.html#method_add">
 MongoWriteBatch::add</a>() &mdash; <em>Method in class <a href="MongoWriteBatch.html">MongoWriteBatch</a></em></dt>
-                    <dd></dd><dt><a href="MultipleIterator.html#method_attachIterator">
+                    <dd><p>(PECL mongo &gt;= 1.5.0)</p>
+<p>Adds a write operation to a batch</p></dd><dt><a href="MultipleIterator.html#method_attachIterator">
 MultipleIterator::attachIterator</a>() &mdash; <em>Method in class <a href="MultipleIterator.html">MultipleIterator</a></em></dt>
                     <dd><p>Attaches iterator information</p></dd><dt><a href="OAuthProvider.html#method_addRequiredParameter">
 OAuthProvider::addRequiredParameter</a>() &mdash; <em>Method in class <a href="OAuthProvider.html">OAuthProvider</a></em></dt>
@@ -1483,7 +1484,8 @@ IntlCalendar::before</a>() &mdash; <em>Method in class <a href="IntlCalendar.htm
                     <dd><p>(PHP 5 &gt;=5.5.0 PECL intl &gt;= 3.0.0a1)<br/>
 Whether this object's time is before that of the passed object</p></dd><dt><a href="Judy.html#method_byCount">
 Judy::byCount</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd></dd><dt>$<a href="MongoBinData.html#property_bin">
+                    <dd><p>(PECL judy &gt;= 0.1.1)<br/>
+Locate the Nth index present in the Judy array.</p></dd><dt>$<a href="MongoBinData.html#property_bin">
 MongoBinData#bin</a> &mdash; <em>Property in class <a href="MongoBinData.html">MongoBinData</a></em></dt>
                     <dd></dd><dt><a href="MongoCollection.html#method_batchInsert">
 MongoCollection::batchInsert</a>() &mdash; <em>Method in class <a href="MongoCollection.html">MongoCollection</a></em></dt>
@@ -1670,7 +1672,8 @@ SQLite3Stmt::bindParam</a>() &mdash; <em>Method in class <a href="SQLite3Stmt.ht
 SQLite3Stmt::bindValue</a>() &mdash; <em>Method in class <a href="SQLite3Stmt.html">SQLite3Stmt</a></em></dt>
                     <dd><p>Binds the value of a parameter to a statement variable</p></dd><dt><a href="SQLiteDatabase.html#method_busyTimeout">
 SQLiteDatabase::busyTimeout</a>() &mdash; <em>Method in class <a href="SQLiteDatabase.html">SQLiteDatabase</a></em></dt>
-                    <dd></dd><dt><a href="SimpleKafkaClient/Metadata/Broker.html"><abbr title="SimpleKafkaClient\Metadata\Broker">Broker</abbr></a> &mdash; <em>Class in namespace <a href="SimpleKafkaClient/Metadata.html">SimpleKafkaClient\Metadata</a></em></dt>
+                    <dd><p>(PHP 5 &lt; 5.4.0, PECL sqlite &gt;= 1.0.0)
+Set busy timeout duration, or disable busy handlers</p></dd><dt><a href="SimpleKafkaClient/Metadata/Broker.html"><abbr title="SimpleKafkaClient\Metadata\Broker">Broker</abbr></a> &mdash; <em>Class in namespace <a href="SimpleKafkaClient/Metadata.html">SimpleKafkaClient\Metadata</a></em></dt>
                     <dd></dd><dt><a href="SimpleKafkaClient/Producer.html#method_beginTransaction">
 <abbr title="SimpleKafkaClient\Producer">Producer</abbr>::beginTransaction</a>() &mdash; <em>Method in class <a href="SimpleKafkaClient/Producer.html"><abbr title="SimpleKafkaClient\Producer">Producer</abbr></a></em></dt>
                     <dd></dd><dt>$<a href="SolrDocumentField.html#property_boost">
@@ -2036,11 +2039,24 @@ authentication methods embedded inside the string. Only a single authentication 
 <abbr title="Couchbase\BaseException">BaseException</abbr>::context</a>() &mdash; <em>Method in class <a href="Couchbase/BaseException.html"><abbr title="Couchbase\BaseException">BaseException</abbr></a></em></dt>
                     <dd><p>Returns the underling error context, if any</p></dd><dt>$<a href="Couchbase/Bucket.html#property_configTimeout">
 <abbr title="Couchbase\Bucket">Bucket</abbr>#configTimeout</a> &mdash; <em>Property in class <a href="Couchbase/Bucket.html"><abbr title="Couchbase\Bucket">Bucket</abbr></a></em></dt>
-                    <dd></dd><dt>$<a href="Couchbase/Bucket.html#property_configNodeTimeout">
+                    <dd><p>How long (in microseconds) the client will wait to obtain the initial
+configuration.</p></dd><dt>$<a href="Couchbase/Bucket.html#property_configNodeTimeout">
 <abbr title="Couchbase\Bucket">Bucket</abbr>#configNodeTimeout</a> &mdash; <em>Property in class <a href="Couchbase/Bucket.html"><abbr title="Couchbase\Bucket">Bucket</abbr></a></em></dt>
-                    <dd></dd><dt>$<a href="Couchbase/Bucket.html#property_configDelay">
+                    <dd><p>Per-node configuration timeout (in microseconds).</p>
+<p>This timeout sets the amount of time to wait for each node within
+the bootstrap/configuration process. This interval is a subset of
+the $configTimeout option mentioned above and is intended to ensure
+that the bootstrap process does not wait too long for a given node.
+Nodes that are physically offline may never respond and it may take
+a long time until they are detected as being offline.</p></dd><dt>$<a href="Couchbase/Bucket.html#property_configDelay">
 <abbr title="Couchbase\Bucket">Bucket</abbr>#configDelay</a> &mdash; <em>Property in class <a href="Couchbase/Bucket.html"><abbr title="Couchbase\Bucket">Bucket</abbr></a></em></dt>
-                    <dd></dd><dt><a href="Couchbase/Bucket.html#method_counter">
+                    <dd><p>Config refresh throttling</p>
+<p>Modify the amount of time (in microseconds) before the configiration
+error threshold will forcefully be set to its maximum number forcing
+a configuration refresh.</p>
+<p>Note that if you expect a high number of timeouts in your operations,
+you should set this to a high number. If you are using the default
+timeout setting, then this value is likely optimal.</p></dd><dt><a href="Couchbase/Bucket.html#method_counter">
 <abbr title="Couchbase\Bucket">Bucket</abbr>::counter</a>() &mdash; <em>Method in class <a href="Couchbase/Bucket.html"><abbr title="Couchbase\Bucket">Bucket</abbr></a></em></dt>
                     <dd><p>Increments or decrements a key (based on $delta)</p></dd><dt><a href="Couchbase/BucketManager.html#method_createN1qlPrimaryIndex">
 <abbr title="Couchbase\BucketManager">BucketManager</abbr>::createN1qlPrimaryIndex</a>() &mdash; <em>Method in class <a href="Couchbase/BucketManager.html"><abbr title="Couchbase\BucketManager">BucketManager</abbr></a></em></dt>
@@ -2433,7 +2449,9 @@ FFI::cast</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
 string or FFI\CType object.</p></dd><dt><a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> &mdash; <em>Class in namespace <a href="FFI.html">FFI</a></em></dt>
                     <dd><p>Proxy object that provides access to compiled structures.</p></dd><dt>$<a href="FFI/CData.html#property_cdata">
 <abbr title="FFI\CData">CData</abbr>#cdata</a> &mdash; <em>Property in class <a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></em></dt>
-                    <dd></dd><dt><a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a> &mdash; <em>Class in namespace <a href="FFI.html">FFI</a></em></dt>
+                    <dd><p>In the case that the CData is a wrapper over an arbitrary C structure,
+then it allows reading and writing to the fields defined by
+this structure.</p></dd><dt><a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a> &mdash; <em>Class in namespace <a href="FFI.html">FFI</a></em></dt>
                     <dd><p>Class containing C type information.</p></dd><dt><a href="FTP/Connection.html"><abbr title="FTP\Connection">Connection</abbr></a> &mdash; <em>Class in namespace <a href="FTP.html">FTP</a></em></dt>
                     <dd></dd><dt><a href="FilesystemIterator.html#method_current">
 FilesystemIterator::current</a>() &mdash; <em>Method in class <a href="FilesystemIterator.html">FilesystemIterator</a></em></dt>
@@ -2737,7 +2755,8 @@ Iterator::current</a>() &mdash; <em>Method in class <a href="Iterator.html">Iter
 IteratorIterator::current</a>() &mdash; <em>Method in class <a href="IteratorIterator.html">IteratorIterator</a></em></dt>
                     <dd><p>Get the current value</p></dd><dt><a href="Judy.html#method_count">
 Judy::count</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd></dd><dt><a href="LDAP/Connection.html"><abbr title="LDAP\Connection">Connection</abbr></a> &mdash; <em>Class in namespace <a href="LDAP.html">LDAP</a></em></dt>
+                    <dd><p>(PECL judy &gt;= 0.1.1)<br/>
+Count the number of elements in the Judy array.</p></dd><dt><a href="LDAP/Connection.html"><abbr title="LDAP\Connection">Connection</abbr></a> &mdash; <em>Class in namespace <a href="LDAP.html">LDAP</a></em></dt>
                     <dd></dd><dt><a href="LevelDB.html#method_compactRange">
 LevelDB::compactRange</a>() &mdash; <em>Method in class <a href="LevelDB.html">LevelDB</a></em></dt>
                     <dd></dd><dt><a href="LevelDB.html#method_close">
@@ -2763,11 +2782,12 @@ Locale::canonicalize</a>() &mdash; <em>Method in class <a href="Locale.html">Loc
 Lua::call</a>() &mdash; <em>Method in class <a href="Lua.html">Lua</a></em></dt>
                     <dd></dd><dt><a href="LuaSandbox.html#method_callFunction">
 LuaSandbox::callFunction</a>() &mdash; <em>Method in class <a href="LuaSandbox.html">LuaSandbox</a></em></dt>
-                    <dd></dd><dt><a href="LuaSandboxFunction.html#method_call">
+                    <dd><p>Call a function in a Lua global variable.</p></dd><dt><a href="LuaSandboxFunction.html#method_call">
 LuaSandboxFunction::call</a>() &mdash; <em>Method in class <a href="LuaSandboxFunction.html">LuaSandboxFunction</a></em></dt>
-                    <dd></dd><dt><a href="MemcachePool.html#method_connect">
+                    <dd><p>Call a Lua function.</p></dd><dt><a href="MemcachePool.html#method_connect">
 MemcachePool::connect</a>() &mdash; <em>Method in class <a href="MemcachePool.html">MemcachePool</a></em></dt>
-                    <dd></dd><dt><a href="MemcachePool.html#method_cas">
+                    <dd><p>(PECL memcache &gt;= 0.2.0)<br/>
+Open memcached server connection</p></dd><dt><a href="MemcachePool.html#method_cas">
 MemcachePool::cas</a>() &mdash; <em>Method in class <a href="MemcachePool.html">MemcachePool</a></em></dt>
                     <dd></dd><dt><a href="MemcachePool.html#method_close">
 MemcachePool::close</a>() &mdash; <em>Method in class <a href="MemcachePool.html">MemcachePool</a></em></dt>
@@ -3225,7 +3245,7 @@ SVMModel::checkProbabilityModel</a>() &mdash; <em>Method in class <a href="SVMMo
 SessionHandler::close</a>() &mdash; <em>Method in class <a href="SessionHandler.html">SessionHandler</a></em></dt>
                     <dd><p>Close the session</p></dd><dt><a href="SessionHandler.html#method_create_sid">
 SessionHandler::create_sid</a>() &mdash; <em>Method in class <a href="SessionHandler.html">SessionHandler</a></em></dt>
-                    <dd></dd><dt><a href="SessionHandlerInterface.html#method_close">
+                    <dd><p>Return a new session ID</p></dd><dt><a href="SessionHandlerInterface.html#method_close">
 SessionHandlerInterface::close</a>() &mdash; <em>Method in class <a href="SessionHandlerInterface.html">SessionHandlerInterface</a></em></dt>
                     <dd><p>Close the session</p></dd><dt><a href="SessionIdInterface.html#method_create_sid">
 SessionIdInterface::create_sid</a>() &mdash; <em>Method in class <a href="SessionIdInterface.html">SessionIdInterface</a></em></dt>
@@ -4006,9 +4026,12 @@ the default policy, and it will also retry in the following case:</p></dd><dt><a
 <abbr title="Couchbase\BinaryCollection">BinaryCollection</abbr>::decrement</a>() &mdash; <em>Method in class <a href="Couchbase/BinaryCollection.html"><abbr title="Couchbase\BinaryCollection">BinaryCollection</abbr></a></em></dt>
                     <dd><p>Decrements a counter document by a value.</p></dd><dt>$<a href="Couchbase/Bucket.html#property_durabilityInterval">
 <abbr title="Couchbase\Bucket">Bucket</abbr>#durabilityInterval</a> &mdash; <em>Property in class <a href="Couchbase/Bucket.html"><abbr title="Couchbase\Bucket">Bucket</abbr></a></em></dt>
-                    <dd></dd><dt>$<a href="Couchbase/Bucket.html#property_durabilityTimeout">
+                    <dd><p>The time (in microseconds) the client will wait between repeated probes
+to a given server.</p></dd><dt>$<a href="Couchbase/Bucket.html#property_durabilityTimeout">
 <abbr title="Couchbase\Bucket">Bucket</abbr>#durabilityTimeout</a> &mdash; <em>Property in class <a href="Couchbase/Bucket.html"><abbr title="Couchbase\Bucket">Bucket</abbr></a></em></dt>
-                    <dd></dd><dt><a href="Couchbase/Bucket.html#method_diag">
+                    <dd><p>The time (in microseconds) the client will spend sending repeated probes
+to a given key's vBucket masters and replicas before they are deemed not
+to have satisfied the durability requirements</p></dd><dt><a href="Couchbase/Bucket.html#method_diag">
 <abbr title="Couchbase\Bucket">Bucket</abbr>::diag</a>() &mdash; <em>Method in class <a href="Couchbase/Bucket.html"><abbr title="Couchbase\Bucket">Bucket</abbr></a></em></dt>
                     <dd><p>Collect and return information about state of internal network connections.</p></dd><dt><a href="Couchbase/Bucket.html#method_decryptFields">
 <abbr title="Couchbase\Bucket">Bucket</abbr>::decryptFields</a>() &mdash; <em>Method in class <a href="Couchbase/Bucket.html"><abbr title="Couchbase\Bucket">Bucket</abbr></a></em></dt>
@@ -5259,7 +5282,7 @@ IntlChar::enumCharTypes</a>() &mdash; <em>Method in class <a href="IntlChar.html
 Lua::eval</a>() &mdash; <em>Method in class <a href="Lua.html">Lua</a></em></dt>
                     <dd></dd><dt><a href="LuaSandbox.html#method_enableProfiler">
 LuaSandbox::enableProfiler</a>() &mdash; <em>Method in class <a href="LuaSandbox.html">LuaSandbox</a></em></dt>
-                    <dd></dd><dt><a href="MessagePackUnpacker.html#method_execute">
+                    <dd><p>Enable the profiler.</p></dd><dt><a href="MessagePackUnpacker.html#method_execute">
 MessagePackUnpacker::execute</a>() &mdash; <em>Method in class <a href="MessagePackUnpacker.html">MessagePackUnpacker</a></em></dt>
                     <dd></dd><dt><a href="MongoCollection.html#method_ensureIndex">
 MongoCollection::ensureIndex</a>() &mdash; <em>Method in class <a href="MongoCollection.html">MongoCollection</a></em></dt>
@@ -6243,9 +6266,11 @@ IntlTimeZone::fromDateTimeZone</a>() &mdash; <em>Method in class <a href="IntlTi
                     <dd><p>(PHP 5 &gt;=5.5.0 PECL intl &gt;= 3.0.0a1)<br/>
 Create a timezone object from DateTimeZone</p></dd><dt><a href="Judy.html#method_first">
 Judy::first</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd></dd><dt><a href="Judy.html#method_firstEmpty">
+                    <dd><p>(PECL judy &gt;= 0.1.1)<br/>
+Search (inclusive) for the first index present that is equal to or greater than the passed Index.</p></dd><dt><a href="Judy.html#method_firstEmpty">
 Judy::firstEmpty</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd></dd><dt><a href="Judy.html#method_free">
+                    <dd><p>(PECL judy &gt;= 0.1.1)<br/>
+Search (inclusive) for the first absent index that is equal to or greater than the passed Index.</p></dd><dt><a href="Judy.html#method_free">
 Judy::free</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
                     <dd><p>(PECL judy &gt;= 0.1.1)<br/>
 Free the entire Judy array.</p></dd><dt>$<a href="LibXMLError.html#property_file">
@@ -6424,7 +6449,8 @@ SQLiteResult::fetchObject</a>() &mdash; <em>Method in class <a href="SQLiteResul
                     <dd><p>(PHP 5 &lt; 5.4.0)
 Fetches the next row from a result set as an object</p></dd><dt><a href="SQLiteResult.html#method_fetchSingle">
 SQLiteResult::fetchSingle</a>() &mdash; <em>Method in class <a href="SQLiteResult.html">SQLiteResult</a></em></dt>
-                    <dd></dd><dt><a href="SQLiteResult.html#method_fetchAll">
+                    <dd><p>(PHP 5 &lt; 5.4.0, PECL sqlite &gt;= 1.0.1)
+Fetches the first column of a result set as a string</p></dd><dt><a href="SQLiteResult.html#method_fetchAll">
 SQLiteResult::fetchAll</a>() &mdash; <em>Method in class <a href="SQLiteResult.html">SQLiteResult</a></em></dt>
                     <dd><p>(PHP 5 &lt; 5.4.0)
 Fetches the next row from a result set as an object</p></dd><dt><a href="SQLiteResult.html#method_fieldName">
@@ -8412,7 +8438,8 @@ JsonIncrementalParser::getError</a>() &mdash; <em>Method in class <a href="JsonI
 JsonIncrementalParser::get</a>() &mdash; <em>Method in class <a href="JsonIncrementalParser.html">JsonIncrementalParser</a></em></dt>
                     <dd></dd><dt><a href="Judy.html#method_getType">
 Judy::getType</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd></dd><dt><a href="LevelDB.html#method_get">
+                    <dd><p>(PECL judy &gt;= 0.1.1)<br/>
+Return an integer corresponding to the Judy type of the current object.</p></dd><dt><a href="LevelDB.html#method_get">
 LevelDB::get</a>() &mdash; <em>Method in class <a href="LevelDB.html">LevelDB</a></em></dt>
                     <dd></dd><dt><a href="LevelDB.html#method_getProperty">
 LevelDB::getProperty</a>() &mdash; <em>Method in class <a href="LevelDB.html">LevelDB</a></em></dt>
@@ -8469,11 +8496,11 @@ Gets the variants for the input locale</p></dd><dt><a href="Lua.html#method_getV
 Lua::getVersion</a>() &mdash; <em>Method in class <a href="Lua.html">Lua</a></em></dt>
                     <dd></dd><dt><a href="LuaSandbox.html#method_getCPUUsage">
 LuaSandbox::getCPUUsage</a>() &mdash; <em>Method in class <a href="LuaSandbox.html">LuaSandbox</a></em></dt>
-                    <dd></dd><dt><a href="LuaSandbox.html#method_getMemoryUsage">
+                    <dd><p>Fetch the current CPU time usage of the Lua environment.</p></dd><dt><a href="LuaSandbox.html#method_getMemoryUsage">
 LuaSandbox::getMemoryUsage</a>() &mdash; <em>Method in class <a href="LuaSandbox.html">LuaSandbox</a></em></dt>
                     <dd><p>Fetch the current memory usage of the Lua environment.</p></dd><dt><a href="LuaSandbox.html#method_getPeakMemoryUsage">
 LuaSandbox::getPeakMemoryUsage</a>() &mdash; <em>Method in class <a href="LuaSandbox.html">LuaSandbox</a></em></dt>
-                    <dd></dd><dt><a href="LuaSandbox.html#method_getProfilerFunctionReport">
+                    <dd><p>Fetch the peak memory usage of the Lua environment.</p></dd><dt><a href="LuaSandbox.html#method_getProfilerFunctionReport">
 LuaSandbox::getProfilerFunctionReport</a>() &mdash; <em>Method in class <a href="LuaSandbox.html">LuaSandbox</a></em></dt>
                     <dd><p>Fetch profiler data.</p></dd><dt><a href="LuaSandbox.html#method_getVersionInfo">
 LuaSandbox::getVersionInfo</a>() &mdash; <em>Method in class <a href="LuaSandbox.html">LuaSandbox</a></em></dt>
@@ -11491,9 +11518,26 @@ CachingIterator::hasNext</a>() &mdash; <em>Method in class <a href="CachingItera
 <abbr title="Cassandra\Set">Set</abbr>::has</a>() &mdash; <em>Method in class <a href="Cassandra/Set.html"><abbr title="Cassandra\Set">Set</abbr></a></em></dt>
                     <dd><p>Returns whether a value is in this set.</p></dd><dt>$<a href="Couchbase/Bucket.html#property_httpTimeout">
 <abbr title="Couchbase\Bucket">Bucket</abbr>#httpTimeout</a> &mdash; <em>Property in class <a href="Couchbase/Bucket.html"><abbr title="Couchbase\Bucket">Bucket</abbr></a></em></dt>
-                    <dd></dd><dt>$<a href="Couchbase/Bucket.html#property_htconfigIdleTimeout">
+                    <dd><p>The I/O timeout (in microseconds) for HTTP queries (management API).</p></dd><dt>$<a href="Couchbase/Bucket.html#property_htconfigIdleTimeout">
 <abbr title="Couchbase\Bucket">Bucket</abbr>#htconfigIdleTimeout</a> &mdash; <em>Property in class <a href="Couchbase/Bucket.html"><abbr title="Couchbase\Bucket">Bucket</abbr></a></em></dt>
-                    <dd></dd><dt><a href="Couchbase/CouchbaseRemoteAnalyticsLink.html#method_hostname">
+                    <dd><p>Idling/Persistence for HTTP bootstrap (in microseconds)</p>
+<p>By default the behavior of the library for HTTP bootstrap is to keep
+the stream open at all times (opening a new stream on a different host
+if the existing one is broken) in order to proactively receive
+configuration updates.</p>
+<p>The default value for this setting is -1. Changing this to another
+number invokes the following semantics:</p>
+<ul>
+<li>
+<p>The configuration stream is not kept alive indefinitely. It is kept
+open for the number of seconds specified in this setting. The socket
+is closed after a period of inactivity (indicated by this setting).</p>
+</li>
+<li>
+<p>If the stream is broken (and no current refresh was requested by
+the client) then a new stream is not opened.</p>
+</li>
+</ul></dd><dt><a href="Couchbase/CouchbaseRemoteAnalyticsLink.html#method_hostname">
 <abbr title="Couchbase\CouchbaseRemoteAnalyticsLink">CouchbaseRemoteAnalyticsLink</abbr>::hostname</a>() &mdash; <em>Method in class <a href="Couchbase/CouchbaseRemoteAnalyticsLink.html"><abbr title="Couchbase\CouchbaseRemoteAnalyticsLink">CouchbaseRemoteAnalyticsLink</abbr></a></em></dt>
                     <dd><p>Sets the hostname of the target Couchbase cluster</p></dd><dt><a href="Couchbase/HttpException.html"><abbr title="Couchbase\HttpException">HttpException</abbr></a> &mdash; <em>Class in namespace <a href="Couchbase.html">Couchbase</a></em></dt>
                     <dd><p>Thrown for exceptions that originate from underlying Http operations.</p></dd><dt><a href="Couchbase/SearchOptions.html#method_highlight">
@@ -13109,7 +13153,7 @@ ZMQContext::isPersistent</a>() &mdash; <em>Method in class <a href="ZMQContext.h
                     <dd><p>(PECL zmq &gt;= 0.5.0)
 Whether the context is persistent.</p></dd><dt><a href="ZMQSocket.html#method_isPersistent">
 ZMQSocket::isPersistent</a>() &mdash; <em>Method in class <a href="ZMQSocket.html">ZMQSocket</a></em></dt>
-                    <dd></dd><dt><a href="ZendAPI_Queue.html#method_isScriptExists">
+                    <dd><p>Check whether the socket is persistent.</p></dd><dt><a href="ZendAPI_Queue.html#method_isScriptExists">
 ZendAPI_Queue::isScriptExists</a>() &mdash; <em>Method in class <a href="ZendAPI_Queue.html">ZendAPI_Queue</a></em></dt>
                     <dd><p>Returns whether a script exists in the document root</p></dd><dt><a href="ZendAPI_Queue.html#method_isSuspend">
 ZendAPI_Queue::isSuspend</a>() &mdash; <em>Method in class <a href="ZendAPI_Queue.html">ZendAPI_Queue</a></em></dt>
@@ -13839,9 +13883,11 @@ Parse string to a field-based time value</p></dd><dt><a href="JetBrains/PhpStorm
                     <dd><p>For PhpStorm internal use only</p></dd><dt><a href="JetBrains/PhpStorm/Language.html"><abbr title="JetBrains\PhpStorm\Language">Language</abbr></a> &mdash; <em>Class in namespace <a href="JetBrains/PhpStorm.html">JetBrains\PhpStorm</a></em></dt>
                     <dd><p>Specifies that the parameter is a string that represents source code in a different language.</p></dd><dt><a href="Judy.html#method_last">
 Judy::last</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd></dd><dt><a href="Judy.html#method_lastEmpty">
+                    <dd><p>(PECL judy &gt;= 0.1.1)<br/>
+Search (inclusive) for the last index present that is equal to or less than the passed Index.</p></dd><dt><a href="Judy.html#method_lastEmpty">
 Judy::lastEmpty</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd></dd><dt><a href="LengthException.html">LengthException</a> &mdash; <em>Class in namespace <a href="[Global_Namespace].html">[Global Namespace]</a></em></dt>
+                    <dd><p>(PECL judy &gt;= 0.1.1)<br/>
+Search (inclusive) for the last absent index that is equal to or less than the passed Index.</p></dd><dt><a href="LengthException.html">LengthException</a> &mdash; <em>Class in namespace <a href="[Global_Namespace].html">[Global Namespace]</a></em></dt>
                     <dd><p>Exception thrown if a length is invalid.</p></dd><dt><a href="LevelDB.html">LevelDB</a> &mdash; <em>Class in namespace <a href="[Global_Namespace].html">[Global Namespace]</a></em></dt>
                     <dd></dd><dt><a href="LevelDBException.html">LevelDBException</a> &mdash; <em>Class in namespace <a href="[Global_Namespace].html">[Global Namespace]</a></em></dt>
                     <dd></dd><dt><a href="LevelDBIterator.html">LevelDBIterator</a> &mdash; <em>Class in namespace <a href="[Global_Namespace].html">[Global Namespace]</a></em></dt>
@@ -14627,7 +14673,8 @@ ImagickDraw::matte</a>() &mdash; <em>Method in class <a href="ImagickDraw.html">
                     <dd><p>(PECL imagick 2.0.0)<br/>
 Paints on the image's opacity channel</p></dd><dt><a href="Judy.html#method_memoryUsage">
 Judy::memoryUsage</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd></dd><dt>$<a href="LibXMLError.html#property_message">
+                    <dd><p>(PECL judy &gt;= 0.1.1)<br/>
+Return the memory used by the Judy array.</p></dd><dt>$<a href="LibXMLError.html#property_message">
 LibXMLError#message</a> &mdash; <em>Property in class <a href="LibXMLError.html">LibXMLError</a></em></dt>
                     <dd><p style="margin-top:0;">
 The error message, if any.</dd><dt><a href="Memcache.html">Memcache</a> &mdash; <em>Class in namespace <a href="[Global_Namespace].html">[Global Namespace]</a></em></dt>
@@ -15175,7 +15222,7 @@ arithmetic functions.</p></dd><dt><a href="Cassandra/Numeric.html#method_neg">
 <abbr title="Couchbase\BinaryCollection">BinaryCollection</abbr>::name</a>() &mdash; <em>Method in class <a href="Couchbase/BinaryCollection.html"><abbr title="Couchbase\BinaryCollection">BinaryCollection</abbr></a></em></dt>
                     <dd><p>Get the name of the binary collection.</p></dd><dt>$<a href="Couchbase/Bucket.html#property_n1qlTimeout">
 <abbr title="Couchbase\Bucket">Bucket</abbr>#n1qlTimeout</a> &mdash; <em>Property in class <a href="Couchbase/Bucket.html"><abbr title="Couchbase\Bucket">Bucket</abbr></a></em></dt>
-                    <dd></dd><dt><a href="Couchbase/BucketSettings.html#method_name">
+                    <dd><p>The I/O timeout (in microseconds) for N1QL queries.</p></dd><dt><a href="Couchbase/BucketSettings.html#method_name">
 <abbr title="Couchbase\BucketSettings">BucketSettings</abbr>::name</a>() &mdash; <em>Method in class <a href="Couchbase/BucketSettings.html"><abbr title="Couchbase\BucketSettings">BucketSettings</abbr></a></em></dt>
                     <dd></dd><dt><a href="Couchbase/BucketSettings.html#method_numReplicas">
 <abbr title="Couchbase\BucketSettings">BucketSettings</abbr>::numReplicas</a>() &mdash; <em>Method in class <a href="Couchbase/BucketSettings.html"><abbr title="Couchbase\BucketSettings">BucketSettings</abbr></a></em></dt>
@@ -15375,9 +15422,11 @@ IteratorIterator::next</a>() &mdash; <em>Method in class <a href="IteratorIterat
                     <dd><p>Forward to the next element</p></dd><dt><a href="JetBrains/PhpStorm/NoReturn.html"><abbr title="JetBrains\PhpStorm\NoReturn">NoReturn</abbr></a> &mdash; <em>Class in namespace <a href="JetBrains/PhpStorm.html">JetBrains\PhpStorm</a></em></dt>
                     <dd><p>You can use this facility to mark the function as halting the execution flow.</p></dd><dt><a href="Judy.html#method_next">
 Judy::next</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd></dd><dt><a href="Judy.html#method_nextEmpty">
+                    <dd><p>(PECL judy &gt;= 0.1.1)<br/>
+Search (exclusive) for the next index present that is greater than the passed Index.</p></dd><dt><a href="Judy.html#method_nextEmpty">
 Judy::nextEmpty</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd></dd><dt><a href="LevelDBIterator.html#method_next">
+                    <dd><p>(PECL judy &gt;= 0.1.1)<br/>
+Search (exclusive) for the next absent index that is greater than the passed Index.</p></dd><dt><a href="LevelDBIterator.html#method_next">
 LevelDBIterator::next</a>() &mdash; <em>Method in class <a href="LevelDBIterator.html">LevelDBIterator</a></em></dt>
                     <dd><p>Move forward to next element</p></dd><dt><a href="LimitIterator.html#method_next">
 LimitIterator::next</a>() &mdash; <em>Method in class <a href="LimitIterator.html">LimitIterator</a></em></dt>
@@ -15464,7 +15513,8 @@ ReflectionZendExtension#name</a> &mdash; <em>Property in class <a href="Reflecti
 SQLite3Result::numColumns</a>() &mdash; <em>Method in class <a href="SQLite3Result.html">SQLite3Result</a></em></dt>
                     <dd><p>Returns the number of columns in the result set</p></dd><dt><a href="SQLiteResult.html#method_numFields">
 SQLiteResult::numFields</a>() &mdash; <em>Method in class <a href="SQLiteResult.html">SQLiteResult</a></em></dt>
-                    <dd></dd><dt><a href="SQLiteResult.html#method_next">
+                    <dd><p>(PHP 5 &lt; 5.4.0, PECL sqlite &gt;= 1.0.0)
+Returns the number of fields in a result set</p></dd><dt><a href="SQLiteResult.html#method_next">
 SQLiteResult::next</a>() &mdash; <em>Method in class <a href="SQLiteResult.html">SQLiteResult</a></em></dt>
                     <dd><p>Seek to the next row number</p></dd><dt><a href="SQLiteResult.html#method_numRows">
 SQLiteResult::numRows</a>() &mdash; <em>Method in class <a href="SQLiteResult.html">SQLiteResult</a></em></dt>
@@ -15757,7 +15807,14 @@ CachingIterator::offsetExists</a>() &mdash; <em>Method in class <a href="Caching
 <abbr title="Cassandra\Table">Table</abbr>::options</a>() &mdash; <em>Method in class <a href="Cassandra/Table.html"><abbr title="Cassandra\Table">Table</abbr></a></em></dt>
                     <dd><p>Returns all the table's options</p></dd><dt>$<a href="Couchbase/Bucket.html#property_operationTimeout">
 <abbr title="Couchbase\Bucket">Bucket</abbr>#operationTimeout</a> &mdash; <em>Property in class <a href="Couchbase/Bucket.html"><abbr title="Couchbase\Bucket">Bucket</abbr></a></em></dt>
-                    <dd></dd><dt><a href="Couchbase/Cluster.html#method_openBucket">
+                    <dd><p>The operation timeout (in microseconds) is the maximum amount of time the
+library will wait for an operation to receive a response before invoking
+its callback with a failure status.</p>
+<p>An operation may timeout if:</p>
+<ul>
+<li>A server is taking too long to respond</li>
+<li>An updated cluster configuration has not been promptly received</li>
+</ul></dd><dt><a href="Couchbase/Cluster.html#method_openBucket">
 <abbr title="Couchbase\Cluster">Cluster</abbr>::openBucket</a>() &mdash; <em>Method in class <a href="Couchbase/Cluster.html"><abbr title="Couchbase\Cluster">Cluster</abbr></a></em></dt>
                     <dd><p>Open connection to the Couchbase bucket</p></dd><dt><a href="Couchbase/Origin.html"><abbr title="Couchbase\Origin">Origin</abbr></a> &mdash; <em>Class in namespace <a href="Couchbase.html">Couchbase</a></em></dt>
                     <dd></dd><dt><a href="Couchbase/RoleAndOrigin.html#method_origins">
@@ -15864,9 +15921,11 @@ Simulates an oil painting</p></dd><dt><a href="IntlChar.html#method_ord">
 IntlChar::ord</a>() &mdash; <em>Method in class <a href="IntlChar.html">IntlChar</a></em></dt>
                     <dd><p>Return Unicode code point value of character</p></dd><dt><a href="Judy.html#method_offsetExists">
 Judy::offsetExists</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd></dd><dt><a href="Judy.html#method_offsetGet">
+                    <dd><p>(PECL judy &gt;= 0.1.1)<br/>
+Whether or not an offset exists.</p></dd><dt><a href="Judy.html#method_offsetGet">
 Judy::offsetGet</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd></dd><dt><a href="Judy.html#method_offsetSet">
+                    <dd><p>(PECL judy &gt;= 0.1.1)<br/>
+Returns the value at specified offset.</p></dd><dt><a href="Judy.html#method_offsetSet">
 Judy::offsetSet</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
                     <dd><p>(PECL judy &gt;= 0.1.1)<br/>
 Assigns a value to the specified offset.</p></dd><dt><a href="Judy.html#method_offsetUnset">
@@ -16750,9 +16809,11 @@ JsonIncrementalParser::parse</a>() &mdash; <em>Method in class <a href="JsonIncr
 JsonIncrementalParser::parseFile</a>() &mdash; <em>Method in class <a href="JsonIncrementalParser.html">JsonIncrementalParser</a></em></dt>
                     <dd></dd><dt><a href="Judy.html#method_prev">
 Judy::prev</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd></dd><dt><a href="Judy.html#method_prevEmpty">
+                    <dd><p>(PECL judy &gt;= 0.1.1)<br/>
+Search (exclusive) for the previous index present that is less than the passed Index.</p></dd><dt><a href="Judy.html#method_prevEmpty">
 Judy::prevEmpty</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd></dd><dt><a href="LevelDB.html#method_put">
+                    <dd><p>(PECL judy &gt;= 0.1.1)<br/>
+Search (exclusive) for the previous index absent that is less than the passed Index.</p></dd><dt><a href="LevelDB.html#method_put">
 LevelDB::put</a>() &mdash; <em>Method in class <a href="LevelDB.html">LevelDB</a></em></dt>
                     <dd></dd><dt><a href="LevelDBIterator.html#method_prev">
 LevelDBIterator::prev</a>() &mdash; <em>Method in class <a href="LevelDBIterator.html">LevelDBIterator</a></em></dt>
@@ -16763,7 +16824,7 @@ Locale::parseLocale</a>() &mdash; <em>Method in class <a href="Locale.html">Loca
                     <dd><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
 Returns a key-value array of locale ID subtag elements.</p></dd><dt><a href="LuaSandbox.html#method_pauseUsageTimer">
 LuaSandbox::pauseUsageTimer</a>() &mdash; <em>Method in class <a href="LuaSandbox.html">LuaSandbox</a></em></dt>
-                    <dd></dd><dt><a href="Memcache.html#method_pconnect">
+                    <dd><p>Pause the CPU usage timer.</p></dd><dt><a href="Memcache.html#method_pconnect">
 Memcache::pconnect</a>() &mdash; <em>Method in class <a href="Memcache.html">Memcache</a></em></dt>
                     <dd><p>(PECL memcache &gt;= 0.4.0)<br/>
 Open memcached server persistent connection</p></dd><dt><a href="MemcachePool.html#method_prepend">
@@ -18962,7 +19023,7 @@ ZMQPoll::remove</a>() &mdash; <em>Method in class <a href="ZMQPoll.html">ZMQPoll
                     <dd><p>(PECL zmq &gt;= 0.5.0)
 Remove item from the poll set.</p></dd><dt><a href="ZMQSocket.html#method_recv">
 ZMQSocket::recv</a>() &mdash; <em>Method in class <a href="ZMQSocket.html">ZMQSocket</a></em></dt>
-                    <dd></dd><dt><a href="ZMQSocket.html#method_recvMulti">
+                    <dd><p>Receive a message from a socket.</p></dd><dt><a href="ZMQSocket.html#method_recvMulti">
 ZMQSocket::recvMulti</a>() &mdash; <em>Method in class <a href="ZMQSocket.html">ZMQSocket</a></em></dt>
                     <dd><p>Receive an array multipart message from a socket.</p></dd><dt><a href="ZendAPI_Queue.html#method_removeJob">
 ZendAPI_Queue::removeJob</a>() &mdash; <em>Method in class <a href="ZendAPI_Queue.html">ZendAPI_Queue</a></em></dt>
@@ -20799,7 +20860,9 @@ Set the leniency of the parser</p></dd><dt><a href="IntlGregorianCalendar.html#m
 IntlGregorianCalendar::setGregorianChange</a>() &mdash; <em>Method in class <a href="IntlGregorianCalendar.html">IntlGregorianCalendar</a></em></dt>
                     <dd></dd><dt><a href="Judy.html#method_size">
 Judy::size</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd></dd><dt><a href="LevelDB.html#method_set">
+                    <dd><p>(PECL judy &gt;= 0.1.1)<br/>
+Count the number of elements in the Judy array.<br/>
+This method is an alias of      const count.</p></dd><dt><a href="LevelDB.html#method_set">
 LevelDB::set</a>() &mdash; <em>Method in class <a href="LevelDB.html">LevelDB</a></em></dt>
                     <dd><p>Alias of LevelDB::put()</p></dd><dt><a href="LevelDBIterator.html#method_seek">
 LevelDBIterator::seek</a>() &mdash; <em>Method in class <a href="LevelDBIterator.html">LevelDBIterator</a></em></dt>
@@ -20816,7 +20879,8 @@ LuaSandbox::setCPULimit</a>() &mdash; <em>Method in class <a href="LuaSandbox.ht
 LuaSandbox::setMemoryLimit</a>() &mdash; <em>Method in class <a href="LuaSandbox.html">LuaSandbox</a></em></dt>
                     <dd><p>Set the memory limit for the Lua environment.</p></dd><dt><a href="MemcachePool.html#method_setServerParams">
 MemcachePool::setServerParams</a>() &mdash; <em>Method in class <a href="MemcachePool.html">MemcachePool</a></em></dt>
-                    <dd></dd><dt><a href="MemcachePool.html#method_setFailureCallback">
+                    <dd><p>(PECL memcache &gt;= 2.1.0)<br/>
+Changes server parameters and status at runtime</p></dd><dt><a href="MemcachePool.html#method_setFailureCallback">
 MemcachePool::setFailureCallback</a>() &mdash; <em>Method in class <a href="MemcachePool.html">MemcachePool</a></em></dt>
                     <dd></dd><dt><a href="MemcachePool.html#method_set">
 MemcachePool::set</a>() &mdash; <em>Method in class <a href="MemcachePool.html">MemcachePool</a></em></dt>
@@ -24892,7 +24956,7 @@ execute it.</p></dd><dt><a href="Cassandra/Float_.html#method_value">
 <abbr title="Cassandra\Varint">Varint</abbr>::value</a>() &mdash; <em>Method in class <a href="Cassandra/Varint.html"><abbr title="Cassandra\Varint">Varint</abbr></a></em></dt>
                     <dd><p>Returns the integer value.</p></dd><dt>$<a href="Couchbase/Bucket.html#property_viewTimeout">
 <abbr title="Couchbase\Bucket">Bucket</abbr>#viewTimeout</a> &mdash; <em>Property in class <a href="Couchbase/Bucket.html"><abbr title="Couchbase\Bucket">Bucket</abbr></a></em></dt>
-                    <dd></dd><dt><a href="Couchbase/DesignDocument.html#method_views">
+                    <dd><p>The I/O timeout (in microseconds) for HTTP requests to Couchbase Views API</p></dd><dt><a href="Couchbase/DesignDocument.html#method_views">
 <abbr title="Couchbase\DesignDocument">DesignDocument</abbr>::views</a>() &mdash; <em>Method in class <a href="Couchbase/DesignDocument.html"><abbr title="Couchbase\DesignDocument">DesignDocument</abbr></a></em></dt>
                     <dd></dd><dt>$<a href="Couchbase/Document.html#property_value">
 <abbr title="Couchbase\Document">Document</abbr>#value</a> &mdash; <em>Property in class <a href="Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a></em></dt>
@@ -26619,7 +26683,7 @@ for the initial values.</p></dd><dt><a href="Ds/Vector.html#method___construct">
 Error::__construct</a>() &mdash; <em>Method in class <a href="Error.html">Error</a></em></dt>
                     <dd><p>Construct the error object.</p></dd><dt><a href="Error.html#method___toString">
 Error::__toString</a>() &mdash; <em>Method in class <a href="Error.html">Error</a></em></dt>
-                    <dd></dd><dt><a href="Error.html#method___wakeup">
+                    <dd><p>Gets a string representation of the thrown object</p></dd><dt><a href="Error.html#method___wakeup">
 Error::__wakeup</a>() &mdash; <em>Method in class <a href="Error.html">Error</a></em></dt>
                     <dd></dd><dt><a href="ErrorException.html#method___construct">
 ErrorException::__construct</a>() &mdash; <em>Method in class <a href="ErrorException.html">ErrorException</a></em></dt>
@@ -26685,7 +26749,9 @@ FANNConnection::__construct</a>() &mdash; <em>Method in class <a href="FANNConne
 <abbr title="FFI\CData">CData</abbr>::__get</a>() &mdash; <em>Method in class <a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></em></dt>
                     <dd></dd><dt><a href="FFI/CData.html#method___set">
 <abbr title="FFI\CData">CData</abbr>::__set</a>() &mdash; <em>Method in class <a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></em></dt>
-                    <dd></dd><dt><a href="FFI/CData.html#method___invoke">
+                    <dd><p>In the case that CData is a wrapper over an array, it is an
+implementation of the {\Traversable}, {\Countable},
+and {\ArrayAccess}</p></dd><dt><a href="FFI/CData.html#method___invoke">
 <abbr title="FFI\CData">CData</abbr>::__invoke</a>() &mdash; <em>Method in class <a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></em></dt>
                     <dd></dd><dt><a href="Fiber.html#method___construct">
 Fiber::__construct</a>() &mdash; <em>Method in class <a href="Fiber.html">Fiber</a></em></dt>
@@ -27655,7 +27721,7 @@ SyncSemaphore::__construct</a>() &mdash; <em>Method in class <a href="SyncSemaph
 SyncSharedMemory::__construct</a>() &mdash; <em>Method in class <a href="SyncSharedMemory.html">SyncSharedMemory</a></em></dt>
                     <dd><p>Constructs a new SyncSharedMemory object</p></dd><dt><a href="Throwable.html#method___toString">
 Throwable::__toString</a>() &mdash; <em>Method in class <a href="Throwable.html">Throwable</a></em></dt>
-                    <dd></dd><dt><a href="UConverter.html#method___construct">
+                    <dd><p>Gets a string representation of the thrown object</p></dd><dt><a href="UConverter.html#method___construct">
 UConverter::__construct</a>() &mdash; <em>Method in class <a href="UConverter.html">UConverter</a></em></dt>
                     <dd><p>(PHP 5 &gt;=5.5.0)<br/>
 Create UConverter object</p></dd><dt><a href="V8Js.html#method___construct">

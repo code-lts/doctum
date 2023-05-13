@@ -90,7 +90,6 @@
 </p>
 
         
-        
     
         
 
@@ -308,7 +307,6 @@ This lexer type can have more than one state machine.</p></p>                </d
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -341,7 +339,6 @@ This lexer type can have more than one state machine.</p></p>                </d
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -388,7 +385,6 @@ The rule set becomes read only. The lexing can begin.</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -447,7 +443,6 @@ The rule set becomes read only. The lexing can begin.</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -501,7 +496,6 @@ The rule set becomes read only. The lexing can begin.</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -545,7 +539,6 @@ The rule set becomes read only. The lexing can begin.</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -578,7 +571,6 @@ The rule set becomes read only. The lexing can begin.</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -603,7 +595,13 @@ A 'start state' and 'exit state' can be specified by using a suitable signature.
                     <tr>
                 <td>string</td>
                 <td>$newState</td>
-                <td></td>
+                <td><p>New state name, after the rule was applied.
+If '.' is specified as the exit state, then the lexer state is unchanged when that rule matches.
+An exit state with '&gt;' before the name means push. Use the signature without id for either continuation or to
+start matching, when a continuation or recursion is required.
+If '&lt;' is specified as exit state, it means pop. In that case, the signature containing the id can be used to
+identify the match. Note that even in the case an id is specified, the rule will finish first when all the
+previous pushes popped.</p></td>
             </tr>
             </table>
 
@@ -632,7 +630,6 @@ A 'start state' and 'exit state' can be specified by using a suitable signature.
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -689,7 +686,6 @@ Once a state pushed, it can be used with a suitable Parle\RLexer::push() signatu
         </code>
     </h3>
     <div class="details">    
-            
     
             
 

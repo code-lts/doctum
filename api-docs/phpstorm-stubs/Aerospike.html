@@ -84,7 +84,6 @@
 </p>
 
         
-        
     
         
 
@@ -3137,7 +3136,6 @@ Index -1 is the last item in the list, -3 is the third from last, 0 is the first
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -3169,37 +3167,100 @@ if (!$client-&gt;isConnected()) {
                     <tr>
                 <td>array</td>
                 <td>$config</td>
-                <td><p>holds cluster connection and client config information
-<em>hosts</em> a <strong>required</strong> array of host pairs. One node or more (for failover)
+                <td><p>holds cluster connection and client config information</p>
+<ul>
+<li><em>hosts</em> a <strong>required</strong> array of host pairs. One node or more (for failover)
 may be defined. Once a connection is established to the
 &quot;seed&quot; node, the client will retrieve the full list of nodes in
-the cluster, and manage its connections to them.
-<em>addr</em> hostname or IP of the node
-<em>port</em> the port of the node
-<em>user</em> <strong>required</strong> for the Enterprise Edition
-<em>pass</em> <strong>required</strong> for the Enterprise Edition
-<em>shm</em> optional. Shared-memory cluster tending is enabled if an array
-(even an empty one) is provided. Disabled by default.
-<em>shm_key</em> explicitly sets the shm key for the cluster. It is
+the cluster, and manage its connections to them.</li>
+<li><em>addr</em> hostname or IP of the node</li>
+<li><em>port</em> the port of the node</li>
+<li><em>user</em> <strong>required</strong> for the Enterprise Edition</li>
+<li><em>pass</em> <strong>required</strong> for the Enterprise Edition</li>
+<li><em>shm</em> optional. Shared-memory cluster tending is enabled if an array
+(even an empty one) is provided. Disabled by default.</li>
+<li><em>shm_key</em> explicitly sets the shm key for the cluster. It is
 otherwise implicitly evaluated per unique hostname, and can be
-inspected with shmKey(). (default: 0xA8000000)
-<em>shm_max_nodes</em> maximum number of nodes allowed. Pad so new nodes
-can be added without configuration changes (default: 16)
-<em>shm_max_namespaces</em> maximum number of namespaces allowed (default: 8)
-<em>shm_takeover_threshold_sec</em> take over tending if the cluster
-hasn't been checked for this many seconds (default: 30)
-<em>max_threads</em> (default: 300)
-<em>thread_pool_size</em> should be at least the number of nodes in the cluster (default: 16) In ZTS builds this is set to 0
-<em>compression_threshold</em> client will compress records larger than this value for transport (default: 0)
-<em>tender_interval</em> polling interval in milliseconds for cluster tender (default: 1000)
-<em>cluster_name</em> if specified, only server nodes matching this name will be used when determining the cluster
-<em>rack_aware</em> Boolean: Track server rack data.  This field is useful when directing read commands to
+inspected with shmKey(). (default: 0xA8000000)</li>
+<li><em>shm_max_nodes</em> maximum number of nodes allowed. Pad so new nodes
+can be added without configuration changes (default: 16)</li>
+<li><em>shm_max_namespaces</em> maximum number of namespaces allowed (default: 8)</li>
+<li><em>shm_takeover_threshold_sec</em> take over tending if the cluster
+hasn't been checked for this many seconds (default: 30)</li>
+<li><em>max_threads</em> (default: 300)</li>
+<li><em>thread_pool_size</em> should be at least the number of nodes in the cluster (default: 16) In ZTS builds this is set to 0</li>
+<li><em>compression_threshold</em> client will compress records larger than this value for transport (default: 0)</li>
+<li><em>tender_interval</em> polling interval in milliseconds for cluster tender (default: 1000)</li>
+<li><em>cluster_name</em> if specified, only server nodes matching this name will be used when determining the cluster</li>
+<li><em>rack_aware</em> Boolean: Track server rack data.  This field is useful when directing read commands to
 the server node that contains the key and exists on the same rack as the client.
 This serves to lower cloud provider costs when nodes are distributed across different
 racks/data centers.
 POLICY_REPLICA_PREFER_RACK must be set as the replica policy for reads and <em>rack_id</em> must be set toenable this functionality.
-(Default: false)
-<em>rack_id</em> Integer. Rack where this client instance resides.</p></td>
+(Default: false)</li>
+<li><em>rack_id</em> Integer. Rack where this client instance resides.</li>
+</ul>
+<p><em>rack_aware</em>, POLICY_REPLICA_PREFER_RACK and server rack configuration must also be
+set to enable this functionality.</p>
+<p>Default: 0</p>
+<ul>
+<li>Aerospike::OPT_TLS_CONFIG an array of TLS setup parameters whose keys include</li>
+<li>
+<ul>
+<li>Aerospike::OPT_TLS_ENABLE boolean Whether or not to enable TLS.</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Aerospike::OPT_OPT_TLS_CAFILE</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Aerospike::OPT_TLS_CAPATH</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Aerospike::OPT_TLS_PROTOCOLS</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Aerospike::OPT_TLS_CIPHER_SUITE</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Aerospike::OPT_TLS_CRL_CHECK</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Aerospike::OPT_TLS_CRL_CHECK_ALL</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Aerospike::OPT_TLS_CERT_BLACKLIST</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Aerospike::OPT_TLS_LOG_SESSION_INFO</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Aerospike::OPT_TLS_KEYFILE</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Aerospike::OPT_TLS_CERTFILE</li>
+</ul>
+</li>
+</ul></td>
             </tr>
                     <tr>
                 <td>bool</td>
@@ -3213,25 +3274,27 @@ map, and on opening connections to the nodes.</p></td>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>An optional client config array whose keys include
-Aerospike::OPT_CONNECT_TIMEOUT
-Aerospike::OPT_READ_TIMEOUT
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_EXISTS
-Aerospike::OPT_SERIALIZER
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_POLICY_REPLICA
-Aerospike::OPT_POLICY_READ_MODE_AP
-Aerospike::OPT_POLICY_READ_MODE_SC
-Aerospike::OPT_READ_DEFAULT_POL An array of default policies for read operations.
-Aerospike::OPT_WRITE_DEFAULT_POL An array of default policies for write operations.
-AEROSPIKE::OPT_REMOVE_DEFAULT_POL An array of default policies for remove operations.
-Aerospike::OPT_BATCH_DEFAULT_POL An array of default policies for batch operations.
-Aerospike::OPT_OPERATE_DEFAULT_POL An array of default policies for operate operations.
-Aerospike::OPT_QUERY_DEFAULT_POL An array of default policies for query operations.
-Aerospike::OPT_SCAN_DEFAULT_POL An array of default policies for scan operations.
-Aerospike::OPT_APPLY_DEFAULT_POL An array of default policies for apply operations.</p></td>
+                <td><p>An optional client config array whose keys include</p>
+<ul>
+<li>Aerospike::OPT_CONNECT_TIMEOUT</li>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_EXISTS</li>
+<li>Aerospike::OPT_SERIALIZER</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_POLICY_REPLICA</li>
+<li>Aerospike::OPT_POLICY_READ_MODE_AP</li>
+<li>Aerospike::OPT_POLICY_READ_MODE_SC</li>
+<li>Aerospike::OPT_READ_DEFAULT_POL An array of default policies for read operations.</li>
+<li>Aerospike::OPT_WRITE_DEFAULT_POL An array of default policies for write operations.</li>
+<li>AEROSPIKE::OPT_REMOVE_DEFAULT_POL An array of default policies for remove operations.</li>
+<li>Aerospike::OPT_BATCH_DEFAULT_POL An array of default policies for batch operations.</li>
+<li>Aerospike::OPT_OPERATE_DEFAULT_POL An array of default policies for operate operations.</li>
+<li>Aerospike::OPT_QUERY_DEFAULT_POL An array of default policies for query operations.</li>
+<li>Aerospike::OPT_SCAN_DEFAULT_POL An array of default policies for scan operations.</li>
+<li>Aerospike::OPT_APPLY_DEFAULT_POL An array of default policies for apply operations.</li>
+</ul></td>
             </tr>
             </table>
 
@@ -3343,7 +3406,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -3376,7 +3438,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -3433,7 +3494,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -3485,7 +3545,6 @@ Aerospike::reconnect</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -3546,7 +3605,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -3583,7 +3641,6 @@ value generated by the client will be returned</p></p>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -3634,7 +3691,6 @@ if (!$client-&gt;isConnected()) {
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -3678,7 +3734,6 @@ if (!$client-&gt;isConnected()) {
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -3777,7 +3832,6 @@ Aerospike::getKeyDigest</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -3790,14 +3844,14 @@ looking it up against the cluster's partition map.</p>
 <pre><code class="language-php">$digest = $client-&gt;getKeyDigest("test", "users", 1);
 $key = $client-&gt;initKey("test", "users", $digest, true);
 var_dump($digest, $key);</code></pre>
-<pre><code class="language-bash">string(20) "9!?@%%??;???Wp?'??Ag"
+<pre><code class="language-bash">string(20) "9!?@%??;???Wp?'??Ag"
 array(3) {
   ["ns"]=&gt;
   string(4) "test"
   ["set"]=&gt;
   string(5) "users"
   ["digest"]=&gt;
-  string(20) "9!?@%%??;???Wp?'??Ag"
+  string(20) "9!?@%??;???Wp?'??Ag"
 }</code></pre></p>        
         </div>
         <div class="tags">
@@ -3858,7 +3912,6 @@ Aerospike::initKey</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -3967,18 +4020,20 @@ The binary-string that was given to put() without a wrapper: trunc</code></pre><
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of write policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_SERIALIZER
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_EXISTS
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::COMPRESSION_THRESHOLD
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of write policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_SERIALIZER</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_EXISTS</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::COMPRESSION_THRESHOLD</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -4098,7 +4153,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -4196,15 +4250,15 @@ if ($status == Aerospike::OK) {
                 <td>$record</td>
                 <td><p>a reference to a variable which will contain the retrieved record of <code>['key', metadata', 'bins]</code> with the structure:</p>
 <pre><code>Array:
-key =&gt; Array
-ns =&gt; namespace
-set =&gt; set name
-key =&gt; primary-key, present if written with POLICY_KEY_SEND
-digest =&gt; the record's RIPEMD-160 digest, always present
-metadata =&gt; Array
-ttl =&gt; time in seconds until the record expires
-generation =&gt; the number of times the record has been written
-bins =&gt; Array of bin-name =&gt; bin-value pairs</code></pre></td>
+  key =&gt; Array
+    ns =&gt; namespace
+    set =&gt; set name
+    key =&gt; primary-key, present if written with POLICY_KEY_SEND
+    digest =&gt; the record's RIPEMD-160 digest, always present
+  metadata =&gt; Array
+    ttl =&gt; time in seconds until the record expires
+    generation =&gt; the number of times the record has been written
+  bins =&gt; Array of bin-name =&gt; bin-value pairs</code></pre></td>
             </tr>
                     <tr>
                 <td>array|null</td>
@@ -4214,17 +4268,19 @@ bins =&gt; Array of bin-name =&gt; bin-value pairs</code></pre></td>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of read policy options, whose keys include
-Aerospike::OPT_READ_TIMEOUT
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_DESERIALIZE
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT
-Aerospike::OPT_POLICY_REPLICA
-Aerospike::OPT_POLICY_READ_MODE_AP
-Aerospike::OPT_POLICY_READ_MODE_SC</p></td>
+                <td><p>an optional array of read policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_DESERIALIZE</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+<li>Aerospike::OPT_POLICY_REPLICA</li>
+<li>Aerospike::OPT_POLICY_READ_MODE_AP</li>
+<li>Aerospike::OPT_POLICY_READ_MODE_SC</li>
+</ul></td>
             </tr>
             </table>
 
@@ -4338,7 +4394,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -4378,17 +4433,19 @@ if ($status == Aerospike::OK) {
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of read policy options, whose keys include
-Aerospike::OPT_READ_TIMEOUT
-Aerospike::OPT_DESERIALIZE
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_REPLICA
-Aerospike::OPT_POLICY_READ_MODE_AP
-Aerospike::OPT_POLICY_READ_MODE_SC</p></td>
+                <td><p>an optional array of read policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+<li>Aerospike::OPT_DESERIALIZE</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_REPLICA</li>
+<li>Aerospike::OPT_POLICY_READ_MODE_AP</li>
+<li>Aerospike::OPT_POLICY_READ_MODE_SC</li>
+</ul></td>
             </tr>
             </table>
 
@@ -4502,7 +4559,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -4537,16 +4593,18 @@ if ($status == Aerospike::OK) {
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of write policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_DESERIALIZE
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of write policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_DESERIALIZE</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -4640,7 +4698,6 @@ Aerospike::OPT_SOCKET_TIMEOUT</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -4668,15 +4725,17 @@ if ($status == Aerospike::OK) {
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of write policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_POLICY_DURABLE_DELETE
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of write policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_POLICY_DURABLE_DELETE</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -4764,7 +4823,6 @@ Aerospike::OPT_SOCKET_TIMEOUT</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -4797,16 +4855,18 @@ if ($status == Aerospike::OK) {
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of write policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::COMPRESSION_THRESHOLD
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of write policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::COMPRESSION_THRESHOLD</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -4900,7 +4960,6 @@ Aerospike::OPT_SOCKET_TIMEOUT</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -4952,8 +5011,10 @@ regardless of update time. The value must not be in the future.</p></td>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of write policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT</p></td>
+                <td><p>an optional array of write policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -4982,7 +5043,6 @@ Aerospike::OPT_WRITE_TIMEOUT</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -5019,16 +5079,18 @@ if ($status == Aerospike::OK) {
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of write policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_TTL
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of write policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_TTL</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -5128,7 +5190,6 @@ Aerospike::OPT_SOCKET_TIMEOUT</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -5164,17 +5225,19 @@ if ($status == Aerospike::OK) {
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of write policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_TTL
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_DESERIALIZE
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of write policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_TTL</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_DESERIALIZE</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -5274,7 +5337,6 @@ Aerospike::OPT_SOCKET_TIMEOUT</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -5310,17 +5372,19 @@ if ($status == Aerospike::OK) {
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of write policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_TTL
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_DESERIALIZE
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of write policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_TTL</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_DESERIALIZE</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -5420,7 +5484,6 @@ Aerospike::OPT_SOCKET_TIMEOUT</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -5478,11 +5541,297 @@ if ($status == Aerospike::OK) {
                 <td>array</td>
                 <td>$operations</td>
                 <td><p>The array of of one or more per-bin operations conforming to the following structure:</p>
-<pre><code>
-Write Operation:
-op =&gt; Aerospike::OPERATOR_WRITE
-bin =&gt; bin name (cannot be longer than 14 characters)
-val =&gt; the value to store in the bin</code></pre></td>
+<pre><code>Write Operation:
+  op =&gt; Aerospike::OPERATOR_WRITE
+  bin =&gt; bin name (cannot be longer than 14 characters)
+  val =&gt; the value to store in the bin
+
+Increment Operation:
+  op =&gt; Aerospike::OPERATOR_INCR
+  bin =&gt; bin name
+  val =&gt; the integer by which to increment the value in the bin
+
+Prepend Operation:
+  op =&gt; Aerospike::OPERATOR_PREPEND
+  bin =&gt; bin name
+  val =&gt; the string to prepend the string value in the bin
+
+Append Operation:
+  op =&gt; Aerospike::OPERATOR_APPEND
+  bin =&gt; bin name
+  val =&gt; the string to append the string value in the bin
+
+Read Operation:
+  op =&gt; Aerospike::OPERATOR_READ
+  bin =&gt; name of the bin we want to read after any write operations
+
+Touch Operation: reset the time-to-live of the record and increment its generation
+                 (only combines with read operations)
+  op =&gt; Aerospike::OPERATOR_TOUCH
+  ttl =&gt; a positive integer value to set as time-to-live for the record
+
+Delete Operation:
+  op =&gt; Aerospike::OPERATOR_DELETE
+
+List Append Operation:
+  op =&gt; Aerospike::OP_LIST_APPEND,
+  bin =&gt;  "events",
+  val =&gt;  1234
+
+List Merge Operation:
+  op =&gt; Aerospike::OP_LIST_MERGE,
+  bin =&gt;  "events",
+  val =&gt;  [ 123, 456 ]
+
+List Insert Operation:
+  op =&gt; Aerospike::OP_LIST_INSERT,
+  bin =&gt;  "events",
+  index =&gt;  2,
+  val =&gt;  1234
+
+List Insert Items Operation:
+  op =&gt; Aerospike::OP_LIST_INSERT_ITEMS,
+  bin =&gt;  "events",
+  index =&gt;  2,
+  val =&gt;  [ 123, 456 ]
+
+List Pop Operation:
+  op =&gt; Aerospike::OP_LIST_POP, # returns a value
+  bin =&gt;  "events",
+  index =&gt;  2
+
+List Pop Range Operation:
+  op =&gt; Aerospike::OP_LIST_POP_RANGE, # returns a value
+  bin =&gt;  "events",
+  index =&gt;  2,
+  val =&gt;  3 # remove 3 elements starting at index 2
+
+List Remove Operation:
+  op =&gt; Aerospike::OP_LIST_REMOVE,
+  bin =&gt;  "events",
+  index =&gt;  2
+
+List Remove Range Operation:
+  op =&gt; Aerospike::OP_LIST_REMOVE_RANGE,
+  bin =&gt;  "events",
+  index =&gt;  2,
+  val =&gt;  3 # remove 3 elements starting at index 2
+
+List Clear Operation:
+  op =&gt; Aerospike::OP_LIST_CLEAR,
+  bin =&gt;  "events"
+
+List Set Operation:
+  op =&gt; Aerospike::OP_LIST_SET,
+  bin =&gt;  "events",
+  index =&gt;  2,
+  val =&gt;  "latest event at index 2" # set this value at index 2
+
+List Get Operation:
+  op =&gt; Aerospike::OP_LIST_GET, # returns a value
+  bin =&gt;  "events",
+  index =&gt;  2 # similar to Aerospike::OPERATOR_READ but only returns the value
+                at index 2 of the list, not the whole bin
+
+List Get Range Operation:
+  op =&gt; Aerospike::OP_LIST_GET_RANGE, # returns a value
+  bin =&gt;  "events",
+  index =&gt;  2,
+  val =&gt;  3 # get 3 elements starting at index 2
+
+List Trim Operation:
+  op =&gt; Aerospike::OP_LIST_TRIM,
+  bin =&gt;  "events",
+  index =&gt;  2,
+  val =&gt;  3 # remove all elements not in the range between index 2 and index 2 + 3
+
+List Size Operation:
+  op =&gt; Aerospike::OP_LIST_SIZE, # returns a value
+  bin =&gt;  "events" # gets the size of a list contained in the bin
+
+Map operations
+
+Map Policies:
+Many of the following operations require a map policy, the policy is an array
+containing any of the keys AEROSPIKE::OPT_MAP_ORDER, AEROSPIKE::OPT_MAP_WRITE_MODE
+
+the value for AEROSPIKE::OPT_MAP_ORDER should be one of AEROSPIKE::AS_MAP_UNORDERED , AEROSPIKE::AS_MAP_KEY_ORDERED , AEROSPIKE::AS_MAP_KEY_VALUE_ORDERED
+the default value is currently AEROSPIKE::AS_MAP_UNORDERED
+
+the value for AEROSPIKE::OPT_MAP_WRITE_MODE should be one of: AEROSPIKE::AS_MAP_UPDATE, AEROSPIKE::AS_MAP_UPDATE_ONLY , AEROSPIKE::AS_MAP_CREATE_ONLY
+the default value is currently AEROSPIKE::AS_MAP_UPDATE
+
+the value for AEROSPIKE::OPT_MAP_WRITE_FLAGS should be one of: AEROSPIKE::AS_MAP_WRITE_DEFAULT, AEROSPIKE::AS_MAP_WRITE_CREATE_ONLY, AEROSPIKE::AS_MAP_WRITE_UPDATE_ONLY, AEROSPIKE::AS_MAP_WRITE_NO_FAIL, AEROSPIKE::AS_MAP_WRITE_PARTIAL
+the default value is currently AEROSPIKE::AS_MAP_WRITE_DEFAULT
+
+Map return types:
+many of the map operations require a return_type entry.
+this specifies the format in which the response should be returned. The options are:
+AEROSPIKE::AS_MAP_RETURN_NONE # Do not return a result.
+AEROSPIKE::AS_MAP_RETURN_INDEX # Return key index order.
+AEROSPIKE::AS_MAP_RETURN_REVERSE_INDEX # Return reverse key order.
+AEROSPIKE::AS_MAP_RETURN_RANK # Return value order.
+AEROSPIKE::AS_MAP_RETURN_REVERSE_RANK # Return reserve value order.
+AEROSPIKE::AS_MAP_RETURN_COUNT # Return count of items selected.
+AEROSPIKE::AS_MAP_RETURN_KEY # Return key for single key read and key list for range read.
+AEROSPIKE::AS_MAP_RETURN_VALUE # Return value for single key read and value list for range read.
+AEROSPIKE::AS_MAP_RETURN_KEY_VALUE # Return key/value items. Will be of the form ['key1', 'val1', 'key2', 'val2', 'key3', 'val3]
+
+Map policy Operation:
+  op =&gt; Aerospike::OP_MAP_SET_POLICY,
+  bin =&gt;  "map",
+  map_policy =&gt;  [ AEROSPIKE::OPT_MAP_ORDER =&gt; AEROSPIKE::AS_MAP_KEY_ORDERED]
+
+Map clear operation: (Remove all items from a map)
+  op =&gt; AEROSPIKE::OP_MAP_CLEAR,
+  bin =&gt; "bin_name"
+
+Map Size Operation: Return the number of items in a map
+  op =&gt; AEROSPIKE::OP_MAP_SIZE,
+  bin =&gt; "bin_name"
+
+Map Get by Key operation
+  op =&gt; AEROSPIKE::OP_MAP_GET_BY_KEY ,
+  bin =&gt; "bin_name",
+  key =&gt; "my_key",
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Get By Key Range operation:
+  op =&gt; AEROSPIKE::OP_MAP_GET_BY_KEY_RANGE ,
+  bin =&gt; "bin_name",
+  key =&gt; "aaa",
+  range_end =&gt; "bbb"
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Get By Value operation:
+  op =&gt; AEROSPIKE::OP_MAP_GET_BY_VALUE ,
+  bin =&gt; "bin_name",
+  value =&gt; "my_val"
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Get by Value Range operation:
+  op =&gt; AEROSPIKE::OP_MAP_GET_BY_VALUE_RANGE ,
+  bin =&gt; "bin_name",
+  value =&gt; "value_a",
+  range_end =&gt; "value_z",
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Get By Index operation
+  op =&gt; AEROSPIKE::OP_MAP_GET_BY_INDEX ,
+  bin =&gt; "bin_name",
+  index =&gt; 2,
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Get by Index Range operation
+  op =&gt; AEROSPIKE::OP_MAP_GET_BY_INDEX_RANGE,
+  bin =&gt; "bin_name",
+  index =&gt; 2,
+  count =&gt; 2,
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Get By Rank operation
+  op =&gt; AEROSPIKE::OP_MAP_GET_BY_RANK ,
+  bin =&gt; "bin_name",
+  rank =&gt; -1, # get the item with the largest value
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Get by Rank Range operation
+  op =&gt; AEROSPIKE::OP_MAP_GET_BY_RANK_RANGE ,
+  rank =&gt; -2 ,
+  count =&gt; 2 ,
+  bin =&gt; "bin_name",
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Put operation
+  op =&gt; AEROSPIKE::OP_MAP_PUT ,
+  bin =&gt; "bin_name",
+  key =&gt; "aero",
+  val =&gt; "spike",
+  map_policy =&gt; [ AEROSPIKE::OPT_MAP_ORDER =&gt; AEROSPIKE::AS_MAP_KEY_ORDERED]
+
+Map Put Items operations
+ op =&gt; AEROSPIKE::OP_MAP_PUT_ITEMS ,
+ bin =&gt; "bin_name",
+ val =&gt; [1, "a", 1.5],
+ map_policy =&gt; [ AEROSPIKE::OPT_MAP_ORDER =&gt; AEROSPIKE::AS_MAP_KEY_ORDERED]
+
+Map Increment operation
+  op =&gt; AEROSPIKE::OP_MAP_INCREMENT ,
+  bin =&gt; "bin_name",
+  val =&gt; 5, #increment the value by 5
+  key =&gt; "key_to_increment",
+  map_policy =&gt; [ AEROSPIKE::OPT_MAP_ORDER =&gt; AEROSPIKE::AS_MAP_KEY_ORDERED]
+
+Map Decrement operation
+  op =&gt; AEROSPIKE::OP_MAP_DECREMENT ,
+  bin =&gt; "bin_name",
+  key =&gt; "key_to_decrement",
+  val =&gt; 5, #decrement by 5
+  map_policy =&gt; [ AEROSPIKE::OPT_MAP_ORDER =&gt; AEROSPIKE::AS_MAP_KEY_ORDERED]
+
+Map Remove by Key operation
+  op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_KEY ,
+  bin =&gt; "bin_name",
+  key =&gt; "key_to_remove",
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Remove by Key list operation
+  op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_KEY_LIST ,
+  bin =&gt; "bin_name",
+  key =&gt; ["key1", 2, "key3"],
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map remove by Key Range operation
+  op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_KEY_RANGE ,
+  bin =&gt; "bin",
+  key =&gt; "a",
+  range_end =&gt; "d",
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map remove by Value operation
+  op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_VALUE ,
+  bin =&gt; "bin_name",
+  val =&gt; 5,
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map remove by value range operation
+  op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_VALUE_RANGE ,
+  bin =&gt; "bin_name",
+  val =&gt; "a",
+  range_end =&gt; "d"
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map remove by value list operation
+ op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_VALUE_LIST ,
+ bin =&gt; "bin_name",
+ val =&gt; [1, 2, 3, 4],
+ return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Remove by Index operation
+  op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_INDEX ,
+  index =&gt; 2,
+  bin =&gt; "bin_name",
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Remove By Index Range operation
+  op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_INDEX_RANGE ,
+  bin =&gt; "bin_name",
+  index =&gt; 3 ,
+  count =&gt; 3 ,
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Remove by Rank operation
+  op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_RANK ,
+  rank =&gt; -1 ,
+  bin =&gt; "bin_name",
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map remove by rank range
+  op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_RANK_RANGE,
+  bin =&gt; "bin_name",
+  rank =&gt; -1,
+  count =&gt; return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+</code></pre></td>
             </tr>
                     <tr>
                 <td>array</td>
@@ -5492,21 +5841,23 @@ val =&gt; the value to store in the bin</code></pre></td>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_TTL
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_POLICY_REPLICA
-Aerospike::OPT_POLICY_READ_MODE_AP
-Aerospike::OPT_POLICY_READ_MODE_SC
-Aerospike::OPT_POLICY_DURABLE_DELETE
-Aerospike::OPT_DESERIALIZE
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_TTL</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_POLICY_REPLICA</li>
+<li>Aerospike::OPT_POLICY_READ_MODE_AP</li>
+<li>Aerospike::OPT_POLICY_READ_MODE_SC</li>
+<li>Aerospike::OPT_POLICY_DURABLE_DELETE</li>
+<li>Aerospike::OPT_DESERIALIZE</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -5650,7 +6001,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -5696,11 +6046,297 @@ if ($status == Aerospike::OK) {
                 <td>array</td>
                 <td>$operations</td>
                 <td><p>The array of of one or more per-bin operations conforming to the following structure:</p>
-<pre><code>
-Write Operation:
-op =&gt; Aerospike::OPERATOR_WRITE
-bin =&gt; bin name (cannot be longer than 14 characters)
-val =&gt; the value to store in the bin</code></pre></td>
+<pre><code>Write Operation:
+  op =&gt; Aerospike::OPERATOR_WRITE
+  bin =&gt; bin name (cannot be longer than 14 characters)
+  val =&gt; the value to store in the bin
+
+Increment Operation:
+  op =&gt; Aerospike::OPERATOR_INCR
+  bin =&gt; bin name
+  val =&gt; the integer by which to increment the value in the bin
+
+Prepend Operation:
+  op =&gt; Aerospike::OPERATOR_PREPEND
+  bin =&gt; bin name
+  val =&gt; the string to prepend the string value in the bin
+
+Append Operation:
+  op =&gt; Aerospike::OPERATOR_APPEND
+  bin =&gt; bin name
+  val =&gt; the string to append the string value in the bin
+
+Read Operation:
+  op =&gt; Aerospike::OPERATOR_READ
+  bin =&gt; name of the bin we want to read after any write operations
+
+Touch Operation: reset the time-to-live of the record and increment its generation
+                 (only combines with read operations)
+  op =&gt; Aerospike::OPERATOR_TOUCH
+  ttl =&gt; a positive integer value to set as time-to-live for the record
+
+Delete Operation:
+  op =&gt; Aerospike::OPERATOR_DELETE
+
+List Append Operation:
+  op =&gt; Aerospike::OP_LIST_APPEND,
+  bin =&gt;  "events",
+  val =&gt;  1234
+
+List Merge Operation:
+  op =&gt; Aerospike::OP_LIST_MERGE,
+  bin =&gt;  "events",
+  val =&gt;  [ 123, 456 ]
+
+List Insert Operation:
+  op =&gt; Aerospike::OP_LIST_INSERT,
+  bin =&gt;  "events",
+  index =&gt;  2,
+  val =&gt;  1234
+
+List Insert Items Operation:
+  op =&gt; Aerospike::OP_LIST_INSERT_ITEMS,
+  bin =&gt;  "events",
+  index =&gt;  2,
+  val =&gt;  [ 123, 456 ]
+
+List Pop Operation:
+  op =&gt; Aerospike::OP_LIST_POP, # returns a value
+  bin =&gt;  "events",
+  index =&gt;  2
+
+List Pop Range Operation:
+  op =&gt; Aerospike::OP_LIST_POP_RANGE, # returns a value
+  bin =&gt;  "events",
+  index =&gt;  2,
+  val =&gt;  3 # remove 3 elements starting at index 2
+
+List Remove Operation:
+  op =&gt; Aerospike::OP_LIST_REMOVE,
+  bin =&gt;  "events",
+  index =&gt;  2
+
+List Remove Range Operation:
+  op =&gt; Aerospike::OP_LIST_REMOVE_RANGE,
+  bin =&gt;  "events",
+  index =&gt;  2,
+  val =&gt;  3 # remove 3 elements starting at index 2
+
+List Clear Operation:
+  op =&gt; Aerospike::OP_LIST_CLEAR,
+  bin =&gt;  "events"
+
+List Set Operation:
+  op =&gt; Aerospike::OP_LIST_SET,
+  bin =&gt;  "events",
+  index =&gt;  2,
+  val =&gt;  "latest event at index 2" # set this value at index 2
+
+List Get Operation:
+  op =&gt; Aerospike::OP_LIST_GET, # returns a value
+  bin =&gt;  "events",
+  index =&gt;  2 # similar to Aerospike::OPERATOR_READ but only returns the value
+                at index 2 of the list, not the whole bin
+
+List Get Range Operation:
+  op =&gt; Aerospike::OP_LIST_GET_RANGE, # returns a value
+  bin =&gt;  "events",
+  index =&gt;  2,
+  val =&gt;  3 # get 3 elements starting at index 2
+
+List Trim Operation:
+  op =&gt; Aerospike::OP_LIST_TRIM,
+  bin =&gt;  "events",
+  index =&gt;  2,
+  val =&gt;  3 # remove all elements not in the range between index 2 and index 2 + 3
+
+List Size Operation:
+  op =&gt; Aerospike::OP_LIST_SIZE, # returns a value
+  bin =&gt;  "events" # gets the size of a list contained in the bin
+
+Map operations
+
+Map Policies:
+Many of the following operations require a map policy, the policy is an array
+containing any of the keys AEROSPIKE::OPT_MAP_ORDER, AEROSPIKE::OPT_MAP_WRITE_MODE
+
+the value for AEROSPIKE::OPT_MAP_ORDER should be one of AEROSPIKE::AS_MAP_UNORDERED , AEROSPIKE::AS_MAP_KEY_ORDERED , AEROSPIKE::AS_MAP_KEY_VALUE_ORDERED
+the default value is currently AEROSPIKE::AS_MAP_UNORDERED
+
+the value for AEROSPIKE::OPT_MAP_WRITE_MODE should be one of: AEROSPIKE::AS_MAP_UPDATE, AEROSPIKE::AS_MAP_UPDATE_ONLY , AEROSPIKE::AS_MAP_CREATE_ONLY
+the default value is currently AEROSPIKE::AS_MAP_UPDATE
+
+the value for AEROSPIKE::OPT_MAP_WRITE_FLAGS should be one of: AEROSPIKE::AS_MAP_WRITE_DEFAULT, AEROSPIKE::AS_MAP_WRITE_CREATE_ONLY, AEROSPIKE::AS_MAP_WRITE_UPDATE_ONLY, AEROSPIKE::AS_MAP_WRITE_NO_FAIL, AEROSPIKE::AS_MAP_WRITE_PARTIAL
+the default value is currently AEROSPIKE::AS_MAP_WRITE_DEFAULT
+
+Map return types:
+many of the map operations require a return_type entry.
+this specifies the format in which the response should be returned. The options are:
+AEROSPIKE::AS_MAP_RETURN_NONE # Do not return a result.
+AEROSPIKE::AS_MAP_RETURN_INDEX # Return key index order.
+AEROSPIKE::AS_MAP_RETURN_REVERSE_INDEX # Return reverse key order.
+AEROSPIKE::AS_MAP_RETURN_RANK # Return value order.
+AEROSPIKE::AS_MAP_RETURN_REVERSE_RANK # Return reserve value order.
+AEROSPIKE::AS_MAP_RETURN_COUNT # Return count of items selected.
+AEROSPIKE::AS_MAP_RETURN_KEY # Return key for single key read and key list for range read.
+AEROSPIKE::AS_MAP_RETURN_VALUE # Return value for single key read and value list for range read.
+AEROSPIKE::AS_MAP_RETURN_KEY_VALUE # Return key/value items. Will be of the form ['key1', 'val1', 'key2', 'val2', 'key3', 'val3]
+
+Map policy Operation:
+  op =&gt; Aerospike::OP_MAP_SET_POLICY,
+  bin =&gt;  "map",
+  map_policy =&gt;  [ AEROSPIKE::OPT_MAP_ORDER =&gt; AEROSPIKE::AS_MAP_KEY_ORDERED]
+
+Map clear operation: (Remove all items from a map)
+  op =&gt; AEROSPIKE::OP_MAP_CLEAR,
+  bin =&gt; "bin_name"
+
+Map Size Operation: Return the number of items in a map
+  op =&gt; AEROSPIKE::OP_MAP_SIZE,
+  bin =&gt; "bin_name"
+
+Map Get by Key operation
+  op =&gt; AEROSPIKE::OP_MAP_GET_BY_KEY ,
+  bin =&gt; "bin_name",
+  key =&gt; "my_key",
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Get By Key Range operation:
+  op =&gt; AEROSPIKE::OP_MAP_GET_BY_KEY_RANGE ,
+  bin =&gt; "bin_name",
+  key =&gt; "aaa",
+  range_end =&gt; "bbb"
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Get By Value operation:
+  op =&gt; AEROSPIKE::OP_MAP_GET_BY_VALUE ,
+  bin =&gt; "bin_name",
+  value =&gt; "my_val"
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Get by Value Range operation:
+  op =&gt; AEROSPIKE::OP_MAP_GET_BY_VALUE_RANGE ,
+  bin =&gt; "bin_name",
+  value =&gt; "value_a",
+  range_end =&gt; "value_z",
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Get By Index operation
+  op =&gt; AEROSPIKE::OP_MAP_GET_BY_INDEX ,
+  bin =&gt; "bin_name",
+  index =&gt; 2,
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Get by Index Range operation
+  op =&gt; AEROSPIKE::OP_MAP_GET_BY_INDEX_RANGE,
+  bin =&gt; "bin_name",
+  index =&gt; 2,
+  count =&gt; 2,
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Get By Rank operation
+  op =&gt; AEROSPIKE::OP_MAP_GET_BY_RANK ,
+  bin =&gt; "bin_name",
+  rank =&gt; -1, # get the item with the largest value
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Get by Rank Range operation
+  op =&gt; AEROSPIKE::OP_MAP_GET_BY_RANK_RANGE ,
+  rank =&gt; -2 ,
+  count =&gt; 2 ,
+  bin =&gt; "bin_name",
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Put operation
+  op =&gt; AEROSPIKE::OP_MAP_PUT ,
+  bin =&gt; "bin_name",
+  key =&gt; "aero",
+  val =&gt; "spike",
+  map_policy =&gt; [ AEROSPIKE::OPT_MAP_ORDER =&gt; AEROSPIKE::AS_MAP_KEY_ORDERED]
+
+Map Put Items operations
+ op =&gt; AEROSPIKE::OP_MAP_PUT_ITEMS ,
+ bin =&gt; "bin_name",
+ val =&gt; [1, "a", 1.5],
+ map_policy =&gt; [ AEROSPIKE::OPT_MAP_ORDER =&gt; AEROSPIKE::AS_MAP_KEY_ORDERED]
+
+Map Increment operation
+  op =&gt; AEROSPIKE::OP_MAP_INCREMENT ,
+  bin =&gt; "bin_name",
+  val =&gt; 5, #increment the value by 5
+  key =&gt; "key_to_increment",
+  map_policy =&gt; [ AEROSPIKE::OPT_MAP_ORDER =&gt; AEROSPIKE::AS_MAP_KEY_ORDERED]
+
+Map Decrement operation
+  op =&gt; AEROSPIKE::OP_MAP_DECREMENT ,
+  bin =&gt; "bin_name",
+  key =&gt; "key_to_decrement",
+  val =&gt; 5, #decrement by 5
+  map_policy =&gt; [ AEROSPIKE::OPT_MAP_ORDER =&gt; AEROSPIKE::AS_MAP_KEY_ORDERED]
+
+Map Remove by Key operation
+  op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_KEY ,
+  bin =&gt; "bin_name",
+  key =&gt; "key_to_remove",
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Remove by Key list operation
+  op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_KEY_LIST ,
+  bin =&gt; "bin_name",
+  key =&gt; ["key1", 2, "key3"],
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map remove by Key Range operation
+  op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_KEY_RANGE ,
+  bin =&gt; "bin",
+  key =&gt; "a",
+  range_end =&gt; "d",
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map remove by Value operation
+  op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_VALUE ,
+  bin =&gt; "bin_name",
+  val =&gt; 5,
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map remove by value range operation
+  op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_VALUE_RANGE ,
+  bin =&gt; "bin_name",
+  val =&gt; "a",
+  range_end =&gt; "d"
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map remove by value list operation
+ op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_VALUE_LIST ,
+ bin =&gt; "bin_name",
+ val =&gt; [1, 2, 3, 4],
+ return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Remove by Index operation
+  op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_INDEX ,
+  index =&gt; 2,
+  bin =&gt; "bin_name",
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Remove By Index Range operation
+  op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_INDEX_RANGE ,
+  bin =&gt; "bin_name",
+  index =&gt; 3 ,
+  count =&gt; 3 ,
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map Remove by Rank operation
+  op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_RANK ,
+  rank =&gt; -1 ,
+  bin =&gt; "bin_name",
+  return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+
+Map remove by rank range
+  op =&gt; AEROSPIKE::OP_MAP_REMOVE_BY_RANK_RANGE,
+  bin =&gt; "bin_name",
+  rank =&gt; -1,
+  count =&gt; return_type =&gt; AEROSPIKE::MAP_RETURN_KEY_VALUE
+</code></pre></td>
             </tr>
                     <tr>
                 <td>array</td>
@@ -5710,21 +6346,23 @@ val =&gt; the value to store in the bin</code></pre></td>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_TTL
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_POLICY_REPLICA
-Aerospike::OPT_POLICY_READ_MODE_AP
-Aerospike::OPT_POLICY_READ_MODE_SC
-Aerospike::OPT_POLICY_DURABLE_DELETE
-Aerospike::OPT_DESERIALIZE
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_TTL</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_POLICY_REPLICA</li>
+<li>Aerospike::OPT_POLICY_READ_MODE_AP</li>
+<li>Aerospike::OPT_POLICY_READ_MODE_SC</li>
+<li>Aerospike::OPT_POLICY_DURABLE_DELETE</li>
+<li>Aerospike::OPT_DESERIALIZE</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -5868,7 +6506,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -5897,16 +6534,18 @@ Aerospike::errorno</a>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_READ_TIMEOUT
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_REPLICA
-Aerospike::OPT_POLICY_READ_MODE_AP
-Aerospike::OPT_POLICY_READ_MODE_SC
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_REPLICA</li>
+<li>Aerospike::OPT_POLICY_READ_MODE_AP</li>
+<li>Aerospike::OPT_POLICY_READ_MODE_SC</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -6014,7 +6653,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -6043,16 +6681,18 @@ Aerospike::errorno</a>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_TTL
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_TTL</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -6160,7 +6800,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -6189,16 +6828,18 @@ Aerospike::errorno</a>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_TTL
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_TTL</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -6306,7 +6947,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -6340,16 +6980,18 @@ Aerospike::errorno</a>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_TTL
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_TTL</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -6457,7 +7099,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -6491,16 +7132,18 @@ Aerospike::errorno</a>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_TTL
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_TTL</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -6608,7 +7251,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -6643,17 +7285,19 @@ Index -1 is the last item in the list, -3 is the third from last, 0 is the first
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_TTL
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_POLICY_DURABLE_DELETE
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_TTL</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_POLICY_DURABLE_DELETE</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -6767,7 +7411,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -6807,17 +7450,19 @@ Index -1 is the last item in the list, -3 is the third from last, 0 is the first
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_TTL
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_POLICY_DURABLE_DELETE
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_TTL</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_POLICY_DURABLE_DELETE</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -6931,7 +7576,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -6960,17 +7604,19 @@ Aerospike::errorno</a>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_TTL
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_POLICY_DURABLE_DELETE
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_TTL</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_POLICY_DURABLE_DELETE</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -7084,7 +7730,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -7118,17 +7763,19 @@ Aerospike::errorno</a>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_TTL
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_POLICY_DURABLE_DELETE
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_TTL</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_POLICY_DURABLE_DELETE</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -7236,7 +7883,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -7270,17 +7916,19 @@ Aerospike::errorno</a>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_TTL
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_POLICY_DURABLE_DELETE
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_TTL</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_POLICY_DURABLE_DELETE</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -7394,7 +8042,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -7418,17 +8065,19 @@ Aerospike::errorno</a>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_TTL
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_POLICY_DURABLE_DELETE
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_TTL</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_POLICY_DURABLE_DELETE</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -7542,7 +8191,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -7576,16 +8224,18 @@ Aerospike::errorno</a>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_TTL
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_GEN
-Aerospike::OPT_POLICY_COMMIT_LEVEL
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_TTL</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_GEN</li>
+<li>Aerospike::OPT_POLICY_COMMIT_LEVEL</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -7693,7 +8343,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -7727,16 +8376,18 @@ Aerospike::errorno</a>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_READ_TIMEOUT
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_REPLICA
-Aerospike::OPT_POLICY_READ_MODE_AP
-Aerospike::OPT_POLICY_READ_MODE_SC
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_REPLICA</li>
+<li>Aerospike::OPT_POLICY_READ_MODE_AP</li>
+<li>Aerospike::OPT_POLICY_READ_MODE_SC</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -7844,7 +8495,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -7883,16 +8533,18 @@ Aerospike::errorno</a>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_READ_TIMEOUT
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_POLICY_REPLICA
-Aerospike::OPT_POLICY_READ_MODE_AP
-Aerospike::OPT_POLICY_READ_MODE_SC
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_POLICY_REPLICA</li>
+<li>Aerospike::OPT_POLICY_READ_MODE_AP</li>
+<li>Aerospike::OPT_POLICY_READ_MODE_SC</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -8000,7 +8652,6 @@ Aerospike::errorno</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -8206,16 +8857,18 @@ if ($status == Aerospike::OK) {
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of read policy options, whose keys include
-Aerospike::OPT_READ_TIMEOUT
-Aerospike::USE_BATCH_DIRECT
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT
-Aerospike::OPT_BATCH_CONCURRENT
-Aerospike::OPT_SEND_SET_NAME
-Aerospike::OPT_ALLOW_INLINE</p></td>
+                <td><p>an optional array of read policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+<li>Aerospike::USE_BATCH_DIRECT</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+<li>Aerospike::OPT_BATCH_CONCURRENT</li>
+<li>Aerospike::OPT_SEND_SET_NAME</li>
+<li>Aerospike::OPT_ALLOW_INLINE</li>
+</ul></td>
             </tr>
             </table>
 
@@ -8306,7 +8959,6 @@ Aerospike::get</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -8418,16 +9070,18 @@ if ($status == Aerospike::OK) {
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of read policy options, whose keys include
-Aerospike::OPT_READ_TIMEOUT
-Aerospike::USE_BATCH_DIRECT
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT
-Aerospike::OPT_BATCH_CONCURRENT
-Aerospike::OPT_SEND_SET_NAME
-Aerospike::OPT_ALLOW_INLINE</p></td>
+                <td><p>an optional array of read policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+<li>Aerospike::USE_BATCH_DIRECT</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+<li>Aerospike::OPT_BATCH_CONCURRENT</li>
+<li>Aerospike::OPT_SEND_SET_NAME</li>
+<li>Aerospike::OPT_ALLOW_INLINE</li>
+</ul></td>
             </tr>
             </table>
 
@@ -8518,7 +9172,6 @@ Aerospike::exists</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -8567,14 +9220,16 @@ I think a sample of 20 records is enough</code></pre></p>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_READ_TIMEOUT
-Aerospike::OPT_SOCKET_TIMEOUT maximum socket idle time in milliseconds (0 means do not apply a socket idle timeout)
-Aerospike::OPT_SCAN_PRIORITY
-Aerospike::OPT_SCAN_PERCENTAGE of the records in the set to return
-Aerospike::OPT_SCAN_CONCURRENTLY whether to run the scan in parallel
-Aerospike::OPT_SCAN_NOBINS whether to not retrieve bins for the records
-Aerospike::OPT_SCAN_RPS_LIMIT limit the scan to process OPT_SCAN_RPS_LIMIT per second.</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT maximum socket idle time in milliseconds (0 means do not apply a socket idle timeout)</li>
+<li>Aerospike::OPT_SCAN_PRIORITY</li>
+<li>Aerospike::OPT_SCAN_PERCENTAGE of the records in the set to return</li>
+<li>Aerospike::OPT_SCAN_CONCURRENTLY whether to run the scan in parallel</li>
+<li>Aerospike::OPT_SCAN_NOBINS whether to not retrieve bins for the records</li>
+<li>Aerospike::OPT_SCAN_RPS_LIMIT limit the scan to process OPT_SCAN_RPS_LIMIT per second.</li>
+</ul></td>
             </tr>
             </table>
 
@@ -8603,7 +9258,6 @@ Aerospike::OPT_SCAN_RPS_LIMIT limit the scan to process OPT_SCAN_RPS_LIMIT per s
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -8646,11 +9300,18 @@ I think a sample of 20 records is enough</code></pre></p>
                 <td>$where</td>
                 <td><p>the predicate for the query, usually created by the
 predicate helper methods. The arrays conform to one of the following:</p>
-<pre><code>
-Array:
-bin =&gt; bin name
-op =&gt; one of Aerospike::OP_EQ, Aerospike::OP_BETWEEN, Aerospike::OP_CONTAINS, Aerospike::OP_RANGE, etc
-val =&gt; scalar integer/string for OP_EQ and OP_CONTAINS or [$min, $max] for OP_BETWEEN and OP_RANGE</code></pre></td>
+<pre><code>Array:
+  bin =&gt; bin name
+  op =&gt; one of Aerospike::OP_EQ, Aerospike::OP_BETWEEN, Aerospike::OP_CONTAINS, Aerospike::OP_RANGE, etc
+  val =&gt; scalar integer/string for OP_EQ and OP_CONTAINS or [$min, $max] for OP_BETWEEN and OP_RANGE
+
+or an empty array() for no predicate</code></pre>
+<p>examples</p>
+<pre><code>["bin"=&gt;"name", "op"=&gt;Aerospike::OP_EQ, "val"=&gt;"foo"]
+["bin"=&gt;"age", "op"=&gt;Aerospike::OP_BETWEEN, "val"=&gt;[35,50]]
+["bin"=&gt;"movies", "op"=&gt;Aerospike::OP_CONTAINS, "val"=&gt;"12 Monkeys"]
+["bin"=&gt;"movies", "op"=&gt;Aerospike::OP_RANGE, "val"=&gt;[10,1000]]
+[] // no predicate</code></pre></td>
             </tr>
                     <tr>
                 <td>callable</td>
@@ -8665,13 +9326,15 @@ val =&gt; scalar integer/string for OP_EQ and OP_CONTAINS or [$min, $max] for OP
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_READ_TIMEOUT
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT
-Aerospike::OPT_QUERY_NOBINS</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+<li>Aerospike::OPT_QUERY_NOBINS</li>
+</ul></td>
             </tr>
             </table>
 
@@ -8761,7 +9424,6 @@ Aerospike::predicateGeoWithinRadius</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -8792,9 +9454,9 @@ Aerospike::predicateGeoWithinRadius</a>
             <td>array</td>
             <td><p>expressing the predicate, to be used by query(), queryApply() or aggregate()</p>
 <pre><code>Associative Array:
-bin =&gt; bin name
-op =&gt; Aerospike::OP_EQ
-val =&gt; scalar integer/string value</code></pre></td>
+  bin =&gt; bin name
+  op =&gt; Aerospike::OP_EQ
+  val =&gt; scalar integer/string value</code></pre></td>
         </tr>
     </table>
 
@@ -8839,7 +9501,6 @@ Aerospike::aggregate</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -8875,9 +9536,9 @@ Aerospike::aggregate</a>
             <td>array</td>
             <td><p>expressing the predicate, to be used by query(), queryApply() or aggregate()</p>
 <pre><code>Associative Array:
-bin =&gt; bin name
-op  =&gt; Aerospike::OP_BETWEEN
-val =&gt; [min, max]</code></pre></td>
+  bin =&gt; bin name
+  op  =&gt; Aerospike::OP_BETWEEN
+  val =&gt; [min, max]</code></pre></td>
         </tr>
     </table>
 
@@ -8922,7 +9583,6 @@ Aerospike::aggregate</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -8963,10 +9623,10 @@ given value contained in the values of a map (if the index type was
             <td>array</td>
             <td><p>expressing the predicate, to be used by query(), queryApply() or aggregate()</p>
 <pre><code>Associative Array:
-bin =&gt; bin name
-index_type =&gt; Aerospike::INDEX_TYPE_*
-op =&gt; Aerospike::OP_CONTAINS
-val =&gt; scalar integer/string value</code></pre></td>
+  bin =&gt; bin name
+  index_type =&gt; Aerospike::INDEX_TYPE_*
+  op =&gt; Aerospike::OP_CONTAINS
+  val =&gt; scalar integer/string value</code></pre></td>
         </tr>
     </table>
 
@@ -9011,7 +9671,6 @@ Aerospike::aggregate</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -9057,10 +9716,10 @@ given values contained in the values of a map (if the index type was
             <td>array</td>
             <td><p>expressing the predicate, to be used by query(), queryApply() or aggregate()</p>
 <pre><code>Associative Array:
-bin =&gt; bin name
-index_type =&gt; Aerospike::INDEX_TYPE_*
-op  =&gt; Aerospike::OP_BETWEEN
-val =&gt; [min, max]</code></pre></td>
+  bin =&gt; bin name
+  index_type =&gt; Aerospike::INDEX_TYPE_*
+  op  =&gt; Aerospike::OP_BETWEEN
+  val =&gt; [min, max]</code></pre></td>
         </tr>
     </table>
 
@@ -9105,7 +9764,6 @@ Aerospike::aggregate</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -9136,9 +9794,9 @@ Aerospike::aggregate</a>
             <td>array</td>
             <td><p>expressing the predicate, to be used by query(), queryApply() or aggregate()</p>
 <pre><code>Associative Array:
-bin =&gt; bin name
-op =&gt; Aerospike::OP_GEOCONTAINSPOINT
-val =&gt; GeoJSON string</code></pre></td>
+  bin =&gt; bin name
+  op =&gt; Aerospike::OP_GEOCONTAINSPOINT
+  val =&gt; GeoJSON string</code></pre></td>
         </tr>
     </table>
 
@@ -9183,7 +9841,6 @@ Aerospike::aggregate</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -9219,9 +9876,9 @@ Aerospike::aggregate</a>
             <td>array</td>
             <td><p>expressing the predicate, to be used by query(), queryApply() or aggregate()</p>
 <pre><code>Associative Array:
-bin =&gt; bin name
-op =&gt; Aerospike::OP_GEOCONTAINSPOINT
-val =&gt; GeoJSON string produced from $long and $lat</code></pre></td>
+  bin =&gt; bin name
+  op =&gt; Aerospike::OP_GEOCONTAINSPOINT
+  val =&gt; GeoJSON string produced from $long and $lat</code></pre></td>
         </tr>
     </table>
 
@@ -9266,7 +9923,6 @@ Aerospike::aggregate</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -9297,9 +9953,9 @@ Aerospike::aggregate</a>
             <td>array</td>
             <td><p>expressing the predicate, to be used by query(), queryApply() or aggregate()</p>
 <pre><code>Associative Array:
-bin =&gt; bin name
-op =&gt; Aerospike::OP_GEOWITHINREGION
-val =&gt; GeoJSON string</code></pre></td>
+  bin =&gt; bin name
+  op =&gt; Aerospike::OP_GEOWITHINREGION
+  val =&gt; GeoJSON string</code></pre></td>
         </tr>
     </table>
 
@@ -9344,7 +10000,6 @@ Aerospike::aggregate</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -9385,9 +10040,9 @@ Aerospike::aggregate</a>
             <td>array</td>
             <td><p>expressing the predicate, to be used by query(), queryApply() or aggregate()</p>
 <pre><code>Associative Array:
-bin =&gt; bin name
-op =&gt; Aerospike::OP_GEOWITHINREGION
-val =&gt; GeoJSON string produced from $long, $lat and $radius</code></pre></td>
+  bin =&gt; bin name
+  op =&gt; Aerospike::OP_GEOWITHINREGION
+  val =&gt; GeoJSON string produced from $long, $lat and $radius</code></pre></td>
         </tr>
     </table>
 
@@ -9432,7 +10087,6 @@ Aerospike::aggregate</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -9463,16 +10117,18 @@ do {
                 <td>$info</td>
                 <td><p>The status of the background job filled (by reference) as an array of</p>
 <pre><code>[
-'progress_pct' =&gt; progress percentage for the job
-'records_read' =&gt; number of records read by the job
-'status'       =&gt; one of Aerospike::STATUS_*
+  'progress_pct' =&gt; progress percentage for the job
+  'records_read' =&gt; number of records read by the job
+  'status'       =&gt; one of Aerospike::STATUS_*
 ]</code></pre></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_READ_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -9520,7 +10176,6 @@ Aerospike::queryApply</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -9559,8 +10214,10 @@ if ($status == Aerospike::OK) {
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -9606,7 +10263,6 @@ Aerospike::OPT_WRITE_TIMEOUT</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -9630,8 +10286,10 @@ if ($status == Aerospike::OK) {
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -9677,7 +10335,6 @@ Aerospike::OPT_WRITE_TIMEOUT</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -9727,8 +10384,10 @@ if ($status == Aerospike::OK) {
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_READ_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -9774,7 +10433,6 @@ Aerospike::OPT_READ_TIMEOUT</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -9830,8 +10488,10 @@ end
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_READ_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -9877,7 +10537,6 @@ Aerospike::OPT_READ_TIMEOUT</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -9932,15 +10591,17 @@ if ($status == Aerospike::OK) {
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_POLICY_KEY
-Aerospike::OPT_SERIALIZER
-Aerospike::OPT_POLICY_DURABLE_DELETE
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_POLICY_KEY</li>
+<li>Aerospike::OPT_SERIALIZER</li>
+<li>Aerospike::OPT_POLICY_DURABLE_DELETE</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -10028,7 +10689,6 @@ Aerospike::OPT_SOCKET_TIMEOUT</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -10083,16 +10743,18 @@ if ($status === Aerospike::OK) {
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_POLICY_DURABLE_DELETE
-Aerospike::OPT_READ_TIMEOUT
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT
-Aerospike::OPT_FAIL_ON_CLUSTER_CHANGE
-Aerospike::OPT_SCAN_RPS_LIMIT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_POLICY_DURABLE_DELETE</li>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+<li>Aerospike::OPT_FAIL_ON_CLUSTER_CHANGE</li>
+<li>Aerospike::OPT_SCAN_RPS_LIMIT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -10151,7 +10813,6 @@ Aerospike::jobInfo</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -10190,11 +10851,18 @@ if ($status === Aerospike::OK) {
                 <td>$where</td>
                 <td><p>the predicate for the query, usually created by the
 predicate methods. The arrays conform to one of the following:</p>
-<pre><code>
-Array:
-bin =&gt; bin name
-op =&gt; one of Aerospike::OP_EQ, Aerospike::OP_BETWEEN, Aerospike::OP_CONTAINS, Aerospike::OP_RANGE, etc
-val =&gt; scalar integer/string for OP_EQ and OP_CONTAINS or [$min, $max] for OP_BETWEEN and OP_RANGE</code></pre></td>
+<pre><code>Array:
+  bin =&gt; bin name
+  op =&gt; one of Aerospike::OP_EQ, Aerospike::OP_BETWEEN, Aerospike::OP_CONTAINS, Aerospike::OP_RANGE, etc
+  val =&gt; scalar integer/string for OP_EQ and OP_CONTAINS or [$min, $max] for OP_BETWEEN and OP_RANGE
+
+or an empty array() for no predicate</code></pre>
+<p>examples</p>
+<pre><code>["bin"=&gt;"name", "op"=&gt;Aerospike::OP_EQ, "val"=&gt;"foo"]
+["bin"=&gt;"age", "op"=&gt;Aerospike::OP_BETWEEN, "val"=&gt;[35,50]]
+["bin"=&gt;"movies", "op"=&gt;Aerospike::OP_CONTAINS, "val"=&gt;"12 Monkeys"]
+["bin"=&gt;"movies", "op"=&gt;Aerospike::OP_RANGE, "val"=&gt;[10,1000]]
+[] // no predicate</code></pre></td>
             </tr>
                     <tr>
                 <td>string</td>
@@ -10219,14 +10887,16 @@ val =&gt; scalar integer/string for OP_EQ and OP_CONTAINS or [$min, $max] for OP
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT
-Aerospike::OPT_POLICY_DURABLE_DELETE
-Aerospike::OPT_READ_TIMEOUT
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+<li>Aerospike::OPT_POLICY_DURABLE_DELETE</li>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -10309,7 +10979,6 @@ Aerospike::jobInfo</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -10333,7 +11002,7 @@ Attempting to use it in that environment will fail.</p>
 <p><strong>Example Stream UDF</strong></p>
 <p>Module registered as stream_udf.lua</p>
 <pre><code>local function having_ge_threshold(bin_having, ge_threshold)
-    debug("group_count::thresh_filter: %%s &gt;  %%s ?", tostring(rec[bin_having]), tostring(ge_threshold))
+    debug("group_count::thresh_filter: %s &gt;  %s ?", tostring(rec[bin_having]), tostring(ge_threshold))
     return function(rec)
         if rec[bin_having] &lt; ge_threshold then
             return false
@@ -10410,11 +11079,18 @@ if ($status == Aerospike::OK) {
                 <td>$where</td>
                 <td><p>the predicate for the query, usually created by the
 predicate methods. The arrays conform to one of the following:</p>
-<pre><code>
-Array:
-bin =&gt; bin name
-op =&gt; one of Aerospike::OP_EQ, Aerospike::OP_BETWEEN, Aerospike::OP_CONTAINS, Aerospike::OP_RANGE
-val =&gt; scalar integer/string for OP_EQ and OP_CONTAINS or [$min, $max] for OP_BETWEEN and OP_RANGE</code></pre></td>
+<pre><code>Array:
+  bin =&gt; bin name
+  op =&gt; one of Aerospike::OP_EQ, Aerospike::OP_BETWEEN, Aerospike::OP_CONTAINS, Aerospike::OP_RANGE
+  val =&gt; scalar integer/string for OP_EQ and OP_CONTAINS or [$min, $max] for OP_BETWEEN and OP_RANGE
+
+or an empty array() for no predicate</code></pre>
+<p>examples</p>
+<pre><code>["bin"=&gt;"name", "op"=&gt;Aerospike::OP_EQ, "val"=&gt;"foo"]
+["bin"=&gt;"age", "op"=&gt;Aerospike::OP_BETWEEN, "val"=&gt;[35,50]]
+["bin"=&gt;"movies", "op"=&gt;Aerospike::OP_CONTAINS, "val"=&gt;"12 Monkeys"]
+["bin"=&gt;"movies", "op"=&gt;Aerospike::OP_RANGE, "val"=&gt;[10,1000]]
+[] // no predicate</code></pre></td>
             </tr>
                     <tr>
                 <td>string</td>
@@ -10439,13 +11115,15 @@ val =&gt; scalar integer/string for OP_EQ and OP_CONTAINS or [$min, $max] for OP
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_READ_TIMEOUT
-Aerospike::OPT_READ_TIMEOUT
-Aerospike::OPT_SLEEP_BETWEEN_RETRIES
-Aerospike::OPT_TOTAL_TIMEOUT
-Aerospike::OPT_MAX_RETRIES
-Aerospike::OPT_SOCKET_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+<li>Aerospike::OPT_SLEEP_BETWEEN_RETRIES</li>
+<li>Aerospike::OPT_TOTAL_TIMEOUT</li>
+<li>Aerospike::OPT_MAX_RETRIES</li>
+<li>Aerospike::OPT_SOCKET_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -10547,7 +11225,6 @@ Aerospike::predicateGeoWithinRadius</a>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -10606,8 +11283,10 @@ echo($res);</code></pre></p>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -10653,7 +11332,6 @@ Aerospike::OPT_WRITE_TIMEOUT</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -10684,8 +11362,10 @@ if ($status == Aerospike::OK) {
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_WRITE_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_WRITE_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -10714,7 +11394,6 @@ Aerospike::OPT_WRITE_TIMEOUT</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -10751,8 +11430,10 @@ and manage its connections to them. <code>[ 'addr' =&gt; $addr , 'port' =&gt;  $
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_READ_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -10781,7 +11462,6 @@ Aerospike::OPT_READ_TIMEOUT</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -10819,8 +11499,10 @@ var_dump($response);</code></pre>
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td><p>an optional array of policy options, whose keys include
-Aerospike::OPT_READ_TIMEOUT</p></td>
+                <td><p>an optional array of policy options, whose keys include</p>
+<ul>
+<li>Aerospike::OPT_READ_TIMEOUT</li>
+</ul></td>
             </tr>
             </table>
 
@@ -10832,7 +11514,7 @@ Aerospike::OPT_READ_TIMEOUT</p></td>
             <td>array</td>
             <td><p>results in the format</p>
 <pre><code>Array:
-NODE-ID =&gt; response string</code></pre></td>
+ NODE-ID =&gt; response string</code></pre></td>
         </tr>
     </table>
 
@@ -10851,7 +11533,6 @@ NODE-ID =&gt; response string</code></pre></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -10884,9 +11565,9 @@ var_dump($nodes);</code></pre>
             <td>array</td>
             <td><p>results in the format</p>
 <pre><code>Array:
-Array:
-'addr' =&gt; the IP address of the node
-'port' =&gt; the port of the node</code></pre></td>
+  Array:
+    'addr' =&gt; the IP address of the node
+    'port' =&gt; the port of the node</code></pre></td>
         </tr>
     </table>
 
@@ -10905,7 +11586,6 @@ Array:
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -10919,13 +11599,15 @@ Array:
                     <tr>
                 <td>int</td>
                 <td>$log_level</td>
-                <td><p>one of <code>Aerospike::LOG_LEVEL_*</code> values
-Aerospike::LOG_LEVEL_OFF
-Aerospike::LOG_LEVEL_ERROR
-Aerospike::LOG_LEVEL_WARN
-Aerospike::LOG_LEVEL_INFO
-Aerospike::LOG_LEVEL_DEBUG
-Aerospike::LOG_LEVEL_TRACE</p></td>
+                <td><p>one of <code>Aerospike::LOG_LEVEL_*</code> values</p>
+<ul>
+<li>Aerospike::LOG_LEVEL_OFF</li>
+<li>Aerospike::LOG_LEVEL_ERROR</li>
+<li>Aerospike::LOG_LEVEL_WARN</li>
+<li>Aerospike::LOG_LEVEL_INFO</li>
+<li>Aerospike::LOG_LEVEL_DEBUG</li>
+<li>Aerospike::LOG_LEVEL_TRACE</li>
+</ul></td>
             </tr>
             </table>
 
@@ -10956,7 +11638,6 @@ Aerospike::LOG_LEVEL_TRACE</p></td>
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -11031,7 +11712,6 @@ $client-&gt;setLogHandler(function ($level, $file, $function, $line) {
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
@@ -11081,7 +11761,6 @@ This is a static method and the <em>serialize_cb</em> handler is global across a
         </code>
     </h3>
     <div class="details">    
-            
     
             
 
