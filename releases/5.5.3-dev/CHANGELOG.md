@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
+- Fix crash on `IntersectionType` (intersection types)
+
 ## [5.5.2] - 2023-03-12
 
 - Fixed a JS null pointer error on Doctum.cleanSearchQuery
