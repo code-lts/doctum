@@ -86,7 +86,7 @@
 
     
     <p>        class
-    <strong>MutationState</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php">View source</a>)
+    <strong>MutationState</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php">View source</a>)
 </p>
 
         
@@ -94,7 +94,7 @@
         
 
             <div class="description">
-            <p><p>MutationState is an object which holds and aggregates mutation tokens across operations.</p></p>                    </div>
+            <p><p>Container for mutation tokens.</p></p>                    </div>
             
         
     
@@ -104,23 +104,22 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    static&nbsp;<a href="../Couchbase/MutationState.html"><abbr title="Couchbase\MutationState">MutationState</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>()
+                    <a href="#method_from">from</a>(array|<a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|<a href="../Couchbase/DocumentFragment.html"><abbr title="Couchbase\DocumentFragment">DocumentFragment</abbr></a> $source)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Create container from the given mutation token holders.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../Couchbase/MutationState.html"><abbr title="Couchbase\MutationState">MutationState</abbr></a>
+                    
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_add">add</a>(<a href="../Couchbase/MutationResult.html"><abbr title="Couchbase\MutationResult">MutationResult</abbr></a> $source)
+                    <a href="#method_add">add</a>(array|<a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|<a href="../Couchbase/DocumentFragment.html"><abbr title="Couchbase\DocumentFragment">DocumentFragment</abbr></a> $source)
         
-                                            <p><p>Adds the result of a mutation operation to this mutation state.</p></p>                </div>
+                                            <p><p>Update container with the given mutation token holders.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -130,10 +129,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L2094">at line 2094</a></div>
-        <code>                    
-    <strong>__construct</strong>()
+                    <h3 id="method_from">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1569">at line 1569</a></div>
+        <code>        static            <a href="../Couchbase/MutationState.html"><abbr title="Couchbase\MutationState">MutationState</abbr></a>
+    <strong>from</strong>(array|<a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|<a href="../Couchbase/DocumentFragment.html"><abbr title="Couchbase\DocumentFragment">DocumentFragment</abbr></a> $source)
         </code>
     </h3>
     <div class="details">    
@@ -141,40 +140,16 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_add">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L2102">at line 2102</a></div>
-        <code>                    <a href="../Couchbase/MutationState.html"><abbr title="Couchbase\MutationState">MutationState</abbr></a>
-    <strong>add</strong>(<a href="../Couchbase/MutationResult.html"><abbr title="Couchbase\MutationResult">MutationResult</abbr></a> $source)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Adds the result of a mutation operation to this mutation state.</p></p>                        
+                            <p><p>Create container from the given mutation token holders.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../Couchbase/MutationResult.html"><abbr title="Couchbase\MutationResult">MutationResult</abbr></a></td>
+                <td>array|<a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|<a href="../Couchbase/DocumentFragment.html"><abbr title="Couchbase\DocumentFragment">DocumentFragment</abbr></a></td>
                 <td>$source</td>
-                <td><p>the result object to add to this state</p></td>
+                <td><p>anything that can have attached MutationToken</p></td>
             </tr>
             </table>
 
@@ -190,6 +165,61 @@
 
             
             
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="../Couchbase/MutationToken.html"><abbr title="Couchbase\MutationToken">MutationToken</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_add">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1578">at line 1578</a></div>
+        <code>                    
+    <strong>add</strong>(array|<a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|<a href="../Couchbase/DocumentFragment.html"><abbr title="Couchbase\DocumentFragment">DocumentFragment</abbr></a> $source)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Update container with the given mutation token holders.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|<a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|<a href="../Couchbase/DocumentFragment.html"><abbr title="Couchbase\DocumentFragment">DocumentFragment</abbr></a></td>
+                <td>$source</td>
+                <td><p>anything that can have attached MutationToken</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="../Couchbase/MutationToken.html"><abbr title="Couchbase\MutationToken">MutationToken</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
