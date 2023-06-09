@@ -86,7 +86,7 @@
 
     
     <p>        class
-    <strong>Bucket</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php">View source</a>)
+    <strong>Bucket</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php">View source</a>)
 </p>
 
         
@@ -94,206 +94,43 @@
         
 
             <div class="description">
-            <p><p>Represents connection to the Couchbase Server</p></p>                    </div>
+            <p><p>Bucket is an object containing functionality for performing bucket level operations
+against a cluster and for access to scopes and collections.</p></p>                    </div>
             
         
-            <h2>Constants</h2>    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                                                                                                        PINGSVC_KV
-                                    </td>
-                <td class="last">
-                    <p><em><p>Ping data (Key/Value) service.</p></em></p>
-                    <p></p>
-                </td>
-            </tr>
-                    <tr>
-                <td>
-                                                                                                                        PINGSVC_N1QL
-                                    </td>
-                <td class="last">
-                    <p><em><p>Ping query (N1QL) service.</p></em></p>
-                    <p></p>
-                </td>
-            </tr>
-                    <tr>
-                <td>
-                                                                                                                        PINGSVC_VIEWS
-                                    </td>
-                <td class="last">
-                    <p><em><p>Ping views (Map/Reduce) service.</p></em></p>
-                    <p></p>
-                </td>
-            </tr>
-                    <tr>
-                <td>
-                                                                                                                        PINGSVC_FTS
-                                    </td>
-                <td class="last">
-                    <p><em><p>Ping full text search (FTS) service.</p></em></p>
-                    <p></p>
-                </td>
-            </tr>
-            </table>
-
     
-            <h2>Properties</h2>
-
-            <table class="table table-condensed">
-                    <tr>
-                <td class="type" id="property_operationTimeout">
-                                                                                int
-                                                                                
-                                    </td>
-                <td>$operationTimeout</td>
-                <td class="last"><p>The operation timeout (in microseconds) is the maximum amount of time the
-library will wait for an operation to receive a response before invoking
-its callback with a failure status.</p>
-<p>An operation may timeout if:</p>
-<ul>
-<li>A server is taking too long to respond</li>
-<li>An updated cluster configuration has not been promptly received</li>
-</ul></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_viewTimeout">
-                                                                                int
-                                                                                
-                                    </td>
-                <td>$viewTimeout</td>
-                <td class="last"><p>The I/O timeout (in microseconds) for HTTP requests to Couchbase Views API</p></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_n1qlTimeout">
-                                                                                int
-                                                                                
-                                    </td>
-                <td>$n1qlTimeout</td>
-                <td class="last"><p>The I/O timeout (in microseconds) for N1QL queries.</p></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_httpTimeout">
-                                                                                int
-                                                                                
-                                    </td>
-                <td>$httpTimeout</td>
-                <td class="last"><p>The I/O timeout (in microseconds) for HTTP queries (management API).</p></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_configTimeout">
-                                                                                int
-                                                                                
-                                    </td>
-                <td>$configTimeout</td>
-                <td class="last"><p>How long (in microseconds) the client will wait to obtain the initial
-configuration.</p></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_configNodeTimeout">
-                                                                                int
-                                                                                
-                                    </td>
-                <td>$configNodeTimeout</td>
-                <td class="last"><p>Per-node configuration timeout (in microseconds).</p>
-<p>This timeout sets the amount of time to wait for each node within
-the bootstrap/configuration process. This interval is a subset of
-the $configTimeout option mentioned above and is intended to ensure
-that the bootstrap process does not wait too long for a given node.
-Nodes that are physically offline may never respond and it may take
-a long time until they are detected as being offline.</p></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_configDelay">
-                                                                                int
-                                                                                
-                                    </td>
-                <td>$configDelay</td>
-                <td class="last"><p>Config refresh throttling</p>
-<p>Modify the amount of time (in microseconds) before the configiration
-error threshold will forcefully be set to its maximum number forcing
-a configuration refresh.</p>
-<p>Note that if you expect a high number of timeouts in your operations,
-you should set this to a high number. If you are using the default
-timeout setting, then this value is likely optimal.</p></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_htconfigIdleTimeout">
-                                                                                int
-                                                                                
-                                    </td>
-                <td>$htconfigIdleTimeout</td>
-                <td class="last"><p>Idling/Persistence for HTTP bootstrap (in microseconds)</p>
-<p>By default the behavior of the library for HTTP bootstrap is to keep
-the stream open at all times (opening a new stream on a different host
-if the existing one is broken) in order to proactively receive
-configuration updates.</p>
-<p>The default value for this setting is -1. Changing this to another
-number invokes the following semantics:</p>
-<ul>
-<li>
-<p>The configuration stream is not kept alive indefinitely. It is kept
-open for the number of seconds specified in this setting. The socket
-is closed after a period of inactivity (indicated by this setting).</p>
-</li>
-<li>
-<p>If the stream is broken (and no current refresh was requested by
-the client) then a new stream is not opened.</p>
-</li>
-</ul></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_durabilityInterval">
-                                                                                int
-                                                                                
-                                    </td>
-                <td>$durabilityInterval</td>
-                <td class="last"><p>The time (in microseconds) the client will wait between repeated probes
-to a given server.</p></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_durabilityTimeout">
-                                                                                int
-                                                                                
-                                    </td>
-                <td>$durabilityTimeout</td>
-                <td class="last"><p>The time (in microseconds) the client will spend sending repeated probes
-to a given key's vBucket masters and replicas before they are deemed not
-to have satisfied the durability requirements</p></td>
-                <td></td>
-            </tr>
-            </table>
-
     
             <h2>Methods</h2>
 
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    <a href="../Couchbase/Scope.html"><abbr title="Couchbase\Scope">Scope</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getName">getName</a>()
+                    <a href="#method_defaultScope">defaultScope</a>()
         
-                                            <p><p>Returns the name of the bucket for current connection</p></p>                </div>
+                                            <p><p>Returns a new Scope object representing the default scope.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../Couchbase/BucketManager.html"><abbr title="Couchbase\BucketManager">BucketManager</abbr></a>
+                    <a href="../Couchbase/Collection.html"><abbr title="Couchbase\Collection">Collection</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_manager">manager</a>()
+                    <a href="#method_defaultCollection">defaultCollection</a>()
         
-                                            <p><p>Returns an instance of a CouchbaseBucketManager for performing management operations against a bucket.</p></p>                </div>
+                                            <p><p>Returns a new Collection object representing the default collectiom.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../Couchbase/Scope.html"><abbr title="Couchbase\Scope">Scope</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_scope">scope</a>(string $name)
+        
+                                            <p><p>Returns a new Scope object representing the given scope.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -303,187 +140,47 @@ to have satisfied the durability requirements</p></td>
                 <div class="col-md-8">
                     <a href="#method_setTranscoder">setTranscoder</a>(callable $encoder, callable $decoder)
         
-                                            <p><p>Sets custom encoder and decoder functions for handling serialization.</p></p>                </div>
+                                            <p><p>Sets the default transcoder to be used when fetching or sending data.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
+                    string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_get">get</a>(string|array $ids, array $options = [])
+                    <a href="#method_name">name</a>()
         
-                                            <p><p>Retrieves a document</p></p>                </div>
+                                            <p><p>Returns the name of the Bucket.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
+                    <a href="../Couchbase/ViewResult.html"><abbr title="Couchbase\ViewResult">ViewResult</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getAndLock">getAndLock</a>(string|array $ids, int $lockTime, array $options = [])
+                    <a href="#method_viewQuery">viewQuery</a>(string $designDoc, string $viewName, <a href="../Couchbase/ViewOptions.html"><abbr title="Couchbase\ViewOptions">ViewOptions</abbr></a> $options = null)
         
-                                            <p><p>Retrieves a document and locks it.</p></p>                </div>
+                                            <p><p>Executes a view query against the cluster.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
+                    <a href="../Couchbase/CollectionManager.html"><abbr title="Couchbase\CollectionManager">CollectionManager</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getAndTouch">getAndTouch</a>(string|array $ids, int $expiry, array $options = [])
+                    <a href="#method_collections">collections</a>()
         
-                                            <p><p>Retrieves a document and updates its expiration time.</p></p>                </div>
+                                            <p><p>Creates a new CollectionManager object for managing collections and scopes.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
+                    <a href="../Couchbase/ViewIndexManager.html"><abbr title="Couchbase\ViewIndexManager">ViewIndexManager</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getFromReplica">getFromReplica</a>(string|array $ids, array $options = [])
+                    <a href="#method_viewIndexes">viewIndexes</a>()
         
-                                            <p><p>Retrieves a document from a replica.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_upsert">upsert</a>(string|array $ids, mixed $value, array $options = [])
-        
-                                            <p><p>Inserts or updates a document, depending on whether the document already exists on the cluster.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_insert">insert</a>(string|array $ids, mixed $value, array $options = [])
-        
-                                            <p><p>Inserts a document. This operation will fail if the document already exists on the cluster.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_replace">replace</a>(string|array $ids, mixed $value, array $options = [])
-        
-                                            <p><p>Replaces a document. This operation will fail if the document does not exists on the cluster.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_append">append</a>(string|array $ids, mixed $value, array $options = [])
-        
-                                            <p><p>Appends content to a document.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_prepend">prepend</a>(string|array $ids, mixed $value, array $options = [])
-        
-                                            <p><p>Prepends content to a document.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_remove">remove</a>(string|array $ids, array $options = [])
-        
-                                            <p><p>Removes the document.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_unlock">unlock</a>(string|array $ids, array $options = [])
-        
-                                            <p><p>Unlocks previously locked document</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_touch">touch</a>(string|array $ids, int $expiry, array $options = [])
-        
-                                            <p><p>Updates document's expiration time.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_counter">counter</a>(string|array $ids, int $delta = 1, array $options = [])
-        
-                                            <p><p>Increments or decrements a key (based on $delta)</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../Couchbase/LookupInBuilder.html"><abbr title="Couchbase\LookupInBuilder">LookupInBuilder</abbr></a>
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_lookupIn">lookupIn</a>(string $id)
-        
-                                            <p><p>Returns a builder for reading subdocument API.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../Couchbase/DocumentFragment.html"><abbr title="Couchbase\DocumentFragment">DocumentFragment</abbr></a>
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_retrieveIn">retrieveIn</a>(string $id, string ...$paths)
-        
-                                            <p><p>Retrieves specified paths in JSON document</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../Couchbase/MutateInBuilder.html"><abbr title="Couchbase\MutateInBuilder">MutateInBuilder</abbr></a>
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_mutateIn">mutateIn</a>(string $id, string $cas)
-        
-                                            <p><p>Returns a builder for writing subdocument API.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    object
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_query">query</a>(<a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>|<a href="../Couchbase/ViewQuery.html"><abbr title="Couchbase\ViewQuery">ViewQuery</abbr></a>|<a href="../Couchbase/SpatialViewQuery.html"><abbr title="Couchbase\SpatialViewQuery">SpatialViewQuery</abbr></a>|<a href="../Couchbase/SearchQuery.html"><abbr title="Couchbase\SearchQuery">SearchQuery</abbr></a>|<a href="../Couchbase/AnalyticsQuery.html"><abbr title="Couchbase\AnalyticsQuery">AnalyticsQuery</abbr></a> $query, bool $jsonAsArray = false)
-        
-                                            <p><p>Performs a query to Couchbase Server</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    int
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_mapSize">mapSize</a>(string $id)
-        
-                                            <p><p>Returns size of the map</p></p>                </div>
+                                            <p><p>Creates a new ViewIndexManager object for managing views and design documents.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -491,9 +188,10 @@ to have satisfied the durability requirements</p></td>
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_mapAdd">mapAdd</a>(string $id, string $key, mixed $value)
+                    <a href="#method_ping">ping</a>(mixed $services, mixed $reportId)
         
-                                            <p><p>Add key to the map</p></p>                </div>
+                                            <p><p>Executes a ping for each service against each node in the cluster. This can be used for determining
+the current health of the cluster.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -501,209 +199,10 @@ to have satisfied the durability requirements</p></td>
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_mapRemove">mapRemove</a>(string $id, string $key)
+                    <a href="#method_diagnostics">diagnostics</a>(mixed $reportId)
         
-                                            <p><p>Removes key from the map</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    mixed
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_mapGet">mapGet</a>(string $id, string $key)
-        
-                                            <p><p>Get an item from a map</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    int
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_setSize">setSize</a>(string $id)
-        
-                                            <p><p>Returns size of the set</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_setAdd">setAdd</a>(string $id, string|int|float|bool $value)
-        
-                                            <p><p>Add value to the set</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    bool
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_setExists">setExists</a>(string $id, string|int|float|bool $value)
-        
-                                            <p><p>Check if the value exists in the set</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_setRemove">setRemove</a>(string $id, string|int|float|bool $value)
-        
-                                            <p><p>Remove value from the set</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    int
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_listSize">listSize</a>(string $id)
-        
-                                            <p><p>Returns size of the list</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_listPush">listPush</a>(string $id, mixed $value)
-        
-                                            <p><p>Add an element to the end of the list</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_listShift">listShift</a>(string $id, mixed $value)
-        
-                                            <p><p>Add an element to the beginning of the list</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_listRemove">listRemove</a>(string $id, int $index)
-        
-                                            <p><p>Remove an element at the given position</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    mixed
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_listGet">listGet</a>(string $id, int $index)
-        
-                                            <p><p>Get an element at the given position</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_listSet">listSet</a>(string $id, int $index, mixed $value)
-        
-                                            <p><p>Set an element at the given position</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    bool
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_listExists">listExists</a>(string $id, mixed $value)
-        
-                                            <p><p>Check if the list contains specified value</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    int
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_queueSize">queueSize</a>(string $id)
-        
-                                            <p><p>Returns size of the queue</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    bool
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_queueExists">queueExists</a>(string $id, mixed $value)
-        
-                                            <p><p>Checks if the queue contains specified value</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_queueAdd">queueAdd</a>(string $id, mixed $value)
-        
-                                            <p><p>Add an element to the beginning of the queue</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    mixed
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_queueRemove">queueRemove</a>(string $id)
-        
-                                            <p><p>Remove the element at the end of the queue and return it</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_ping">ping</a>(int $services = 0, string $reportId = null)
-        
-                                            <p><p>Try to reach specified services, and measure network latency.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_diag">diag</a>(string $reportId = null)
-        
-                                            <p><p>Collect and return information about state of internal network connections.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_encryptFields">encryptFields</a>(array $document, array $fieldOptions, string $prefix = null)
-        
-                                            <p><p>Encrypt fields inside specified document.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_decryptFields">decryptFields</a>(array $document, array $fieldOptions, string $prefix = null)
-        
-                                            <p><p>Decrypt fields inside specified document.</p></p>                </div>
+                                            <p><p>Returns diagnostics information about connections that the SDK has to the cluster. This does not perform
+any operations.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -713,10 +212,10 @@ to have satisfied the durability requirements</p></td>
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_getName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L638">at line 638</a></div>
-        <code>                    string
-    <strong>getName</strong>()
+                    <h3 id="method_defaultScope">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1978">at line 1978</a></div>
+        <code>                    <a href="../Couchbase/Scope.html"><abbr title="Couchbase\Scope">Scope</abbr></a>
+    <strong>defaultScope</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -724,7 +223,151 @@ to have satisfied the durability requirements</p></td>
             
 
         <div class="method-description">
-                            <p><p>Returns the name of the bucket for current connection</p></p>                        
+                            <p><p>Returns a new Scope object representing the default scope.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Couchbase/Scope.html"><abbr title="Couchbase\Scope">Scope</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_defaultCollection">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1985">at line 1985</a></div>
+        <code>                    <a href="../Couchbase/Collection.html"><abbr title="Couchbase\Collection">Collection</abbr></a>
+    <strong>defaultCollection</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a new Collection object representing the default collectiom.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Couchbase/Collection.html"><abbr title="Couchbase\Collection">Collection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_scope">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1993">at line 1993</a></div>
+        <code>                    <a href="../Couchbase/Scope.html"><abbr title="Couchbase\Scope">Scope</abbr></a>
+    <strong>scope</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a new Scope object representing the given scope.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>the name of the scope</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Couchbase/Scope.html"><abbr title="Couchbase\Scope">Scope</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTranscoder">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L2001">at line 2001</a></div>
+        <code>                    
+    <strong>setTranscoder</strong>(callable $encoder, callable $decoder)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the default transcoder to be used when fetching or sending data.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$encoder</td>
+                <td><p>the encoder to use to encode data when sending data to the server</p></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$decoder</td>
+                <td><p>the decoder to use to decode data when retrieving data from the server</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_name">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L2008">at line 2008</a></div>
+        <code>                    string
+    <strong>name</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the name of the Bucket.</p></p>                        
         </div>
         <div class="tags">
             
@@ -745,10 +388,10 @@ to have satisfied the durability requirements</p></td>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_manager">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L645">at line 645</a></div>
-        <code>                    <a href="../Couchbase/BucketManager.html"><abbr title="Couchbase\BucketManager">BucketManager</abbr></a>
-    <strong>manager</strong>()
+                    <h3 id="method_viewQuery">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L2018">at line 2018</a></div>
+        <code>                    <a href="../Couchbase/ViewResult.html"><abbr title="Couchbase\ViewResult">ViewResult</abbr></a>
+    <strong>viewQuery</strong>(string $designDoc, string $viewName, <a href="../Couchbase/ViewOptions.html"><abbr title="Couchbase\ViewOptions">ViewOptions</abbr></a> $options = null)
         </code>
     </h3>
     <div class="details">    
@@ -756,15 +399,35 @@ to have satisfied the durability requirements</p></td>
             
 
         <div class="method-description">
-                            <p><p>Returns an instance of a CouchbaseBucketManager for performing management operations against a bucket.</p></p>                        
+                            <p><p>Executes a view query against the cluster.</p></p>                        
         </div>
         <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$designDoc</td>
+                <td><p>the design document to use for the query</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$viewName</td>
+                <td><p>the view to use for the query</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../Couchbase/ViewOptions.html"><abbr title="Couchbase\ViewOptions">ViewOptions</abbr></a></td>
+                <td>$options</td>
+                <td><p>the options to use when executing the query</p></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../Couchbase/BucketManager.html"><abbr title="Couchbase\BucketManager">BucketManager</abbr></a></td>
+            <td><a href="../Couchbase/ViewResult.html"><abbr title="Couchbase\ViewResult">ViewResult</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -777,10 +440,10 @@ to have satisfied the durability requirements</p></td>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setTranscoder">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L658">at line 658</a></div>
-        <code>                    
-    <strong>setTranscoder</strong>(callable $encoder, callable $decoder)
+                    <h3 id="method_collections">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L2025">at line 2025</a></div>
+        <code>                    <a href="../Couchbase/CollectionManager.html"><abbr title="Couchbase\CollectionManager">CollectionManager</abbr></a>
+    <strong>collections</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -788,1191 +451,31 @@ to have satisfied the durability requirements</p></td>
             
 
         <div class="method-description">
-                            <p><p>Sets custom encoder and decoder functions for handling serialization.</p></p>                        
+                            <p><p>Creates a new CollectionManager object for managing collections and scopes.</p></p>                        
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>callable</td>
-                <td>$encoder</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>callable</td>
-                <td>$decoder</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <abbr title="Couchbase\defaultEncoder">defaultEncoder</abbr>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <abbr title="Couchbase\defaultDecoder">defaultDecoder</abbr>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <abbr title="Couchbase\passthruEncoder">passthruEncoder</abbr>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <abbr title="Couchbase\passthruDecoder">passthruDecoder</abbr>
-                                    </td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_get">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L679">at line 679</a></div>
-        <code>                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-    <strong>get</strong>(string|array $ids, array $options = [])
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Retrieves a document</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|array</td>
-                <td>$ids</td>
-                <td><p>one or more IDs</p></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;lockTime&quot; non zero if the documents have to be locked</li>
-<li>&quot;expiry&quot; non zero if the expiration time should be updated</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array</td>
-            <td><p>document or list of the documents</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="../Couchbase/Bucket.html#method_getAndLock">
-<abbr title="Couchbase\Bucket">Bucket</abbr>::getAndLock</a>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="../Couchbase/Bucket.html#method_getAndTouch">
-<abbr title="Couchbase\Bucket">Bucket</abbr>::getAndTouch</a>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="../Couchbase/Bucket.html#method_unlock">
-<abbr title="Couchbase\Bucket">Bucket</abbr>::unlock</a>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="../Couchbase/Bucket.html#method_touch">
-<abbr title="Couchbase\Bucket">Bucket</abbr>::touch</a>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html</a>
-                                    </td>
-                <td>Overview of K/V operations</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html</a>
-                                    </td>
-                <td>More details about K/V operations for PHP SDK</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getAndLock">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L702">at line 702</a></div>
-        <code>                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-    <strong>getAndLock</strong>(string|array $ids, int $lockTime, array $options = [])
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Retrieves a document and locks it.</p></p>                <p><p>After the document has been locked on the server, its CAS would be masked,
-and all mutations of it will be rejected until the server unlocks the document
-automatically or it will be done manually with \Couchbase\Bucket::unlock() operation.</p></p>        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|array</td>
-                <td>$ids</td>
-                <td><p>one or more IDs</p></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$lockTime</td>
-                <td><p>time to lock the documents</p></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array</td>
-            <td><p>document or list of the documents</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="../Couchbase/Bucket.html#method_unlock">
-<abbr title="Couchbase\Bucket">Bucket</abbr>::unlock</a>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html</a>
-                                    </td>
-                <td>Overview of K/V operations</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html</a>
-                                    </td>
-                <td>More details about K/V operations for PHP SDK</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://forums.couchbase.com/t/is-there-a-way-to-do-pessimistic-locking-for-more-than-30-seconds/10666/3">https://forums.couchbase.com/t/is-there-a-way-to-do-pessimistic-locking-for-more-than-30-seconds/10666/3</a>
-                                    </td>
-                <td>Forum post about getting server defaults for the $lockTime</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getAndTouch">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L720">at line 720</a></div>
-        <code>                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-    <strong>getAndTouch</strong>(string|array $ids, int $expiry, array $options = [])
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Retrieves a document and updates its expiration time.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|array</td>
-                <td>$ids</td>
-                <td><p>one or more IDs</p></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$expiry</td>
-                <td><p>time after which the document will not be accessible.
-If larger than 30 days (60<em>60</em>24*30), it will be interpreted by the
-server as absolute UNIX time (seconds from epoch 1970-01-01T00:00:00).</p></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array</td>
-            <td><p>document or list of the documents</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html</a>
-                                    </td>
-                <td>Overview of K/V operations</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html</a>
-                                    </td>
-                <td>More details about K/V operations for PHP SDK</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getFromReplica">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L739">at line 739</a></div>
-        <code>                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-    <strong>getFromReplica</strong>(string|array $ids, array $options = [])
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Retrieves a document from a replica.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|array</td>
-                <td>$ids</td>
-                <td><p>one or more IDs</p></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;index&quot; the replica index. If the index is zero, it will return
-first successful replica, otherwise it will read only selected node.</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array</td>
-            <td><p>document or list of the documents</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html</a>
-                                    </td>
-                <td>Overview of K/V operations</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html</a>
-                                    </td>
-                <td>More details about K/V operations for PHP SDK</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/failure-considerations.html">https://developer.couchbase.com/documentation/server/current/sdk/php/failure-considerations.html</a>
-                                    </td>
-                <td>More about failure considerations.</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_upsert">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L767">at line 767</a></div>
-        <code>                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-    <strong>upsert</strong>(string|array $ids, mixed $value, array $options = [])
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Inserts or updates a document, depending on whether the document already exists on the cluster.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|array</td>
-                <td>$ids</td>
-                <td><p>one or more IDs</p></td>
-            </tr>
-                    <tr>
-                <td>mixed</td>
-                <td>$value</td>
-                <td><p>value of the document</p></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;expiry&quot; document expiration time in seconds. If larger than 30 days (60<em>60</em>24*30),
-it will be interpreted by the server as absolute UNIX time (seconds from epoch
-1970-01-01T00:00:00).</li>
-<li>&quot;persist_to&quot; how many nodes the key should be persisted to (including master).
-If set to 0 then persistence will not be checked. If set to a negative
-number, will be set to the maximum number of nodes to which persistence
-is possible (which will always contain at least the master node).</li>
-<li>&quot;replicate_to&quot; how many nodes the key should be persisted to (excluding master).
-If set to 0 then replication will not be checked. If set to a negative
-number, will be set to the maximum number of nodes to which replication
-is possible (which may be 0 if the bucket is not configured for replicas).</li>
-<li>&quot;flags&quot; override flags (not recommended to use)</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array</td>
-            <td><p>document or list of the documents</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html</a>
-                                    </td>
-                <td>Overview of K/V operations</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html</a>
-                                    </td>
-                <td>More details about K/V operations for PHP SDK</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_insert">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L795">at line 795</a></div>
-        <code>                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-    <strong>insert</strong>(string|array $ids, mixed $value, array $options = [])
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Inserts a document. This operation will fail if the document already exists on the cluster.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|array</td>
-                <td>$ids</td>
-                <td><p>one or more IDs</p></td>
-            </tr>
-                    <tr>
-                <td>mixed</td>
-                <td>$value</td>
-                <td><p>value of the document</p></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;expiry&quot; document expiration time in seconds. If larger than 30 days (60<em>60</em>24*30),
-it will be interpreted by the server as absolute UNIX time (seconds from epoch
-1970-01-01T00:00:00).</li>
-<li>&quot;persist_to&quot; how many nodes the key should be persisted to (including master).
-If set to 0 then persistence will not be checked. If set to a negative
-number, will be set to the maximum number of nodes to which persistence
-is possible (which will always contain at least the master node).</li>
-<li>&quot;replicate_to&quot; how many nodes the key should be persisted to (excluding master).
-If set to 0 then replication will not be checked. If set to a negative
-number, will be set to the maximum number of nodes to which replication
-is possible (which may be 0 if the bucket is not configured for replicas).</li>
-<li>&quot;flags&quot; override flags (not recommended to use)</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array</td>
-            <td><p>document or list of the documents</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html</a>
-                                    </td>
-                <td>Overview of K/V operations</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html</a>
-                                    </td>
-                <td>More details about K/V operations for PHP SDK</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_replace">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L824">at line 824</a></div>
-        <code>                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-    <strong>replace</strong>(string|array $ids, mixed $value, array $options = [])
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Replaces a document. This operation will fail if the document does not exists on the cluster.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|array</td>
-                <td>$ids</td>
-                <td><p>one or more IDs</p></td>
-            </tr>
-                    <tr>
-                <td>mixed</td>
-                <td>$value</td>
-                <td><p>value of the document</p></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;cas&quot; last known document CAS, which serves for optimistic locking.</li>
-<li>&quot;expiry&quot; document expiration time in seconds. If larger than 30 days (60<em>60</em>24*30),
-it will be interpreted by the server as absolute UNIX time (seconds from epoch
-1970-01-01T00:00:00).</li>
-<li>&quot;persist_to&quot; how many nodes the key should be persisted to (including master).
-If set to 0 then persistence will not be checked. If set to a negative
-number, will be set to the maximum number of nodes to which persistence
-is possible (which will always contain at least the master node).</li>
-<li>&quot;replicate_to&quot; how many nodes the key should be persisted to (excluding master).
-If set to 0 then replication will not be checked. If set to a negative
-number, will be set to the maximum number of nodes to which replication
-is possible (which may be 0 if the bucket is not configured for replicas).</li>
-<li>&quot;flags&quot; override flags (not recommended to use)</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array</td>
-            <td><p>document or list of the documents</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html</a>
-                                    </td>
-                <td>Overview of K/V operations</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html</a>
-                                    </td>
-                <td>More details about K/V operations for PHP SDK</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_append">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L857">at line 857</a></div>
-        <code>                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-    <strong>append</strong>(string|array $ids, mixed $value, array $options = [])
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Appends content to a document.</p></p>                <p><p>On the server side it just contatenate passed value to the existing one.
-Note that this might make the value un-decodable. Consider sub-document API
-for partial updates of the JSON documents.</p></p>        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|array</td>
-                <td>$ids</td>
-                <td><p>one or more IDs</p></td>
-            </tr>
-                    <tr>
-                <td>mixed</td>
-                <td>$value</td>
-                <td><p>value of the document</p></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;cas&quot; last known document CAS, which serves for optimistic locking.</li>
-<li>&quot;expiry&quot; document expiration time in seconds. If larger than 30 days (60<em>60</em>24*30),
-it will be interpreted by the server as absolute UNIX time (seconds from epoch
-1970-01-01T00:00:00).</li>
-<li>&quot;persist_to&quot; how many nodes the key should be persisted to (including master).
-If set to 0 then persistence will not be checked. If set to a negative
-number, will be set to the maximum number of nodes to which persistence
-is possible (which will always contain at least the master node).</li>
-<li>&quot;replicate_to&quot; how many nodes the key should be persisted to (excluding master).
-If set to 0 then replication will not be checked. If set to a negative
-number, will be set to the maximum number of nodes to which replication
-is possible (which may be 0 if the bucket is not configured for replicas).</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array</td>
-            <td><p>document or list of the documents</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="../Couchbase/Bucket.html#method_mutateIn">
-<abbr title="Couchbase\Bucket">Bucket</abbr>::mutateIn</a>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html</a>
-                                    </td>
-                <td>Overview of K/V operations</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html</a>
-                                    </td>
-                <td>More details about K/V operations for PHP SDK</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_prepend">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L890">at line 890</a></div>
-        <code>                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-    <strong>prepend</strong>(string|array $ids, mixed $value, array $options = [])
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Prepends content to a document.</p></p>                <p><p>On the server side it just contatenate existing value to the passed one.
-Note that this might make the value un-decodable. Consider sub-document API
-for partial updates of the JSON documents.</p></p>        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|array</td>
-                <td>$ids</td>
-                <td><p>one or more IDs</p></td>
-            </tr>
-                    <tr>
-                <td>mixed</td>
-                <td>$value</td>
-                <td><p>value of the document</p></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;cas&quot; last known document CAS, which serves for optimistic locking.</li>
-<li>&quot;expiry&quot; document expiration time in seconds. If larger than 30 days (60<em>60</em>24*30),
-it will be interpreted by the server as absolute UNIX time (seconds from epoch
-1970-01-01T00:00:00).</li>
-<li>&quot;persist_to&quot; how many nodes the key should be persisted to (including master).
-If set to 0 then persistence will not be checked. If set to a negative
-number, will be set to the maximum number of nodes to which persistence
-is possible (which will always contain at least the master node).</li>
-<li>&quot;replicate_to&quot; how many nodes the key should be persisted to (excluding master).
-If set to 0 then replication will not be checked. If set to a negative
-number, will be set to the maximum number of nodes to which replication
-is possible (which may be 0 if the bucket is not configured for replicas).</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array</td>
-            <td><p>document or list of the documents</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="../Couchbase/Bucket.html#method_mutateIn">
-<abbr title="Couchbase\Bucket">Bucket</abbr>::mutateIn</a>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html</a>
-                                    </td>
-                <td>Overview of K/V operations</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html</a>
-                                    </td>
-                <td>More details about K/V operations for PHP SDK</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_remove">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L906">at line 906</a></div>
-        <code>                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-    <strong>remove</strong>(string|array $ids, array $options = [])
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Removes the document.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|array</td>
-                <td>$ids</td>
-                <td><p>one or more IDs</p></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;cas&quot; last known document CAS, which serves for optimistic locking.</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array</td>
-            <td><p>document or list of the documents</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html</a>
-                                    </td>
-                <td>Overview of K/V operations</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html</a>
-                                    </td>
-                <td>More details about K/V operations for PHP SDK</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_unlock">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L924">at line 924</a></div>
-        <code>                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-    <strong>unlock</strong>(string|array $ids, array $options = [])
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Unlocks previously locked document</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|array</td>
-                <td>$ids</td>
-                <td><p>one or more IDs</p></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;cas&quot; last known document CAS, which has been returned by locking command.</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array</td>
-            <td><p>document or list of the documents</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="../Couchbase/Bucket.html#method_get">
-<abbr title="Couchbase\Bucket">Bucket</abbr>::get</a>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="../Couchbase/Bucket.html#method_getAndLock">
-<abbr title="Couchbase\Bucket">Bucket</abbr>::getAndLock</a>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html</a>
-                                    </td>
-                <td>Overview of K/V operations</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html</a>
-                                    </td>
-                <td>More details about K/V operations for PHP SDK</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_touch">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L942">at line 942</a></div>
-        <code>                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-    <strong>touch</strong>(string|array $ids, int $expiry, array $options = [])
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Updates document's expiration time.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|array</td>
-                <td>$ids</td>
-                <td><p>one or more IDs</p></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$expiry</td>
-                <td><p>time after which the document will not be accessible.
-If larger than 30 days (60<em>60</em>24*30), it will be interpreted by the
-server as absolute UNIX time (seconds from epoch 1970-01-01T00:00:00).</p></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array</td>
-            <td><p>document or list of the documents</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html</a>
-                                    </td>
-                <td>Overview of K/V operations</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html</a>
-                                    </td>
-                <td>More details about K/V operations for PHP SDK</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_counter">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L962">at line 962</a></div>
-        <code>                    <a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array
-    <strong>counter</strong>(string|array $ids, int $delta = 1, array $options = [])
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Increments or decrements a key (based on $delta)</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|array</td>
-                <td>$ids</td>
-                <td><p>one or more IDs</p></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$delta</td>
-                <td><p>the number whih determines the sign (positive/negative) and the value of the increment</p></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$options</td>
-                <td><p>options</p>
-<ul>
-<li>&quot;initial&quot; initial value of the counter if it does not exist</li>
-<li>&quot;expiry&quot; time after which the document will not be accessible.
-If larger than 30 days (60<em>60</em>24*30), it will be interpreted by the
-server as absolute UNIX time (seconds from epoch 1970-01-01T00:00:00).</li>
-<li>&quot;groupid&quot; override value for hashing (not recommended to use)</li>
-</ul></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/Document.html"><abbr title="Couchbase\Document">Document</abbr></a>|array</td>
-            <td><p>document or list of the documents</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/core-operations.html</a>
-                                    </td>
-                <td>Overview of K/V operations</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/php/document-operations.html</a>
-                                    </td>
-                <td>More details about K/V operations for PHP SDK</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_lookupIn">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L973">at line 973</a></div>
-        <code>                    <a href="../Couchbase/LookupInBuilder.html"><abbr title="Couchbase\LookupInBuilder">LookupInBuilder</abbr></a>
-    <strong>lookupIn</strong>(string $id)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Returns a builder for reading subdocument API.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>The ID of the JSON document</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/LookupInBuilder.html"><abbr title="Couchbase\LookupInBuilder">LookupInBuilder</abbr></a></td>
+            <td><a href="../Couchbase/CollectionManager.html"><abbr title="Couchbase\CollectionManager">CollectionManager</abbr></a></td>
             <td></td>
         </tr>
     </table>
 
             
             
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_retrieveIn">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L988">at line 988</a></div>
-        <code>                    <a href="../Couchbase/DocumentFragment.html"><abbr title="Couchbase\DocumentFragment">DocumentFragment</abbr></a>
-    <strong>retrieveIn</strong>(string $id, string ...$paths)
+                    <h3 id="method_viewIndexes">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L2032">at line 2032</a></div>
+        <code>                    <a href="../Couchbase/ViewIndexManager.html"><abbr title="Couchbase\ViewIndexManager">ViewIndexManager</abbr></a>
+    <strong>viewIndexes</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -1980,1303 +483,21 @@ server as absolute UNIX time (seconds from epoch 1970-01-01T00:00:00).</li>
             
 
         <div class="method-description">
-                            <p><p>Retrieves specified paths in JSON document</p></p>                <p><p>This is essentially a shortcut for <code>lookupIn($id)-&gt;get($paths)-&gt;execute()</code>.</p></p>        
+                            <p><p>Creates a new ViewIndexManager object for managing views and design documents.</p></p>                        
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>The ID of the JSON document</p></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>...$paths</td>
-                <td><p>List of the paths inside JSON documents (see &quot;Path syntax&quot; section of the
-&quot;Sub-Document Operations&quot; documentation).</p></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../Couchbase/DocumentFragment.html"><abbr title="Couchbase\DocumentFragment">DocumentFragment</abbr></a></td>
+            <td><a href="../Couchbase/ViewIndexManager.html"><abbr title="Couchbase\ViewIndexManager">ViewIndexManager</abbr></a></td>
             <td></td>
         </tr>
     </table>
 
             
             
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_mutateIn">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1000">at line 1000</a></div>
-        <code>                    <a href="../Couchbase/MutateInBuilder.html"><abbr title="Couchbase\MutateInBuilder">MutateInBuilder</abbr></a>
-    <strong>mutateIn</strong>(string $id, string $cas)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Returns a builder for writing subdocument API.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>The ID of the JSON document</p></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$cas</td>
-                <td><p>Last known document CAS value for optimisti locking</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/MutateInBuilder.html"><abbr title="Couchbase\MutateInBuilder">MutateInBuilder</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_query">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1015">at line 1015</a></div>
-        <code>                    object
-    <strong>query</strong>(<a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>|<a href="../Couchbase/ViewQuery.html"><abbr title="Couchbase\ViewQuery">ViewQuery</abbr></a>|<a href="../Couchbase/SpatialViewQuery.html"><abbr title="Couchbase\SpatialViewQuery">SpatialViewQuery</abbr></a>|<a href="../Couchbase/SearchQuery.html"><abbr title="Couchbase\SearchQuery">SearchQuery</abbr></a>|<a href="../Couchbase/AnalyticsQuery.html"><abbr title="Couchbase\AnalyticsQuery">AnalyticsQuery</abbr></a> $query, bool $jsonAsArray = false)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Performs a query to Couchbase Server</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>|<a href="../Couchbase/ViewQuery.html"><abbr title="Couchbase\ViewQuery">ViewQuery</abbr></a>|<a href="../Couchbase/SpatialViewQuery.html"><abbr title="Couchbase\SpatialViewQuery">SpatialViewQuery</abbr></a>|<a href="../Couchbase/SearchQuery.html"><abbr title="Couchbase\SearchQuery">SearchQuery</abbr></a>|<a href="../Couchbase/AnalyticsQuery.html"><abbr title="Couchbase\AnalyticsQuery">AnalyticsQuery</abbr></a></td>
-                <td>$query</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>bool</td>
-                <td>$jsonAsArray</td>
-                <td><p>if true, the values in the result rows (or hits) will be represented as
-PHP arrays, otherwise they will be instances of the <code>stdClass</code></p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>object</td>
-            <td><p>Query-specific result object.</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="../Couchbase/N1qlQuery.html"><abbr title="Couchbase\N1qlQuery">N1qlQuery</abbr></a>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="../Couchbase/SearchQuery.html"><abbr title="Couchbase\SearchQuery">SearchQuery</abbr></a>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="../Couchbase/ViewQuery.html"><abbr title="Couchbase\ViewQuery">ViewQuery</abbr></a>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="../Couchbase/SpatialViewQuery.html"><abbr title="Couchbase\SpatialViewQuery">SpatialViewQuery</abbr></a>
-                                    </td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_mapSize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1028">at line 1028</a></div>
-        <code>                    int
-    <strong>mapSize</strong>(string $id)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Returns size of the map</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int</td>
-            <td><p>number of the key-value pairs</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_mapAdd">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1042">at line 1042</a></div>
-        <code>                    
-    <strong>mapAdd</strong>(string $id, string $key, mixed $value)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Add key to the map</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$key</td>
-                <td>key</td>
-            </tr>
-                    <tr>
-                <td>mixed</td>
-                <td>$value</td>
-                <td>value</td>
-            </tr>
-            </table>
-
-            
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_mapRemove">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1055">at line 1055</a></div>
-        <code>                    
-    <strong>mapRemove</strong>(string $id, string $key)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Removes key from the map</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$key</td>
-                <td>key</td>
-            </tr>
-            </table>
-
-            
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_mapGet">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1069">at line 1069</a></div>
-        <code>                    mixed
-    <strong>mapGet</strong>(string $id, string $key)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Get an item from a map</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$key</td>
-                <td>key</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed</td>
-            <td><p>value associated with the key</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setSize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1082">at line 1082</a></div>
-        <code>                    int
-    <strong>setSize</strong>(string $id)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Returns size of the set</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int</td>
-            <td><p>number of the elements</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setAdd">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1097">at line 1097</a></div>
-        <code>                    
-    <strong>setAdd</strong>(string $id, string|int|float|bool $value)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Add value to the set</p></p>                <p><p>Note, that currently only primitive values could be stored in the set (strings, integers and booleans).</p></p>        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-                    <tr>
-                <td>string|int|float|bool</td>
-                <td>$value</td>
-                <td><p>new value</p></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setExists">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1111">at line 1111</a></div>
-        <code>                    bool
-    <strong>setExists</strong>(string $id, string|int|float|bool $value)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Check if the value exists in the set</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-                    <tr>
-                <td>string|int|float|bool</td>
-                <td>$value</td>
-                <td><p>value to check</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td><p>true if the value exists in the set</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setRemove">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1124">at line 1124</a></div>
-        <code>                    
-    <strong>setRemove</strong>(string $id, string|int|float|bool $value)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Remove value from the set</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-                    <tr>
-                <td>string|int|float|bool</td>
-                <td>$value</td>
-                <td><p>value to remove</p></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_listSize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1137">at line 1137</a></div>
-        <code>                    int
-    <strong>listSize</strong>(string $id)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Returns size of the list</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int</td>
-            <td><p>number of the elements</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_listPush">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1150">at line 1150</a></div>
-        <code>                    
-    <strong>listPush</strong>(string $id, mixed $value)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Add an element to the end of the list</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-                    <tr>
-                <td>mixed</td>
-                <td>$value</td>
-                <td><p>new value</p></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_listShift">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1163">at line 1163</a></div>
-        <code>                    
-    <strong>listShift</strong>(string $id, mixed $value)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Add an element to the beginning of the list</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-                    <tr>
-                <td>mixed</td>
-                <td>$value</td>
-                <td><p>new value</p></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_listRemove">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1176">at line 1176</a></div>
-        <code>                    
-    <strong>listRemove</strong>(string $id, int $index)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Remove an element at the given position</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$index</td>
-                <td><p>index of the element to be removed</p></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_listGet">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1190">at line 1190</a></div>
-        <code>                    mixed
-    <strong>listGet</strong>(string $id, int $index)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Get an element at the given position</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$index</td>
-                <td><p>index of the element</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed</td>
-            <td><p>the value</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_listSet">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1204">at line 1204</a></div>
-        <code>                    
-    <strong>listSet</strong>(string $id, int $index, mixed $value)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Set an element at the given position</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$index</td>
-                <td><p>index of the element</p></td>
-            </tr>
-                    <tr>
-                <td>mixed</td>
-                <td>$value</td>
-                <td><p>new value</p></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_listExists">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1218">at line 1218</a></div>
-        <code>                    bool
-    <strong>listExists</strong>(string $id, mixed $value)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Check if the list contains specified value</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-                    <tr>
-                <td>mixed</td>
-                <td>$value</td>
-                <td><p>value to look for</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td><p>true if the list contains the value</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_queueSize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1231">at line 1231</a></div>
-        <code>                    int
-    <strong>queueSize</strong>(string $id)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Returns size of the queue</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int</td>
-            <td><p>number of the elements in the queue</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_queueExists">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1245">at line 1245</a></div>
-        <code>                    bool
-    <strong>queueExists</strong>(string $id, mixed $value)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Checks if the queue contains specified value</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-                    <tr>
-                <td>mixed</td>
-                <td>$value</td>
-                <td><p>value to look for</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td><p>true if the queue contains the value</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_queueAdd">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1258">at line 1258</a></div>
-        <code>                    
-    <strong>queueAdd</strong>(string $id, mixed $value)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Add an element to the beginning of the queue</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-                    <tr>
-                <td>mixed</td>
-                <td>$value</td>
-                <td><p>new value</p></td>
-            </tr>
-            </table>
-
-            
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_queueRemove">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1271">at line 1271</a></div>
-        <code>                    mixed
-    <strong>queueRemove</strong>(string $id)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Remove the element at the end of the queue and return it</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td><p>ID of the document</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed</td>
-            <td><p>removed value</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html">https://developer.couchbase.com/documentation/server/current/sdk/php/datastructures.html</a>
-                                    </td>
-                <td>More details on Data Structures</td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html">https://developer.couchbase.com/documentation/server/current/sdk/subdocument-operations.html</a>
-                                    </td>
-                <td>Overview of Sub-Document Operations</td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -3284,9 +505,9 @@ PHP arrays, otherwise they will be instances of the <code>stdClass</code></p></t
             </div>
                     <div class="method-item">
                     <h3 id="method_ping">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1288">at line 1288</a></div>
-        <code>                    array
-    <strong>ping</strong>(int $services = 0, string $reportId = null)
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L2041">at line 2041</a></div>
+        <code>                    
+    <strong>ping</strong>(mixed $services, mixed $reportId)
         </code>
     </h3>
     <div class="details">    
@@ -3294,81 +515,38 @@ PHP arrays, otherwise they will be instances of the <code>stdClass</code></p></t
             
 
         <div class="method-description">
-                            <p><p>Try to reach specified services, and measure network latency.</p></p>                        
+                            <p><p>Executes a ping for each service against each node in the cluster. This can be used for determining
+the current health of the cluster.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
+                <td>mixed</td>
                 <td>$services</td>
-                <td><p>bitwise mask of required services (and all services when zero)</p></td>
+                <td><p>the services to ping against</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>mixed</td>
                 <td>$reportId</td>
-                <td><p>custom identifier, which will be appended to &quot;id&quot; property in report</p></td>
+                <td><p>a name which will be included within the ping result</p></td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td><p>the report object</p></td>
-        </tr>
-    </table>
-
             
             
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <abbr title="Couchbase\Bucket::PINGSVC_KV">Bucket::PINGSVC_KV</abbr>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <abbr title="Couchbase\Bucket::PINGSVC_N1QL">Bucket::PINGSVC_N1QL</abbr>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <abbr title="Couchbase\Bucket::PINGSVC_VIEWS">Bucket::PINGSVC_VIEWS</abbr>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <abbr title="Couchbase\Bucket::PINGSVC_FTS">Bucket::PINGSVC_FTS</abbr>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <a href="https://github.com/couchbaselabs/sdk-rfcs/blob/master/rfc/0034-health-check.md">https://github.com/couchbaselabs/sdk-rfcs/blob/master/rfc/0034-health-check.md</a>
-                                    </td>
-                <td>SDK RFC #34, which describes the feature and report layout.</td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_diag">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1299">at line 1299</a></div>
-        <code>                    array
-    <strong>diag</strong>(string $reportId = null)
+                    <h3 id="method_diagnostics">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L2049">at line 2049</a></div>
+        <code>                    
+    <strong>diagnostics</strong>(mixed $reportId)
         </code>
     </h3>
     <div class="details">    
@@ -3376,170 +554,23 @@ PHP arrays, otherwise they will be instances of the <code>stdClass</code></p></t
             
 
         <div class="method-description">
-                            <p><p>Collect and return information about state of internal network connections.</p></p>                        
+                            <p><p>Returns diagnostics information about connections that the SDK has to the cluster. This does not perform
+any operations.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>mixed</td>
                 <td>$reportId</td>
-                <td><p>custom identifier, which will be appended to &quot;id&quot; property in report</p></td>
+                <td><p>a name which will be included within the ping result</p></td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td><p>the report object</p></td>
-        </tr>
-    </table>
-
             
             
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://github.com/couchbaselabs/sdk-rfcs/blob/master/rfc/0034-health-check.md">https://github.com/couchbaselabs/sdk-rfcs/blob/master/rfc/0034-health-check.md</a>
-                                    </td>
-                <td>SDK RFC #34, which describes the feature and report layout.</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_encryptFields">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1313">at line 1313</a></div>
-        <code>                    array
-    <strong>encryptFields</strong>(array $document, array $fieldOptions, string $prefix = null)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Encrypt fields inside specified document.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>array</td>
-                <td>$document</td>
-                <td><p>document structure</p></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$fieldOptions</td>
-                <td><p>specification for fields needed to be encrypted. Where 'alg' contains
-a string with alias of the registed crypto provider, and 'name' contains the name of the field.</p></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$prefix</td>
-                <td><p>optional prefix for modified field (when null, the library will use &quot;__crypt&quot;)</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td><p>where the fields encrypted</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://github.com/couchbase/php-couchbase-encryption">https://github.com/couchbase/php-couchbase-encryption</a>
-                                    </td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_decryptFields">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L1327">at line 1327</a></div>
-        <code>                    array
-    <strong>decryptFields</strong>(array $document, array $fieldOptions, string $prefix = null)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Decrypt fields inside specified document.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>array</td>
-                <td>$document</td>
-                <td><p>document structure</p></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$fieldOptions</td>
-                <td><p>specification for fields needed to be decrypted. Where 'alg' contains
-a string with alias of the registed crypto provider, and 'name' contains the name of the field.</p></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$prefix</td>
-                <td><p>optional prefix for modified field (when null, the library will use &quot;__crypt&quot;)</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td><p>where the fields decrypted</p></td>
-        </tr>
-    </table>
-
-            
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <a href="https://github.com/couchbase/php-couchbase-encryption">https://github.com/couchbase/php-couchbase-encryption</a>
-                                    </td>
-                <td></td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
