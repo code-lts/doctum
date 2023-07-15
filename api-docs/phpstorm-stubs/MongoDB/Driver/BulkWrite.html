@@ -112,7 +112,7 @@ Any errors that occur are reported after all operations have been attempted.</p>
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(array|null $options = [])
+                    <a href="#method___construct">__construct</a>(array|null $options = null)
         
                                             <p><p>Create a new BulkWrite
 Constructs a new ordered (default) or unordered BulkWrite.</p></p>                </div>
@@ -142,10 +142,10 @@ Returns the expected number of client-to-server roundtrips required to execute a
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_delete">delete</a>(array|object $query, array|null $deleteOptions = [])
+                    <a href="#method_delete">delete</a>(<abbr title="MongoDB\Driver\array|object">array|object</abbr> $filter, array|null $deleteOptions = null)
         
                                             <p><p>Add a delete operation to the bulk</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -155,10 +155,9 @@ Returns the expected number of client-to-server roundtrips required to execute a
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_insert">insert</a>(array|object $document)
+                    <a href="#method_insert">insert</a>(<abbr title="MongoDB\Driver\array|object">array|object</abbr> $document)
         
-                                            <p><p>Add an insert operation to the bulk
-If the document did not have an _id, a MongoDB\BSON\ObjectId will be generated and returned; otherwise, no value is returned.</p></p>                </div>
+                                            <p><p>Add an insert operation to the bulk</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -166,7 +165,7 @@ If the document did not have an _id, a MongoDB\BSON\ObjectId will be generated a
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_update">update</a>(array|object $query, array|object $newObj, array|null $updateOptions = [])
+                    <a href="#method_update">update</a>(<abbr title="MongoDB\Driver\array|object">array|object</abbr> $filter, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $newObj, array|null $updateOptions = null)
         
                                             <p><p>Add an update operation to the bulk</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -181,7 +180,7 @@ If the document did not have an _id, a MongoDB\BSON\ObjectId will be generated a
                     <h3 id="method___construct">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BulkWrite.php#L25">at line 25</a></div>
         <code>final                    
-    <strong>__construct</strong>(array|null $options = [])
+    <strong>__construct</strong>(array|null $options = null)
         </code>
     </h3>
     <div class="details">    
@@ -292,8 +291,8 @@ The return value is cast to an integer.
                     <div class="method-item">
                     <h3 id="method_delete">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BulkWrite.php#L45">at line 45</a></div>
-        <code>final                    
-    <strong>delete</strong>(array|object $query, array|null $deleteOptions = [])
+        <code>final                    void
+    <strong>delete</strong>(<abbr title="MongoDB\Driver\array|object">array|object</abbr> $filter, array|null $deleteOptions = null)
         </code>
     </h3>
     <div class="details">    
@@ -308,8 +307,8 @@ The return value is cast to an integer.
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array|object</td>
-                <td>$query</td>
+                <td><abbr title="MongoDB\Driver\array|object">array|object</abbr></td>
+                <td>$filter</td>
                 <td><p>The search filter</p></td>
             </tr>
                     <tr>
@@ -320,54 +319,11 @@ The return value is cast to an integer.
             </table>
 
             
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_insert">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BulkWrite.php#L55">at line 55</a></div>
-        <code>final                    mixed
-    <strong>insert</strong>(array|object $document)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Add an insert operation to the bulk
-If the document did not have an _id, a MongoDB\BSON\ObjectId will be generated and returned; otherwise, no value is returned.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>array|object</td>
-                <td>$document</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>mixed</td>
+            <td>void</td>
             <td></td>
         </tr>
     </table>
@@ -389,10 +345,61 @@ If the document did not have an _id, a MongoDB\BSON\ObjectId will be generated a
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_insert">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BulkWrite.php#L53">at line 53</a></div>
+        <code>final                    mixed
+    <strong>insert</strong>(<abbr title="MongoDB\Driver\array|object">array|object</abbr> $document)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add an insert operation to the bulk</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="MongoDB\Driver\array|object">array|object</abbr></td>
+                <td>$document</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>If the document did not have an _id, a MongoDB\BSON\ObjectId will be generated and returned; otherwise, no value is returned.</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_update">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BulkWrite.php#L65">at line 65</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BulkWrite.php#L63">at line 63</a></div>
         <code>final                    
-    <strong>update</strong>(array|object $query, array|object $newObj, array|null $updateOptions = [])
+    <strong>update</strong>(<abbr title="MongoDB\Driver\array|object">array|object</abbr> $filter, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $newObj, array|null $updateOptions = null)
         </code>
     </h3>
     <div class="details">    
@@ -407,12 +414,12 @@ If the document did not have an _id, a MongoDB\BSON\ObjectId will be generated a
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array|object</td>
-                <td>$query</td>
+                <td><abbr title="MongoDB\Driver\array|object">array|object</abbr></td>
+                <td>$filter</td>
                 <td><p>The search filter</p></td>
             </tr>
                     <tr>
-                <td>array|object</td>
+                <td><abbr title="MongoDB\Driver\array|object">array|object</abbr></td>
                 <td>$newObj</td>
                 <td><p>A document containing either update operators (e.g. $set) or a replacement document (i.e. only field:value expressions)</p></td>
             </tr>

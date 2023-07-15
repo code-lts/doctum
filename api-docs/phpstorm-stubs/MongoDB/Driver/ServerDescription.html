@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>MongoDB\Driver\ReadConcern | PHP Jetbrains phpstorm-stubs</title>
+    <title>MongoDB\Driver\ServerDescription | PHP Jetbrains phpstorm-stubs</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:MongoDB_Driver_ReadConcern" data-root-path="../../" data-search-index-url="../../doctum-search.json">
+    <body id="class" data-name="class:MongoDB_Driver_ServerDescription" data-root-path="../../" data-search-index-url="../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,36 +75,32 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../MongoDB.html">MongoDB</a></li><li class="backslash">\</li><li><a href="../../MongoDB/Driver.html">Driver</a></li><li class="backslash">\</li><li>ReadConcern</li>
+                        <li><a href="../../MongoDB.html">MongoDB</a></li><li class="backslash">\</li><li><a href="../../MongoDB/Driver.html">Driver</a></li><li class="backslash">\</li><li>ServerDescription</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>ReadConcern    
+        <h1>ServerDescription    
             </h1>
     </div>
 
-            <i>Since: 1.1.0</i>
+            <i>Since: 1.13.0</i>
         <br>
     
     <p>final         class
-    <strong>ReadConcern</strong>        implements        <a href="../../MongoDB/BSON/Serializable.html"><abbr title="MongoDB\BSON\Serializable">Serializable</abbr></a>, <a href="../../Serializable.html">Serializable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadConcern.php">View source</a>)
+    <strong>ServerDescription</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ServerDescription.php">View source</a>)
 </p>
 
         
     
         
 
-            <div class="description">
-            <p><p>MongoDB\Driver\ReadConcern controls the level of isolation for read operations for replica sets and replica set shards. This option requires the WiredTiger storage engine and MongoDB 3.2 or later.</p></p>                    </div>
             
         
             <h2>Constants</h2>    <table class="table table-condensed">
                     <tr>
                 <td>
-                                                                                                                        LINEARIZABLE
-                                            <i>Since: 1.2.0</i>
-                        <br>
+                                                                                                                        TYPE_UNKNOWN
                                     </td>
                 <td class="last">
                     <p><em></em></p>
@@ -113,7 +109,7 @@
             </tr>
                     <tr>
                 <td>
-                                                                                                                        LOCAL
+                                                                                                                        TYPE_STANDALONE
                                     </td>
                 <td class="last">
                     <p><em></em></p>
@@ -122,7 +118,7 @@
             </tr>
                     <tr>
                 <td>
-                                                                                                                        MAJORITY
+                                                                                                                        TYPE_MONGOS
                                     </td>
                 <td class="last">
                     <p><em></em></p>
@@ -131,9 +127,7 @@
             </tr>
                     <tr>
                 <td>
-                                                                                                                        AVAILABLE
-                                            <i>Since: 1.4.0</i>
-                        <br>
+                                                                                                                        TYPE_POSSIBLE_PRIMARY
                                     </td>
                 <td class="last">
                     <p><em></em></p>
@@ -142,9 +136,52 @@
             </tr>
                     <tr>
                 <td>
-                                                                                                                        SNAPSHOT
-                                            <i>Since: 1.11.0</i>
-                        <br>
+                                                                                                                        TYPE_RS_PRIMARY
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_RS_SECONDARY
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_RS_ARBITER
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_RS_OTHER
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_RS_GHOST
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        TYPE_LOAD_BALANCER
                                     </td>
                 <td class="last">
                     <p><em></em></p>
@@ -160,63 +197,62 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(string|null $level = null)
+                    <a href="#method_getHelloResponse">getHelloResponse</a>()
         
-                                            <p><p>Construct immutable ReadConcern</p></p>                </div>
+                                            <p><p>Returns the server's most recent &quot;hello&quot; response</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;
+                    string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___set_state">__set_state</a>(array $properties)
+                    <a href="#method_getHost">getHost</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Returns the hostname of this server</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string|null
+                    int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getLevel">getLevel</a>()
+                    <a href="#method_getLastUpdateTime">getLastUpdateTime</a>()
         
-                                            <p><p>Returns the ReadConcern's &quot;level&quot; option</p></p>                </div>
+                                            <p><p>Returns the server's last update time in microseconds</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array|object
+                    int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_bsonSerialize">bsonSerialize</a>()
+                    <a href="#method_getPort">getPort</a>()
         
-                                            <p><p>Returns an object for BSON serialization</p></p>                </div>
+                                            <p><p>Returns the port on which this server is listening</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    int|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_isDefault">isDefault</a>()
+                    <a href="#method_getRoundTripTime">getRoundTripTime</a>()
         
-                                            <p><p>Checks if this is the default read concern</p></p>                </div>
+                                            <p><p>Returns the server's round trip time in milliseconds</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string|null
+                    string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_serialize">serialize</a>()
+                    <a href="#method_getType">getType</a>()
         
-                                            <p><p>Serialize a ReadConcern</p></p>                </div>
+                                            <p><p>Returns a string denoting the type of this server</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -224,9 +260,10 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_unserialize">unserialize</a>(string $data)
+                    <a href="#method___wakeup">__wakeup</a>()
         
-                                            <p><p>Unserialize a ReadConcern</p></p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -236,10 +273,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadConcern.php#L37">at line 37</a></div>
-        <code>final                    
-    <strong>__construct</strong>(string|null $level = null)
+                    <h3 id="method_getHelloResponse">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ServerDescription.php#L27">at line 27</a></div>
+        <code>final                    array
+    <strong>getHelloResponse</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -247,20 +284,19 @@
             
 
         <div class="method-description">
-                            <p><p>Construct immutable ReadConcern</p></p>                        
+                            <p><p>Returns the server's most recent &quot;hello&quot; response</p></p>                        
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
+            
+                            <h4>Return Value</h4>
 
                     <table class="table table-condensed">
-                    <tr>
-                <td>string|null</td>
-                <td>$level</td>
-                <td></td>
-            </tr>
-            </table>
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
 
-            
             
             
             
@@ -269,10 +305,170 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method___set_state">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadConcern.php#L39">at line 39</a></div>
-        <code>        static            
-    <strong>__set_state</strong>(array $properties)
+                    <h3 id="method_getHost">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ServerDescription.php#L33">at line 33</a></div>
+        <code>final                    string
+    <strong>getHost</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the hostname of this server</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLastUpdateTime">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ServerDescription.php#L39">at line 39</a></div>
+        <code>final                    int
+    <strong>getLastUpdateTime</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the server's last update time in microseconds</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPort">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ServerDescription.php#L45">at line 45</a></div>
+        <code>final                    int
+    <strong>getPort</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the port on which this server is listening</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRoundTripTime">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ServerDescription.php#L51">at line 51</a></div>
+        <code>final                    int|null
+    <strong>getRoundTripTime</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the server's round trip time in milliseconds</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getType">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ServerDescription.php#L57">at line 57</a></div>
+        <code>final                    string
+    <strong>getType</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a string denoting the type of this server</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___wakeup">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ServerDescription.php#L59">at line 59</a></div>
+        <code>final                    void
+    <strong>__wakeup</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -284,200 +480,6 @@
                     
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>array</td>
-                <td>$properties</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getLevel">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadConcern.php#L47">at line 47</a></div>
-        <code>final                    string|null
-    <strong>getLevel</strong>()
-        </code>
-    </h3>
-    <div class="details"><i>Since: 1.0.0</i>
-            <br>    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Returns the ReadConcern's &quot;level&quot; option</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string|null</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_bsonSerialize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadConcern.php#L54">at line 54</a></div>
-        <code>final                    array|object
-    <strong>bsonSerialize</strong>()
-        </code>
-    </h3>
-    <div class="details"><i>Since: 1.2.0</i>
-            <br>    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Returns an object for BSON serialization</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array|object</td>
-            <td><p>An array or stdClass to be serialized as a BSON array or document.</p></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isDefault">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadConcern.php#L62">at line 62</a></div>
-        <code>final                    bool
-    <strong>isDefault</strong>()
-        </code>
-    </h3>
-    <div class="details"><i>Since: 1.3.0</i>
-            <br>    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Checks if this is the default read concern</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_serialize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadConcern.php#L70">at line 70</a></div>
-        <code>final                    string|null
-    <strong>serialize</strong>()
-        </code>
-    </h3>
-    <div class="details"><i>Since: 1.7.0</i>
-            <br>    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Serialize a ReadConcern</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string|null</td>
-            <td><p>The string representation of the object or null</p></td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_unserialize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadConcern.php#L79">at line 79</a></div>
-        <code>final                    void
-    <strong>unserialize</strong>(string $data)
-        </code>
-    </h3>
-    <div class="details"><i>Since: 1.7.0</i>
-            <br>    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Unserialize a ReadConcern</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$data</td>
-                <td><p>The string representation of the object.</p></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
@@ -489,19 +491,6 @@
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../MongoDB/Driver/Exception/UnexpectedValueException.html"><abbr title="MongoDB\Driver\Exception\UnexpectedValueException">UnexpectedValueException</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
             
                     </div>
