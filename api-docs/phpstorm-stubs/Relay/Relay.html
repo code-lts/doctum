@@ -226,6 +226,17 @@
             </tr>
                     <tr>
                 <td>
+                                                                                                                        SUBSCRIBED
+                                    </td>
+                <td class="last">
+                    <p><em><p>Integer representing we're SUBSCRIBED.  Note that this constant can
+only really be accessed when <code>true</code> is passed to <code>getMask()</code> telling
+relay to return the complete bitmasked mode.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
                                                                                                                         OPT_PREFIX
                                     </td>
                 <td class="last">
@@ -1652,6 +1663,16 @@ except for the fact that it also deletes the key on success
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_spublish">spublish</a>(string $channel, string $message)
+        
+                                            <p><p>Posts a message to the given shard channel.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
                 </div>
                 <div class="col-md-8">
@@ -2362,6 +2383,66 @@ a floating point number, by the specified increment.</p></p>                </di
                     <a href="#method_sunionstore">sunionstore</a>(mixed $key, mixed ...$other_keys)
         
                                             <p><p>This command is equal to SUNION, but instead of returning the resulting set, it is stored in destination.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_subscribe">subscribe</a>(array $channels, callable $callback)
+        
+                                            <p><p>Subscribes to the specified channels.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_unsubscribe">unsubscribe</a>(array $channels = [])
+        
+                                            <p><p>Unsubscribes from the given channels, or from all of them if none is given.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_psubscribe">psubscribe</a>(array $patterns, callable $callback)
+        
+                                            <p><p>Subscribes to the given patterns.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_punsubscribe">punsubscribe</a>(array $patterns = [])
+        
+                                            <p><p>Unsubscribes from the given patterns, or from all of them if none is given.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_ssubscribe">ssubscribe</a>(array $channels, callable $callback)
+        
+                                            <p><p>Subscribes to the specified shard channels.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_sunsubscribe">sunsubscribe</a>(array $channels = [])
+        
+                                            <p><p>Unsubscribes from the given shard channels, or from all of them if none is given.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -3160,7 +3241,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L406">at line 406</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L416">at line 416</a></div>
         <code>                    
     <strong>__construct</strong>(string $host = null, int $port = 6379, float $connect_timeout = 0.0, float $command_timeout = 0.0, array $context = [], int $database = 0)
         </code>
@@ -3218,7 +3299,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_connect">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L430">at line 430</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L440">at line 440</a></div>
         <code>                    bool
     <strong>connect</strong>(string $host, int $port = 6379, float $timeout = 0.0, string|null $persistent_id = null, int $retry_interval = 0, float $read_timeout = 0.0, array $context = [], int $database = 0)
         </code>
@@ -3295,7 +3376,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_pconnect">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L455">at line 455</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L465">at line 465</a></div>
         <code>                    bool
     <strong>pconnect</strong>(string $host, int $port = 6379, float $timeout = 0.0, string|null $persistent_id = null, int $retry_interval = 0, float $read_timeout = 0.0, array $context = [], int $database = 0)
         </code>
@@ -3372,7 +3453,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_close">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L472">at line 472</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L482">at line 482</a></div>
         <code>                    bool
     <strong>close</strong>()
         </code>
@@ -3404,7 +3485,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_pclose">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L480">at line 480</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L490">at line 490</a></div>
         <code>                    bool
     <strong>pclose</strong>()
         </code>
@@ -3436,7 +3517,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_listen">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L489">at line 489</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L499">at line 499</a></div>
         <code>                    bool
     <strong>listen</strong>(callable|null $callback)
         </code>
@@ -3478,7 +3559,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_onFlushed">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L498">at line 498</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L508">at line 508</a></div>
         <code>                    bool
     <strong>onFlushed</strong>(callable|null $callback)
         </code>
@@ -3520,7 +3601,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_onInvalidated">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L508">at line 508</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L518">at line 518</a></div>
         <code>                    bool
     <strong>onInvalidated</strong>(callable|null $callback, string|null $pattern = null)
         </code>
@@ -3567,7 +3648,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_dispatchEvents">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L516">at line 516</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L526">at line 526</a></div>
         <code>                    <abbr title="Relay\int|false">int|false</abbr>
     <strong>dispatchEvents</strong>()
         </code>
@@ -3599,7 +3680,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getOption">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L525">at line 525</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L535">at line 535</a></div>
         <code>                    mixed
     <strong>getOption</strong>(int $option)
         </code>
@@ -3641,7 +3722,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_option">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L535">at line 535</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L545">at line 545</a></div>
         <code>                    mixed
     <strong>option</strong>(int $option, mixed $value = null)
         </code>
@@ -3688,7 +3769,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setOption">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L567">at line 567</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L577">at line 577</a></div>
         <code>                    bool
     <strong>setOption</strong>(int $option, mixed $value)
         </code>
@@ -3756,7 +3837,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addIgnorePatterns">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L576">at line 576</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L586">at line 586</a></div>
         <code>                    int
     <strong>addIgnorePatterns</strong>(string ...$pattern)
         </code>
@@ -3798,7 +3879,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addAllowPatterns">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L585">at line 585</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L595">at line 595</a></div>
         <code>                    int
     <strong>addAllowPatterns</strong>(string ...$pattern)
         </code>
@@ -3840,7 +3921,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTimeout">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L593">at line 593</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L603">at line 603</a></div>
         <code>                    <abbr title="Relay\float|false">float|false</abbr>
     <strong>getTimeout</strong>()
         </code>
@@ -3872,7 +3953,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_timeout">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L601">at line 601</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L611">at line 611</a></div>
         <code>                    <abbr title="Relay\float|false">float|false</abbr>
     <strong>timeout</strong>()
         </code>
@@ -3916,7 +3997,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getReadTimeout">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L609">at line 609</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L619">at line 619</a></div>
         <code>                    <abbr title="Relay\float|false">float|false</abbr>
     <strong>getReadTimeout</strong>()
         </code>
@@ -3948,7 +4029,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_readTimeout">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L617">at line 617</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L627">at line 627</a></div>
         <code>                    <abbr title="Relay\float|false">float|false</abbr>
     <strong>readTimeout</strong>()
         </code>
@@ -3992,7 +4073,7 @@ scores in the sorted set stored at key.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getBytes">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L626">at line 626</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L636">at line 636</a></div>
         <code>                    array
     <strong>getBytes</strong>()
         </code>
@@ -4025,7 +4106,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_bytes">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L634">at line 634</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L644">at line 644</a></div>
         <code>                    array
     <strong>bytes</strong>()
         </code>
@@ -4069,7 +4150,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getHost">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L642">at line 642</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L652">at line 652</a></div>
         <code>                    <abbr title="Relay\string|false">string|false</abbr>
     <strong>getHost</strong>()
         </code>
@@ -4101,7 +4182,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isConnected">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L650">at line 650</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L660">at line 660</a></div>
         <code>                    bool
     <strong>isConnected</strong>()
         </code>
@@ -4133,7 +4214,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPort">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L658">at line 658</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L668">at line 668</a></div>
         <code>                    <abbr title="Relay\int|false">int|false</abbr>
     <strong>getPort</strong>()
         </code>
@@ -4165,7 +4246,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getAuth">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L667">at line 667</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L677">at line 677</a></div>
         <code>                    mixed
     <strong>getAuth</strong>()
         </code>
@@ -4197,7 +4278,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDbNum">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L675">at line 675</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L685">at line 685</a></div>
         <code>                    mixed
     <strong>getDbNum</strong>()
         </code>
@@ -4229,7 +4310,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method__serialize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L684">at line 684</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L694">at line 694</a></div>
         <code>                    mixed
     <strong>_serialize</strong>(mixed $value)
         </code>
@@ -4271,7 +4352,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method__unserialize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L693">at line 693</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L703">at line 703</a></div>
         <code>                    mixed
     <strong>_unserialize</strong>(mixed $value)
         </code>
@@ -4313,7 +4394,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method__compress">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L702">at line 702</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L712">at line 712</a></div>
         <code>                    string
     <strong>_compress</strong>(string $value)
         </code>
@@ -4355,7 +4436,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method__uncompress">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L711">at line 711</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L721">at line 721</a></div>
         <code>                    string
     <strong>_uncompress</strong>(string $value)
         </code>
@@ -4397,7 +4478,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method__pack">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L720">at line 720</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L730">at line 730</a></div>
         <code>                    string
     <strong>_pack</strong>(mixed $value)
         </code>
@@ -4439,7 +4520,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method__unpack">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L729">at line 729</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L739">at line 739</a></div>
         <code>                    mixed
     <strong>_unpack</strong>(mixed $value)
         </code>
@@ -4481,7 +4562,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method__prefix">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L738">at line 738</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L748">at line 748</a></div>
         <code>                    string
     <strong>_prefix</strong>(mixed $value)
         </code>
@@ -4523,7 +4604,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getLastError">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L746">at line 746</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L756">at line 756</a></div>
         <code>                    <abbr title="Relay\string|null">string|null</abbr>
     <strong>getLastError</strong>()
         </code>
@@ -4555,7 +4636,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_clearLastError">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L754">at line 754</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L764">at line 764</a></div>
         <code>                    bool
     <strong>clearLastError</strong>()
         </code>
@@ -4587,7 +4668,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_endpointId">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L762">at line 762</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L772">at line 772</a></div>
         <code>                    <abbr title="Relay\string|false">string|false</abbr>
     <strong>endpointId</strong>()
         </code>
@@ -4619,7 +4700,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPersistentID">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L770">at line 770</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L780">at line 780</a></div>
         <code>                    <abbr title="Relay\string|false">string|false</abbr>
     <strong>getPersistentID</strong>()
         </code>
@@ -4663,7 +4744,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_socketId">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L777">at line 777</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L787">at line 787</a></div>
         <code>                    <abbr title="Relay\string|false">string|false</abbr>
     <strong>socketId</strong>()
         </code>
@@ -4695,7 +4776,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_license">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L785">at line 785</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L795">at line 795</a></div>
         <code>        static            array
     <strong>license</strong>()
         </code>
@@ -4727,7 +4808,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_stats">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L818">at line 818</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L831">at line 831</a></div>
         <code>        static            array
     <strong>stats</strong>()
         </code>
@@ -4775,13 +4856,22 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
 <p><code>stats.ops_per_sec</code>: The number of commands processed per second</p>
 </li>
 <li>
-<p><code>stats.walltime</code>: The number of microseconds Relay has spent doing work</p>
-</li>
-<li>
 <p><code>stats.bytes_sent</code>: The number of bytes Relay has written to the network</p>
 </li>
 <li>
 <p><code>stats.bytes_received</code>: The number of bytes Relay has read from the network</p>
+</li>
+<li>
+<p><code>stats.command_usec</code>: The number of microseconds Relay has spent executing commands</p>
+</li>
+<li>
+<p><code>stats.rinit_usec</code>: The number of microseconds Relay has spent in request initialization.</p>
+</li>
+<li>
+<p><code>stats.rshutdown_usec</code>: The number of microseconds Relay has spent in request shutdown.</p>
+</li>
+<li>
+<p><code>stats.sigio_usec</code>: The number of microseconds Relay has spent in its SIGIO handler.</p>
 </li>
 <li>
 <p><code>memory.total</code>: The total bytes of allocated memory</p>
@@ -4823,7 +4913,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_maxMemory">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L826">at line 826</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L839">at line 839</a></div>
         <code>        static            int
     <strong>maxMemory</strong>()
         </code>
@@ -4855,7 +4945,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_memory">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L836">at line 836</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L849">at line 849</a></div>
         <code>        static            int
     <strong>memory</strong>()
         <small><span class="label label-danger">deprecated</span></small></code>
@@ -4894,7 +4984,7 @@ lifetime, or since the last time Relay::clearBytes() was called.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_rawCommand">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L847">at line 847</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L860">at line 860</a></div>
         <code>                    mixed
     <strong>rawCommand</strong>(string $cmd, mixed ...$args)
         </code>
@@ -4942,7 +5032,7 @@ the prefix, compression and serialization.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_select">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L856">at line 856</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L869">at line 869</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>select</strong>(int $db)
         </code>
@@ -4984,7 +5074,7 @@ the prefix, compression and serialization.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_auth">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L865">at line 865</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L878">at line 878</a></div>
         <code>                    bool
     <strong>auth</strong>(mixed $auth)
         </code>
@@ -5026,7 +5116,7 @@ the prefix, compression and serialization.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_info">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L877">at line 877</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L890">at line 890</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>info</strong>(string ...$sections)
         </code>
@@ -5080,7 +5170,7 @@ that is simple to parse by computers and easy to read by humans.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_flushdb">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L886">at line 886</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L899">at line 899</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>flushdb</strong>(bool $async = false)
         </code>
@@ -5122,7 +5212,7 @@ that is simple to parse by computers and easy to read by humans.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_flushall">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L895">at line 895</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L908">at line 908</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>flushall</strong>(bool $async = false)
         </code>
@@ -5164,7 +5254,7 @@ that is simple to parse by computers and easy to read by humans.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_fcall">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L907">at line 907</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L920">at line 920</a></div>
         <code>                    mixed
     <strong>fcall</strong>(string $name, array $keys = [], array $argv = [], callable $handler = null)
         </code>
@@ -5221,7 +5311,7 @@ that is simple to parse by computers and easy to read by humans.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_fcall_ro">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L919">at line 919</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L932">at line 932</a></div>
         <code>                    mixed
     <strong>fcall_ro</strong>(string $name, array $keys = [], array $argv = [], callable $handler = null)
         </code>
@@ -5278,7 +5368,7 @@ that is simple to parse by computers and easy to read by humans.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_function">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L929">at line 929</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L942">at line 942</a></div>
         <code>                    mixed
     <strong>function</strong>(string $op, string ...$args)
         </code>
@@ -5325,7 +5415,7 @@ that is simple to parse by computers and easy to read by humans.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_flushMemory">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L942">at line 942</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L955">at line 955</a></div>
         <code>        static            bool
     <strong>flushMemory</strong>(string|null $endpointId = null, int $db = null)
         </code>
@@ -5374,7 +5464,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_dbsize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L950">at line 950</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L963">at line 963</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>dbsize</strong>()
         </code>
@@ -5406,7 +5496,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_dump">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L959">at line 959</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L972">at line 972</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|string|false">Relay|string|false</abbr>
     <strong>dump</strong>(mixed $key)
         </code>
@@ -5448,7 +5538,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_replicaof">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L969">at line 969</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L982">at line 982</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>replicaof</strong>(string|null $host = null, int $port = 0)
         </code>
@@ -5495,7 +5585,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_restore">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L981">at line 981</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L994">at line 994</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>restore</strong>(mixed $key, int $ttl, string $value, array|null $options = null)
         </code>
@@ -5552,7 +5642,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_migrate">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L997">at line 997</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1010">at line 1010</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>migrate</strong>(string $host, int $port, <abbr title="Relay\string|array">string|array</abbr> $key, int $dstdb, int $timeout, bool $copy = false, bool $replace = false, mixed $credentials = null)
         </code>
@@ -5629,7 +5719,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_copy">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1017">at line 1017</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1030">at line 1030</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>copy</strong>(mixed $src, mixed $dst, array|null $options = null)
         </code>
@@ -5681,7 +5771,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_echo">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1026">at line 1026</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1039">at line 1039</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool|string">Relay|bool|string</abbr>
     <strong>echo</strong>(string $arg)
         </code>
@@ -5723,7 +5813,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_ping">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1035">at line 1035</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1048">at line 1048</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool|string">Relay|bool|string</abbr>
     <strong>ping</strong>(string $arg = null)
         </code>
@@ -5765,7 +5855,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_idleTime">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1043">at line 1043</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1056">at line 1056</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>idleTime</strong>()
         </code>
@@ -5797,7 +5887,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_randomkey">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1051">at line 1051</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1064">at line 1064</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|string|null|bool">Relay|string|null|bool</abbr>
     <strong>randomkey</strong>()
         </code>
@@ -5829,7 +5919,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_time">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1059">at line 1059</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1072">at line 1072</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>time</strong>()
         </code>
@@ -5861,7 +5951,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_bgrewriteaof">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1067">at line 1067</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1080">at line 1080</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>bgrewriteaof</strong>()
         </code>
@@ -5893,7 +5983,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_lastsave">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1075">at line 1075</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1088">at line 1088</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>lastsave</strong>()
         </code>
@@ -5925,7 +6015,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_bgsave">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1084">at line 1084</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1097">at line 1097</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>bgsave</strong>(bool $schedule = false)
         </code>
@@ -5967,7 +6057,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_save">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1092">at line 1092</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1105">at line 1105</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>save</strong>()
         </code>
@@ -5999,7 +6089,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_role">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1100">at line 1100</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1113">at line 1113</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>role</strong>()
         </code>
@@ -6031,7 +6121,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_ttl">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1109">at line 1109</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1122">at line 1122</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>ttl</strong>(mixed $key)
         </code>
@@ -6073,7 +6163,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_pttl">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1118">at line 1118</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1131">at line 1131</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>pttl</strong>(mixed $key)
         </code>
@@ -6115,7 +6205,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_exists">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1127">at line 1127</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1140">at line 1140</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool|int">Relay|bool|int</abbr>
     <strong>exists</strong>(mixed ...$keys)
         </code>
@@ -6157,7 +6247,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_eval">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1140">at line 1140</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1153">at line 1153</a></div>
         <code>                    mixed
     <strong>eval</strong>(mixed $script, array $args = [], int $num_keys = 0)
         </code>
@@ -6220,7 +6310,7 @@ for that connection will be flushed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_eval_ro">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1154">at line 1154</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1167">at line 1167</a></div>
         <code>                    mixed
     <strong>eval_ro</strong>(mixed $script, array $args = [], int $num_keys = 0)
         </code>
@@ -6284,7 +6374,7 @@ meaning it can be run on read-only replicas.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_evalsha">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1166">at line 1166</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1179">at line 1179</a></div>
         <code>                    mixed
     <strong>evalsha</strong>(string $sha, array $args = [], int $num_keys = 0)
         </code>
@@ -6336,7 +6426,7 @@ meaning it can be run on read-only replicas.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_evalsha_ro">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1178">at line 1178</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1191">at line 1191</a></div>
         <code>                    mixed
     <strong>evalsha_ro</strong>(string $sha, array $args = [], int $num_keys = 0)
         </code>
@@ -6389,7 +6479,7 @@ of <code>EVALSHA</code> meaning it can be run on read-only replicas.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_client">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1188">at line 1188</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1201">at line 1201</a></div>
         <code>                    mixed
     <strong>client</strong>(string $operation, mixed ...$args)
         </code>
@@ -6436,7 +6526,7 @@ of <code>EVALSHA</code> meaning it can be run on read-only replicas.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_geoadd">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1201">at line 1201</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1214">at line 1214</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>geoadd</strong>(string $key, float $lng, float $lat, string $member, mixed ...$other_triples_and_options)
         </code>
@@ -6498,7 +6588,7 @@ of <code>EVALSHA</code> meaning it can be run on read-only replicas.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_geodist">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1219">at line 1219</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1232">at line 1232</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|float|false">Relay|float|false</abbr>
     <strong>geodist</strong>(string $key, string $src, string $dst, string|null $unit = null)
         </code>
@@ -6555,7 +6645,7 @@ of <code>EVALSHA</code> meaning it can be run on read-only replicas.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_geohash">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1230">at line 1230</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1243">at line 1243</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>geohash</strong>(string $key, string $member, string ...$other_members)
         </code>
@@ -6607,7 +6697,7 @@ of <code>EVALSHA</code> meaning it can be run on read-only replicas.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_georadius">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1244">at line 1244</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1257">at line 1257</a></div>
         <code>                    mixed
     <strong>georadius</strong>(string $key, float $lng, float $lat, float $radius, string $unit, array $options = [])
         </code>
@@ -6674,7 +6764,7 @@ of <code>EVALSHA</code> meaning it can be run on read-only replicas.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_georadiusbymember">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1257">at line 1257</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1270">at line 1270</a></div>
         <code>                    mixed
     <strong>georadiusbymember</strong>(string $key, string $member, float $radius, string $unit, array $options = [])
         </code>
@@ -6736,7 +6826,7 @@ of <code>EVALSHA</code> meaning it can be run on read-only replicas.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_georadiusbymember_ro">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1270">at line 1270</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1283">at line 1283</a></div>
         <code>                    mixed
     <strong>georadiusbymember_ro</strong>(string $key, string $member, float $radius, string $unit, array $options = [])
         </code>
@@ -6798,7 +6888,7 @@ of <code>EVALSHA</code> meaning it can be run on read-only replicas.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_georadius_ro">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1284">at line 1284</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1297">at line 1297</a></div>
         <code>                    mixed
     <strong>georadius_ro</strong>(string $key, float $lng, float $lat, float $radius, string $unit, array $options = [])
         </code>
@@ -6865,7 +6955,7 @@ of <code>EVALSHA</code> meaning it can be run on read-only replicas.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_geosearch">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1297">at line 1297</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1310">at line 1310</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array">Relay|array</abbr>
     <strong>geosearch</strong>(string $key, <abbr title="Relay\array|string">array|string</abbr> $position, <abbr title="Relay\array|int|float">array|int|float</abbr> $shape, string $unit, array $options = [])
         </code>
@@ -6927,7 +7017,7 @@ of <code>EVALSHA</code> meaning it can be run on read-only replicas.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_geosearchstore">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1318">at line 1318</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1331">at line 1331</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>geosearchstore</strong>(string $dst, string $src, <abbr title="Relay\array|string">array|string</abbr> $position, <abbr title="Relay\array|int|float">array|int|float</abbr> $shape, string $unit, array $options = [])
         </code>
@@ -6995,7 +7085,7 @@ a new set.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1334">at line 1334</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1347">at line 1347</a></div>
         <code>                    mixed
     <strong>get</strong>(mixed $key)
         </code>
@@ -7037,7 +7127,7 @@ a new set.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getset">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1344">at line 1344</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1357">at line 1357</a></div>
         <code>                    mixed
     <strong>getset</strong>(mixed $key, mixed $value)
         </code>
@@ -7084,7 +7174,7 @@ a new set.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getrange">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1356">at line 1356</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1369">at line 1369</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|string|false">Relay|string|false</abbr>
     <strong>getrange</strong>(mixed $key, int $start, int $end)
         </code>
@@ -7137,7 +7227,7 @@ determined by the offsets start and end (both are inclusive).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setrange">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1368">at line 1368</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1381">at line 1381</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>setrange</strong>(mixed $key, int $start, mixed $value)
         </code>
@@ -7190,7 +7280,7 @@ the specified offset, for the entire length of value.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getbit">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1378">at line 1378</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1391">at line 1391</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>getbit</strong>(mixed $key, int $pos)
         </code>
@@ -7237,7 +7327,7 @@ the specified offset, for the entire length of value.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_bitcount">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1390">at line 1390</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1403">at line 1403</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>bitcount</strong>(mixed $key, int $start = 0, int $end = -1, bool $by_bit = false)
         </code>
@@ -7294,7 +7384,7 @@ the specified offset, for the entire length of value.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_config">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1401">at line 1401</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1414">at line 1414</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|bool">Relay|array|bool</abbr>
     <strong>config</strong>(string $operation, mixed $key = null, string|null $value = null)
         </code>
@@ -7346,7 +7436,7 @@ the specified offset, for the entire length of value.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_command">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1410">at line 1410</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1423">at line 1423</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|int|false">Relay|array|int|false</abbr>
     <strong>command</strong>(mixed ...$args)
         </code>
@@ -7388,7 +7478,7 @@ the specified offset, for the entire length of value.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_bitop">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1422">at line 1422</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1435">at line 1435</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>bitop</strong>(string $operation, string $dstkey, string $srckey, string ...$other_keys)
         </code>
@@ -7445,7 +7535,7 @@ the specified offset, for the entire length of value.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_bitpos">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1435">at line 1435</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1448">at line 1448</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>bitpos</strong>(mixed $key, int $bit, int $start = null, int $end = null, bool $bybit = false)
         </code>
@@ -7507,7 +7597,7 @@ the specified offset, for the entire length of value.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setbit">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1446">at line 1446</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1459">at line 1459</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>setbit</strong>(mixed $key, int $pos, int $val)
         </code>
@@ -7559,7 +7649,7 @@ the specified offset, for the entire length of value.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_acl">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1456">at line 1456</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1469">at line 1469</a></div>
         <code>                    mixed
     <strong>acl</strong>(string $cmd, string ...$args)
         </code>
@@ -7606,7 +7696,7 @@ the specified offset, for the entire length of value.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_append">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1469">at line 1469</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1482">at line 1482</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>append</strong>(mixed $key, mixed $value)
         </code>
@@ -7656,7 +7746,7 @@ be similar to SET in this special case.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_set">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1481">at line 1481</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1494">at line 1494</a></div>
         <code>                    mixed
     <strong>set</strong>(mixed $key, mixed $value, mixed $options = null)
         </code>
@@ -7709,7 +7799,7 @@ a value, it is overwritten, regardless of its type.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1492">at line 1492</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1505">at line 1505</a></div>
         <code>                    mixed
     <strong>getex</strong>(mixed $key, array|null $options = null)
         </code>
@@ -7756,7 +7846,7 @@ a value, it is overwritten, regardless of its type.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getdel">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1503">at line 1503</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1516">at line 1516</a></div>
         <code>                    mixed
     <strong>getdel</strong>(mixed $key)
         </code>
@@ -7800,7 +7890,7 @@ except for the fact that it also deletes the key on success
             </div>
                     <div class="method-item">
                     <h3 id="method_setex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1514">at line 1514</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1527">at line 1527</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>setex</strong>(mixed $key, int $seconds, mixed $value)
         </code>
@@ -7852,7 +7942,7 @@ except for the fact that it also deletes the key on success
             </div>
                     <div class="method-item">
                     <h3 id="method_pfadd">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1524">at line 1524</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1537">at line 1537</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>pfadd</strong>(string $key, array $elements)
         </code>
@@ -7899,7 +7989,7 @@ except for the fact that it also deletes the key on success
             </div>
                     <div class="method-item">
                     <h3 id="method_pfcount">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1533">at line 1533</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1546">at line 1546</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>pfcount</strong>(string $key)
         </code>
@@ -7941,7 +8031,7 @@ except for the fact that it also deletes the key on success
             </div>
                     <div class="method-item">
                     <h3 id="method_pfmerge">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1543">at line 1543</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1556">at line 1556</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>pfmerge</strong>(string $dst, array $srckeys)
         </code>
@@ -7988,7 +8078,7 @@ except for the fact that it also deletes the key on success
             </div>
                     <div class="method-item">
                     <h3 id="method_psetex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1554">at line 1554</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1567">at line 1567</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>psetex</strong>(mixed $key, int $milliseconds, mixed $value)
         </code>
@@ -8040,7 +8130,7 @@ except for the fact that it also deletes the key on success
             </div>
                     <div class="method-item">
                     <h3 id="method_publish">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1564">at line 1564</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1577">at line 1577</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>publish</strong>(string $channel, string $message)
         </code>
@@ -8086,8 +8176,55 @@ except for the fact that it also deletes the key on success
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_spublish">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1587">at line 1587</a></div>
+        <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
+    <strong>spublish</strong>(string $channel, string $message)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Posts a message to the given shard channel.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$channel</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_setnx">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1576">at line 1576</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1599">at line 1599</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>setnx</strong>(mixed $key, mixed $value)
         </code>
@@ -8135,7 +8272,7 @@ SETNX is short for &quot;SET if Not eXists&quot;.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_mget">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1585">at line 1585</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1608">at line 1608</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>mget</strong>(array $keys)
         </code>
@@ -8177,7 +8314,7 @@ SETNX is short for &quot;SET if Not eXists&quot;.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_move">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1595">at line 1595</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1618">at line 1618</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>move</strong>(mixed $key, int $db)
         </code>
@@ -8224,7 +8361,7 @@ SETNX is short for &quot;SET if Not eXists&quot;.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_mset">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1605">at line 1605</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1628">at line 1628</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>mset</strong>(array $kvals)
         </code>
@@ -8266,7 +8403,7 @@ SETNX is short for &quot;SET if Not eXists&quot;.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_msetnx">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1615">at line 1615</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1638">at line 1638</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>msetnx</strong>(array $kvals)
         </code>
@@ -8308,7 +8445,7 @@ SETNX is short for &quot;SET if Not eXists&quot;.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_rename">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1625">at line 1625</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1648">at line 1648</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>rename</strong>(mixed $key, mixed $newkey)
         </code>
@@ -8355,7 +8492,7 @@ SETNX is short for &quot;SET if Not eXists&quot;.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_renamenx">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1635">at line 1635</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1658">at line 1658</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>renamenx</strong>(mixed $key, mixed $newkey)
         </code>
@@ -8402,7 +8539,7 @@ SETNX is short for &quot;SET if Not eXists&quot;.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_del">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1644">at line 1644</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1667">at line 1667</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|bool">Relay|int|bool</abbr>
     <strong>del</strong>(mixed ...$keys)
         </code>
@@ -8444,7 +8581,7 @@ SETNX is short for &quot;SET if Not eXists&quot;.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_unlink">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1653">at line 1653</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1676">at line 1676</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>unlink</strong>(mixed ...$keys)
         </code>
@@ -8486,7 +8623,7 @@ SETNX is short for &quot;SET if Not eXists&quot;.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_expire">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1664">at line 1664</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1687">at line 1687</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>expire</strong>(mixed $key, int $seconds, string|null $mode = null)
         </code>
@@ -8538,7 +8675,7 @@ SETNX is short for &quot;SET if Not eXists&quot;.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_pexpire">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1674">at line 1674</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1697">at line 1697</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>pexpire</strong>(mixed $key, int $milliseconds)
         </code>
@@ -8585,7 +8722,7 @@ SETNX is short for &quot;SET if Not eXists&quot;.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_expireat">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1684">at line 1684</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1707">at line 1707</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>expireat</strong>(mixed $key, int $timestamp)
         </code>
@@ -8632,7 +8769,7 @@ SETNX is short for &quot;SET if Not eXists&quot;.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_expiretime">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1695">at line 1695</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1718">at line 1718</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>expiretime</strong>(mixed $key)
         </code>
@@ -8675,7 +8812,7 @@ If the key does not exist -2.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_pexpireat">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1705">at line 1705</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1728">at line 1728</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>pexpireat</strong>(mixed $key, int $timestamp_ms)
         </code>
@@ -8722,7 +8859,7 @@ If the key does not exist -2.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_pexpiretime">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1715">at line 1715</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1738">at line 1738</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>pexpiretime</strong>(mixed $key)
         </code>
@@ -8765,7 +8902,7 @@ timestamp in milliseconds instead of seconds.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_persist">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1724">at line 1724</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1747">at line 1747</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>persist</strong>(mixed $key)
         </code>
@@ -8807,7 +8944,7 @@ timestamp in milliseconds instead of seconds.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_type">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1737">at line 1737</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1760">at line 1760</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|string|bool">Relay|int|string|bool</abbr>
     <strong>type</strong>(mixed $key)
         </code>
@@ -8851,7 +8988,7 @@ return the string that Redis returns.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_lmove">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1751">at line 1751</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1774">at line 1774</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|string|null|false">Relay|string|null|false</abbr>
     <strong>lmove</strong>(mixed $srckey, mixed $dstkey, string $srcpos, string $dstpos)
         </code>
@@ -8910,7 +9047,7 @@ element of the list stored at destination.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_blmove">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1766">at line 1766</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1789">at line 1789</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|string|null|false">Relay|string|null|false</abbr>
     <strong>blmove</strong>(mixed $srckey, mixed $dstkey, string $srcpos, string $dstpos, float $timeout)
         </code>
@@ -8974,7 +9111,7 @@ MULTI/EXEC block, this command behaves exactly like LMOVE.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_lrange">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1777">at line 1777</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1800">at line 1800</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>lrange</strong>(mixed $key, int $start, int $stop)
         </code>
@@ -9026,7 +9163,7 @@ MULTI/EXEC block, this command behaves exactly like LMOVE.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_lpush">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1788">at line 1788</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1811">at line 1811</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>lpush</strong>(mixed $key, mixed $mem, mixed ...$mems)
         </code>
@@ -9078,7 +9215,7 @@ MULTI/EXEC block, this command behaves exactly like LMOVE.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_rpush">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1799">at line 1799</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1822">at line 1822</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>rpush</strong>(mixed $key, mixed $mem, mixed ...$mems)
         </code>
@@ -9130,7 +9267,7 @@ MULTI/EXEC block, this command behaves exactly like LMOVE.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_lpushx">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1811">at line 1811</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1834">at line 1834</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>lpushx</strong>(mixed $key, mixed $mem, mixed ...$mems)
         </code>
@@ -9183,7 +9320,7 @@ only if key already exists and holds a list.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_rpushx">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1823">at line 1823</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1846">at line 1846</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>rpushx</strong>(mixed $key, mixed $mem, mixed ...$mems)
         </code>
@@ -9236,7 +9373,7 @@ only if key already exists and holds a list.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_lset">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1834">at line 1834</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1857">at line 1857</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>lset</strong>(mixed $key, int $index, mixed $mem)
         </code>
@@ -9288,7 +9425,7 @@ only if key already exists and holds a list.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_lpop">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1844">at line 1844</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1867">at line 1867</a></div>
         <code>                    mixed
     <strong>lpop</strong>(mixed $key, int $count = 1)
         </code>
@@ -9335,7 +9472,7 @@ only if key already exists and holds a list.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_lpos">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1855">at line 1855</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1878">at line 1878</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|array|false|null">Relay|int|array|false|null</abbr>
     <strong>lpos</strong>(mixed $key, mixed $value, array|null $options = null)
         </code>
@@ -9387,7 +9524,7 @@ only if key already exists and holds a list.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_rpop">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1865">at line 1865</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1888">at line 1888</a></div>
         <code>                    mixed
     <strong>rpop</strong>(mixed $key, int $count = 1)
         </code>
@@ -9434,7 +9571,7 @@ only if key already exists and holds a list.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_rpoplpush">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1876">at line 1876</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1899">at line 1899</a></div>
         <code>                    mixed
     <strong>rpoplpush</strong>(mixed $source, mixed $dest)
         </code>
@@ -9482,7 +9619,7 @@ and pushes the element at the first element (head) of the list stored at destina
             </div>
                     <div class="method-item">
                     <h3 id="method_brpoplpush">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1889">at line 1889</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1912">at line 1912</a></div>
         <code>                    mixed
     <strong>brpoplpush</strong>(mixed $source, mixed $dest, float $timeout)
         </code>
@@ -9535,7 +9672,7 @@ and pushes the element at the first element (head) of the list stored at destina
             </div>
                     <div class="method-item">
                     <h3 id="method_blpop">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1901">at line 1901</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1924">at line 1924</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|null|false">Relay|array|null|false</abbr>
     <strong>blpop</strong>(<abbr title="Relay\string|array">string|array</abbr> $key, <abbr title="Relay\string|float">string|float</abbr> $timeout_or_key, mixed ...$extra_args)
         </code>
@@ -9588,7 +9725,7 @@ it blocks the connection when there are no elements to pop from any of the given
             </div>
                     <div class="method-item">
                     <h3 id="method_blmpop">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1913">at line 1913</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1936">at line 1936</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|null|false">Relay|array|null|false</abbr>
     <strong>blmpop</strong>(float $timeout, array $keys, string $from, int $count = 1)
         </code>
@@ -9645,7 +9782,7 @@ it blocks the connection when there are no elements to pop from any of the given
             </div>
                     <div class="method-item">
                     <h3 id="method_bzmpop">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1925">at line 1925</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1948">at line 1948</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|null|false">Relay|array|null|false</abbr>
     <strong>bzmpop</strong>(float $timeout, array $keys, string $from, int $count = 1)
         </code>
@@ -9702,7 +9839,7 @@ it blocks the connection when there are no elements to pop from any of the given
             </div>
                     <div class="method-item">
                     <h3 id="method_lmpop">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1936">at line 1936</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1959">at line 1959</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|null|false">Relay|array|null|false</abbr>
     <strong>lmpop</strong>(array $keys, string $from, int $count = 1)
         </code>
@@ -9754,7 +9891,7 @@ it blocks the connection when there are no elements to pop from any of the given
             </div>
                     <div class="method-item">
                     <h3 id="method_zmpop">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1948">at line 1948</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1971">at line 1971</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|null|false">Relay|array|null|false</abbr>
     <strong>zmpop</strong>(array $keys, string $from, int $count = 1)
         </code>
@@ -9807,7 +9944,7 @@ first non-empty sorted set in the provided list of key names.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_brpop">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1960">at line 1960</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1983">at line 1983</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|null|false">Relay|array|null|false</abbr>
     <strong>brpop</strong>(<abbr title="Relay\string|array">string|array</abbr> $key, <abbr title="Relay\string|float">string|float</abbr> $timeout_or_key, mixed ...$extra_args)
         </code>
@@ -9860,7 +9997,7 @@ it blocks the connection when there are no elements to pop from any of the given
             </div>
                     <div class="method-item">
                     <h3 id="method_bzpopmax">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1971">at line 1971</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1994">at line 1994</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|null|false">Relay|array|null|false</abbr>
     <strong>bzpopmax</strong>(<abbr title="Relay\string|array">string|array</abbr> $key, <abbr title="Relay\string|float">string|float</abbr> $timeout_or_key, mixed ...$extra_args)
         </code>
@@ -9912,7 +10049,7 @@ it blocks the connection when there are no elements to pop from any of the given
             </div>
                     <div class="method-item">
                     <h3 id="method_bzpopmin">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1982">at line 1982</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2005">at line 2005</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|null|false">Relay|array|null|false</abbr>
     <strong>bzpopmin</strong>(<abbr title="Relay\string|array">string|array</abbr> $key, <abbr title="Relay\string|float">string|float</abbr> $timeout_or_key, mixed ...$extra_args)
         </code>
@@ -9964,7 +10101,7 @@ it blocks the connection when there are no elements to pop from any of the given
             </div>
                     <div class="method-item">
                     <h3 id="method_object">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L1992">at line 1992</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2015">at line 2015</a></div>
         <code>                    mixed
     <strong>object</strong>(string $op, mixed $key)
         </code>
@@ -10011,7 +10148,7 @@ it blocks the connection when there are no elements to pop from any of the given
             </div>
                     <div class="method-item">
                     <h3 id="method_geopos">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2003">at line 2003</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2026">at line 2026</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>geopos</strong>(mixed $key, mixed ...$members)
         </code>
@@ -10059,7 +10196,7 @@ of the geospatial index represented by the sorted set at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_lrem">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2014">at line 2014</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2037">at line 2037</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>lrem</strong>(mixed $key, mixed $mem, int $count = 0)
         </code>
@@ -10111,7 +10248,7 @@ of the geospatial index represented by the sorted set at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_lindex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2024">at line 2024</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2047">at line 2047</a></div>
         <code>                    mixed
     <strong>lindex</strong>(mixed $key, int $index)
         </code>
@@ -10158,7 +10295,7 @@ of the geospatial index represented by the sorted set at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_linsert">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2036">at line 2036</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2059">at line 2059</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>linsert</strong>(mixed $key, string $op, mixed $pivot, mixed $element)
         </code>
@@ -10215,7 +10352,7 @@ of the geospatial index represented by the sorted set at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_ltrim">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2047">at line 2047</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2070">at line 2070</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>ltrim</strong>(mixed $key, int $start, int $end)
         </code>
@@ -10267,7 +10404,7 @@ of the geospatial index represented by the sorted set at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hget">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2057">at line 2057</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2080">at line 2080</a></div>
         <code>                    mixed
     <strong>hget</strong>(mixed $hash, mixed $member)
         </code>
@@ -10314,7 +10451,7 @@ of the geospatial index represented by the sorted set at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hstrlen">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2067">at line 2067</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2090">at line 2090</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>hstrlen</strong>(mixed $hash, mixed $member)
         </code>
@@ -10361,7 +10498,7 @@ of the geospatial index represented by the sorted set at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hgetall">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2076">at line 2076</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2099">at line 2099</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>hgetall</strong>(mixed $hash)
         </code>
@@ -10403,7 +10540,7 @@ of the geospatial index represented by the sorted set at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hkeys">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2085">at line 2085</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2108">at line 2108</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>hkeys</strong>(mixed $hash)
         </code>
@@ -10445,7 +10582,7 @@ of the geospatial index represented by the sorted set at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hvals">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2094">at line 2094</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2117">at line 2117</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>hvals</strong>(mixed $hash)
         </code>
@@ -10487,7 +10624,7 @@ of the geospatial index represented by the sorted set at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hmget">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2104">at line 2104</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2127">at line 2127</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>hmget</strong>(mixed $hash, array $members)
         </code>
@@ -10534,7 +10671,7 @@ of the geospatial index represented by the sorted set at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hrandfield">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2114">at line 2114</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2137">at line 2137</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|string|false">Relay|array|string|false</abbr>
     <strong>hrandfield</strong>(mixed $hash, array|null $options = null)
         </code>
@@ -10581,7 +10718,7 @@ of the geospatial index represented by the sorted set at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hmset">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2124">at line 2124</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2147">at line 2147</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>hmset</strong>(mixed $hash, array $members)
         </code>
@@ -10628,7 +10765,7 @@ of the geospatial index represented by the sorted set at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hexists">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2134">at line 2134</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2157">at line 2157</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>hexists</strong>(mixed $hash, mixed $member)
         </code>
@@ -10675,7 +10812,7 @@ of the geospatial index represented by the sorted set at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hsetnx">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2145">at line 2145</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2168">at line 2168</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>hsetnx</strong>(mixed $hash, mixed $member, mixed $value)
         </code>
@@ -10727,7 +10864,7 @@ of the geospatial index represented by the sorted set at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hset">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2157">at line 2157</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2180">at line 2180</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>hset</strong>(mixed $key, mixed $mem, mixed $val, mixed ...$kvals)
         </code>
@@ -10784,7 +10921,7 @@ of the geospatial index represented by the sorted set at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hdel">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2168">at line 2168</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2191">at line 2191</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>hdel</strong>(mixed $key, mixed $mem, string ...$mems)
         </code>
@@ -10836,7 +10973,7 @@ of the geospatial index represented by the sorted set at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hincrby">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2179">at line 2179</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2202">at line 2202</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>hincrby</strong>(mixed $key, mixed $mem, int $value)
         </code>
@@ -10888,7 +11025,7 @@ of the geospatial index represented by the sorted set at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hincrbyfloat">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2191">at line 2191</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2214">at line 2214</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|float|bool">Relay|float|bool</abbr>
     <strong>hincrbyfloat</strong>(mixed $key, mixed $mem, float $value)
         </code>
@@ -10941,7 +11078,7 @@ a floating point number, by the specified increment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_incr">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2201">at line 2201</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2224">at line 2224</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>incr</strong>(mixed $key, int $by = 1)
         </code>
@@ -10988,7 +11125,7 @@ a floating point number, by the specified increment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_decr">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2211">at line 2211</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2234">at line 2234</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>decr</strong>(mixed $key, int $by = 1)
         </code>
@@ -11035,7 +11172,7 @@ a floating point number, by the specified increment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_incrby">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2221">at line 2221</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2244">at line 2244</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>incrby</strong>(mixed $key, int $value)
         </code>
@@ -11082,7 +11219,7 @@ a floating point number, by the specified increment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_decrby">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2231">at line 2231</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2254">at line 2254</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>decrby</strong>(mixed $key, int $value)
         </code>
@@ -11129,7 +11266,7 @@ a floating point number, by the specified increment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_incrbyfloat">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2241">at line 2241</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2264">at line 2264</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|float|false">Relay|float|false</abbr>
     <strong>incrbyfloat</strong>(mixed $key, float $value)
         </code>
@@ -11176,7 +11313,7 @@ a floating point number, by the specified increment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sdiff">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2251">at line 2251</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2274">at line 2274</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>sdiff</strong>(mixed $key, mixed ...$other_keys)
         </code>
@@ -11223,7 +11360,7 @@ a floating point number, by the specified increment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sdiffstore">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2262">at line 2262</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2285">at line 2285</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>sdiffstore</strong>(mixed $key, mixed ...$other_keys)
         </code>
@@ -11270,7 +11407,7 @@ a floating point number, by the specified increment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sinter">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2272">at line 2272</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2295">at line 2295</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>sinter</strong>(mixed $key, mixed ...$other_keys)
         </code>
@@ -11317,7 +11454,7 @@ a floating point number, by the specified increment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sintercard">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2282">at line 2282</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2305">at line 2305</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>sintercard</strong>(array $keys, int $limit = -1)
         </code>
@@ -11364,7 +11501,7 @@ a floating point number, by the specified increment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sinterstore">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2293">at line 2293</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2316">at line 2316</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>sinterstore</strong>(mixed $key, mixed ...$other_keys)
         </code>
@@ -11411,7 +11548,7 @@ a floating point number, by the specified increment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sunion">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2303">at line 2303</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2326">at line 2326</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>sunion</strong>(mixed $key, mixed ...$other_keys)
         </code>
@@ -11458,7 +11595,7 @@ a floating point number, by the specified increment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sunionstore">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2314">at line 2314</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2337">at line 2337</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>sunionstore</strong>(mixed $key, mixed ...$other_keys)
         </code>
@@ -11504,8 +11641,275 @@ a floating point number, by the specified increment.</p></p>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_subscribe">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2347">at line 2347</a></div>
+        <code>                    bool
+    <strong>subscribe</strong>(array $channels, callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Subscribes to the specified channels.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$channels</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_unsubscribe">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2356">at line 2356</a></div>
+        <code>                    bool
+    <strong>unsubscribe</strong>(array $channels = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Unsubscribes from the given channels, or from all of them if none is given.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$channels</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_psubscribe">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2366">at line 2366</a></div>
+        <code>                    bool
+    <strong>psubscribe</strong>(array $patterns, callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Subscribes to the given patterns.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$patterns</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_punsubscribe">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2375">at line 2375</a></div>
+        <code>                    bool
+    <strong>punsubscribe</strong>(array $patterns = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Unsubscribes from the given patterns, or from all of them if none is given.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$patterns</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_ssubscribe">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2385">at line 2385</a></div>
+        <code>                    bool
+    <strong>ssubscribe</strong>(array $channels, callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Subscribes to the specified shard channels.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$channels</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sunsubscribe">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2394">at line 2394</a></div>
+        <code>                    bool
+    <strong>sunsubscribe</strong>(array $channels = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Unsubscribes from the given shard channels, or from all of them if none is given.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$channels</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_touch">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2324">at line 2324</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2404">at line 2404</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>touch</strong>(<abbr title="Relay\array|string">array|string</abbr> $key_or_array, mixed ...$more_keys)
         </code>
@@ -11552,7 +11956,7 @@ a floating point number, by the specified increment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_pipeline">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2332">at line 2332</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2412">at line 2412</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>pipeline</strong>()
         </code>
@@ -11584,7 +11988,7 @@ a floating point number, by the specified increment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_multi">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2343">at line 2343</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2423">at line 2423</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>multi</strong>(int $mode = 0)
         </code>
@@ -11626,7 +12030,7 @@ a floating point number, by the specified increment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_exec">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2351">at line 2351</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2431">at line 2431</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|bool">Relay|array|bool</abbr>
     <strong>exec</strong>()
         </code>
@@ -11658,7 +12062,7 @@ a floating point number, by the specified increment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_wait">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2362">at line 2362</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2442">at line 2442</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>wait</strong>(int $replicas, int $timeout)
         </code>
@@ -11706,7 +12110,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_watch">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2372">at line 2372</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2452">at line 2452</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>watch</strong>(mixed $key, mixed ...$other_keys)
         </code>
@@ -11753,7 +12157,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_unwatch">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2381">at line 2381</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2461">at line 2461</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>unwatch</strong>()
         </code>
@@ -11785,7 +12189,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_discard">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2390">at line 2390</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2470">at line 2470</a></div>
         <code>                    bool
     <strong>discard</strong>()
         </code>
@@ -11817,7 +12221,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getMode">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2400">at line 2400</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2480">at line 2480</a></div>
         <code>                    int
     <strong>getMode</strong>(bool $masked = false)
         </code>
@@ -11859,7 +12263,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_clearBytes">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2408">at line 2408</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2488">at line 2488</a></div>
         <code>                    void
     <strong>clearBytes</strong>()
         </code>
@@ -11891,7 +12295,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_scan">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2420">at line 2420</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2500">at line 2500</a></div>
         <code>                    <abbr title="Relay\array|false">array|false</abbr>
     <strong>scan</strong>(mixed $iterator, mixed $match = null, int $count = 0, string|null $type = null)
         </code>
@@ -11948,7 +12352,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hscan">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2432">at line 2432</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2512">at line 2512</a></div>
         <code>                    <abbr title="Relay\array|false">array|false</abbr>
     <strong>hscan</strong>(mixed $key, mixed $iterator, mixed $match = null, int $count = 0)
         </code>
@@ -12005,7 +12409,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sscan">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2444">at line 2444</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2524">at line 2524</a></div>
         <code>                    <abbr title="Relay\array|false">array|false</abbr>
     <strong>sscan</strong>(mixed $key, mixed $iterator, mixed $match = null, int $count = 0)
         </code>
@@ -12062,7 +12466,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zscan">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2456">at line 2456</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2536">at line 2536</a></div>
         <code>                    <abbr title="Relay\array|false">array|false</abbr>
     <strong>zscan</strong>(mixed $key, mixed $iterator, mixed $match = null, int $count = 0)
         </code>
@@ -12119,7 +12523,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_keys">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2465">at line 2465</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2545">at line 2545</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>keys</strong>(mixed $pattern)
         </code>
@@ -12161,7 +12565,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_slowlog">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2475">at line 2475</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2555">at line 2555</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|int|bool">Relay|array|int|bool</abbr>
     <strong>slowlog</strong>(string $operation, string ...$extra_args)
         </code>
@@ -12208,7 +12612,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_smembers">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2484">at line 2484</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2564">at line 2564</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>smembers</strong>(mixed $set)
         </code>
@@ -12250,7 +12654,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sismember">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2494">at line 2494</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2574">at line 2574</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>sismember</strong>(mixed $set, mixed $member)
         </code>
@@ -12297,7 +12701,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_smismember">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2504">at line 2504</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2584">at line 2584</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>smismember</strong>(mixed $set, mixed ...$members)
         </code>
@@ -12344,7 +12748,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_srem">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2515">at line 2515</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2595">at line 2595</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>srem</strong>(mixed $set, mixed $member, mixed ...$members)
         </code>
@@ -12396,7 +12800,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sadd">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2526">at line 2526</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2606">at line 2606</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>sadd</strong>(mixed $set, mixed $member, mixed ...$members)
         </code>
@@ -12448,7 +12852,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sort">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2536">at line 2536</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2616">at line 2616</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|int|false">Relay|array|int|false</abbr>
     <strong>sort</strong>(mixed $key, array $options = [])
         </code>
@@ -12495,7 +12899,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sort_ro">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2546">at line 2546</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2626">at line 2626</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>sort_ro</strong>(mixed $key, array $options = [])
         </code>
@@ -12542,7 +12946,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_smove">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2557">at line 2557</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2637">at line 2637</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool">Relay|bool</abbr>
     <strong>smove</strong>(mixed $srcset, mixed $dstset, mixed $member)
         </code>
@@ -12594,7 +12998,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_spop">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2567">at line 2567</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2647">at line 2647</a></div>
         <code>                    mixed
     <strong>spop</strong>(mixed $set, int $count = 1)
         </code>
@@ -12641,7 +13045,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_srandmember">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2577">at line 2577</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2657">at line 2657</a></div>
         <code>                    mixed
     <strong>srandmember</strong>(mixed $set, int $count = 1)
         </code>
@@ -12688,7 +13092,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_scard">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2586">at line 2586</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2666">at line 2666</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>scard</strong>(mixed $key)
         </code>
@@ -12730,7 +13134,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_script">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2596">at line 2596</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2676">at line 2676</a></div>
         <code>                    mixed
     <strong>script</strong>(string $command, string ...$args)
         </code>
@@ -12777,7 +13181,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_strlen">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2605">at line 2605</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2685">at line 2685</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>strlen</strong>(mixed $key)
         </code>
@@ -12819,7 +13223,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hlen">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2614">at line 2614</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2694">at line 2694</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>hlen</strong>(mixed $key)
         </code>
@@ -12861,7 +13265,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_llen">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2623">at line 2623</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2703">at line 2703</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>llen</strong>(mixed $key)
         </code>
@@ -12903,7 +13307,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_xack">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2634">at line 2634</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2714">at line 2714</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>xack</strong>(mixed $key, string $group, array $ids)
         </code>
@@ -12955,7 +13359,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_xadd">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2647">at line 2647</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2727">at line 2727</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|string|false">Relay|string|false</abbr>
     <strong>xadd</strong>(string $key, string $id, array $values, int $maxlen = 0, bool $approx = false, bool $nomkstream = false)
         </code>
@@ -13022,7 +13426,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_xclaim">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2667">at line 2667</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2747">at line 2747</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|bool">Relay|array|bool</abbr>
     <strong>xclaim</strong>(string $key, string $group, string $consumer, int $min_idle, array $ids, array $options)
         </code>
@@ -13089,7 +13493,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_xautoclaim">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2689">at line 2689</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2769">at line 2769</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|bool|array">Relay|bool|array</abbr>
     <strong>xautoclaim</strong>(string $key, string $group, string $consumer, int $min_idle, string $start, int $count = -1, bool $justid = false)
         </code>
@@ -13161,7 +13565,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_xlen">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2706">at line 2706</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2786">at line 2786</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>xlen</strong>(string $key)
         </code>
@@ -13203,7 +13607,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_xgroup">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2720">at line 2720</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2800">at line 2800</a></div>
         <code>                    mixed
     <strong>xgroup</strong>(string $operation, mixed $key = null, string $group = null, string $id_or_consumer = null, bool $mkstream = false, int $entries_read = -2)
         </code>
@@ -13270,7 +13674,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_xdel">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2737">at line 2737</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2817">at line 2817</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>xdel</strong>(string $key, array $ids)
         </code>
@@ -13317,7 +13721,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_xinfo">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2749">at line 2749</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2829">at line 2829</a></div>
         <code>                    mixed
     <strong>xinfo</strong>(string $operation, string|null $arg1 = null, string|null $arg2 = null, int $count = -1)
         </code>
@@ -13374,7 +13778,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_xpending">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2764">at line 2764</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2844">at line 2844</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>xpending</strong>(string $key, string $group, string|null $start = null, string|null $end = null, int $count = -1, string|null $consumer = null, int $idle = 0)
         </code>
@@ -13446,7 +13850,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_xrange">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2784">at line 2784</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2864">at line 2864</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>xrange</strong>(mixed $key, string $start, string $end, int $count = -1)
         </code>
@@ -13503,7 +13907,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_xrevrange">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2796">at line 2796</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2876">at line 2876</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|bool">Relay|array|bool</abbr>
     <strong>xrevrange</strong>(string $key, string $end, string $start, int $count = -1)
         </code>
@@ -13560,7 +13964,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_xread">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2807">at line 2807</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2887">at line 2887</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|bool|null">Relay|array|bool|null</abbr>
     <strong>xread</strong>(array $streams, int $count = -1, int $block = -1)
         </code>
@@ -13612,7 +14016,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_xreadgroup">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2820">at line 2820</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2900">at line 2900</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|bool|null">Relay|array|bool|null</abbr>
     <strong>xreadgroup</strong>(string $group, string $consumer, array $streams, int $count = 1, int $block = 1)
         </code>
@@ -13674,7 +14078,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_xtrim">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2839">at line 2839</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2919">at line 2919</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>xtrim</strong>(string $key, string $threshold, bool $approx = false, bool $minid = false, int $limit = -1)
         </code>
@@ -13736,7 +14140,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zadd">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2855">at line 2855</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2935">at line 2935</a></div>
         <code>                    mixed
     <strong>zadd</strong>(mixed $key, mixed ...$args)
         </code>
@@ -13783,7 +14187,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zrandmember">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2866">at line 2866</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2946">at line 2946</a></div>
         <code>                    mixed
     <strong>zrandmember</strong>(mixed $key, array|null $options = null)
         </code>
@@ -13830,7 +14234,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zrange">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2878">at line 2878</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2958">at line 2958</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>zrange</strong>(mixed $key, string $start, string $end, mixed $options = null)
         </code>
@@ -13887,7 +14291,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zrevrange">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2890">at line 2890</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2970">at line 2970</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>zrevrange</strong>(mixed $key, int $start, int $end, mixed $options = null)
         </code>
@@ -13944,7 +14348,7 @@ commands sent in the context of the current connection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zrangebyscore">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2903">at line 2903</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2983">at line 2983</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>zrangebyscore</strong>(mixed $key, mixed $start, mixed $end, mixed $options = null)
         </code>
@@ -14002,7 +14406,7 @@ min and max (including elements with score equal to min or max).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zrevrangebyscore">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2916">at line 2916</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2996">at line 2996</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>zrevrangebyscore</strong>(mixed $key, mixed $start, mixed $end, mixed $options = null)
         </code>
@@ -14060,7 +14464,7 @@ max and min (including elements with score equal to max or min).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zrangestore">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2930">at line 2930</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3010">at line 3010</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>zrangestore</strong>(mixed $dst, mixed $src, mixed $start, mixed $end, mixed $options = null)
         </code>
@@ -14123,7 +14527,7 @@ max and min (including elements with score equal to max or min).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zrangebylex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2945">at line 2945</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3025">at line 3025</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>zrangebylex</strong>(mixed $key, mixed $min, mixed $max, int $offset = -1, int $count = -1)
         </code>
@@ -14187,7 +14591,7 @@ the elements in the sorted set at key with a value between min and max.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zrevrangebylex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2960">at line 2960</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3040">at line 3040</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>zrevrangebylex</strong>(mixed $key, mixed $max, mixed $min, int $offset = -1, int $count = -1)
         </code>
@@ -14251,7 +14655,7 @@ the elements in the sorted set at key with a value between max and min.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zrank">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2973">at line 2973</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3053">at line 3053</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|int|false">Relay|array|int|false</abbr>
     <strong>zrank</strong>(mixed $key, mixed $rank, bool $withscore = false)
         </code>
@@ -14305,7 +14709,7 @@ that the member with the lowest score has rank 0.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zrevrank">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2986">at line 2986</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3066">at line 3066</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|int|false">Relay|array|int|false</abbr>
     <strong>zrevrank</strong>(mixed $key, mixed $rank, bool $withscore = false)
         </code>
@@ -14359,7 +14763,7 @@ that the member with the highest score has rank 0.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zrem">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L2997">at line 2997</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3077">at line 3077</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>zrem</strong>(mixed $key, mixed ...$args)
         </code>
@@ -14406,7 +14810,7 @@ that the member with the highest score has rank 0.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zremrangebylex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3011">at line 3011</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3091">at line 3091</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>zremrangebylex</strong>(mixed $key, mixed $min, mixed $max)
         </code>
@@ -14461,7 +14865,7 @@ lexicographical range specified by min and max.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zremrangebyrank">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3024">at line 3024</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3104">at line 3104</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>zremrangebyrank</strong>(mixed $key, int $start, int $end)
         </code>
@@ -14515,7 +14919,7 @@ the element with the lowest score.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zremrangebyscore">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3036">at line 3036</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3116">at line 3116</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>zremrangebyscore</strong>(mixed $key, mixed $min, mixed $max)
         </code>
@@ -14568,7 +14972,7 @@ a score between min and max (inclusive).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zcard">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3045">at line 3045</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3125">at line 3125</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>zcard</strong>(mixed $key)
         </code>
@@ -14610,7 +15014,7 @@ a score between min and max (inclusive).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zcount">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3056">at line 3056</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3136">at line 3136</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>zcount</strong>(mixed $key, mixed $min, mixed $max)
         </code>
@@ -14662,7 +15066,7 @@ a score between min and max (inclusive).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zdiff">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3067">at line 3067</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3147">at line 3147</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>zdiff</strong>(array $keys, array|null $options = null)
         </code>
@@ -14710,7 +15114,7 @@ resulting sorted set, it is returned to the client.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zdiffstore">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3078">at line 3078</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3158">at line 3158</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>zdiffstore</strong>(mixed $dst, array $keys)
         </code>
@@ -14758,7 +15162,7 @@ input sorted sets and stores the result in destination.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zincrby">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3089">at line 3089</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3169">at line 3169</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|float|false">Relay|float|false</abbr>
     <strong>zincrby</strong>(mixed $key, float $score, mixed $mem)
         </code>
@@ -14810,7 +15214,7 @@ input sorted sets and stores the result in destination.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zlexcount">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3102">at line 3102</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3182">at line 3182</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>zlexcount</strong>(mixed $key, mixed $min, mixed $max)
         </code>
@@ -14864,7 +15268,7 @@ number of elements in the sorted set at key with a value between min and max.</p
             </div>
                     <div class="method-item">
                     <h3 id="method_zmscore">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3112">at line 3112</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3192">at line 3192</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>zmscore</strong>(mixed $key, mixed ...$mems)
         </code>
@@ -14911,7 +15315,7 @@ number of elements in the sorted set at key with a value between min and max.</p
             </div>
                     <div class="method-item">
                     <h3 id="method_zscore">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3122">at line 3122</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3202">at line 3202</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|float|false">Relay|float|false</abbr>
     <strong>zscore</strong>(mixed $key, mixed $member)
         </code>
@@ -14958,7 +15362,7 @@ number of elements in the sorted set at key with a value between min and max.</p
             </div>
                     <div class="method-item">
                     <h3 id="method_zinter">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3134">at line 3134</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3214">at line 3214</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>zinter</strong>(array $keys, array|null $weights = null, mixed $options = null)
         </code>
@@ -15011,7 +15415,7 @@ the resulting sorted set, it is returned to the client.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zintercard">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3144">at line 3144</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3224">at line 3224</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>zintercard</strong>(array $keys, int $limit = -1)
         </code>
@@ -15058,7 +15462,7 @@ the resulting sorted set, it is returned to the client.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zinterstore">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3157">at line 3157</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3237">at line 3237</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>zinterstore</strong>(mixed $dst, array $keys, array|null $weights = null, mixed $options = null)
         </code>
@@ -15116,7 +15520,7 @@ specified keys, and stores the result in destination.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zunion">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3169">at line 3169</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3249">at line 3249</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>zunion</strong>(array $keys, array|null $weights = null, mixed $options = null)
         </code>
@@ -15169,7 +15573,7 @@ the resulting sorted set, it is returned to the client.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zunionstore">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3182">at line 3182</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3262">at line 3262</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|int|false">Relay|int|false</abbr>
     <strong>zunionstore</strong>(mixed $dst, array $keys, array|null $weights = null, mixed $options = null)
         </code>
@@ -15227,7 +15631,7 @@ specified keys, and stores the result in destination.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zpopmin">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3193">at line 3193</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3273">at line 3273</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>zpopmin</strong>(mixed $key, int $count = 1)
         </code>
@@ -15275,7 +15679,7 @@ scores in the sorted set stored at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zpopmax">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3204">at line 3204</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3284">at line 3284</a></div>
         <code>                    <abbr title="Relay\Relay\Relay|array|false">Relay|array|false</abbr>
     <strong>zpopmax</strong>(mixed $key, int $count = 1)
         </code>
@@ -15323,7 +15727,7 @@ scores in the sorted set stored at key.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method__getKeys">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3213">at line 3213</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Relay.php#L3293">at line 3293</a></div>
         <code>                    mixed
     <strong>_getKeys</strong>()
         </code>
