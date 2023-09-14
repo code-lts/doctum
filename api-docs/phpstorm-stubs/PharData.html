@@ -360,7 +360,7 @@ phar.readonly php.ini setting is 1.</p></p>                    </div>
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(string $filename, int $flags = FilesystemIterator::KEY_AS_PATHNAME | FilesystemIterator::CURRENT_AS_FILEINFO, string $alias = null, int $format = Phar::TAR)
+                    <a href="#method___construct">__construct</a>(string $filename, int $flags = FilesystemIterator::SKIP_DOTS | FilesystemIterator::UNIX_PATHS, string $alias = null, int $format = 0)
         
                                             <p><p>(PHP &gt;= 5.3.0, PECL phar &gt;= 2.0.0)<br/>
 Construct a non-executable tar or zip archive object</p></p>                </div>
@@ -404,7 +404,7 @@ SplFileInfo</a></small></div>
                     string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getBasename">getBasename</a>(string $suffix = null)
+                    <a href="#method_getBasename">getBasename</a>(string $suffix = &#039;&#039;)
         
                                             <p><p>Gets the base name of the file</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="SplFileInfo.html#method_getBasename">
@@ -899,7 +899,7 @@ Phar</a></small></div>
                     array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_buildFromDirectory">buildFromDirectory</a>(string $directory, $pattern = null)
+                    <a href="#method_buildFromDirectory">buildFromDirectory</a>(string $directory, $pattern = &#039;&#039;)
         
                                             <p><p>(PHP &gt;= 5.3.0, PECL phar &gt;= 2.0.0)<br/>
 Construct a phar archive from the files within a directory.</p></p>                </div>
@@ -971,7 +971,7 @@ Phar</a></small></div>
                     <a href="Phar.html">Phar</a>|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_convertToExecutable">convertToExecutable</a>(int $format = 9021976, int $compression = 9021976, string $extension = null)
+                    <a href="#method_convertToExecutable">convertToExecutable</a>(int $format = null, int $compression = null, string $extension = null)
         
                                             <p><p>(PHP &gt;= 5.3.0, PECL phar &gt;= 2.0.0)<br/>
 Convert a phar archive to another executable phar archive file format</p></p>                </div>
@@ -983,7 +983,7 @@ Phar</a></small></div>
                     <a href="PharData.html">PharData</a>|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_convertToData">convertToData</a>(int $format = 9021976, int $compression = 9021976, string $extension = null)
+                    <a href="#method_convertToData">convertToData</a>(int $format = null, int $compression = null, string $extension = null)
         
                                             <p><p>(PHP &gt;= 5.3.0, PECL phar &gt;= 2.0.0)<br/>
 Convert a phar archive to a non-executable tar or zip file</p></p>                </div>
@@ -1267,7 +1267,7 @@ Phar</a></small></div>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setStub">setStub</a>(string $stub, int $length = -1)
+                    <a href="#method_setStub">setStub</a>(string $stub, int $length)
         
                                             <p><p>(PHP &gt;= 5.3.0, PECL phar &gt;= 1.0.0)<br/>
 Used to set the PHP loader or bootstrap stub of a Phar archive</p></p>                </div>
@@ -1471,7 +1471,7 @@ Phar</a></small></div>
                     static&nbsp;void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_webPhar">webPhar</a>(string|null $alias = null, string|null $index = &quot;index.php&quot;, null|string $fileNotFoundScript = null, array $mimeTypes = null, callable|null $rewrite = null)
+                    <a href="#method_webPhar">webPhar</a>(string|null $alias = null, string|null $index = null, null|string $fileNotFoundScript = null, array $mimeTypes = [], callable|null $rewrite = null)
         
                                             <p><p>(PHP &gt;= 5.3.0, PECL phar &gt;= 2.0.0)<br/>
 mapPhar for web-based phars. front controller for web applications</p></p>                </div>
@@ -1488,7 +1488,7 @@ Phar</a></small></div>
                     <h3 id="method___construct">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Phar/Phar.php#L1004">at line 1004</a></div>
         <code>                    
-    <strong>__construct</strong>(string $filename, int $flags = FilesystemIterator::KEY_AS_PATHNAME | FilesystemIterator::CURRENT_AS_FILEINFO, string $alias = null, int $format = Phar::TAR)
+    <strong>__construct</strong>(string $filename, int $flags = FilesystemIterator::SKIP_DOTS | FilesystemIterator::UNIX_PATHS, string $alias = null, int $format = 0)
         </code>
     </h3>
     <div class="details">    
@@ -1651,7 +1651,7 @@ empty string if the file has no extension.</p></td>
         <div class="location">in <a href="SplFileInfo.html#method_getBasename">
 SplFileInfo</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/SPL/SPL_c1.php#L61">at line 61</a></div>
         <code>                    string
-    <strong>getBasename</strong>(string $suffix = null)
+    <strong>getBasename</strong>(string $suffix = &#039;&#039;)
         </code>
     </h3>
     <div class="details"><i>Since: 5.2.2</i>
@@ -3321,7 +3321,7 @@ The file contents to store
         <div class="location">in <a href="Phar.html#method_buildFromDirectory">
 Phar</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Phar/Phar.php#L137">at line 137</a></div>
         <code>                    array
-    <strong>buildFromDirectory</strong>(string $directory, $pattern = null)
+    <strong>buildFromDirectory</strong>(string $directory, $pattern = &#039;&#039;)
         </code>
     </h3>
     <div class="details">    
@@ -3627,7 +3627,7 @@ in their filename.
         <div class="location">in <a href="Phar.html#method_convertToExecutable">
 Phar</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Phar/Phar.php#L258">at line 258</a></div>
         <code>                    <a href="Phar.html">Phar</a>|null
-    <strong>convertToExecutable</strong>(int $format = 9021976, int $compression = 9021976, string $extension = null)
+    <strong>convertToExecutable</strong>(int $format = null, int $compression = null, string $extension = null)
         </code>
     </h3>
     <div class="details">    
@@ -3703,7 +3703,7 @@ exception on failure.</p></td>
         <div class="location">in <a href="Phar.html#method_convertToData">
 Phar</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Phar/Phar.php#L294">at line 294</a></div>
         <code>                    <a href="PharData.html">PharData</a>|null
-    <strong>convertToData</strong>(int $format = 9021976, int $compression = 9021976, string $extension = null)
+    <strong>convertToData</strong>(int $format = null, int $compression = null, string $extension = null)
         </code>
     </h3>
     <div class="details">    
@@ -4803,7 +4803,7 @@ naming and placement of the public key file.
         <div class="location">in <a href="Phar.html#method_setStub">
 Phar</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Phar/Phar.php#L623">at line 623</a></div>
         <code>                    bool
-    <strong>setStub</strong>(string $stub, int $length = -1)
+    <strong>setStub</strong>(string $stub, int $length)
         </code>
     </h3>
     <div class="details">    
@@ -5567,7 +5567,7 @@ The path on disk to the phar archive.
         <div class="location">in <a href="Phar.html#method_webPhar">
 Phar</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/Phar/Phar.php#L897">at line 897</a></div>
         <code>final        static            void
-    <strong>webPhar</strong>(string|null $alias = null, string|null $index = &quot;index.php&quot;, null|string $fileNotFoundScript = null, array $mimeTypes = null, callable|null $rewrite = null)
+    <strong>webPhar</strong>(string|null $alias = null, string|null $index = null, null|string $fileNotFoundScript = null, array $mimeTypes = [], callable|null $rewrite = null)
         </code>
     </h3>
     <div class="details">    
