@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>MangoPay\PayInPaymentDetailsGooglePay | Mangopay PHP SDK</title>
+    <title>MangoPay\PayInPaymentDetailsKlarna | Mangopay PHP SDK</title>
 
             <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:MangoPay_PayInPaymentDetailsGooglePay" data-root-path="../" data-search-index-url="../doctum-search.json">
+    <body id="class" data-name="class:MangoPay_PayInPaymentDetailsKlarna" data-root-path="../" data-search-index-url="../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,24 +75,26 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../MangoPay.html">MangoPay</a></li><li class="backslash">\</li><li>PayInPaymentDetailsGooglePay</li>
+                        <li><a href="../MangoPay.html">MangoPay</a></li><li class="backslash">\</li><li>PayInPaymentDetailsKlarna</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>PayInPaymentDetailsGooglePay    
+        <h1>PayInPaymentDetailsKlarna    
             </h1>
     </div>
 
     
     <p>        class
-    <strong>PayInPaymentDetailsGooglePay</strong>        extends <a href="../MangoPay/Libraries/Dto.html"><abbr title="MangoPay\Libraries\Dto">Dto</abbr></a>        implements        <a href="../MangoPay/PayInPaymentDetails.html"><abbr title="MangoPay\PayInPaymentDetails">PayInPaymentDetails</abbr></a>        (<a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/PayInPaymentDetailsGooglePay.php">View source</a>)
+    <strong>PayInPaymentDetailsKlarna</strong>        extends <a href="../MangoPay/Libraries/Dto.html"><abbr title="MangoPay\Libraries\Dto">Dto</abbr></a>        implements        <a href="../MangoPay/PayInPaymentDetails.html"><abbr title="MangoPay\PayInPaymentDetails">PayInPaymentDetails</abbr></a>        (<a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/PayInPaymentDetailsKlarna.php">View source</a>)
 </p>
 
         
     
         
 
+            <div class="description">
+            <p><p>Class represents Klarna type for mean of payment in Klarna entity</p></p>                    </div>
             
         
     
@@ -100,41 +102,58 @@
 
             <table class="table table-condensed">
                     <tr>
-                <td class="type" id="property_PaymentData">
+                <td class="type" id="property_LineItems">
+                                                                                array
+                                                                                
+                                    </td>
+                <td>$LineItems</td>
+                <td class="last"><p>Information about the order items (basket)
+Note : The LineItems total amount must match the declared DebitedFunds</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_Country">
                                                                                 string
                                                                                 
                                     </td>
-                <td>$PaymentData</td>
-                <td class="last"><p>Payment information returned by Google Pay payment</p></td>
+                <td>$Country</td>
+                <td class="last"><p>The end-user residency country</p></td>
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_StatementDescriptor">
+                <td class="type" id="property_Culture">
                                                                                 string
                                                                                 
                                     </td>
-                <td>$StatementDescriptor</td>
-                <td class="last"><p>Custom description to show on the user's bank statement.</p></td>
+                <td>$Culture</td>
+                <td class="last"><p>The language in which the Klarna payment page is to be displayed - Alpha-2  format (default US)</p></td>
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_IpAddress">
-                                                                                
+                <td class="type" id="property_Phone">
+                                                                                string
                                                                                 
                                     </td>
-                <td>$IpAddress</td>
-                <td class="last"><p>Information about the browser used by the end user (author)
-to perform the payment.</p></td>
+                <td>$Phone</td>
+                <td class="last"><p>The end-user mobile phone number</p></td>
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_BrowserInfo">
-                                                                                <a href="../MangoPay/BrowserInfo.html"><abbr title="MangoPay\BrowserInfo">BrowserInfo</abbr></a>
+                <td class="type" id="property_Email">
+                                                                                string
                                                                                 
                                     </td>
-                <td>$BrowserInfo</td>
-                <td class="last"><p>The IP address of the end user initiating the transaction,
-in IPV4 or IPV6 format.</p></td>
+                <td>$Email</td>
+                <td class="last"><p>The end-user email address</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_AdditionalData">
+                                                                                string
+                                                                                
+                                    </td>
+                <td>$AdditionalData</td>
+                <td class="last"><p>Klarna custom data that you can add to this item</p></td>
                 <td></td>
             </tr>
                     <tr>
@@ -143,16 +162,25 @@ in IPV4 or IPV6 format.</p></td>
                                                                                 
                                     </td>
                 <td>$Shipping</td>
-                <td class="last"><p>Information about the end user shipping address.</p></td>
+                <td class="last"><p>Information about the shipping address</p></td>
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_ReturnURL">
+                <td class="type" id="property_PaymentMethod">
                                                                                 string
                                                                                 
                                     </td>
-                <td>$ReturnURL</td>
-                <td class="last"><p>Return URL</p></td>
+                <td>$PaymentMethod</td>
+                <td class="last"><p>The Klarna option that the end-user has chosen at checkout</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_MerchantOrderId">
+                                                                                string
+                                                                                
+                                    </td>
+                <td>$MerchantOrderId</td>
+                <td class="last"><p>The merchant order reference</p></td>
                 <td></td>
             </tr>
             </table>
@@ -203,7 +231,7 @@ To be overridden in child class if has any read-only properties.</p></p>        
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_GetSubObjects">
-        <div class="location"><a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/PayInPaymentDetailsGooglePay.php#L48">at line 48</a></div>
+        <div class="location"><a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/PayInPaymentDetailsKlarna.php#L65">at line 65</a></div>
         <code>                    array
     <strong>GetSubObjects</strong>()
         </code>
