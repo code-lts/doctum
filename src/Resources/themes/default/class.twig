@@ -108,7 +108,7 @@
     {% if method.static %}static{% endif %}
     {% if method.protected %}protected{% endif %}
     {% if method.private %}private{% endif %}
-    {{ hint_link(method.hint) }}
+    {{ hint_link(method.hint, method.isIntersectionType()) }}
     <strong>{{ method.name|raw }}</strong>{{ block('method_parameters_signature') }}
 {%- endblock %}
 
@@ -122,7 +122,7 @@
     <table class="table table-condensed">
         {% for parameter in method.parameters %}
             <tr>
-                <td>{% if parameter.hint %}{{ hint_link(parameter.hint) }}{% endif %}</td>
+                <td>{% if parameter.hint %}{{ hint_link(parameter.hint, parameter.isIntersectionType()) }}{% endif %}</td>
                 <td>{%- if parameter.variadic %}...{% endif %}${{ parameter.name|raw }}</td>
                 <td>{{ parameter.shortdesc|desc(class)|md_to_html }}</td>
             </tr>
@@ -133,7 +133,7 @@
 {% block return %}
     <table class="table table-condensed">
         <tr>
-            <td>{{ hint_link(method.hint) }}</td>
+            <td>{{ hint_link(method.hint, method.isIntersectionType()) }}</td>
             <td>{{ method.hintDesc|desc(class)|md_to_html }}</td>
         </tr>
     </table>
@@ -217,7 +217,7 @@
                     {% if property.isStatic() %}static{% endif %}
                     {% if property.isProtected() %}protected{% endif %}
                     {% if property.isPrivate() %}private{% endif %}
-                    {{ hint_link(property.hint) }}
+                    {{ hint_link(property.hint, property.isIntersectionType()) }}
                     {% if property.isInternal() %}<span class="label label-warning">{% trans 'internal' %}</span>{% endif %}
                     {% if property.isDeprecated() %}<span class="label label-danger">{% trans 'deprecated' %}</span>{% endif %}
                     {% if property.isReadOnly() %}<span class="label label-primary">{% trans 'read-only' %}</span>{% endif %}
@@ -245,7 +245,7 @@
         {% for method in methods %}
             <div class="row">
                 <div class="col-md-2 type">
-                    {% if method.static %}static&nbsp;{% endif %}{{ hint_link(method.hint) }}
+                    {% if method.static %}static&nbsp;{% endif %}{{ hint_link(method.hint, method.isIntersectionType()) }}
                 </div>
                 <div class="col-md-8">
                     <a href="#method_{{ method.name|raw }}">{{ method.name|raw }}</a>{{ block('method_parameters_signature') }}

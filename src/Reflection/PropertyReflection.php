@@ -21,6 +21,8 @@ class PropertyReflection extends Reflection
     protected $default;
     /** @var bool */
     protected $isWriteOnly = false;
+    /** @var bool */
+    protected $isIntersectionType = false;
 
     public function __toString()
     {
@@ -70,6 +72,16 @@ class PropertyReflection extends Reflection
         $this->class = $class;
     }
 
+    public function setIntersectionType(bool $boolean): void
+    {
+        $this->isIntersectionType = $boolean;
+    }
+
+    public function isIntersectionType(): bool
+    {
+        return $this->isIntersectionType;
+    }
+
     /**
      * @return array<string,mixed>
      */
@@ -88,6 +100,7 @@ class PropertyReflection extends Reflection
             'errors' => $this->errors,
             'is_read_only' => $this->isReadOnly(),
             'is_write_only' => $this->isWriteOnly(),
+            'is_intersection_type' => $this->isIntersectionType(),
         ];
     }
 
@@ -112,6 +125,10 @@ class PropertyReflection extends Reflection
 
         if (isset($array['is_write_only'])) {// New in 5.4.0
             $property->setWriteOnly($array['is_write_only']);
+        }
+
+        if (isset($array['is_intersection_type'])) {// New in 5.5.3
+            $property->setIntersectionType($array['is_intersection_type']);
         }
 
         return $property;

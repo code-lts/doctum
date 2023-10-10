@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
+## [5.5.3] - 2023-10-11
+
+- Fix crash on `IntersectionType` (intersection types)
+
 - Support `@category` tags on classes and methods
 
 ## [5.5.2] - 2023-03-12

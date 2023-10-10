@@ -19,6 +19,8 @@ class FunctionReflection extends Reflection
     /** @var array<string,ParameterReflection> */
     protected $parameters = [];
     protected $byRef;
+    /** @var bool */
+    protected $isIntersectionType = false;
     protected $project;
     /** @var string|null */
     protected $file = null;
@@ -41,6 +43,16 @@ class FunctionReflection extends Reflection
     public function isByRef()
     {
         return $this->byRef;
+    }
+
+    public function setIntersectionType(bool $boolean): void
+    {
+        $this->isIntersectionType = $boolean;
+    }
+
+    public function isIntersectionType(): bool
+    {
+        return $this->isIntersectionType;
     }
 
     /**
@@ -202,6 +214,7 @@ class FunctionReflection extends Reflection
             'tags' => $this->tags,
             'modifiers' => $this->modifiers,
             'is_by_ref' => $this->byRef,
+            'is_intersection_type' => $this->isIntersectionType(),
             'exceptions' => $this->exceptions,
             'errors' => $this->errors,
             'parameters' => array_map(
@@ -232,6 +245,10 @@ class FunctionReflection extends Reflection
         $method->file             = $array['file'] ?? '';// New in 5.5.0
         $method->relativeFilePath = $array['relative_file'] ?? '';// New in 5.5.0
         $method->fromCache        = true;
+
+        if (isset($array['is_intersection_type'])) {// New in 5.5.3
+            $method->setIntersectionType($array['is_intersection_type']);
+        }
 
         foreach ($array['parameters'] as $parameter) {
             $method->addParameter(ParameterReflection::fromArray($project, $parameter));

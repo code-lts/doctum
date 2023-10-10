@@ -24,6 +24,8 @@ class ParameterReflection extends Reflection
     protected $byRef;
     protected $default;
     protected $variadic;
+    /** @var bool */
+    protected $isIntersectionType = false;
 
     public function __toString()
     {
@@ -36,6 +38,16 @@ class ParameterReflection extends Reflection
     public function getClass()
     {
         return $this->method->getClass();
+    }
+
+    public function setIntersectionType(bool $boolean): void
+    {
+        $this->isIntersectionType = $boolean;
+    }
+
+    public function isIntersectionType(): bool
+    {
+        return $this->isIntersectionType;
     }
 
     public function setByRef($boolean)
@@ -134,6 +146,7 @@ class ParameterReflection extends Reflection
             'variadic' => $this->variadic,
             'is_by_ref' => $this->byRef,
             'is_read_only' => $this->isReadOnly(),
+            'is_intersection_type' => $this->isIntersectionType(),
         ];
     }
 
@@ -142,16 +155,17 @@ class ParameterReflection extends Reflection
      */
     public static function fromArray(Project $project, array $array)
     {
-        $parameter             = new self($array['name'], $array['line']);
-        $parameter->shortDesc  = $array['short_desc'];
-        $parameter->longDesc   = $array['long_desc'];
-        $parameter->hint       = $array['hint'];
-        $parameter->tags       = $array['tags'];
-        $parameter->modifiers  = $array['modifiers'];
-        $parameter->default    = $array['default'];
-        $parameter->variadic   = $array['variadic'];
-        $parameter->byRef      = $array['is_by_ref'];
-        $parameter->isReadOnly = $array['is_read_only'] ?? false;// New in 5.4.0
+        $parameter                     = new self($array['name'], $array['line']);
+        $parameter->shortDesc          = $array['short_desc'];
+        $parameter->longDesc           = $array['long_desc'];
+        $parameter->hint               = $array['hint'];
+        $parameter->tags               = $array['tags'];
+        $parameter->modifiers          = $array['modifiers'];
+        $parameter->default            = $array['default'];
+        $parameter->variadic           = $array['variadic'];
+        $parameter->byRef              = $array['is_by_ref'];
+        $parameter->isReadOnly         = $array['is_read_only'] ?? false;// New in 5.4.0
+        $parameter->isIntersectionType = $array['is_intersection_type'] ?? false;// New in 5.5.3
 
         return $parameter;
     }
