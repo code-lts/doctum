@@ -63,8 +63,15 @@ jobs:
               uses: shivammathur/setup-php@v2
               with:
                   php-version: ${{ matrix.php-version }}
+            - name: Cache module
+              uses: actions/cache@v3
+              with:
+                  path: ~/shunit2_2.1.8-4_all.deb
+                  key: shunit2-cache
             - name: Setup shunit 2
-              run: sudo apt install shunit2 -y
+              run: |
+                wget http://ftp.debian.org/debian/pool/main/s/shunit2/shunit2_2.1.8-4_all.deb -O ~/shunit2_2.1.8-4.deb
+                sudo apt install -y ~/shunit2_2.1.8-4.deb
             - name: Run phar tests
               run: |
                 COMPOSER_BIN="/bin/composer" COMPOSER_OPTIONS="${{ matrix.composer-options }}" ./tests/phar/tests.sh
