@@ -26,6 +26,15 @@ testPharAbsoluteFiles() {
     cd - > /dev/null
 }
 
+testPharAbsoluteFilesFrench() {
+    cd $(dirname $0)/data/
+    ABSOLUTE_OUTPUT=$(COLUMNS=200 ${PHAR_PATH} update --ignore-parse-errors --no-progress --no-ansi --force ./doctum-absolute-fr.conf.php 2>&1)
+    # Un-comment to update the test data
+    # echo "${ABSOLUTE_OUTPUT}" > absolute_fr_1.out
+    assertSame "The output must be the same" "$(cat absolute_fr_1.out)" "${ABSOLUTE_OUTPUT}"
+    cd - > /dev/null
+}
+
 testPharRelativeFiles() {
     cd $(dirname $0)/data/
     RELATIVE_OUTPUT=$(COLUMNS=200 ${PHAR_PATH} update --ignore-parse-errors --no-progress --no-ansi --force ./doctum-relative.conf.php 2>&1)
