@@ -85,7 +85,9 @@ class FunctionReflection extends Reflection
 
     public function setClass(ClassReflection $class)
     {
+        // phpcs:disable Squiz.PHP.NonExecutableCode.ReturnNotRequired
         return; // No op
+        // phpcs:enable
     }
 
     /**
