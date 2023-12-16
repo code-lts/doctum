@@ -95,7 +95,7 @@ if [ ${IS_LTS_MODE} = "0" ]; then
     updateLatestFolders "./releases/${VERSION}"
 else
     echo 'LTS mode !'
-    read -r -p "Make it the latest version ? [Y/n]" response
+    read -r -p "Make it the latest (${VERSION_ENV}) version ? [Y/n]" response
     response=${response,,} # tolower
     if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
         updateLatestFolders "./releases/${VERSION}"
