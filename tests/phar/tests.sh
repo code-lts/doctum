@@ -32,6 +32,7 @@ testPharAbsoluteFilesFrench() {
     # Un-comment to update the test data
     # echo "${ABSOLUTE_OUTPUT}" > absolute_fr_1.out
     assertSame "The output must be the same" "$(cat absolute_fr_1.out)" "${ABSOLUTE_OUTPUT}"
+    assertSame "The output must be the same" "Afficher le menu</span" "$(grep -F "Afficher le menu" ./build/html/doc-index.html | cut -d '>' -f 2)"
     cd - > /dev/null
 }
 
