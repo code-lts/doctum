@@ -63,16 +63,10 @@ jobs:
               uses: shivammathur/setup-php@v2
               with:
                   php-version: ${{ matrix.php-version }}
-            - name: Cache module
-              uses: actions/cache@v3
-              with:
-                  path: ~/v2.1.8.tar.gz
-                  key: shunit2-cache
             - name: Setup shunit 2
-              run: ./tests/phar/install-tests.sh
+              run: sudo apt install shunit2 -y
             - name: Run phar tests
               run: |
-                export PATH="$PATH:$HOME/shunit2-2.1.8/"
                 COMPOSER_BIN="/bin/composer" COMPOSER_OPTIONS="${{ matrix.composer-options }}" ./tests/phar/tests.sh
 
     test-resume-from-parse:
