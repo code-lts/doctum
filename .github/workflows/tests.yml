@@ -14,7 +14,7 @@ jobs:
         continue-on-error: ${{ matrix.experimental }}
         strategy:
             matrix:
-                php-version: ["7.2", "7.3", "7.4", "8.0", "8.1", "8.2"]
+                php-version: ["7.2", "7.3", "7.4", "8.0", "8.1", "8.2", "8.3"]
                 os: [ubuntu-latest]
                 experimental: [false]
                 composer-options: ['']
@@ -51,7 +51,7 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php-version: ["7.2", "7.3", "7.4", "8.0", "8.1", "8.2"]
+                php-version: ["7.2", "7.3", "7.4", "8.0", "8.1", "8.2", "8.3"]
                 os: [ubuntu-latest]
                 experimental: [false]
                 composer-options: ['']
@@ -66,13 +66,14 @@ jobs:
             - name: Cache module
               uses: actions/cache@v3
               with:
-                  path: ~/v2.1.8.tar.gz
+                  path: ~/shunit2_2.1.8-4_all.deb
                   key: shunit2-cache
             - name: Setup shunit 2
-              run: ./tests/phar/install-tests.sh
+              run: |
+                wget http://ftp.debian.org/debian/pool/main/s/shunit2/shunit2_2.1.8-4_all.deb -O ~/shunit2_2.1.8-4.deb
+                sudo apt install -y ~/shunit2_2.1.8-4.deb
             - name: Run phar tests
               run: |
-                export PATH="$PATH:$HOME/shunit2-2.1.8/"
                 COMPOSER_BIN="/bin/composer" COMPOSER_OPTIONS="${{ matrix.composer-options }}" ./tests/phar/tests.sh
 
     test-resume-from-parse:
@@ -82,7 +83,7 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php-version: ["7.2", "7.3", "7.4", "8.0", "8.1", "8.2"]
+                php-version: ["7.2", "7.3", "7.4", "8.0", "8.1", "8.2", "8.3"]
                 os: [ubuntu-latest]
                 experimental: [false]
                 composer-options: ['']
@@ -116,7 +117,7 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php-version: ["7.2", "7.3", "7.4", "8.0", "8.1", "8.2"]
+                php-version: ["7.2", "7.3", "7.4", "8.0", "8.1", "8.2", "8.3"]
                 os: [ubuntu-latest]
                 experimental: [false]
                 composer-options: ['']

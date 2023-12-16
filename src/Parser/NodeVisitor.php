@@ -353,6 +353,9 @@ class NodeVisitor extends NodeVisitorAbstract
         }
     }
 
+    /**
+     * @param FunctionReflection|MethodReflection|PropertyReflection $methodOrFunctionOrProperty
+     */
     protected function addTagFromCommentToMethod(
         string $tagName,
         DocBlockNode $comment,
