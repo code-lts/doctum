@@ -101,7 +101,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(string $host, int $port, float $timeout = 0, string|null $persistent = null, int $retryInterval = 0, float $readTimeout = 0)
+                    <a href="#method___construct">__construct</a>(array $options)
         
                                             <p><p>Creates a Redis Sentinel</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -219,51 +219,37 @@ successfully for this master it returns the address and port of the promoted rep
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L51">at line 51</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L80">at line 80</a></div>
         <code>                    
-    <strong>__construct</strong>(string $host, int $port, float $timeout = 0, string|null $persistent = null, int $retryInterval = 0, float $readTimeout = 0)
+    <strong>__construct</strong>(array $options)
         </code>
     </h3>
-    <div class="details">    
+    <div class="details"><i>Since: &gt;= 6.0.0</i>
+            <br>    
     
             
 
         <div class="method-description">
-                            <p><p>Creates a Redis Sentinel</p></p>                        
+                            <p><p>Creates a Redis Sentinel</p></p>                <p><p>Accepts and array of options.</p>
+<p>Available options:</p>
+<ul>
+<li>'host' =&gt; string, Sentinel IP address or hostname</li>
+<li>'port' =&gt; int, Sentinel Port (optional, default is 26379)</li>
+<li>'connectTimeout' =&gt; float, Value in seconds (optional, default is 0 meaning unlimited)</li>
+<li>'persistent' =&gt; string, Persistent connection id (optional, default is NULL meaning not persistent)</li>
+<li>'retryInterval' =&gt; int, Value in milliseconds (optional, default is 0)</li>
+<li>'readTimeout' =&gt; float, Value in seconds (optional, default is 0 meaning unlimited)</li>
+<li>'auth' =&gt; string|array, Authentication credentials (optional, default is NULL meaning NOAUTH)</li>
+</ul></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
-                <td>$host</td>
-                <td><p>Sentinel IP address or hostname</p></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$port</td>
-                <td><p>Sentinel Port</p></td>
-            </tr>
-                    <tr>
-                <td>float</td>
-                <td>$timeout</td>
-                <td><p>Value in seconds (optional, default is 0 meaning unlimited)</p></td>
-            </tr>
-                    <tr>
-                <td>string|null</td>
-                <td>$persistent</td>
-                <td><p>Persistent connection id (optional, default is null meaning not persistent)</p></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$retryInterval</td>
-                <td><p>Value in milliseconds (optional, default is 0)</p></td>
-            </tr>
-                    <tr>
-                <td>float</td>
-                <td>$readTimeout</td>
-                <td><p>Value in seconds (optional, default is 0 meaning unlimited)</p></td>
+                <td>array</td>
+                <td>$options</td>
+                <td><p>Associative array of options</p></td>
             </tr>
             </table>
 
@@ -275,8 +261,7 @@ successfully for this master it returns the address and port of the promoted rep
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">// 1s timeout, 100ms delay between reconnection attempts.
-$sentinel = new RedisSentinel(&#039;127.0.0.1&#039;, 26379, 1, null, 100);</pre></td>
+                <td><pre class="examples">$sentinel = new RedisSentinel([&#039;host&#039; =&gt; &#039;127.0.0.1&#039;]); // default parameters</pre></td>
             </tr>
             </table>
 
@@ -286,7 +271,7 @@ $sentinel = new RedisSentinel(&#039;127.0.0.1&#039;, 26379, 1, null, 100);</pre>
             </div>
                     <div class="method-item">
                     <h3 id="method_ckquorum">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L73">at line 73</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L95">at line 95</a></div>
         <code>                    bool
     <strong>ckquorum</strong>(string $master)
         </code>
@@ -339,7 +324,7 @@ Sentinel deployment is ok.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_failover">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L88">at line 88</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L110">at line 110</a></div>
         <code>                    bool
     <strong>failover</strong>(string $master)
         </code>
@@ -392,7 +377,7 @@ their configurations).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_flushconfig">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L106">at line 106</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L128">at line 128</a></div>
         <code>                    bool
     <strong>flushconfig</strong>()
         </code>
@@ -437,7 +422,7 @@ managers. In those cases a way to to force Sentinel to rewrite the configuration
             </div>
                     <div class="method-item">
                     <h3 id="method_getMasterAddrByName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L120">at line 120</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L142">at line 142</a></div>
         <code>                    array|false
     <strong>getMasterAddrByName</strong>(string $master)
         </code>
@@ -489,7 +474,7 @@ successfully for this master it returns the address and port of the promoted rep
             </div>
                     <div class="method-item">
                     <h3 id="method_master">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L133">at line 133</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L155">at line 155</a></div>
         <code>                    array|false
     <strong>master</strong>(string $master)
         </code>
@@ -540,7 +525,7 @@ successfully for this master it returns the address and port of the promoted rep
             </div>
                     <div class="method-item">
                     <h3 id="method_masters">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L144">at line 144</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L166">at line 166</a></div>
         <code>                    array|false
     <strong>masters</strong>()
         </code>
@@ -581,7 +566,7 @@ successfully for this master it returns the address and port of the promoted rep
             </div>
                     <div class="method-item">
                     <h3 id="method_ping">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L155">at line 155</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L177">at line 177</a></div>
         <code>                    bool
     <strong>ping</strong>()
         </code>
@@ -622,7 +607,7 @@ successfully for this master it returns the address and port of the promoted rep
             </div>
                     <div class="method-item">
                     <h3 id="method_reset">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L170">at line 170</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L192">at line 192</a></div>
         <code>                    bool
     <strong>reset</strong>(string $pattern)
         </code>
@@ -674,7 +659,7 @@ replica and sentinel already discovered and associated with the master.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sentinels">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L183">at line 183</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L205">at line 205</a></div>
         <code>                    array|false
     <strong>sentinels</strong>(string $master)
         </code>
@@ -725,7 +710,7 @@ replica and sentinel already discovered and associated with the master.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_slaves">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L196">at line 196</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L218">at line 218</a></div>
         <code>                    array|false
     <strong>slaves</strong>(string $master)
         </code>
