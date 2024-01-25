@@ -2909,12 +2909,12 @@ is primarily based on which operation is passed.</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    false|int|<a href="Redis.html">Redis</a>
+                    Redis|int|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_xTrim">xTrim</a>(string $stream, string $threshold, bool $approx = false, bool $minid = false, int $limit = -1)
+                    <a href="#method_xtrim">xtrim</a>(string $key, string $threshold, bool $approx = false, bool $minid = false, int $limit = -1)
         
-                                            <p><p>Trim the stream length to a given maximum.</p></p>                </div>
+                                            <p><p>Truncate a STREAM key in various ways.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -19463,10 +19463,10 @@ $redis-&gt;xRevRange(&#039;mystream&#039;, &#039;0-2&#039;, &#039;0-1&#039;);
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_xTrim">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5552">at line 5552</a></div>
-        <code>                    false|int|<a href="Redis.html">Redis</a>
-    <strong>xTrim</strong>(string $stream, string $threshold, bool $approx = false, bool $minid = false, int $limit = -1)
+                    <h3 id="method_xtrim">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5544">at line 5544</a></div>
+        <code>                    Redis|int|false
+    <strong>xtrim</strong>(string $key, string $threshold, bool $approx = false, bool $minid = false, int $limit = -1)
         </code>
     </h3>
     <div class="details">    
@@ -19474,8 +19474,7 @@ $redis-&gt;xRevRange(&#039;mystream&#039;, &#039;0-2&#039;, &#039;0-1&#039;);
             
 
         <div class="method-description">
-                            <p><p>Trim the stream length to a given maximum.</p></p>                <p><p>If the &quot;approximate&quot; flag is pasesed, Redis will use your size as a hint but only trim trees in whole nodes
-(this is more efficient)</p></p>        
+                            <p><p>Truncate a STREAM key in various ways.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -19483,7 +19482,7 @@ $redis-&gt;xRevRange(&#039;mystream&#039;, &#039;0-2&#039;, &#039;0-1&#039;);
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$stream</td>
+                <td>$key</td>
                 <td><p>The STREAM key to trim.</p></td>
             </tr>
                     <tr>
@@ -19517,33 +19516,33 @@ more efficient for Redis given how streams are stored internally.</p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td>false|int|<a href="Redis.html">Redis</a></td>
-            <td><p>The number of messages trimed from the stream or Redis if in multimode</p></td>
+            <td>Redis|int|false</td>
+            <td><p>The number of entries deleted from the stream.</p></td>
         </tr>
     </table>
 
             
-                            <h4>Exceptions</h4>
+            
+                            <h4>See also</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="RedisException.html">RedisException</a></td>
+                <td>
+                                            <a href="https://redis.io/commands/xtrim">https://redis.io/commands/xtrim</a>
+                                    </td>
                 <td></td>
             </tr>
             </table>
 
             
-            
                             <h4>Examples</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><pre class="examples">&lt;pre&gt;
-// Trim to exactly 100 messages
-$redis-&gt;xTrim(&#039;mystream&#039;, 100);
-// Let Redis approximate the trimming
-$redis-&gt;xTrim(&#039;mystream&#039;, 100, true);
-&lt;/pre&gt;</pre></td>
+                <td><pre class="examples">$redis-&gt;xTrim(&#039;stream&#039;, 3);</pre></td>
+            </tr>
+                    <tr>
+                <td><pre class="examples">$redis-&gt;xTrim(&#039;stream&#039;, &#039;2-1&#039;, false, true);</pre></td>
             </tr>
             </table>
 
@@ -19553,7 +19552,7 @@ $redis-&gt;xTrim(&#039;mystream&#039;, 100, true);
             </div>
                     <div class="method-item">
                     <h3 id="method_sAddArray">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5574">at line 5574</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5566">at line 5566</a></div>
         <code>                    int|bool|<a href="Redis.html">Redis</a>
     <strong>sAddArray</strong>(string $key, array $values)
         </code>
@@ -19622,7 +19621,7 @@ $redis-&gt;sAddArray(&#039;k&#039;, array(&#039;v1&#039;, &#039;v2&#039;, &#039;
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5576">at line 5576</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5568">at line 5568</a></div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -19646,7 +19645,7 @@ $redis-&gt;sAddArray(&#039;k&#039;, array(&#039;v1&#039;, &#039;v2&#039;, &#039;
             </div>
                     <div class="method-item">
                     <h3 id="method__compress">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5585">at line 5585</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5577">at line 5577</a></div>
         <code>                    string
     <strong>_compress</strong>(string $value)
         </code>
@@ -19688,7 +19687,7 @@ $redis-&gt;sAddArray(&#039;k&#039;, array(&#039;v1&#039;, &#039;v2&#039;, &#039;
             </div>
                     <div class="method-item">
                     <h3 id="method__uncompress">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5595">at line 5595</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5587">at line 5587</a></div>
         <code>                    string
     <strong>_uncompress</strong>(string $value)
         </code>
@@ -19731,7 +19730,7 @@ currently configured compressor as set with Redis::setOption().</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method__pack">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5604">at line 5604</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5596">at line 5596</a></div>
         <code>                    string
     <strong>_pack</strong>(mixed $value)
         </code>
@@ -19773,7 +19772,7 @@ currently configured compressor as set with Redis::setOption().</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method__unpack">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5613">at line 5613</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5605">at line 5605</a></div>
         <code>                    mixed
     <strong>_unpack</strong>(string $value)
         </code>
@@ -19815,7 +19814,7 @@ currently configured compressor as set with Redis::setOption().</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_acl">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5628">at line 5628</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5620">at line 5620</a></div>
         <code>                    mixed
     <strong>acl</strong>(string $subcmd, string ...$args)
         </code>
@@ -19871,7 +19870,7 @@ $redis-&gt;acl(&#039;LOG&#039;);   // See log of Redis&#039; ACL subsystem</pre>
             </div>
                     <div class="method-item">
                     <h3 id="method_bzmpop">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5644">at line 5644</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5636">at line 5636</a></div>
         <code>                    array|null|false|<a href="Redis.html">Redis</a>
     <strong>bzmpop</strong>(float $timeout, array $keys, string $from, int $count = 1)
         </code>
@@ -19931,7 +19930,7 @@ depending on whether any elements could be popped within the specified timeout.<
             </div>
                     <div class="method-item">
                     <h3 id="method_zmpop">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5658">at line 5658</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5650">at line 5650</a></div>
         <code>                    array|null|false|<a href="Redis.html">Redis</a>
     <strong>zmpop</strong>(array $keys, string $from, int $count = 1)
         </code>
@@ -19984,7 +19983,7 @@ depending on whether any elements could be popped within the specified timeout.<
             </div>
                     <div class="method-item">
                     <h3 id="method_blmpop">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5673">at line 5673</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5665">at line 5665</a></div>
         <code>                    array|null|false|<a href="Redis.html">Redis</a>
     <strong>blmpop</strong>(float $timeout, array $keys, string $from, int $count = 1)
         </code>
@@ -20042,7 +20041,7 @@ depending on whether any elements could be popped within the specified timeout.<
             </div>
                     <div class="method-item">
                     <h3 id="method_lmpop">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5688">at line 5688</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5680">at line 5680</a></div>
         <code>                    array|null|false|<a href="Redis.html">Redis</a>
     <strong>lmpop</strong>(array $keys, string $from, int $count = 1)
         </code>
@@ -20095,7 +20094,7 @@ depending on whether any elements could be popped within the specified timeout.<
             </div>
                     <div class="method-item">
                     <h3 id="method_command">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5696">at line 5696</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5688">at line 5688</a></div>
         <code>                    mixed
     <strong>command</strong>(string|null $opt = null, mixed ...$args)
         </code>
@@ -20143,7 +20142,7 @@ depending on whether any elements could be popped within the specified timeout.<
             </div>
                     <div class="method-item">
                     <h3 id="method_copy">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5728">at line 5728</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5720">at line 5720</a></div>
         <code>                    bool|<a href="Redis.html">Redis</a>
     <strong>copy</strong>(string $src, string $dst, array|null $options = null)
         </code>
@@ -20217,7 +20216,7 @@ var_dump($redis-&gt;copy(&#039;source1&#039;, &#039;exists&#039;, [&#039;REPLACE
             </div>
                     <div class="method-item">
                     <h3 id="method_debug">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5735">at line 5735</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5727">at line 5727</a></div>
         <code>                    string|<a href="Redis.html">Redis</a>
     <strong>debug</strong>(string $key)
         </code>
@@ -20260,7 +20259,7 @@ var_dump($redis-&gt;copy(&#039;source1&#039;, &#039;exists&#039;, [&#039;REPLACE
             </div>
                     <div class="method-item">
                     <h3 id="method_eval_ro">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5749">at line 5749</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5741">at line 5741</a></div>
         <code>                    mixed
     <strong>eval_ro</strong>(string $script_sha, array $args = [], int $num_keys = 0)
         </code>
@@ -20324,7 +20323,7 @@ var_dump($redis-&gt;copy(&#039;source1&#039;, &#039;exists&#039;, [&#039;REPLACE
             </div>
                     <div class="method-item">
                     <h3 id="method_evalsha_ro">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5762">at line 5762</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5754">at line 5754</a></div>
         <code>                    mixed
     <strong>evalsha_ro</strong>(string $sha1, array $args = [], int $num_keys = 0)
         </code>
@@ -20388,7 +20387,7 @@ var_dump($redis-&gt;copy(&#039;source1&#039;, &#039;exists&#039;, [&#039;REPLACE
             </div>
                     <div class="method-item">
                     <h3 id="method_failover">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5772">at line 5772</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5764">at line 5764</a></div>
         <code>                    bool|<a href="Redis.html">Redis</a>
     <strong>failover</strong>(array|null $to = null, bool $abort = false, int $timeout = 0)
         </code>
@@ -20442,7 +20441,7 @@ var_dump($redis-&gt;copy(&#039;source1&#039;, &#039;exists&#039;, [&#039;REPLACE
             </div>
                     <div class="method-item">
                     <h3 id="method_expiretime">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5788">at line 5788</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5780">at line 5780</a></div>
         <code>                    int|false|<a href="Redis.html">Redis</a>
     <strong>expiretime</strong>(string $key)
         </code>
@@ -20494,7 +20493,7 @@ $redis-&gt;expiretime(&#039;mykey&#039;);</pre></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_pexpiretime">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5801">at line 5801</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5793">at line 5793</a></div>
         <code>                    int|false|<a href="Redis.html">Redis</a>
     <strong>pexpiretime</strong>(string $key)
         </code>
@@ -20548,7 +20547,7 @@ $redis-&gt;expiretime(&#039;mykey&#039;);</pre></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_fcall">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5815">at line 5815</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5807">at line 5807</a></div>
         <code>                    mixed
     <strong>fcall</strong>(string $fn, array $keys = [], array $args = [])
         </code>
@@ -20601,7 +20600,7 @@ $redis-&gt;expiretime(&#039;mykey&#039;);</pre></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_fcall_ro">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5829">at line 5829</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5821">at line 5821</a></div>
         <code>                    mixed
     <strong>fcall_ro</strong>(string $fn, array $keys = [], array $args = [])
         </code>
@@ -20654,7 +20653,7 @@ $redis-&gt;expiretime(&#039;mykey&#039;);</pre></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_function">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5850">at line 5850</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5842">at line 5842</a></div>
         <code>                    <a href="Redis.html">Redis</a>|bool|string|array
     <strong>function</strong>(string $operation, mixed ...$args)
         </code>
@@ -20710,7 +20709,7 @@ $redis-&gt;expiretime(&#039;mykey&#039;);</pre></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_georadius_ro">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5865">at line 5865</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5857">at line 5857</a></div>
         <code>                    mixed
     <strong>georadius_ro</strong>(string $key, float $lng, float $lat, float $radius, string $unit, array $options = [])
         </code>
@@ -20788,7 +20787,7 @@ $redis-&gt;expiretime(&#039;mykey&#039;);</pre></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_georadiusbymember_ro">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5880">at line 5880</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5872">at line 5872</a></div>
         <code>                    mixed
     <strong>georadiusbymember_ro</strong>(string $key, string $member, float $radius, string $unit, array $options = [])
         </code>
@@ -20861,7 +20860,7 @@ $redis-&gt;expiretime(&#039;mykey&#039;);</pre></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getEx">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5900">at line 5900</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5892">at line 5892</a></div>
         <code>                    string|bool|<a href="Redis.html">Redis</a>
     <strong>getEx</strong>(string $key, array $options = [])
         </code>
@@ -20933,7 +20932,7 @@ $redis-&gt;expiretime(&#039;mykey&#039;);</pre></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDel">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5914">at line 5914</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5906">at line 5906</a></div>
         <code>                    <a href="Redis.html">Redis</a>|string|bool
     <strong>getDel</strong>(string $key)
         </code>
@@ -20995,7 +20994,7 @@ $redis-&gt;expiretime(&#039;mykey&#039;);</pre></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_lcs">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5939">at line 5939</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5931">at line 5931</a></div>
         <code>                    <a href="Redis.html">Redis</a>|string|array|int|false
     <strong>lcs</strong>(string $key1, string $key2, array|null $options = null)
         </code>
@@ -21064,7 +21063,7 @@ echo $redis-&gt;lcs(&#039;seq1&#039;, &#039;seq2&#039;) . &quot;\n&quot;;</pre><
             </div>
                     <div class="method-item">
                     <h3 id="method_getTransferredBytes">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5947">at line 5947</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5939">at line 5939</a></div>
         <code>                    array
     <strong>getTransferredBytes</strong>()
         </code>
@@ -21097,7 +21096,7 @@ echo $redis-&gt;lcs(&#039;seq1&#039;, &#039;seq2&#039;) . &quot;\n&quot;;</pre><
             </div>
                     <div class="method-item">
                     <h3 id="method_clearTransferredBytes">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5955">at line 5955</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5947">at line 5947</a></div>
         <code>                    void
     <strong>clearTransferredBytes</strong>()
         </code>
@@ -21130,7 +21129,7 @@ echo $redis-&gt;lcs(&#039;seq1&#039;, &#039;seq2&#039;) . &quot;\n&quot;;</pre><
             </div>
                     <div class="method-item">
                     <h3 id="method_hRandField">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5974">at line 5974</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5966">at line 5966</a></div>
         <code>                    <a href="Redis.html">Redis</a>|array|string
     <strong>hRandField</strong>(string $key, array|null $options = null)
         </code>
@@ -21200,7 +21199,7 @@ $redis-&gt;hRandField(&#039;settings&#039;, [&#039;count&#039; =&gt; 2, &#039;wi
             </div>
                     <div class="method-item">
                     <h3 id="method_lMove">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5993">at line 5993</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L5985">at line 5985</a></div>
         <code>                    <a href="Redis.html">Redis</a>|string|false
     <strong>lMove</strong>(string $src, string $dst, string $wherefrom, string $whereto)
         </code>
@@ -21273,7 +21272,7 @@ $redis-&gt;lMove(&#039;numbers&#039;, &#039;odds&#039;, Redis::LEFT, Redis::LEFT
             </div>
                     <div class="method-item">
                     <h3 id="method_blmove">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6013">at line 6013</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6005">at line 6005</a></div>
         <code>                    
     <strong>blmove</strong>(string $src, string $dst, string $wherefrom, string $whereto, float $timeout)
         </code>
@@ -21338,7 +21337,7 @@ $redis-&gt;blmove(&#039;numbers&#039;, &#039;odds&#039;, Redis::LEFT, Redis::LEF
             </div>
                     <div class="method-item">
                     <h3 id="method_lPos">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6038">at line 6038</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6030">at line 6030</a></div>
         <code>                    <a href="Redis.html">Redis</a>|null|bool|int|array
     <strong>lPos</strong>(string $key, mixed $value, array|null $options = null)
         </code>
@@ -21402,7 +21401,7 @@ $redis-&gt;blmove(&#039;numbers&#039;, &#039;odds&#039;, Redis::LEFT, Redis::LEF
             </div>
                     <div class="method-item">
                     <h3 id="method_reset">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6046">at line 6046</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6038">at line 6038</a></div>
         <code>                    <a href="Redis.html">Redis</a>|bool
     <strong>reset</strong>()
         </code>
@@ -21435,7 +21434,7 @@ $redis-&gt;blmove(&#039;numbers&#039;, &#039;odds&#039;, Redis::LEFT, Redis::LEF
             </div>
                     <div class="method-item">
                     <h3 id="method_sInterCard">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6066">at line 6066</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6058">at line 6058</a></div>
         <code>                    <a href="Redis.html">Redis</a>|int|false
     <strong>sInterCard</strong>(array $keys, int $limit = -1)
         </code>
@@ -21495,7 +21494,7 @@ $redis-&gt;sInterCard([&#039;set1&#039;, &#039;set2&#039;, &#039;set3&#039;]);</
             </div>
                     <div class="method-item">
                     <h3 id="method_replicaof">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6093">at line 6093</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6085">at line 6085</a></div>
         <code>                    <a href="Redis.html">Redis</a>|bool
     <strong>replicaof</strong>(string|null $host = null, int $port = 6379)
         </code>
@@ -21571,7 +21570,7 @@ $redis-&gt;replicaof();</pre></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_touch">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6106">at line 6106</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6098">at line 6098</a></div>
         <code>                    <a href="Redis.html">Redis</a>|int|false
     <strong>touch</strong>(array|string $key_or_array, string ...$more_keys)
         </code>
@@ -21619,7 +21618,7 @@ $redis-&gt;replicaof();</pre></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_sort_ro">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6118">at line 6118</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6110">at line 6110</a></div>
         <code>                    mixed
     <strong>sort_ro</strong>(string $key, array|null $options = null)
         </code>
@@ -21678,7 +21677,7 @@ $redis-&gt;replicaof();</pre></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_ssubscribe">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6149">at line 6149</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6141">at line 6141</a></div>
         <code>                    bool
     <strong>ssubscribe</strong>(array $channels, callable $cb)
         </code>
@@ -21749,7 +21748,7 @@ echo &quot;Subscribe loop ended\n&quot;;</pre></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_sunsubscribe">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6175">at line 6175</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6167">at line 6167</a></div>
         <code>                    <a href="Redis.html">Redis</a>|array|bool
     <strong>sunsubscribe</strong>(array $channels)
         </code>
@@ -21821,7 +21820,7 @@ echo &quot;We&#039;ve unsubscribed from both channels, exiting\n&quot;;</pre></t
             </div>
                     <div class="method-item">
                     <h3 id="method_xAutoClaim">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6215">at line 6215</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6207">at line 6207</a></div>
         <code>                    <a href="Redis.html">Redis</a>|array|bool
     <strong>xAutoClaim</strong>(string $key, string $group, string $consumer, int $min_idle, string $start, int $count = -1, bool $justid = false)
         </code>
@@ -21918,7 +21917,7 @@ var_dump($pending);</pre></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_zLexCount">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6233">at line 6233</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6225">at line 6225</a></div>
         <code>                    <a href="Redis.html">Redis</a>|int|false
     <strong>zLexCount</strong>(string $key, string $min, string $max)
         </code>
@@ -21980,7 +21979,7 @@ $redis-&gt;zLexCount(&#039;captains&#039;, &#039;[A&#039;, &#039;[S&#039;);</pre
             </div>
                     <div class="method-item">
                     <h3 id="method_zRangeStore">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6251">at line 6251</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6243">at line 6243</a></div>
         <code>                    <a href="Redis.html">Redis</a>|int|false
     <strong>zRangeStore</strong>(string $dstkey, string $srckey, string $start, string $end, array|bool|null $options = null)
         </code>
@@ -22061,7 +22060,7 @@ it will store them in a destination key provided by the user</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zDiffStore">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6265">at line 6265</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6257">at line 6257</a></div>
         <code>                    <a href="Redis.html">Redis</a>|int|false
     <strong>zDiffStore</strong>(string $dst, array $keys)
         </code>
@@ -22120,7 +22119,7 @@ it will store them in a destination key provided by the user</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_zInterCard">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6289">at line 6289</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/Redis.php#L6281">at line 6281</a></div>
         <code>                    <a href="Redis.html">Redis</a>|int|false
     <strong>zInterCard</strong>(array $keys, int $limit = -1)
         </code>
