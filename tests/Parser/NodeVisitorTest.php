@@ -553,7 +553,6 @@ class NodeVisitorTest extends AbstractTestCase
         );
         $this->assertSame(
             [
-                'The hint on "prop1" at @var is invalid: "\Illuminate\Support\Carbon;"',
             ],
             $errors
         );

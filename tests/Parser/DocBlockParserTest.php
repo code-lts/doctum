@@ -298,7 +298,7 @@ class DocBlockParserTest extends TestCase
                     ],
                 ],
             ],
-            [
+            'Test that @throws with a dot at the end works' => [
                 '
                 /**
                  * @throws \InvalidArgumentException.
@@ -311,8 +311,14 @@ class DocBlockParserTest extends TestCase
                         'longDesc' => '',
                         'tags' => [
                             'throws' => [
-                                '\InvalidArgumentException.',
-                                '\Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException.',
+                                [
+                                    '\InvalidArgumentException',
+                                    '',
+                                ],
+                                [
+                                    '\Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException',
+                                    '',
+                                ],
                             ],
                         ],
                     ],
@@ -594,7 +600,7 @@ class DocBlockParserTest extends TestCase
                     ],
                 ]],
             ],
-            [
+            'Test that invalid @return format also works' => [
                 '/**
          * Prepares queries for adding users and
          * also create database and return query and message
@@ -630,8 +636,12 @@ class DocBlockParserTest extends TestCase
                                 'SQL query for add a user',
                             ],
                         ],
-                        'return' => [
-                            'array, $message',
+
+                        'return' => [ // Array from found tags.
+                            [ // First found tag.
+                                [['array', false]], // Array from data types.
+                                ', $message', // The description
+                            ],
                         ],
                     ],
                 ]],
