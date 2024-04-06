@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
+- Attempt to reload the current page in a newly-selected version
+
 ## [5.5.4] - 2023-12-16
 
 - Fix PHP 8.2 dynamic properties for configurations with the `language` key
