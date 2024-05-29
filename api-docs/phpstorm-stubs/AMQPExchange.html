@@ -98,37 +98,37 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_bind">bind</a>(string $exchange_name, string $routing_key = &#039;&#039;, array $arguments = [])
-        
-                                            <p><p>Bind to another exchange.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    bool
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_unbind">unbind</a>(string $exchange_name, string $routing_key = &#039;&#039;, array $arguments = [])
-        
-                                            <p><p>Remove binding to another exchange.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="AMQPChannel.html">AMQPChannel</a> $amqp_channel)
+                    <a href="#method___construct">__construct</a>(<a href="AMQPChannel.html">AMQPChannel</a> $channel)
         
                                             <p><p>Create an instance of AMQPExchange.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_bind">bind</a>(string $exchangeName, string $routingKey = &#039;&#039;, array $arguments = [])
+        
+                                            <p><p>Bind to another exchange.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_unbind">unbind</a>(string $exchangeName, string $routingKey = &#039;&#039;, array $arguments = [])
+        
+                                            <p><p>Remove binding to another exchange.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
                 </div>
                 <div class="col-md-8">
                     <a href="#method_declareExchange">declareExchange</a>()
@@ -138,7 +138,17 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_declare">declare</a>()
+        
+                                            <p><p>Declare a new exchange on the broker.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
                 </div>
                 <div class="col-md-8">
                     <a href="#method_delete">delete</a>(string $exchangeName = null, int $flags = AMQP_NOPARAM)
@@ -148,10 +158,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string|int|false
+                    bool|int|float|string|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getArgument">getArgument</a>(string $key)
+                    <a href="#method_getArgument">getArgument</a>(string $argumentName)
         
                                             <p><p>Get the argument associated with the given key.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -161,7 +171,7 @@
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_hasArgument">hasArgument</a>(string $key)
+                    <a href="#method_hasArgument">hasArgument</a>(string $argumentName)
         
                                             <p><p>Check whether argument associated with the given key exists.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -188,7 +198,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    string|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getName">getName</a>()
@@ -198,7 +208,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    string|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getType">getType</a>()
@@ -208,20 +218,30 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_publish">publish</a>(string $message, string $routing_key = null, int $flags = AMQP_NOPARAM, array $attributes = [])
+                    <a href="#method_publish">publish</a>(string $message, string|null $routingKey = null, int|null $flags = null, array $headers = [])
         
                                             <p><p>Publish a message to an exchange.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setArgument">setArgument</a>(string $key, string|int $value)
+                    <a href="#method_setArgument">setArgument</a>(string $argumentName, string|int $argumentValue)
+        
+                                            <p><p>Set the value for the given key.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_removeArgument">removeArgument</a>(string $argumentName)
         
                                             <p><p>Set the value for the given key.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -251,7 +271,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setName">setName</a>(string $exchange_name)
+                    <a href="#method_setName">setName</a>(string $exchangeName)
         
                                             <p><p>Set the name of the exchange.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -261,7 +281,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setType">setType</a>(string $exchange_type)
+                    <a href="#method_setType">setType</a>(string $exchangeType)
         
                                             <p><p>Set the type of the exchange.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -293,10 +313,58 @@
 
             <div id="method-details">
                     <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1157">at line 1157</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="AMQPChannel.html">AMQPChannel</a> $channel)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create an instance of AMQPExchange.</p></p>                <p><p>Returns a new instance of an AMQPExchange object, associated with the
+given AMQPChannel object.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="AMQPChannel.html">AMQPChannel</a></td>
+                <td>$channel</td>
+                <td><p>A valid AMQPChannel object, connected
+to a broker.</p></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="AMQPExchangeException.html">AMQPExchangeException</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="AMQPConnectionException.html">AMQPConnectionException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_bind">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1096">at line 1096</a></div>
-        <code>                    bool
-    <strong>bind</strong>(string $exchange_name, string $routing_key = &#039;&#039;, array $arguments = [])
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1174">at line 1174</a></div>
+        <code>                    void
+    <strong>bind</strong>(string $exchangeName, string $routingKey = &#039;&#039;, array $arguments = [])
         </code>
     </h3>
     <div class="details">    
@@ -312,12 +380,12 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$exchange_name</td>
+                <td>$exchangeName</td>
                 <td><p>Name of the exchange to bind.</p></td>
             </tr>
                     <tr>
                 <td>string</td>
-                <td>$routing_key</td>
+                <td>$routingKey</td>
                 <td><p>The routing key to use for binding.</p></td>
             </tr>
                     <tr>
@@ -332,8 +400,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
-            <td><p>TRUE on success or FALSE on failure.</p></td>
+            <td>void</td>
+            <td></td>
         </tr>
     </table>
 
@@ -363,9 +431,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_unbind">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1112">at line 1112</a></div>
-        <code>                    bool
-    <strong>unbind</strong>(string $exchange_name, string $routing_key = &#039;&#039;, array $arguments = [])
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1191">at line 1191</a></div>
+        <code>                    void
+    <strong>unbind</strong>(string $exchangeName, string $routingKey = &#039;&#039;, array $arguments = [])
         </code>
     </h3>
     <div class="details">    
@@ -381,12 +449,12 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$exchange_name</td>
+                <td>$exchangeName</td>
                 <td><p>Name of the exchange to bind.</p></td>
             </tr>
                     <tr>
                 <td>string</td>
-                <td>$routing_key</td>
+                <td>$routingKey</td>
                 <td><p>The routing key to use for binding.</p></td>
             </tr>
                     <tr>
@@ -401,8 +469,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
-            <td><p>TRUE on success or FALSE on failure.</p></td>
+            <td>void</td>
+            <td></td>
         </tr>
     </table>
 
@@ -431,57 +499,9 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1128">at line 1128</a></div>
-        <code>                    
-    <strong>__construct</strong>(<a href="AMQPChannel.html">AMQPChannel</a> $amqp_channel)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Create an instance of AMQPExchange.</p></p>                <p><p>Returns a new instance of an AMQPExchange object, associated with the
-given AMQPChannel object.</p></p>        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="AMQPChannel.html">AMQPChannel</a></td>
-                <td>$amqp_channel</td>
-                <td><p>A valid AMQPChannel object, connected
-to a broker.</p></td>
-            </tr>
-            </table>
-
-            
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="AMQPExchangeException.html">AMQPExchangeException</a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="AMQPConnectionException.html">AMQPConnectionException</a></td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_declareExchange">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1139">at line 1139</a></div>
-        <code>                    bool
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1202">at line 1202</a></div>
+        <code>                    void
     <strong>declareExchange</strong>()
         </code>
     </h3>
@@ -498,8 +518,57 @@ to a broker.</p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
-            <td><p>TRUE on success or FALSE on failure.</p></td>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="AMQPExchangeException.html">AMQPExchangeException</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="AMQPChannelException.html">AMQPChannelException</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="AMQPConnectionException.html">AMQPConnectionException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_declare">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1213">at line 1213</a></div>
+        <code>                    void
+    <strong>declare</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Declare a new exchange on the broker.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
         </tr>
     </table>
 
@@ -529,8 +598,8 @@ to a broker.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_delete">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1156">at line 1156</a></div>
-        <code>                    bool
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1230">at line 1230</a></div>
+        <code>                    void
     <strong>delete</strong>(string $exchangeName = null, int $flags = AMQP_NOPARAM)
         </code>
     </h3>
@@ -565,8 +634,8 @@ it.</p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
-            <td><p>TRUE on success or FALSE on failure.</p></td>
+            <td>void</td>
+            <td></td>
         </tr>
     </table>
 
@@ -596,9 +665,9 @@ it.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getArgument">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1167">at line 1167</a></div>
-        <code>                    string|int|false
-    <strong>getArgument</strong>(string $key)
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1242">at line 1242</a></div>
+        <code>                    bool|int|float|string|null
+    <strong>getArgument</strong>(string $argumentName)
         </code>
     </h3>
     <div class="details">    
@@ -606,7 +675,7 @@ it.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Get the argument associated with the given key.</p></p>                        
+                            <p><p>Get the argument associated with the given key.</p></p>                <p><p>Get the argument associated with the given key.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -614,7 +683,7 @@ it.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$key</td>
+                <td>$argumentName</td>
                 <td><p>The key to look up.</p></td>
             </tr>
             </table>
@@ -624,14 +693,21 @@ it.</p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td>string|int|false</td>
-            <td><p>The string or integer value associated
-with the given key, or FALSE if the key
-is not set.</p></td>
+            <td>bool|int|float|string|null</td>
+            <td></td>
         </tr>
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="AMQPExchangeException.html">AMQPExchangeException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -640,9 +716,9 @@ is not set.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasArgument">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1176">at line 1176</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1251">at line 1251</a></div>
         <code>                    bool
-    <strong>hasArgument</strong>(string $key)
+    <strong>hasArgument</strong>(string $argumentName)
         </code>
     </h3>
     <div class="details">    
@@ -658,7 +734,7 @@ is not set.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$key</td>
+                <td>$argumentName</td>
                 <td><p>The key to look up.</p></td>
             </tr>
             </table>
@@ -682,7 +758,7 @@ is not set.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getArguments">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1183">at line 1183</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1258">at line 1258</a></div>
         <code>                    array
     <strong>getArguments</strong>()
         </code>
@@ -714,7 +790,7 @@ is not set.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getFlags">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1191">at line 1191</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1266">at line 1266</a></div>
         <code>                    int
     <strong>getFlags</strong>()
         </code>
@@ -747,8 +823,8 @@ exchange object.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1198">at line 1198</a></div>
-        <code>                    string
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1273">at line 1273</a></div>
+        <code>                    string|null
     <strong>getName</strong>()
         </code>
     </h3>
@@ -765,7 +841,7 @@ exchange object.</p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
+            <td>string|null</td>
             <td><p>The configured name as a string.</p></td>
         </tr>
     </table>
@@ -779,8 +855,8 @@ exchange object.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getType">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1205">at line 1205</a></div>
-        <code>                    string
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1280">at line 1280</a></div>
+        <code>                    string|null
     <strong>getType</strong>()
         </code>
     </h3>
@@ -797,7 +873,7 @@ exchange object.</p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
+            <td>string|null</td>
             <td><p>The configured type as a string.</p></td>
         </tr>
     </table>
@@ -811,9 +887,9 @@ exchange object.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_publish">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1228">at line 1228</a></div>
-        <code>                    bool
-    <strong>publish</strong>(string $message, string $routing_key = null, int $flags = AMQP_NOPARAM, array $attributes = [])
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1303">at line 1303</a></div>
+        <code>                    void
+    <strong>publish</strong>(string $message, string|null $routingKey = null, int|null $flags = null, array $headers = [])
         </code>
     </h3>
     <div class="details">    
@@ -833,20 +909,20 @@ exchange object.</p></td>
                 <td><p>The message to publish.</p></td>
             </tr>
                     <tr>
-                <td>string</td>
-                <td>$routing_key</td>
+                <td>string|null</td>
+                <td>$routingKey</td>
                 <td><p>The optional routing key to which to
 publish to.</p></td>
             </tr>
                     <tr>
-                <td>int</td>
+                <td>int|null</td>
                 <td>$flags</td>
                 <td><p>One or more of AMQP_MANDATORY and
 AMQP_IMMEDIATE.</p></td>
             </tr>
                     <tr>
                 <td>array</td>
-                <td>$attributes</td>
+                <td>$headers</td>
                 <td><p>One of content_type, content_encoding,
 message_id, user_id, app_id, delivery_mode,
 priority, timestamp, expiration, type
@@ -859,8 +935,8 @@ or reply_to, headers.</p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
-            <td><p>TRUE on success or FALSE on failure.</p></td>
+            <td>void</td>
+            <td></td>
         </tr>
     </table>
 
@@ -890,9 +966,9 @@ or reply_to, headers.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setArgument">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1243">at line 1243</a></div>
-        <code>                    bool
-    <strong>setArgument</strong>(string $key, string|int $value)
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1318">at line 1318</a></div>
+        <code>                    void
+    <strong>setArgument</strong>(string $argumentName, string|int $argumentValue)
         </code>
     </h3>
     <div class="details">    
@@ -908,12 +984,12 @@ or reply_to, headers.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$key</td>
+                <td>$argumentName</td>
                 <td><p>Name of the argument to set.</p></td>
             </tr>
                     <tr>
                 <td>string|int</td>
-                <td>$value</td>
+                <td>$argumentValue</td>
                 <td><p>Value of the argument to set.</p></td>
             </tr>
             </table>
@@ -923,8 +999,50 @@ or reply_to, headers.</p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
-            <td><p>TRUE on success or FALSE on failure.</p></td>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeArgument">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1325">at line 1325</a></div>
+        <code>                    void
+    <strong>removeArgument</strong>(string $argumentName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the value for the given key.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$argumentName</td>
+                <td><p>Name of the argument to remove.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
         </tr>
     </table>
 
@@ -937,7 +1055,7 @@ or reply_to, headers.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setArguments">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1252">at line 1252</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1334">at line 1334</a></div>
         <code>                    bool
     <strong>setArguments</strong>(array $arguments)
         </code>
@@ -979,7 +1097,7 @@ or reply_to, headers.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setFlags">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1264">at line 1264</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1346">at line 1346</a></div>
         <code>                    void
     <strong>setFlags</strong>(int|null $flags)
         </code>
@@ -1024,9 +1142,9 @@ AMQP_DURABLE, AMQP_PASSIVE
             </div>
                     <div class="method-item">
                     <h3 id="method_setName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1273">at line 1273</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1355">at line 1355</a></div>
         <code>                    void
-    <strong>setName</strong>(string $exchange_name)
+    <strong>setName</strong>(string $exchangeName)
         </code>
     </h3>
     <div class="details">    
@@ -1042,7 +1160,7 @@ AMQP_DURABLE, AMQP_PASSIVE
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$exchange_name</td>
+                <td>$exchangeName</td>
                 <td><p>The name of the exchange to set as string.</p></td>
             </tr>
             </table>
@@ -1066,9 +1184,9 @@ AMQP_DURABLE, AMQP_PASSIVE
             </div>
                     <div class="method-item">
                     <h3 id="method_setType">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1285">at line 1285</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1367">at line 1367</a></div>
         <code>                    void
-    <strong>setType</strong>(string $exchange_type)
+    <strong>setType</strong>(string $exchangeType)
         </code>
     </h3>
     <div class="details">    
@@ -1085,7 +1203,7 @@ AMQP_EX_TYPE_FANOUT, AMQP_EX_TYPE_HEADERS or AMQP_EX_TYPE_TOPIC.</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$exchange_type</td>
+                <td>$exchangeType</td>
                 <td><p>The type of exchange as a string.</p></td>
             </tr>
             </table>
@@ -1109,7 +1227,7 @@ AMQP_EX_TYPE_FANOUT, AMQP_EX_TYPE_HEADERS or AMQP_EX_TYPE_TOPIC.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getChannel">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1292">at line 1292</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1374">at line 1374</a></div>
         <code>                    <a href="AMQPChannel.html">AMQPChannel</a>
     <strong>getChannel</strong>()
         </code>
@@ -1141,7 +1259,7 @@ AMQP_EX_TYPE_FANOUT, AMQP_EX_TYPE_HEADERS or AMQP_EX_TYPE_TOPIC.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getConnection">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1299">at line 1299</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1381">at line 1381</a></div>
         <code>                    <a href="AMQPConnection.html">AMQPConnection</a>
     <strong>getConnection</strong>()
         </code>
