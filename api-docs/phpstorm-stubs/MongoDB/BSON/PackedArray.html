@@ -88,7 +88,7 @@
         <br>
     
     <p>final         class
-    <strong>PackedArray</strong>        implements        <a href="../../IteratorAggregate.html">IteratorAggregate</a>, <a href="../../Serializable.html">Serializable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BSON/PackedArray.php">View source</a>)
+    <strong>PackedArray</strong>        implements        <a href="../../ArrayAccess.html">ArrayAccess</a>, <a href="../../IteratorAggregate.html">IteratorAggregate</a>, <a href="../../Serializable.html">Serializable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BSON/PackedArray.php">View source</a>)
 </p>
 
         
@@ -183,7 +183,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetSet">offsetSet</a>(mixed $offset, mixed $value)
+                    <a href="#method_offsetSet">offsetSet</a>(TKey $offset, TValue $value)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -194,7 +194,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetUnset">offsetUnset</a>(mixed $offset)
+                    <a href="#method_offsetUnset">offsetUnset</a>(TKey $offset)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -507,7 +507,9 @@
                     <tr>
                 <td>mixed</td>
                 <td>$offset</td>
-                <td></td>
+                <td><p>
+An offset to check for.
+</p></td>
             </tr>
             </table>
 
@@ -517,7 +519,10 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>true on success or false on failure.
+</p></p>
+<p>
+The return value will be casted to boolean if non-boolean was returned.</td>
         </tr>
     </table>
 
@@ -551,7 +556,9 @@
                     <tr>
                 <td>mixed</td>
                 <td>$offset</td>
-                <td></td>
+                <td><p>
+The offset to retrieve.
+</p></td>
             </tr>
             </table>
 
@@ -561,7 +568,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td></td>
+            <td><p>Can return all value types.</p></td>
         </tr>
     </table>
 
@@ -576,7 +583,7 @@
                     <h3 id="method_offsetSet">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BSON/PackedArray.php#L30">at line 30</a></div>
         <code>                    void
-    <strong>offsetSet</strong>(mixed $offset, mixed $value)
+    <strong>offsetSet</strong>(TKey $offset, TValue $value)
         </code>
     </h3>
     <div class="details"><i>Since: 1.17.0</i>
@@ -593,14 +600,18 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
+                <td>TKey</td>
                 <td>$offset</td>
-                <td></td>
+                <td><p>
+The offset to assign the value to.
+</p></td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td>TValue</td>
                 <td>$value</td>
-                <td></td>
+                <td><p>
+The value to set.
+</p></td>
             </tr>
             </table>
 
@@ -625,7 +636,7 @@
                     <h3 id="method_offsetUnset">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BSON/PackedArray.php#L33">at line 33</a></div>
         <code>                    void
-    <strong>offsetUnset</strong>(mixed $offset)
+    <strong>offsetUnset</strong>(TKey $offset)
         </code>
     </h3>
     <div class="details"><i>Since: 1.17.0</i>
@@ -642,9 +653,11 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
+                <td>TKey</td>
                 <td>$offset</td>
-                <td></td>
+                <td><p>
+The offset to unset.
+</p></td>
             </tr>
             </table>
 
