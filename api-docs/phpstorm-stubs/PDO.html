@@ -474,7 +474,7 @@ flag is set.</p></p>
                     <tr>
                 <td>
                                                                                                                         FETCH_PROPS_LATE
-                                            <i>Since: 5.2.0</i>
+                                            <i>Since: 5.2</i>
                         <br>
                                     </td>
                 <td class="last">
@@ -706,7 +706,7 @@ echo "Running on mysql; doing something mysql specific here\n";
                     <tr>
                 <td>
                                                                                                                         ATTR_DEFAULT_FETCH_MODE
-                                            <i>Since: 5.2.0</i>
+                                            <i>Since: 5.2</i>
                         <br>
                                     </td>
                 <td class="last">
@@ -2142,7 +2142,7 @@ Execute an SQL statement and return the number of affected rows</p></p>         
                     <a href="PDOStatement.html">PDOStatement</a>|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_query">query</a>(string $query, int|null $fetchMode = null, mixed ...$fetch_mode_args)
+                    <a href="#method_query">query</a>(string $query, int|null $fetchMode = null, ...$fetchModeArgs)
         
                                             <p><p>(PHP 5 &gt;= 5.1.0, PHP 7, PHP 8, PECL pdo &gt;= 0.2.0)<br/>
 Executes an SQL statement, returning a result set as a PDOStatement object</p></p>                </div>
@@ -2366,6 +2366,17 @@ Get asynchronous notification</p></p>                </div>
         
                                             <p><p>(PHP 5 &gt;= 5.6.0, PHP 7, PHP 8)<br/>
 Get the server PID</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="PDO.html">PDO</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_connect">connect</a>(string $dsn, string|null $username = null, string|null $password = null, array|null $options = null)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -2787,7 +2798,7 @@ $db->exec() or die(print_r($db->errorInfo(), true));
                     <h3 id="method_query">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1120">at line 1120</a></div>
         <code>                    <a href="PDOStatement.html">PDOStatement</a>|false
-    <strong>query</strong>(string $query, int|null $fetchMode = null, mixed ...$fetch_mode_args)
+    <strong>query</strong>(string $query, int|null $fetchMode = null, ...$fetchModeArgs)
         </code>
     </h3>
     <div class="details">    
@@ -2820,12 +2831,9 @@ The fetch mode must be one of the PDO::FETCH_* constants.
 </p></td>
             </tr>
                     <tr>
-                <td>mixed</td>
-                <td>...$fetch_mode_args</td>
-                <td><p>
-Arguments of custom class constructor when the <i>mode</i>
-parameter is set to <b>PDO::FETCH_CLASS</b>.
-</p></td>
+                <td></td>
+                <td>...$fetchModeArgs</td>
+                <td></td>
             </tr>
             </table>
 
@@ -3919,6 +3927,65 @@ Get the server PID</p></p>
         <tr>
             <td>int</td>
             <td><p>The server's PID.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_connect">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L1492">at line 1492</a></div>
+        <code>        static            <a href="PDO.html">PDO</a>
+    <strong>connect</strong>(string $dsn, string|null $username = null, string|null $password = null, array|null $options = null)
+        </code>
+    </h3>
+    <div class="details"><i>Since: 8.4</i>
+            <br>    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$dsn</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$username</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$password</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array|null</td>
+                <td>$options</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="PDO.html">PDO</a></td>
+            <td></td>
         </tr>
     </table>
 
