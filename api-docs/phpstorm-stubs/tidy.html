@@ -97,10 +97,19 @@
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_errorBuffer">
-                                                                                string
+                                                                                string|null
                                                                                 
                                     </td>
                 <td>$errorBuffer</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_value">
+                                                                                string|null
+                                                                                
+                                    </td>
+                <td>$value</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -112,7 +121,7 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    mixed
+                    string|int|bool
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getOpt">getOpt</a>(string $option)
@@ -137,7 +146,7 @@ Execute configured cleanup and repair operations on parsed markup</p></p>       
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_parseFile">parseFile</a>(string $filename, mixed $config = null, string|null $encoding = null, bool $use_include_path = false)
+                    <a href="#method_parseFile">parseFile</a>(string $filename, mixed $config = null, string|null $encoding = null, bool $useIncludePath = false)
         
                                             <p><p>(PHP 5, PECL tidy &gt;= 0.5.2)<br/>
 Parse markup in file or URI</p></p>                </div>
@@ -148,7 +157,7 @@ Parse markup in file or URI</p></p>                </div>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_parseString">parseString</a>(string $input, mixed $config = null, string|null $encoding = null)
+                    <a href="#method_parseString">parseString</a>(string $string, mixed $config = null, string|null $encoding = null)
         
                                             <p><p>(PHP 5, PECL tidy &gt;= 0.5.2)<br/>
 Parse a document stored in a string</p></p>                </div>
@@ -156,10 +165,10 @@ Parse a document stored in a string</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    static&nbsp;string|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_repairString">repairString</a>(string $data, mixed $config = null, string|null $encoding = null)
+                    <a href="#method_repairString">repairString</a>(string $string, array|string|null $config = null, string|null $encoding = null)
         
                                             <p><p>(PHP 5, PECL tidy &gt;= 0.7.0)<br/>
 Repair a string using an optionally provided configuration file</p></p>                </div>
@@ -167,10 +176,10 @@ Repair a string using an optionally provided configuration file</p></p>         
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    static&nbsp;string|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_repairFile">repairFile</a>(string $filename, mixed $config = null, string|null $encoding = null, bool $use_include_path = false)
+                    <a href="#method_repairFile">repairFile</a>(string $filename, array|string|null $config = null, string|null $encoding = null, bool $useIncludePath = false)
         
                                             <p><p>(PHP 5, PECL tidy &gt;= 0.7.0)<br/>
 Repair a file and return it as a string</p></p>                </div>
@@ -233,10 +242,10 @@ Get the Detected HTML version for the specified document</p></p>                
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    string|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getOptDoc">getOptDoc</a>(string $optname)
+                    <a href="#method_getOptDoc">getOptDoc</a>(string $option)
         
                                             <p><p>Returns the documentation for the given option name</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -265,7 +274,7 @@ Indicates if the document is a generic (non HTML/XHTML) XML document</p></p>    
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="tidyNode.html">tidyNode</a>
+                    <a href="tidyNode.html">tidyNode</a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_root">root</a>()
@@ -276,7 +285,7 @@ Returns a <b>tidyNode</b> object representing the root of the tidy parse tree</p
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="tidyNode.html">tidyNode</a>
+                    <a href="tidyNode.html">tidyNode</a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_head">head</a>()
@@ -287,7 +296,7 @@ Returns a <b>tidyNode</b> object starting from the &lt;head&gt; tag of the tidy 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="tidyNode.html">tidyNode</a>
+                    <a href="tidyNode.html">tidyNode</a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_html">html</a>()
@@ -298,7 +307,7 @@ Returns a <b>tidyNode</b> object starting from the &lt;html&gt; tag of the tidy 
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="tidyNode.html">tidyNode</a>
+                    <a href="tidyNode.html">tidyNode</a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_body">body</a>()
@@ -312,7 +321,7 @@ Returns a <b>tidyNode</b> object starting from the &lt;body&gt; tag of the tidy 
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(string $filename = null, mixed $config = null, string|null $encoding = null, bool $use_include_path = null)
+                    <a href="#method___construct">__construct</a>(string $filename = null, mixed $config = null, string|null $encoding = null, bool $useIncludePath = null)
         
                                             <p><p>(PHP 5, PECL tidy &gt;= 0.5.2)<br/>
 Constructs a new <b>tidy</b> object</p></p>                </div>
@@ -326,8 +335,8 @@ Constructs a new <b>tidy</b> object</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getOpt">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L27">at line 27</a></div>
-        <code>                    mixed
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L32">at line 32</a></div>
+        <code>                    string|int|bool
     <strong>getOpt</strong>(string $option)
         </code>
     </h3>
@@ -358,7 +367,7 @@ at: http://tidy.sourceforge.net/docs/quickref.html.
 
                     <table class="table table-condensed">
         <tr>
-            <td>mixed</td>
+            <td>string|int|bool</td>
             <td><p>the value of the specified <i>option</i>.
 The return type depends on the type of the specified one.</p></td>
         </tr>
@@ -373,7 +382,7 @@ The return type depends on the type of the specified one.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_cleanRepair">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L35">at line 35</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L41">at line 41</a></div>
         <code>                    bool
     <strong>cleanRepair</strong>()
         </code>
@@ -406,9 +415,9 @@ Execute configured cleanup and repair operations on parsed markup</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_parseFile">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L70">at line 70</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L77">at line 77</a></div>
         <code>                    bool
-    <strong>parseFile</strong>(string $filename, mixed $config = null, string|null $encoding = null, bool $use_include_path = false)
+    <strong>parseFile</strong>(string $filename, mixed $config = null, string|null $encoding = null, bool $useIncludePath = false)
         </code>
     </h3>
     <div class="details">    
@@ -461,7 +470,7 @@ big5, and shiftjis.
             </tr>
                     <tr>
                 <td>bool</td>
-                <td>$use_include_path</td>
+                <td>$useIncludePath</td>
                 <td><p>[optional] <p>
 Search for the file in the include_path.
 </p></p></td>
@@ -487,9 +496,9 @@ Search for the file in the include_path.
             </div>
                     <div class="method-item">
                     <h3 id="method_parseString">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L99">at line 99</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L112">at line 112</a></div>
         <code>                    bool
-    <strong>parseString</strong>(string $input, mixed $config = null, string|null $encoding = null)
+    <strong>parseString</strong>(string $string, mixed $config = null, string|null $encoding = null)
         </code>
     </h3>
     <div class="details">    
@@ -506,7 +515,7 @@ Parse a document stored in a string</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$input</td>
+                <td>$string</td>
                 <td><p>
 The data to be parsed.
 </p></td>
@@ -558,9 +567,9 @@ big5, and shiftjis.
             </div>
                     <div class="method-item">
                     <h3 id="method_repairString">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L129">at line 129</a></div>
-        <code>                    string
-    <strong>repairString</strong>(string $data, mixed $config = null, string|null $encoding = null)
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L147">at line 147</a></div>
+        <code>        static            string|false
+    <strong>repairString</strong>(string $string, array|string|null $config = null, string|null $encoding = null)
         </code>
     </h3>
     <div class="details">    
@@ -577,13 +586,13 @@ Repair a string using an optionally provided configuration file</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$data</td>
+                <td>$string</td>
                 <td><p>
 The data to be repaired.
 </p></td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td>array|string|null</td>
                 <td>$config</td>
                 <td><p>[optional] <p>
 The config <i>config</i> can be passed either as an
@@ -616,7 +625,7 @@ big5, and shiftjis.
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
+            <td>string|false</td>
             <td><p>the repaired string.</p></td>
         </tr>
     </table>
@@ -630,9 +639,9 @@ big5, and shiftjis.
             </div>
                     <div class="method-item">
                     <h3 id="method_repairFile">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L162">at line 162</a></div>
-        <code>                    string
-    <strong>repairFile</strong>(string $filename, mixed $config = null, string|null $encoding = null, bool $use_include_path = false)
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L185">at line 185</a></div>
+        <code>        static            string|false
+    <strong>repairFile</strong>(string $filename, array|string|null $config = null, string|null $encoding = null, bool $useIncludePath = false)
         </code>
     </h3>
     <div class="details">    
@@ -655,7 +664,7 @@ The file to be repaired.
 </p></td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td>array|string|null</td>
                 <td>$config</td>
                 <td><p>[optional] <p>
 The config <i>config</i> can be passed either as an
@@ -683,7 +692,7 @@ big5, and shiftjis.
             </tr>
                     <tr>
                 <td>bool</td>
-                <td>$use_include_path</td>
+                <td>$useIncludePath</td>
                 <td><p>[optional] <p>
 Search for the file in the include_path.
 </p></p></td>
@@ -695,7 +704,7 @@ Search for the file in the include_path.
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
+            <td>string|false</td>
             <td><p>the repaired contents as a string.</p></td>
         </tr>
     </table>
@@ -709,7 +718,7 @@ Search for the file in the include_path.
             </div>
                     <div class="method-item">
                     <h3 id="method_diagnose">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L170">at line 170</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L199">at line 199</a></div>
         <code>                    bool
     <strong>diagnose</strong>()
         </code>
@@ -742,7 +751,7 @@ Run configured diagnostics on parsed and repaired markup</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getRelease">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L178">at line 178</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L208">at line 208</a></div>
         <code>                    string
     <strong>getRelease</strong>()
         </code>
@@ -775,7 +784,7 @@ Get release date (version) for Tidy library</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getConfig">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L189">at line 189</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L220">at line 220</a></div>
         <code>                    array
     <strong>getConfig</strong>()
         </code>
@@ -811,7 +820,7 @@ For an explanation about each option, visit http://tidy.sourceforge.net/docs/qui
             </div>
                     <div class="method-item">
                     <h3 id="method_getStatus">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L198">at line 198</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L230">at line 230</a></div>
         <code>                    int
     <strong>getStatus</strong>()
         </code>
@@ -845,7 +854,7 @@ errors, or 2 for errors.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getHtmlVer">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L210">at line 210</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L243">at line 243</a></div>
         <code>                    int
     <strong>getHtmlVer</strong>()
         </code>
@@ -882,9 +891,9 @@ return 0.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getOptDoc">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L221">at line 221</a></div>
-        <code>                    string
-    <strong>getOptDoc</strong>(string $optname)
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L255">at line 255</a></div>
+        <code>                    string|false
+    <strong>getOptDoc</strong>(string $option)
         </code>
     </h3>
     <div class="details">    
@@ -900,7 +909,7 @@ return 0.</td>
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$optname</td>
+                <td>$option</td>
                 <td><p>
 The option name
 </p></td>
@@ -912,7 +921,7 @@ The option name
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
+            <td>string|false</td>
             <td><p>a string if the option exists and has documentation available, or
 <b>FALSE</b> otherwise.</p></td>
         </tr>
@@ -927,7 +936,7 @@ The option name
             </div>
                     <div class="method-item">
                     <h3 id="method_isXhtml">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L234">at line 234</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L269">at line 269</a></div>
         <code>                    bool
     <strong>isXhtml</strong>()
         </code>
@@ -965,7 +974,7 @@ return <b>FALSE</b>.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_isXml">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L248">at line 248</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L284">at line 284</a></div>
         <code>                    bool
     <strong>isXml</strong>()
         </code>
@@ -1004,8 +1013,8 @@ return <b>FALSE</b>.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_root">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L256">at line 256</a></div>
-        <code>                    <a href="tidyNode.html">tidyNode</a>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L293">at line 293</a></div>
+        <code>                    <a href="tidyNode.html">tidyNode</a>|null
     <strong>root</strong>()
         </code>
     </h3>
@@ -1023,7 +1032,7 @@ Returns a <b>tidyNode</b> object representing the root of the tidy parse tree</p
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="tidyNode.html">tidyNode</a></td>
+            <td><a href="tidyNode.html">tidyNode</a>|null</td>
             <td><p>the <b>tidyNode</b> object.</p></td>
         </tr>
     </table>
@@ -1037,8 +1046,8 @@ Returns a <b>tidyNode</b> object representing the root of the tidy parse tree</p
             </div>
                     <div class="method-item">
                     <h3 id="method_head">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L264">at line 264</a></div>
-        <code>                    <a href="tidyNode.html">tidyNode</a>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L302">at line 302</a></div>
+        <code>                    <a href="tidyNode.html">tidyNode</a>|null
     <strong>head</strong>()
         </code>
     </h3>
@@ -1056,7 +1065,7 @@ Returns a <b>tidyNode</b> object starting from the &lt;head&gt; tag of the tidy 
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="tidyNode.html">tidyNode</a></td>
+            <td><a href="tidyNode.html">tidyNode</a>|null</td>
             <td><p>the <b>tidyNode</b> object.</p></td>
         </tr>
     </table>
@@ -1070,8 +1079,8 @@ Returns a <b>tidyNode</b> object starting from the &lt;head&gt; tag of the tidy 
             </div>
                     <div class="method-item">
                     <h3 id="method_html">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L272">at line 272</a></div>
-        <code>                    <a href="tidyNode.html">tidyNode</a>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L311">at line 311</a></div>
+        <code>                    <a href="tidyNode.html">tidyNode</a>|null
     <strong>html</strong>()
         </code>
     </h3>
@@ -1089,7 +1098,7 @@ Returns a <b>tidyNode</b> object starting from the &lt;html&gt; tag of the tidy 
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="tidyNode.html">tidyNode</a></td>
+            <td><a href="tidyNode.html">tidyNode</a>|null</td>
             <td><p>the <b>tidyNode</b> object.</p></td>
         </tr>
     </table>
@@ -1103,8 +1112,8 @@ Returns a <b>tidyNode</b> object starting from the &lt;html&gt; tag of the tidy 
             </div>
                     <div class="method-item">
                     <h3 id="method_body">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L281">at line 281</a></div>
-        <code>                    <a href="tidyNode.html">tidyNode</a>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L321">at line 321</a></div>
+        <code>                    <a href="tidyNode.html">tidyNode</a>|null
     <strong>body</strong>()
         </code>
     </h3>
@@ -1122,7 +1131,7 @@ Returns a <b>tidyNode</b> object starting from the &lt;body&gt; tag of the tidy 
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="tidyNode.html">tidyNode</a></td>
+            <td><a href="tidyNode.html">tidyNode</a>|null</td>
             <td><p>a <b>tidyNode</b> object starting from the
 &lt;body&gt; tag of the tidy parse tree.</p></td>
         </tr>
@@ -1137,9 +1146,9 @@ Returns a <b>tidyNode</b> object starting from the &lt;body&gt; tag of the tidy 
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L314">at line 314</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tidy/tidy.php#L355">at line 355</a></div>
         <code>                    
-    <strong>__construct</strong>(string $filename = null, mixed $config = null, string|null $encoding = null, bool $use_include_path = null)
+    <strong>__construct</strong>(string $filename = null, mixed $config = null, string|null $encoding = null, bool $useIncludePath = null)
         </code>
     </h3>
     <div class="details">    
@@ -1191,7 +1200,7 @@ big5, and shiftjis.
             </tr>
                     <tr>
                 <td>bool</td>
-                <td>$use_include_path</td>
+                <td>$useIncludePath</td>
                 <td><p>[optional] <p>
 Search for the file in the include_path.
 </p></p></td>

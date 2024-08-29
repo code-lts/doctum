@@ -106,20 +106,20 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="DOMDocument.html">DOMDocument</a>|false
+                    object|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_transformToDoc">transformToDoc</a>(<a href="DOMNode.html">DOMNode</a> $doc)
+                    <a href="#method_transformToDoc">transformToDoc</a>(object $document, string|null $returnClass = null)
         
                                             <p><p>Transform to a DOMDocument</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int|false
+                    int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_transformToUri">transformToUri</a>(<a href="DOMDocument.html">DOMDocument</a>|<a href="SimpleXMLElement.html">SimpleXMLElement</a> $doc, string $uri)
+                    <a href="#method_transformToUri">transformToUri</a>(<a href="DOMDocument.html">DOMDocument</a>|<a href="SimpleXMLElement.html">SimpleXMLElement</a> $document, string $uri)
         
                                             <p><p>Transform to URI</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -129,7 +129,7 @@
                     string|false|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_transformToXml">transformToXml</a>(<a href="DOMDocument.html">DOMDocument</a>|<a href="SimpleXMLElement.html">SimpleXMLElement</a> $doc)
+                    <a href="#method_transformToXml">transformToXml</a>(<a href="DOMDocument.html">DOMDocument</a>|<a href="SimpleXMLElement.html">SimpleXMLElement</a> $document)
         
                                             <p><p>Transform to XML</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -139,7 +139,7 @@
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setParameter">setParameter</a>(string $namespace, string $name, string $value)
+                    <a href="#method_setParameter">setParameter</a>(string $namespace, string $name, string $value = null)
         
                                             <p><p>Set value for a parameter</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -149,7 +149,7 @@
                     string|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getParameter">getParameter</a>(string $namespaceURI, string $localName)
+                    <a href="#method_getParameter">getParameter</a>(string $namespace, string $name)
         
                                             <p><p>Get value of a parameter</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -159,7 +159,7 @@
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_removeParameter">removeParameter</a>(string $namespaceURI, string $localName)
+                    <a href="#method_removeParameter">removeParameter</a>(string $namespace, string $name)
         
                                             <p><p>Remove parameter</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -179,7 +179,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_registerPHPFunctions">registerPHPFunctions</a>(mixed $restrict = null)
+                    <a href="#method_registerPHPFunctions">registerPHPFunctions</a>(array|string|null $functions = null)
         
                                             <p><p>Enables the ability to use PHP functions as XSLT functions</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -199,7 +199,7 @@
                     int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setSecurityPrefs">setSecurityPrefs</a>(int $securityPrefs)
+                    <a href="#method_setSecurityPrefs">setSecurityPrefs</a>(int $preferences)
         
                                             <p><p>Set security preferences</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -222,7 +222,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_importStylesheet">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L19">at line 19</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L21">at line 21</a></div>
         <code>                    bool
     <strong>importStylesheet</strong>(object $stylesheet)
         </code>
@@ -267,9 +267,9 @@ The imported style sheet as a <b>DOMDocument</b> or
             </div>
                     <div class="method-item">
                     <h3 id="method_transformToDoc">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L29">at line 29</a></div>
-        <code>                    <a href="DOMDocument.html">DOMDocument</a>|false
-    <strong>transformToDoc</strong>(<a href="DOMNode.html">DOMNode</a> $doc)
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L31">at line 31</a></div>
+        <code>                    object|false
+    <strong>transformToDoc</strong>(object $document, string|null $returnClass = null)
         </code>
     </h3>
     <div class="details">    
@@ -284,11 +284,14 @@ The imported style sheet as a <b>DOMDocument</b> or
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="DOMNode.html">DOMNode</a></td>
-                <td>$doc</td>
-                <td><p>
-The node to be transformed.
-</p></td>
+                <td>object</td>
+                <td>$document</td>
+                <td><p>The DOMDocument or SimpleXMLElement or libxml-compatible object to be transformed.</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$returnClass</td>
+                <td></td>
             </tr>
             </table>
 
@@ -297,7 +300,7 @@ The node to be transformed.
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="DOMDocument.html">DOMDocument</a>|false</td>
+            <td>object|false</td>
             <td><p>The resulting <b>DOMDocument</b> or <b>FALSE</b> on error.</p></td>
         </tr>
     </table>
@@ -311,9 +314,9 @@ The node to be transformed.
             </div>
                     <div class="method-item">
                     <h3 id="method_transformToUri">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L42">at line 42</a></div>
-        <code>                    int|false
-    <strong>transformToUri</strong>(<a href="DOMDocument.html">DOMDocument</a>|<a href="SimpleXMLElement.html">SimpleXMLElement</a> $doc, string $uri)
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L48">at line 48</a></div>
+        <code>                    int
+    <strong>transformToUri</strong>(<a href="DOMDocument.html">DOMDocument</a>|<a href="SimpleXMLElement.html">SimpleXMLElement</a> $document, string $uri)
         </code>
     </h3>
     <div class="details">    
@@ -329,7 +332,7 @@ The node to be transformed.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="DOMDocument.html">DOMDocument</a>|<a href="SimpleXMLElement.html">SimpleXMLElement</a></td>
-                <td>$doc</td>
+                <td>$document</td>
                 <td><p>
 The document to transform.
 </p></td>
@@ -348,7 +351,7 @@ The target URI for the transformation.
 
                     <table class="table table-condensed">
         <tr>
-            <td>int|false</td>
+            <td>int</td>
             <td><p>the number of bytes written or <b>FALSE</b> if an error occurred.</p></td>
         </tr>
     </table>
@@ -362,9 +365,9 @@ The target URI for the transformation.
             </div>
                     <div class="method-item">
                     <h3 id="method_transformToXml">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L52">at line 52</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L62">at line 62</a></div>
         <code>                    string|false|null
-    <strong>transformToXml</strong>(<a href="DOMDocument.html">DOMDocument</a>|<a href="SimpleXMLElement.html">SimpleXMLElement</a> $doc)
+    <strong>transformToXml</strong>(<a href="DOMDocument.html">DOMDocument</a>|<a href="SimpleXMLElement.html">SimpleXMLElement</a> $document)
         </code>
     </h3>
     <div class="details">    
@@ -380,7 +383,7 @@ The target URI for the transformation.
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="DOMDocument.html">DOMDocument</a>|<a href="SimpleXMLElement.html">SimpleXMLElement</a></td>
-                <td>$doc</td>
+                <td>$document</td>
                 <td><p>
 The transformed document.
 </p></td>
@@ -406,9 +409,9 @@ The transformed document.
             </div>
                     <div class="method-item">
                     <h3 id="method_setParameter">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L81">at line 81</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L79">at line 79</a></div>
         <code>                    bool
-    <strong>setParameter</strong>(string $namespace, string $name, string $value)
+    <strong>setParameter</strong>(string $namespace, string $name, string $value = null)
         </code>
     </h3>
     <div class="details">    
@@ -464,9 +467,9 @@ The new value of the XSLT parameter.
             </div>
                     <div class="method-item">
                     <h3 id="method_getParameter">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L94">at line 94</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L97">at line 97</a></div>
         <code>                    string|false
-    <strong>getParameter</strong>(string $namespaceURI, string $localName)
+    <strong>getParameter</strong>(string $namespace, string $name)
         </code>
     </h3>
     <div class="details">    
@@ -482,14 +485,14 @@ The new value of the XSLT parameter.
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$namespaceURI</td>
+                <td>$namespace</td>
                 <td><p>
 The namespace URI of the XSLT parameter.
 </p></td>
             </tr>
                     <tr>
                 <td>string</td>
-                <td>$localName</td>
+                <td>$name</td>
                 <td><p>
 The local name of the XSLT parameter.
 </p></td>
@@ -515,9 +518,9 @@ The local name of the XSLT parameter.
             </div>
                     <div class="method-item">
                     <h3 id="method_removeParameter">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L107">at line 107</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L114">at line 114</a></div>
         <code>                    bool
-    <strong>removeParameter</strong>(string $namespaceURI, string $localName)
+    <strong>removeParameter</strong>(string $namespace, string $name)
         </code>
     </h3>
     <div class="details">    
@@ -533,14 +536,14 @@ The local name of the XSLT parameter.
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$namespaceURI</td>
+                <td>$namespace</td>
                 <td><p>
 The namespace URI of the XSLT parameter.
 </p></td>
             </tr>
                     <tr>
                 <td>string</td>
-                <td>$localName</td>
+                <td>$name</td>
                 <td><p>
 The local name of the XSLT parameter.
 </p></td>
@@ -566,7 +569,7 @@ The local name of the XSLT parameter.
             </div>
                     <div class="method-item">
                     <h3 id="method_hasExsltSupport">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L115">at line 115</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L126">at line 126</a></div>
         <code>                    bool
     <strong>hasExsltSupport</strong>()
         </code>
@@ -599,9 +602,9 @@ The local name of the XSLT parameter.
             </div>
                     <div class="method-item">
                     <h3 id="method_registerPHPFunctions">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L131">at line 131</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L143">at line 143</a></div>
         <code>                    void
-    <strong>registerPHPFunctions</strong>(mixed $restrict = null)
+    <strong>registerPHPFunctions</strong>(array|string|null $functions = null)
         </code>
     </h3>
     <div class="details"><i>Since: 5.0.4</i>
@@ -617,8 +620,8 @@ The local name of the XSLT parameter.
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
-                <td>$restrict</td>
+                <td>array|string|null</td>
+                <td>$functions</td>
                 <td><p>[optional] <p>
 Use this parameter to only allow certain functions to be called from
 XSLT.
@@ -649,7 +652,7 @@ functions.
             </div>
                     <div class="method-item">
                     <h3 id="method_setProfiling">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L141">at line 141</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L154">at line 154</a></div>
         <code>                    bool
     <strong>setProfiling</strong>(string $filename)
         </code>
@@ -693,9 +696,9 @@ Path to the file to dump profiling information.
             </div>
                     <div class="method-item">
                     <h3 id="method_setSecurityPrefs">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L150">at line 150</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L163">at line 163</a></div>
         <code>                    int
-    <strong>setSecurityPrefs</strong>(int $securityPrefs)
+    <strong>setSecurityPrefs</strong>(int $preferences)
         </code>
     </h3>
     <div class="details"><i>Since: 5.4</i>
@@ -712,7 +715,7 @@ Path to the file to dump profiling information.
                     <table class="table table-condensed">
                     <tr>
                 <td>int</td>
-                <td>$securityPrefs</td>
+                <td>$preferences</td>
                 <td></td>
             </tr>
             </table>
@@ -736,7 +739,7 @@ Path to the file to dump profiling information.
             </div>
                     <div class="method-item">
                     <h3 id="method_getSecurityPrefs">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L158">at line 158</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/xsl/xsl.php#L172">at line 172</a></div>
         <code>                    int
     <strong>getSecurityPrefs</strong>()
         </code>
