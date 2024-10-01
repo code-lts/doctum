@@ -6107,7 +6107,19 @@ mysqli#error</a> &mdash; <em>Property in class <a href="mysqli.html">mysqli</a><
 mysqli#error_list</a> &mdash; <em>Property in class <a href="mysqli.html">mysqli</a></em></dt>
                     <dd></dd><dt><a href="mysqli.html#method_execute_query">
 mysqli::execute_query</a>() &mdash; <em>Method in class <a href="mysqli.html">mysqli</a></em></dt>
-                    <dd></dd><dt><a href="mysqli.html#method_escape_string">
+                    <dd><p>Prepares the SQL query, binds parameters, and executes it. The
+mysqli::execute_query() method is a shortcut for mysqli::prepare(),
+mysqli_stmt::bind_param(), mysqli_stmt::execute(), and
+mysqli_stmt::get_result().</p>
+<p>The statement template can contain zero or more question mark (?)
+parameter markers⁠—also called placeholders. The parameter values must be
+provided as an array using params parameter.</p>
+<p>A prepared statement is created under the hood but it's never exposed
+outside of the function. It's impossible to access properties of the
+statement as one would do with the mysqli_stmt object. Due to this
+limitation, the status information is copied to the mysqli object and is
+available using its methods, e.g. mysqli_affected_rows() or
+mysqli_error().</p></dd><dt><a href="mysqli.html#method_escape_string">
 mysqli::escape_string</a>() &mdash; <em>Method in class <a href="mysqli.html">mysqli</a></em></dt>
                     <dd><p>Escapes special characters in a string for use in an SQL statement, taking into account the current charset of the connection</p></dd><dt>$<a href="mysqli_driver.html#property_embedded">
 mysqli_driver#embedded</a> &mdash; <em>Property in class <a href="mysqli_driver.html">mysqli_driver</a></em></dt>

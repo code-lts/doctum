@@ -401,8 +401,19 @@
                 <div class="col-md-8">
                     <a href="#method_execute_query">execute_query</a>(string $query, array|null $params = null)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Prepares the SQL query, binds parameters, and executes it. The
+mysqli::execute_query() method is a shortcut for mysqli::prepare(),
+mysqli_stmt::bind_param(), mysqli_stmt::execute(), and
+mysqli_stmt::get_result().</p>
+<p>The statement template can contain zero or more question mark (?)
+parameter markers⁠—also called placeholders. The parameter values must be
+provided as an array using params parameter.</p>
+<p>A prepared statement is created under the hood but it's never exposed
+outside of the function. It's impossible to access properties of the
+statement as one would do with the mysqli_stmt object. Due to this
+limitation, the status information is copied to the mysqli object and is
+available using its methods, e.g. mysqli_affected_rows() or
+mysqli_error().</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -1284,7 +1295,7 @@ A string representing the debugging operation to perform
             </div>
                     <div class="method-item">
                     <h3 id="method_execute_query">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L373">at line 373</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L401">at line 401</a></div>
         <code>                    mysqli_result|bool
     <strong>execute_query</strong>(string $query, array|null $params = null)
         </code>
@@ -1295,8 +1306,19 @@ A string representing the debugging operation to perform
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Prepares the SQL query, binds parameters, and executes it. The
+mysqli::execute_query() method is a shortcut for mysqli::prepare(),
+mysqli_stmt::bind_param(), mysqli_stmt::execute(), and
+mysqli_stmt::get_result().</p>
+<p>The statement template can contain zero or more question mark (?)
+parameter markers⁠—also called placeholders. The parameter values must be
+provided as an array using params parameter.</p>
+<p>A prepared statement is created under the hood but it's never exposed
+outside of the function. It's impossible to access properties of the
+statement as one would do with the mysqli_stmt object. Due to this
+limitation, the status information is copied to the mysqli object and is
+available using its methods, e.g. mysqli_affected_rows() or
+mysqli_error().</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1305,12 +1327,21 @@ A string representing the debugging operation to perform
                     <tr>
                 <td>string</td>
                 <td>$query</td>
-                <td></td>
+                <td><p>The query, as a string. It must consist of a single SQL
+statement. The SQL statement may contain zero or more parameter markers
+represented by question mark (?) characters at the appropriate positions.
+<b>Note:</b> The markers are legal only in certain places in SQL statements.
+For example, they are permitted in the VALUES() list of an INSERT statement
+(to specify column values for a row), or in a comparison with a column in a
+WHERE clause to specify a comparison value. However, they are not permitted
+for identifiers (such as table or column names).</p></td>
             </tr>
                     <tr>
                 <td>array|null</td>
                 <td>$params</td>
-                <td></td>
+                <td><p>An optional list array with as many elements as
+there are bound parameters in the SQL statement being executed. Each value
+is treated as a string.</p></td>
             </tr>
             </table>
 
@@ -1320,23 +1351,14 @@ A string representing the debugging operation to perform
                     <table class="table table-condensed">
         <tr>
             <td>mysqli_result|bool</td>
-            <td></td>
+            <td><p>Returns false on failure. For successful queries
+which produce a result set, such as SELECT, SHOW, DESCRIBE or EXPLAIN,
+returns a mysqli_result object. For other successful queries, returns true.</p></td>
         </tr>
     </table>
 
             
             
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            mysqli_execute_query
-                                    </td>
-                <td></td>
-            </tr>
-            </table>
-
             
                     </div>
     </div>
@@ -1344,7 +1366,7 @@ A string representing the debugging operation to perform
             </div>
                     <div class="method-item">
                     <h3 id="method_get_client_info">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L380">at line 380</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L408">at line 408</a></div>
         <code>                    string
     <strong>get_client_info</strong>()
         </code>
@@ -1376,7 +1398,7 @@ A string representing the debugging operation to perform
             </div>
                     <div class="method-item">
                     <h3 id="method_get_connection_stats">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L388">at line 388</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L416">at line 416</a></div>
         <code>                    array
     <strong>get_connection_stats</strong>()
         </code>
@@ -1408,7 +1430,7 @@ A string representing the debugging operation to perform
             </div>
                     <div class="method-item">
                     <h3 id="method_get_server_info">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L396">at line 396</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L424">at line 424</a></div>
         <code>                    string
     <strong>get_server_info</strong>()
         </code>
@@ -1440,7 +1462,7 @@ A string representing the debugging operation to perform
             </div>
                     <div class="method-item">
                     <h3 id="method_get_warnings">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L404">at line 404</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L432">at line 432</a></div>
         <code>                    mysqli_warning|false
     <strong>get_warnings</strong>()
         </code>
@@ -1472,7 +1494,7 @@ A string representing the debugging operation to perform
             </div>
                     <div class="method-item">
                     <h3 id="method_init">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L413">at line 413</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L441">at line 441</a></div>
         <code>                    bool|null
     <strong>init</strong>()
         <small><span class="label label-danger">deprecated</span></small></code>
@@ -1511,7 +1533,7 @@ A string representing the debugging operation to perform
             </div>
                     <div class="method-item">
                     <h3 id="method_kill">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L421">at line 421</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L449">at line 449</a></div>
         <code>                    bool
     <strong>kill</strong>(int $process_id)
         </code>
@@ -1553,7 +1575,7 @@ A string representing the debugging operation to perform
             </div>
                     <div class="method-item">
                     <h3 id="method_multi_query">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L441">at line 441</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L469">at line 469</a></div>
         <code>                    bool
     <strong>multi_query</strong>(string $query)
         </code>
@@ -1606,7 +1628,7 @@ To retrieve subsequent errors from other statements you have to call
             </div>
                     <div class="method-item">
                     <h3 id="method_mysqli">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L455">at line 455</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L483">at line 483</a></div>
         <code>                    
     <strong>mysqli</strong>(string $host = null, string $username = null, string $password = null, string $database = null, int $port = null, string $socket = null)
         </code>
@@ -1665,7 +1687,7 @@ To retrieve subsequent errors from other statements you have to call
             </div>
                     <div class="method-item">
                     <h3 id="method_more_results">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L462">at line 462</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L490">at line 490</a></div>
         <code>                    bool
     <strong>more_results</strong>()
         </code>
@@ -1697,7 +1719,7 @@ To retrieve subsequent errors from other statements you have to call
             </div>
                     <div class="method-item">
                     <h3 id="method_next_result">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L470">at line 470</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L498">at line 498</a></div>
         <code>                    bool
     <strong>next_result</strong>()
         </code>
@@ -1729,7 +1751,7 @@ To retrieve subsequent errors from other statements you have to call
             </div>
                     <div class="method-item">
                     <h3 id="method_options">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L522">at line 522</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L550">at line 550</a></div>
         <code>                    bool
     <strong>options</strong>(int $option, string|int $value)
         </code>
@@ -1818,7 +1840,7 @@ The value for the option.
             </div>
                     <div class="method-item">
                     <h3 id="method_ping">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L530">at line 530</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L558">at line 558</a></div>
         <code>                    bool
     <strong>ping</strong>()
         </code>
@@ -1850,7 +1872,7 @@ The value for the option.
             </div>
                     <div class="method-item">
                     <h3 id="method_prepare">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L562">at line 562</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L590">at line 590</a></div>
         <code>                    mysqli_stmt|false
     <strong>prepare</strong>(string $query)
         </code>
@@ -1915,7 +1937,7 @@ Definition Language (DDL) statements.
             </div>
                     <div class="method-item">
                     <h3 id="method_query">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L607">at line 607</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L635">at line 635</a></div>
         <code>                    mysqli_result|bool
     <strong>query</strong>(string $query, int $result_mode = MYSQLI_STORE_RESULT)
         </code>
@@ -1997,7 +2019,7 @@ return true.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_real_connect">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L689">at line 689</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L717">at line 717</a></div>
         <code>                    bool
     <strong>real_connect</strong>(string $hostname = null, string $username = null, string $password = null, string $database = null, int $port = null, string $socket = null, int $flags = 0)
         </code>
@@ -2133,7 +2155,7 @@ not supported in PHP. If you want to execute multiple queries use the
             </div>
                     <div class="method-item">
                     <h3 id="method_real_escape_string">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L712">at line 712</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L740">at line 740</a></div>
         <code>                    string
     <strong>real_escape_string</strong>(string $string)
         </code>
@@ -2181,7 +2203,7 @@ Control-Z.
             </div>
                     <div class="method-item">
                     <h3 id="method_poll">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L732">at line 732</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L760">at line 760</a></div>
         <code>        static            int|false
     <strong>poll</strong>(array $read, array $error, array $reject, int $seconds, int $microseconds = 0)
         </code>
@@ -2250,7 +2272,7 @@ Number of microseconds to wait, must be non-negative.
             </div>
                     <div class="method-item">
                     <h3 id="method_reap_async_query">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L746">at line 746</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L774">at line 774</a></div>
         <code>                    mysqli_result|bool
     <strong>reap_async_query</strong>()
         </code>
@@ -2282,7 +2304,7 @@ Number of microseconds to wait, must be non-negative.
             </div>
                     <div class="method-item">
                     <h3 id="method_escape_string">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L756">at line 756</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L784">at line 784</a></div>
         <code>                    string
     <strong>escape_string</strong>(string $string)
         </code>
@@ -2325,7 +2347,7 @@ Characters encoded are NUL (ASCII 0), \n, \r, \, ', &quot;, and Control-Z.</p></
             </div>
                     <div class="method-item">
                     <h3 id="method_real_query">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L773">at line 773</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L801">at line 801</a></div>
         <code>                    bool
     <strong>real_query</strong>(string $query)
         </code>
@@ -2375,7 +2397,7 @@ escaped using the <b>mysqli_real_escape_string</b> function.
             </div>
                     <div class="method-item">
                     <h3 id="method_release_savepoint">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L783">at line 783</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L811">at line 811</a></div>
         <code>                    bool
     <strong>release_savepoint</strong>(string $name)
         </code>
@@ -2418,7 +2440,7 @@ escaped using the <b>mysqli_real_escape_string</b> function.
             </div>
                     <div class="method-item">
                     <h3 id="method_rollback">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L794">at line 794</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L822">at line 822</a></div>
         <code>                    bool
     <strong>rollback</strong>(int $flags = 0, string $name = null)
         </code>
@@ -2466,7 +2488,7 @@ escaped using the <b>mysqli_real_escape_string</b> function.
             </div>
                     <div class="method-item">
                     <h3 id="method_savepoint">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L807">at line 807</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L835">at line 835</a></div>
         <code>                    bool
     <strong>savepoint</strong>(string $name)
         </code>
@@ -2509,7 +2531,7 @@ escaped using the <b>mysqli_real_escape_string</b> function.
             </div>
                     <div class="method-item">
                     <h3 id="method_select_db">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L818">at line 818</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L846">at line 846</a></div>
         <code>                    bool
     <strong>select_db</strong>(string $database)
         </code>
@@ -2553,7 +2575,7 @@ The database name.
             </div>
                     <div class="method-item">
                     <h3 id="method_set_charset">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L829">at line 829</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L857">at line 857</a></div>
         <code>                    bool
     <strong>set_charset</strong>(string $charset)
         </code>
@@ -2597,7 +2619,7 @@ The desired character set.
             </div>
                     <div class="method-item">
                     <h3 id="method_set_opt">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L837">at line 837</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L865">at line 865</a></div>
         <code>                    bool
     <strong>set_opt</strong>(int $option, string|int $value)
         </code>
@@ -2645,7 +2667,7 @@ The desired character set.
             </div>
                     <div class="method-item">
                     <h3 id="method_ssl_set">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L860">at line 860</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L888">at line 888</a></div>
         <code>                    bool
     <strong>ssl_set</strong>(string|null $key, string|null $certificate, string|null $ca_certificate, string|null $ca_path, string|null $cipher_algos)
         </code>
@@ -2717,7 +2739,7 @@ A list of allowable ciphers to use for SSL encryption.
             </div>
                     <div class="method-item">
                     <h3 id="method_stat">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L875">at line 875</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L903">at line 903</a></div>
         <code>                    string|false
     <strong>stat</strong>()
         </code>
@@ -2749,7 +2771,7 @@ A list of allowable ciphers to use for SSL encryption.
             </div>
                     <div class="method-item">
                     <h3 id="method_stmt_init">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L883">at line 883</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L911">at line 911</a></div>
         <code>                    mysqli_stmt|false
     <strong>stmt_init</strong>()
         </code>
@@ -2781,7 +2803,7 @@ A list of allowable ciphers to use for SSL encryption.
             </div>
                     <div class="method-item">
                     <h3 id="method_store_result">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L906">at line 906</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L934">at line 934</a></div>
         <code>                    mysqli_result|false
     <strong>store_result</strong>(int $mode = 0)
         </code>
@@ -2837,7 +2859,7 @@ statement should have produced a non-empty result set.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_thread_safe">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L914">at line 914</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L942">at line 942</a></div>
         <code>                    bool
     <strong>thread_safe</strong>()
         </code>
@@ -2869,7 +2891,7 @@ statement should have produced a non-empty result set.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_use_result">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L922">at line 922</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L950">at line 950</a></div>
         <code>                    mysqli_result|false
     <strong>use_result</strong>()
         </code>
@@ -2901,7 +2923,7 @@ statement should have produced a non-empty result set.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_refresh">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L931">at line 931</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mysqli/mysqli.php#L959">at line 959</a></div>
         <code>                    bool
     <strong>refresh</strong>(int $flags)
         </code>
