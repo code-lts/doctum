@@ -201,6 +201,7 @@ class TwigExtensionTest extends AbstractTestCase
     /**
      * @dataProvider dataProviderParseDesc
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('dataProviderParseDesc')]
     public function testParseDesc(string $intput, string $expectedOutput, ?Reflection $ref = null): void
     {
         $extension = new TwigExtension();
@@ -399,6 +400,7 @@ class TwigExtensionTest extends AbstractTestCase
     /**
      * @dataProvider dataProviderMarkdownToHtml
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('dataProviderMarkdownToHtml')]
     public function testMarkdownToHtml(string $intput, string $expectedOutput): void
     {
         $extension = new TwigExtension();
@@ -503,6 +505,7 @@ class TwigExtensionTest extends AbstractTestCase
     /**
      * @dataProvider dataProviderTransformContentsIntoLinks
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('dataProviderTransformContentsIntoLinks')]
     public function testTransformContentsIntoLinks(string $intput, string $expectedOutput, Reflection $refl): void
     {
         $extension = new TwigExtension();

@@ -26,6 +26,7 @@ class ProjectTraverserTest extends TestCase
     /**
      * @dataProvider getTraverseOrderClasses
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getTraverseOrderClasses')]
     public function testTraverseOrder(
         string $interfaceName,
         string $parentName,
@@ -61,6 +62,7 @@ class ProjectTraverserTest extends TestCase
     /**
      * @dataProvider getNamespaceDetectionClasses
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getNamespaceDetectionClasses')]
     public function testNamespaceDetection(
         string $interfaceName,
         string $parentName,

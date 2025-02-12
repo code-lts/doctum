@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - yyyy-mm-dd
 
 - Attempt to reload the current page in a newly-selected version
+- Support PHPUnit 10 and 11
+- Support `nikic/php-parser` v5
+- Support Symfony v7
 
 ## [5.5.4] - 2023-12-16
 
@@ -26,7 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [5.5.1] - 2022-02-17
 
-- Allow new/more versions of symfony (^5|^6)
+- Allow new/more versions of Symfony (^5|^6)
 - Upgrade `phpdocumentor/reflection-docblock` to `~5.3`
 
 ## [5.5.0] - 2022-01-09

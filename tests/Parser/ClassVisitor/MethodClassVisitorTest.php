@@ -32,7 +32,7 @@ class MethodClassVisitorTest extends TestCase
         $class->expects($this->any())
             ->method('getTags')
             ->with($this->equalTo('method'))
-            ->will($this->returnValue($property));
+            ->willReturn($property);
 
         $visitor = new MethodClassVisitor();
         /** @var ClassReflection $class */

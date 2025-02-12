@@ -32,6 +32,7 @@ class DocBlockParserTest extends TestCase
     /**
      * @dataProvider getParseTests
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getParseTests')]
     public function testParse(string $comment, array $expected): void
     {
         $parser   = new DocBlockParser();
@@ -42,6 +43,7 @@ class DocBlockParserTest extends TestCase
     /**
      * @dataProvider getParseTests
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getParseTests')]
     public function testParseWithNamespace(string $comment, array $expected): void
     {
         $parser   = new DocBlockParser();
@@ -52,6 +54,7 @@ class DocBlockParserTest extends TestCase
     /**
      * @dataProvider getParseTests
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getParseTests')]
     public function testParseWithAliases(string $comment, array $expected): void
     {
         $parser   = new DocBlockParser();

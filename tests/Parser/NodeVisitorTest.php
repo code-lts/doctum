@@ -24,6 +24,7 @@ use Doctum\Reflection\ParameterReflection;
 use Doctum\Reflection\PropertyReflection;
 use Doctum\Store\ArrayStore;
 use PhpParser\Node\Expr\Variable;
+use PhpParser\Node\Name;
 
 /**
  * @author Tomasz Struczyński <t.struczynski@gmail.com>
@@ -34,6 +35,7 @@ class NodeVisitorTest extends AbstractTestCase
     /**
      * @dataProvider getMethodTypehints
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getMethodTypehints')]
     public function testMethodTypehints(ClassReflection $classReflection, ClassMethod $method, array $expectedHints): void
     {
         $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
@@ -64,6 +66,7 @@ class NodeVisitorTest extends AbstractTestCase
     /**
      * @dataProvider getMethodReturnTypeHints
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getMethodReturnTypeHints')]
     public function testMethodReturnTypeHints(ClassReflection $classReflection, ClassMethod $method, string $expectedReturnType): void
     {
         $parserContext = new ParserContext(new TrueFilter(), new DocBlockParser(), new Standard());
@@ -113,7 +116,7 @@ class NodeVisitorTest extends AbstractTestCase
         $method             = new ClassMethod(
             'testMethod',
             [
-            'returnType' => 'string',
+                'returnType' => new Name('string'),
             ]
         );
 
@@ -165,7 +168,7 @@ class NodeVisitorTest extends AbstractTestCase
         $method             = new ClassMethod(
             'testMethod',
             [
-            'returnType' => new NullableType('Test\\Class'),
+                'returnType' => new NullableType(new Name('Test\\Class')),
             ]
         );
 
@@ -194,12 +197,12 @@ class NodeVisitorTest extends AbstractTestCase
                 new Param(
                     new Variable('param1'),
                     null,
-                    'int'
+                    new Name('int')
                 ),
                 new Param(
                     new Variable('param2'),
                     null,
-                    'string'
+                    new Name('string')
                 ),
             ],
             ]

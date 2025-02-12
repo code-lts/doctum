@@ -523,7 +523,7 @@ class Doctum implements ArrayAccess
 
     private function getPhpParser(): PhpParser
     {
-        return (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
+        return (new ParserFactory())->createForNewestSupportedVersion();
     }
 
     private function getPhpTraverser(): NodeTraverser
