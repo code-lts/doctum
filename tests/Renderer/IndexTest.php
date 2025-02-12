@@ -12,7 +12,7 @@ class IndexTest extends AbstractTestCase
 
     public function testIndexForProject(): void
     {
-        $project = $this->getProject();
+        $project = self::getProject();
         $index   = new Index($project);
         $this->assertSame(
             [
@@ -44,7 +44,7 @@ class IndexTest extends AbstractTestCase
 
     public function testIndexSerializeAndWakeupWithProject(): void
     {
-        $project     = $this->getProject();
+        $project     = self::getProject();
         $index       = new Index($project);
         $ser         = serialize($index);
         $indexWakeup = unserialize($ser);

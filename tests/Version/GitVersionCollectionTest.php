@@ -29,12 +29,12 @@ class GitVersionCollectionTest extends AbstractTestCase
     public function testConstructAddVersion(): void
     {
         $o = $this->getMockBuilder(GitVersionCollection::class)
-            ->setMethods(['execute'])
+            ->onlyMethods(['execute'])
             ->setConstructorArgs([''])
             ->getMock();
         $o->expects($this->exactly(1))
             ->method('execute')
-            ->withConsecutive(
+            ->willReturnOnConsecutiveCalls(
                 [
                     [
                         'tag',
@@ -80,12 +80,12 @@ class GitVersionCollectionTest extends AbstractTestCase
     public function testConstructAddFromTagsNonSensitiveMatchIgnore(): void
     {
         $o = $this->getMockBuilder(GitVersionCollection::class)
-            ->setMethods(['execute'])
+            ->onlyMethods(['execute'])
             ->setConstructorArgs([''])
             ->getMock();
         $o->expects($this->exactly(1))
             ->method('execute')
-            ->withConsecutive(
+            ->willReturnOnConsecutiveCalls(
                 [
                     [
                         'tag',
@@ -146,12 +146,12 @@ class GitVersionCollectionTest extends AbstractTestCase
     public function testConstructAddVersionReorder(): void
     {
         $o = $this->getMockBuilder(GitVersionCollection::class)
-            ->setMethods(['execute'])
+            ->onlyMethods(['execute'])
             ->setConstructorArgs([''])
             ->getMock();
         $o->expects($this->exactly(1))
             ->method('execute')
-            ->withConsecutive(
+            ->willReturnOnConsecutiveCalls(
                 [
                     [
                         'tag',
@@ -201,12 +201,12 @@ class GitVersionCollectionTest extends AbstractTestCase
     public function testConstructAddVersionFilterNullWithSorter(): void
     {
         $o = $this->getMockBuilder(GitVersionCollection::class)
-            ->setMethods(['execute'])
+            ->onlyMethods(['execute'])
             ->setConstructorArgs([''])
             ->getMock();
         $o->expects($this->exactly(1))
             ->method('execute')
-            ->withConsecutive(
+            ->willReturnOnConsecutiveCalls(
                 [
                     [
                         'tag',
@@ -264,12 +264,12 @@ class GitVersionCollectionTest extends AbstractTestCase
     public function testConstructAddVersionFilterNull(): void
     {
         $o = $this->getMockBuilder(GitVersionCollection::class)
-            ->setMethods(['execute'])
+            ->onlyMethods(['execute'])
             ->setConstructorArgs([''])
             ->getMock();
         $o->expects($this->exactly(1))
             ->method('execute')
-            ->withConsecutive(
+            ->willReturnOnConsecutiveCalls(
                 [
                     [
                         'tag',
@@ -315,12 +315,12 @@ class GitVersionCollectionTest extends AbstractTestCase
     public function testConstructAddVersionCustomFilter(): void
     {
         $o = $this->getMockBuilder(GitVersionCollection::class)
-            ->setMethods(['execute'])
+            ->onlyMethods(['execute'])
             ->setConstructorArgs([''])
             ->getMock();
         $o->expects($this->exactly(1))
             ->method('execute')
-            ->withConsecutive(
+            ->willReturnOnConsecutiveCalls(
                 [
                     [
                         'tag',
@@ -367,12 +367,12 @@ class GitVersionCollectionTest extends AbstractTestCase
     public function testConstructAddVersionCustomFilterAndOverride(): void
     {
         $o = $this->getMockBuilder(GitVersionCollection::class)
-            ->setMethods(['execute'])
+            ->onlyMethods(['execute'])
             ->setConstructorArgs([''])
             ->getMock();
         $o->expects($this->exactly(1))
             ->method('execute')
-            ->withConsecutive(
+            ->willReturnOnConsecutiveCalls(
                 [
                     [
                         'tag',
@@ -422,12 +422,12 @@ class GitVersionCollectionTest extends AbstractTestCase
     public function testConstructAddVersionCustomFilterAndOverrideWithRegex(): void
     {
         $o = $this->getMockBuilder(GitVersionCollection::class)
-            ->setMethods(['execute'])
+            ->onlyMethods(['execute'])
             ->setConstructorArgs([''])
             ->getMock();
         $o->expects($this->exactly(1))
             ->method('execute')
-            ->withConsecutive(
+            ->willReturnOnConsecutiveCalls(
                 [
                     [
                         'tag',

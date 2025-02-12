@@ -17,7 +17,7 @@ abstract class AbstractTestCase extends TestCase
     /**
      * @param array<string,mixed> $config
      */
-    protected function getProject(array $config = []): Project
+    protected static function getProject(array $config = []): Project
     {
         $store = new ArrayStore();
         return new Project($store, null, $config);

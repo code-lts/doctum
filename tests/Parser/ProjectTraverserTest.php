@@ -40,7 +40,7 @@ class ProjectTraverserTest extends TestCase
         $project = new Project($store);
 
         $visitor = $this->getMockBuilder(ClassVisitorInterface::class)->getMock();
-        $visitor->method('visit')->withConsecutive(
+        $visitor->method('visit')->willReturnOnConsecutiveCalls(
             [$project->loadClass($interfaceName)],
             [$project->loadClass($parentName)],
             [$project->loadClass($className)]
@@ -82,30 +82,30 @@ class ProjectTraverserTest extends TestCase
         $this->assertEquals($expectedNamespaces, $project->getNamespaces());
     }
 
-    public function getTraverseOrderClasses(): array
+    public static function getTraverseOrderClasses(): array
     {
         // as classes are sorted by name in Project, we try all combinaison
         // by giving different names to the classes
         return [
-            $this->createClasses('C1', 'C2', 'C3'),
-            $this->createClasses('C1', 'C3', 'C2'),
-            $this->createClasses('C2', 'C1', 'C3'),
-            $this->createClasses('C2', 'C3', 'C1'),
-            $this->createClasses('C3', 'C1', 'C2'),
-            $this->createClasses('C3', 'C2', 'C1'),
+            self::createClasses('C1', 'C2', 'C3'),
+            self::createClasses('C1', 'C3', 'C2'),
+            self::createClasses('C2', 'C1', 'C3'),
+            self::createClasses('C2', 'C3', 'C1'),
+            self::createClasses('C3', 'C1', 'C2'),
+            self::createClasses('C3', 'C2', 'C1'),
         ];
     }
 
-    public function getNamespaceDetectionClasses(): array
+    public static function getNamespaceDetectionClasses(): array
     {
         return [
-            array_merge($this->createClasses('C1', 'C2', 'C3'), [['']]),
-            array_merge($this->createClasses('C1', 'C2', 'C3', 'Ns1'), [['', 'Ns1']]),
-            array_merge($this->createClasses('C1', 'C2', 'C3', 'Ns1\Ns2\Ns3'), [['', 'Ns1', 'Ns1\Ns2', 'Ns1\Ns2\Ns3']]),
+            array_merge(self::createClasses('C1', 'C2', 'C3'), [['']]),
+            array_merge(self::createClasses('C1', 'C2', 'C3', 'Ns1'), [['', 'Ns1']]),
+            array_merge(self::createClasses('C1', 'C2', 'C3', 'Ns1\Ns2\Ns3'), [['', 'Ns1', 'Ns1\Ns2', 'Ns1\Ns2\Ns3']]),
         ];
     }
 
-    protected function createClasses(
+    protected static function createClasses(
         string $interfaceName,
         string $parentName,
         string $className,

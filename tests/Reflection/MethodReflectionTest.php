@@ -46,7 +46,7 @@ class MethodReflectionTest extends AbstractTestCase
         $method->setExceptions($inputExceptions);
 
         $class = new ClassReflection('FooClass', 0);
-        $class->setProject($this->getProject());
+        $class->setProject(self::getProject());
         $method->setClass($class);
         $exceptions = $method->getExceptions();
         $this->assertArrayHasKey(0, $exceptions);

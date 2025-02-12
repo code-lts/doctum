@@ -54,11 +54,11 @@ class ProjectTest extends AbstractTestCase
 
     public function testHasFooterLink(): void
     {
-        $project = $this->getProject();
+        $project = self::getProject();
 
         $this->assertFalse($project->hasFooterLink());
 
-        $project = $this->getProject(
+        $project = self::getProject(
             [
             'footer_link' => [
                 'href'        => 'https://github.com/code-lts/doctum',
@@ -73,7 +73,7 @@ class ProjectTest extends AbstractTestCase
 
         $this->assertTrue($project->hasFooterLink());
 
-        $project = $this->getProject(
+        $project = self::getProject(
             [
             'footer_link'          => [],
             ]
@@ -81,7 +81,7 @@ class ProjectTest extends AbstractTestCase
 
         $this->assertTrue($project->hasFooterLink());
 
-        $project = $this->getProject(
+        $project = self::getProject(
             [
             'footer_link'          => null,
             ]
@@ -89,7 +89,7 @@ class ProjectTest extends AbstractTestCase
 
         $this->assertFalse($project->hasFooterLink());
 
-        $project = $this->getProject(
+        $project = self::getProject(
             [
             'footer_link'          => 'https://example.com',
             ]
@@ -100,7 +100,7 @@ class ProjectTest extends AbstractTestCase
 
     public function testGetFooterLink(): void
     {
-        $project = $this->getProject();
+        $project = self::getProject();
 
         $this->assertSame(
             $project->getFooterLink(),
@@ -114,7 +114,7 @@ class ProjectTest extends AbstractTestCase
             ]
         );
 
-        $project = $this->getProject(
+        $project = self::getProject(
             [
             'footer_link' => [
                 'href'        => 'https://github.com/code-lts/doctum',
@@ -142,13 +142,13 @@ class ProjectTest extends AbstractTestCase
 
     public function testGetBaseUrl(): void
     {
-        $project = $this->getProject();
+        $project = self::getProject();
 
         $this->assertNull(
             $project->getBaseUrl()
         );
 
-        $project = $this->getProject(
+        $project = self::getProject(
             [
             'base_url' => 'https://github.com/code-lts/doctum',
             ]
@@ -159,7 +159,7 @@ class ProjectTest extends AbstractTestCase
             $project->getBaseUrl()
         );
 
-        $project = $this->getProject(
+        $project = self::getProject(
             [
             'base_url' => 'https://github.com/code-lts/doctum/',
             ]
@@ -170,7 +170,7 @@ class ProjectTest extends AbstractTestCase
             $project->getBaseUrl()
         );
 
-        $project = $this->getProject(
+        $project = self::getProject(
             [
             'base_url' => 'https://github.com/code-lts/doctum//',
             ]

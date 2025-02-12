@@ -65,7 +65,7 @@ class DocBlockParserTest extends TestCase
         );
     }
 
-    public function getParseTests(): array
+    public static function getParseTests(): array
     {
         return [
             [

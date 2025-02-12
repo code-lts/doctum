@@ -12,7 +12,7 @@ class DiffTest extends AbstractTestCase
 
     public function testIsPhpClass(): void
     {
-        $project = $this->getProject();
+        $project = self::getProject();
         $diff    = new Diff($project, '');
         $this->assertFalse($diff->isEmpty());
         $this->assertEmpty($diff->getModifiedNamespaces());
@@ -23,7 +23,7 @@ class DiffTest extends AbstractTestCase
         $file = tempnam(sys_get_temp_dir(), 'doctumTestFile');
         $file = $file === false ? '' : $file;
         $this->assertFileExists($file);
-        $project = $this->getProject();
+        $project = self::getProject();
         $diff    = new Diff($project, $file);
         $this->assertFalse($diff->isEmpty());
         $this->assertEmpty($diff->getModifiedNamespaces());

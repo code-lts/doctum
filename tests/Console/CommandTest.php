@@ -25,7 +25,7 @@ class CommandTest extends AbstractTestCase
         $commandTester = new CommandTester($command);
 
         $commandTester->execute(['config' => $this->getTestConfigFilePath(), '--no-progress' => true, '--force' => true]);
-        $command->messageCallback(Message::PARSE_VERSION_FINISHED, new Transaction($this->getProject()));
+        $command->messageCallback(Message::PARSE_VERSION_FINISHED, new Transaction(self::getProject()));
         $this->assertSame(
             "\n"
                 . "\n"
@@ -45,7 +45,7 @@ class CommandTest extends AbstractTestCase
         $commandTester = new CommandTester($command);
 
         $commandTester->execute(['config' => $this->getTestConfigFilePath(), '--no-progress' => true, '--force' => true]);
-        $command->messageCallback(Message::RENDER_VERSION_FINISHED, new Diff($this->getProject(), 'foo.php'));
+        $command->messageCallback(Message::RENDER_VERSION_FINISHED, new Diff(self::getProject(), 'foo.php'));
         $this->assertSame(
             "\n"
                 . "\n"
@@ -77,7 +77,7 @@ class CommandTest extends AbstractTestCase
         $commandTester = new CommandTester($command);
 
         $commandTester->execute(['config' => $this->getTestConfigFilePath(), '--no-progress' => true, '--force' => true]);
-        $command->messageCallback(Message::RENDER_VERSION_FINISHED, new Diff($this->getProject(), 'foo.php'));
+        $command->messageCallback(Message::RENDER_VERSION_FINISHED, new Diff(self::getProject(), 'foo.php'));
         $this->assertSame(
             'Updating project' . "\n"
                 . "\n"

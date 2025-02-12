@@ -17,9 +17,9 @@ class TwigExtensionTest extends AbstractTestCase
     /**
      * @return array[]
      */
-    public function dataProviderParseDesc(): array
+    public static function dataProviderParseDesc(): array
     {
-        $project = $this->getProject();
+        $project = self::getProject();
         $ref1    = new FunctionReflection('my_function', 0);
         $ref1->setProject($project);
         return [
@@ -216,7 +216,7 @@ class TwigExtensionTest extends AbstractTestCase
     /**
      * @return array<int,string[]>
      */
-    public function dataProviderMarkdownToHtml(): array
+    public static function dataProviderMarkdownToHtml(): array
     {
         return [
             [
@@ -413,9 +413,9 @@ class TwigExtensionTest extends AbstractTestCase
     /**
      * @return array[]
      */
-    public function dataProviderTransformContentsIntoLinks(): array
+    public static function dataProviderTransformContentsIntoLinks(): array
     {
-        $project = $this->getProject();
+        $project = self::getProject();
         $ref     = new FunctionReflection('', 0);
         $ref->setProject($project);
         $ref2 = new FunctionReflection('my_function', 0);

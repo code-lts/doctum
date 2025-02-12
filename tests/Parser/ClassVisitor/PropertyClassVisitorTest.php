@@ -24,7 +24,7 @@ class PropertyClassVisitorTest extends TestCase
     public function testAddsProperties(): void
     {
         $class = $this->getMockBuilder(ClassReflection::class)
-            ->setMethods(['getTags'])
+            ->onlyMethods(['getTags'])
             ->setConstructorArgs(['Mock', 1])
             ->getMock();
 
@@ -51,7 +51,7 @@ class PropertyClassVisitorTest extends TestCase
 
         $class->expects($this->exactly(3))
             ->method('getTags')
-            ->withConsecutive(
+            ->willReturnOnConsecutiveCalls(
                 ['property'],
                 ['property-read'],
                 ['property-write']
