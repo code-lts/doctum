@@ -16,14 +16,13 @@ jobs:
               uses: shivammathur/setup-php@v2
               with:
                   php-version: 7.2
-                  tools: composer:v2
             - name: Validate composer.json and composer.lock
               run: composer validate
             - name: Get Composer Cache Directory
               id: composer-cache
               run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
             - name: Restore cache
-              uses: actions/cache@v3
+              uses: actions/cache@v4
               with:
                 path: ${{ steps.composer-cache.outputs.dir }}
                 key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -42,12 +41,11 @@ jobs:
               uses: shivammathur/setup-php@v2
               with:
                   php-version: 7.4
-                  tools: composer:v2
             - name: Get Composer Cache Directory
               id: composer-cache
               run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
             - name: Restore cache
-              uses: actions/cache@v3
+              uses: actions/cache@v4
               with:
                 path: ${{ steps.composer-cache.outputs.dir }}
                 key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
