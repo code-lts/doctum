@@ -37,7 +37,7 @@ class Application extends BaseApplication
         $this->add(new RenderCommand());
     }
 
-    public function getLongVersion()
+    public function getLongVersion(): string
     {
         return parent::getLongVersion() . ' by <comment>Fabien Potencier and William Desportes</comment>';
     }
