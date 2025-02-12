@@ -39,7 +39,7 @@ jobs:
                 restore-keys: |
                   ${{ runner.os }}-composer-
             - name: Install dependencies
-              run: composer install --no-interaction ${{ matrix.composer-options }}
+              run: composer update --no-interaction ${{ matrix.composer-options }}
             - name: Run php tests
               run: composer run phpunit
             - name: Send coverage
@@ -109,7 +109,7 @@ jobs:
                 restore-keys: |
                   ${{ runner.os }}-composer-
             - name: Install dependencies
-              run: composer install --no-interaction ${{ matrix.composer-options }}
+              run: composer update --no-interaction ${{ matrix.composer-options }}
             - name: Run resume from parse diff tests
               run: ./tests/resume-from-parse-test.sh
 
