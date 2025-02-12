@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support PHPUnit 10 and 11
 - Support `nikic/php-parser` v5
 - Support Symfony v7
+- Drop Symfony 3.4, 4.3, 5.1, 5.2, 5.3 but still support ^5.4 (LTS)
 
 ## [5.5.4] - 2023-12-16
 
