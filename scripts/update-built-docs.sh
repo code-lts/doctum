@@ -61,3 +61,5 @@ doDocsUpdate() {
 doDocsUpdate "phpstorm-stubs" "https://github.com/JetBrains/phpstorm-stubs/archive/refs/heads/master.tar.gz"
 doDocsUpdate "mangopay2-php-sdk" "https://github.com/Mangopay/mangopay2-php-sdk/archive/refs/heads/master.tar.gz"
 doDocsUpdate "tcpdf" "https://github.com/tecnickcom/TCPDF/archive/refs/heads/main.tar.gz"
+doDocsUpdate "DirectoryTree-ImapEngine" "https://github.com/DirectoryTree/ImapEngine/archive/refs/heads/master.tar.gz"
+doDocsUpdate "phpunit" "https://github.com/sebastianbergmann/phpunit/archive/refs/heads/main.tar.gz"
