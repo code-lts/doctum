@@ -15,15 +15,15 @@ namespace Doctum;
 
 final class ErrorHandler
 {
-    private $levels = [
+    private const ERROR_LEVELS = [
+        E_ERROR => 'Error',
         E_WARNING => 'Warning',
         E_NOTICE => 'Notice',
         E_USER_ERROR => 'User Error',
         E_USER_WARNING => 'User Warning',
         E_USER_NOTICE => 'User Notice',
-        E_STRICT => 'Runtime Notice',
+        E_USER_DEPRECATED => 'User Deprecation notice',
         E_RECOVERABLE_ERROR => 'Catchable Fatal Error',
-        E_DEPRECATED => 'Deprecated',
     ];
 
     /**
@@ -50,7 +50,7 @@ final class ErrorHandler
         }
 
         if (! $isSilenced) {
-            throw new \ErrorException(sprintf('%s: %s in %s line %d', $this->levels[$level] ?? $level, $message, $file, $line));
+            throw new \ErrorException(sprintf('%s: %s in %s line %d', self::ERROR_LEVELS[$level] ?? $level, $message, $file, $line));
         }
 
         return false;
