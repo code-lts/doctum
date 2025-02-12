@@ -161,7 +161,7 @@ COMPOSER_FILE=$(cat composer.json)
 # Example: 5db49ae740e4d1fd8eb79a9de52c9aefc7906f1f
 GIT_COMMIT_HASH="$(git rev-parse --verify HEAD)"
 COMPOSER_AUTOLOADER_VERSION="$(echo "$VERSION" | tr '.' '_' | tr '-' '_')"
-
+echo "Setting composer php required version to: $PHP_VERSION_REQUIRED"
 ${COMPOSER_BIN} config platform.php "$PHP_VERSION_REQUIRED"
 echo "Setting composer autoload suffix to: ${COMPOSER_AUTOLOADER_VERSION}__${GIT_COMMIT_HASH}"
 ${COMPOSER_BIN} config autoloader-suffix "${COMPOSER_AUTOLOADER_VERSION}__${GIT_COMMIT_HASH}"
@@ -172,10 +172,10 @@ if [ "${RELEASE_OPTIONS}" = "rebuild" ]; then
     echo "Rebuild deps"
     rm composer.lock
     curl -O "https://doctum.long-term.support/releases/${VERSION}/composer.lock"
-    ${PHP_BIN:-php} ${COMPOSER_BIN} install --no-dev --quiet ${COMPOSER_OPTIONS:-}
+    ${PHP_BIN:-php} ${COMPOSER_BIN} install --no-dev --prefer-dist --quiet ${COMPOSER_OPTIONS:-}
 else
     echo "Remove dev-deps"
-    ${PHP_BIN:-php} ${COMPOSER_BIN} update --no-dev --quiet ${COMPOSER_OPTIONS:-}
+    ${PHP_BIN:-php} ${COMPOSER_BIN} update --no-dev --prefer-dist --quiet ${COMPOSER_OPTIONS:-}
 fi
 
 echo "Copy composer.lock"
