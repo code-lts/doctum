@@ -31,7 +31,7 @@ abstract class AbstractRemoteRepository
      *
      * @param string $projectVersion
      * @param string $relativePath
-     * @param int $line
+     * @param int|null $line
      *
      * @return string
      */

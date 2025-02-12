@@ -494,7 +494,7 @@ abstract class Command extends BaseCommand
     }
 
     /**
-     * @return Doctum
+     * @return Doctum|mixed
      */
     private function loadDoctum(string $config)
     {

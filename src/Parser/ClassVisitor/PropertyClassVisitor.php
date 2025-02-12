@@ -21,14 +21,12 @@ use Doctum\Reflection\PropertyReflection;
 /**
  * Looks for @property tags on classes in the format of:.
  *
- * @phpstan-ignore-next-line
- * @property [<type>] [name] [<description>]
+ * `@property [<type>] [name] [<description>]`
  *
  * Or -read -write properties
  *
- * @phpstan-ignore-next-line
- * @property-read [Type] [name] [<description>]
- * @property-write [Type] [name] [<description>]
+ * `@property-read [Type] [name] [<description>]`
+ * `@property-write [Type] [name] [<description>]`
  */
 class PropertyClassVisitor implements ClassVisitorInterface
 {
