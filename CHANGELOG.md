@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - yyyy-mm-dd
 
 - Attempt to reload the current page in a newly-selected version
-- Support PHPUnit 10 and 11
+- Support PHPUnit 10, 11 and 12
+- Drop PHPUnit 7 and 8
 - Support `nikic/php-parser` v5
 - Support Symfony v7
 - Drop Symfony 3.4, 4.3, 5.1, 5.2, 5.3 but still support ^5.4 (LTS)
