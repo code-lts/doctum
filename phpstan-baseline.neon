@@ -261,7 +261,7 @@ parameters:
 			path: src/Parser/NodeVisitor.php
 
 		-
-			message: "#^Method Doctum\\\\Parser\\\\NodeVisitor\\:\\:findParameterInTags\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method Doctum\\\\Parser\\\\NodeVisitor\\:\\:findParameterInTags\\(\\) should return array\\{array\\{string, bool\\}, string, string\\}\\|null but returns non\\-empty\\-array\\.$#"
 			count: 1
 			path: src/Parser/NodeVisitor.php
 
@@ -662,11 +662,6 @@ parameters:
 
 		-
 			message: "#^Property Doctum\\\\Project\\:\\:\\$filesystem has no type specified\\.$#"
-			count: 1
-			path: src/Project.php
-
-		-
-			message: "#^Property Doctum\\\\Project\\:\\:\\$functions \\(array\\<string, array\\<string, Doctum\\\\Reflection\\\\FunctionReflection\\>\\>\\) does not accept array\\<int\\|string, array\\<string, Doctum\\\\Reflection\\\\FunctionReflection\\>\\>\\.$#"
 			count: 1
 			path: src/Project.php
 
@@ -1656,16 +1651,6 @@ parameters:
 			path: src/Renderer/Renderer.php
 
 		-
-			message: "#^Property Doctum\\\\Renderer\\\\Renderer\\:\\:\\$cachedSearchIndex \\(array\\<string, array\\<string, mixed\\>\\>\\) does not accept array\\<int\\|string, array\\<string, mixed\\>\\>\\.$#"
-			count: 1
-			path: src/Renderer/Renderer.php
-
-		-
-			message: "#^Property Doctum\\\\Renderer\\\\Renderer\\:\\:\\$cachedTree \\(array\\<string, array\\<string, Doctum\\\\TreeNode\\|int\\>\\>\\) does not accept array\\<int\\|string, array\\<string, mixed\\>\\>\\.$#"
-			count: 1
-			path: src/Renderer/Renderer.php
-
-		-
 			message: "#^Property Doctum\\\\Renderer\\\\Renderer\\:\\:\\$filesystem has no type specified\\.$#"
 			count: 1
 			path: src/Renderer/Renderer.php
@@ -1846,6 +1831,11 @@ parameters:
 			path: src/Renderer/TwigExtension.php
 
 		-
+			message: "#^Offset 1 on array\\{string, non\\-empty\\-string\\} on left side of \\?\\? always exists and is not nullable\\.$#"
+			count: 1
+			path: src/Renderer/TwigExtension.php
+
+		-
 			message: "#^Property Doctum\\\\Renderer\\\\TwigExtension\\:\\:\\$project has no type specified\\.$#"
 			count: 1
 			path: src/Renderer/TwigExtension.php
@@ -1882,11 +1872,6 @@ parameters:
 
 		-
 			message: "#^Method Doctum\\\\Store\\\\ArrayStore\\:\\:writeClass\\(\\) has no return type specified\\.$#"
-			count: 1
-			path: src/Store/ArrayStore.php
-
-		-
-			message: "#^Property Doctum\\\\Store\\\\ArrayStore\\:\\:\\$classes \\(array\\<string, Doctum\\\\Reflection\\\\ClassReflection\\>\\) does not accept array\\<int\\|string, mixed\\>\\.$#"
 			count: 1
 			path: src/Store/ArrayStore.php
 
@@ -2079,6 +2064,11 @@ parameters:
 			message: "#^Call to method PHPUnit\\\\Framework\\\\Assert\\:\\:assertSame\\(\\) with array\\{href\\: string, rel\\: string, target\\: string, before_text\\: string, link_text\\: string, after_text\\: string\\} and array\\{href\\: 'https\\://github\\.com…', target\\: '_blank', rel\\: 'noreferrer noopener', before_text\\: 'You can edit the…', link_text\\: 'on this', after_text\\: 'repository'\\} will always evaluate to false\\.$#"
 			count: 1
 			path: tests/ProjectTest.php
+
+		-
+			message: "#^Call to an undefined method Doctum\\\\Tests\\\\Renderer\\\\DiffTest\\:\\:assertFileDoesNotExist\\(\\)\\.$#"
+			count: 1
+			path: tests/Renderer/DiffTest.php
 
 		-
 			message: "#^Method Doctum\\\\Tests\\\\Renderer\\\\TwigExtensionTest\\:\\:dataProviderParseDesc\\(\\) return type has no value type specified in iterable type array\\.$#"
