@@ -45,10 +45,6 @@ final class ErrorHandler
          */
         $isSilenced = ! (error_reporting() & $level);
 
-        if (PHP_VERSION_ID < 80000) {
-            $isSilenced = error_reporting() == 0;
-        }
-
         if (! $isSilenced) {
             throw new \ErrorException(sprintf('%s: %s in %s line %d', self::ERROR_LEVELS[$level] ?? $level, $message, $file, $line));
         }
