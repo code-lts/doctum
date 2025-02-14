@@ -652,9 +652,6 @@ class DocBlockParserTest extends TestCase
                 $value = [$value];
             }
             foreach ($value as $v) {
-                if (($tag === 'covers' || $tag === 'version') && PHP_MAJOR_VERSION === 7 && PHP_MINOR_VERSION === 1) {
-                    $v = $v . ' ';
-                }
                 $docblock->addTag($tag, $v);
             }
         }
