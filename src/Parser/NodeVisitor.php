@@ -168,6 +168,30 @@ class NodeVisitor extends NodeVisitorAbstract
     /**
      * @param \PhpParser\Node\ComplexType|\PhpParser\Node\Identifier|\PhpParser\Node\Name|NullableType|UnionType|IntersectionType|null $type Type declaration
      */
+    protected function typeToArray($type): array
+    {
+        $typeArray = [];
+        if ($type !== null && ! ($type instanceof NullableType || $type instanceof UnionType || $type instanceof IntersectionType)) {
+            $typeAsStr = $type->__toString();
+            if ($type instanceof FullyQualified && 0 !== strpos($typeAsStr, '\\')) {
+                $typeAsStr = '\\' . $typeAsStr;
+            }
+            $typeArray[] = [$typeAsStr, false];
+        } elseif ($type instanceof NullableType) {
+            $typeArray = array_merge($typeArray, $this->typeToArray($type->type));
+            $typeArray[] = ['null', false];
+        } elseif ($type instanceof UnionType || $type instanceof IntersectionType) {
+            foreach ($type->types as $subType) {
+                $typeArray = array_merge($typeArray, $this->typeToArray($subType));
+            }
+        }
+
+        return $typeArray;
+    }
+
+    /**
+     * @param \PhpParser\Node\ComplexType|\PhpParser\Node\Identifier|\PhpParser\Node\Name|NullableType|UnionType|IntersectionType|null $type Type declaration
+     */
     protected function typeToString($type): ?string
     {
         $typeString = null;
@@ -439,20 +463,14 @@ class NodeVisitor extends NodeVisitorAbstract
 
             $typeArr = [];
             foreach ($type->types as $type) {
-                $typeStr   = $this->typeToString($type);
-                $typeArr[] = [$typeStr, false];
+                $typeArr = array_merge($typeArr, $this->typeToArray($type));
             }
 
             $object->setHint($this->resolveHint($typeArr));
         } else {
-            $typeStr = $this->typeToString($type);
+            $typeArr = $this->typeToArray($type);
 
-            if (null !== $typeStr) {
-                $typeArr = [[$typeStr, false]];
-
-                if ($type instanceof NullableType) {
-                    $typeArr[] = ['null', false];
-                }
+            if (!empty($typeArr)) {
                 $object->setHint($this->resolveHint($typeArr));
             }
         }
