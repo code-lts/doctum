@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>MangoPay\PayInPaymentDetailsSwish | Mangopay PHP SDK</title>
+    <title>MangoPay\PayInPaymentDetailsPayByBank | Mangopay PHP SDK</title>
 
             <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:MangoPay_PayInPaymentDetailsSwish" data-root-path="../" data-search-index-url="../doctum-search.json">
+    <body id="class" data-name="class:MangoPay_PayInPaymentDetailsPayByBank" data-root-path="../" data-search-index-url="../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,18 +75,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../MangoPay.html">MangoPay</a></li><li class="backslash">\</li><li>PayInPaymentDetailsSwish</li>
+                        <li><a href="../MangoPay.html">MangoPay</a></li><li class="backslash">\</li><li>PayInPaymentDetailsPayByBank</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>PayInPaymentDetailsSwish    
+        <h1>PayInPaymentDetailsPayByBank    
             </h1>
     </div>
 
     
     <p>        class
-    <strong>PayInPaymentDetailsSwish</strong>        extends <a href="../MangoPay/Libraries/Dto.html"><abbr title="MangoPay\Libraries\Dto">Dto</abbr></a>        implements        <a href="../MangoPay/PayInPaymentDetails.html"><abbr title="MangoPay\PayInPaymentDetails">PayInPaymentDetails</abbr></a>        (<a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/PayInPaymentDetailsSwish.php">View source</a>)
+    <strong>PayInPaymentDetailsPayByBank</strong>        extends <a href="../MangoPay/Libraries/Dto.html"><abbr title="MangoPay\Libraries\Dto">Dto</abbr></a>        implements        <a href="../MangoPay/PayInPaymentDetails.html"><abbr title="MangoPay\PayInPaymentDetails">PayInPaymentDetails</abbr></a>        (<a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/PayInPaymentDetailsPayByBank.php">View source</a>)
 </p>
 
         
@@ -94,7 +94,7 @@
         
 
             <div class="description">
-            <p><p>Class represents Swish type for mean of payment in Swish entity</p></p>                    </div>
+            <p><p>Class represents PayByBank type for mean of payment in PayByBank entity</p></p>                    </div>
             
         
     
@@ -102,21 +102,39 @@
 
             <table class="table table-condensed">
                     <tr>
-                <td class="type" id="property_DeepLinkURL">
+                <td class="type" id="property_StatementDescriptor">
                                                                                 string
                                                                                 
                                     </td>
-                <td>$DeepLinkURL</td>
-                <td class="last"><p>The mobile URL to which to redirect the user to complete the payment in an app-to-app flow.</p></td>
+                <td>$StatementDescriptor</td>
+                <td class="last"><p>Custom description to appear on the user’s bank statement along with the platform name.</p></td>
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_QRCodeURL">
+                <td class="type" id="property_Country">
                                                                                 string
                                                                                 
                                     </td>
-                <td>$QRCodeURL</td>
-                <td class="last"><p>The PNG file of the Swish QR code as a Base64-encoded string.</p></td>
+                <td>$Country</td>
+                <td class="last"><p>The country of residence of the user.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_BIC">
+                                                                                string
+                                                                                
+                                    </td>
+                <td>$BIC</td>
+                <td class="last"><p>The BIC of the user’s bank account, which is only returned if it was sent.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_IBAN">
+                                                                                string
+                                                                                
+                                    </td>
+                <td>$IBAN</td>
+                <td class="last"><p>The IBAN of the user’s bank account, which is only returned if it was sent.</p></td>
                 <td></td>
             </tr>
                     <tr>
@@ -125,21 +143,37 @@
                                                                                 
                                     </td>
                 <td>$PaymentFlow</td>
-                <td class="last"><p>Allowed values: WEB, APP</p>
-<p>Default value: WEB</p>
-<p>The platform environment of the post-payment flow. The PaymentFlow value combines with the ReturnURL to manage the redirection behavior after payment:</p>
-<p>Set the value to APP to send the user to your platform’s mobile app</p>
-<p>Set the value to WEB to send the user to a web browser</p>
-<p>In both cases you need to provide the relevant ReturnURL, whether to your app or website.</p></td>
+                <td class="last"><p>The platform environment of the post-payment flow.</p></td>
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_StatementDescriptor">
+                <td class="type" id="property_BankName">
                                                                                 string
                                                                                 
                                     </td>
-                <td>$StatementDescriptor</td>
-                <td class="last"><p>Custom description to show on the user's bank statement.</p></td>
+                <td>$BankName</td>
+                <td class="last"><p>Name of the end-user’s bank</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_Scheme">
+                                                                                string
+                                                                                
+                                    </td>
+                <td>$Scheme</td>
+                <td class="last"><p>The scheme to use to process the payment. Note that some banks may charge additional fees
+to the user for instant payment schemes.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_ProcessingStatus">
+                                                                                string
+                                                                                
+                                    </td>
+                <td>$ProcessingStatus</td>
+                <td class="last"><p>Parameter that is only returned once the bank wire has been successfully authenticated and initiated by the user
+but has not yet been received by Mangopay. When the funds are received, the Status changes from CREATED to
+SUCCEEDED and the ProcessingStatus is no longer returned.</p></td>
                 <td></td>
             </tr>
             </table>

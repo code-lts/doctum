@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>MangoPay\ApiTransfers | Mangopay PHP SDK</title>
+    <title>MangoPay\ApiRecipients | Mangopay PHP SDK</title>
 
             <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:MangoPay_ApiTransfers" data-root-path="../" data-search-index-url="../doctum-search.json">
+    <body id="class" data-name="class:MangoPay_ApiRecipients" data-root-path="../" data-search-index-url="../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,18 +75,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../MangoPay.html">MangoPay</a></li><li class="backslash">\</li><li>ApiTransfers</li>
+                        <li><a href="../MangoPay.html">MangoPay</a></li><li class="backslash">\</li><li>ApiRecipients</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>ApiTransfers    
+        <h1>ApiRecipients    
             </h1>
     </div>
 
     
     <p>        class
-    <strong>ApiTransfers</strong>        extends <a href="../MangoPay/Libraries/ApiBase.html"><abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a>        (<a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/ApiTransfers.php">View source</a>)
+    <strong>ApiRecipients</strong>        extends <a href="../MangoPay/Libraries/ApiBase.html"><abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a>        (<a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/ApiRecipients.php">View source</a>)
 </p>
 
         
@@ -94,7 +94,7 @@
         
 
             <div class="description">
-            <p><p>Class to management MangoPay API for transfers</p></p>                    </div>
+            <p><p>Class to management MangoPay API for recipients</p></p>                    </div>
             
         
     
@@ -277,42 +277,72 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../MangoPay/Transfer.html"><abbr title="MangoPay\Transfer">Transfer</abbr></a>
+                    <a href="../MangoPay/Recipient.html"><abbr title="MangoPay\Recipient">Recipient</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_Create">Create</a>(<a href="../MangoPay/Transfer.html"><abbr title="MangoPay\Transfer">Transfer</abbr></a> $transfer, $idempotencyKey = null)
+                    <a href="#method_Create">Create</a>(<a href="../MangoPay/Recipient.html"><abbr title="MangoPay\Recipient">Recipient</abbr></a> $recipient, string $userId, $idempotencyKey = null)
         
-                                            <p><p>Create new transfer</p></p>                </div>
+                                            <p><p>Create new recipient</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../MangoPay/Transfer.html"><abbr title="MangoPay\Transfer">Transfer</abbr></a>
+                    <a href="../MangoPay/Recipient.html"><abbr title="MangoPay\Recipient">Recipient</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_Get">Get</a>(string $transferId)
+                    <a href="#method_Get">Get</a>(string $recipientId)
         
-                                            <p><p>Get transfer</p></p>                </div>
+                                            <p><p>Get a recipient</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../MangoPay/Refund.html"><abbr title="MangoPay\Refund">Refund</abbr></a>
+                    <a href="../MangoPay/Recipient.html"><abbr title="MangoPay\Recipient">Recipient</abbr></a>[]
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_CreateRefund">CreateRefund</a>(string $transferId, <a href="../MangoPay/Refund.html"><abbr title="MangoPay\Refund">Refund</abbr></a> $refund, $idempotencyKey = null)
+                    <a href="#method_GetUserRecipients">GetUserRecipients</a>(string $userId, <a href="../MangoPay/Pagination.html"><abbr title="MangoPay\Pagination">Pagination</abbr></a> $pagination = null, $sorting = null)
         
-                                            <p><p>Create refund for transfer object</p></p>                </div>
+                                            <p><p>Get all recipients associated with a specific user</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../MangoPay/Refund.html"><abbr title="MangoPay\Refund">Refund</abbr></a>[]
+                    <a href="../MangoPay/PayoutMethods.html"><abbr title="MangoPay\PayoutMethods">PayoutMethods</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_GetRefunds">GetRefunds</a>(string $transferId, <a href="../MangoPay/Pagination.html"><abbr title="MangoPay\Pagination">Pagination</abbr></a> $pagination = null, <a href="../MangoPay/FilterRefunds.html"><abbr title="MangoPay\FilterRefunds">FilterRefunds</abbr></a> $filter = null, <a href="../MangoPay/Sorting.html"><abbr title="MangoPay\Sorting">Sorting</abbr></a> $sorting = null)
+                    <a href="#method_GetPayoutMethods">GetPayoutMethods</a>(string $country, string $currency)
         
-                                            <p><p>Retrieve list of Refunds pertaining to a certain Transfer</p></p>                </div>
+                                            <p><p>See payout methods available to your platform by currency and country</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../MangoPay/RecipientSchema.html"><abbr title="MangoPay\RecipientSchema">RecipientSchema</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_GetSchema">GetSchema</a>(string $payoutMethodType, string $recipientType, string $currency)
+        
+                                            <p><p>Get a Recipient schema</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_Validate">Validate</a>(<a href="../MangoPay/Recipient.html"><abbr title="MangoPay\Recipient">Recipient</abbr></a> $recipient, string $userId, $idempotencyKey = null)
+        
+                                            <p><p>Validate recipient data</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../MangoPay/Recipient.html"><abbr title="MangoPay\Recipient">Recipient</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_Deactivate">Deactivate</a>(string $recipientId)
+        
+                                            <p><p>Deactivate a Recipient</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -1032,9 +1062,9 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
             </div>
                     <div class="method-item">
                     <h3 id="method_Create">
-        <div class="location"><a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/ApiTransfers.php#L15">at line 15</a></div>
-        <code>                    <a href="../MangoPay/Transfer.html"><abbr title="MangoPay\Transfer">Transfer</abbr></a>
-    <strong>Create</strong>(<a href="../MangoPay/Transfer.html"><abbr title="MangoPay\Transfer">Transfer</abbr></a> $transfer, $idempotencyKey = null)
+        <div class="location"><a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/ApiRecipients.php#L18">at line 18</a></div>
+        <code>                    <a href="../MangoPay/Recipient.html"><abbr title="MangoPay\Recipient">Recipient</abbr></a>
+    <strong>Create</strong>(<a href="../MangoPay/Recipient.html"><abbr title="MangoPay\Recipient">Recipient</abbr></a> $recipient, string $userId, $idempotencyKey = null)
         </code>
     </h3>
     <div class="details">    
@@ -1042,15 +1072,20 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
             
 
         <div class="method-description">
-                            <p><p>Create new transfer</p></p>                        
+                            <p><p>Create new recipient</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../MangoPay/Transfer.html"><abbr title="MangoPay\Transfer">Transfer</abbr></a></td>
-                <td>$transfer</td>
+                <td><a href="../MangoPay/Recipient.html"><abbr title="MangoPay\Recipient">Recipient</abbr></a></td>
+                <td>$recipient</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$userId</td>
                 <td></td>
             </tr>
                     <tr>
@@ -1065,8 +1100,8 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../MangoPay/Transfer.html"><abbr title="MangoPay\Transfer">Transfer</abbr></a></td>
-            <td><p>Transfer object returned from API</p></td>
+            <td><a href="../MangoPay/Recipient.html"><abbr title="MangoPay\Recipient">Recipient</abbr></a></td>
+            <td><p>Recipient object returned from API</p></td>
         </tr>
     </table>
 
@@ -1079,9 +1114,9 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
             </div>
                     <div class="method-item">
                     <h3 id="method_Get">
-        <div class="location"><a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/ApiTransfers.php#L25">at line 25</a></div>
-        <code>                    <a href="../MangoPay/Transfer.html"><abbr title="MangoPay\Transfer">Transfer</abbr></a>
-    <strong>Get</strong>(string $transferId)
+        <div class="location"><a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/ApiRecipients.php#L29">at line 29</a></div>
+        <code>                    <a href="../MangoPay/Recipient.html"><abbr title="MangoPay\Recipient">Recipient</abbr></a>
+    <strong>Get</strong>(string $recipientId)
         </code>
     </h3>
     <div class="details">    
@@ -1089,7 +1124,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
             
 
         <div class="method-description">
-                            <p><p>Get transfer</p></p>                        
+                            <p><p>Get a recipient</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1097,8 +1132,8 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$transferId</td>
-                <td><p>Transfer identifier</p></td>
+                <td>$recipientId</td>
+                <td></td>
             </tr>
             </table>
 
@@ -1107,12 +1142,21 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../MangoPay/Transfer.html"><abbr title="MangoPay\Transfer">Transfer</abbr></a></td>
-            <td><p>Transfer object returned from API</p></td>
+            <td><a href="../MangoPay/Recipient.html"><abbr title="MangoPay\Recipient">Recipient</abbr></a></td>
+            <td><p>Recipient object returned from API</p></td>
         </tr>
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../MangoPay/Libraries/Exception.html"><abbr title="MangoPay\Libraries\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -1120,10 +1164,10 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_CreateRefund">
-        <div class="location"><a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/ApiTransfers.php#L36">at line 36</a></div>
-        <code>                    <a href="../MangoPay/Refund.html"><abbr title="MangoPay\Refund">Refund</abbr></a>
-    <strong>CreateRefund</strong>(string $transferId, <a href="../MangoPay/Refund.html"><abbr title="MangoPay\Refund">Refund</abbr></a> $refund, $idempotencyKey = null)
+                    <h3 id="method_GetUserRecipients">
+        <div class="location"><a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/ApiRecipients.php#L41">at line 41</a></div>
+        <code>                    <a href="../MangoPay/Recipient.html"><abbr title="MangoPay\Recipient">Recipient</abbr></a>[]
+    <strong>GetUserRecipients</strong>(string $userId, <a href="../MangoPay/Pagination.html"><abbr title="MangoPay\Pagination">Pagination</abbr></a> $pagination = null, $sorting = null)
         </code>
     </h3>
     <div class="details">    
@@ -1131,7 +1175,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
             
 
         <div class="method-description">
-                            <p><p>Create refund for transfer object</p></p>                        
+                            <p><p>Get all recipients associated with a specific user</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1139,13 +1183,191 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$transferId</td>
-                <td><p>Transfer identifier</p></td>
+                <td>$userId</td>
+                <td></td>
             </tr>
                     <tr>
-                <td><a href="../MangoPay/Refund.html"><abbr title="MangoPay\Refund">Refund</abbr></a></td>
-                <td>$refund</td>
-                <td><p>Refund object to create</p></td>
+                <td><a href="../MangoPay/Pagination.html"><abbr title="MangoPay\Pagination">Pagination</abbr></a></td>
+                <td>$pagination</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$sorting</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../MangoPay/Recipient.html"><abbr title="MangoPay\Recipient">Recipient</abbr></a>[]</td>
+            <td><p>Array of Recipient</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../MangoPay/Libraries/Exception.html"><abbr title="MangoPay\Libraries\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_GetPayoutMethods">
+        <div class="location"><a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/ApiRecipients.php#L53">at line 53</a></div>
+        <code>                    <a href="../MangoPay/PayoutMethods.html"><abbr title="MangoPay\PayoutMethods">PayoutMethods</abbr></a>
+    <strong>GetPayoutMethods</strong>(string $country, string $currency)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>See payout methods available to your platform by currency and country</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$country</td>
+                <td><p>The destination country of the payout method.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$currency</td>
+                <td><p>The currency of the payout method.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../MangoPay/PayoutMethods.html"><abbr title="MangoPay\PayoutMethods">PayoutMethods</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../MangoPay/Libraries/Exception.html"><abbr title="MangoPay\Libraries\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_GetSchema">
+        <div class="location"><a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/ApiRecipients.php#L66">at line 66</a></div>
+        <code>                    <a href="../MangoPay/RecipientSchema.html"><abbr title="MangoPay\RecipientSchema">RecipientSchema</abbr></a>
+    <strong>GetSchema</strong>(string $payoutMethodType, string $recipientType, string $currency)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get a Recipient schema</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$payoutMethodType</td>
+                <td><p>Defines the payout method (e.g., LocalBankTransfer, InternationalBankTransfer).</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$recipientType</td>
+                <td><p>Specifies whether the recipient is an Individual or a Business.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$currency</td>
+                <td><p>3-letter ISO 4217 destination currency code (e.g. EUR, USD, GBP, AUD, CAD,HKD, SGD, MXN).</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../MangoPay/RecipientSchema.html"><abbr title="MangoPay\RecipientSchema">RecipientSchema</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../MangoPay/Libraries/Exception.html"><abbr title="MangoPay\Libraries\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_Validate">
+        <div class="location"><a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/ApiRecipients.php#L76">at line 76</a></div>
+        <code>                    
+    <strong>Validate</strong>(<a href="../MangoPay/Recipient.html"><abbr title="MangoPay\Recipient">Recipient</abbr></a> $recipient, string $userId, $idempotencyKey = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validate recipient data</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../MangoPay/Recipient.html"><abbr title="MangoPay\Recipient">Recipient</abbr></a></td>
+                <td>$recipient</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$userId</td>
+                <td></td>
             </tr>
                     <tr>
                 <td></td>
@@ -1155,15 +1377,6 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../MangoPay/Refund.html"><abbr title="MangoPay\Refund">Refund</abbr></a></td>
-            <td><p>Object returned by REST API</p></td>
-        </tr>
-    </table>
-
             
             
             
@@ -1172,10 +1385,10 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_GetRefunds">
-        <div class="location"><a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/ApiTransfers.php#L49">at line 49</a></div>
-        <code>                    <a href="../MangoPay/Refund.html"><abbr title="MangoPay\Refund">Refund</abbr></a>[]
-    <strong>GetRefunds</strong>(string $transferId, <a href="../MangoPay/Pagination.html"><abbr title="MangoPay\Pagination">Pagination</abbr></a> $pagination = null, <a href="../MangoPay/FilterRefunds.html"><abbr title="MangoPay\FilterRefunds">FilterRefunds</abbr></a> $filter = null, <a href="../MangoPay/Sorting.html"><abbr title="MangoPay\Sorting">Sorting</abbr></a> $sorting = null)
+                    <h3 id="method_Deactivate">
+        <div class="location"><a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/ApiRecipients.php#L86">at line 86</a></div>
+        <code>                    <a href="../MangoPay/Recipient.html"><abbr title="MangoPay\Recipient">Recipient</abbr></a>
+    <strong>Deactivate</strong>(string $recipientId)
         </code>
     </h3>
     <div class="details">    
@@ -1183,7 +1396,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
             
 
         <div class="method-description">
-                            <p><p>Retrieve list of Refunds pertaining to a certain Transfer</p></p>                        
+                            <p><p>Deactivate a Recipient</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1191,23 +1404,8 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$transferId</td>
-                <td><p>Transfer identifier</p></td>
-            </tr>
-                    <tr>
-                <td><a href="../MangoPay/Pagination.html"><abbr title="MangoPay\Pagination">Pagination</abbr></a></td>
-                <td>$pagination</td>
-                <td><p>Pagination object</p></td>
-            </tr>
-                    <tr>
-                <td><a href="../MangoPay/FilterRefunds.html"><abbr title="MangoPay\FilterRefunds">FilterRefunds</abbr></a></td>
-                <td>$filter</td>
-                <td><p>Filtering object</p></td>
-            </tr>
-                    <tr>
-                <td><a href="../MangoPay/Sorting.html"><abbr title="MangoPay\Sorting">Sorting</abbr></a></td>
-                <td>$sorting</td>
-                <td><p>Sorting object</p></td>
+                <td>$recipientId</td>
+                <td></td>
             </tr>
             </table>
 
@@ -1216,8 +1414,8 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../MangoPay/Refund.html"><abbr title="MangoPay\Refund">Refund</abbr></a>[]</td>
-            <td><p>List of the Transfer's Refunds</p></td>
+            <td><a href="../MangoPay/Recipient.html"><abbr title="MangoPay\Recipient">Recipient</abbr></a></td>
+            <td><p>Recipient object returned from API</p></td>
         </tr>
     </table>
 
