@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>MongoDB\Driver\BulkWriteCommand | PHP Jetbrains phpstorm-stubs</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
+        <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
+        <script async defer src="../../js/bootstrap.min.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:MongoDB_Driver_BulkWriteCommand" data-root-path="../../" data-search-index-url="../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">PHP Jetbrains phpstorm-stubs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                    <li><a href="../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../MongoDB.html">MongoDB</a></li><li class="backslash">\</li><li><a href="../../MongoDB/Driver.html">Driver</a></li><li class="backslash">\</li><li>BulkWriteCommand</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>BulkWriteCommand    
+            </h1>
+    </div>
+
+            <i>Since: 2.1.0</i>
+        <br>
+    
+    <p>final         class
+    <strong>BulkWriteCommand</strong>        implements        <a href="../../Countable.html">Countable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BulkWriteCommand.stub.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>MongoDB\Driver\BulkWriteCommand collects one or more write operations that
+should be sent to the server using the » bulkWrite command introduced in
+MongoDB 8.0. After adding any number of insert, update, and delete operations,
+the command may be executed via MongoDB\Driver\Manager::executeBulkWriteCommand().</p></p>            <p><p>Unlike MongoDB\Driver\BulkWrite, where all write operations must target the
+same collection, each write operation within MongoDB\Driver\BulkWriteCommand
+may target a different collection.</p>
+<p>Write operations may either be ordered (default) or unordered. Ordered write
+operations are sent to the server, in the order provided, for serial execution.
+If a write fails, any remaining operations will be aborted. Unordered operations
+are sent to the server in an arbitrary order where they may be executed in
+parallel. Any errors that occur are reported after all operations have been
+attempted.</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(array|null $options = null)
+        
+                                            <p><p>Create a new BulkWriteCommand</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_count">count</a>()
+        
+                                            <p><p>Count number of write operations in the BulkWriteCommand</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_deleteOne">deleteOne</a>(string $namespace, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $filter, array|null $options = null)
+        
+                                            <p><p>Add a deleteOne operation</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_deleteMany">deleteMany</a>(string $namespace, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $filter, array|null $options = null)
+        
+                                            <p><p>Add a deleteMany operation</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_insertOne">insertOne</a>(string $namespace, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $document)
+        
+                                            <p><p>Add an insertOne operation</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_replaceOne">replaceOne</a>(string $namespace, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $filter, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $replacement, array|null $options = null)
+        
+                                            <p><p>Add a replaceOne operation</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_updateOne">updateOne</a>(string $namespace, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $filter, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $update, array|null $options = null)
+        
+                                            <p><p>Add an updateMany operation</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_updateMany">updateMany</a>(string $namespace, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $filter, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $update, array|null $options = null)
+        
+                                            <p><p>Add an updateMany operation</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BulkWriteCommand.stub.php#L34">at line 34</a></div>
+        <code>final                    
+    <strong>__construct</strong>(array|null $options = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a new BulkWriteCommand</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|null</td>
+                <td>$options</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_count">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BulkWriteCommand.stub.php#L41">at line 41</a></div>
+        <code>                    int
+    <strong>count</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Count number of write operations in the BulkWriteCommand</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>The custom count as an integer.</p>
+<p>
+The return value is cast to an integer.
+</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteOne">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BulkWriteCommand.stub.php#L52">at line 52</a></div>
+        <code>final                    void
+    <strong>deleteOne</strong>(string $namespace, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $filter, array|null $options = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add a deleteOne operation</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$namespace</td>
+                <td><p>A fully qualified namespace (e.g. &quot;databaseName.collectionName&quot;).</p></td>
+            </tr>
+                    <tr>
+                <td><abbr title="MongoDB\Driver\array|object">array|object</abbr></td>
+                <td>$filter</td>
+                <td><p>The query predicate. An empty predicate will match all documents in the collection.</p></td>
+            </tr>
+                    <tr>
+                <td>array|null</td>
+                <td>$options</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteMany">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BulkWriteCommand.stub.php#L63">at line 63</a></div>
+        <code>final                    void
+    <strong>deleteMany</strong>(string $namespace, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $filter, array|null $options = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add a deleteMany operation</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$namespace</td>
+                <td><p>A fully qualified namespace (e.g. &quot;databaseName.collectionName&quot;).</p></td>
+            </tr>
+                    <tr>
+                <td><abbr title="MongoDB\Driver\array|object">array|object</abbr></td>
+                <td>$filter</td>
+                <td><p>The query predicate. An empty predicate will match all documents in the collection.</p></td>
+            </tr>
+                    <tr>
+                <td>array|null</td>
+                <td>$options</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_insertOne">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BulkWriteCommand.stub.php#L73">at line 73</a></div>
+        <code>final                    mixed
+    <strong>insertOne</strong>(string $namespace, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $document)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add an insertOne operation</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$namespace</td>
+                <td><p>A fully qualified namespace (e.g. &quot;databaseName.collectionName&quot;).</p></td>
+            </tr>
+                    <tr>
+                <td><abbr title="MongoDB\Driver\array|object">array|object</abbr></td>
+                <td>$document</td>
+                <td><p>A document to insert.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>Returns the _id of the inserted document. If the document did not have an _id, the MongoDB\BSON\ObjectId generated for the insert will be returned.</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_replaceOne">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BulkWriteCommand.stub.php#L85">at line 85</a></div>
+        <code>final                    void
+    <strong>replaceOne</strong>(string $namespace, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $filter, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $replacement, array|null $options = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add a replaceOne operation</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$namespace</td>
+                <td><p>A fully qualified namespace (e.g. &quot;databaseName.collectionName&quot;).</p></td>
+            </tr>
+                    <tr>
+                <td><abbr title="MongoDB\Driver\array|object">array|object</abbr></td>
+                <td>$filter</td>
+                <td><p>The query predicate. An empty predicate will match all documents in the collection.</p></td>
+            </tr>
+                    <tr>
+                <td><abbr title="MongoDB\Driver\array|object">array|object</abbr></td>
+                <td>$replacement</td>
+                <td><p>A replacement document.</p></td>
+            </tr>
+                    <tr>
+                <td>array|null</td>
+                <td>$options</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updateOne">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BulkWriteCommand.stub.php#L97">at line 97</a></div>
+        <code>final                    void
+    <strong>updateOne</strong>(string $namespace, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $filter, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $update, array|null $options = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add an updateMany operation</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$namespace</td>
+                <td><p>A fully qualified namespace (e.g. &quot;databaseName.collectionName&quot;).</p></td>
+            </tr>
+                    <tr>
+                <td><abbr title="MongoDB\Driver\array|object">array|object</abbr></td>
+                <td>$filter</td>
+                <td><p>The query predicate. An empty predicate will match all documents in the collection.</p></td>
+            </tr>
+                    <tr>
+                <td><abbr title="MongoDB\Driver\array|object">array|object</abbr></td>
+                <td>$update</td>
+                <td><p>A document containing either update operators (e.g. $set) or an aggregation pipeline.</p></td>
+            </tr>
+                    <tr>
+                <td>array|null</td>
+                <td>$options</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updateMany">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/BulkWriteCommand.stub.php#L109">at line 109</a></div>
+        <code>final                    void
+    <strong>updateMany</strong>(string $namespace, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $filter, <abbr title="MongoDB\Driver\array|object">array|object</abbr> $update, array|null $options = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add an updateMany operation</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$namespace</td>
+                <td><p>A fully qualified namespace (e.g. &quot;databaseName.collectionName&quot;).</p></td>
+            </tr>
+                    <tr>
+                <td><abbr title="MongoDB\Driver\array|object">array|object</abbr></td>
+                <td>$filter</td>
+                <td><p>The query predicate. An empty predicate will match all documents in the collection.</p></td>
+            </tr>
+                    <tr>
+                <td><abbr title="MongoDB\Driver\array|object">array|object</abbr></td>
+                <td>$update</td>
+                <td><p>A document containing either update operators (e.g. $set) or an aggregation pipeline.</p></td>
+            </tr>
+                    <tr>
+                <td>array|null</td>
+                <td>$options</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../MongoDB/Driver/Exception/InvalidArgumentException.html"><abbr title="MongoDB\Driver\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built using <a href="https://github.com/JetBrains/phpstorm-stubs#readme" rel="noreferrer noopener" target="_blank">phpstorm-stubs</a> from JetBrains.</div></div>
+    </div>
+    </body>
+
+</html>
