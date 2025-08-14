@@ -111,7 +111,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_bind">bind</a>(string $exchangeName, string $routingKey = &#039;&#039;, array $arguments = [])
+                    <a href="#method_bind">bind</a>(string $exchangeName, string|null $routingKey = null, array $arguments = [])
         
                                             <p><p>Bind to another exchange.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -121,7 +121,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_unbind">unbind</a>(string $exchangeName, string $routingKey = &#039;&#039;, array $arguments = [])
+                    <a href="#method_unbind">unbind</a>(string $exchangeName, string|null $routingKey = null, array $arguments = [])
         
                                             <p><p>Remove binding to another exchange.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -151,7 +151,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_delete">delete</a>(string $exchangeName = null, int $flags = AMQP_NOPARAM)
+                    <a href="#method_delete">delete</a>(string|null $exchangeName = null, int|null $flags = null)
         
                                             <p><p>Delete the exchange from the broker.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -231,7 +231,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setArgument">setArgument</a>(string $argumentName, string|int $argumentValue)
+                    <a href="#method_setArgument">setArgument</a>(string $argumentName, bool|int|float|string|null $argumentValue)
         
                                             <p><p>Set the value for the given key.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -248,7 +248,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    void
                 </div>
                 <div class="col-md-8">
                     <a href="#method_setArguments">setArguments</a>(array $arguments)
@@ -271,7 +271,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setName">setName</a>(string $exchangeName)
+                    <a href="#method_setName">setName</a>(string|null $exchangeName)
         
                                             <p><p>Set the name of the exchange.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -281,7 +281,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setType">setType</a>(string $exchangeType)
+                    <a href="#method_setType">setType</a>(string|null $exchangeType)
         
                                             <p><p>Set the type of the exchange.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -364,7 +364,7 @@ to a broker.</p></td>
                     <h3 id="method_bind">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1174">at line 1174</a></div>
         <code>                    void
-    <strong>bind</strong>(string $exchangeName, string $routingKey = &#039;&#039;, array $arguments = [])
+    <strong>bind</strong>(string $exchangeName, string|null $routingKey = null, array $arguments = [])
         </code>
     </h3>
     <div class="details">    
@@ -384,7 +384,7 @@ to a broker.</p></td>
                 <td><p>Name of the exchange to bind.</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$routingKey</td>
                 <td><p>The routing key to use for binding.</p></td>
             </tr>
@@ -433,7 +433,7 @@ to a broker.</p></td>
                     <h3 id="method_unbind">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1191">at line 1191</a></div>
         <code>                    void
-    <strong>unbind</strong>(string $exchangeName, string $routingKey = &#039;&#039;, array $arguments = [])
+    <strong>unbind</strong>(string $exchangeName, string|null $routingKey = null, array $arguments = [])
         </code>
     </h3>
     <div class="details">    
@@ -453,7 +453,7 @@ to a broker.</p></td>
                 <td><p>Name of the exchange to bind.</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$routingKey</td>
                 <td><p>The routing key to use for binding.</p></td>
             </tr>
@@ -600,7 +600,7 @@ to a broker.</p></td>
                     <h3 id="method_delete">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1230">at line 1230</a></div>
         <code>                    void
-    <strong>delete</strong>(string $exchangeName = null, int $flags = AMQP_NOPARAM)
+    <strong>delete</strong>(string|null $exchangeName = null, int|null $flags = null)
         </code>
     </h3>
     <div class="details">    
@@ -615,12 +615,12 @@ to a broker.</p></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$exchangeName</td>
                 <td><p>Optional name of exchange to delete.</p></td>
             </tr>
                     <tr>
-                <td>int</td>
+                <td>int|null</td>
                 <td>$flags</td>
                 <td><p>Optionally AMQP_IFUNUSED can be specified
 to indicate the exchange should not be
@@ -968,7 +968,7 @@ or reply_to, headers.</p></td>
                     <h3 id="method_setArgument">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1318">at line 1318</a></div>
         <code>                    void
-    <strong>setArgument</strong>(string $argumentName, string|int $argumentValue)
+    <strong>setArgument</strong>(string $argumentName, bool|int|float|string|null $argumentValue)
         </code>
     </h3>
     <div class="details">    
@@ -988,7 +988,7 @@ or reply_to, headers.</p></td>
                 <td><p>Name of the argument to set.</p></td>
             </tr>
                     <tr>
-                <td>string|int</td>
+                <td>bool|int|float|string|null</td>
                 <td>$argumentValue</td>
                 <td><p>Value of the argument to set.</p></td>
             </tr>
@@ -1056,7 +1056,7 @@ or reply_to, headers.</p></td>
                     <div class="method-item">
                     <h3 id="method_setArguments">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1334">at line 1334</a></div>
-        <code>                    bool
+        <code>                    void
     <strong>setArguments</strong>(array $arguments)
         </code>
     </h3>
@@ -1083,8 +1083,8 @@ or reply_to, headers.</p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
-            <td><p>TRUE on success or FALSE on failure.</p></td>
+            <td>void</td>
+            <td></td>
         </tr>
     </table>
 
@@ -1144,7 +1144,7 @@ AMQP_DURABLE, AMQP_PASSIVE
                     <h3 id="method_setName">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1355">at line 1355</a></div>
         <code>                    void
-    <strong>setName</strong>(string $exchangeName)
+    <strong>setName</strong>(string|null $exchangeName)
         </code>
     </h3>
     <div class="details">    
@@ -1159,7 +1159,7 @@ AMQP_DURABLE, AMQP_PASSIVE
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$exchangeName</td>
                 <td><p>The name of the exchange to set as string.</p></td>
             </tr>
@@ -1186,7 +1186,7 @@ AMQP_DURABLE, AMQP_PASSIVE
                     <h3 id="method_setType">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L1367">at line 1367</a></div>
         <code>                    void
-    <strong>setType</strong>(string $exchangeType)
+    <strong>setType</strong>(string|null $exchangeType)
         </code>
     </h3>
     <div class="details">    
@@ -1202,7 +1202,7 @@ AMQP_EX_TYPE_FANOUT, AMQP_EX_TYPE_HEADERS or AMQP_EX_TYPE_TOPIC.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$exchangeType</td>
                 <td><p>The type of exchange as a string.</p></td>
             </tr>
