@@ -270,7 +270,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     object
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_ExecutePostRequest">ExecutePostRequest</a>($methodKey, $entity, $responseClassName, $entityId = null)
+                    <a href="#method_ExecutePostRequest">ExecutePostRequest</a>($methodKey, $entity, $responseClassName, $entityId = null, $idempotency_key = null)
         
                                             <p><p>Executes a POST request</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../MangoPay/Libraries/ApiBase.html#method_ExecutePostRequest">
@@ -644,6 +644,16 @@ of a piece of user data, and to retrieve the validation rules applied to it.</p>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    <a href="../MangoPay/UserConsent.html"><abbr title="MangoPay\UserConsent">UserConsent</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_ManageConsent">ManageConsent</a>(string $userId, $idempotencyKey = null)
+        
+                                            <p><p>Manage user consent</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     
                 </div>
                 <div class="col-md-8">
@@ -695,7 +705,7 @@ of a piece of user data, and to retrieve the validation rules applied to it.</p>
                     <div class="method-item">
                     <h3 id="method___construct">
         <div class="location">in <a href="../MangoPay/Libraries/ApiBase.html#method___construct">
-<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L311">at line 311</a></div>
+<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L312">at line 312</a></div>
         <code>                    
     <strong>__construct</strong>(<a href="../MangoPay/MangoPayApi.html"><abbr title="MangoPay\MangoPayApi">MangoPayApi</abbr></a> $root)
         </code>
@@ -730,7 +740,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <div class="method-item">
                     <h3 id="method_GetRequestUrl">
         <div class="location">in <a href="../MangoPay/Libraries/ApiBase.html#method_GetRequestUrl">
-<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L321">at line 321</a></div>
+<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L322">at line 322</a></div>
         <code>            protected        string
     <strong>GetRequestUrl</strong>(string $key)
         </code>
@@ -773,7 +783,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <div class="method-item">
                     <h3 id="method_GetRequestType">
         <div class="location">in <a href="../MangoPay/Libraries/ApiBase.html#method_GetRequestType">
-<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L331">at line 331</a></div>
+<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L332">at line 332</a></div>
         <code>            protected        <a href="../MangoPay/Libraries/RequestType.html"><abbr title="MangoPay\Libraries\RequestType">RequestType</abbr></a>
     <strong>GetRequestType</strong>(string $key)
         </code>
@@ -816,7 +826,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <div class="method-item">
                     <h3 id="method_GetApiVersion">
         <div class="location">in <a href="../MangoPay/Libraries/ApiBase.html#method_GetApiVersion">
-<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L336">at line 336</a></div>
+<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L337">at line 337</a></div>
         <code>            protected        
     <strong>GetApiVersion</strong>($key)
         </code>
@@ -851,7 +861,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <div class="method-item">
                     <h3 id="method_CreateObject">
         <div class="location">in <a href="../MangoPay/Libraries/ApiBase.html#method_CreateObject">
-<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L352">at line 352</a></div>
+<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L353">at line 353</a></div>
         <code>            protected        object
     <strong>CreateObject</strong>(string $methodKey, object $entity, object $responseClassName = null, string $entityId = null, $subEntityId = null, $idempotencyKey = null)
         </code>
@@ -919,7 +929,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <div class="method-item">
                     <h3 id="method_CreateOrUpdateMultipartObject">
         <div class="location">in <a href="../MangoPay/Libraries/ApiBase.html#method_CreateOrUpdateMultipartObject">
-<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L391">at line 391</a></div>
+<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L392">at line 392</a></div>
         <code>            protected        object
     <strong>CreateOrUpdateMultipartObject</strong>(string $methodKey, string $file, string $fileName, string $responseClassName = null, string $entityId = null, string $idempotencyKey = null)
         </code>
@@ -997,7 +1007,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <div class="method-item">
                     <h3 id="method_GetObject">
         <div class="location">in <a href="../MangoPay/Libraries/ApiBase.html#method_GetObject">
-<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L420">at line 420</a></div>
+<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L421">at line 421</a></div>
         <code>            protected        object
     <strong>GetObject</strong>(string $methodKey, object $responseClassName, $firstEntityId = null, $secondEntityId = null, $thirdEntityId = null, $clientIdRequired = true)
         </code>
@@ -1074,7 +1084,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <div class="method-item">
                     <h3 id="method_GetObjectManyQueryParams">
         <div class="location">in <a href="../MangoPay/Libraries/ApiBase.html#method_GetObjectManyQueryParams">
-<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L449">at line 449</a></div>
+<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L450">at line 450</a></div>
         <code>            protected        object
     <strong>GetObjectManyQueryParams</strong>(string $methodKey, object $responseClassName, ...$queryParams)
         </code>
@@ -1136,7 +1146,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <div class="method-item">
                     <h3 id="method_GetObjectWithPagination">
         <div class="location">in <a href="../MangoPay/Libraries/ApiBase.html#method_GetObjectWithPagination">
-<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L469">at line 469</a></div>
+<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L470">at line 470</a></div>
         <code>            protected        object
     <strong>GetObjectWithPagination</strong>(string $methodKey, object $responseClassName, $pagination = null, $filter = null, $clientIdRequired = true)
         </code>
@@ -1208,7 +1218,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <div class="method-item">
                     <h3 id="method_GetList">
         <div class="location">in <a href="../MangoPay/Libraries/ApiBase.html#method_GetList">
-<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L507">at line 507</a></div>
+<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L508">at line 508</a></div>
         <code>            protected        object[]
     <strong>GetList</strong>(string $methodKey, <a href="../MangoPay/Pagination.html"><abbr title="MangoPay\Pagination">Pagination</abbr></a> $pagination, object $responseClassName = null, string $entityId = null, object $filter = null, <a href="../MangoPay/Sorting.html"><abbr title="MangoPay\Sorting">Sorting</abbr></a> $sorting = null, $secondEntityId = null, $clientIdRequired = true)
         </code>
@@ -1286,7 +1296,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <div class="method-item">
                     <h3 id="method_SaveObject">
         <div class="location">in <a href="../MangoPay/Libraries/ApiBase.html#method_SaveObject">
-<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L545">at line 545</a></div>
+<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L546">at line 546</a></div>
         <code>            protected        object
     <strong>SaveObject</strong>(string $methodKey, object $entity, object $responseClassName = null, $secondEntityId = null, $thirdEntityId = null)
         </code>
@@ -1349,7 +1359,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <div class="method-item">
                     <h3 id="method_DeleteObject">
         <div class="location">in <a href="../MangoPay/Libraries/ApiBase.html#method_DeleteObject">
-<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L573">at line 573</a></div>
+<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L574">at line 574</a></div>
         <code>            protected        
     <strong>DeleteObject</strong>($methodKey, $entity, $responseClassName = null)
         </code>
@@ -1394,9 +1404,9 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <div class="method-item">
                     <h3 id="method_ExecutePostRequest">
         <div class="location">in <a href="../MangoPay/Libraries/ApiBase.html#method_ExecutePostRequest">
-<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L599">at line 599</a></div>
+<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L600">at line 600</a></div>
         <code>            protected        object
-    <strong>ExecutePostRequest</strong>($methodKey, $entity, $responseClassName, $entityId = null)
+    <strong>ExecutePostRequest</strong>($methodKey, $entity, $responseClassName, $entityId = null, $idempotency_key = null)
         </code>
     </h3>
     <div class="details">    
@@ -1430,6 +1440,11 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                 <td>$entityId</td>
                 <td><p>Entity identifier</p></td>
             </tr>
+                    <tr>
+                <td></td>
+                <td>$idempotency_key</td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -1452,7 +1467,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <div class="method-item">
                     <h3 id="method_CastResponseToError">
         <div class="location">in <a href="../MangoPay/Libraries/ApiBase.html#method_CastResponseToError">
-<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L624">at line 624</a></div>
+<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L625">at line 625</a></div>
         <code>            protected        <a href="../MangoPay/Libraries/Error.html"><abbr title="MangoPay\Libraries\Error">Error</abbr></a>
     <strong>CastResponseToError</strong>(object $response)
         </code>
@@ -1495,7 +1510,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <div class="method-item">
                     <h3 id="method_CastResponseToEntity">
         <div class="location">in <a href="../MangoPay/Libraries/ApiBase.html#method_CastResponseToEntity">
-<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L660">at line 660</a></div>
+<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L661">at line 661</a></div>
         <code>            protected        
     <strong>CastResponseToEntity</strong>(object $response, string $entityClassName, $asDependentObject = false)
         </code>
@@ -1539,7 +1554,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <div class="method-item">
                     <h3 id="method_BuildRequestData">
         <div class="location">in <a href="../MangoPay/Libraries/ApiBase.html#method_BuildRequestData">
-<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L775">at line 775</a></div>
+<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L776">at line 776</a></div>
         <code>            protected        array
     <strong>BuildRequestData</strong>(object $entity)
         </code>
@@ -1582,7 +1597,7 @@ Root/parent instance that holds the OAuthToken and Configuration instance</p></p
                     <div class="method-item">
                     <h3 id="method_GetObjectForIdempotencyUrl">
         <div class="location">in <a href="../MangoPay/Libraries/ApiBase.html#method_GetObjectForIdempotencyUrl">
-<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L836">at line 836</a></div>
+<abbr title="MangoPay\Libraries\ApiBase">ApiBase</abbr></a> <a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/Libraries/ApiBase.php#L837">at line 837</a></div>
         <code>            protected        
     <strong>GetObjectForIdempotencyUrl</strong>($url)
         </code>
@@ -3253,8 +3268,64 @@ add an encoded returnUrl query parameter for them to be returned to after the SC
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_ManageConsent">
+        <div class="location"><a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/ApiUsers.php#L575">at line 575</a></div>
+        <code>                    <a href="../MangoPay/UserConsent.html"><abbr title="MangoPay\UserConsent">UserConsent</abbr></a>
+    <strong>ManageConsent</strong>(string $userId, $idempotencyKey = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Manage user consent</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$userId</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$idempotencyKey</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../MangoPay/UserConsent.html"><abbr title="MangoPay\UserConsent">UserConsent</abbr></a></td>
+            <td><p>User object returned from API</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../MangoPay/Libraries/Exception.html"><abbr title="MangoPay\Libraries\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_Close">
-        <div class="location"><a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/ApiUsers.php#L567">at line 567</a></div>
+        <div class="location"><a href="https://github.com/Mangopay/mangopay2-php-sdk/blob/master/MangoPay/ApiUsers.php#L592">at line 592</a></div>
         <code>                    
     <strong>Close</strong>(<a href="../MangoPay/UserLegal.html"><abbr title="MangoPay\UserLegal">UserLegal</abbr></a>|<a href="../MangoPay/UserNatural.html"><abbr title="MangoPay\UserNatural">UserNatural</abbr></a>|<a href="../MangoPay/UserLegalSca.html"><abbr title="MangoPay\UserLegalSca">UserLegalSca</abbr></a>|<a href="../MangoPay/UserNaturalSca.html"><abbr title="MangoPay\UserNaturalSca">UserNaturalSca</abbr></a> $user)
         </code>
