@@ -22,11 +22,11 @@ use Doctum\Tree;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 use Twig\TwigFilter;
-use Parsedown;
+use League\CommonMark\CommonMarkConverter;
 
 class TwigExtension extends AbstractExtension
 {
-    /** @var Parsedown */
+    /** @var CommonMarkConverter */
     protected $markdown;
     protected $project;
     /** @var int|null */
@@ -177,11 +177,11 @@ class TwigExtension extends AbstractExtension
         }
 
         if (null === $this->markdown) {
-            $this->markdown = new Parsedown();
+            $this->markdown = new CommonMarkConverter();
         }
 
         $desc           = str_replace(['<code>', '</code>'], ['```', '```'], $desc);
-        $outputMarkdown = $this->markdown->text($desc);
+        $outputMarkdown = $this->markdown->convert($desc)->getContent();
 
         $matches = [];
         // Values without a space do not need to be forced into a <p> tag

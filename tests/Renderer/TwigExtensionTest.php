@@ -234,35 +234,35 @@ class TwigExtensionTest extends AbstractTestCase
             ],
             [
                 '<p><p>some text</p></p>',
-                '<p><p>some text</p></p>',
+                '<p><p>some text</p></p>' . "\n",
             ],
             [
                 'Constructor. Set DB Object and set {@link $return_statements return_statements}.',
-                '<p>Constructor. Set DB Object and set {@link $return_statements return_statements}.</p>',
+                '<p>Constructor. Set DB Object and set {@link $return_statements return_statements}.</p>' . "\n",
             ],
             [
                 'Constructor. Set DB Object and set {@link $return_statements return_statements}',
-                '<p>Constructor. Set DB Object and set {@link $return_statements return_statements}</p>',
+                '<p>Constructor. Set DB Object and set {@link $return_statements return_statements}</p>' . "\n",
             ],
             [
                 'Hi {@link \PDO}',
-                '<p>Hi {@link \PDO}</p>',
+                '<p>Hi {@link \PDO}</p>' . "\n",
             ],
             [
                 'Hi {@link https://doctum.long-term.support}',
-                '<p>Hi {@link <a href="https://doctum.long-term.support">https://doctum.long-term.support</a>}</p>',
+                '<p>Hi {@link https://doctum.long-term.support}</p>' . "\n",
             ],
             [
                 'Hi {@link \PDO}',
-                '<p>Hi {@link \PDO}</p>',
+                '<p>Hi {@link \PDO}</p>' . "\n",
             ],
             [
                 '@see \PDO',
-                '<p>@see \PDO</p>',
+                '<p>@see \PDO</p>' . "\n",
             ],
             [
                 '@see \PDO',
-                '<p>@see \PDO</p>',
+                '<p>@see \PDO</p>' . "\n",
             ],
             [
                 '# H1' . "\n"
@@ -272,7 +272,7 @@ class TwigExtensionTest extends AbstractTestCase
                 '<h1>H1</h1>' . "\n"
                 . '<p>Some text</p>' . "\n"
                 . '<h2>H2</h2>' . "\n"
-                . '<p>Some text h2</p>',
+                . '<p>Some text h2</p>' . "\n",
             ],
             [
                 '# H1' . "\n"
@@ -284,7 +284,7 @@ class TwigExtensionTest extends AbstractTestCase
                 . '<p>Some text</p>' . "\n"
                 . '<h2>H2</h2>' . "\n"
                 . '<p>Some text h2' . "\n"
-                . '<a href="https://example.com">malicious link</a></p>',
+                . '<a href="https://example.com">malicious link</a></p>' . "\n",
             ],
             [
                 '# H1' . "\n"
@@ -298,15 +298,14 @@ class TwigExtensionTest extends AbstractTestCase
                 . '<h2>H2</h2>' . "\n"
                 . '<p>Some text h2' . "\n"
                 . '<a href="https://example.com">malicious link</a></p>' . "\n"
-                . '<script>alert(1);</script>',
+                . '<script>alert(1);</script>' . "\n",
             ],
             [
                 '<b>PDO::prepare</b> returns a'
                     . '<b>PDOStatement</b> object.' . "\n"
                     . 'If the database server cannot successfully prepare the statement,' . "\n"
                     . '<b>PDO::prepare</b> returns <b>FALSE</b> or emits' . "\n"
-                    . '<b>PDOException</b> (depending on error handling).' . "\n"
-                    . '</p>' . "\n"
+                    . '<b>PDOException</b> (depending on error handling).</p>' . "\n"
                     . '<p>' . "\n"
                     . 'Emulated prepared statements does not communicate with the database server' . "\n"
                     . 'so <b>PDO::prepare</b> does not check the statement.',
@@ -314,11 +313,10 @@ class TwigExtensionTest extends AbstractTestCase
                     . '<b>PDOStatement</b> object.' . "\n"
                     . 'If the database server cannot successfully prepare the statement,' . "\n"
                     . '<b>PDO::prepare</b> returns <b>FALSE</b> or emits' . "\n"
-                    . '<b>PDOException</b> (depending on error handling).' . "\n"
-                    . '</p></p>' . "\n"
+                    . '<b>PDOException</b> (depending on error handling).</p></p>' . "\n"
                     . '<p>' . "\n"
                     . 'Emulated prepared statements does not communicate with the database server' . "\n"
-                    . 'so <b>PDO::prepare</b> does not check the statement.',
+                    . 'so <b>PDO::prepare</b> does not check the statement.' . "\n",
             ],
             [
                 'Collects rows for insert into a database until the buffer size is reached.' . "\n"
@@ -372,7 +370,8 @@ class TwigExtensionTest extends AbstractTestCase
                 . '<li>' . "\n"
                 . '<p>Usage of less PHP memory because data no longer needed is discarded on' . "\n"
                 . 'buffer flush.</p>' . "\n"
-                . ''
+                . '</li>' . "\n"
+                . '</ul>' . "\n"
                 . '<p>Attention:' . "\n"
                 . 'Please note that users of this class have to call flush() to flush the' . "\n"
                 . 'remaining rows to the database after their batch insert operation is' . "\n"
@@ -380,19 +379,18 @@ class TwigExtensionTest extends AbstractTestCase
                 . ''
                 . '<p>Usage:</p>' . "\n"
                 . '<pre><code>'
-                . '$buffer = new \phpbb\db\sql_insert_buffer($db, \'test_table\', 1234);' . "\n"
+                . '	$buffer = new \phpbb\db\sql_insert_buffer($db, \'test_table\', 1234);' . "\n"
                 . '' . "\n"
-                . 'while (do_stuff())' . "\n"
-                . '{' . "\n"
-                . '    $buffer-&gt;insert(array(' . "\n"
-                . '        \'column1\' =&gt; \'value1\',' . "\n"
-                . '        \'column2\' =&gt; \'value2\',' . "\n"
-                . '    ));' . "\n"
-                . '}' . "\n"
+                . '	while (do_stuff())' . "\n"
+                . '	{' . "\n"
+                . '		$buffer-&gt;insert(array(' . "\n"
+                . '			\'column1\' =&gt; \'value1\',' . "\n"
+                . '			\'column2\' =&gt; \'value2\',' . "\n"
+                . '		));' . "\n"
+                . '	}' . "\n"
                 . '' . "\n"
-                . '$buffer-&gt;flush();</code></pre>' . "\n"
-                . '</li>' . "\n"
-                . '</ul>',
+                . '	$buffer-&gt;flush();' . "\n"
+                . '</code></pre>' . "\n"
             ],
         ];
     }
@@ -401,13 +399,13 @@ class TwigExtensionTest extends AbstractTestCase
      * @dataProvider dataProviderMarkdownToHtml
      */
     #[\PHPUnit\Framework\Attributes\DataProvider('dataProviderMarkdownToHtml')]
-    public function testMarkdownToHtml(string $intput, string $expectedOutput): void
+    public function testMarkdownToHtml(string $input, string $expectedOutput): void
     {
         $extension = new TwigExtension();
         $this->assertSame(
             $expectedOutput,
             $extension->markdownToHtml(
-                $intput
+                $input
             )
         );
     }
