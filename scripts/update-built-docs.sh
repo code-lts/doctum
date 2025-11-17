@@ -9,8 +9,13 @@ copyBuildSources() {
     rm -v ./api-docs/*.php
     # Remove index file
     rm -v ./api-docs/index.html
+
     # Restore from main branch
-    git ls-tree -r --name-only main | grep -F -- ".github/api-docs" | xargs git checkout main --
+    for file in $(git ls-tree -r --name-only main | grep -F -- ".github/api-docs"); do
+        echo "Copying: $file";
+        git checkout main -- $file
+    done
+
     # Restore files
     mv -v .github/api-docs/*.php ./api-docs/
     mv -v .github/api-docs/index.html ./api-docs/
