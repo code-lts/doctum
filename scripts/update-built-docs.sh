@@ -2,6 +2,9 @@
 set -eu
 
 copyBuildSources() {
+    # Change branch
+    git checkout gh-pages > /dev/null
+
     # Remove config files
     rm -v ./api-docs/*.php
     # Remove index file
@@ -11,6 +14,12 @@ copyBuildSources() {
     # Restore files
     mv -v .github/api-docs/*.php ./api-docs/
     mv -v .github/api-docs/index.html ./api-docs/
+
+    if [ ! -z "$(git status --porcelain)" ]; then
+        git commit -m "Update api-docs configurations"
+    fi
+
+    git checkout - > /dev/null
 }
 
 doDocsUpdate() {
