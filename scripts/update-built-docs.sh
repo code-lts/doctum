@@ -22,7 +22,9 @@ copyBuildSources() {
     done
 
     if [ ! -z "$(git status --porcelain)" ]; then
+        git status
         git add -A
+        git status
         git commit -m "Update api-docs configurations"
         git push
     fi
