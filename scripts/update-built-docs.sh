@@ -16,6 +16,7 @@ copyBuildSources() {
     mv -v .github/api-docs/index.html ./api-docs/
 
     if [ ! -z "$(git status --porcelain)" ]; then
+        git add ./api-docs/*.php ./api-docs/index.html
         git commit -m "Update api-docs configurations"
     fi
 
