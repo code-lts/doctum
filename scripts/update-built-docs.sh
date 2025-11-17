@@ -1,6 +1,18 @@
 #!/bin/sh
 set -eu
 
+copyBuildSources() {
+    # Remove config files
+    rm -v ./api-docs/*.php
+    # Remove index file
+    rm -v ./api-docs/index.html
+    # Restore from main branch
+    git ls-tree -r --name-only main | grep -F -- ".github/api-docs" | xargs git checkout main --
+    # Restore files
+    mv -v .github/api-docs/*.php ./api-docs/
+    mv -v .github/api-docs/index.html ./api-docs/
+}
+
 doDocsUpdate() {
     # Change branch
     git checkout gh-pages > /dev/null
@@ -57,6 +69,8 @@ doDocsUpdate() {
 
     echo "Ended working on: $BUILD_DIR"
 }
+
+copyBuildSources
 
 doDocsUpdate "phpstorm-stubs" "https://github.com/JetBrains/phpstorm-stubs/archive/refs/heads/master.tar.gz"
 doDocsUpdate "mangopay2-php-sdk" "https://github.com/Mangopay/mangopay2-php-sdk/archive/refs/heads/master.tar.gz"
