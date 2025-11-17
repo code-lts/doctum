@@ -14,17 +14,20 @@ copyBuildSources() {
     for file in $(git ls-tree -r --name-only main | grep -F -- ".github/api-docs"); do
         echo "Copying: $file";
         git checkout main -- $file
+        cp -v "$file" ./api-docs/
     done
-
-    # Restore files
-    mv -v .github/api-docs/*.php ./api-docs/
-    mv -v .github/api-docs/index.html ./api-docs/
 
     if [ ! -z "$(git status --porcelain)" ]; then
         git add ./api-docs/*.php ./api-docs/index.html
         git commit -m "Update api-docs configurations"
         git push
     fi
+
+    # Clean the workspace
+    git reset --hard
+    git clean -d -f
+
+    git status
 
     git checkout - > /dev/null
 }
