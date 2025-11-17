@@ -10,15 +10,19 @@ copyBuildSources() {
     # Remove index file
     rm -v ./api-docs/index.html
 
+    # Clean the workspace
+    git reset --hard
+    git clean -d -f
+
     # Restore from main branch
     for file in $(git ls-tree -r --name-only main | grep -F -- ".github/api-docs"); do
         echo "Copying: $file";
         git checkout main -- $file
-        cp -v "$file" ./api-docs/
+        mv -v "$file" ./api-docs/
     done
 
     if [ ! -z "$(git status --porcelain)" ]; then
-        git add ./api-docs/*.php ./api-docs/index.html
+        git add -A
         git commit -m "Update api-docs configurations"
         git push
     fi
