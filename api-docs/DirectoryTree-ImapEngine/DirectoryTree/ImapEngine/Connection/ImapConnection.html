@@ -1,0 +1,2919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>DirectoryTree\ImapEngine\Connection\ImapConnection | DirectoryTree/ImapEngine</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:DirectoryTree_ImapEngine_Connection_ImapConnection" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">DirectoryTree/ImapEngine</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../DirectoryTree.html">DirectoryTree</a></li><li class="backslash">\</li><li><a href="../../../DirectoryTree/ImapEngine.html">ImapEngine</a></li><li class="backslash">\</li><li><a href="../../../DirectoryTree/ImapEngine/Connection.html">Connection</a></li><li class="backslash">\</li><li>ImapConnection</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ImapConnection    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>ImapConnection</strong>        implements        <a href="../../../DirectoryTree/ImapEngine/Connection/ConnectionInterface.html"><abbr title="DirectoryTree\ImapEngine\Connection\ConnectionInterface">ConnectionInterface</abbr></a>        (<a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_sequence">
+                                        protected                                        int
+                                                                                
+                                    </td>
+                <td>$sequence</td>
+                <td class="last"><p>Sequence number used to generate unique command tags.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_result">
+                                        protected                                        <abbr title="DirectoryTree\ImapEngine\Connection\DirectoryTree\ImapEngine\Connection\Result">Result</abbr>|null
+                                                                                
+                                    </td>
+                <td>$result</td>
+                <td class="last"><p>The result instance.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_parser">
+                                        protected                                        <abbr title="DirectoryTree\ImapEngine\Connection\DirectoryTree\ImapEngine\Connection\ImapParser">ImapParser</abbr>|null
+                                                                                
+                                    </td>
+                <td>$parser</td>
+                <td class="last"><p>The parser instance.</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../DirectoryTree/ImapEngine/Connection/Streams/StreamInterface.html"><abbr title="DirectoryTree\ImapEngine\Connection\Streams\StreamInterface">StreamInterface</abbr></a> $stream, <abbr title="DirectoryTree\ImapEngine\Connection\DirectoryTree\ImapEngine\Connection\Loggers\LoggerInterface">LoggerInterface</abbr>|null $logger = null)
+        
+                                            <p>Constructor.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../DirectoryTree/ImapEngine/Connection/ImapConnection.html"><abbr title="DirectoryTree\ImapEngine\Connection\ImapConnection">ImapConnection</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_fake">fake</a>(array $responses = [])
+        
+                                            <p><p>Create a new connection with a fake stream.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___destruct">__destruct</a>()
+        
+                                            <p><p>Tear down the connection.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_connect">connect</a>(string $host, int|null $port = null, array $options = [])
+        
+                                            <p><p>Open a new connection.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getDefaultSocketOptions">getDefaultSocketOptions</a>(string $transport, array $proxy = [], bool $validateCert = true)
+        
+                                            <p><p>Get the default socket options for the given transport.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_disconnect">disconnect</a>()
+        
+                                            <p><p>Close the current connection.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_connected">connected</a>()
+        
+                                            <p><p>Determine if the current session is connected.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_login">login</a>(string $user, string $password)
+        
+                                            <p><p>Send a &quot;LOGIN&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_logout">logout</a>()
+        
+                                            <p><p>Send a &quot;LOGOUT&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_authenticate">authenticate</a>(string $user, string $token)
+        
+                                            <p><p>Send an &quot;AUTHENTICATE&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_startTls">startTls</a>()
+        
+                                            <p><p>Send a &quot;STARTTLS&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_select">select</a>(string $folder = &#039;INBOX&#039;)
+        
+                                            <p><p>Send a &quot;SELECT&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_examine">examine</a>(string $folder = &#039;INBOX&#039;)
+        
+                                            <p><p>Send a &quot;EXAMINE&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_examineOrSelect">examineOrSelect</a>(string $command = &#039;EXAMINE&#039;, string $folder = &#039;INBOX&#039;)
+        
+                                            <p><p>Examine and select have the same response.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/UntaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\UntaggedResponse">UntaggedResponse</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_status">status</a>(string $folder = &#039;INBOX&#039;, array $arguments = [&#039;MESSAGES&#039;, &#039;UNSEEN&#039;, &#039;RECENT&#039;, &#039;UIDNEXT&#039;, &#039;UIDVALIDITY&#039;])
+        
+                                            <p><p>Send a &quot;STATUS&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_create">create</a>(string $folder)
+        
+                                            <p><p>Send a &quot;CREATE&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_delete">delete</a>(string $folder)
+        
+                                            <p><p>Send a &quot;DELETE&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_rename">rename</a>(string $oldPath, string $newPath)
+        
+                                            <p><p>Send a &quot;RENAME&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_subscribe">subscribe</a>(string $folder)
+        
+                                            <p><p>Send a &quot;SUBSCRIBE&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_unsubscribe">unsubscribe</a>(string $folder)
+        
+                                            <p><p>Send a &quot;UNSUBSCRIBE&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/UntaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\UntaggedResponse">UntaggedResponse</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_quota">quota</a>(string $root)
+        
+                                            <p><p>Send a &quot;GETQUOTA&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_quotaRoot">quotaRoot</a>(string $mailbox)
+        
+                                            <p><p>Send a &quot;GETQUOTAROOT&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_list">list</a>(string $reference = &#039;&#039;, string $folder = &#039;*&#039;)
+        
+                                            <p><p>Send a &quot;LIST&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_append">append</a>(string $folder, string $message, array|null $flags = null)
+        
+                                            <p><p>Send a &quot;APPEND&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_copy">copy</a>(string $folder, <abbr title="DirectoryTree\ImapEngine\Connection\array|int">array|int</abbr> $from, int|null $to = null)
+        
+                                            <p><p>Send a &quot;UID COPY&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_move">move</a>(string $folder, <abbr title="DirectoryTree\ImapEngine\Connection\array|int">array|int</abbr> $from, int|null $to = null)
+        
+                                            <p><p>Send a &quot;UID MOVE&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_store">store</a>(<abbr title="DirectoryTree\ImapEngine\Connection\array|string">array|string</abbr> $flags, <abbr title="DirectoryTree\ImapEngine\Connection\array|int">array|int</abbr> $from, int|null $to = null, string|null $mode = null, bool $silent = true, string|null $item = null)
+        
+                                            <p><p>Send a &quot;STORE&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_uid">uid</a>(<abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr> $ids, <abbr title="DirectoryTree\ImapEngine\Enums\ImapFetchIdentifier">ImapFetchIdentifier</abbr> $identifier)
+        
+                                            <p><p>Send a &quot;FETCH UID&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_bodyText">bodyText</a>(<abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr> $ids, bool $peek = true)
+        
+                                            <p><p>Send a &quot;FETCH BODY[TEXT]&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_bodyHeader">bodyHeader</a>(<abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr> $ids, bool $peek = true)
+        
+                                            <p><p>Send a &quot;FETCH BODY[HEADER]&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_bodyStructure">bodyStructure</a>(<abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr> $ids)
+        
+                                            <p><p>Fetch the BODYSTRUCTURE for the given message(s).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_bodyPart">bodyPart</a>(string $partIndex, <abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr> $ids, bool $peek = false)
+        
+                                            <p><p>Fetch a specific part of the message BODY, such as BODY[1], BODY[1.2], etc.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flags">flags</a>(<abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr> $ids)
+        
+                                            <p><p>Send a &quot;FETCH FLAGS&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_size">size</a>(<abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr> $ids)
+        
+                                            <p><p>Send a &quot;RFC822.SIZE&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/UntaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\UntaggedResponse">UntaggedResponse</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_search">search</a>(array $params)
+        
+                                            <p><p>Send a &quot;SEARCH&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/UntaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\UntaggedResponse">UntaggedResponse</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_capability">capability</a>()
+        
+                                            <p><p>Send a &quot;CAPABILITY&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/UntaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\UntaggedResponse">UntaggedResponse</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_id">id</a>(array|null $ids = null)
+        
+                                            <p><p>Send a &quot;FETCH&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_expunge">expunge</a>()
+        
+                                            <p><p>Send a &quot;EXPUNGE&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_noop">noop</a>()
+        
+                                            <p><p>Send a &quot;NOOP&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/Generator">Generator</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_idle">idle</a>(int $timeout)
+        
+                                            <p><p>Send an &quot;IDLE&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_done">done</a>()
+        
+                                            <p><p>Send a &quot;DONE&quot; command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_send">send</a>(string $name, array $tokens = [], string|null $tag = null)
+        
+                                            <p><p>Send an IMAP command.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_write">write</a>(string $data)
+        
+                                            <p><p>Write data to the connected stream.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_fetch">fetch</a>(<abbr title="DirectoryTree\ImapEngine\Connection\array|string">array|string</abbr> $items, <abbr title="DirectoryTree\ImapEngine\Connection\array|int">array|int</abbr> $from, mixed $to = null, <abbr title="DirectoryTree\ImapEngine\Enums\ImapFetchIdentifier">ImapFetchIdentifier</abbr> $identifier = ImapFetchIdentifier::Uid)
+        
+                                            <p><p>Fetch one or more items for one or more messages.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setResult">setResult</a>(<a href="../../../DirectoryTree/ImapEngine/Connection/Result.html"><abbr title="DirectoryTree\ImapEngine\Connection\Result">Result</abbr></a> $result)
+        
+                                            <p><p>Set the current result instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setParser">setParser</a>(<a href="../../../DirectoryTree/ImapEngine/Connection/ImapParser.html"><abbr title="DirectoryTree\ImapEngine\Connection\ImapParser">ImapParser</abbr></a> $parser)
+        
+                                            <p><p>Set the current parser instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/ImapParser.html"><abbr title="DirectoryTree\ImapEngine\Connection\ImapParser">ImapParser</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_newParser">newParser</a>(<a href="../../../DirectoryTree/ImapEngine/Connection/Streams/StreamInterface.html"><abbr title="DirectoryTree\ImapEngine\Connection\Streams\StreamInterface">StreamInterface</abbr></a> $stream)
+        
+                                            <p><p>Create a new parser instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/ImapTokenizer.html"><abbr title="DirectoryTree\ImapEngine\Connection\ImapTokenizer">ImapTokenizer</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_newTokenizer">newTokenizer</a>(<a href="../../../DirectoryTree/ImapEngine/Connection/Streams/StreamInterface.html"><abbr title="DirectoryTree\ImapEngine\Connection\Streams\StreamInterface">StreamInterface</abbr></a> $stream)
+        
+                                            <p><p>Create a new tokenizer instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_assertTaggedResponse">assertTaggedResponse</a>(string $tag, callable|null $exception = null)
+        
+                                            <p><p>Assert the next response is a successful tagged response.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/Response.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\Response">Response</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_assertNextResponse">assertNextResponse</a>(callable $filter, callable $assertion, callable $exception)
+        
+                                            <p><p>Assert the next response matches the given filter and assertion.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="DirectoryTree\ImapEngine\Connection\DirectoryTree\ImapEngine\Connection\Responses\Response">Response</abbr>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_nextResponse">nextResponse</a>(callable $filter)
+        
+                                            <p><p>Returns the next response matching the given filter.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="DirectoryTree\ImapEngine\Connection\DirectoryTree\ImapEngine\Connection\Responses\Data\Data|DirectoryTree\ImapEngine\Connection\Tokens\Token|DirectoryTree\ImapEngine\Connection\Responses\Response|null">Response|null</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_nextReply">nextReply</a>()
+        
+                                            <p><p>Read the next reply from the stream.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L49">at line 49</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../DirectoryTree/ImapEngine/Connection/Streams/StreamInterface.html"><abbr title="DirectoryTree\ImapEngine\Connection\Streams\StreamInterface">StreamInterface</abbr></a> $stream, <abbr title="DirectoryTree\ImapEngine\Connection\DirectoryTree\ImapEngine\Connection\Loggers\LoggerInterface">LoggerInterface</abbr>|null $logger = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p>Constructor.</p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../DirectoryTree/ImapEngine/Connection/Streams/StreamInterface.html"><abbr title="DirectoryTree\ImapEngine\Connection\Streams\StreamInterface">StreamInterface</abbr></a></td>
+                <td>$stream</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="DirectoryTree\ImapEngine\Connection\DirectoryTree\ImapEngine\Connection\Loggers\LoggerInterface">LoggerInterface</abbr>|null</td>
+                <td>$logger</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fake">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L57">at line 57</a></div>
+        <code>        static            <a href="../../../DirectoryTree/ImapEngine/Connection/ImapConnection.html"><abbr title="DirectoryTree\ImapEngine\Connection\ImapConnection">ImapConnection</abbr></a>
+    <strong>fake</strong>(array $responses = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a new connection with a fake stream.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$responses</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/ImapConnection.html"><abbr title="DirectoryTree\ImapEngine\Connection\ImapConnection">ImapConnection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___destruct">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L71">at line 71</a></div>
+        <code>                    
+    <strong>__destruct</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Tear down the connection.</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_connect">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L87">at line 87</a></div>
+        <code>                    void
+    <strong>connect</strong>(string $host, int|null $port = null, array $options = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Open a new connection.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$host</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$port</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$options</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDefaultSocketOptions">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L129">at line 129</a></div>
+        <code>            protected        array
+    <strong>getDefaultSocketOptions</strong>(string $transport, array $proxy = [], bool $validateCert = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the default socket options for the given transport.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$transport</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$proxy</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$validateCert</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_disconnect">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L164">at line 164</a></div>
+        <code>                    void
+    <strong>disconnect</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Close the current connection.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_connected">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L172">at line 172</a></div>
+        <code>                    bool
+    <strong>connected</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if the current session is connected.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_login">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L180">at line 180</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+    <strong>login</strong>(string $user, string $password)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;LOGIN&quot; command.</p></p>                <p><p>Login to a new session.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$user</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$password</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_logout">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L192">at line 192</a></div>
+        <code>                    void
+    <strong>logout</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;LOGOUT&quot; command.</p></p>                <p><p>Logout of the current server session.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_authenticate">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L200">at line 200</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+    <strong>authenticate</strong>(string $user, string $token)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send an &quot;AUTHENTICATE&quot; command.</p></p>                <p><p>Authenticate the current session.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$user</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$token</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_startTls">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L212">at line 212</a></div>
+        <code>                    void
+    <strong>startTls</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;STARTTLS&quot; command.</p></p>                <p><p>Upgrade the current plaintext connection to a secure TLS-encrypted connection.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_select">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L224">at line 224</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+    <strong>select</strong>(string $folder = &#039;INBOX&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;SELECT&quot; command.</p></p>                <p><p>Select the specified folder.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$folder</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_examine">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L232">at line 232</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+    <strong>examine</strong>(string $folder = &#039;INBOX&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;EXAMINE&quot; command.</p></p>                <p><p>Examine a given folder.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$folder</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_examineOrSelect">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L240">at line 240</a></div>
+        <code>            protected        <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+    <strong>examineOrSelect</strong>(string $command = &#039;EXAMINE&#039;, string $folder = &#039;INBOX&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Examine and select have the same response.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$command</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$folder</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_status">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L252">at line 252</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/UntaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\UntaggedResponse">UntaggedResponse</abbr></a>
+    <strong>status</strong>(string $folder = &#039;INBOX&#039;, array $arguments = [&#039;MESSAGES&#039;, &#039;UNSEEN&#039;, &#039;RECENT&#039;, &#039;UIDNEXT&#039;, &#039;UIDVALIDITY&#039;])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;STATUS&quot; command.</p></p>                <p><p>Get the status of a given folder.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$folder</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$arguments</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/Responses/UntaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\UntaggedResponse">UntaggedResponse</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_create">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L269">at line 269</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+    <strong>create</strong>(string $folder)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;CREATE&quot; command.</p></p>                <p><p>Create a new folder.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$folder</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_delete">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L283">at line 283</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+    <strong>delete</strong>(string $folder)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;DELETE&quot; command.</p></p>                <p><p>Delete a folder.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$folder</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_rename">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L293">at line 293</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+    <strong>rename</strong>(string $oldPath, string $newPath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;RENAME&quot; command.</p></p>                <p><p>Rename an existing folder.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$oldPath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$newPath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_subscribe">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L303">at line 303</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+    <strong>subscribe</strong>(string $folder)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;SUBSCRIBE&quot; command.</p></p>                <p><p>Subscribe to a folder.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$folder</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_unsubscribe">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L313">at line 313</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+    <strong>unsubscribe</strong>(string $folder)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;UNSUBSCRIBE&quot; command.</p></p>                <p><p>Unsubscribe from a folder.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$folder</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_quota">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L323">at line 323</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/UntaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\UntaggedResponse">UntaggedResponse</abbr></a>
+    <strong>quota</strong>(string $root)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;GETQUOTA&quot; command.</p></p>                <p><p>Retrieve quota information about a specific quota root.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$root</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/Responses/UntaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\UntaggedResponse">UntaggedResponse</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_quotaRoot">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L337">at line 337</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+    <strong>quotaRoot</strong>(string $mailbox)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;GETQUOTAROOT&quot; command.</p></p>                <p><p>Retrieve quota root information about a mailbox.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$mailbox</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_list">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L351">at line 351</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+    <strong>list</strong>(string $reference = &#039;&#039;, string $folder = &#039;*&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;LIST&quot; command.</p></p>                <p><p>Get a list of available folders.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$reference</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$folder</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_append">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L365">at line 365</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+    <strong>append</strong>(string $folder, string $message, array|null $flags = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;APPEND&quot; command.</p></p>                <p><p>Append a new message to given folder.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$folder</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array|null</td>
+                <td>$flags</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_copy">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L385">at line 385</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+    <strong>copy</strong>(string $folder, <abbr title="DirectoryTree\ImapEngine\Connection\array|int">array|int</abbr> $from, int|null $to = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;UID COPY&quot; command.</p></p>                <p><p>Copy message set from current folder to other folder.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$folder</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="DirectoryTree\ImapEngine\Connection\array|int">array|int</abbr></td>
+                <td>$from</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$to</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_move">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L398">at line 398</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+    <strong>move</strong>(string $folder, <abbr title="DirectoryTree\ImapEngine\Connection\array|int">array|int</abbr> $from, int|null $to = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;UID MOVE&quot; command.</p></p>                <p><p>Move a message set from current folder to another folder.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$folder</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="DirectoryTree\ImapEngine\Connection\array|int">array|int</abbr></td>
+                <td>$from</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$to</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_store">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L411">at line 411</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+    <strong>store</strong>(<abbr title="DirectoryTree\ImapEngine\Connection\array|string">array|string</abbr> $flags, <abbr title="DirectoryTree\ImapEngine\Connection\array|int">array|int</abbr> $from, int|null $to = null, string|null $mode = null, bool $silent = true, string|null $item = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;STORE&quot; command.</p></p>                <p><p>Set message flags.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="DirectoryTree\ImapEngine\Connection\array|string">array|string</abbr></td>
+                <td>$flags</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="DirectoryTree\ImapEngine\Connection\array|int">array|int</abbr></td>
+                <td>$from</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$to</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$mode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$silent</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$item</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_uid">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L431">at line 431</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+    <strong>uid</strong>(<abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr> $ids, <abbr title="DirectoryTree\ImapEngine\Enums\ImapFetchIdentifier">ImapFetchIdentifier</abbr> $identifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;FETCH UID&quot; command.</p></p>                <p><p>Fetch message UIDs using the given message numbers.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr></td>
+                <td>$ids</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="DirectoryTree\ImapEngine\Enums\ImapFetchIdentifier">ImapFetchIdentifier</abbr></td>
+                <td>$identifier</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_bodyText">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L439">at line 439</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+    <strong>bodyText</strong>(<abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr> $ids, bool $peek = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;FETCH BODY[TEXT]&quot; command.</p></p>                <p><p>Fetch message text contents.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr></td>
+                <td>$ids</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$peek</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_bodyHeader">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L447">at line 447</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+    <strong>bodyHeader</strong>(<abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr> $ids, bool $peek = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;FETCH BODY[HEADER]&quot; command.</p></p>                <p><p>Fetch message headers.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr></td>
+                <td>$ids</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$peek</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_bodyStructure">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L455">at line 455</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+    <strong>bodyStructure</strong>(<abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr> $ids)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Fetch the BODYSTRUCTURE for the given message(s).</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr></td>
+                <td>$ids</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_bodyPart">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L463">at line 463</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+    <strong>bodyPart</strong>(string $partIndex, <abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr> $ids, bool $peek = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Fetch a specific part of the message BODY, such as BODY[1], BODY[1.2], etc.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$partIndex</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr></td>
+                <td>$ids</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$peek</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flags">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L473">at line 473</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+    <strong>flags</strong>(<abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr> $ids)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;FETCH FLAGS&quot; command.</p></p>                <p><p>Fetch a message flags.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr></td>
+                <td>$ids</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_size">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L481">at line 481</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+    <strong>size</strong>(<abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr> $ids)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;RFC822.SIZE&quot; command.</p></p>                <p><p>Fetch message sizes for one or more messages.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="DirectoryTree\ImapEngine\Connection\int|array">int|array</abbr></td>
+                <td>$ids</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_search">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L489">at line 489</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/UntaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\UntaggedResponse">UntaggedResponse</abbr></a>
+    <strong>search</strong>(array $params)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;SEARCH&quot; command.</p></p>                <p><p>Execute a search request.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$params</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/Responses/UntaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\UntaggedResponse">UntaggedResponse</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_capability">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L503">at line 503</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/UntaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\UntaggedResponse">UntaggedResponse</abbr></a>
+    <strong>capability</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;CAPABILITY&quot; command.</p></p>                <p><p>Get the mailbox's available capabilities.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/Responses/UntaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\UntaggedResponse">UntaggedResponse</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_id">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L517">at line 517</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/UntaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\UntaggedResponse">UntaggedResponse</abbr></a>
+    <strong>id</strong>(array|null $ids = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;FETCH&quot; command.</p></p>                <p><p>Exchange identification information.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|null</td>
+                <td>$ids</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/Responses/UntaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\UntaggedResponse">UntaggedResponse</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_expunge">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L543">at line 543</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+    <strong>expunge</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;EXPUNGE&quot; command.</p></p>                <p><p>Apply session saved changes to the server.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_noop">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L555">at line 555</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+    <strong>noop</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;NOOP&quot; command.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_idle">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L565">at line 565</a></div>
+        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/Generator">Generator</a>
+    <strong>idle</strong>(int $timeout)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send an &quot;IDLE&quot; command.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$timeout</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/Generator">Generator</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_done">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L585">at line 585</a></div>
+        <code>                    void
+    <strong>done</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a &quot;DONE&quot; command.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_send">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L604">at line 604</a></div>
+        <code>                    void
+    <strong>send</strong>(string $name, array $tokens = [], string|null $tag = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send an IMAP command.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$tokens</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$tag</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_write">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L626">at line 626</a></div>
+        <code>            protected        void
+    <strong>write</strong>(string $data)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Write data to the connected stream.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$data</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fetch">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L638">at line 638</a></div>
+        <code>                    <a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a>
+    <strong>fetch</strong>(<abbr title="DirectoryTree\ImapEngine\Connection\array|string">array|string</abbr> $items, <abbr title="DirectoryTree\ImapEngine\Connection\array|int">array|int</abbr> $from, mixed $to = null, <abbr title="DirectoryTree\ImapEngine\Enums\ImapFetchIdentifier">ImapFetchIdentifier</abbr> $identifier = ImapFetchIdentifier::Uid)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Fetch one or more items for one or more messages.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="DirectoryTree\ImapEngine\Connection\array|string">array|string</abbr></td>
+                <td>$items</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="DirectoryTree\ImapEngine\Connection\array|int">array|int</abbr></td>
+                <td>$from</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$to</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="DirectoryTree\ImapEngine\Enums\ImapFetchIdentifier">ImapFetchIdentifier</abbr></td>
+                <td>$identifier</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Collections/ResponseCollection.html"><abbr title="DirectoryTree\ImapEngine\Collections\ResponseCollection">ResponseCollection</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setResult">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L675">at line 675</a></div>
+        <code>            protected        void
+    <strong>setResult</strong>(<a href="../../../DirectoryTree/ImapEngine/Connection/Result.html"><abbr title="DirectoryTree\ImapEngine\Connection\Result">Result</abbr></a> $result)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the current result instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../DirectoryTree/ImapEngine/Connection/Result.html"><abbr title="DirectoryTree\ImapEngine\Connection\Result">Result</abbr></a></td>
+                <td>$result</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setParser">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L683">at line 683</a></div>
+        <code>            protected        void
+    <strong>setParser</strong>(<a href="../../../DirectoryTree/ImapEngine/Connection/ImapParser.html"><abbr title="DirectoryTree\ImapEngine\Connection\ImapParser">ImapParser</abbr></a> $parser)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the current parser instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../DirectoryTree/ImapEngine/Connection/ImapParser.html"><abbr title="DirectoryTree\ImapEngine\Connection\ImapParser">ImapParser</abbr></a></td>
+                <td>$parser</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_newParser">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L691">at line 691</a></div>
+        <code>            protected        <a href="../../../DirectoryTree/ImapEngine/Connection/ImapParser.html"><abbr title="DirectoryTree\ImapEngine\Connection\ImapParser">ImapParser</abbr></a>
+    <strong>newParser</strong>(<a href="../../../DirectoryTree/ImapEngine/Connection/Streams/StreamInterface.html"><abbr title="DirectoryTree\ImapEngine\Connection\Streams\StreamInterface">StreamInterface</abbr></a> $stream)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a new parser instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../DirectoryTree/ImapEngine/Connection/Streams/StreamInterface.html"><abbr title="DirectoryTree\ImapEngine\Connection\Streams\StreamInterface">StreamInterface</abbr></a></td>
+                <td>$stream</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/ImapParser.html"><abbr title="DirectoryTree\ImapEngine\Connection\ImapParser">ImapParser</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_newTokenizer">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L699">at line 699</a></div>
+        <code>            protected        <a href="../../../DirectoryTree/ImapEngine/Connection/ImapTokenizer.html"><abbr title="DirectoryTree\ImapEngine\Connection\ImapTokenizer">ImapTokenizer</abbr></a>
+    <strong>newTokenizer</strong>(<a href="../../../DirectoryTree/ImapEngine/Connection/Streams/StreamInterface.html"><abbr title="DirectoryTree\ImapEngine\Connection\Streams\StreamInterface">StreamInterface</abbr></a> $stream)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a new tokenizer instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../DirectoryTree/ImapEngine/Connection/Streams/StreamInterface.html"><abbr title="DirectoryTree\ImapEngine\Connection\Streams\StreamInterface">StreamInterface</abbr></a></td>
+                <td>$stream</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/ImapTokenizer.html"><abbr title="DirectoryTree\ImapEngine\Connection\ImapTokenizer">ImapTokenizer</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_assertTaggedResponse">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L707">at line 707</a></div>
+        <code>            protected        <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a>
+    <strong>assertTaggedResponse</strong>(string $tag, callable|null $exception = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Assert the next response is a successful tagged response.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$tag</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable|null</td>
+                <td>$exception</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/Responses/TaggedResponse.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\TaggedResponse">TaggedResponse</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_assertNextResponse">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L737">at line 737</a></div>
+        <code>            protected        <a href="../../../DirectoryTree/ImapEngine/Connection/Responses/Response.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\Response">Response</abbr></a>
+    <strong>assertNextResponse</strong>(callable $filter, callable $assertion, callable $exception)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Assert the next response matches the given filter and assertion.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$filter</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$assertion</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$exception</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../DirectoryTree/ImapEngine/Connection/Responses/Response.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\Response">Response</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../DirectoryTree/ImapEngine/Exceptions/ImapResponseException.html"><abbr title="DirectoryTree\ImapEngine\Exceptions\ImapResponseException">ImapResponseException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_nextResponse">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L758">at line 758</a></div>
+        <code>            protected        <abbr title="DirectoryTree\ImapEngine\Connection\DirectoryTree\ImapEngine\Connection\Responses\Response">Response</abbr>|null
+    <strong>nextResponse</strong>(callable $filter)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the next response matching the given filter.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$filter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="DirectoryTree\ImapEngine\Connection\DirectoryTree\ImapEngine\Connection\Responses\Response">Response</abbr>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_nextReply">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Connection/ImapConnection.php#L782">at line 782</a></div>
+        <code>            protected        <abbr title="DirectoryTree\ImapEngine\Connection\DirectoryTree\ImapEngine\Connection\Responses\Data\Data|DirectoryTree\ImapEngine\Connection\Tokens\Token|DirectoryTree\ImapEngine\Connection\Responses\Response|null">Response|null</abbr>
+    <strong>nextReply</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Read the next reply from the stream.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="DirectoryTree\ImapEngine\Connection\DirectoryTree\ImapEngine\Connection\Responses\Data\Data|DirectoryTree\ImapEngine\Connection\Tokens\Token|DirectoryTree\ImapEngine\Connection\Responses\Response|null">Response|null</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built for the <a href="https://github.com/DirectoryTree/ImapEngine#readme" rel="noreferrer noopener" target="_blank">DirectoryTree/ImapEngine</a> project.</div></div>
+    </div>
+    </body>
+
+</html>
