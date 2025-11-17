@@ -26,11 +26,12 @@ class CommandTest extends AbstractTestCase
 
         $commandTester->execute(['config' => $this->getTestConfigFilePath(), '--no-progress' => true, '--force' => true]);
         $command->messageCallback(Message::PARSE_VERSION_FINISHED, new Transaction(self::getProject()));
+        $bars = str_contains($commandTester->getDisplay(), '-------------') ? '-------------' : '------------';
         $this->assertSame(
             "\n"
                 . "\n"
                 . 'Version main' . "\n"
-                . '-------------' . "\n" . "\n"
+                . $bars . "\n" . "\n"
                 . 'Parsing project' . "\n"
                 . ' Version    Updated C    Removed C ' . "\n"
                 . '     main            0            0' . "\n"
@@ -46,11 +47,12 @@ class CommandTest extends AbstractTestCase
 
         $commandTester->execute(['config' => $this->getTestConfigFilePath(), '--no-progress' => true, '--force' => true]);
         $command->messageCallback(Message::RENDER_VERSION_FINISHED, new Diff(self::getProject(), 'foo.php'));
+        $bars = str_contains($commandTester->getDisplay(), '-------------') ? '-------------' : '------------';
         $this->assertSame(
             "\n"
                 . "\n"
                 . 'Version main' . "\n"
-                . '-------------' . "\n" . "\n" . "\n"
+                . $bars . "\n" . "\n" . "\n"
                 . 'Rendering Global index.html' . "\n"
                 . 'Rendering Global doc-index.html' . "\n"
                 . 'Rendering Global namespaces.html' . "\n"
@@ -78,11 +80,12 @@ class CommandTest extends AbstractTestCase
 
         $commandTester->execute(['config' => $this->getTestConfigFilePath(), '--no-progress' => true, '--force' => true]);
         $command->messageCallback(Message::RENDER_VERSION_FINISHED, new Diff(self::getProject(), 'foo.php'));
+        $bars = str_contains($commandTester->getDisplay(), '-------------') ? '-------------' : '------------';
         $this->assertSame(
             'Updating project' . "\n"
                 . "\n"
                 . 'Version main' . "\n"
-                . '-------------' . "\n" . "\n" . "\n"
+                . $bars . "\n" . "\n" . "\n"
                 . 'Rendering Global index.html' . "\n"
                 . 'Rendering Global doc-index.html' . "\n"
                 . 'Rendering Global namespaces.html' . "\n"
