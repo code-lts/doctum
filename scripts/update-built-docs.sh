@@ -18,6 +18,7 @@ copyBuildSources() {
     if [ ! -z "$(git status --porcelain)" ]; then
         git add ./api-docs/*.php ./api-docs/index.html
         git commit -m "Update api-docs configurations"
+        git push
     fi
 
     git checkout - > /dev/null
@@ -26,6 +27,9 @@ copyBuildSources() {
 doDocsUpdate() {
     # Change branch
     git checkout gh-pages > /dev/null
+    # Clean the workspace
+    git reset --hard
+    git clean -d -f
 
     FOLDER_NAME="$1"
     SOURCE_URL="$2"
@@ -66,9 +70,12 @@ doDocsUpdate() {
     # Local source folder cleanup
     rm -rfd $SOURCE_DIR
 
-    # Push the changes, but not if empty
-    git add -A "$BUILD_DIR"
-    git diff-index --quiet HEAD || git commit -m "Api documentations update ($(date --utc))" -m "#apidocs" && git push
+    if [ ! -z "$(git status --porcelain)" ]; then
+        # Push the changes, but not if empty
+        git add -A "$BUILD_DIR"
+        git commit -m "Api documentations update ($(date --utc))" -m "#apidocs"
+        git push
+    fi
 
     git status
 
