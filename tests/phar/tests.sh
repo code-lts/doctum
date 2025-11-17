@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # You must be using shunit2 >= 2.1.8
 
