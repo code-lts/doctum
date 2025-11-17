@@ -49,6 +49,11 @@ doDocsUpdate() {
     echo "Source: $BUILD_DIR"
     echo "Build: $SOURCE_DIR"
 
+    if [ ! -f api-docs/doctum-php-$FOLDER_NAME.php ]; then
+        echo "Missing config file: api-docs/doctum-php-$FOLDER_NAME.php"
+        exit 1
+    fi
+
     # Create the folders if not exists
     if [ ! -d "$BUILD_DIR" ]; then
         mkdir "$BUILD_DIR"
