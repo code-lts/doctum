@@ -390,7 +390,7 @@ class TwigExtensionTest extends AbstractTestCase
                 . '	}' . "\n"
                 . '' . "\n"
                 . '	$buffer-&gt;flush();' . "\n"
-                . '</code></pre>' . "\n"
+                . '</code></pre>' . "\n",
             ],
         ];
     }
