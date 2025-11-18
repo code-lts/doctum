@@ -75,7 +75,22 @@ class DocBlockParser
         $result->setLongDesc($docBlock->getDescription()->__toString());
 
         foreach ($docBlock->getTags() as $tag) {
-            $result->addTag($tag->getName(), $this->parseTag($tag));
+            $tagName = $tag->getName();
+
+            if ($tag instanceof InvalidTag && $tag->getException() !== null) {
+                $errorMessage = 'Invalid @return tag "' . $tag->__toString() . '" (' . $tag->getException()->getMessage() . ').';
+                $result->addError($errorMessage);
+            } elseif ($tag instanceof InvalidTag) {
+                $errorMessage = 'Invalid @return tag "' . $tag->__toString() . '".';
+                $result->addError($errorMessage);
+            }
+
+            if ($tag instanceof InvalidTag && str_starts_with($tagName, '@')) {
+                // remove the @
+                $tagName = substr($tagName, 1);
+            }
+
+            $result->addTag($tagName, $this->parseTag($tag));
         }
 
         return $result;

@@ -456,7 +456,7 @@ class NodeVisitorTest extends AbstractTestCase
             . '* @param $param9' . "\n"
             . '* @param foo' . "\n"
             . '* @param type1 $param4 Description 4' . "\n"
-            . '* @param array[\Illuminate\Notifications\Channels\Notification]  $notification' . "\n"
+            . '* @param array[\Illuminate\Notifications\Channels\Notification] $notification' . "\n"
             . '**/' . "\n",
             $parserContext
         );
@@ -476,7 +476,7 @@ class NodeVisitorTest extends AbstractTestCase
                 'The "param2" parameter of the method "fun1" is missing a @param tag',
                 'The method "fun1" has "6" @param tags but only "2" where expected.',
                 'The method "fun1" has "1" invalid @param tags.',
-                'Invalid @param tag on "fun1": "array[\Illuminate\Notifications\Channels\Notification]  $notification"',
+                'Invalid @param tag on "fun1": "array[\Illuminate\Notifications\Channels\Notification] $notification"',
             ],
             $this->callMethod(
                 $visitor,
@@ -498,7 +498,7 @@ class NodeVisitorTest extends AbstractTestCase
         $docBlockParser = new DocBlockParser();
         $docBlockNode   = $docBlockParser->parse(
             '/**' . "\n"
-            . '* @param array[\Illuminate\Notifications\Channels\Notification]  $notification' . "\n"
+            . '* @param array[\Illuminate\Notifications\Channels\Notification] $notification' . "\n"
             . '**/' . "\n",
             $parserContext
         );
@@ -513,7 +513,7 @@ class NodeVisitorTest extends AbstractTestCase
             [
                 'The "notification" parameter of the method "fun1" is missing a @param tag',
                 'The method "fun1" has "1" invalid @param tags.',
-                'Invalid @param tag on "fun1": "array[\Illuminate\Notifications\Channels\Notification]  $notification"',
+                'Invalid @param tag on "fun1": "array[\Illuminate\Notifications\Channels\Notification] $notification"',
             ],
             $this->callMethod(
                 $visitor,
@@ -556,6 +556,7 @@ class NodeVisitorTest extends AbstractTestCase
         );
         $this->assertSame(
             [
+                'The hint on "prop1" at @var is invalid: "\Illuminate\Support\Carbon;"',
             ],
             $errors
         );

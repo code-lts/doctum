@@ -178,7 +178,7 @@ class NodeVisitor extends NodeVisitorAbstract
             }
             $typeArray[] = [$typeAsStr, false];
         } elseif ($type instanceof NullableType) {
-            $typeArray = array_merge($typeArray, $this->typeToArray($type->type));
+            $typeArray   = array_merge($typeArray, $this->typeToArray($type->type));
             $typeArray[] = ['null', false];
         } elseif ($type instanceof UnionType || $type instanceof IntersectionType) {
             foreach ($type->types as $subType) {

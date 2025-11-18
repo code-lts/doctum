@@ -30,6 +30,52 @@ class DocBlockParserTest extends TestCase
     ];
 
     /**
+     * @dataProvider getInvalidTagsForErrors
+     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getInvalidTagsForErrors')]
+    public function testParseReportErrors(string $comment, array $expected): void
+    {
+        $parser = new DocBlockParser();
+        $parsed = $parser->parse($comment, $this->getContextMock());
+        $this->assertEquals($expected, $parsed->getErrors());
+    }
+
+    public static function getInvalidTagsForErrors(): array
+    {
+        return [
+            'Check for a known invalid format' => [
+                '
+                /**
+                 * @return array, $message Foo bar
+                 */
+                ',
+                [
+                    'Invalid @return tag "array, $message Foo bar".',
+                ],
+            ],
+            'Check for non closed array shape' => [
+                '
+                /**
+                 * @return array{key1: string
+                 */
+                ',
+                [
+                    'Invalid @return tag "array{key1: string".',
+                ],
+            ],
+            'Check array shape is okay' => [
+                '
+                /**
+                 * @return array{key1: string}
+                 */
+                ',
+                [
+                ],
+            ],
+        ];
+    }
+
+    /**
      * @dataProvider getParseTests
      */
     #[\PHPUnit\Framework\Attributes\DataProvider('getParseTests')]
@@ -611,7 +657,7 @@ class DocBlockParserTest extends TestCase
          * @param boolean $_error               whether user create or not
          * @param string  $real_sql_query       SQL query for add a user
          *
-         * @return array, $message
+         * @return array $message
          */',
                 [[
                     'shortDesc' => "Prepares queries for adding users and\nalso create database and return query and message",
@@ -643,7 +689,7 @@ class DocBlockParserTest extends TestCase
                         'return' => [ // Array from found tags.
                             [ // First found tag.
                                 [['array', false]], // Array from data types.
-                                ', $message', // The description
+                                '$message', // The description
                             ],
                         ],
                     ],
