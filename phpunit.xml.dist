@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <phpunit backupGlobals="false"
-         backupStaticAttributes="false"
          colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
          processIsolation="false"
          displayDetailsOnIncompleteTests="true"
          displayDetailsOnSkippedTests="true"
@@ -13,21 +9,22 @@
          displayDetailsOnTestsThatTriggerErrors="true"
          displayDetailsOnTestsThatTriggerNotices="true"
          displayDetailsOnTestsThatTriggerWarnings="true"
-         displayDetailsOnPhpunitDeprecations="true"
          stopOnFailure="false"
          bootstrap="./vendor/autoload.php"
 >
 
-    <filter>
-        <whitelist>
+    <source>
+        <include>
             <directory>src</directory>
-        </whitelist>
-    </filter>
+        </include>
+    </source>
 
-    <logging>
-        <!-- <log type="coverage-html" target="build/coverage/html/"/> -->
-        <log type="coverage-clover" target="build/logs/clover.xml"/>
-    </logging>
+    <coverage>
+        <report>
+            <clover outputFile="build/logs/clover.xml"/>
+            <!-- <<html outputDirectory="build/coverage/html/"/> -->
+        </report>
+    </coverage>
 
     <testsuites>
         <testsuite name="Doctum Test Suite">
