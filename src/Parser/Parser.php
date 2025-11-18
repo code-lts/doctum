@@ -20,6 +20,7 @@ use Doctum\Reflection\FunctionReflection;
 use Doctum\Reflection\LazyClassReflection;
 use Doctum\Store\StoreInterface;
 use Symfony\Component\Finder\Finder;
+use SplObjectStorage;
 
 class Parser
 {
@@ -46,7 +47,7 @@ class Parser
         $steps       = iterator_count($this->iterator);
         $context     = $this->parser->getContext();
         $transaction = new Transaction($project);
-        $toStore     = new \SplObjectStorage();
+        $toStore     = new SplObjectStorage();
         foreach ($this->iterator as $file) {
             $file = $file->getPathname();
             ++$step;
@@ -71,7 +72,7 @@ class Parser
 
             foreach ($context->getFunctions() as $addr => $fun) {
                 $project->addFunction($fun);
-                $toStore->attach($fun);
+                $toStore->offsetSet($fun);
             }
 
             foreach ($context->leaveFile() as $class) {
@@ -81,7 +82,7 @@ class Parser
 
                 $project->addClass($class);
                 $transaction->addClass($class);
-                $toStore->attach($class);
+                $toStore->offsetSet($class);
                 $class->notFromCache();
             }
         }

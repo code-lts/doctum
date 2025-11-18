@@ -100,7 +100,7 @@ class ProjectTraverser
             }
 
             if ($isModified) {
-                $modified->attach($class);
+                $modified->offsetSet($class);
             }
         }
 
@@ -116,7 +116,7 @@ class ProjectTraverser
             }
 
             if ($isModifiedFunction) {
-                $modified->attach($function);
+                $modified->offsetSet($function);
             }
         }
 
