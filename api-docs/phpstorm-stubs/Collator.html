@@ -84,6 +84,7 @@
 </p>
 
         
+        
     
         
 
@@ -230,7 +231,8 @@ FRENCH_COLLATION rules
 F=OFF cote &lt; coté &lt; côte &lt; côté
 F=ON cote &lt; côte &lt; coté &lt; côté
 </p>
-</p></em></p>
+</p>
+</em></p>
                     <p></p>
                 </td>
             </tr>
@@ -255,7 +257,8 @@ the strings (base letters, accents, and case) are identical. If
 Alternate is not set to Shifted, then there is no difference between a
 Strength of 3 and a Strength of 4. For more information and examples,
 see Variable_Weighting in the
-UCA.</em></p>
+UCA.
+</em></p>
                     <p><p>The reason the Alternate values are not simply
 On and Off
 is that additional Alternate values may be added in the future. The UCA
@@ -263,8 +266,8 @@ option Blanked is expressed with Strength set to 3, and Alternate set to
 Shifted. The default for most locales is NonIgnorable. If Shifted is
 selected, it may be slower if there are many strings that are the same
 except for punctuation; sort key length will not be affected unless the
-strength level is also increased.
-</p></p>
+strength level is also increased.</p>
+</p>
 <p>
 Possible values are:
 <b>Collator::NON_IGNORABLE</b>(default)
@@ -278,7 +281,8 @@ S=3, A=N di Silva &lt; Di Silva &lt; diSilva &lt; U.S.A. &lt; USA
 S=3, A=S di Silva = diSilva &lt; Di Silva &lt; U.S.A. = USA
 S=4, A=S di Silva &lt; diSilva &lt; Di Silva &lt; U.S.A. &lt; USA
 </p>
-</p></p>
+</p>
+</p>
                 </td>
             </tr>
                     <tr>
@@ -293,14 +297,15 @@ differences in the strings. The possible values are
 Uppercase_First
 (U) and Lowercase_First
 (L), plus the standard Default
-and Off.</em></p>
+and Off.
+</em></p>
                     <p><p>There is almost no difference between the Off and Lowercase_First
 options in terms of results, so typically users will not use
 Lowercase_First: only Off or Uppercase_First. (People interested in the
 detailed differences between X and L should consult the Collation
 Customization). Specifying either L or U won't affect string comparison
-performance, but will affect the sort key length.
-</p></p>
+performance, but will affect the sort key length.</p>
+</p>
 <p>
 Possible values are:
 <b>Collator::OFF</b>(default)
@@ -314,7 +319,8 @@ CASE_FIRST rules
 C=X or C=L "china" &lt; "China" &lt; "denmark" &lt; "Denmark"
 C=U "China" &lt; "china" &lt; "Denmark" &lt; "denmark"
 </p>
-</p></p>
+</p>
+</p>
                 </td>
             </tr>
                     <tr>
@@ -325,11 +331,12 @@ C=U "China" &lt; "china" &lt; "Denmark" &lt; "denmark"
                     <p><em><p>
 The Case_Level attribute is used when ignoring accents but not case. In
 such a situation, set Strength to be Primary,
-and Case_Level to be On.</em></p>
+and Case_Level to be On.
+</em></p>
                     <p><p>In most locales, this setting is Off by default. There is a small
 string comparison performance and sort key impact if this attribute is
-set to be On.
-</p></p>
+set to be On.</p>
+</p>
 <p>
 Possible values are:
 <b>Collator::OFF</b>(default)
@@ -342,7 +349,8 @@ CASE_LEVEL rules
 S=1, E=X role = Role = rôle
 S=1, E=O role = rôle &lt; Role
 </p>
-</p></p>
+</p>
+</p>
                 </td>
             </tr>
                     <tr>
@@ -357,20 +365,22 @@ the default for many locales), text as represented in common usage will
 compare correctly (for details, see UTN #5). Only if the accent marks
 are in noncanonical order will there be a problem. If the setting is
 On,
-then the best results are guaranteed for all possible text input.</em></p>
+then the best results are guaranteed for all possible text input.
+</em></p>
                     <p><p>There is a medium string comparison performance cost if this attribute
 is On,
 depending on the frequency of sequences that require normalization.
 There is no significant effect on sort key length. If the input text is
 known to be in NFD or NFKD normalization forms, there is no need to
-enable this Normalization option.
-</p></p>
+enable this Normalization option.</p>
+</p>
 <p>
 Possible values are:
 <b>Collator::OFF</b>(default)
 <b>Collator::ON</b>
 <b>Collator::DEFAULT_VALUE</b>
-</p></p>
+</p>
+</p>
                 </td>
             </tr>
                     <tr>
@@ -381,12 +391,13 @@ Possible values are:
                     <p><em><p>
 The ICU Collation Service supports many levels of comparison (named
 "Levels", but also known as "Strengths"). Having these categories
-enables ICU to sort strings precisely according to local conventions.</em></p>
+enables ICU to sort strings precisely according to local conventions.
+</em></p>
                     <p><p>However, by allowing the levels to be selectively employed, searching
 for a string in text can be performed with various matching conditions.
 For more detailed information, see
-<b>collator_set_strength</b> chapter.
-</p></p>
+<b>collator_set_strength</b> chapter.</p>
+</p>
 <p>
 Possible values are:
 <b>Collator::PRIMARY</b>
@@ -395,7 +406,8 @@ Possible values are:
 <b>Collator::QUATERNARY</b>
 <b>Collator::IDENTICAL</b>
 <b>Collator::DEFAULT_VALUE</b>
-</p></p>
+</p>
+</p>
                 </td>
             </tr>
                     <tr>
@@ -409,14 +421,16 @@ level to distinguish Hiragana and Katakana characters. If compatibility
 with that standard is required, then this attribute should be set
 On,
 and the strength set to Quaternary. This will affect sort key length
-and string comparison string comparison performance.</em></p>
-                    <p><p></p></p>
+and string comparison string comparison performance.
+</em></p>
+                    <p></p>
 <p>
 Possible values are:
 <b>Collator::OFF</b>(default)
 <b>Collator::ON</b>
 <b>Collator::DEFAULT_VALUE</b>
-</p></p>
+</p>
+</p>
                 </td>
             </tr>
                     <tr>
@@ -427,14 +441,16 @@ Possible values are:
                     <p><em><p>
 When turned on, this attribute generates a collation key for the numeric
 value of substrings of digits. This is a way to get '100' to sort AFTER
-'2'.</em></p>
-                    <p><p></p></p>
+'2'.
+</em></p>
+                    <p></p>
 <p>
 Possible values are:
 <b>Collator::OFF</b>(default)
 <b>Collator::ON</b>
 <b>Collator::DEFAULT_VALUE</b>
-</p></p>
+</p>
+</p>
                 </td>
             </tr>
                     <tr>
@@ -479,7 +495,8 @@ Possible values are:
                     <a href="#method___construct">__construct</a>(string $locale)
         
                                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Create a collator</p></p>                </div>
+Create a collator</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -490,7 +507,8 @@ Create a collator</p></p>                </div>
                     <a href="#method_create">create</a>(string $locale)
         
                                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Create a collator</p></p>                </div>
+Create a collator</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -501,7 +519,8 @@ Create a collator</p></p>                </div>
                     <a href="#method_compare">compare</a>(string $string1, string $string2)
         
                                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Compare two Unicode strings</p></p>                </div>
+Compare two Unicode strings</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -512,7 +531,8 @@ Compare two Unicode strings</p></p>                </div>
                     <a href="#method_sort">sort</a>(array $array, int $flags = 0)
         
                                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Sort array using specified collator</p></p>                </div>
+Sort array using specified collator</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -523,7 +543,8 @@ Sort array using specified collator</p></p>                </div>
                     <a href="#method_sortWithSortKeys">sortWithSortKeys</a>(array $array, $flags = [])
         
                                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Sort array using specified collator and sort keys</p></p>                </div>
+Sort array using specified collator and sort keys</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -534,7 +555,8 @@ Sort array using specified collator and sort keys</p></p>                </div>
                     <a href="#method_asort">asort</a>(array $array, int $flags = 0)
         
                                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Sort array maintaining index association</p></p>                </div>
+Sort array maintaining index association</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -545,7 +567,8 @@ Sort array maintaining index association</p></p>                </div>
                     <a href="#method_getAttribute">getAttribute</a>(int $attribute)
         
                                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Get collation attribute value</p></p>                </div>
+Get collation attribute value</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -556,7 +579,8 @@ Get collation attribute value</p></p>                </div>
                     <a href="#method_setAttribute">setAttribute</a>(int $attribute, int $value)
         
                                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Set collation attribute</p></p>                </div>
+Set collation attribute</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -567,7 +591,8 @@ Set collation attribute</p></p>                </div>
                     <a href="#method_getStrength">getStrength</a>()
         
                                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Get current collation strength</p></p>                </div>
+Get current collation strength</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -578,7 +603,8 @@ Get current collation strength</p></p>                </div>
                     <a href="#method_setStrength">setStrength</a>(int $strength)
         
                                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Set collation strength</p></p>                </div>
+Set collation strength</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -589,7 +615,8 @@ Set collation strength</p></p>                </div>
                     <a href="#method_getErrorCode">getErrorCode</a>()
         
                                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Get collator's last error code</p></p>                </div>
+Get collator's last error code</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -600,7 +627,8 @@ Get collator's last error code</p></p>                </div>
                     <a href="#method_getLocale">getLocale</a>(int $type)
         
                                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Get the locale name of the collator</p></p>                </div>
+Get the locale name of the collator</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -611,7 +639,8 @@ Get the locale name of the collator</p></p>                </div>
                     <a href="#method_getErrorMessage">getErrorMessage</a>()
         
                                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Get text for collator's last error code</p></p>                </div>
+Get text for collator's last error code</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -622,7 +651,8 @@ Get text for collator's last error code</p></p>                </div>
                     <a href="#method_getSortKey">getSortKey</a>(string $string, $arg2)
         
                                             <p><p>(PHP 5 &gt;= 5.3.2, PECL intl &gt;= 1.0.3)<br/>
-Get sorting key for a string</p></p>                </div>
+Get sorting key for a string</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -639,12 +669,14 @@ Get sorting key for a string</p></p>                </div>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Create a collator</p></p>                        
+Create a collator</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -673,12 +705,14 @@ Create a collator</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Create a collator</p></p>                        
+Create a collator</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -692,7 +726,8 @@ The locale containing the required collation rules. Special values for
 locales can be passed in - if null is passed for the locale, the
 default locale collation rules will be used. If empty string ("") or
 "root" are passed, UCA rules will be used.
-</p></td>
+</p>
+</td>
             </tr>
             </table>
 
@@ -703,7 +738,8 @@ default locale collation rules will be used. If empty string ("") or
         <tr>
             <td><a href="Collator.html">Collator</a>|null</td>
             <td><p>Return new instance of <b>Collator</b> object, or <b>NULL</b>
-on error.</p></td>
+on error.</p>
+</td>
         </tr>
     </table>
 
@@ -722,12 +758,14 @@ on error.</p></td>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Compare two Unicode strings</p></p>                        
+Compare two Unicode strings</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -738,14 +776,16 @@ Compare two Unicode strings</p></p>
                 <td>$string1</td>
                 <td><p>
 The first string to compare.
-</p></td>
+</p>
+</td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$string2</td>
                 <td><p>
 The second string to compare.
-</p></td>
+</p>
+</td>
             </tr>
             </table>
 
@@ -772,7 +812,8 @@ The second string to compare.
 On error
 boolean
 <b>FALSE</b>
-is returned.</td>
+is returned.
+</td>
         </tr>
     </table>
 
@@ -791,12 +832,14 @@ is returned.</td>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Sort array using specified collator</p></p>                        
+Sort array using specified collator</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -807,18 +850,20 @@ Sort array using specified collator</p></p>
                 <td>$array</td>
                 <td><p>
 Array of strings to sort.
-</p></td>
+</p>
+</td>
             </tr>
                     <tr>
                 <td>int</td>
                 <td>$flags</td>
                 <td><p>[optional] <p>
-Optional sorting type, one of the following:
-</p></p>
+Optional sorting type, one of the following:</p>
+</p>
 <p>
 <b>Collator::SORT_REGULAR</b>
 - compare items normally (don't change types)
-</p></td>
+</p>
+</td>
             </tr>
             </table>
 
@@ -828,7 +873,8 @@ Optional sorting type, one of the following:
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p></td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p>
+</td>
         </tr>
     </table>
 
@@ -847,12 +893,14 @@ Optional sorting type, one of the following:
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Sort array using specified collator and sort keys</p></p>                        
+Sort array using specified collator and sort keys</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -861,7 +909,8 @@ Sort array using specified collator and sort keys</p></p>
                     <tr>
                 <td>array</td>
                 <td>$array</td>
-                <td><p>Array of strings to sort</p></td>
+                <td><p>Array of strings to sort</p>
+</td>
             </tr>
                     <tr>
                 <td></td>
@@ -876,7 +925,8 @@ Sort array using specified collator and sort keys</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p></td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p>
+</td>
         </tr>
     </table>
 
@@ -895,12 +945,14 @@ Sort array using specified collator and sort keys</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Sort array maintaining index association</p></p>                        
+Sort array maintaining index association</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -909,7 +961,8 @@ Sort array maintaining index association</p></p>
                     <tr>
                 <td>array</td>
                 <td>$array</td>
-                <td><p>Array of strings to sort.</p></td>
+                <td><p>Array of strings to sort.</p>
+</td>
             </tr>
                     <tr>
                 <td>int</td>
@@ -918,9 +971,10 @@ Sort array maintaining index association</p></p>
 Optional sorting type, one of the following:
 <b>Collator::SORT_REGULAR</b></p>
 <ul>
-<li>compare items normally (don't change types)
-</p></li>
-</ul></td>
+<li>compare items normally (don't change types)</li>
+</ul>
+</p>
+</td>
             </tr>
             </table>
 
@@ -930,7 +984,8 @@ Optional sorting type, one of the following:
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p></td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p>
+</td>
         </tr>
     </table>
 
@@ -949,12 +1004,14 @@ Optional sorting type, one of the following:
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Get collation attribute value</p></p>                        
+Get collation attribute value</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -965,7 +1022,8 @@ Get collation attribute value</p></p>
                 <td>$attribute</td>
                 <td><p>
 Attribute to get value for.
-</p></td>
+</p>
+</td>
             </tr>
             </table>
 
@@ -975,7 +1033,8 @@ Attribute to get value for.
                     <table class="table table-condensed">
         <tr>
             <td>int|false</td>
-            <td><p>Attribute value, or boolean <b>FALSE</b> on error.</p></td>
+            <td><p>Attribute value, or boolean <b>FALSE</b> on error.</p>
+</td>
         </tr>
     </table>
 
@@ -994,12 +1053,14 @@ Attribute to get value for.
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Set collation attribute</p></p>                        
+Set collation attribute</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1015,7 +1076,8 @@ Set collation attribute</p></p>
                 <td>$value</td>
                 <td><p>
 Attribute value.
-</p></td>
+</p>
+</td>
             </tr>
             </table>
 
@@ -1025,7 +1087,8 @@ Attribute value.
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p></td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p>
+</td>
         </tr>
     </table>
 
@@ -1044,12 +1107,14 @@ Attribute value.
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Get current collation strength</p></p>                        
+Get current collation strength</p>
+</p>                        
         </div>
         <div class="tags">
             
@@ -1058,7 +1123,8 @@ Get current collation strength</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td><p>current collation strength, or boolean <b>FALSE</b> on error.</p></td>
+            <td><p>current collation strength, or boolean <b>FALSE</b> on error.</p>
+</td>
         </tr>
     </table>
 
@@ -1077,12 +1143,14 @@ Get current collation strength</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Set collation strength</p></p>                        
+Set collation strength</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1095,7 +1163,8 @@ Set collation strength</p></p>
 <p>
 Possible values are:
 <b>Collator::PRIMARY</b>
-</p></td>
+</p>
+</td>
             </tr>
             </table>
 
@@ -1105,7 +1174,8 @@ Possible values are:
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p></td>
+            <td><p><b>TRUE</b> on success or <b>FALSE</b> on failure.</p>
+</td>
         </tr>
     </table>
 
@@ -1124,12 +1194,14 @@ Possible values are:
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Get collator's last error code</p></p>                        
+Get collator's last error code</p>
+</p>                        
         </div>
         <div class="tags">
             
@@ -1138,7 +1210,8 @@ Get collator's last error code</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>int|false</td>
-            <td><p>Error code returned by the last Collator API function call.</p></td>
+            <td><p>Error code returned by the last Collator API function call.</p>
+</td>
         </tr>
     </table>
 
@@ -1157,12 +1230,14 @@ Get collator's last error code</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Get the locale name of the collator</p></p>                        
+Get the locale name of the collator</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1176,7 +1251,8 @@ You can choose between valid and actual locale (
 <b>Locale::VALID_LOCALE</b> and
 <b>Locale::ACTUAL_LOCALE</b>,
 respectively).
-</p></td>
+</p>
+</td>
             </tr>
             </table>
 
@@ -1188,7 +1264,8 @@ respectively).
             <td>string|false</td>
             <td><p>Real locale name from which the collation data comes. If the collator was
 instantiated from rules or an error occurred, returns
-boolean <b>FALSE</b>.</p></td>
+boolean <b>FALSE</b>.</p>
+</td>
         </tr>
     </table>
 
@@ -1207,12 +1284,14 @@ boolean <b>FALSE</b>.</p></td>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>(PHP 5 &gt;= 5.3.0, PECL intl &gt;= 1.0.0)<br/>
-Get text for collator's last error code</p></p>                        
+Get text for collator's last error code</p>
+</p>                        
         </div>
         <div class="tags">
             
@@ -1221,7 +1300,8 @@ Get text for collator's last error code</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>string|false</td>
-            <td><p>Description of an error occurred in the last Collator API function call.</p></td>
+            <td><p>Description of an error occurred in the last Collator API function call.</p>
+</td>
         </tr>
     </table>
 
@@ -1240,12 +1320,14 @@ Get text for collator's last error code</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>(PHP 5 &gt;= 5.3.2, PECL intl &gt;= 1.0.3)<br/>
-Get sorting key for a string</p></p>                        
+Get sorting key for a string</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1256,7 +1338,8 @@ Get sorting key for a string</p></p>
                 <td>$string</td>
                 <td><p>
 The string to produce the key from.
-</p></td>
+</p>
+</td>
             </tr>
                     <tr>
                 <td></td>
@@ -1271,7 +1354,8 @@ The string to produce the key from.
                     <table class="table table-condensed">
         <tr>
             <td>string|false</td>
-            <td><p>the collation key for the string. Collation keys can be compared directly instead of strings.</p></td>
+            <td><p>the collation key for the string. Collation keys can be compared directly instead of strings.</p>
+</td>
         </tr>
     </table>
 

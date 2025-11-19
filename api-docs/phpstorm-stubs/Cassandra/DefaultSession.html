@@ -90,11 +90,13 @@
 </p>
 
         
+        
     
         
 
             <div class="description">
-            <p><p>A session is used to prepare and execute statements.</p></p>                    </div>
+            <p><p>A session is used to prepare and execute statements.</p>
+</p>                    </div>
             
         
     
@@ -109,7 +111,8 @@
                 <div class="col-md-8">
                     <a href="#method_execute">execute</a>(string|<a href="../Cassandra/Statement.html"><abbr title="Cassandra\Statement">Statement</abbr></a> $statement, array|<a href="../Cassandra/ExecutionOptions.html"><abbr title="Cassandra\ExecutionOptions">ExecutionOptions</abbr></a>|null $options)
         
-                                            <p><p>Execute a query.</p></p>                </div>
+                                            <p><p>Execute a query.</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -120,7 +123,8 @@
                     <a href="#method_executeAsync">executeAsync</a>(string|<a href="../Cassandra/Statement.html"><abbr title="Cassandra\Statement">Statement</abbr></a> $statement, array|<a href="../Cassandra/ExecutionOptions.html"><abbr title="Cassandra\ExecutionOptions">ExecutionOptions</abbr></a>|null $options)
         
                                             <p><p>Execute a query asynchronously. This method returns immediately, but
-the query continues execution in the background.</p></p>                </div>
+the query continues execution in the background.</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -130,7 +134,8 @@ the query continues execution in the background.</p></p>                </div>
                 <div class="col-md-8">
                     <a href="#method_prepare">prepare</a>(string $cql, array|<a href="../Cassandra/ExecutionOptions.html"><abbr title="Cassandra\ExecutionOptions">ExecutionOptions</abbr></a>|null $options)
         
-                                            <p><p>Prepare a query for execution.</p></p>                </div>
+                                            <p><p>Prepare a query for execution.</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -140,7 +145,8 @@ the query continues execution in the background.</p></p>                </div>
                 <div class="col-md-8">
                     <a href="#method_prepareAsync">prepareAsync</a>(string $cql, array|<a href="../Cassandra/ExecutionOptions.html"><abbr title="Cassandra\ExecutionOptions">ExecutionOptions</abbr></a>|null $options)
         
-                                            <p><p>Asynchronously prepare a query for execution.</p></p>                </div>
+                                            <p><p>Asynchronously prepare a query for execution.</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -150,7 +156,8 @@ the query continues execution in the background.</p></p>                </div>
                 <div class="col-md-8">
                     <a href="#method_close">close</a>(float $timeout)
         
-                                            <p><p>Close the session and all its connections.</p></p>                </div>
+                                            <p><p>Close the session and all its connections.</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -160,7 +167,8 @@ the query continues execution in the background.</p></p>                </div>
                 <div class="col-md-8">
                     <a href="#method_closeAsync">closeAsync</a>()
         
-                                            <p><p>Asynchronously close the session and all its connections.</p></p>                </div>
+                                            <p><p>Asynchronously close the session and all its connections.</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -170,7 +178,8 @@ the query continues execution in the background.</p></p>                </div>
                 <div class="col-md-8">
                     <a href="#method_metrics">metrics</a>()
         
-                                            <p><p>Get performance and diagnostic metrics.</p></p>                </div>
+                                            <p><p>Get performance and diagnostic metrics.</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -180,7 +189,8 @@ the query continues execution in the background.</p></p>                </div>
                 <div class="col-md-8">
                     <a href="#method_schema">schema</a>()
         
-                                            <p><p>Get a snapshot of the cluster's current schema.</p></p>                </div>
+                                            <p><p>Get a snapshot of the cluster's current schema.</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -197,62 +207,24 @@ the query continues execution in the background.</p></p>                </div>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Execute a query.</p></p>                <p><table>
-<thead>
-<tr>
-<th>Available execution options:</th>
-<th>Option Name</th>
-<th>Option <strong>Type</strong></th>
-<th>Option Details</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>arguments</td>
-<td>array</td>
-<td>An array or positional or named arguments</td>
-</tr>
-<tr>
-<td>consistency</td>
-<td>int</td>
-<td>A consistency constant e.g Dse::CONSISTENCY_ONE, Dse::CONSISTENCY_QUORUM, etc.</td>
-</tr>
-<tr>
-<td>timeout</td>
-<td>int</td>
-<td>A number of rows to include in result for paging</td>
-</tr>
-<tr>
-<td>paging_state_token</td>
-<td>string</td>
-<td>A string token use to resume from the state of a previous result set</td>
-</tr>
-<tr>
-<td>retry_policy</td>
-<td>RetryPolicy</td>
-<td>A retry policy that is used to handle server-side failures for this request</td>
-</tr>
-<tr>
-<td>serial_consistency</td>
-<td>int</td>
-<td>Either Dse::CONSISTENCY_SERIAL or Dse::CONSISTENCY_LOCAL_SERIAL</td>
-</tr>
-<tr>
-<td>timestamp</td>
-<td>int|string</td>
-<td>Either an integer or integer string timestamp that represents the number of microseconds since the epoch</td>
-</tr>
-<tr>
-<td>execute_as</td>
-<td>string</td>
-<td>User to execute statement as</td>
-</tr>
-</tbody>
-</table></p>        
+                            <p><p>Execute a query.</p>
+</p>                <p><p>Available execution options:
+| Option Name        | Option <strong>Type</strong> | Option Details                                                                                           |
+|--------------------|-----------------|----------------------------------------------------------------------------------------------------------|
+| arguments          | array           | An array or positional or named arguments                                                                |
+| consistency        | int             | A consistency constant e.g Dse::CONSISTENCY_ONE, Dse::CONSISTENCY_QUORUM, etc.                           |
+| timeout            | int             | A number of rows to include in result for paging                                                         |
+| paging_state_token | string          | A string token use to resume from the state of a previous result set                                     |
+| retry_policy       | RetryPolicy     | A retry policy that is used to handle server-side failures for this request                              |
+| serial_consistency | int             | Either Dse::CONSISTENCY_SERIAL or Dse::CONSISTENCY_LOCAL_SERIAL                                          |
+| timestamp          | int|string     | Either an integer or integer string timestamp that represents the number of microseconds since the epoch |
+| execute_as         | string          | User to execute statement as                                                                             |</p>
+</p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -261,12 +233,14 @@ the query continues execution in the background.</p></p>                </div>
                     <tr>
                 <td>string|<a href="../Cassandra/Statement.html"><abbr title="Cassandra\Statement">Statement</abbr></a></td>
                 <td>$statement</td>
-                <td><p>string or statement to be executed.</p></td>
+                <td><p>string or statement to be executed.</p>
+</td>
             </tr>
                     <tr>
                 <td>array|<a href="../Cassandra/ExecutionOptions.html"><abbr title="Cassandra\ExecutionOptions">ExecutionOptions</abbr></a>|null</td>
                 <td>$options</td>
-                <td><p>Options to control execution of the query.</p></td>
+                <td><p>Options to control execution of the query.</p>
+</td>
             </tr>
             </table>
 
@@ -276,7 +250,8 @@ the query continues execution in the background.</p></p>                </div>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../Cassandra/Rows.html"><abbr title="Cassandra\Rows">Rows</abbr></a></td>
-            <td><p>A collection of rows.</p></td>
+            <td><p>A collection of rows.</p>
+</td>
         </tr>
     </table>
 
@@ -304,12 +279,14 @@ the query continues execution in the background.</p></p>                </div>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>Execute a query asynchronously. This method returns immediately, but
-the query continues execution in the background.</p></p>                        
+the query continues execution in the background.</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -318,12 +295,14 @@ the query continues execution in the background.</p></p>
                     <tr>
                 <td>string|<a href="../Cassandra/Statement.html"><abbr title="Cassandra\Statement">Statement</abbr></a></td>
                 <td>$statement</td>
-                <td><p>string or statement to be executed.</p></td>
+                <td><p>string or statement to be executed.</p>
+</td>
             </tr>
                     <tr>
                 <td>array|<a href="../Cassandra/ExecutionOptions.html"><abbr title="Cassandra\ExecutionOptions">ExecutionOptions</abbr></a>|null</td>
                 <td>$options</td>
-                <td><p>Options to control execution of the query.</p></td>
+                <td><p>Options to control execution of the query.</p>
+</td>
             </tr>
             </table>
 
@@ -333,7 +312,8 @@ the query continues execution in the background.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../Cassandra/FutureRows.html"><abbr title="Cassandra\FutureRows">FutureRows</abbr></a></td>
-            <td><p>A future that can be used to retrieve the result.</p></td>
+            <td><p>A future that can be used to retrieve the result.</p>
+</td>
         </tr>
     </table>
 
@@ -364,11 +344,13 @@ the query continues execution in the background.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Prepare a query for execution.</p></p>                        
+                            <p><p>Prepare a query for execution.</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -377,12 +359,14 @@ the query continues execution in the background.</p></p>
                     <tr>
                 <td>string</td>
                 <td>$cql</td>
-                <td><p>The query to be prepared.</p></td>
+                <td><p>The query to be prepared.</p>
+</td>
             </tr>
                     <tr>
                 <td>array|<a href="../Cassandra/ExecutionOptions.html"><abbr title="Cassandra\ExecutionOptions">ExecutionOptions</abbr></a>|null</td>
                 <td>$options</td>
-                <td><p>Options to control preparing the query.</p></td>
+                <td><p>Options to control preparing the query.</p>
+</td>
             </tr>
             </table>
 
@@ -392,7 +376,8 @@ the query continues execution in the background.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../Cassandra/PreparedStatement.html"><abbr title="Cassandra\PreparedStatement">PreparedStatement</abbr></a></td>
-            <td><p>A prepared statement that can be bound with parameters and executed.</p></td>
+            <td><p>A prepared statement that can be bound with parameters and executed.</p>
+</td>
         </tr>
     </table>
 
@@ -432,11 +417,13 @@ the query continues execution in the background.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Asynchronously prepare a query for execution.</p></p>                        
+                            <p><p>Asynchronously prepare a query for execution.</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -445,12 +432,14 @@ the query continues execution in the background.</p></p>
                     <tr>
                 <td>string</td>
                 <td>$cql</td>
-                <td><p>The query to be prepared.</p></td>
+                <td><p>The query to be prepared.</p>
+</td>
             </tr>
                     <tr>
                 <td>array|<a href="../Cassandra/ExecutionOptions.html"><abbr title="Cassandra\ExecutionOptions">ExecutionOptions</abbr></a>|null</td>
                 <td>$options</td>
-                <td><p>Options to control preparing the query.</p></td>
+                <td><p>Options to control preparing the query.</p>
+</td>
             </tr>
             </table>
 
@@ -460,7 +449,8 @@ the query continues execution in the background.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../Cassandra/FuturePreparedStatement.html"><abbr title="Cassandra\FuturePreparedStatement">FuturePreparedStatement</abbr></a></td>
-            <td><p>A future that can be used to retrieve the prepared statement.</p></td>
+            <td><p>A future that can be used to retrieve the prepared statement.</p>
+</td>
         </tr>
     </table>
 
@@ -491,11 +481,13 @@ the query continues execution in the background.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Close the session and all its connections.</p></p>                        
+                            <p><p>Close the session and all its connections.</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -504,7 +496,8 @@ the query continues execution in the background.</p></p>
                     <tr>
                 <td>float</td>
                 <td>$timeout</td>
-                <td><p>The amount of time in seconds to wait for the session to close.</p></td>
+                <td><p>The amount of time in seconds to wait for the session to close.</p>
+</td>
             </tr>
             </table>
 
@@ -542,11 +535,13 @@ the query continues execution in the background.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Asynchronously close the session and all its connections.</p></p>                        
+                            <p><p>Asynchronously close the session and all its connections.</p>
+</p>                        
         </div>
         <div class="tags">
             
@@ -555,7 +550,8 @@ the query continues execution in the background.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../Cassandra/FutureClose.html"><abbr title="Cassandra\FutureClose">FutureClose</abbr></a></td>
-            <td><p>A future that can be waited on.</p></td>
+            <td><p>A future that can be waited on.</p>
+</td>
         </tr>
     </table>
 
@@ -574,11 +570,13 @@ the query continues execution in the background.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Get performance and diagnostic metrics.</p></p>                        
+                            <p><p>Get performance and diagnostic metrics.</p>
+</p>                        
         </div>
         <div class="tags">
             
@@ -587,7 +585,8 @@ the query continues execution in the background.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>array</td>
-            <td><p>Performance/Diagnostic metrics.</p></td>
+            <td><p>Performance/Diagnostic metrics.</p>
+</td>
         </tr>
     </table>
 
@@ -606,11 +605,13 @@ the query continues execution in the background.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Get a snapshot of the cluster's current schema.</p></p>                        
+                            <p><p>Get a snapshot of the cluster's current schema.</p>
+</p>                        
         </div>
         <div class="tags">
             
@@ -619,7 +620,8 @@ the query continues execution in the background.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../Cassandra/Schema.html"><abbr title="Cassandra\Schema">Schema</abbr></a></td>
-            <td><p>A snapshot of the cluster's schema.</p></td>
+            <td><p>A snapshot of the cluster's schema.</p>
+</td>
         </tr>
     </table>
 

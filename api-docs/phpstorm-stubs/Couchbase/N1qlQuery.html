@@ -90,11 +90,13 @@
 </p>
 
         
+        
     
         
 
             <div class="description">
-            <p><p>Represents a N1QL query</p></p>                    </div>
+            <p><p>Represents a N1QL query</p>
+</p>                    </div>
             
         
             <h2>Constants</h2>    <table class="table table-condensed">
@@ -103,10 +105,12 @@
                                                                                                                         NOT_BOUNDED
                                     </td>
                 <td class="last">
-                    <p><em><p>This is the default (for single-statement requests).</p></em></p>
+                    <p><em><p>This is the default (for single-statement requests).</p>
+</em></p>
                     <p><p>No timestamp vector is used in the index scan.
 This is also the fastest mode, because we avoid the cost of obtaining the vector,
-and we also avoid any wait for the index to catch up to the vector.</p></p>
+and we also avoid any wait for the index to catch up to the vector.</p>
+</p>
                 </td>
             </tr>
                     <tr>
@@ -114,10 +118,12 @@ and we also avoid any wait for the index to catch up to the vector.</p></p>
                                                                                                                         REQUEST_PLUS
                                     </td>
                 <td class="last">
-                    <p><em><p>This implements strong consistency per request.</p></em></p>
+                    <p><em><p>This implements strong consistency per request.</p>
+</em></p>
                     <p><p>Before processing the request, a current vector is obtained.
 The vector is used as a lower bound for the statements in the request.
-If there are DML statements in the request, RYOW is also applied within the request.</p></p>
+If there are DML statements in the request, RYOW is also applied within the request.</p>
+</p>
                 </td>
             </tr>
                     <tr>
@@ -125,9 +131,11 @@ If there are DML statements in the request, RYOW is also applied within the requ
                                                                                                                         STATEMENT_PLUS
                                     </td>
                 <td class="last">
-                    <p><em><p>This implements strong consistency per statement.</p></em></p>
+                    <p><em><p>This implements strong consistency per statement.</p>
+</em></p>
                     <p><p>Before processing each statement, a current vector is obtained
-and used as a lower bound for that statement.</p></p>
+and used as a lower bound for that statement.</p>
+</p>
                 </td>
             </tr>
                     <tr>
@@ -135,7 +143,8 @@ and used as a lower bound for that statement.</p></p>
                                                                                                                         PROFILE_NONE
                                     </td>
                 <td class="last">
-                    <p><em><p>Disables profiling. This is the default</p></em></p>
+                    <p><em><p>Disables profiling. This is the default</p>
+</em></p>
                     <p></p>
                 </td>
             </tr>
@@ -144,7 +153,8 @@ and used as a lower bound for that statement.</p></p>
                                                                                                                         PROFILE_PHASES
                                     </td>
                 <td class="last">
-                    <p><em><p>Enables phase profiling.</p></em></p>
+                    <p><em><p>Enables phase profiling.</p>
+</em></p>
                     <p></p>
                 </td>
             </tr>
@@ -153,7 +163,8 @@ and used as a lower bound for that statement.</p></p>
                                                                                                                         PROFILE_TIMINGS
                                     </td>
                 <td class="last">
-                    <p><em><p>Enables general timing profiling.</p></em></p>
+                    <p><em><p>Enables general timing profiling.</p>
+</em></p>
                     <p></p>
                 </td>
             </tr>
@@ -171,7 +182,8 @@ and used as a lower bound for that statement.</p></p>
                 <div class="col-md-8">
                     <a href="#method_fromString">fromString</a>(string $statement)
         
-                                            <p><p>Creates new N1qlQuery instance directly from the N1QL string.</p></p>                </div>
+                                            <p><p>Creates new N1qlQuery instance directly from the N1QL string.</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -181,7 +193,8 @@ and used as a lower bound for that statement.</p></p>
                 <div class="col-md-8">
                     <a href="#method_adhoc">adhoc</a>(bool $adhoc)
         
-                                            <p><p>Allows to specify if this query is adhoc or not.</p></p>                </div>
+                                            <p><p>Allows to specify if this query is adhoc or not.</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -191,7 +204,8 @@ and used as a lower bound for that statement.</p></p>
                 <div class="col-md-8">
                     <a href="#method_crossBucket">crossBucket</a>(bool $crossBucket)
         
-                                            <p><p>Allows to pull credentials from the Authenticator</p></p>                </div>
+                                            <p><p>Allows to pull credentials from the Authenticator</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -201,7 +215,8 @@ and used as a lower bound for that statement.</p></p>
                 <div class="col-md-8">
                     <a href="#method_positionalParams">positionalParams</a>(array $params)
         
-                                            <p><p>Specify array of positional parameters</p></p>                </div>
+                                            <p><p>Specify array of positional parameters</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -211,7 +226,8 @@ and used as a lower bound for that statement.</p></p>
                 <div class="col-md-8">
                     <a href="#method_namedParams">namedParams</a>(array $params)
         
-                                            <p><p>Specify associative array of named parameters</p></p>                </div>
+                                            <p><p>Specify associative array of named parameters</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -221,7 +237,8 @@ and used as a lower bound for that statement.</p></p>
                 <div class="col-md-8">
                     <a href="#method_consistency">consistency</a>(int $consistency)
         
-                                            <p><p>Specifies the consistency level for this query</p></p>                </div>
+                                            <p><p>Specifies the consistency level for this query</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -231,7 +248,8 @@ and used as a lower bound for that statement.</p></p>
                 <div class="col-md-8">
                     <a href="#method_profile">profile</a>(string $profileType)
         
-                                            <p><p>Controls the profiling mode used during query execution</p></p>                </div>
+                                            <p><p>Controls the profiling mode used during query execution</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -241,7 +259,8 @@ and used as a lower bound for that statement.</p></p>
                 <div class="col-md-8">
                     <a href="#method_consistentWith">consistentWith</a>(<a href="../Couchbase/MutationState.html"><abbr title="Couchbase\MutationState">MutationState</abbr></a> $state)
         
-                                            <p><p>Sets mutation state the query should be consistent with</p></p>                </div>
+                                            <p><p>Sets mutation state the query should be consistent with</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -252,7 +271,8 @@ and used as a lower bound for that statement.</p></p>
                     <a href="#method_readonly">readonly</a>(bool $readonly)
         
                                             <p><p>If set to true, it will signal the query engine on the server that only non-data modifying requests
-are allowed. Note that this rule is enforced on the server and not the SDK side.</p></p>                </div>
+are allowed. Note that this rule is enforced on the server and not the SDK side.</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -262,7 +282,8 @@ are allowed. Note that this rule is enforced on the server and not the SDK side.
                 <div class="col-md-8">
                     <a href="#method_scanCap">scanCap</a>(int $scanCap)
         
-                                            <p><p>Advanced: Maximum buffered channel size between the indexer client and the query service for index scans.</p></p>                </div>
+                                            <p><p>Advanced: Maximum buffered channel size between the indexer client and the query service for index scans.</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -272,7 +293,8 @@ are allowed. Note that this rule is enforced on the server and not the SDK side.
                 <div class="col-md-8">
                     <a href="#method_pipelineBatch">pipelineBatch</a>(int $pipelineBatch)
         
-                                            <p><p>Advanced: Controls the number of items execution operators can batch for Fetch from the KV.</p></p>                </div>
+                                            <p><p>Advanced: Controls the number of items execution operators can batch for Fetch from the KV.</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -282,7 +304,8 @@ are allowed. Note that this rule is enforced on the server and not the SDK side.
                 <div class="col-md-8">
                     <a href="#method_pipelineCap">pipelineCap</a>(int $pipelineCap)
         
-                                            <p><p>Advanced: Maximum number of items each execution operator can buffer between various operators.</p></p>                </div>
+                                            <p><p>Advanced: Maximum number of items each execution operator can buffer between various operators.</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -292,7 +315,8 @@ are allowed. Note that this rule is enforced on the server and not the SDK side.
                 <div class="col-md-8">
                     <a href="#method_maxParallelism">maxParallelism</a>(int $maxParallelism)
         
-                                            <p><p>Allows to override the default maximum parallelism for the query execution on the server side.</p></p>                </div>
+                                            <p><p>Allows to override the default maximum parallelism for the query execution on the server side.</p>
+</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -309,11 +333,13 @@ are allowed. Note that this rule is enforced on the server and not the SDK side.
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Creates new N1qlQuery instance directly from the N1QL string.</p></p>                        
+                            <p><p>Creates new N1qlQuery instance directly from the N1QL string.</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -322,7 +348,8 @@ are allowed. Note that this rule is enforced on the server and not the SDK side.
                     <tr>
                 <td>string</td>
                 <td>$statement</td>
-                <td><p>N1QL string</p></td>
+                <td><p>N1QL string</p>
+</td>
             </tr>
             </table>
 
@@ -351,13 +378,16 @@ are allowed. Note that this rule is enforced on the server and not the SDK side.
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Allows to specify if this query is adhoc or not.</p></p>                <p><p>If it is not adhoc (so performed often), the client will try to perform optimizations
+                            <p><p>Allows to specify if this query is adhoc or not.</p>
+</p>                <p><p>If it is not adhoc (so performed often), the client will try to perform optimizations
 transparently based on the server capabilities, like preparing the statement and
-then executing a query plan instead of the raw query.</p></p>        
+then executing a query plan instead of the raw query.</p>
+</p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -366,7 +396,8 @@ then executing a query plan instead of the raw query.</p></p>
                     <tr>
                 <td>bool</td>
                 <td>$adhoc</td>
-                <td><p>if query is adhoc, default is true (plain execution)</p></td>
+                <td><p>if query is adhoc, default is true (plain execution)</p>
+</td>
             </tr>
             </table>
 
@@ -395,11 +426,13 @@ then executing a query plan instead of the raw query.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Allows to pull credentials from the Authenticator</p></p>                        
+                            <p><p>Allows to pull credentials from the Authenticator</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -408,7 +441,8 @@ then executing a query plan instead of the raw query.</p></p>
                     <tr>
                 <td>bool</td>
                 <td>$crossBucket</td>
-                <td><p>if query includes joins for multiple buckets (default is false)</p></td>
+                <td><p>if query includes joins for multiple buckets (default is false)</p>
+</td>
             </tr>
             </table>
 
@@ -454,14 +488,17 @@ then executing a query plan instead of the raw query.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Specify array of positional parameters</p></p>                <p><p>Previously specified positional parameters will be replaced.
+                            <p><p>Specify array of positional parameters</p>
+</p>                <p><p>Previously specified positional parameters will be replaced.
 Note: carefully choose type of quotes for the query string, because PHP also uses <code>$</code>
 (dollar sign) for variable interpolation. If you are using double quotes, make sure
-that N1QL parameters properly escaped.</p></p>        
+that N1QL parameters properly escaped.</p>
+</p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -499,14 +536,17 @@ that N1QL parameters properly escaped.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Specify associative array of named parameters</p></p>                <p><p>The supplied array of key/value pairs will be merged with already existing named parameters.
+                            <p><p>Specify associative array of named parameters</p>
+</p>                <p><p>The supplied array of key/value pairs will be merged with already existing named parameters.
 Note: carefully choose type of quotes for the query string, because PHP also uses <code>$</code>
 (dollar sign) for variable interpolation. If you are using double quotes, make sure
-that N1QL parameters properly escaped.</p></p>        
+that N1QL parameters properly escaped.</p>
+</p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -544,11 +584,13 @@ that N1QL parameters properly escaped.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Specifies the consistency level for this query</p></p>                        
+                            <p><p>Specifies the consistency level for this query</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -557,7 +599,8 @@ that N1QL parameters properly escaped.</p></p>
                     <tr>
                 <td>int</td>
                 <td>$consistency</td>
-                <td><p>consistency level</p></td>
+                <td><p>consistency level</p>
+</td>
             </tr>
             </table>
 
@@ -616,11 +659,13 @@ that N1QL parameters properly escaped.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Controls the profiling mode used during query execution</p></p>                        
+                            <p><p>Controls the profiling mode used during query execution</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -681,11 +726,13 @@ that N1QL parameters properly escaped.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Sets mutation state the query should be consistent with</p></p>                        
+                            <p><p>Sets mutation state the query should be consistent with</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -694,7 +741,8 @@ that N1QL parameters properly escaped.</p></p>
                     <tr>
                 <td><a href="../Couchbase/MutationState.html"><abbr title="Couchbase\MutationState">MutationState</abbr></a></td>
                 <td>$state</td>
-                <td><p>the container of mutation tokens</p></td>
+                <td><p>the container of mutation tokens</p>
+</td>
             </tr>
             </table>
 
@@ -734,12 +782,14 @@ that N1QL parameters properly escaped.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>If set to true, it will signal the query engine on the server that only non-data modifying requests
-are allowed. Note that this rule is enforced on the server and not the SDK side.</p></p>                <p><p>Controls whether a query can change a resulting record set.</p>
+are allowed. Note that this rule is enforced on the server and not the SDK side.</p>
+</p>                <p><p>Controls whether a query can change a resulting record set.</p>
 <p>If readonly is true, then the following statements are not allowed:</p>
 <ul>
 <li>CREATE INDEX</li>
@@ -749,7 +799,8 @@ are allowed. Note that this rule is enforced on the server and not the SDK side.
 <li>UPDATE</li>
 <li>UPSERT</li>
 <li>DELETE</li>
-</ul></p>        
+</ul>
+</p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -758,7 +809,8 @@ are allowed. Note that this rule is enforced on the server and not the SDK side.
                     <tr>
                 <td>bool</td>
                 <td>$readonly</td>
-                <td><p>true if readonly should be forced, false is the default and will use the server side default.</p></td>
+                <td><p>true if readonly should be forced, false is the default and will use the server side default.</p>
+</td>
             </tr>
             </table>
 
@@ -787,11 +839,14 @@ are allowed. Note that this rule is enforced on the server and not the SDK side.
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Advanced: Maximum buffered channel size between the indexer client and the query service for index scans.</p></p>                <p><p>This parameter controls when to use scan backfill. Use 0 or a negative number to disable.</p></p>        
+                            <p><p>Advanced: Maximum buffered channel size between the indexer client and the query service for index scans.</p>
+</p>                <p><p>This parameter controls when to use scan backfill. Use 0 or a negative number to disable.</p>
+</p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -800,7 +855,8 @@ are allowed. Note that this rule is enforced on the server and not the SDK side.
                     <tr>
                 <td>int</td>
                 <td>$scanCap</td>
-                <td><p>the scan_cap param, use 0 or negative number to disable.</p></td>
+                <td><p>the scan_cap param, use 0 or negative number to disable.</p>
+</td>
             </tr>
             </table>
 
@@ -829,11 +885,13 @@ are allowed. Note that this rule is enforced on the server and not the SDK side.
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Advanced: Controls the number of items execution operators can batch for Fetch from the KV.</p></p>                        
+                            <p><p>Advanced: Controls the number of items execution operators can batch for Fetch from the KV.</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -842,7 +900,8 @@ are allowed. Note that this rule is enforced on the server and not the SDK side.
                     <tr>
                 <td>int</td>
                 <td>$pipelineBatch</td>
-                <td><p>the pipeline_batch param.</p></td>
+                <td><p>the pipeline_batch param.</p>
+</td>
             </tr>
             </table>
 
@@ -871,11 +930,13 @@ are allowed. Note that this rule is enforced on the server and not the SDK side.
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Advanced: Maximum number of items each execution operator can buffer between various operators.</p></p>                        
+                            <p><p>Advanced: Maximum number of items each execution operator can buffer between various operators.</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -884,7 +945,8 @@ are allowed. Note that this rule is enforced on the server and not the SDK side.
                     <tr>
                 <td>int</td>
                 <td>$pipelineCap</td>
-                <td><p>the pipeline_cap param.</p></td>
+                <td><p>the pipeline_cap param.</p>
+</td>
             </tr>
             </table>
 
@@ -913,11 +975,13 @@ are allowed. Note that this rule is enforced on the server and not the SDK side.
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Allows to override the default maximum parallelism for the query execution on the server side.</p></p>                        
+                            <p><p>Allows to override the default maximum parallelism for the query execution on the server side.</p>
+</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -926,7 +990,8 @@ are allowed. Note that this rule is enforced on the server and not the SDK side.
                     <tr>
                 <td>int</td>
                 <td>$maxParallelism</td>
-                <td><p>the maximum parallelism for this query, 0 or negative values disable it.</p></td>
+                <td><p>the maximum parallelism for this query, 0 or negative values disable it.</p>
+</td>
             </tr>
             </table>
 
