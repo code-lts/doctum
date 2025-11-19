@@ -10,7 +10,7 @@ on:
 jobs:
     test-php:
         # TODO: add OS name to the name when there is multiple OS
-        name: Test on php ${{ matrix.php-version }} (${{ matrix.composer-options }})
+        name: "tests/unit: PHP ${{ matrix.php-version }} (${{ matrix.composer-options }})"
         runs-on: ${{ matrix.os }}
         continue-on-error: ${{ matrix.experimental }}
         strategy:
@@ -50,7 +50,7 @@ jobs:
 
     test-phar:
         # TODO: add OS name to the name when there is multiple OS
-        name: Run command line tests on the phar with php ${{ matrix.php-version }} (${{ matrix.composer-options }})
+        name: "tests/phar: PHP ${{ matrix.php-version }} CLI (${{ matrix.composer-options }})"
         runs-on: ${{ matrix.os }}
         continue-on-error: ${{ matrix.experimental }}
         strategy:
@@ -59,8 +59,14 @@ jobs:
                 php-version: ["8.1", "8.2", "8.3", "8.4", "8.5"]
                 os: [ubuntu-latest]
                 experimental: [false]
-                composer-options: ['', '--prefer-lowest']
+                composer-options: ['']
                 include:
+                    # --prefer-lowest outputs have different error counts in the assertions
+                    - { php-version: '8.1', experimental: true, os: ubuntu-latest, composer-options: '--prefer-lowest' }
+                    - { php-version: '8.2', experimental: true, os: ubuntu-latest, composer-options: '--prefer-lowest' }
+                    - { php-version: '8.3', experimental: true, os: ubuntu-latest, composer-options: '--prefer-lowest' }
+                    - { php-version: '8.4', experimental: true, os: ubuntu-latest, composer-options: '--prefer-lowest' }
+                    - { php-version: '8.5', experimental: true, os: ubuntu-latest, composer-options: '--prefer-lowest' }
                     - { php-version: 'nightly', experimental: true, os: ubuntu-latest, composer-options: '--ignore-platform-reqs' }
         steps:
             - uses: actions/checkout@v5
@@ -83,7 +89,7 @@ jobs:
 
     test-resume-from-parse:
         # TODO: add OS name to the name when there is multiple OS
-        name: Run resume from parse tests with php ${{ matrix.php-version }} (${{ matrix.composer-options }})
+        name: "tests/resume: PHP ${{ matrix.php-version }} (${{ matrix.composer-options }})"
         runs-on: ${{ matrix.os }}
         continue-on-error: ${{ matrix.experimental }}
         strategy:
@@ -118,7 +124,7 @@ jobs:
 
     test-composer-package-auto-test:
         # TODO: add OS name to the name when there is multiple OS
-        name: Run auto-package tests with php ${{ matrix.php-version }} (${{ matrix.composer-options }})
+        name: "auto-package-tests: PHP ${{ matrix.php-version }} (${{ matrix.composer-options }})"
         runs-on: ${{ matrix.os }}
         continue-on-error: ${{ matrix.experimental }}
         strategy:
