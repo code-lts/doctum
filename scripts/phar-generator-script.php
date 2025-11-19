@@ -168,6 +168,7 @@ final class PharFilterIterator extends RecursiveFilterIterator
         'tests',
         'Tests',
         'test',
+        '.git',
         '.dependabot',
         '.github',
         '.circleci',
