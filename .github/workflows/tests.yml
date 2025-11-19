@@ -52,7 +52,6 @@ jobs:
         # TODO: add OS name to the name when there is multiple OS
         name: "tests/phar: PHP ${{ matrix.php-version }} CLI (${{ matrix.composer-options }})"
         runs-on: ${{ matrix.os }}
-        continue-on-error: ${{ matrix.experimental }}
         strategy:
             fail-fast: false
             matrix:
@@ -84,6 +83,7 @@ jobs:
                 wget http://ftp.debian.org/debian/pool/main/s/shunit2/shunit2_2.1.8-4_all.deb -O ~/shunit2_2.1.8-4.deb
                 sudo apt install -y ~/shunit2_2.1.8-4.deb
             - name: Run phar tests
+              continue-on-error: ${{ matrix.experimental }}
               run: |
                 COMPOSER_BIN="/bin/composer" COMPOSER_OPTIONS="${{ matrix.composer-options }}" ./tests/phar/tests.sh
 
