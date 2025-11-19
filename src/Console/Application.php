@@ -21,12 +21,17 @@ use Doctum\ErrorHandler;
 use Doctum\Doctum;
 use Symfony\Component\Console\Application as BaseApplication;
 
+use function function_exists;
+use function error_reporting;
+
 class Application extends BaseApplication
 {
 
     public function __construct()
     {
-        error_reporting(-1);
+        if (function_exists('error_reporting')) {
+            error_reporting(-1);
+        }
         ErrorHandler::register();
 
         parent::__construct('Doctum', Doctum::VERSION);

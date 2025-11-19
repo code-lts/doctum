@@ -13,6 +13,21 @@ declare(strict_types = 1);
 
 namespace Doctum;
 
+use function function_exists;
+use function error_reporting;
+use function sprintf;
+use function set_error_handler;
+
+use const E_ALL;
+use const E_ERROR;
+use const E_WARNING;
+use const E_NOTICE;
+use const E_USER_ERROR;
+use const E_USER_WARNING;
+use const E_USER_NOTICE;
+use const E_USER_DEPRECATED;
+use const E_RECOVERABLE_ERROR;
+
 final class ErrorHandler
 {
     private const ERROR_LEVELS = [
@@ -39,11 +54,18 @@ final class ErrorHandler
      */
     public function handle($level, $message, $file = 'unknown', $line = 0, $context = []): bool
     {
+        $currentLevel = E_ALL;
+
+        if (function_exists('error_reporting')) {
+            $currentLevel = error_reporting();
+        }
+
         /**
          * Check if Error Control Operator (@) was used
          * See: https://php.watch/versions/8.0/fatal-error-suppression#suppress-error-handlers
          */
-        $isSilenced = ! (error_reporting() & $level);
+        $isSilenced = ! ($currentLevel & $level);
+
 
         if (! $isSilenced) {
             throw new \ErrorException(sprintf('%s: %s in %s line %d', self::ERROR_LEVELS[$level] ?? $level, $message, $file, $line));
