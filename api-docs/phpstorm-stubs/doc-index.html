@@ -537,7 +537,13 @@ EventHttp::accept</a>() &mdash; <em>Method in class <a href="EventHttp.html">Eve
 EventHttp::addServerAlias</a>() &mdash; <em>Method in class <a href="EventHttp.html">EventHttp</a></em></dt>
                     <dd>addServerAlias.</dd><dt><a href="EventHttpRequest.html#method_addHeader">
 EventHttpRequest::addHeader</a>() &mdash; <em>Method in class <a href="EventHttpRequest.html">EventHttpRequest</a></em></dt>
-                    <dd></dd><dt><a href="FFI.html#method_arrayType">
+                    <dd></dd><dt><a href="ExcimerLog.html#method_aggregateByFunction">
+ExcimerLog::aggregateByFunction</a>() &mdash; <em>Method in class <a href="ExcimerLog.html">ExcimerLog</a></em></dt>
+                    <dd><p>Produce an array with an element for every function which appears in
+the log. The key is a human-readable unique identifier for the function,
+method or closure. The value is an associative array with the following
+elements:</p>
+</dd><dt><a href="FFI.html#method_arrayType">
 FFI::arrayType</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
                     <dd><p>Constructs a new C array type with elements of $type and
 dimensions specified by $dimensions.</p>
@@ -3496,6 +3502,18 @@ EventUtil::createSocket</a>() &mdash; <em>Method in class <a href="EventUtil.htm
                     <dd></dd><dt>$<a href="Exception.html#property_code">
 Exception#code</a> &mdash; <em>Property in class <a href="Exception.html">Exception</a></em></dt>
                     <dd><p>The error code</p>
+</dd><dt><a href="ExcimerLog.html#method_current">
+ExcimerLog::current</a>() &mdash; <em>Method in class <a href="ExcimerLog.html">ExcimerLog</a></em></dt>
+                    <dd><p>Get the current ExcimerLogEntry object. Part of the Iterator interface.</p>
+</dd><dt><a href="ExcimerLog.html#method_count">
+ExcimerLog::count</a>() &mdash; <em>Method in class <a href="ExcimerLog.html">ExcimerLog</a></em></dt>
+                    <dd><p>Get the number of log entries contained in this log. This is always less
+than or equal to the number returned by getEventCount(), which includes
+overruns.</p>
+</dd><dt><a href="ExcimerProfiler.html#method_clearFlushCallback">
+ExcimerProfiler::clearFlushCallback</a>() &mdash; <em>Method in class <a href="ExcimerProfiler.html">ExcimerProfiler</a></em></dt>
+                    <dd><p>Clear the flush callback. No callback will be called regardless of
+how many samples are collected.</p>
 </dd><dt><a href="FFI.html#method_cdef">
 FFI::cdef</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
                     <dd><p>The method creates a binding on the existing C function.</p>
@@ -7309,6 +7327,14 @@ EventListener::enable</a>() &mdash; <em>Method in class <a href="EventListener.h
                     <dd>EventUtil.</dd><dt><a href="Exception.html">Exception</a> &mdash; <em>Class in namespace <a href="[Global_Namespace].html">[Global Namespace]</a></em></dt>
                     <dd><p>Exception is the base class for
 all Exceptions.</p>
+</dd><dt><a href="ExcimerLog.html">ExcimerLog</a> &mdash; <em>Class in namespace <a href="[Global_Namespace].html">[Global Namespace]</a></em></dt>
+                    <dd><p>A collected series of stack traces and some utility methods to aggregate them.</p>
+</dd><dt><a href="ExcimerLogEntry.html">ExcimerLogEntry</a> &mdash; <em>Class in namespace <a href="[Global_Namespace].html">[Global Namespace]</a></em></dt>
+                    <dd></dd><dt><a href="ExcimerProfiler.html">ExcimerProfiler</a> &mdash; <em>Class in namespace <a href="[Global_Namespace].html">[Global Namespace]</a></em></dt>
+                    <dd><p>A sampling profiler.</p>
+</dd><dt><a href="ExcimerTimer.html">ExcimerTimer</a> &mdash; <em>Class in namespace <a href="[Global_Namespace].html">[Global Namespace]</a></em></dt>
+                    <dd><p>Generic timer class. Calls a callback after a specified time has elapsed, or
+periodically with a given interval.</p>
 </dd><dt><a href="FFI/Exception.html"><abbr title="FFI\Exception">Exception</abbr></a> &mdash; <em>Class in namespace <a href="FFI.html">FFI</a></em></dt>
                     <dd><p>General FFI exception.</p>
 </dd><dt><a href="GEOSGeometry.html#method_envelope">
@@ -8659,6 +8685,15 @@ EventListener::free</a>() &mdash; <em>Method in class <a href="EventListener.htm
                     <dd></dd><dt>$<a href="Exception.html#property_file">
 Exception#file</a> &mdash; <em>Property in class <a href="Exception.html">Exception</a></em></dt>
                     <dd><p>The filename where the error happened</p>
+</dd><dt><a href="ExcimerLog.html#method_formatCollapsed">
+ExcimerLog::formatCollapsed</a>() &mdash; <em>Method in class <a href="ExcimerLog.html">ExcimerLog</a></em></dt>
+                    <dd><p>Aggregate the stack traces and convert them to a line-based format
+understood by Brendan Gregg's FlameGraph utility. Each stack trace is
+represented as a series of function names, separated by semicolons.</p>
+</dd><dt><a href="ExcimerProfiler.html#method_flush">
+ExcimerProfiler::flush</a>() &mdash; <em>Method in class <a href="ExcimerProfiler.html">ExcimerProfiler</a></em></dt>
+                    <dd><p>Create and register a new ExcimerLog object, and return the old
+ExcimerLog object.</p>
 </dd><dt><a href="FANNConnection.html">FANNConnection</a> &mdash; <em>Class in namespace <a href="[Global_Namespace].html">[Global Namespace]</a></em></dt>
                     <dd><p>Class FANNConnection</p>
 </dd><dt>$<a href="FANNConnection.html#property_from_neuron">
@@ -10481,6 +10516,34 @@ Exception::getPrevious</a>() &mdash; <em>Method in class <a href="Exception.html
 </dd><dt><a href="Exception.html#method_getTraceAsString">
 Exception::getTraceAsString</a>() &mdash; <em>Method in class <a href="Exception.html">Exception</a></em></dt>
                     <dd><p>Gets the stack trace as a string</p>
+</dd><dt><a href="ExcimerLog.html#method_getSpeedscopeData">
+ExcimerLog::getSpeedscopeData</a>() &mdash; <em>Method in class <a href="ExcimerLog.html">ExcimerLog</a></em></dt>
+                    <dd><p>Get an array which can be JSON encoded for import into speedscope</p>
+</dd><dt><a href="ExcimerLog.html#method_getEventCount">
+ExcimerLog::getEventCount</a>() &mdash; <em>Method in class <a href="ExcimerLog.html">ExcimerLog</a></em></dt>
+                    <dd><p>Get the total number of profiling periods represented by this log.</p>
+</dd><dt><a href="ExcimerLogEntry.html#method_getTimestamp">
+ExcimerLogEntry::getTimestamp</a>() &mdash; <em>Method in class <a href="ExcimerLogEntry.html">ExcimerLogEntry</a></em></dt>
+                    <dd><p>Get the time at which the event occurred. This is the floating point
+number of seconds since the ExcimerProfiler object was constructed.</p>
+</dd><dt><a href="ExcimerLogEntry.html#method_getEventCount">
+ExcimerLogEntry::getEventCount</a>() &mdash; <em>Method in class <a href="ExcimerLogEntry.html">ExcimerLogEntry</a></em></dt>
+                    <dd><p>Get the event count represented by this log entry. This will typically
+be 1. If there were overruns, it will be 1 plus the number of overruns.</p>
+</dd><dt><a href="ExcimerLogEntry.html#method_getTrace">
+ExcimerLogEntry::getTrace</a>() &mdash; <em>Method in class <a href="ExcimerLogEntry.html">ExcimerLogEntry</a></em></dt>
+                    <dd><p>Get an array of associative arrays describing the stack trace at the time
+of the event. The first element in the array is the function which was
+executing, the second function is the caller (parent) of that function,
+and so on. Each element is an associative array with the following
+optional fields:</p>
+</dd><dt><a href="ExcimerProfiler.html#method_getLog">
+ExcimerProfiler::getLog</a>() &mdash; <em>Method in class <a href="ExcimerProfiler.html">ExcimerProfiler</a></em></dt>
+                    <dd><p>Get the current ExcimerLog object.</p>
+</dd><dt><a href="ExcimerTimer.html#method_getTime">
+ExcimerTimer::getTime</a>() &mdash; <em>Method in class <a href="ExcimerTimer.html">ExcimerTimer</a></em></dt>
+                    <dd><p>Get the time until the next expiration, in seconds. If this is zero,
+the timer is currently not running.</p>
 </dd><dt><a href="FANNConnection.html#method_getFromNeuron">
 FANNConnection::getFromNeuron</a>() &mdash; <em>Method in class <a href="FANNConnection.html">FANNConnection</a></em></dt>
                     <dd><p>Returns the postions of starting neuron.</p>
@@ -19352,6 +19415,9 @@ EmptyIterator::key</a>() &mdash; <em>Method in class <a href="EmptyIterator.html
 </dd><dt><a href="EvWatcher.html#method_keepalive">
 EvWatcher::keepalive</a>() &mdash; <em>Method in class <a href="EvWatcher.html">EvWatcher</a></em></dt>
                     <dd><p>Configures whether to keep the loop from returning.</p>
+</dd><dt><a href="ExcimerLog.html#method_key">
+ExcimerLog::key</a>() &mdash; <em>Method in class <a href="ExcimerLog.html">ExcimerLog</a></em></dt>
+                    <dd><p>Get the current integer key or null. Part of the Iterator interface.</p>
 </dd><dt><a href="FilesystemIterator.html#method_key">
 FilesystemIterator::key</a>() &mdash; <em>Method in class <a href="FilesystemIterator.html">FilesystemIterator</a></em></dt>
                     <dd><p>Retrieve the key for the current file</p>
@@ -21843,6 +21909,9 @@ EvLoop::now</a>() &mdash; <em>Method in class <a href="EvLoop.html">EvLoop</a></
 </dd><dt><a href="EvLoop.html#method_nowUpdate">
 EvLoop::nowUpdate</a>() &mdash; <em>Method in class <a href="EvLoop.html">EvLoop</a></em></dt>
                     <dd><p>Establishes the current time by querying the kernel, updating the time returned by Ev::now in the progress.</p>
+</dd><dt><a href="ExcimerLog.html#method_next">
+ExcimerLog::next</a>() &mdash; <em>Method in class <a href="ExcimerLog.html">ExcimerLog</a></em></dt>
+                    <dd><p>Advance to the next log entry. Part of the Iterator interface.</p>
 </dd><dt><a href="FFI.html#method_new">
 FFI::new</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
                     <dd><p>Method that creates an arbitrary C structure.</p>
@@ -22564,7 +22633,19 @@ DOMNode#ownerDocument</a> &mdash; <em>Property in class <a href="DOMNode.html">D
 EvPeriodic#offset</a> &mdash; <em>Property in class <a href="EvPeriodic.html">EvPeriodic</a></em></dt>
                     <dd></dd><dt>$<a href="EventBufferEvent.html#property_output">
 EventBufferEvent#output</a> &mdash; <em>Property in class <a href="EventBufferEvent.html">EventBufferEvent</a></em></dt>
-                    <dd></dd><dt><a href="GEOSGeometry.html#method_offsetCurve">
+                    <dd></dd><dt><a href="ExcimerLog.html#method_offsetExists">
+ExcimerLog::offsetExists</a>() &mdash; <em>Method in class <a href="ExcimerLog.html">ExcimerLog</a></em></dt>
+                    <dd><p>Determine whether a log entry exists at the specified array offset.</p>
+</dd><dt><a href="ExcimerLog.html#method_offsetGet">
+ExcimerLog::offsetGet</a>() &mdash; <em>Method in class <a href="ExcimerLog.html">ExcimerLog</a></em></dt>
+                    <dd><p>Get the ExcimerLogEntry object at the specified array offset.</p>
+</dd><dt><a href="ExcimerLog.html#method_offsetSet">
+ExcimerLog::offsetSet</a>() &mdash; <em>Method in class <a href="ExcimerLog.html">ExcimerLog</a></em></dt>
+                    <dd><p>This function is included for compliance with the ArrayAccess interface.</p>
+</dd><dt><a href="ExcimerLog.html#method_offsetUnset">
+ExcimerLog::offsetUnset</a>() &mdash; <em>Method in class <a href="ExcimerLog.html">ExcimerLog</a></em></dt>
+                    <dd><p>This function is included for compliance with the ArrayAccess interface.</p>
+</dd><dt><a href="GEOSGeometry.html#method_offsetCurve">
 GEOSGeometry::offsetCurve</a>() &mdash; <em>Method in class <a href="GEOSGeometry.html">GEOSGeometry</a></em></dt>
                     <dd></dd><dt><a href="GEOSGeometry.html#method_overlaps">
 GEOSGeometry::overlaps</a>() &mdash; <em>Method in class <a href="GEOSGeometry.html">GEOSGeometry</a></em></dt>
@@ -25499,7 +25580,10 @@ EventConfig::requireFeatures</a>() &mdash; <em>Method in class <a href="EventCon
 EventHttp::removeServerAlias</a>() &mdash; <em>Method in class <a href="EventHttp.html">EventHttp</a></em></dt>
                     <dd>removeServerAlias.</dd><dt><a href="EventHttpRequest.html#method_removeHeader">
 EventHttpRequest::removeHeader</a>() &mdash; <em>Method in class <a href="EventHttpRequest.html">EventHttpRequest</a></em></dt>
-                    <dd></dd><dt><a href="Fiber.html#method_resume">
+                    <dd></dd><dt><a href="ExcimerLog.html#method_rewind">
+ExcimerLog::rewind</a>() &mdash; <em>Method in class <a href="ExcimerLog.html">ExcimerLog</a></em></dt>
+                    <dd><p>Rewind back to the first log entry. Part of the Iterator interface.</p>
+</dd><dt><a href="Fiber.html#method_resume">
 Fiber::resume</a>() &mdash; <em>Method in class <a href="Fiber.html">Fiber</a></em></dt>
                     <dd><p>Resumes the fiber, returning the given value from {<a href="Fiber.html">Fiber::suspend()}.</a></p>
 </dd><dt><a href="FilesystemIterator.html#method_rewind">
@@ -28266,7 +28350,53 @@ EventSslContext::setMaxProtoVersion</a>() &mdash; <em>Method in class <a href="E
 EventUtil::setSocketOption</a>() &mdash; <em>Method in class <a href="EventUtil.html">EventUtil</a></em></dt>
                     <dd>setSocketOption.</dd><dt><a href="EventUtil.html#method_sslRandPoll">
 EventUtil::sslRandPoll</a>() &mdash; <em>Method in class <a href="EventUtil.html">EventUtil</a></em></dt>
-                    <dd>sslRandPoll.</dd><dt><a href="FANNConnection.html#method_setWeight">
+                    <dd>sslRandPoll.</dd><dt><a href="ExcimerProfiler.html#method_setPeriod">
+ExcimerProfiler::setPeriod</a>() &mdash; <em>Method in class <a href="ExcimerProfiler.html">ExcimerProfiler</a></em></dt>
+                    <dd><p>Set the period.</p>
+</dd><dt><a href="ExcimerProfiler.html#method_setEventType">
+ExcimerProfiler::setEventType</a>() &mdash; <em>Method in class <a href="ExcimerProfiler.html">ExcimerProfiler</a></em></dt>
+                    <dd><p>Set the event type. May be either EXCIMER_REAL, for real (wall-clock)
+time, or EXCIMER_CPU, for CPU time. The default is EXCIMER_REAL.</p>
+</dd><dt><a href="ExcimerProfiler.html#method_setMaxDepth">
+ExcimerProfiler::setMaxDepth</a>() &mdash; <em>Method in class <a href="ExcimerProfiler.html">ExcimerProfiler</a></em></dt>
+                    <dd><p>Set the maximum depth of stack trace collection. If this depth is
+exceeded, the traversal up the stack will be terminated, so the function
+will appear to have no caller.</p>
+</dd><dt><a href="ExcimerProfiler.html#method_setFlushCallback">
+ExcimerProfiler::setFlushCallback</a>() &mdash; <em>Method in class <a href="ExcimerProfiler.html">ExcimerProfiler</a></em></dt>
+                    <dd><p>Set a callback which will be called once the specified number of samples
+has been collected.</p>
+</dd><dt><a href="ExcimerProfiler.html#method_start">
+ExcimerProfiler::start</a>() &mdash; <em>Method in class <a href="ExcimerProfiler.html">ExcimerProfiler</a></em></dt>
+                    <dd><p>Start the profiler. If the profiler was already running, it will be
+stopped and restarted with new options.</p>
+</dd><dt><a href="ExcimerProfiler.html#method_stop">
+ExcimerProfiler::stop</a>() &mdash; <em>Method in class <a href="ExcimerProfiler.html">ExcimerProfiler</a></em></dt>
+                    <dd><p>Stop the profiler.</p>
+</dd><dt><a href="ExcimerTimer.html#method_setEventType">
+ExcimerTimer::setEventType</a>() &mdash; <em>Method in class <a href="ExcimerTimer.html">ExcimerTimer</a></em></dt>
+                    <dd><p>Set the type of time used by this object. May be either EXCIMER_REAL for
+real (wall-clock) time, or EXCIMER_CPU for CPU time. If this function is
+not called, EXCIMER_REAL will be used.</p>
+</dd><dt><a href="ExcimerTimer.html#method_setInterval">
+ExcimerTimer::setInterval</a>() &mdash; <em>Method in class <a href="ExcimerTimer.html">ExcimerTimer</a></em></dt>
+                    <dd><p>Switch to one-shot mode, and set the interval. This will take effect
+when start() is next called.</p>
+</dd><dt><a href="ExcimerTimer.html#method_setPeriod">
+ExcimerTimer::setPeriod</a>() &mdash; <em>Method in class <a href="ExcimerTimer.html">ExcimerTimer</a></em></dt>
+                    <dd><p>Switch to periodic mode, and set the period. This will take effect when
+start() is next called.</p>
+</dd><dt><a href="ExcimerTimer.html#method_setCallback">
+ExcimerTimer::setCallback</a>() &mdash; <em>Method in class <a href="ExcimerTimer.html">ExcimerTimer</a></em></dt>
+                    <dd><p>Set the callback function, to be called next time either a one-shot
+or periodic event occurs.</p>
+</dd><dt><a href="ExcimerTimer.html#method_start">
+ExcimerTimer::start</a>() &mdash; <em>Method in class <a href="ExcimerTimer.html">ExcimerTimer</a></em></dt>
+                    <dd><p>Start the timer.</p>
+</dd><dt><a href="ExcimerTimer.html#method_stop">
+ExcimerTimer::stop</a>() &mdash; <em>Method in class <a href="ExcimerTimer.html">ExcimerTimer</a></em></dt>
+                    <dd><p>Stop the timer.</p>
+</dd><dt><a href="FANNConnection.html#method_setWeight">
 FANNConnection::setWeight</a>() &mdash; <em>Method in class <a href="FANNConnection.html">FANNConnection</a></em></dt>
                     <dd><p>Sets the connections weight</p>
 </dd><dt><a href="FFI.html#method_scope">
@@ -35214,6 +35344,9 @@ Ev::verify</a>() &mdash; <em>Method in class <a href="Ev.html">Ev</a></em></dt>
 </dd><dt><a href="EvLoop.html#method_verify">
 EvLoop::verify</a>() &mdash; <em>Method in class <a href="EvLoop.html">EvLoop</a></em></dt>
                     <dd><p>Performs internal consistency checks (for debugging).</p>
+</dd><dt><a href="ExcimerLog.html#method_valid">
+ExcimerLog::valid</a>() &mdash; <em>Method in class <a href="ExcimerLog.html">ExcimerLog</a></em></dt>
+                    <dd><p>Check if the current position is valid. Part of the Iterator interface.</p>
 </dd><dt><a href="FilterIterator.html#method_valid">
 FilterIterator::valid</a>() &mdash; <em>Method in class <a href="FilterIterator.html">FilterIterator</a></em></dt>
                     <dd><p>Check whether the current element is valid</p>
