@@ -19,7 +19,7 @@ use Doctum\Reflection\ClassReflection;
 
 class MethodClassVisitorTest extends TestCase
 {
-
+    #[\PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations]
     public function testAddsMethods(): void
     {
         $class    = $this->getMockBuilder(ClassReflection::class)

@@ -27,6 +27,7 @@ class ProjectTraverserTest extends TestCase
      * @dataProvider getTraverseOrderClasses
      */
     #[\PHPUnit\Framework\Attributes\DataProvider('getTraverseOrderClasses')]
+    #[\PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations]
     public function testTraverseOrder(
         string $interfaceName,
         string $parentName,

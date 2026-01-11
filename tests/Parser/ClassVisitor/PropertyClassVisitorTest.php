@@ -21,6 +21,7 @@ use Doctum\Reflection\ClassReflection;
 class PropertyClassVisitorTest extends TestCase
 {
 
+    #[\PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations]
     public function testAddsProperties(): void
     {
         $class = $this->getMockBuilder(ClassReflection::class)
