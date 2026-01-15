@@ -126,6 +126,16 @@
                 <td><small>from&nbsp;<a href="../../DirectoryTree/ImapEngine/HasParsedMessage.html#property_parsed">
 <abbr title="DirectoryTree\ImapEngine\HasParsedMessage">HasParsedMessage</abbr></a></small></td>
             </tr>
+                    <tr>
+                <td class="type" id="property_bodyStructure">
+                                        protected                                        <a href="../../DirectoryTree/ImapEngine/BodyStructureCollection.html"><abbr title="DirectoryTree\ImapEngine\BodyStructureCollection">BodyStructureCollection</abbr></a>|null
+                                                                                
+                                    </td>
+                <td>$bodyStructure</td>
+                <td class="last"><p>The parsed body structure.</p>
+</td>
+                <td></td>
+            </tr>
             </table>
 
     
@@ -652,7 +662,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="../../DirectoryTree/ImapEngine/FolderInterface.html"><abbr title="DirectoryTree\ImapEngine\FolderInterface">FolderInterface</abbr></a> $folder, int $uid, array $flags, string $head, string $body, int|null $size = null)
+                    <a href="#method___construct">__construct</a>(<a href="../../DirectoryTree/ImapEngine/FolderInterface.html"><abbr title="DirectoryTree\ImapEngine\FolderInterface">FolderInterface</abbr></a> $folder, int $uid, array $flags, string $head, string $body, int|null $size = null, <a href="../../DirectoryTree/ImapEngine/Connection/Responses/Data/ListData.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\Data\ListData">ListData</abbr></a>|null $bodyStructureData = null)
         
                                             <p>Constructor.</p>                </div>
                 <div class="col-md-2"></div>
@@ -747,6 +757,28 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    <a href="../../DirectoryTree/ImapEngine/BodyStructureCollection.html"><abbr title="DirectoryTree\ImapEngine\BodyStructureCollection">BodyStructureCollection</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_bodyStructure">bodyStructure</a>()
+        
+                                            <p><p>Get the message's body structure.</p>
+</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasBodyStructure">hasBodyStructure</a>()
+        
+                                            <p><p>Determine if the message has body structure data.</p>
+</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
                 </div>
                 <div class="col-md-8">
@@ -775,6 +807,17 @@
                     <a href="#method_move">move</a>(string $folder, bool $expunge = false)
         
                                             <p><p>Move the message to the given folder.</p>
+</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_bodyPart">bodyPart</a>(string $partNumber, bool $peek = true)
+        
+                                            <p><p>Fetch a specific body part by part number.</p>
 </p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -1564,7 +1607,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_flags">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L64">at line 64</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L71">at line 71</a></div>
         <code>                    array
     <strong>flags</strong>()
         </code>
@@ -1598,7 +1641,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_flag">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L114">at line 114</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L148">at line 148</a></div>
         <code>                    void
     <strong>flag</strong>(BackedEnum|string $flag, string $operation, bool $expunge = false)
         </code>
@@ -2387,7 +2430,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isEmpty">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L239">at line 239</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L295">at line 295</a></div>
         <code>            protected        bool
     <strong>isEmpty</strong>()
         </code>
@@ -2421,7 +2464,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L220">at line 220</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L276">at line 276</a></div>
         <code>                    string
     <strong>__toString</strong>()
         </code>
@@ -2455,9 +2498,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L19">at line 19</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L25">at line 25</a></div>
         <code>                    
-    <strong>__construct</strong>(<a href="../../DirectoryTree/ImapEngine/FolderInterface.html"><abbr title="DirectoryTree\ImapEngine\FolderInterface">FolderInterface</abbr></a> $folder, int $uid, array $flags, string $head, string $body, int|null $size = null)
+    <strong>__construct</strong>(<a href="../../DirectoryTree/ImapEngine/FolderInterface.html"><abbr title="DirectoryTree\ImapEngine\FolderInterface">FolderInterface</abbr></a> $folder, int $uid, array $flags, string $head, string $body, int|null $size = null, <a href="../../DirectoryTree/ImapEngine/Connection/Responses/Data/ListData.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\Data\ListData">ListData</abbr></a>|null $bodyStructureData = null)
         </code>
     </h3>
     <div class="details">    
@@ -2502,6 +2545,11 @@
                 <td>$size</td>
                 <td></td>
             </tr>
+                    <tr>
+                <td><a href="../../DirectoryTree/ImapEngine/Connection/Responses/Data/ListData.html"><abbr title="DirectoryTree\ImapEngine\Connection\Responses\Data\ListData">ListData</abbr></a>|null</td>
+                <td>$bodyStructureData</td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -2514,7 +2562,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___sleep">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L31">at line 31</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L38">at line 38</a></div>
         <code>                    array
     <strong>__sleep</strong>()
         </code>
@@ -2548,7 +2596,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_folder">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L40">at line 40</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L47">at line 47</a></div>
         <code>                    <a href="../../DirectoryTree/ImapEngine/FolderInterface.html"><abbr title="DirectoryTree\ImapEngine\FolderInterface">FolderInterface</abbr></a>
     <strong>folder</strong>()
         </code>
@@ -2582,7 +2630,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_uid">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L48">at line 48</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L55">at line 55</a></div>
         <code>                    int
     <strong>uid</strong>()
         </code>
@@ -2616,7 +2664,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_size">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L56">at line 56</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L63">at line 63</a></div>
         <code>                    int|null
     <strong>size</strong>()
         </code>
@@ -2650,7 +2698,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_head">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L72">at line 72</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L79">at line 79</a></div>
         <code>                    string
     <strong>head</strong>()
         </code>
@@ -2684,7 +2732,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_hasHead">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L80">at line 80</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L87">at line 87</a></div>
         <code>                    bool
     <strong>hasHead</strong>()
         </code>
@@ -2718,7 +2766,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_body">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L88">at line 88</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L95">at line 95</a></div>
         <code>                    string
     <strong>body</strong>()
         </code>
@@ -2752,7 +2800,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_hasBody">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L96">at line 96</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L103">at line 103</a></div>
         <code>                    bool
     <strong>hasBody</strong>()
         </code>
@@ -2785,8 +2833,76 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_bodyStructure">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L111">at line 111</a></div>
+        <code>                    <a href="../../DirectoryTree/ImapEngine/BodyStructureCollection.html"><abbr title="DirectoryTree\ImapEngine\BodyStructureCollection">BodyStructureCollection</abbr></a>|null
+    <strong>bodyStructure</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the message's body structure.</p>
+</p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../DirectoryTree/ImapEngine/BodyStructureCollection.html"><abbr title="DirectoryTree\ImapEngine\BodyStructureCollection">BodyStructureCollection</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasBodyStructure">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L130">at line 130</a></div>
+        <code>                    bool
+    <strong>hasBodyStructure</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if the message has body structure data.</p>
+</p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_is">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L104">at line 104</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L138">at line 138</a></div>
         <code>                    bool
     <strong>is</strong>(<a href="../../DirectoryTree/ImapEngine/MessageInterface.html"><abbr title="DirectoryTree\ImapEngine\MessageInterface">MessageInterface</abbr></a> $message)
         </code>
@@ -2830,7 +2946,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_copy">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L135">at line 135</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L169">at line 169</a></div>
         <code>                    int|null
     <strong>copy</strong>(string $folder)
         </code>
@@ -2874,7 +2990,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_move">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L157">at line 157</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L191">at line 191</a></div>
         <code>                    int|null
     <strong>move</strong>(string $folder, bool $expunge = false)
         </code>
@@ -2931,8 +3047,57 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_bodyPart">
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L224">at line 224</a></div>
+        <code>                    string|null
+    <strong>bodyPart</strong>(string $partNumber, bool $peek = true)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Fetch a specific body part by part number.</p>
+</p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$partNumber</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$peek</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_delete">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L190">at line 190</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L246">at line 246</a></div>
         <code>                    void
     <strong>delete</strong>(bool $expunge = false)
         </code>
@@ -2976,7 +3141,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_restore">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L198">at line 198</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L254">at line 254</a></div>
         <code>                    void
     <strong>restore</strong>()
         </code>
@@ -3010,7 +3175,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L206">at line 206</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L262">at line 262</a></div>
         <code>                    array
     <strong>toArray</strong>()
         </code>
@@ -3044,7 +3209,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_jsonSerialize">
-        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L231">at line 231</a></div>
+        <div class="location"><a href="https://github.com/DirectoryTree/ImapEngine/blob/master/src/Message.php#L287">at line 287</a></div>
         <code>                    array
     <strong>jsonSerialize</strong>()
         </code>
