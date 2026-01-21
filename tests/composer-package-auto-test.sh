@@ -27,7 +27,7 @@ recreateSetup() {
                 }
             }
         ],
-        "minimum-stability": "dev",
+        "minimum-stability": "stable",
         "require": {
             "code-lts/doctum": "5.x-dev"
         }
