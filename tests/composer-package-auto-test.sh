@@ -7,7 +7,7 @@ ROOT="$(realpath "$(dirname $0)/../")"
 echo "Running in: ${ROOT}"
 
 recreateSetup() {
-    git archive HEAD --output=./doctum-repository-composer-package-auto-test.tar
+    git archive HEAD --output="${ROOT}/doctum-repository-composer-package-auto-test.tar"
     cd "${TEMP_FOLDER}"
     tar -xf "${ROOT}/doctum-repository-composer-package-auto-test.tar" --directory "${TEMP_FOLDER_REPO}"
     rm "${ROOT}/doctum-repository-composer-package-auto-test.tar"
