@@ -93,11 +93,7 @@ abstract class Command extends BaseCommand
      */
     protected $sourceRootDirectory = null;
 
-    /**
-     * @see Command
-     * @phpstan-return void
-     */
-    protected function configure()
+    protected function configure(): void
     {
         $this->getDefinition()->addArgument(new InputArgument('config', InputArgument::REQUIRED, 'The configuration file'));
         $this->getDefinition()->addOption(new InputOption('only-version', '', InputOption::VALUE_REQUIRED, 'The version to build'));
@@ -140,10 +136,7 @@ abstract class Command extends BaseCommand
         );
     }
 
-    /**
-     * @phpstan-return void
-     */
-    protected function initialize(InputInterface $input, OutputInterface $output)
+    protected function initialize(InputInterface $input, OutputInterface $output): void
     {
         $this->input = $input;
         $stdErr      = $output;

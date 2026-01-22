@@ -20,11 +20,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class ParseCommand extends Command
 {
 
-    /**
-     * @see Command
-     * @phpstan-return void
-     */
-    protected function configure()
+    protected function configure(): void
     {
         parent::configure();
 

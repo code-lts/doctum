@@ -36,10 +36,14 @@ class Application extends BaseApplication
 
         parent::__construct('Doctum', Doctum::VERSION);
 
-        $this->add(new VersionCommand());
-        $this->add(new UpdateCommand());
-        $this->add(new ParseCommand());
-        $this->add(new RenderCommand());
+        $this->addCommands(
+            [
+            new VersionCommand(),
+            new UpdateCommand(),
+            new ParseCommand(),
+            new RenderCommand(),
+            ]
+        );
     }
 
     public function getLongVersion(): string
