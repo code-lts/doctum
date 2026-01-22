@@ -78,10 +78,10 @@ class DocBlockParser
             $tagName = $tag->getName();
 
             if ($tag instanceof InvalidTag && $tag->getException() !== null) {
-                $errorMessage = 'Invalid @return tag "' . $tag->__toString() . '" (' . $tag->getException()->getMessage() . ').';
+                $errorMessage = 'Invalid ' . $tagName . ' tag "' . $tag->__toString() . '" (' . $tag->getException()->getMessage() . ').';
                 $result->addError($errorMessage);
             } elseif ($tag instanceof InvalidTag) {
-                $errorMessage = 'Invalid @return tag "' . $tag->__toString() . '".';
+                $errorMessage = 'Invalid ' . $tagName . ' tag "' . $tag->__toString() . '".';
                 $result->addError($errorMessage);
             }
 
