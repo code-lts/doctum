@@ -93,23 +93,20 @@
                 <div class="col-md-6">
                     <a href="Yaf/Action_Abstract.html"><abbr title="Yaf\Action_Abstract">Action_Abstract</abbr></a>    </div>
                 <div class="col-md-6"><p>A action can be defined in a separate file in Yaf(see \Yaf\Controller_Abstract). that is a action method can also be a <b>\Yaf\Action_Abstract</b> class.</P>
-<br/>
-<p>Since there should be a entry point which can be called by Yaf (as of PHP 5.3, there is a new magic method __invoke, but Yaf is not only works with PHP 5.3+, Yaf choose another magic method execute), you must implement the abstract method \Yaf\Action_Abstract::execute() in your custom action class.</p>
-</div>
+<p><br/></p>
+<p>Since there should be a entry point which can be called by Yaf (as of PHP 5.3, there is a new magic method __invoke, but Yaf is not only works with PHP 5.3+, Yaf choose another magic method execute), you must implement the abstract method \Yaf\Action_Abstract::execute() in your custom action class.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="Yaf/Application.html"><abbr title="Yaf\Application">Application</abbr></a>    </div>
-                <div class="col-md-6"><p>\Yaf\Application provides a bootstrapping facility for applications which provides reusable resources, common- and module-based bootstrap classes and dependency checking.</p>
-</div>
+                <div class="col-md-6"><p>\Yaf\Application provides a bootstrapping facility for applications which provides reusable resources, common- and module-based bootstrap classes and dependency checking.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="Yaf/Bootstrap_Abstract.html"><abbr title="Yaf\Bootstrap_Abstract">Bootstrap_Abstract</abbr></a>    </div>
                 <div class="col-md-6"><p>Bootstrap is a mechanism used to do some initial config before a Application run.<br/><br/></p>
 <p>User may define their own Bootstrap class by inheriting <b>\Yaf\Bootstrap_Abstract</b><br/><br/></p>
-<p>Any method declared in Bootstrap class with leading "_init", will be called by \Yaf\Application::bootstrap() one by one according to their defined order<br/><br/></p>
-</div>
+<p>Any method declared in Bootstrap class with leading "_init", will be called by \Yaf\Application::bootstrap() one by one according to their defined order<br/><br/></p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -120,56 +117,51 @@
                 <div class="col-md-6">
                     <a href="Yaf/Controller_Abstract.html"><abbr title="Yaf\Controller_Abstract">Controller_Abstract</abbr></a>    </div>
                 <div class="col-md-6"><p><b>\Yaf\Controller_Abstract</b> is the heart of Yaf's system. MVC stands for Model-View-Controller and is a design pattern targeted at separating application logic from display logic.</p>
-<br/>
+<p><br/></p>
 <p>Every custom controller shall inherit <b>\Yaf\Controller_Abstract</b>.</p>
-<br/>
+<p><br/></p>
 <p>You will find that you can not define __construct function for your custom controller, thus, <b>\Yaf\Controller_Abstract</b> provides a magic method: \Yaf\Controller_Abstract::init().</p>
-<br/>
+<p><br/></p>
 <p>If you have defined a init() method in your custom controller, it will be called as long as the controller was instantiated.</p>
-<br/>
+<p><br/></p>
 <p>Action may have arguments, when a request coming, if there are the same name variable in the request parameters(see \Yaf\Request_Abstract::getParam()) after routed, Yaf will pass them to the action method (see \Yaf\Action_Abstract::execute()).</p>
-<br/>
-<b>Note:</b>
-<p>These arguments are directly fetched without filtering, it should be carefully processed before use them.</p>
-</div>
+<p><br/>
+<b>Note:</b></p>
+<p>These arguments are directly fetched without filtering, it should be carefully processed before use them.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="Yaf/Dispatcher.html"><abbr title="Yaf\Dispatcher">Dispatcher</abbr></a>    </div>
                 <div class="col-md-6"><p><b>\Yaf\Dispatcher</b> purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.</p><br/>
-<p><b>\Yaf\Dispatcher</b> also implements the Singleton pattern, meaning only a single instance of it may be available at any given time. This allows it to also act as a registry on which the other objects in the dispatch process may draw.</p>
-</div>
+<p><b>\Yaf\Dispatcher</b> also implements the Singleton pattern, meaning only a single instance of it may be available at any given time. This allows it to also act as a registry on which the other objects in the dispatch process may draw.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="Yaf/Loader.html"><abbr title="Yaf\Loader">Loader</abbr></a>    </div>
                 <div class="col-md-6"><p><b>\Yaf\Loader</b> introduces a comprehensive autoloading solution for Yaf.</p>
-<br/>
+<p><br/></p>
 <p>The first time an instance of \Yaf\Application is retrieved, <b>\Yaf\Loader</b> will instance a singleton, and registers itself with spl_autoload. You retrieve an instance using the \Yaf\Loader::getInstance()</p>
-<br/>
+<p><br/></p>
 <p><b>\Yaf\Loader</b> attempt to load a class only one shot, if failed, depend on yaf.use_spl_autoload, if this config is On \Yaf\Loader::autoload() will return FALSE, thus give the chance to other autoload function. if it is Off (by default), \Yaf\Loader::autoload() will return TRUE, and more important is that a very useful warning will be triggered (very useful to find out why a class could not be loaded).</p>
-<br/>
-<b>Note:</b>
+<p><br/>
+<b>Note:</b></p>
 <p>Please keep yaf.use_spl_autoload Off unless there is some library have their own autoload mechanism and impossible to rewrite it.</p>
-<br/>
-<p>If you want <b>\Yaf\Loader</b> search some classes(libraries) in the local class directory(which is defined in application.ini, and by default, it is application.directory . "/library"), you should register the class prefix using the \Yaf\Loader::registerLocalNameSpace()</p>
-</div>
+<p><br/></p>
+<p>If you want <b>\Yaf\Loader</b> search some classes(libraries) in the local class directory(which is defined in application.ini, and by default, it is application.directory . "/library"), you should register the class prefix using the \Yaf\Loader::registerLocalNameSpace()</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="Yaf/Plugin_Abstract.html"><abbr title="Yaf\Plugin_Abstract">Plugin_Abstract</abbr></a>    </div>
                 <div class="col-md-6"><p>Plugins allow for easy extensibility and customization of the framework.</p>
-<br/>
+<p><br/></p>
 <p>Plugins are classes. The actual class definition will vary based on the component -- you may need to implement this interface, but the fact remains that the plugin is itself a class.</p>
-<br/>
-<p>A plugin could be loaded into Yaf by using \Yaf\Dispatcher::registerPlugin(), after registered, All the methods which the plugin implemented according to this interface, will be called at the proper time.</p>
-</div>
+<p><br/></p>
+<p>A plugin could be loaded into Yaf by using \Yaf\Dispatcher::registerPlugin(), after registered, All the methods which the plugin implemented according to this interface, will be called at the proper time.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="Yaf/Registry.html"><abbr title="Yaf\Registry">Registry</abbr></a>    </div>
-                <div class="col-md-6"><p>All methods of <b>\Yaf\Registry</b> declared as static, making it universally accessible. This provides the ability to get or set any custom data from anyway in your code as necessary.</p>
-</div>
+                <div class="col-md-6"><p>All methods of <b>\Yaf\Registry</b> declared as static, making it universally accessible. This provides the ability to get or set any custom data from anyway in your code as necessary.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -185,27 +177,25 @@
                 <div class="col-md-6">
                     <a href="Yaf/Route_Static.html"><abbr title="Yaf\Route_Static">Route_Static</abbr></a>    </div>
                 <div class="col-md-6"><p>by default, \Yaf\Router only have a <b>\Yaf\Route_Static</b> as its default route.</p>
-<br/>
+<p><br/></p>
 <p><b>\Yaf\Route_Static</b> is designed to handle 80% of normal requirements.</p>
-<br/>
-<b>Note:</b>
-<p> it is unnecessary to instance a <b>\Yaf\Route_Static</b>, also unnecessary to add it into \Yaf\Router's routes stack, since there is always be one in \Yaf\Router's routes stack, and always be called at the last time.</p>
-</div>
+<p><br/>
+<b>Note:</b></p>
+<p> it is unnecessary to instance a <b>\Yaf\Route_Static</b>, also unnecessary to add it into \Yaf\Router's routes stack, since there is always be one in \Yaf\Router's routes stack, and always be called at the last time.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="Yaf/Router.html"><abbr title="Yaf\Router">Router</abbr></a>    </div>
                 <div class="col-md-6"><p><b>\Yaf\Router</b> is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URI: see \Yaf\Request_Abstract::setBaseUri()) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request. This values of the module, controller, action and other parameters are packaged into a \Yaf\Request_Abstract object which is then processed by \Yaf\Dispatcher. Routing occurs only once: when the request is initially received and before the first controller is dispatched. \Yaf\Router is designed to allow for mod_rewrite-like functionality using pure PHP structures. It is very loosely based on Ruby on Rails routing and does not require any prior knowledge of webserver URL rewriting</p>
-<br/>
+<p><br/>
 <b>Default Route</b>
-<br/>
+<br/></p>
 <p><b>\Yaf\Router</b> comes pre-configured with a default route \Yaf\Route_Static, which will match URIs in the shape of controller/action. Additionally, a module name may be specified as the first path element, allowing URIs of the form module/controller/action. Finally, it will also match any additional parameters appended to the URI by default - controller/action/var1/value1/var2/value2.</p>
-<br/>
-<b>Note:</b>
+<p><br/>
+<b>Note:</b></p>
 <p>Module name must be defined in config, considering application.module="Index,Foo,Bar", in this case, only index, foo and bar can be considered as a module name. if doesn't config, there is only one module named "Index".</p>
-<br/>
-<p>** See examples by opening the external documentation</p>
-</div>
+<p><br/></p>
+<p>** See examples by opening the external documentation</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -219,15 +209,13 @@
                 <div class="col-md-6">
                                             <em><a href="Yaf/Route_Interface.html"><abbr title="Yaf\Route_Interface">Route_Interface</abbr></a></em>
                         </div>
-                <div class="col-md-6"><p><b>\Yaf\Route_Interface</b> used for developer defined their custom route.</p>
-</div>
+                <div class="col-md-6"><p><b>\Yaf\Route_Interface</b> used for developer defined their custom route.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
                                             <em><a href="Yaf/View_Interface.html"><abbr title="Yaf\View_Interface">View_Interface</abbr></a></em>
                         </div>
-                <div class="col-md-6"><p>Yaf provides a ability for developers to use custom view engine instead of build-in engine which is \Yaf\View\Simple. There is a example to explain how to do this, please see \Yaf\Dispatcher::setView()</p>
-</div>
+                <div class="col-md-6"><p>Yaf provides a ability for developers to use custom view engine instead of build-in engine which is \Yaf\View\Simple. There is a example to explain how to do this, please see \Yaf\Dispatcher::setView()</p></div>
             </div>
             </div>
     

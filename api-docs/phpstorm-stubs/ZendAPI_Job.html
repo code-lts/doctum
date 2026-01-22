@@ -90,9 +90,7 @@
 
             <div class="description">
             <p><p>Describing a job in a queue
-In order to add/modify a job in the queue, a Job class must be created/retrieved and than saved in a queue</p>
-</p>            <p><p>For simplicity, a job can be added directly to a queue and without creating an instant of a Queue object</p>
-</p>        </div>
+In order to add/modify a job in the queue, a Job class must be created/retrieved and than saved in a queue</p></p>            <p><p>For simplicity, a job can be added directly to a queue and without creating an instant of a Queue object</p></p>        </div>
             
         
     
@@ -105,8 +103,7 @@ In order to add/modify a job in the queue, a Job class must be created/retrieved
                                                                                 
                                     </td>
                 <td>$_id</td>
-                <td class="last"><p>Unique id of the Job in the job queue</p>
-</td>
+                <td class="last"><p>Unique id of the Job in the job queue</p></td>
                 <td></td>
             </tr>
                     <tr>
@@ -115,8 +112,7 @@ In order to add/modify a job in the queue, a Job class must be created/retrieved
                                                                                 
                                     </td>
                 <td>$_script</td>
-                <td class="last"><p>Full path of the script that this job calls when it's processed</p>
-</td>
+                <td class="last"><p>Full path of the script that this job calls when it's processed</p></td>
                 <td></td>
             </tr>
                     <tr>
@@ -125,8 +121,7 @@ In order to add/modify a job in the queue, a Job class must be created/retrieved
                                                                                 
                                     </td>
                 <td>$_host</td>
-                <td class="last"><p>The host that the job was submit from</p>
-</td>
+                <td class="last"><p>The host that the job was submit from</p></td>
                 <td></td>
             </tr>
                     <tr>
@@ -135,8 +130,7 @@ In order to add/modify a job in the queue, a Job class must be created/retrieved
                                                                                 
                                     </td>
                 <td>$_name</td>
-                <td class="last"><p>A short string describing the job</p>
-</td>
+                <td class="last"><p>A short string describing the job</p></td>
                 <td></td>
             </tr>
                     <tr>
@@ -145,8 +139,7 @@ In order to add/modify a job in the queue, a Job class must be created/retrieved
                                                                                 
                                     </td>
                 <td>$_output</td>
-                <td class="last"><p>The job output after executing</p>
-</td>
+                <td class="last"><p>The job output after executing</p></td>
                 <td></td>
             </tr>
                     <tr>
@@ -156,8 +149,7 @@ In order to add/modify a job in the queue, a Job class must be created/retrieved
                                     </td>
                 <td>$_status</td>
                 <td class="last"><p>The status of the job
-By default, the job status is waiting to being execute.</p>
-</td>
+By default, the job status is waiting to being execute.</p></td>
                 <td></td>
             </tr>
                     <tr>
@@ -168,8 +160,7 @@ By default, the job status is waiting to being execute.</p>
                 <td>$_application_id</td>
                 <td class="last"><p>The application id of the job
 If the application id is not set, this job may get an application id automatically from the queue
-(if the queue was assigned one). By default it is null (which indicates no application id is assigned)</p>
-</td>
+(if the queue was assigned one). By default it is null (which indicates no application id is assigned)</p></td>
                 <td></td>
             </tr>
                     <tr>
@@ -179,8 +170,7 @@ If the application id is not set, this job may get an application id automatical
                                     </td>
                 <td>$_priority</td>
                 <td class="last"><p>The priority of the job, options are the priority constants
-By default the priority is set to normal (JOB_QUEUE_PRIORITY_NORMAL)</p>
-</td>
+By default the priority is set to normal (JOB_QUEUE_PRIORITY_NORMAL)</p></td>
                 <td></td>
             </tr>
                     <tr>
@@ -193,8 +183,7 @@ By default the priority is set to normal (JOB_QUEUE_PRIORITY_NORMAL)</p>
 The structure is variable_name =&gt; variable_value
 i.e. if the user_variables array is array('my_var' =&gt; 8), when the script is called,
 a global variable called $my_var will have the int value of 8
-By default there are no variables that we want to add to the job's script</p>
-</td>
+By default there are no variables that we want to add to the job's script</p></td>
                 <td></td>
             </tr>
                     <tr>
@@ -204,15 +193,14 @@ By default there are no variables that we want to add to the job's script</p>
                                     </td>
                 <td>$_global_variables</td>
                 <td class="last"><p>Bit mask holding the global variables that the user want the job's script to have when it's called
-Options are prefixed with &quot;JOB_QUEUE_SAVE_&quot; and may be:
+Options are prefixed with &quot;JOB_QUEUE<em>SAVE</em>&quot; and may be:
 POST|GET|COOKIE|SESSION|RAW_POST|SERVER|FILES|ENV
 By default there are no global variables we want to add to the job's script
 i.e. In order to save the current GET and COOKIE global variables,
 this property should be JOB_QUEUE_SAVE_GET|JOB_QUEUE_SAVE_COOKIE (or the integer 6)
 In that case (of GET and COOKIE), when the job is added, the current $_GET and
 $_COOKIE variables  should be saved, and when the job's script is called,
-those global variables should be populated</p>
-</td>
+those global variables should be populated</p></td>
                 <td></td>
             </tr>
                     <tr>
@@ -224,8 +212,7 @@ those global variables should be populated</p>
                 <td class="last"><p>The job may have a dependency (another job that must be performed before this job)
 This property hold the id of the job that must be performed. if this variable is an array of integers,
 it means that there are several jobs that must be performed before this job
-By default there are no dependencies</p>
-</td>
+By default there are no dependencies</p></td>
                 <td></td>
             </tr>
                     <tr>
@@ -234,8 +221,7 @@ By default there are no dependencies</p>
                                                                                 
                                     </td>
                 <td>$_scheduled_time</td>
-                <td class="last"><p>The time that this job should be performed, this variables is the UNIX timestamp.</p>
-</td>
+                <td class="last"><p>The time that this job should be performed, this variables is the UNIX timestamp.</p></td>
                 <td></td>
             </tr>
                     <tr>
@@ -245,8 +231,7 @@ By default there are no dependencies</p>
                                     </td>
                 <td>$_interval</td>
                 <td class="last"><p>The job running frequency in seconds. The job should run every _internal seconds
-This property applys only to recurrent job.</p>
-</td>
+This property applys only to recurrent job.</p></td>
                 <td></td>
             </tr>
                     <tr>
@@ -256,8 +241,7 @@ This property applys only to recurrent job.</p>
                                     </td>
                 <td>$_end_time</td>
                 <td class="last"><p>UNIX timestamp that it's the last time this job should occurs. If _interval was set, and _end_time
-was not, then this job will run forever.</p>
-</td>
+was not, then this job will run forever.</p></td>
                 <td></td>
             </tr>
                     <tr>
@@ -267,8 +251,7 @@ was not, then this job will run forever.</p>
                                     </td>
                 <td>$_preserved</td>
                 <td class="last"><p>A bit that determine whether job can be deleted from history. When set, removeJob will not
-delete the job from history.</p>
-</td>
+delete the job from history.</p></td>
                 <td></td>
             </tr>
             </table>
@@ -284,8 +267,7 @@ delete the job from history.</p>
                 <div class="col-md-8">
                     <a href="#method_ZendAPI_Job">ZendAPI_Job</a>(string $script)
         
-                                            <p><p>Instantiate a Job object, describe all the information and properties of a job</p>
-</p>                </div>
+                                            <p><p>Instantiate a Job object, describe all the information and properties of a job</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -300,8 +282,7 @@ This function should be used for extreme simplicity of the user when adding a si
 when the user want to insert more than one job and/or manipulating other jobs (or job tasks)
 he should create and use the JobQueue object
 Actually what this function do is to create a new JobQueue, login to it (with the given parameters),
-add this job to it and logout</p>
-</p>                </div>
+add this job to it and logout</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -311,8 +292,7 @@ add this job to it and logout</p>
                 <div class="col-md-8">
                     <a href="#method_setJobPriority">setJobPriority</a>(int $priority)
         
-                                            <p><p>Set a new priority to the job</p>
-</p>                </div>
+                                            <p><p>Set a new priority to the job</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -421,8 +401,7 @@ add this job to it and logout</p>
                 <div class="col-md-8">
                     <a href="#method_getProperties">getProperties</a>()
         
-                                            <p><p>Get the job properties</p>
-</p>                </div>
+                                            <p><p>Get the job properties</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -432,8 +411,7 @@ add this job to it and logout</p>
                 <div class="col-md-8">
                     <a href="#method_getOutput">getOutput</a>()
         
-                                            <p><p>Get the job output</p>
-</p>                </div>
+                                            <p><p>Get the job output</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -589,8 +567,7 @@ add this job to it and logout</p>
                                             <p><p>Get the current status of the job
 If this job was created and not returned from a queue (using the JobQueue::GetJob() function),
 the function will return false
-The status is one of the constants with the &quot;JOB_QUEUE_STATUS_&quot; prefix.</p>
-</p>                </div>
+The status is one of the constants with the &quot;JOB_QUEUE<em>STATUS</em>&quot; prefix.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -600,8 +577,7 @@ The status is one of the constants with the &quot;JOB_QUEUE_STATUS_&quot; prefix
                 <div class="col-md-8">
                     <a href="#method_getTimeToNextRepeat">getTimeToNextRepeat</a>()
         
-                                            <p><p>Get how much seconds there are until the next time the job will run.</p>
-</p>                </div>
+                                            <p><p>Get how much seconds there are until the next time the job will run.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -612,8 +588,7 @@ The status is one of the constants with the &quot;JOB_QUEUE_STATUS_&quot; prefix
                     <a href="#method_getLastPerformedStatus">getLastPerformedStatus</a>()
         
                                             <p><p>For recurring job get the status of the last execution. For simple job,
-getLastPerformedStatus is equivalent to getJobStatus.</p>
-</p>                </div>
+getLastPerformedStatus is equivalent to getJobStatus.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -635,8 +610,7 @@ getLastPerformedStatus is equivalent to getJobStatus.</p>
             
 
         <div class="method-description">
-                            <p><p>Instantiate a Job object, describe all the information and properties of a job</p>
-</p>                        
+                            <p><p>Instantiate a Job object, describe all the information and properties of a job</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -645,8 +619,7 @@ getLastPerformedStatus is equivalent to getJobStatus.</p>
                     <tr>
                 <td>string</td>
                 <td>$script</td>
-                <td><p>relative path (relative to document root supplied in ini file) of the script this job should call when it's executing</p>
-</td>
+                <td><p>relative path (relative to document root supplied in ini file) of the script this job should call when it's executing</p></td>
             </tr>
             </table>
 
@@ -685,8 +658,7 @@ This function should be used for extreme simplicity of the user when adding a si
 when the user want to insert more than one job and/or manipulating other jobs (or job tasks)
 he should create and use the JobQueue object
 Actually what this function do is to create a new JobQueue, login to it (with the given parameters),
-add this job to it and logout</p>
-</p>                        
+add this job to it and logout</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -695,14 +667,12 @@ add this job to it and logout</p>
                     <tr>
                 <td>string</td>
                 <td>$jobqueue_url</td>
-                <td><p>Full address of the queue we want to connect to</p>
-</td>
+                <td><p>Full address of the queue we want to connect to</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$password</td>
-                <td><p>For authentication, the queue password</p>
-</td>
+                <td><p>For authentication, the queue password</p></td>
             </tr>
             </table>
 
@@ -712,8 +682,7 @@ add this job to it and logout</p>
                     <table class="table table-condensed">
         <tr>
             <td>int|false</td>
-            <td><p>The added job id or false on failure</p>
-</td>
+            <td><p>The added job id or false on failure</p></td>
         </tr>
     </table>
 
@@ -737,8 +706,7 @@ add this job to it and logout</p>
             
 
         <div class="method-description">
-                            <p><p>Set a new priority to the job</p>
-</p>                        
+                            <p><p>Set a new priority to the job</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -747,8 +715,7 @@ add this job to it and logout</p>
                     <tr>
                 <td>int</td>
                 <td>$priority</td>
-                <td><p>Priority options are constants with the &quot;JOB_QUEUE_PRIORITY_&quot; prefix</p>
-</td>
+                <td><p>Priority options are constants with the &quot;JOB_QUEUE<em>PRIORITY</em>&quot; prefix</p></td>
             </tr>
             </table>
 
@@ -1093,8 +1060,7 @@ add this job to it and logout</p>
             
 
         <div class="method-description">
-                            <p><p>Get the job properties</p>
-</p>                        
+                            <p><p>Get the job properties</p></p>                        
         </div>
         <div class="tags">
             
@@ -1103,8 +1069,7 @@ add this job to it and logout</p>
                     <table class="table table-condensed">
         <tr>
             <td>array</td>
-            <td><p>The same format of job options array as in the Job constructor</p>
-</td>
+            <td><p>The same format of job options array as in the Job constructor</p></td>
         </tr>
     </table>
 
@@ -1128,8 +1093,7 @@ add this job to it and logout</p>
             
 
         <div class="method-description">
-                            <p><p>Get the job output</p>
-</p>                        
+                            <p><p>Get the job output</p></p>                        
         </div>
         <div class="tags">
             
@@ -1138,8 +1102,7 @@ add this job to it and logout</p>
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>An HTML representing the job output</p>
-</td>
+            <td><p>An HTML representing the job output</p></td>
         </tr>
     </table>
 
@@ -1491,9 +1454,7 @@ add this job to it and logout</p>
                             <p><p>Get the current status of the job
 If this job was created and not returned from a queue (using the JobQueue::GetJob() function),
 the function will return false
-The status is one of the constants with the &quot;JOB_QUEUE_STATUS_&quot; prefix.</p>
-</p>                <p><p>E.g. job was performed and failed, job is waiting etc.</p>
-</p>        
+The status is one of the constants with the &quot;JOB_QUEUE<em>STATUS</em>&quot; prefix.</p></p>                <p><p>E.g. job was performed and failed, job is waiting etc.</p></p>        
         </div>
         <div class="tags">
             
@@ -1526,9 +1487,7 @@ The status is one of the constants with the &quot;JOB_QUEUE_STATUS_&quot; prefix
             
 
         <div class="method-description">
-                            <p><p>Get how much seconds there are until the next time the job will run.</p>
-</p>                <p><p>If the job is not recurrence or it past its end time, then return 0.</p>
-</p>        
+                            <p><p>Get how much seconds there are until the next time the job will run.</p></p>                <p><p>If the job is not recurrence or it past its end time, then return 0.</p></p>        
         </div>
         <div class="tags">
             
@@ -1562,9 +1521,7 @@ The status is one of the constants with the &quot;JOB_QUEUE_STATUS_&quot; prefix
 
         <div class="method-description">
                             <p><p>For recurring job get the status of the last execution. For simple job,
-getLastPerformedStatus is equivalent to getJobStatus.</p>
-</p>                <p><p>jobs that haven't been executed yet will return STATUS_WAITING</p>
-</p>        
+getLastPerformedStatus is equivalent to getJobStatus.</p></p>                <p><p>jobs that haven't been executed yet will return STATUS_WAITING</p></p>        
         </div>
         <div class="tags">
             
