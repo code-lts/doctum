@@ -144,6 +144,7 @@ final class PharFilterIterator extends RecursiveFilterIterator
         'splitsh.json',
         'CLAUDE.MD',
         '.mailmap',
+        'phpdoc.dist.xml',
     ];
 
     /**
