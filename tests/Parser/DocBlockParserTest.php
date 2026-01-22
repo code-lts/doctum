@@ -347,10 +347,10 @@ class DocBlockParserTest extends TestCase
                     ],
                 ],
             ],
-            'Test that @throws with a dot at the end works' => [
+            'Test that @throws variants' => [
                 '
                 /**
-                 * @throws \InvalidArgumentException.
+                 * @throws \InvalidArgumentException
                  * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException.
                  */
                 ',
@@ -364,11 +364,11 @@ class DocBlockParserTest extends TestCase
                                     '\InvalidArgumentException',
                                     '',
                                 ],
-                                [
-                                    '\Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException',
-                                    '',
-                                ],
+                                '\Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException.',
                             ],
+                        ],
+                        'errors' => [
+                            'Invalid @throws tag "\Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException.".',
                         ],
                     ],
                 ],
