@@ -396,6 +396,8 @@ class NodeVisitorTest extends AbstractTestCase
             [
                 'The "param2" parameter of the method "fun1" is missing a @param tag',
                 'The method "fun1" has "5" @param tags but only "2" where expected.',
+                'The method "fun1" has "1" invalid @param tags.',
+                'Invalid @param tag on "fun1": "foo"',
             ],
             $this->callMethod(
                 $visitor,
@@ -475,7 +477,8 @@ class NodeVisitorTest extends AbstractTestCase
             [
                 'The "param2" parameter of the method "fun1" is missing a @param tag',
                 'The method "fun1" has "6" @param tags but only "2" where expected.',
-                'The method "fun1" has "1" invalid @param tags.',
+                'The method "fun1" has "2" invalid @param tags.',
+                'Invalid @param tag on "fun1": "foo"',
                 'Invalid @param tag on "fun1": "array[\Illuminate\Notifications\Channels\Notification] $notification"',
             ],
             $this->callMethod(

@@ -639,7 +639,7 @@ class DocBlockParserTest extends TestCase
                             [
                                 [
                                     [
-                                        'array<int,string>',
+                                        'array<int, string>',
                                         false,
                                     ],
                                 ],
