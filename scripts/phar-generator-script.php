@@ -142,6 +142,8 @@ final class PharFilterIterator extends RecursiveFilterIterator
         'composer-require-checker.json',
         '.yamllint.yaml',
         'splitsh.json',
+        'CLAUDE.MD',
+        '.mailmap',
     ];
 
     /**
