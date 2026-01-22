@@ -23,7 +23,7 @@ jobs:
                 include:
                     - { php-version: 'nightly', experimental: true, os: ubuntu-latest, composer-options: '--ignore-platform-reqs' }
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Use php ${{ matrix.php-version }}
               uses: shivammathur/setup-php@v2
               with:
@@ -33,7 +33,7 @@ jobs:
               id: composer-cache
               run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
             - name: Restore cache
-              uses: actions/cache@v4
+              uses: actions/cache@v5
               with:
                 path: ${{ steps.composer-cache.outputs.dir }}
                 key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -68,13 +68,13 @@ jobs:
                     - { php-version: '8.5', experimental: true, os: ubuntu-latest, composer-options: '--prefer-lowest' }
                     - { php-version: 'nightly', experimental: true, os: ubuntu-latest, composer-options: '--ignore-platform-reqs' }
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Use php ${{ matrix.php-version }}
               uses: shivammathur/setup-php@v2
               with:
                   php-version: ${{ matrix.php-version }}
             - name: Cache module
-              uses: actions/cache@v4
+              uses: actions/cache@v5
               with:
                   path: ~/shunit2_2.1.8-4_all.deb
                   key: shunit2-cache
@@ -102,7 +102,7 @@ jobs:
                 include:
                     - { php-version: 'nightly', experimental: true, os: ubuntu-latest, composer-options: '--ignore-platform-reqs' }
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Use php ${{ matrix.php-version }}
               uses: shivammathur/setup-php@v2
               with:
@@ -111,7 +111,7 @@ jobs:
               id: composer-cache
               run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
             - name: Restore cache
-              uses: actions/cache@v4
+              uses: actions/cache@v5
               with:
                 path: ${{ steps.composer-cache.outputs.dir }}
                 key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -137,7 +137,7 @@ jobs:
                 include:
                     - { php-version: 'nightly', experimental: true, os: ubuntu-latest, composer-options: '--ignore-platform-reqs' }
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
             - name: Use php ${{ matrix.php-version }}
               uses: shivammathur/setup-php@v2
               with:
@@ -146,7 +146,7 @@ jobs:
               id: composer-cache
               run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
             - name: Restore cache
-              uses: actions/cache@v4
+              uses: actions/cache@v5
               with:
                 path: ${{ steps.composer-cache.outputs.dir }}
                 key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
