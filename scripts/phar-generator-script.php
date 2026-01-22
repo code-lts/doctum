@@ -141,6 +141,7 @@ final class PharFilterIterator extends RecursiveFilterIterator
         '.travis.php.ini',
         'composer-require-checker.json',
         '.yamllint.yaml',
+        'splitsh.json',
     ];
 
     /**
