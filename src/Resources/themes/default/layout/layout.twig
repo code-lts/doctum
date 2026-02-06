@@ -39,7 +39,7 @@
                         </a>
                         <ul class="dropdown-menu">
                         {% for version in project.versions -%}
-                            <li {{ version == project.version ? 'class="active"' : ''}}><a href="{{ path('../' ~ version|url_encode ~ '/index.html') }}" data-version="{{ version }}">{{ version.longname }}</a></li>
+                            <li {{ version == project.version ? 'class="active"' : ''}}><a href="{{ project.getBaseUrl()|replace({'%version%': version}) ~ '/index.html' }}" data-version="{{ version }}">{{ version.longname }}</a></li>
                         {% endfor -%}
                         </ul>
                     </li>
@@ -69,7 +69,7 @@
                 <select class="form-control" id="version-switcher" name="version">
                     {% for version in project.versions %}
                         <option
-                            value="{{ path('../' ~ version|url_encode ~ '/index.html') }}"
+                            value="{{ project.getBaseUrl()|replace({'%version%': version}) ~ '/index.html' }}"
                             data-version="{{ version }}" {{ version == project.version ? 'selected' : ''}}>{{ version.longname }}</option>
                     {% endfor %}
                 </select>
