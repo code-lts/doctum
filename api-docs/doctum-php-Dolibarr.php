@@ -7,7 +7,6 @@ use Doctum\Version\GitVersionCollection;
 
 $rootDir = __DIR__ . '/';
 $sourceRootDir = $rootDir . 'sources/Dolibarr';
-$sourceRootDir = '/mnt/Dev/@williamdes/@forked-repos/dolibarr';
 
 $iterator = Finder::create()
     ->files()
