@@ -13,7 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Drop PHPUnit 7 and 8
 - Support `nikic/php-parser` v5
 - Support Symfony v7
+- Support Symfony v8
 - Drop Symfony 3.4, 4.3, 5.1, 5.2, 5.3 but still support ^5.4 (LTS)
+- Support missing/disabled function `error_reporting`
+- Fix typehint resolution - stop prefixing unions with namespace
+- Fix PHP 8.5 deprecations
 
 ## [5.5.4] - 2023-12-16
 
