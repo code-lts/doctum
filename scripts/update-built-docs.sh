@@ -44,6 +44,7 @@ doDocsUpdate() {
 
     FOLDER_NAME="$1"
     SOURCE_URL="$2"
+    MODE="${3:-}"
     BUILD_DIR="./api-docs/$FOLDER_NAME"
     SOURCE_DIR="./api-docs/sources/$FOLDER_NAME"
 
@@ -64,14 +65,16 @@ doDocsUpdate() {
 
     rm -rfd "$SOURCE_DIR"
 
-    if [ ! -d "$SOURCE_DIR" ]; then
-        mkdir "$SOURCE_DIR"
+    if [ "$MODE" != "git" ]; then
+        if [ ! -d "$SOURCE_DIR" ]; then
+            mkdir "$SOURCE_DIR"
+        fi
+        # Download, extract and move
+        curl -# -L -o $FOLDER_NAME.tar.gz "$SOURCE_URL"
+        tar xzvf $FOLDER_NAME.tar.gz --strip-components=1 -C "$SOURCE_DIR" && rm $FOLDER_NAME.tar.gz
+    else
+        git clone "$SOURCE_URL" "$SOURCE_DIR"
     fi
-
-    # Download, extract and move
-    curl -# -L -o $FOLDER_NAME.tar.gz "$SOURCE_URL"
-
-    tar xzvf $FOLDER_NAME.tar.gz --strip-components=1 -C "$SOURCE_DIR" && rm $FOLDER_NAME.tar.gz
 
     du -sh "$SOURCE_DIR"
 
@@ -110,3 +113,4 @@ doDocsUpdate "mangopay2-php-sdk" "https://github.com/Mangopay/mangopay2-php-sdk/
 doDocsUpdate "tcpdf" "https://github.com/tecnickcom/TCPDF/archive/refs/heads/main.tar.gz"
 doDocsUpdate "DirectoryTree-ImapEngine" "https://github.com/DirectoryTree/ImapEngine/archive/refs/heads/master.tar.gz"
 doDocsUpdate "phpunit" "https://github.com/sebastianbergmann/phpunit/archive/refs/heads/main.tar.gz"
+doDocsUpdate "Dolibarr" "https://github.com/Dolibarr/dolibarr.git"
