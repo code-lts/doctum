@@ -31,5 +31,10 @@ jobs:
                   passphrase: ${{ secrets.GPG_PASSPHRASE }}
                   git_user_signingkey: true
                   git_commit_gpgsign: true
+            - name: Restore docs cache
+              uses: actions/cache/restore@v5
+              with:
+                path: ./api-docs/sources
+                key: cache-api-docs-sources
             - name: Build docs and push changes
               run: ./scripts/update-built-docs.sh
