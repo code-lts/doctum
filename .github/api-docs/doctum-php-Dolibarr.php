@@ -7,6 +7,7 @@ use Doctum\Version\GitVersionCollection;
 
 $rootDir = __DIR__ . '/';
 $sourceRootDir = $rootDir . 'sources/Dolibarr';
+$sourceRootDir = '/mnt/Dev/@williamdes/@forked-repos/dolibarr';
 
 $iterator = Finder::create()
     ->files()
@@ -14,13 +15,13 @@ $iterator = Finder::create()
     ->path('htdocs')
     ->in($sourceRootDir);
 
-$versions = GitVersionCollection::create(__DIR__)
+$versions = GitVersionCollection::create($sourceRootDir)
     ->addFromBranches('*.0');
 
 return new Doctum($iterator, [
     'title'                => 'Dolibarr',
-    'build_dir'            => $rootDir . '/Dolibarr',
-    'cache_dir'            => $rootDir . '/cache',
+    'build_dir'            => $rootDir . '/Dolibarr/versions/%version%',
+    'cache_dir'            => $rootDir . '/cache/%version%',
     'source_dir'           => $rootDir,
     'versions'             => $versions,
     'remote_repository'    => new GitHubRemoteRepository('dolibarr/dolibarr', $sourceRootDir),
