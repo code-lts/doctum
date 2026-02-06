@@ -84,7 +84,8 @@ var Doctum = {
                 var testRequest = new XMLHttpRequest();
                 testRequest.open('HEAD', candidateUrl, false);
                 testRequest.send();
-                if (testRequest.status < 200 || testRequest.status > 399) {
+                if (testRequest.status >= 200 && testRequest.status < 300) {
+                    // The page was found, go to it
                     window.location = candidateUrl;
                 } else {
                     // otherwise reroute to the home page of the new version
