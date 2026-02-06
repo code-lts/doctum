@@ -119,6 +119,7 @@ final class PharFilterIterator extends RecursiveFilterIterator
         'phpstan.neon',
         'phpstan.neon',
         'phpcs.xml.dist',
+        'phpcs.xml',
         'phpunit.xml.dist',
         '.scrutinizer.yml',
         '.gitattributes',
@@ -129,8 +130,10 @@ final class PharFilterIterator extends RecursiveFilterIterator
         'Readme.php',
         '.php_cs.dist',
         '.php-cs-fixer.dist.php',
+        '.php-cs-fixer.php',
         '.php_cs.cache',
         '.php_cs',
+        'ecs.php',
         'makefile',
         '.phpunit.result.cache',
         'phpstan.neon.dist',
@@ -145,6 +148,7 @@ final class PharFilterIterator extends RecursiveFilterIterator
         'CLAUDE.MD',
         '.mailmap',
         'phpdoc.dist.xml',
+        'codecov.yml',
     ];
 
     /**
@@ -177,6 +181,7 @@ final class PharFilterIterator extends RecursiveFilterIterator
         '.github',
         '.circleci',
         'examples',
+        'example',
     ];
 
     /**
