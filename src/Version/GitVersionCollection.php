@@ -145,6 +145,9 @@ class GitVersionCollection extends VersionCollection
             )
         );
 
+        // Git can quote branch names, un-quote them
+        $branches = array_map(static fn (string $branchName) => str_replace('"', '', $branchName), $branches);
+
         if (null !== $filter && $filter instanceof Closure) {
             $branches = array_filter($branches, $filter);
         }
