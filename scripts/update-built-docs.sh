@@ -113,4 +113,4 @@ doDocsUpdate "mangopay2-php-sdk" "https://github.com/Mangopay/mangopay2-php-sdk/
 doDocsUpdate "tcpdf" "https://github.com/tecnickcom/TCPDF/archive/refs/heads/main.tar.gz"
 doDocsUpdate "DirectoryTree-ImapEngine" "https://github.com/DirectoryTree/ImapEngine/archive/refs/heads/master.tar.gz"
 doDocsUpdate "phpunit" "https://github.com/sebastianbergmann/phpunit/archive/refs/heads/main.tar.gz"
-doDocsUpdate "Dolibarr" "https://github.com/Dolibarr/dolibarr.git"
+doDocsUpdate "Dolibarr" "https://github.com/Dolibarr/dolibarr.git" "git"
