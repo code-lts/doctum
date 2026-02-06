@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - yyyy-mm-dd
 
+## [5.6.0] - 2026-02-06
+
 - Drop PHP 7.4, PHP 8.0, require PHP >= `8.1`
 - Attempt to reload the current page in a newly-selected version
 - Support PHPUnit 10, 11 and 12
