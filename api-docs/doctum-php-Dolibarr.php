@@ -11,6 +11,7 @@ $sourceRootDir = $rootDir . 'sources/Dolibarr';
 $iterator = Finder::create()
     ->files()
     ->name('*.php')
+    ->exclude('htdocs/includes')
     ->path('htdocs')
     ->in($sourceRootDir);
 
