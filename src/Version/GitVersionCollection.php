@@ -167,6 +167,12 @@ class GitVersionCollection extends VersionCollection
      */
     protected function execute(array $arguments): string
     {
+        $gitFolderOrWorkdir = rtrim($this->repo, '/') . '/.git';
+
+        if (is_dir($gitFolderOrWorkdir) === false && is_file($gitFolderOrWorkdir) === false) {
+            throw new \RuntimeException(sprintf('No repository found at "%s".', $gitFolderOrWorkdir));
+        }
+
         array_unshift($arguments, $this->gitPath);
 
         $process = new Process($arguments, $this->repo);
