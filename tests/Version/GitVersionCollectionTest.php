@@ -34,27 +34,28 @@ class GitVersionCollectionTest extends AbstractTestCase
             ->getMock();
         $o->expects($this->exactly(1))
             ->method('execute')
-            ->willReturnOnConsecutiveCalls(
+            ->willReturnMap(
+                [
                 [
                     [
                         'tag',
                     ],
+                    'RC' . "\n"
+                    . 'v5.0.0' . "\n"
+                    . 'v5.0.1' . "\n"
+                    . 'v5.0.2' . "\n"
+                    . 'v5.0.3' . "\n"
+                    . 'v5.1.0' . "\n"
+                    . 'v5.2.0' . "\n"
+                    . '' . "\n"
+                    . 'ALPHA' . "\n"
+                    . 'v5.2.1' . "\n"
+                    . 'v5.3.0' . "\n"
+                    . 'v5.3.1' . "\n"
+                    . 'v5.3.2' . "\n"
+                    . 'v5.4.0',
+                ],
                 ]
-            )->willReturnOnConsecutiveCalls(
-                'RC' . "\n"
-                . 'v5.0.0' . "\n"
-                . 'v5.0.1' . "\n"
-                . 'v5.0.2' . "\n"
-                . 'v5.0.3' . "\n"
-                . 'v5.1.0' . "\n"
-                . 'v5.2.0' . "\n"
-                . '' . "\n"
-                . 'ALPHA' . "\n"
-                . 'v5.2.1' . "\n"
-                . 'v5.3.0' . "\n"
-                . 'v5.3.1' . "\n"
-                . 'v5.3.2' . "\n"
-                . 'v5.4.0'
             );
         /** @var GitVersionCollection $o */
         $o->addFromTags();
@@ -85,42 +86,43 @@ class GitVersionCollectionTest extends AbstractTestCase
             ->getMock();
         $o->expects($this->exactly(1))
             ->method('execute')
-            ->willReturnOnConsecutiveCalls(
+            ->willReturnMap(
+                [
                 [
                     [
                         'tag',
                     ],
+                    'RC' . "\n"
+                    . 'rc' . "\n"
+                    . 'v5.0.0' . "\n"
+                    . 'v5.0.1' . "\n"
+                    . 'v5.0.1-RC' . "\n"
+                    . 'rc-v5.0.1' . "\n"
+                    . 'v5.0.2' . "\n"
+                    . 'v5.0.3' . "\n"
+                    . 'v5.1.0' . "\n"
+                    . 'v5.1.0-beta' . "\n"
+                    . 'beta-v5.1.0' . "\n"
+                    . 'v5.2.0' . "\n"
+                    . '' . "\n"
+                    . 'ALPHA' . "\n"
+                    . 'alpha' . "\n"
+                    . 'v5.2.1' . "\n"
+                    . 'v5.2.1-alpha1' . "\n"
+                    . 'v5.3.0' . "\n"
+                    . 'PR' . "\n"
+                    . 'pr' . "\n"
+                    . 'v5.3.1' . "\n"
+                    . 'v5.3.1-pr2' . "\n"
+                    . 'v5.3.2' . "\n"
+                    . 'v5.3.2beta1' . "\n"
+                    . 'betav5.3.2beta1' . "\n"
+                    . 'betav5.3.2' . "\n"
+                    . 'BETA' . "\n"
+                    . 'beta' . "\n"
+                    . 'v5.4.0',
+                ],
                 ]
-            )->willReturnOnConsecutiveCalls(
-                'RC' . "\n"
-                . 'rc' . "\n"
-                . 'v5.0.0' . "\n"
-                . 'v5.0.1' . "\n"
-                . 'v5.0.1-RC' . "\n"
-                . 'rc-v5.0.1' . "\n"
-                . 'v5.0.2' . "\n"
-                . 'v5.0.3' . "\n"
-                . 'v5.1.0' . "\n"
-                . 'v5.1.0-beta' . "\n"
-                . 'beta-v5.1.0' . "\n"
-                . 'v5.2.0' . "\n"
-                . '' . "\n"
-                . 'ALPHA' . "\n"
-                . 'alpha' . "\n"
-                . 'v5.2.1' . "\n"
-                . 'v5.2.1-alpha1' . "\n"
-                . 'v5.3.0' . "\n"
-                . 'PR' . "\n"
-                . 'pr' . "\n"
-                . 'v5.3.1' . "\n"
-                . 'v5.3.1-pr2' . "\n"
-                . 'v5.3.2' . "\n"
-                . 'v5.3.2beta1' . "\n"
-                . 'betav5.3.2beta1' . "\n"
-                . 'betav5.3.2' . "\n"
-                . 'BETA' . "\n"
-                . 'beta' . "\n"
-                . 'v5.4.0'
             );
         /** @var GitVersionCollection $o */
         $o->addFromTags();
@@ -151,27 +153,28 @@ class GitVersionCollectionTest extends AbstractTestCase
             ->getMock();
         $o->expects($this->exactly(1))
             ->method('execute')
-            ->willReturnOnConsecutiveCalls(
+            ->willReturnMap(
+                [
                 [
                     [
                         'tag',
                     ],
+                    'RC' . "\n"
+                    . 'v5.3.1' . "\n"
+                    . 'v5.0.1' . "\n"
+                    . 'v5.0.3' . "\n"
+                    . 'v5.1.0' . "\n"
+                    . 'v5.3.2' . "\n"
+                    . 'v5.2.0' . "\n"
+                    . '' . "\n"
+                    . 'ALPHA' . "\n"
+                    . 'v5.2.1' . "\n"
+                    . 'v5.0.2' . "\n"
+                    . 'v5.3.0' . "\n"
+                    . 'v5.0.0' . "\n"
+                    . 'v5.4.0',
+                ],
                 ]
-            )->willReturnOnConsecutiveCalls(
-                'RC' . "\n"
-                . 'v5.3.1' . "\n"
-                . 'v5.0.1' . "\n"
-                . 'v5.0.3' . "\n"
-                . 'v5.1.0' . "\n"
-                . 'v5.3.2' . "\n"
-                . 'v5.2.0' . "\n"
-                . '' . "\n"
-                . 'ALPHA' . "\n"
-                . 'v5.2.1' . "\n"
-                . 'v5.0.2' . "\n"
-                . 'v5.3.0' . "\n"
-                . 'v5.0.0' . "\n"
-                . 'v5.4.0'
             );
         /** @var GitVersionCollection $o */
         $o->addFromTags();
@@ -206,27 +209,28 @@ class GitVersionCollectionTest extends AbstractTestCase
             ->getMock();
         $o->expects($this->exactly(1))
             ->method('execute')
-            ->willReturnOnConsecutiveCalls(
+            ->willReturnMap(
+                [
                 [
                     [
                         'tag',
                     ],
+                    'RC' . "\n"
+                    . 'v5.0.0' . "\n"
+                    . 'v5.0.1' . "\n"
+                    . 'v5.0.2' . "\n"
+                    . 'v5.0.3' . "\n"
+                    . 'v5.1.0' . "\n"
+                    . 'v5.2.0' . "\n"
+                    . '' . "\n"
+                    . 'ALPHA' . "\n"
+                    . 'v5.2.1' . "\n"
+                    . 'v5.3.0' . "\n"
+                    . 'v5.3.1' . "\n"
+                    . 'v5.3.2' . "\n"
+                    . 'v5.4.0',
+                ],
                 ]
-            )->willReturnOnConsecutiveCalls(
-                'RC' . "\n"
-                . 'v5.0.0' . "\n"
-                . 'v5.0.1' . "\n"
-                . 'v5.0.2' . "\n"
-                . 'v5.0.3' . "\n"
-                . 'v5.1.0' . "\n"
-                . 'v5.2.0' . "\n"
-                . '' . "\n"
-                . 'ALPHA' . "\n"
-                . 'v5.2.1' . "\n"
-                . 'v5.3.0' . "\n"
-                . 'v5.3.1' . "\n"
-                . 'v5.3.2' . "\n"
-                . 'v5.4.0'
             );
         /** @var GitVersionCollection $o */
         $o->setSorter(
@@ -269,27 +273,26 @@ class GitVersionCollectionTest extends AbstractTestCase
             ->getMock();
         $o->expects($this->exactly(1))
             ->method('execute')
-            ->willReturnOnConsecutiveCalls(
+            ->willReturnMap(
                 [
                     [
-                        'tag',
+                        ['tag'],
+                        'RC' . "\n"
+                        . 'v5.0.0' . "\n"
+                        . 'v5.0.1' . "\n"
+                        . 'v5.0.2' . "\n"
+                        . 'v5.0.3' . "\n"
+                        . 'v5.1.0' . "\n"
+                        . 'v5.2.0' . "\n"
+                        . '' . "\n"
+                        . 'ALPHA' . "\n"
+                        . 'v5.2.1' . "\n"
+                        . 'v5.3.0' . "\n"
+                        . 'v5.3.1' . "\n"
+                        . 'v5.3.2' . "\n"
+                        . 'v5.4.0',
                     ],
                 ]
-            )->willReturnOnConsecutiveCalls(
-                'RC' . "\n"
-                . 'v5.0.0' . "\n"
-                . 'v5.0.1' . "\n"
-                . 'v5.0.2' . "\n"
-                . 'v5.0.3' . "\n"
-                . 'v5.1.0' . "\n"
-                . 'v5.2.0' . "\n"
-                . '' . "\n"
-                . 'ALPHA' . "\n"
-                . 'v5.2.1' . "\n"
-                . 'v5.3.0' . "\n"
-                . 'v5.3.1' . "\n"
-                . 'v5.3.2' . "\n"
-                . 'v5.4.0'
             );
         /** @var GitVersionCollection $o */
         $o->addFromTags(null);
@@ -320,27 +323,28 @@ class GitVersionCollectionTest extends AbstractTestCase
             ->getMock();
         $o->expects($this->exactly(1))
             ->method('execute')
-            ->willReturnOnConsecutiveCalls(
+            ->willReturnMap(
+                [
                 [
                     [
                         'tag',
                     ],
+                    'RC' . "\n"
+                    . 'v5.0.0' . "\n"
+                    . 'v5.0.1' . "\n"
+                    . 'v5.0.2' . "\n"
+                    . 'v5.0.3' . "\n"
+                    . 'v5.1.0' . "\n"
+                    . 'v5.2.0' . "\n"
+                    . '' . "\n"
+                    . 'ALPHA' . "\n"
+                    . 'v5.2.1' . "\n"
+                    . 'v5.3.0' . "\n"
+                    . 'v5.3.1' . "\n"
+                    . 'v5.3.2' . "\n"
+                    . 'v5.4.0',
+                ],
                 ]
-            )->willReturnOnConsecutiveCalls(
-                'RC' . "\n"
-                . 'v5.0.0' . "\n"
-                . 'v5.0.1' . "\n"
-                . 'v5.0.2' . "\n"
-                . 'v5.0.3' . "\n"
-                . 'v5.1.0' . "\n"
-                . 'v5.2.0' . "\n"
-                . '' . "\n"
-                . 'ALPHA' . "\n"
-                . 'v5.2.1' . "\n"
-                . 'v5.3.0' . "\n"
-                . 'v5.3.1' . "\n"
-                . 'v5.3.2' . "\n"
-                . 'v5.4.0'
             );
         /** @var GitVersionCollection $o */
         $o->setFilter(
@@ -372,27 +376,28 @@ class GitVersionCollectionTest extends AbstractTestCase
             ->getMock();
         $o->expects($this->exactly(1))
             ->method('execute')
-            ->willReturnOnConsecutiveCalls(
+            ->willReturnMap(
+                [
                 [
                     [
                         'tag',
                     ],
+                    'RC' . "\n"
+                    . 'v5.0.0' . "\n"
+                    . 'v5.0.1' . "\n"
+                    . 'v5.0.2' . "\n"
+                    . 'v5.0.3' . "\n"
+                    . 'v5.1.0' . "\n"
+                    . 'v5.2.0' . "\n"
+                    . '' . "\n"
+                    . 'ALPHA' . "\n"
+                    . 'v5.2.1' . "\n"
+                    . 'v5.3.0' . "\n"
+                    . 'v5.3.1' . "\n"
+                    . 'v5.3.2' . "\n"
+                    . 'v5.4.0',
+                ],
                 ]
-            )->willReturnOnConsecutiveCalls(
-                'RC' . "\n"
-                . 'v5.0.0' . "\n"
-                . 'v5.0.1' . "\n"
-                . 'v5.0.2' . "\n"
-                . 'v5.0.3' . "\n"
-                . 'v5.1.0' . "\n"
-                . 'v5.2.0' . "\n"
-                . '' . "\n"
-                . 'ALPHA' . "\n"
-                . 'v5.2.1' . "\n"
-                . 'v5.3.0' . "\n"
-                . 'v5.3.1' . "\n"
-                . 'v5.3.2' . "\n"
-                . 'v5.4.0'
             );
         /** @var GitVersionCollection $o */
         $o->setFilter(
@@ -427,27 +432,28 @@ class GitVersionCollectionTest extends AbstractTestCase
             ->getMock();
         $o->expects($this->exactly(1))
             ->method('execute')
-            ->willReturnOnConsecutiveCalls(
+            ->willReturnMap(
+                [
                 [
                     [
                         'tag',
                     ],
+                    'RC' . "\n"
+                    . 'v5.0.0' . "\n"
+                    . 'v5.0.1' . "\n"
+                    . 'v5.0.2' . "\n"
+                    . 'v5.0.3' . "\n"
+                    . 'v5.1.0' . "\n"
+                    . 'v5.2.0' . "\n"
+                    . '' . "\n"
+                    . 'ALPHA' . "\n"
+                    . 'v5.2.1' . "\n"
+                    . 'v5.3.0' . "\n"
+                    . 'v5.3.1' . "\n"
+                    . 'v5.3.2' . "\n"
+                    . 'v5.4.0',
+                ],
                 ]
-            )->willReturnOnConsecutiveCalls(
-                'RC' . "\n"
-                . 'v5.0.0' . "\n"
-                . 'v5.0.1' . "\n"
-                . 'v5.0.2' . "\n"
-                . 'v5.0.3' . "\n"
-                . 'v5.1.0' . "\n"
-                . 'v5.2.0' . "\n"
-                . '' . "\n"
-                . 'ALPHA' . "\n"
-                . 'v5.2.1' . "\n"
-                . 'v5.3.0' . "\n"
-                . 'v5.3.1' . "\n"
-                . 'v5.3.2' . "\n"
-                . 'v5.4.0'
             );
         /** @var GitVersionCollection $o */
         $o->setFilter(
@@ -472,6 +478,213 @@ class GitVersionCollectionTest extends AbstractTestCase
         $a = new Version($name);
         $a->setFrozen(true);
         return $a;
+    }
+
+    public function testConstructAddVersionFromBranchesWithSorter(): void
+    {
+        $returnData  = implode(
+            "\n",
+            [
+            '10.0',
+            '11.0',
+            '12.0',
+            '13.0',
+            '14.0',
+            '15.0',
+            '16.0',
+            '17.0',
+            '18.0',
+            '19.0',
+            '2.8',
+            '2.9',
+            '20.0',
+            '21.0',
+            '22.0',
+            '23.0',
+            '3.0',
+            '3.1',
+            '3.2',
+            '3.3',
+            '3.4',
+            '3.5',
+            '3.6',
+            '3.7',
+            '3.8',
+            '3.9',
+            '4.0',
+            '5.0',
+            '6.0',
+            '7.0',
+            '8.0',
+            '9.0',
+            'HEAD',
+            'develop',
+            'gh-pages',
+            'hregis-fix_dev_mysql_workbench',
+            'phpstan-baseline',
+            'revert-36812-develop_new_force_not_clean_empty_lines',
+            'snyk-fix-3e1e5b476824b5bd60a178613c9f4541',
+            ]
+        );
+        $processCall = ['branch', '--remotes', '--no-color', '--list', '--format="%(refname:lstrip=3)"'];
+
+        $o = $this->getMockBuilder(GitVersionCollection::class)
+            ->onlyMethods(['execute'])
+            ->setConstructorArgs([''])
+            ->getMock();
+        $o->expects($this->exactly(1))
+            ->method('execute')
+            ->willReturnMap(
+                [
+                    [$processCall, $returnData],
+                ]
+            );
+        $o->setSorter(
+            static function (string $a, string $b): int {
+                $a = (float) $a;
+                $b = (float) $b;
+
+                if ($a == $b) {
+                    return 0;
+                }
+                    return ($a < $b) ? -1 : 1;
+            }
+        );
+        /** @var GitVersionCollection $o */
+        $o->addFromBranches(
+            static function (string $version): bool {
+                return str_contains($version, '.');
+            }
+        );
+        $this->assertSame(32, $o->count());
+        $versions = $o->getVersions();
+        foreach ($versions as &$version) {
+            $version = $version->__toString();
+        }
+        $this->assertSame(
+            [
+                $this->getVersion('2.8')->__toString(),
+                $this->getVersion('2.9')->__toString(),
+                $this->getVersion('3.0')->__toString(),
+                $this->getVersion('3.1')->__toString(),
+                $this->getVersion('3.2')->__toString(),
+                $this->getVersion('3.3')->__toString(),
+                $this->getVersion('3.4')->__toString(),
+                $this->getVersion('3.5')->__toString(),
+                $this->getVersion('3.6')->__toString(),
+                $this->getVersion('3.7')->__toString(),
+                $this->getVersion('3.8')->__toString(),
+                $this->getVersion('3.9')->__toString(),
+                $this->getVersion('4.0')->__toString(),
+                $this->getVersion('5.0')->__toString(),
+                $this->getVersion('6.0')->__toString(),
+                $this->getVersion('7.0')->__toString(),
+                $this->getVersion('8.0')->__toString(),
+                $this->getVersion('9.0')->__toString(),
+                $this->getVersion('10.0')->__toString(),
+                $this->getVersion('11.0')->__toString(),
+                $this->getVersion('12.0')->__toString(),
+                $this->getVersion('13.0')->__toString(),
+                $this->getVersion('14.0')->__toString(),
+                $this->getVersion('15.0')->__toString(),
+                $this->getVersion('16.0')->__toString(),
+                $this->getVersion('17.0')->__toString(),
+                $this->getVersion('18.0')->__toString(),
+                $this->getVersion('19.0')->__toString(),
+                $this->getVersion('20.0')->__toString(),
+                $this->getVersion('21.0')->__toString(),
+                $this->getVersion('22.0')->__toString(),
+                $this->getVersion('23.0')->__toString(),
+            ],
+            $versions
+        );
+    }
+
+    public function testConstructAddVersionFromBranchesWithSorterAndGitFilter(): void
+    {
+        $returnData  = implode(
+            "\n",
+            [
+            '10.0',
+            '11.0',
+            '12.0',
+            '13.0',
+            '14.0',
+            '15.0',
+            '16.0',
+            '17.0',
+            '18.0',
+            '19.0',
+            '20.0',
+            '21.0',
+            '22.0',
+            '23.0',
+            '3.0',
+            '4.0',
+            '5.0',
+            '6.0',
+            '7.0',
+            '8.0',
+            '9.0',
+            ]
+        );
+        $processCall = ['branch', '--remotes', '--no-color', '--list', '--format="%(refname:lstrip=3)"', '*.0'];
+
+        $o = $this->getMockBuilder(GitVersionCollection::class)
+            ->onlyMethods(['execute'])
+            ->setConstructorArgs([''])
+            ->getMock();
+        $o->expects($this->exactly(1))
+            ->method('execute')
+            ->willReturnMap(
+                [
+                    [$processCall, $returnData],
+                ]
+            );
+        $o->setSorter(
+            static function (string $a, string $b): int {
+                $a = (float) $a;
+                $b = (float) $b;
+
+                if ($a == $b) {
+                    return 0;
+                }
+                    return ($a < $b) ? -1 : 1;
+            }
+        );
+        /** @var GitVersionCollection $o */
+        $o->addFromBranches('*.0');
+        $this->assertSame(21, $o->count());
+        $versions = $o->getVersions();
+        foreach ($versions as &$version) {
+            $version = $version->__toString();
+        }
+        $this->assertSame(
+            [
+                $this->getVersion('3.0')->__toString(),
+                $this->getVersion('4.0')->__toString(),
+                $this->getVersion('5.0')->__toString(),
+                $this->getVersion('6.0')->__toString(),
+                $this->getVersion('7.0')->__toString(),
+                $this->getVersion('8.0')->__toString(),
+                $this->getVersion('9.0')->__toString(),
+                $this->getVersion('10.0')->__toString(),
+                $this->getVersion('11.0')->__toString(),
+                $this->getVersion('12.0')->__toString(),
+                $this->getVersion('13.0')->__toString(),
+                $this->getVersion('14.0')->__toString(),
+                $this->getVersion('15.0')->__toString(),
+                $this->getVersion('16.0')->__toString(),
+                $this->getVersion('17.0')->__toString(),
+                $this->getVersion('18.0')->__toString(),
+                $this->getVersion('19.0')->__toString(),
+                $this->getVersion('20.0')->__toString(),
+                $this->getVersion('21.0')->__toString(),
+                $this->getVersion('22.0')->__toString(),
+                $this->getVersion('23.0')->__toString(),
+            ],
+            $versions
+        );
     }
 
 }

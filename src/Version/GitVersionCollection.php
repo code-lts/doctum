@@ -15,6 +15,7 @@ namespace Doctum\Version;
 
 use Symfony\Component\Finder\Glob;
 use Symfony\Component\Process\Process;
+use Closure;
 
 class GitVersionCollection extends VersionCollection
 {
@@ -116,6 +117,44 @@ class GitVersionCollection extends VersionCollection
 
         foreach ($versions as $version) {
             $version = new Version($version);
+            $version->setFrozen(true);
+            $this->add($version);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Closure|null|string $filter An array_filter callback that will be used for filtering branches or a filter to send to git tag
+     */
+    public function addFromBranches(Closure|string|null $filter = null): self
+    {
+        // Example: refs/remotes/origin/10.0
+        // Will become: 10.0 with lstrip=3
+        $command = ['branch', '--remotes', '--no-color', '--list', '--format="%(refname:lstrip=3)"'];
+        if (is_string($filter)) {
+            // Add the filter to the command
+            $command[] = $filter;
+        }
+        $branches = array_filter(
+            explode(
+                "\n",
+                $this->execute(
+                    $command
+                )
+            )
+        );
+
+        if (null !== $filter && $filter instanceof Closure) {
+            $branches = array_filter($branches, $filter);
+        }
+        usort($branches, $this->sorter);
+
+        foreach ($branches as $branchName) {
+            if ($branchName === 'HEAD') {
+                continue;
+            }
+            $version = new Version($branchName);
             $version->setFrozen(true);
             $this->add($version);
         }

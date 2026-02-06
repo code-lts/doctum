@@ -51,14 +51,12 @@ class PropertyClassVisitorTest extends TestCase
 
         $class->expects($this->exactly(3))
             ->method('getTags')
-            ->willReturnOnConsecutiveCalls(
-                ['property'],
-                ['property-read'],
-                ['property-write']
-            )->willReturnOnConsecutiveCalls(
-                $property,
-                $property,
-                $property
+            ->willReturnMap(
+                [
+                ['property', $property],
+                ['property-read', $property],
+                ['property-write', $property],
+                ]
             );
 
         /** @var ParserContext $context */
