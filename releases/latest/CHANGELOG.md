@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - yyyy-mm-dd
+
+## [5.6.0] - 2026-02-06
+
+- Drop PHP 7.4, PHP 8.0, require PHP >= `8.1`
+- Attempt to reload the current page in a newly-selected version
+- Support PHPUnit 10, 11 and 12
+- Drop PHPUnit 7 and 8
+- Support `nikic/php-parser` v5
+- Support Symfony v7
+- Support Symfony v8
+- Drop Symfony 3.4, 4.3, 5.1, 5.2, 5.3 but still support ^5.4 (LTS)
+- Support missing/disabled function `error_reporting`
+- Fix typehint resolution - stop prefixing unions with namespace
+- Fix PHP 8.5 deprecations
+
 ## [5.5.4] - 2023-12-16
 
 - Fix PHP 8.2 dynamic properties for configurations with the `language` key
@@ -13,6 +29,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix crash on `IntersectionType` (intersection types)
 
+- Support `@category` tags on classes and methods
+
 ## [5.5.2] - 2023-03-12
 
 - Fixed a JS null pointer error on Doctum.cleanSearchQuery
@@ -20,7 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [5.5.1] - 2022-02-17
 
-- Allow new/more versions of symfony (^5|^6)
+- Allow new/more versions of Symfony (^5|^6)
 - Upgrade `phpdocumentor/reflection-docblock` to `~5.3`
 
 ## [5.5.0] - 2022-01-09
