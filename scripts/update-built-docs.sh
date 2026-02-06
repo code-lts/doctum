@@ -63,9 +63,8 @@ doDocsUpdate() {
         mkdir "$BUILD_DIR"
     fi
 
-    rm -rfd "$SOURCE_DIR"
-
     if [ "$MODE" != "git" ]; then
+        rm -rfd "$SOURCE_DIR"
         if [ ! -d "$SOURCE_DIR" ]; then
             mkdir "$SOURCE_DIR"
         fi
@@ -73,7 +72,15 @@ doDocsUpdate() {
         curl -# -L -o $FOLDER_NAME.tar.gz "$SOURCE_URL"
         tar xzvf $FOLDER_NAME.tar.gz --strip-components=1 -C "$SOURCE_DIR" && rm $FOLDER_NAME.tar.gz
     else
-        git clone "$SOURCE_URL" "$SOURCE_DIR"
+        if [ ! -d "$SOURCE_DIR" ]; then
+            git clone "$SOURCE_URL" "$SOURCE_DIR"
+        else
+            cd "$SOURCE_DIR"
+            # Update the repo
+            git fetch --all -p -P
+            git pull --ff
+            cd - > /dev/null
+        fi
     fi
 
     du -sh "$SOURCE_DIR"
