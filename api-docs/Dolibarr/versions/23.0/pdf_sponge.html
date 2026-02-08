@@ -1265,7 +1265,7 @@ ModelePDFFactures</a></small></div>
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method__tableau">_tableau</a>($pdf, float|int $tab_top, $tab_height, $nexY, $outputlangs, $hidetop = 0, $hidebottom = 0, $currency = &#039;&#039;, $outputlangsbis = null)
+                    <a href="#method__tableau">_tableau</a>($pdf, float|int $tab_top, $tab_height, $nexY, $outputlangs, $hidetop = 0, $hidebottom = 0, $object = &#039;&#039;, $outputlangsbis = null)
         
                                             <p><p>Show table for lines</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -2880,7 +2880,7 @@ CommonDocGenerator</a> <a href="https://github.com/dolibarr/dolibarr/blob/23.0/h
             </div>
                     <div class="method-item">
                     <h3 id="method_defineColumnField">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/core/modules/facture/doc/pdf_sponge.modules.php#L2872">at line 2872</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/core/modules/facture/doc/pdf_sponge.modules.php#L2886">at line 2886</a></div>
         <code>                    
     <strong>defineColumnField</strong>($object, <a href="Translate.html">Translate</a> $outputlangs, $hidedetails = 0, $hidedesc = 0, $hideref = 0)
         </code>
@@ -3331,7 +3331,7 @@ ModelePDFFactures</a> <a href="https://github.com/dolibarr/dolibarr/blob/23.0/ht
                     <h3 id="method__tableau">
         <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/core/modules/facture/doc/pdf_sponge.modules.php#L2376">at line 2376</a></div>
         <code>            protected        
-    <strong>_tableau</strong>($pdf, float|int $tab_top, $tab_height, $nexY, $outputlangs, $hidetop = 0, $hidebottom = 0, $currency = &#039;&#039;, $outputlangsbis = null)
+    <strong>_tableau</strong>($pdf, float|int $tab_top, $tab_height, $nexY, $outputlangs, $hidetop = 0, $hidebottom = 0, $object = &#039;&#039;, $outputlangsbis = null)
         </code>
     </h3>
     <div class="details">    
@@ -3340,7 +3340,7 @@ ModelePDFFactures</a> <a href="https://github.com/dolibarr/dolibarr/blob/23.0/ht
             
 
         <div class="method-description">
-                            <p><p>Show table for lines</p></p>                <p><p>@param     TCPDF       $pdf            Object PDF</p></p>        
+                            <p><p>Show table for lines</p></p>                <p><p>@param     TCPDF           $pdf            Object PDF</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -3355,13 +3355,13 @@ ModelePDFFactures</a> <a href="https://github.com/dolibarr/dolibarr/blob/23.0/ht
                 <td>float|int</td>
                 <td>$tab_top</td>
                 <td><p>Top position of table
-@param      float|int   $tab_height     Height of table (rectangle)
-@param      int         $nexY           Y (not used)
-@param      Translate   $outputlangs    Langs object
-@param      int&lt;-1,1&gt;   $hidetop        1=Hide top bar of array and title, 0=Hide nothing, -1=Hide only title
-@param      int&lt;0,1&gt;    $hidebottom     Hide bottom bar of array
-@param      string      $currency       Currency code
-@param      ?Translate  $outputlangsbis Langs object bis
+@param      float|int       $tab_height     Height of table (rectangle)
+@param      int             $nexY           Y (not used)
+@param      Translate       $outputlangs    Langs object
+@param      int&lt;-1,1&gt;       $hidetop        1=Hide top bar of array and title, 0=Hide nothing, -1=Hide only title
+@param      int&lt;0,1&gt;        $hidebottom     Hide bottom bar of array
+@param      string|Facture  $object         Invoice object (or currency code - deprecated use)
+@param      ?Translate      $outputlangsbis Langs object bis
 @return void</p></td>
             </tr>
                     <tr>
@@ -3391,7 +3391,7 @@ ModelePDFFactures</a> <a href="https://github.com/dolibarr/dolibarr/blob/23.0/ht
             </tr>
                     <tr>
                 <td></td>
-                <td>$currency</td>
+                <td>$object</td>
                 <td></td>
             </tr>
                     <tr>
@@ -3411,7 +3411,7 @@ ModelePDFFactures</a> <a href="https://github.com/dolibarr/dolibarr/blob/23.0/ht
             </div>
                     <div class="method-item">
                     <h3 id="method__pagehead">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/core/modules/facture/doc/pdf_sponge.modules.php#L2440">at line 2440</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/core/modules/facture/doc/pdf_sponge.modules.php#L2454">at line 2454</a></div>
         <code>            protected        
     <strong>_pagehead</strong>($pdf, <a href="Facture.html">Facture</a> $object, $showaddress, $outputlangs, $outputlangsbis = null)
         </code>
@@ -3469,7 +3469,7 @@ ModelePDFFactures</a> <a href="https://github.com/dolibarr/dolibarr/blob/23.0/ht
             </div>
                     <div class="method-item">
                     <h3 id="method__pagefoot">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/core/modules/facture/doc/pdf_sponge.modules.php#L2856">at line 2856</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/core/modules/facture/doc/pdf_sponge.modules.php#L2870">at line 2870</a></div>
         <code>            protected        
     <strong>_pagefoot</strong>($pdf, <a href="Facture.html">Facture</a> $object, $outputlangs, $hidefreetext = 0, $heightforqrinvoice = 0)
         </code>
