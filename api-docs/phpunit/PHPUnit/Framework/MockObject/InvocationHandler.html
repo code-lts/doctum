@@ -85,7 +85,7 @@
     </div>
 
     
-    <p>    abstract     class
+    <p>final         class
     <strong>InvocationHandler</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php">View source</a>)
 </p>
 
@@ -104,20 +104,6 @@
             
         
     
-            <h2>Properties</h2>
-
-            <table class="table table-condensed">
-                    <tr>
-                <td class="type" id="property_configurableMethods">
-                                        protected                                        <abbr title="PHPUnit\Framework\MockObject\list&lt;\PHPUnit\Framework\MockObject\ConfigurableMethod&gt;">ConfigurableMethod&gt;</abbr>
-                                                                                
-                                    </td>
-                <td>$configurableMethods</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-            </table>
-
     
             <h2>Methods</h2>
 
@@ -127,7 +113,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(array $configurableMethods, bool $returnValueGeneration)
+                    <a href="#method___construct">__construct</a>(array $configurableMethods, bool $returnValueGeneration, bool $isMockObject = false)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -138,7 +124,29 @@
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_hasMatchers">hasMatchers</a>()
+                    <a href="#method_isMockObject">isMockObject</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasInvocationCountRule">hasInvocationCountRule</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasParametersRule">hasParametersRule</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -167,10 +175,10 @@ looked up using lookupMatcher() to figure out if it has been invoked.</p></p>   
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../PHPUnit/Framework/MockObject/InvocationStubber.html"><abbr title="PHPUnit\Framework\MockObject\InvocationStubber">InvocationStubber</abbr></a>
+                    <a href="../../../PHPUnit/Framework/MockObject/InvocationMocker.html"><abbr title="PHPUnit\Framework\MockObject\InvocationMocker">InvocationMocker</abbr></a>|<a href="../../../PHPUnit/Framework/MockObject/InvocationStubber.html"><abbr title="PHPUnit\Framework\MockObject\InvocationStubber">InvocationStubber</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_configureStub">configureStub</a>()
+                    <a href="#method_expects">expects</a>(<a href="../../../PHPUnit/Framework/MockObject/Rule/InvocationOrder.html"><abbr title="PHPUnit\Framework\MockObject\Rule\InvocationOrder">InvocationOrder</abbr></a> $rule)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -200,54 +208,21 @@ looked up using lookupMatcher() to figure out if it has been invoked.</p></p>   
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_seal">seal</a>(bool $isMockObject)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
                 </div>
                 <div class="col-md-8">
                     <a href="#method_isSealed">isSealed</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    void
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_seal">seal</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    void
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_addMatcher">addMatcher</a>(<a href="../../../PHPUnit/Framework/MockObject/Matcher.html"><abbr title="PHPUnit\Framework\MockObject\Matcher">Matcher</abbr></a> $matcher)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    void
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_markSealed">markSealed</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_matchers">matchers</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -261,9 +236,9 @@ looked up using lookupMatcher() to figure out if it has been invoked.</p></p>   
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L45">at line 45</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L51">at line 51</a></div>
         <code>                    
-    <strong>__construct</strong>(array $configurableMethods, bool $returnValueGeneration)
+    <strong>__construct</strong>(array $configurableMethods, bool $returnValueGeneration, bool $isMockObject = false)
         </code>
     </h3>
     <div class="details">    
@@ -289,6 +264,11 @@ looked up using lookupMatcher() to figure out if it has been invoked.</p></p>   
                 <td>$returnValueGeneration</td>
                 <td></td>
             </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$isMockObject</td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -300,10 +280,78 @@ looked up using lookupMatcher() to figure out if it has been invoked.</p></p>   
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_hasMatchers">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L51">at line 51</a></div>
+                    <h3 id="method_isMockObject">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L58">at line 58</a></div>
         <code>                    bool
-    <strong>hasMatchers</strong>()
+    <strong>isMockObject</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasInvocationCountRule">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L63">at line 63</a></div>
+        <code>                    bool
+    <strong>hasInvocationCountRule</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasParametersRule">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L71">at line 71</a></div>
+        <code>                    bool
+    <strong>hasParametersRule</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -335,7 +383,7 @@ looked up using lookupMatcher() to figure out if it has been invoked.</p></p>   
             </div>
                     <div class="method-item">
                     <h3 id="method_lookupMatcher">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L64">at line 64</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L84">at line 84</a></div>
         <code>                    <a href="../../../PHPUnit/Framework/MockObject/Matcher.html"><abbr title="PHPUnit\Framework\MockObject\Matcher">Matcher</abbr></a>|null
     <strong>lookupMatcher</strong>(string $id)
         </code>
@@ -378,7 +426,7 @@ looked up using lookupMatcher() to figure out if it has been invoked.</p></p>   
             </div>
                     <div class="method-item">
                     <h3 id="method_registerMatcher">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L77">at line 77</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L97">at line 97</a></div>
         <code>                    void
     <strong>registerMatcher</strong>(string $id, <a href="../../../PHPUnit/Framework/MockObject/Matcher.html"><abbr title="PHPUnit\Framework\MockObject\Matcher">Matcher</abbr></a> $matcher)
         </code>
@@ -435,10 +483,10 @@ looked up using lookupMatcher() to figure out if it has been invoked.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_configureStub">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L89">at line 89</a></div>
-        <code>                    <a href="../../../PHPUnit/Framework/MockObject/InvocationStubber.html"><abbr title="PHPUnit\Framework\MockObject\InvocationStubber">InvocationStubber</abbr></a>
-    <strong>configureStub</strong>()
+                    <h3 id="method_expects">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L109">at line 109</a></div>
+        <code>                    <a href="../../../PHPUnit/Framework/MockObject/InvocationMocker.html"><abbr title="PHPUnit\Framework\MockObject\InvocationMocker">InvocationMocker</abbr></a>|<a href="../../../PHPUnit/Framework/MockObject/InvocationStubber.html"><abbr title="PHPUnit\Framework\MockObject\InvocationStubber">InvocationStubber</abbr></a>
+    <strong>expects</strong>(<a href="../../../PHPUnit/Framework/MockObject/Rule/InvocationOrder.html"><abbr title="PHPUnit\Framework\MockObject\Rule\InvocationOrder">InvocationOrder</abbr></a> $rule)
         </code>
     </h3>
     <div class="details">    
@@ -451,12 +499,22 @@ looked up using lookupMatcher() to figure out if it has been invoked.</p></p>
                     
         </div>
         <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Framework/MockObject/Rule/InvocationOrder.html"><abbr title="PHPUnit\Framework\MockObject\Rule\InvocationOrder">InvocationOrder</abbr></a></td>
+                <td>$rule</td>
+                <td></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../PHPUnit/Framework/MockObject/InvocationStubber.html"><abbr title="PHPUnit\Framework\MockObject\InvocationStubber">InvocationStubber</abbr></a></td>
+            <td><a href="../../../PHPUnit/Framework/MockObject/InvocationMocker.html"><abbr title="PHPUnit\Framework\MockObject\InvocationMocker">InvocationMocker</abbr></a>|<a href="../../../PHPUnit/Framework/MockObject/InvocationStubber.html"><abbr title="PHPUnit\Framework\MockObject\InvocationStubber">InvocationStubber</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -479,7 +537,7 @@ looked up using lookupMatcher() to figure out if it has been invoked.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_invoke">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L110">at line 110</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L137">at line 137</a></div>
         <code>                    mixed
     <strong>invoke</strong>(<a href="../../../PHPUnit/Framework/MockObject/Invocation.html"><abbr title="PHPUnit\Framework\MockObject\Invocation">Invocation</abbr></a> $invocation)
         </code>
@@ -536,7 +594,7 @@ looked up using lookupMatcher() to figure out if it has been invoked.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_verify">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L153">at line 153</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L180">at line 180</a></div>
         <code>                    void
     <strong>verify</strong>()
         </code>
@@ -578,78 +636,10 @@ looked up using lookupMatcher() to figure out if it has been invoked.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_isSealed">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L160">at line 160</a></div>
-        <code>                    bool
-    <strong>isSealed</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_seal">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L165">at line 165</a></div>
-        <code>    abstract                void
-    <strong>seal</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>void</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_addMatcher">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L167">at line 167</a></div>
-        <code>            protected        void
-    <strong>addMatcher</strong>(<a href="../../../PHPUnit/Framework/MockObject/Matcher.html"><abbr title="PHPUnit\Framework\MockObject\Matcher">Matcher</abbr></a> $matcher)
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L187">at line 187</a></div>
+        <code>                    void
+    <strong>seal</strong>(bool $isMockObject)
         </code>
     </h3>
     <div class="details">    
@@ -666,8 +656,8 @@ looked up using lookupMatcher() to figure out if it has been invoked.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../PHPUnit/Framework/MockObject/Matcher.html"><abbr title="PHPUnit\Framework\MockObject\Matcher">Matcher</abbr></a></td>
-                <td>$matcher</td>
+                <td>bool</td>
+                <td>$isMockObject</td>
                 <td></td>
             </tr>
             </table>
@@ -690,10 +680,10 @@ looked up using lookupMatcher() to figure out if it has been invoked.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_markSealed">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L172">at line 172</a></div>
-        <code>            protected        void
-    <strong>markSealed</strong>()
+                    <h3 id="method_isSealed">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L212">at line 212</a></div>
+        <code>                    bool
+    <strong>isSealed</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -711,41 +701,7 @@ looked up using lookupMatcher() to figure out if it has been invoked.</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>void</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_matchers">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/MockObject/Runtime/InvocationHandler.php#L180">at line 180</a></div>
-        <code>            protected        array
-    <strong>matchers</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
+            <td>bool</td>
             <td></td>
         </tr>
     </table>
