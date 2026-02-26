@@ -174,7 +174,7 @@
 
     
     <p>        class
-    <strong>DoliDb</strong>        (<a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php">View source</a>)
+    <strong>DoliDb</strong>        (<a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php">View source</a>)
 </p>
 
         
@@ -184,7 +184,7 @@
 
             <div class="description">
             <p><p>\class      DoliDb
-\brief      Class to manage Dolibarr database access for a Mysql database</p></p>                    </div>
+\brief      Class to drive a Postgresql database for Dolibarr</p></p>                    </div>
             
         
     
@@ -224,15 +224,6 @@
                                                                                 
                                     </td>
                 <td>$forcecharset</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_forcecollate">
-                                                                                
-                                                                                
-                                    </td>
-                <td>$forcecollate</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -318,20 +309,20 @@
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_lasterror">
+                <td class="type" id="property_unescapeslashquot">
                                                                                 
                                                                                 
                                     </td>
-                <td>$lasterror</td>
+                <td>$unescapeslashquot</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_lasterrno">
+                <td class="type" id="property_standard_conforming_strings">
                                                                                 
                                                                                 
                                     </td>
-                <td>$lasterrno</td>
+                <td>$standard_conforming_strings</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -353,6 +344,15 @@
                 <td class="last"></td>
                 <td></td>
             </tr>
+                    <tr>
+                <td class="type" id="property_lasterror">
+                                                                                
+                                                                                
+                                    </td>
+                <td>$lasterror</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
             </table>
 
     
@@ -364,9 +364,9 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_DoliDb">DoliDb</a>($type = &#039;mysqli&#039;, $host, $user, $pass, $name = &#039;&#039;, $port = 0)
+                    <a href="#method_DoliDb">DoliDb</a>($type = &#039;pgsql&#039;, $host, $user, $pass, $name = &#039;&#039;, $port = 0)
         
-                                            <p><p>Ouverture d'une connexion vers le serveur et eventuellement une database.</p></p>                </div>
+                                            <p><p>\brief      Ouverture d'une connexion vers le serveur et une database.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -374,7 +374,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_convertSQLFromMysql">convertSQLFromMysql</a>($line, $type = &#039;ddl&#039;)
+                    <a href="#method_convertSQLFromMysql">convertSQLFromMysql</a>($line, $type = &#039;auto&#039;)
         
                                             <p><p>Convert a SQL request in Mysql syntax to PostgreSQL syntax</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -386,7 +386,7 @@
                 <div class="col-md-8">
                     <a href="#method_select_db">select_db</a>($database)
         
-                                            <p><p>\brief      Selectionne une database.</p></p>                </div>
+                                            <p><p>Select a database.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -396,14 +396,7 @@
                 <div class="col-md-8">
                     <a href="#method_connect">connect</a>($host, $login, $passwd, $name, $port = 0)
         
-                                            <p><p>\brief      Connexion to server
-\param      host        database server host
-\param      login       login
-\param      passwd      password
-\param      name        nom de la database (ne sert pas sous mysql, sert sous pgsql)
-\param      port        Port of database server
-\return     resource    Database access handler
-\seealso    close</p></p>                </div>
+                                            <p><p>Connection vers le serveur</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -424,8 +417,8 @@
                 <div class="col-md-8">
                     <a href="#method_getVersion">getVersion</a>()
         
-                                            <p><p>\brief          Renvoie la version du serveur
-\return         string      Chaine version</p></p>                </div>
+                                            <p><p>\brief          Return version of server
+\return        string      String with version</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -435,8 +428,8 @@
                 <div class="col-md-8">
                     <a href="#method_getIntVersion">getIntVersion</a>()
         
-                                            <p><p>\brief          Renvoie la version du serveur sous forme de nombre
-\return         string      Chaine version</p></p>                </div>
+                                            <p><p>\brief      Renvoie la version du serveur sous forme de nombre
+\return     string      Chaine version</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -446,8 +439,8 @@
                 <div class="col-md-8">
                     <a href="#method_getVersionArray">getVersionArray</a>()
         
-                                            <p><p>\brief          Renvoie la version du serveur dans un tableau
-\return         array       Tableau de chaque niveau de version</p></p>                </div>
+                                            <p><p>\brief      Renvoie la version du serveur dans un tableau
+\return     array       Tableau de chaque niveau de version</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -485,10 +478,9 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_rollback">rollback</a>($log = &#039;&#039;)
+                    <a href="#method_rollback">rollback</a>()
         
                                             <p><p>\brief      Annulation d'une transaction et retour aux anciennes valeurs
-\param      log         Add more log to default log line
 \return     int         1 si annulation ok ou transaction non ouverte, 0 en cas d'erreur</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -499,7 +491,7 @@
                 <div class="col-md-8">
                     <a href="#method_query">query</a>($query, $usesavepoint = 0, $type = &#039;auto&#039;)
         
-                                            <p><p>Execute a SQL request and return the resultset</p></p>                </div>
+                                            <p><p>Convert request to PostgreSQL syntax, execute it and return the resultset.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -540,7 +532,7 @@
                     <a href="#method_num_rows">num_rows</a>($resultset)
         
                                             <p><p>\brief      Renvoie le nombre de lignes dans le resultat d'une requete SELECT
-\see        affected_rows
+\see           affected_rows
 \param      resultset   Curseur de la requete voulue
 \return     int         Nombre de lignes</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -553,7 +545,7 @@
                     <a href="#method_affected_rows">affected_rows</a>($resultset)
         
                                             <p><p>\brief      Renvoie le nombre de lignes dans le resultat d'une requete INSERT, DELETE ou UPDATE
-\see        num_rows
+\see           num_rows
 \param      resultset   Curseur de la requete voulue
 \return     int         Nombre de lignes</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -575,7 +567,7 @@
                 <div class="col-md-8">
                     <a href="#method_plimit">plimit</a>($limit = 0, $offset = 0)
         
-                                            <p><p>\brief      Defini les limites de la requete.</p></p>                </div>
+                                            <p><p>\brief       Defini les limites de la requete.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -585,7 +577,7 @@
                 <div class="col-md-8">
                     <a href="#method_order">order</a>($sortfield = 0, $sortorder = 0)
         
-                                            <p><p>\brief      Defini le tri de la requete.</p></p>                </div>
+                                            <p><p>\brief       Defini le tri de la requete.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -595,18 +587,7 @@
                 <div class="col-md-8">
                     <a href="#method_escape">escape</a>($stringtoencode)
         
-                                            <p><p>\brief      Escape a string to insert data.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_pdate">pdate</a>($param)
-        
-                                            <p><p>Formatage (par la base de donnees) d'un champ de la base au format TMS ou Date (YYYY-MM-DD HH:MM:SS)
-afin de retourner une donnee toujours au format universel date TMS unix.</p></p>                </div>
+                                            <p><p>\brief     Escape a string to insert data.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -616,7 +597,7 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
                 <div class="col-md-8">
                     <a href="#method_idate">idate</a>($param)
         
-                                            <p><p>\brief     Convert (by PHP) a GM Timestamp date into a PHP server TZ to insert into a date field.</p></p>                </div>
+                                            <p><p>\brief     Convert (by PHP) a GM Timestamp date into a GM string date to insert into a date field.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -640,10 +621,10 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
                     <a href="#method_ifsql">ifsql</a>($test, $resok, $resko)
         
                                             <p><p>\brief      Formatage d'un if SQL
-\param      test            chaine test
-\param      resok           resultat si test egal
-\param      resko           resultat si test non egal
-\return     string          chaine formatee SQL</p></p>                </div>
+\param        test            chaine test
+\param        resok           resultat si test egal
+\param        resko           resultat si test non egal
+\return       string          chaine formate SQL</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -654,7 +635,7 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
                     <a href="#method_lastquery">lastquery</a>()
         
                                             <p><p>\brief      Renvoie la derniere requete soumise par la methode query()
-\return     lastquery</p></p>                </div>
+\return       lastquery</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -665,7 +646,7 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
                     <a href="#method_lastqueryerror">lastqueryerror</a>()
         
                                             <p><p>\brief      Renvoie la derniere requete en erreur
-\return     string  lastqueryerror</p></p>                </div>
+\return       string  lastqueryerror</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -707,7 +688,7 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
                 <div class="col-md-8">
                     <a href="#method_error">error</a>()
         
-                                            <p><p>\brief     Renvoie le texte de l'erreur mysql de l'operation precedente.</p></p>                </div>
+                                            <p><p>\brief      Renvoie le texte de l'erreur pgsql de l'operation precedente.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -715,9 +696,9 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_last_insert_id">last_insert_id</a>($tab)
+                    <a href="#method_last_insert_id">last_insert_id</a>($tab, $fieldid = &#039;rowid&#039;)
         
-                                            <p><p>\brief     Recupere l'id genere par le dernier INSERT.</p></p>                </div>
+                                            <p><p>\brief      Get last ID after an insert INSERT.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -767,8 +748,7 @@ Warning: This function includes the escape, so it must use direct value</p></p> 
 \param          collation       Charset used to sort data
 \param          owner           Username of database owner
 \return         resource        resource defined if OK, null if KO
-\remarks        Do not use function xxx_create_db (xxx=mysql, ...) as they are deprecated
-We force to create database with charset this-&gt;forcecharset and collate this-&gt;forcecollate</p></p>                </div>
+\remarks        Ne pas utiliser les fonctions xxx_create_db (xxx=mysql, ...) car elles sont deprecated</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -778,7 +758,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
                 <div class="col-md-8">
                     <a href="#method_DDLListTables">DDLListTables</a>($database, $table = &#039;&#039;)
         
-                                            <p><p>\brief      List tables into a database.</p></p>                </div>
+                                            <p><p>\brief      Liste des tables dans une database.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -806,7 +786,23 @@ We force to create database with charset this-&gt;forcecharset and collate this-
 \param      fulltext        Tableau des Nom de champs qui seront indexes en fulltext
 \param      key             Tableau des champs cles noms =&gt; valeur
 \param      type            Type de la table
-\return     int             &lt;0 si KO, &gt;=0 si OK</p></p>                </div>
+\return     int             &lt;0 si KO, &gt;=0 si OK
+TODO</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_DDLCreateUser">DDLCreateUser</a>($dolibarr_main_db_host, $dolibarr_main_db_user, $dolibarr_main_db_pass, $dolibarr_main_db_name)
+        
+                                            <p><p>\brief      Create a user
+\param      dolibarr_main_db_host       Ip serveur
+\param      dolibarr_main_db_user       Nom user a creer
+\param      dolibarr_main_db_pass       Mot de passe user a creer
+\param      dolibarr_main_db_name       Database name where user must be granted
+\return     int                         &lt;0 si KO, &gt;=0 si OK</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -845,21 +841,6 @@ We force to create database with charset this-&gt;forcecharset and collate this-
 \param      table           Nom de la table
 \param      field_name      Nom du champ a inserer
 \return     int             &lt;0 si KO, &gt;0 si OK</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_DDLCreateUser">DDLCreateUser</a>($dolibarr_main_db_host, $dolibarr_main_db_user, $dolibarr_main_db_pass, $dolibarr_main_db_name)
-        
-                                            <p><p>\brief      Create a user and privileges to connect to database (even if database does not exists yet)
-\param      dolibarr_main_db_host       Ip server
-\param      dolibarr_main_db_user       Username to create
-\param      dolibarr_main_db_pass       Password
-\param      dolibarr_main_db_name       Database name where user must be granted
-\return     int                         &lt;0 if KO, &gt;=0 if OK</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -933,21 +914,9 @@ We force to create database with charset this-&gt;forcecharset and collate this-
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getServerParametersValues">getServerParametersValues</a>($key, $filter = &#039;&#039;)
+                    <a href="#method_getServerParametersValues">getServerParametersValues</a>($filter = &#039;&#039;)
         
                                             <p><p>\brief      Return value of server parameters
-\param      filter      Filter list on a particular value
-\return     string      Value for parameter</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_getServerStatusValues">getServerStatusValues</a>($filter = &#039;&#039;)
-        
-                                            <p><p>\brief      Return value of server status
 \param      filter      Filter list on a particular value
 \return     string      Value for parameter</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -960,9 +929,9 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_DoliDb">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L87">at line 87</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L76">at line 76</a></div>
         <code>                    
-    <strong>DoliDb</strong>($type = &#039;mysqli&#039;, $host, $user, $pass, $name = &#039;&#039;, $port = 0)
+    <strong>DoliDb</strong>($type = &#039;pgsql&#039;, $host, $user, $pass, $name = &#039;&#039;, $port = 0)
         </code>
     </h3>
     <div class="details">    
@@ -971,7 +940,13 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             
 
         <div class="method-description">
-                            <p><p>Ouverture d'une connexion vers le serveur et eventuellement une database.</p></p>                        
+                            <p><p>\brief      Ouverture d'une connexion vers le serveur et une database.</p></p>                <p><p>\param      type        type de base de donnees (mysql ou pgsql)
+\param      host        addresse de la base de donnees
+\param      user        nom de l'utilisateur autorise
+\param      pass        mot de passe
+\param      name        nom de la database
+\param      port        Port of database server
+\return     int         1 en cas de succes, 0 sinon</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1019,9 +994,9 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_convertSQLFromMysql">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L193">at line 193</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L157">at line 157</a></div>
         <code>                    
-    <strong>convertSQLFromMysql</strong>($line, $type = &#039;ddl&#039;)
+    <strong>convertSQLFromMysql</strong>($line, $type = &#039;auto&#039;)
         </code>
     </h3>
     <div class="details">    
@@ -1030,7 +1005,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             
 
         <div class="method-description">
-                            <p><p>Convert a SQL request in Mysql syntax to PostgreSQL syntax</p></p>                <p><p>@param     line     SQL request line to convert</p></p>        
+                            <p><p>Convert a SQL request in Mysql syntax to PostgreSQL syntax</p></p>                <p><pre><code>@param     line     SQL request line to convert</code></pre></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1058,7 +1033,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_select_db">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L203">at line 203</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L331">at line 331</a></div>
         <code>                    
     <strong>select_db</strong>($database)
         </code>
@@ -1069,8 +1044,8 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             
 
         <div class="method-description">
-                            <p><p>\brief      Selectionne une database.</p></p>                <p><p>\param      database        Nom de la database
-\return     boolean         true si ok, false si ko</p></p>        
+                            <p><p>Select a database.</p></p>                <p><p>Ici postgresql n'a aucune fonction equivalente de mysql_select_db
+On compare juste manuellement si la database choisie est bien celle activee par la connexion</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1093,7 +1068,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_connect">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L220">at line 220</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L346">at line 346</a></div>
         <code>                    
     <strong>connect</strong>($host, $login, $passwd, $name, $port = 0)
         </code>
@@ -1104,14 +1079,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             
 
         <div class="method-description">
-                            <p><p>\brief      Connexion to server
-\param      host        database server host
-\param      login       login
-\param      passwd      password
-\param      name        nom de la database (ne sert pas sous mysql, sert sous pgsql)
-\param      port        Port of database server
-\return     resource    Database access handler
-\seealso    close</p></p>                        
+                            <p><p>Connection vers le serveur</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1154,7 +1122,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_getLabel">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L240">at line 240</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L369">at line 369</a></div>
         <code>                    
     <strong>getLabel</strong>()
         </code>
@@ -1179,7 +1147,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_getVersion">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L249">at line 249</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L378">at line 378</a></div>
         <code>                    
     <strong>getVersion</strong>()
         </code>
@@ -1190,8 +1158,8 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             
 
         <div class="method-description">
-                            <p><p>\brief          Renvoie la version du serveur
-\return         string      Chaine version</p></p>                        
+                            <p><p>\brief          Return version of server
+\return        string      String with version</p></p>                        
         </div>
         <div class="tags">
             
@@ -1204,7 +1172,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_getIntVersion">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L261">at line 261</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L393">at line 393</a></div>
         <code>                    
     <strong>getIntVersion</strong>()
         </code>
@@ -1215,8 +1183,8 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             
 
         <div class="method-description">
-                            <p><p>\brief          Renvoie la version du serveur sous forme de nombre
-\return         string      Chaine version</p></p>                        
+                            <p><p>\brief      Renvoie la version du serveur sous forme de nombre
+\return     string      Chaine version</p></p>                        
         </div>
         <div class="tags">
             
@@ -1229,7 +1197,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_getVersionArray">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L278">at line 278</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L410">at line 410</a></div>
         <code>                    
     <strong>getVersionArray</strong>()
         </code>
@@ -1240,8 +1208,8 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             
 
         <div class="method-description">
-                            <p><p>\brief          Renvoie la version du serveur dans un tableau
-\return         array       Tableau de chaque niveau de version</p></p>                        
+                            <p><p>\brief      Renvoie la version du serveur dans un tableau
+\return     array       Tableau de chaque niveau de version</p></p>                        
         </div>
         <div class="tags">
             
@@ -1254,7 +1222,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_close">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L289">at line 289</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L419">at line 419</a></div>
         <code>                    
     <strong>close</strong>()
         </code>
@@ -1265,8 +1233,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             
 
         <div class="method-description">
-                            <p><p>\brief      Fermeture d'une connexion vers une database.</p></p>                <p><p>\return     resource
-\seealso    connect</p></p>        
+                            <p><p>\brief      Fermeture d'une connexion vers une database.</p></p>                <p><p>\return     resource</p></p>        
         </div>
         <div class="tags">
             
@@ -1279,7 +1246,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_begin">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L300">at line 300</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L429">at line 429</a></div>
         <code>                    
     <strong>begin</strong>()
         </code>
@@ -1303,7 +1270,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_commit">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L324">at line 324</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L453">at line 453</a></div>
         <code>                    
     <strong>commit</strong>($log = &#039;&#039;)
         </code>
@@ -1337,9 +1304,9 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_rollback">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L348">at line 348</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L476">at line 476</a></div>
         <code>                    
-    <strong>rollback</strong>($log = &#039;&#039;)
+    <strong>rollback</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -1349,20 +1316,9 @@ We force to create database with charset this-&gt;forcecharset and collate this-
 
         <div class="method-description">
                             <p><p>\brief      Annulation d'une transaction et retour aux anciennes valeurs
-\param      log         Add more log to default log line
 \return     int         1 si annulation ok ou transaction non ouverte, 0 en cas d'erreur</p></p>                        
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$log</td>
-                <td></td>
-            </tr>
-            </table>
-
             
             
             
@@ -1373,7 +1329,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_query">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L372">at line 372</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L500">at line 500</a></div>
         <code>                    
     <strong>query</strong>($query, $usesavepoint = 0, $type = &#039;auto&#039;)
         </code>
@@ -1384,7 +1340,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             
 
         <div class="method-description">
-                            <p><p>Execute a SQL request and return the resultset</p></p>                <p><pre><code>@param      query           SQL query string</code></pre></p>        
+                            <p><p>Convert request to PostgreSQL syntax, execute it and return the resultset.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1417,7 +1373,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch_object">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L407">at line 407</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L555">at line 555</a></div>
         <code>                    
     <strong>fetch_object</strong>($resultset)
         </code>
@@ -1452,7 +1408,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch_array">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L420">at line 420</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L567">at line 567</a></div>
         <code>                    
     <strong>fetch_array</strong>($resultset)
         </code>
@@ -1487,7 +1443,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch_row">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L432">at line 432</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L579">at line 579</a></div>
         <code>                    
     <strong>fetch_row</strong>($resultset)
         </code>
@@ -1522,7 +1478,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_num_rows">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L453">at line 453</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L592">at line 592</a></div>
         <code>                    
     <strong>num_rows</strong>($resultset)
         </code>
@@ -1534,7 +1490,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
 
         <div class="method-description">
                             <p><p>\brief      Renvoie le nombre de lignes dans le resultat d'une requete SELECT
-\see        affected_rows
+\see           affected_rows
 \param      resultset   Curseur de la requete voulue
 \return     int         Nombre de lignes</p></p>                        
         </div>
@@ -1559,7 +1515,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_affected_rows">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L467">at line 467</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L605">at line 605</a></div>
         <code>                    
     <strong>affected_rows</strong>($resultset)
         </code>
@@ -1571,7 +1527,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
 
         <div class="method-description">
                             <p><p>\brief      Renvoie le nombre de lignes dans le resultat d'une requete INSERT, DELETE ou UPDATE
-\see        num_rows
+\see           num_rows
 \param      resultset   Curseur de la requete voulue
 \return     int         Nombre de lignes</p></p>                        
         </div>
@@ -1596,7 +1552,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_free">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L481">at line 481</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L619">at line 619</a></div>
         <code>                    
     <strong>free</strong>($resultset = 0)
         </code>
@@ -1630,7 +1586,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_plimit">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L496">at line 496</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L634">at line 634</a></div>
         <code>                    
     <strong>plimit</strong>($limit = 0, $offset = 0)
         </code>
@@ -1641,8 +1597,8 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             
 
         <div class="method-description">
-                            <p><p>\brief      Defini les limites de la requete.</p></p>                <p><p>\param      limit       nombre maximum de lignes retournees
-\param      offset      numero de la ligne a partir de laquelle recuperer les ligne
+                            <p><p>\brief       Defini les limites de la requete.</p></p>                <p><p>\param      limit       nombre maximum de lignes retournees
+\param      offset      numero de la ligne a partir de laquelle recuperer les lignes
 \return     string      chaine exprimant la syntax sql de la limite</p></p>        
         </div>
         <div class="tags">
@@ -1671,7 +1627,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_order">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L512">at line 512</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L650">at line 650</a></div>
         <code>                    
     <strong>order</strong>($sortfield = 0, $sortorder = 0)
         </code>
@@ -1682,7 +1638,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             
 
         <div class="method-description">
-                            <p><p>\brief      Defini le tri de la requete.</p></p>                <p><p>\param      sortfield   liste des champ de tri
+                            <p><p>\brief       Defini le tri de la requete.</p></p>                <p><p>\param      sortfield   liste des champ de tri
 \param      sortorder   ordre du tri
 \return     string      chaine exprimant la syntax sql de l'ordre de tri
 \TODO       A mutualiser dans classe mere</p></p>        
@@ -1713,7 +1669,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_escape">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L540">at line 540</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L678">at line 678</a></div>
         <code>                    
     <strong>escape</strong>($stringtoencode)
         </code>
@@ -1724,8 +1680,8 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             
 
         <div class="method-description">
-                            <p><p>\brief      Escape a string to insert data.</p></p>                <p><p>\param      stringtoencode      String to escape
-\return     string              String escaped</p></p>        
+                            <p><p>\brief     Escape a string to insert data.</p></p>                <p><p>\param      stringtoencode      String to escape
+\return string              String escaped</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1747,43 +1703,8 @@ We force to create database with charset this-&gt;forcecharset and collate this-
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_pdate">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L554">at line 554</a></div>
-        <code>                    
-    <strong>pdate</strong>($param)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>Formatage (par la base de donnees) d'un champ de la base au format TMS ou Date (YYYY-MM-DD HH:MM:SS)
-afin de retourner une donnee toujours au format universel date TMS unix.</p></p>                <p><p>Fonction a utiliser pour generer les SELECT.</p></p>        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$param</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_idate">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L565">at line 565</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L689">at line 689</a></div>
         <code>                    
     <strong>idate</strong>($param)
         </code>
@@ -1794,7 +1715,7 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
             
 
         <div class="method-description">
-                            <p><p>\brief     Convert (by PHP) a GM Timestamp date into a PHP server TZ to insert into a date field.</p></p>                <p><p>Function to use to build INSERT, UPDATE or WHERE predica
+                            <p><p>\brief     Convert (by PHP) a GM Timestamp date into a GM string date to insert into a date field.</p></p>                <p><p>Function to use to build INSERT, UPDATE or WHERE predica
 \param      param       Date TMS to convert
 \return string      Date in a string YYYYMMDDHHMMSS</p></p>        
         </div>
@@ -1819,7 +1740,7 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_jdate">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L576">at line 576</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L700">at line 700</a></div>
         <code>                    
     <strong>jdate</strong>($string)
         </code>
@@ -1856,7 +1777,7 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_ifsql">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L591">at line 591</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L715">at line 715</a></div>
         <code>                    
     <strong>ifsql</strong>($test, $resok, $resko)
         </code>
@@ -1868,10 +1789,10 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
 
         <div class="method-description">
                             <p><p>\brief      Formatage d'un if SQL
-\param      test            chaine test
-\param      resok           resultat si test egal
-\param      resko           resultat si test non egal
-\return     string          chaine formatee SQL</p></p>                        
+\param        test            chaine test
+\param        resok           resultat si test egal
+\param        resko           resultat si test non egal
+\return       string          chaine formate SQL</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1904,7 +1825,7 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_lastquery">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L601">at line 601</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L725">at line 725</a></div>
         <code>                    
     <strong>lastquery</strong>()
         </code>
@@ -1916,7 +1837,7 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
 
         <div class="method-description">
                             <p><p>\brief      Renvoie la derniere requete soumise par la methode query()
-\return     lastquery</p></p>                        
+\return       lastquery</p></p>                        
         </div>
         <div class="tags">
             
@@ -1929,7 +1850,7 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_lastqueryerror">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L610">at line 610</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L734">at line 734</a></div>
         <code>                    
     <strong>lastqueryerror</strong>()
         </code>
@@ -1941,7 +1862,7 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
 
         <div class="method-description">
                             <p><p>\brief      Renvoie la derniere requete en erreur
-\return     string  lastqueryerror</p></p>                        
+\return       string  lastqueryerror</p></p>                        
         </div>
         <div class="tags">
             
@@ -1954,7 +1875,7 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_lasterror">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L619">at line 619</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L743">at line 743</a></div>
         <code>                    
     <strong>lasterror</strong>()
         </code>
@@ -1979,7 +1900,7 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_lasterrno">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L628">at line 628</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L752">at line 752</a></div>
         <code>                    
     <strong>lasterrno</strong>()
         </code>
@@ -2004,7 +1925,7 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_errno">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L637">at line 637</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L761">at line 761</a></div>
         <code>                    
     <strong>errno</strong>()
         </code>
@@ -2028,7 +1949,7 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_error">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L686">at line 686</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L826">at line 826</a></div>
         <code>                    
     <strong>error</strong>()
         </code>
@@ -2039,7 +1960,7 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
             
 
         <div class="method-description">
-                            <p><p>\brief     Renvoie le texte de l'erreur mysql de l'operation precedente.</p></p>                <p><p>\return    error_text</p></p>        
+                            <p><p>\brief      Renvoie le texte de l'erreur pgsql de l'operation precedente.</p></p>                <p><p>\return     error_text</p></p>        
         </div>
         <div class="tags">
             
@@ -2052,9 +1973,9 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_last_insert_id">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L702">at line 702</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L836">at line 836</a></div>
         <code>                    
-    <strong>last_insert_id</strong>($tab)
+    <strong>last_insert_id</strong>($tab, $fieldid = &#039;rowid&#039;)
         </code>
     </h3>
     <div class="details">    
@@ -2063,8 +1984,8 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
             
 
         <div class="method-description">
-                            <p><p>\brief     Recupere l'id genere par le dernier INSERT.</p></p>                <p><p>\param     tab     Nom de la table concernee par l'insert. Ne sert pas sous MySql mais requis pour compatibilite avec Postgresql
-\return    int     id</p></p>        
+                            <p><p>\brief      Get last ID after an insert INSERT.</p></p>                <p><p>\param      tab     Table name concerned by insert. Ne sert pas sous MySql mais requis pour compatibilite avec Postgresql
+\return         int     id</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -2073,6 +1994,11 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
                     <tr>
                 <td></td>
                 <td>$tab</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$fieldid</td>
                 <td></td>
             </tr>
             </table>
@@ -2087,7 +2013,7 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_encrypt">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L715">at line 715</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L857">at line 857</a></div>
         <code>                    
     <strong>encrypt</strong>($fieldorvalue, $withQuotes = 0)
         </code>
@@ -2099,7 +2025,7 @@ afin de retourner une donnee toujours au format universel date TMS unix.</p></p>
 
         <div class="method-description">
                             <p><p>Encrypt sensitive data in database
-Warning: This function includes the escape, so it must use direct value</p></p>                        
+Warning: This function includes the escape, so it must use direct value</p></p>                <p><p>@param          fieldorvalue    Field name or value to encrypt</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -2127,7 +2053,7 @@ Warning: This function includes the escape, so it must use direct value</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_decrypt">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L747">at line 747</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L877">at line 877</a></div>
         <code>                    
     <strong>decrypt</strong>($value)
         </code>
@@ -2163,7 +2089,7 @@ Warning: This function includes the escape, so it must use direct value</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_DDLGetConnectId">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L782">at line 782</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L900">at line 900</a></div>
         <code>                    
     <strong>DDLGetConnectId</strong>()
         </code>
@@ -2188,7 +2114,7 @@ Warning: This function includes the escape, so it must use direct value</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_DDLCreateDb">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L799">at line 799</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L916">at line 916</a></div>
         <code>                    
     <strong>DDLCreateDb</strong>($database, $charset = &#039;&#039;, $collation = &#039;&#039;, $owner = &#039;&#039;)
         </code>
@@ -2205,8 +2131,7 @@ Warning: This function includes the escape, so it must use direct value</p></p>
 \param          collation       Charset used to sort data
 \param          owner           Username of database owner
 \return         resource        resource defined if OK, null if KO
-\remarks        Do not use function xxx_create_db (xxx=mysql, ...) as they are deprecated
-We force to create database with charset this-&gt;forcecharset and collate this-&gt;forcecollate</p></p>                        
+\remarks        Ne pas utiliser les fonctions xxx_create_db (xxx=mysql, ...) car elles sont deprecated</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -2244,7 +2169,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_DDLListTables">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L826">at line 826</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L930">at line 930</a></div>
         <code>                    
     <strong>DDLListTables</strong>($database, $table = &#039;&#039;)
         </code>
@@ -2255,9 +2180,8 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             
 
         <div class="method-description">
-                            <p><p>\brief      List tables into a database.</p></p>                <p><p>\param      database        Name of database
-\param      table           Filter on some tables
-\return     array           Array list of tables</p></p>        
+                            <p><p>\brief      Liste des tables dans une database.</p></p>                <p><p>\param      database    Nom de la database
+\return     resource</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -2285,7 +2209,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_DDLInfoTable">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L847">at line 847</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L950">at line 950</a></div>
         <code>                    
     <strong>DDLInfoTable</strong>($table)
         </code>
@@ -2297,7 +2221,8 @@ We force to create database with charset this-&gt;forcecharset and collate this-
 
         <div class="method-description">
                             <p><p>\brief      Liste les informations des champs d'une table.</p></p>                <p><p>\param      table           Nom de la table
-\return     array           Tableau des informations des champs de la table</p></p>        
+\return     array           Tableau des informations des champs de la table
+TODO modifier pour postgresql</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -2320,7 +2245,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_DDLCreateTable">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L873">at line 873</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L980">at line 980</a></div>
         <code>                    
     <strong>DDLCreateTable</strong>($table, $fields, $primary_key, $type, $unique_keys = &quot;&quot;, $fulltext_keys = &quot;&quot;, $keys = &quot;&quot;)
         </code>
@@ -2339,7 +2264,8 @@ We force to create database with charset this-&gt;forcecharset and collate this-
 \param      fulltext        Tableau des Nom de champs qui seront indexes en fulltext
 \param      key             Tableau des champs cles noms =&gt; valeur
 \param      type            Type de la table
-\return     int             &lt;0 si KO, &gt;=0 si OK</p></p>                        
+\return     int             &lt;0 si KO, &gt;=0 si OK
+TODO</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -2391,8 +2317,62 @@ We force to create database with charset this-&gt;forcecharset and collate this-
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_DDLCreateUser">
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1053">at line 1053</a></div>
+        <code>                    
+    <strong>DDLCreateUser</strong>($dolibarr_main_db_host, $dolibarr_main_db_user, $dolibarr_main_db_pass, $dolibarr_main_db_name)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>\brief      Create a user
+\param      dolibarr_main_db_host       Ip serveur
+\param      dolibarr_main_db_user       Nom user a creer
+\param      dolibarr_main_db_pass       Mot de passe user a creer
+\param      dolibarr_main_db_name       Database name where user must be granted
+\return     int                         &lt;0 si KO, &gt;=0 si OK</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$dolibarr_main_db_host</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$dolibarr_main_db_user</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$dolibarr_main_db_pass</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$dolibarr_main_db_name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_DDLDescTable">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L944">at line 944</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1073">at line 1073</a></div>
         <code>                    
     <strong>DDLDescTable</strong>($table, $field = &quot;&quot;)
         </code>
@@ -2433,7 +2413,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_DDLAddField">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L961">at line 961</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1092">at line 1092</a></div>
         <code>                    
     <strong>DDLAddField</strong>($table, $field_name, $field_desc, $field_position = &quot;&quot;)
         </code>
@@ -2487,7 +2467,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_DDLDropField">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L996">at line 996</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1126">at line 1126</a></div>
         <code>                    
     <strong>DDLDropField</strong>($table, $field_name)
         </code>
@@ -2528,62 +2508,8 @@ We force to create database with charset this-&gt;forcecharset and collate this-
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_DDLCreateUser">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L1017">at line 1017</a></div>
-        <code>                    
-    <strong>DDLCreateUser</strong>($dolibarr_main_db_host, $dolibarr_main_db_user, $dolibarr_main_db_pass, $dolibarr_main_db_name)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>\brief      Create a user and privileges to connect to database (even if database does not exists yet)
-\param      dolibarr_main_db_host       Ip server
-\param      dolibarr_main_db_user       Username to create
-\param      dolibarr_main_db_pass       Password
-\param      dolibarr_main_db_name       Database name where user must be granted
-\return     int                         &lt;0 if KO, &gt;=0 if OK</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$dolibarr_main_db_host</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$dolibarr_main_db_user</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$dolibarr_main_db_pass</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$dolibarr_main_db_name</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_getDefaultCharacterSetDatabase">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L1062">at line 1062</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1142">at line 1142</a></div>
         <code>                    
     <strong>getDefaultCharacterSetDatabase</strong>()
         </code>
@@ -2608,7 +2534,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_getListOfCharacterSet">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L1078">at line 1078</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1153">at line 1153</a></div>
         <code>                    
     <strong>getListOfCharacterSet</strong>()
         </code>
@@ -2633,7 +2559,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_getDefaultCollationDatabase">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L1103">at line 1103</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1177">at line 1177</a></div>
         <code>                    
     <strong>getDefaultCollationDatabase</strong>()
         </code>
@@ -2658,7 +2584,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_getListOfCollation">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L1119">at line 1119</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1188">at line 1188</a></div>
         <code>                    
     <strong>getListOfCollation</strong>()
         </code>
@@ -2683,7 +2609,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_getPathOfDump">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L1143">at line 1143</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1211">at line 1211</a></div>
         <code>                    
     <strong>getPathOfDump</strong>()
         </code>
@@ -2708,7 +2634,7 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_getPathOfRestore">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L1161">at line 1161</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1238">at line 1238</a></div>
         <code>                    
     <strong>getPathOfRestore</strong>()
         </code>
@@ -2733,9 +2659,9 @@ We force to create database with charset this-&gt;forcecharset and collate this-
             </div>
                     <div class="method-item">
                     <h3 id="method_getServerParametersValues">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L1180">at line 1180</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1266">at line 1266</a></div>
         <code>                    
-    <strong>getServerParametersValues</strong>($key, $filter = &#039;&#039;)
+    <strong>getServerParametersValues</strong>($filter = &#039;&#039;)
         </code>
     </h3>
     <div class="details">    
@@ -2745,47 +2671,6 @@ We force to create database with charset this-&gt;forcecharset and collate this-
 
         <div class="method-description">
                             <p><p>\brief      Return value of server parameters
-\param      filter      Filter list on a particular value
-\return     string      Value for parameter</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$key</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$filter</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getServerStatusValues">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mysqli.lib.php#L1201">at line 1201</a></div>
-        <code>                    
-    <strong>getServerStatusValues</strong>($filter = &#039;&#039;)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>\brief      Return value of server status
 \param      filter      Filter list on a particular value
 \return     string      Value for parameter</p></p>                        
         </div>
