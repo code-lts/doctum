@@ -150,6 +150,8 @@ final class PharFilterIterator extends RecursiveFilterIterator
         'phpdoc.xml',
         'phpdoc.dist.xml',
         'codecov.yml',
+        'app.yaml',
+        'app.yml',
     ];
 
     /**
