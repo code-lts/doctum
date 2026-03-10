@@ -441,15 +441,16 @@ method or closure. The value is an associative array with the following
 elements:</p></dd><dt><a href="FFI.html#method_arrayType">
 FFI::arrayType</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
                     <dd><p>Constructs a new C array type with elements of $type and
-dimensions specified by $dimensions.</p></dd><dt><a href="FFI.html#method_addr">
+dimensions specified by <code>$dimensions</code>.</p></dd><dt><a href="FFI.html#method_addr">
 FFI::addr</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
-                    <dd><p>Returns C pointer to the given C data structure. The pointer is
+                    <dd><p>Returns a C pointer to the given C data structure. The pointer is
 not &quot;owned&quot; and won't be free. Anyway, this is a potentially
 unsafe operation, because the life-time of the returned pointer
-may be longer than life-time of the source object, and this may
+may be longer than the life-time of the source object, and this may
 cause dangling pointer dereference (like in regular C).</p></dd><dt><a href="FFI.html#method_alignof">
 FFI::alignof</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
-                    <dd><p>Returns size of C data type of the given FFI\CData or FFI\CType.</p></dd><dt><a href="FilterIterator.html#method_accept">
+                    <dd><p>Returns the size of a C data type of the given {FFI\CData} or
+{FFI\CType}.</p></dd><dt><a href="FilterIterator.html#method_accept">
 FilterIterator::accept</a>() &mdash; <em>Method in class <a href="FilterIterator.html">FilterIterator</a></em></dt>
                     <dd><p>Check whether the current element of the iterator is acceptable</p></dd><dt><a href="GEOSGeometry.html#method_area">
 GEOSGeometry::area</a>() &mdash; <em>Method in class <a href="GEOSGeometry.html">GEOSGeometry</a></em></dt>
@@ -2745,13 +2746,15 @@ how many samples are collected.</p></dd><dt><a href="FFI.html#method_cdef">
 FFI::cdef</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
                     <dd><p>The method creates a binding on the existing C function.</p></dd><dt><a href="FFI.html#method_cast">
 FFI::cast</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
-                    <dd><p>Casts given $pointer to another C type, specified by C declaration
-string or FFI\CType object.</p></dd><dt><a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> &mdash; <em>Class in namespace <a href="FFI.html">FFI</a></em></dt>
+                    <dd><p>Creates a new {FFI\CData} object, that references the same
+C data structure, but is associated with a different type. The
+resulting object does not own the C data, and the source ptr must
+survive the result. The C type may be specified as a {string}
+with any valid C type declaration or as {FFI\CType} object,
+created before. Any type declared for the instance is allowed.</p></dd><dt><a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a> &mdash; <em>Class in namespace <a href="FFI.html">FFI</a></em></dt>
                     <dd><p>Proxy object that provides access to compiled structures.</p></dd><dt>$<a href="FFI/CData.html#property_cdata">
 <abbr title="FFI\CData">CData</abbr>#cdata</a> &mdash; <em>Property in class <a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></em></dt>
-                    <dd><p>In the case that the CData is a wrapper over an arbitrary C structure,
-then it allows reading and writing to the fields defined by
-this structure.</p></dd><dt><a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a> &mdash; <em>Class in namespace <a href="FFI.html">FFI</a></em></dt>
+                    <dd></dd><dt><a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a> &mdash; <em>Class in namespace <a href="FFI.html">FFI</a></em></dt>
                     <dd><p>Class containing C type information.</p></dd><dt><a href="FTP/Connection.html"><abbr title="FTP\Connection">Connection</abbr></a> &mdash; <em>Class in namespace <a href="FTP.html">FTP</a></em></dt>
                     <dd></dd><dt><a href="FilesystemIterator.html#method_current">
 FilesystemIterator::current</a>() &mdash; <em>Method in class <a href="FilesystemIterator.html">FilesystemIterator</a></em></dt>
@@ -6878,7 +6881,7 @@ FANNConnection#from_neuron</a> &mdash; <em>Property in class <a href="FANNConnec
                     <dd></dd><dt><a href="FFI.html">FFI</a> &mdash; <em>Class in namespace <a href="[Global_Namespace].html">[Global Namespace]</a></em></dt>
                     <dd><p>FFI class provides access to a simple way to call native functions,
 access native variables and create/access data structures defined
-in C language.</p></dd><dt><a href="FFI.html#method_free">
+in the C language.</p></dd><dt><a href="FFI.html#method_free">
 FFI::free</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
                     <dd><p>Manually removes previously created &quot;not-owned&quot; data structure.</p></dd><dt><a href="Fiber.html">Fiber</a> &mdash; <em>Class in namespace <a href="[Global_Namespace].html">[Global Namespace]</a></em></dt>
                     <dd></dd><dt><a href="FiberError.html">FiberError</a> &mdash; <em>Class in namespace <a href="[Global_Namespace].html">[Global Namespace]</a></em></dt>
@@ -8347,7 +8350,7 @@ FANNConnection::getWeight</a>() &mdash; <em>Method in class <a href="FANNConnect
 the case that the type is a union, then for each field of this type
 the offset will be equal to 0.</p></dd><dt><a href="FFI/CType.html#method_getStructFieldType">
 <abbr title="FFI\CType">CType</abbr>::getStructFieldType</a>() &mdash; <em>Method in class <a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a></em></dt>
-                    <dd><p>Returns the field type of a structure or union.</p></dd><dt><a href="FFI/CType.html#method_getFuncABI">
+                    <dd><p>Returns the field type of structure or union.</p></dd><dt><a href="FFI/CType.html#method_getFuncABI">
 <abbr title="FFI\CType">CType</abbr>::getFuncABI</a>() &mdash; <em>Method in class <a href="FFI/CType.html"><abbr title="FFI\CType">CType</abbr></a></em></dt>
                     <dd><p>Returns the application binary interface (ABI) identifier with which
 you can call the function.</p></dd><dt><a href="FFI/CType.html#method_getFuncReturnType">
@@ -15621,11 +15624,11 @@ EventSslContext#local_pk</a> &mdash; <em>Property in class <a href="EventSslCont
 Exception#line</a> &mdash; <em>Property in class <a href="Exception.html">Exception</a></em></dt>
                     <dd><p>The line where the error happened</p></dd><dt><a href="FFI.html#method_load">
 FFI::load</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
-                    <dd><p>Instead of embedding of a long C definition into PHP string,
-and creating FFI through FFI::cdef(), it's possible to separate
-it into a C header file. Note, that C preprocessor directives
-(e.g. #define or #ifdef) are not supported. And only a couple of
-special macros may be used especially for FFI.</p></dd><dt><a href="GEOSGeometry.html#method_length">
+                    <dd><p>Instead of embedding of a long C definition into a PHP string
+and creating FFI through {<a href="FFI.html">FFI::cdef()},</a> it's possible to
+separate it into a C header file. Note that C preprocessor
+directives (e.g., <code>#define</code> or <code>#ifdef</code>) are not supported. And
+only a couple of special macros may be used, especially for FFI.</p></dd><dt><a href="GEOSGeometry.html#method_length">
 GEOSGeometry::length</a>() &mdash; <em>Method in class <a href="GEOSGeometry.html">GEOSGeometry</a></em></dt>
                     <dd></dd><dt><a href="Gmagick.html#method_labelimage">
 Gmagick::labelimage</a>() &mdash; <em>Method in class <a href="Gmagick.html">Gmagick</a></em></dt>
@@ -16462,12 +16465,12 @@ EventHttpConnection::makeRequest</a>() &mdash; <em>Method in class <a href="Even
 Exception#message</a> &mdash; <em>Property in class <a href="Exception.html">Exception</a></em></dt>
                     <dd><p>The error message</p></dd><dt><a href="FFI.html#method_memcpy">
 FFI::memcpy</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
-                    <dd><p>Copies $size bytes from memory area $source to memory area $target.</p></dd><dt><a href="FFI.html#method_memcmp">
+                    <dd><p>Copies <code>$size</code> bytes from the memory area <code>$from</code> to the memory area <code>$to</code>.</p></dd><dt><a href="FFI.html#method_memcmp">
 FFI::memcmp</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
-                    <dd><p>Compares $size bytes from memory area $ptr1 and $ptr2.</p></dd><dt><a href="FFI.html#method_memset">
+                    <dd><p>Compares <code>$size</code> bytes from the memory areas <code>$ptr1</code> and <code>$ptr2</code>.</p></dd><dt><a href="FFI.html#method_memset">
 FFI::memset</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
-                    <dd><p>Fills the $size bytes of the memory area pointed to by $target with
-the constant byte $byte.</p></dd><dt><a href="Gmagick.html#method_magnifyimage">
+                    <dd><p>Fills <code>$size</code> bytes of the memory area pointed to by <code>$ptr</code> with the
+given byte <code>$value</code>.</p></dd><dt><a href="Gmagick.html#method_magnifyimage">
 Gmagick::magnifyimage</a>() &mdash; <em>Method in class <a href="Gmagick.html">Gmagick</a></em></dt>
                     <dd><p>Scales an image proportionally 2x.</p></dd><dt><a href="Gmagick.html#method_mapimage">
 Gmagick::mapimage</a>() &mdash; <em>Method in class <a href="Gmagick.html">Gmagick</a></em></dt>
@@ -22435,17 +22438,18 @@ FANNConnection::setWeight</a>() &mdash; <em>Method in class <a href="FANNConnect
 FFI::scope</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
                     <dd><p>FFI definition parsing and shared library loading may take
 significant time. It's not useful to do it on each HTTP request in
-WEB environment. However, it's possible to pre-load FFI definitions
-and libraries at php startup, and instantiate FFI objects when
-necessary. Header files may be extended with FFI_SCOPE define
-(default pre-loading scope is &quot;C&quot;). This name is going to be
-used as FFI::scope() argument. It's possible to pre-load few
+the WEB environment. However, it's possible to preload FFI
+definitions and libraries at php startup, and instantiate FFI objects
+when necessary. Header files may be extended with <code>FFI_SCOPE</code> define
+(default preloading scope is &quot;C&quot;). This name is going to be
+used as {<a href="FFI.html">FFI::scope()}</a> argument. It's possible to preload a few
 files into a single scope.</p></dd><dt><a href="FFI.html#method_sizeof">
 FFI::sizeof</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
-                    <dd><p>Returns size of C data type of the given FFI\CData or FFI\CType.</p></dd><dt><a href="FFI.html#method_string">
+                    <dd><p>Returns the size of a C data type of the given {FFI\CData}
+or {FFI\CType}.</p></dd><dt><a href="FFI.html#method_string">
 FFI::string</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
-                    <dd><p>Creates a PHP string from $size bytes of memory area pointed by
-$source. If size is omitted, $source must be zero terminated
+                    <dd><p>Creates a PHP string from <code>$size</code> bytes of the memory area pointed
+by <code>$ptr</code>. If size is omitted, <code>$ptr</code> must be a zero-terminated
 array of C chars.</p></dd><dt><a href="Fiber.html#method_start">
 Fiber::start</a>() &mdash; <em>Method in class <a href="Fiber.html">Fiber</a></em></dt>
                     <dd><p>Starts execution of the fiber. Returns when the fiber suspends or terminates.</p></dd><dt><a href="Fiber.html#method_suspend">
@@ -26528,11 +26532,12 @@ Event::timer</a>() &mdash; <em>Method in class <a href="Event.html">Event</a></e
 FANNConnection#to_neuron</a> &mdash; <em>Property in class <a href="FANNConnection.html">FANNConnection</a></em></dt>
                     <dd></dd><dt><a href="FFI.html#method_type">
 FFI::type</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
-                    <dd><p>This function creates and returns a FFI\CType object, representng
-type of the given C type declaration string.</p></dd><dt><a href="FFI.html#method_typeof">
+                    <dd><p>This function creates and returns a {FFI\CType} object for
+the given string containing a C type declaration. Any type
+declared for the instance is allowed.</p></dd><dt><a href="FFI.html#method_typeof">
 FFI::typeof</a>() &mdash; <em>Method in class <a href="FFI.html">FFI</a></em></dt>
                     <dd><p>This function returns the FFI\CType object, representing the type of
-the given FFI\CData object.</p></dd><dt><a href="Fiber.html#method_throw">
+the given {FFI\CData} object.</p></dd><dt><a href="Fiber.html#method_throw">
 Fiber::throw</a>() &mdash; <em>Method in class <a href="Fiber.html">Fiber</a></em></dt>
                     <dd><p>Throws the given exception into the fiber from {<a href="Fiber.html">Fiber::suspend()}.</a></p></dd><dt><a href="GEOSGeometry.html#method_touches">
 GEOSGeometry::touches</a>() &mdash; <em>Method in class <a href="GEOSGeometry.html">GEOSGeometry</a></em></dt>
@@ -30199,9 +30204,7 @@ FANNConnection::__construct</a>() &mdash; <em>Method in class <a href="FANNConne
 <abbr title="FFI\CData">CData</abbr>::__get</a>() &mdash; <em>Method in class <a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></em></dt>
                     <dd></dd><dt><a href="FFI/CData.html#method___set">
 <abbr title="FFI\CData">CData</abbr>::__set</a>() &mdash; <em>Method in class <a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></em></dt>
-                    <dd><p>In the case that CData is a wrapper over an array, it is an
-implementation of the {\Traversable}, {\Countable},
-and {\ArrayAccess}</p></dd><dt><a href="FFI/CData.html#method___invoke">
+                    <dd></dd><dt><a href="FFI/CData.html#method___invoke">
 <abbr title="FFI\CData">CData</abbr>::__invoke</a>() &mdash; <em>Method in class <a href="FFI/CData.html"><abbr title="FFI\CData">CData</abbr></a></em></dt>
                     <dd></dd><dt><a href="Fiber.html#method___construct">
 Fiber::__construct</a>() &mdash; <em>Method in class <a href="Fiber.html">Fiber</a></em></dt>
