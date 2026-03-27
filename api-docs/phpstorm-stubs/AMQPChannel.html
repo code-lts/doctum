@@ -292,7 +292,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setConfirmCallback">setConfirmCallback</a>(callable $ack_callback = null, callable $nack_callback = null)
+                    <a href="#method_setConfirmCallback">setConfirmCallback</a>(callable|null $ack_callback = null, callable|null $nack_callback = null)
         
                                             <p><p>Set callback to process basic.ack and basic.nac AMQP server methods (applicable when channel in confirm mode).</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -312,7 +312,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setReturnCallback">setReturnCallback</a>(callable $return_callback = null)
+                    <a href="#method_setReturnCallback">setReturnCallback</a>(callable|null $return_callback = null)
         
                                             <p><p>Set callback to process basic.return AMQP server method</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -1160,7 +1160,7 @@ AMQPChannel::commitTransaction() or AMQPChannel::rollbackTransaction().</p></p>
                     <h3 id="method_setConfirmCallback">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L525">at line 525</a></div>
         <code>                    void
-    <strong>setConfirmCallback</strong>(callable $ack_callback = null, callable $nack_callback = null)
+    <strong>setConfirmCallback</strong>(callable|null $ack_callback = null, callable|null $nack_callback = null)
         </code>
     </h3>
     <div class="details">    
@@ -1176,12 +1176,12 @@ AMQPChannel::commitTransaction() or AMQPChannel::rollbackTransaction().</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>callable</td>
+                <td>callable|null</td>
                 <td>$ack_callback</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>callable</td>
+                <td>callable|null</td>
                 <td>$nack_callback</td>
                 <td><p>Callback functions with all arguments have the following signature:</p>
 <pre><code> function ack_callback(int $deliveryTag, bool $multiple) : bool;
@@ -1265,7 +1265,7 @@ responsible for a queue (see <a href="https://www.rabbitmq.com/confirms.html">ht
                     <h3 id="method_setReturnCallback">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/amqp/amqp.php#L558">at line 558</a></div>
         <code>                    void
-    <strong>setReturnCallback</strong>(callable $return_callback = null)
+    <strong>setReturnCallback</strong>(callable|null $return_callback = null)
         </code>
     </h3>
     <div class="details">    
@@ -1281,7 +1281,7 @@ responsible for a queue (see <a href="https://www.rabbitmq.com/confirms.html">ht
 
                     <table class="table table-condensed">
                     <tr>
-                <td>callable</td>
+                <td>callable|null</td>
                 <td>$return_callback</td>
                 <td><p>Callback function with all arguments has the following signature:</p>
 <pre><code> function callback(int $reply_code,

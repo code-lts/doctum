@@ -149,7 +149,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="../pq/Connection.html"><abbr title="pq\Connection">Connection</abbr></a> $conn, string $name, string $query, array $types = null, bool $async = false)
+                    <a href="#method___construct">__construct</a>(<a href="../pq/Connection.html"><abbr title="pq\Connection">Connection</abbr></a> $conn, string $name, string $query, array|null $types = null, bool $async = false)
         
                                             <p><p>Prepare a new statement.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -210,7 +210,7 @@ prepared statement, so it can no longer be executed.</p></p>                </di
                     <a href="../pq/Result.html"><abbr title="pq\Result">Result</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_exec">exec</a>(array $params = null)
+                    <a href="#method_exec">exec</a>(array|null $params = null)
         
                                             <p><p>Execute the prepared statement.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -220,7 +220,7 @@ prepared statement, so it can no longer be executed.</p></p>                </di
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_execAsync">execAsync</a>(array $params = null, callable $cb = null)
+                    <a href="#method_execAsync">execAsync</a>(array|null $params = null, callable|null $cb = null)
         
                                             <p><p>[Asynchronously](pq/Connection/: Asynchronous Usage) execute the prepared statement.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -256,7 +256,7 @@ deallocated. This is a no-op on already open statements.</p></p>                
                     <h3 id="method___construct">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/pq/pq.php#L1580">at line 1580</a></div>
         <code>                    
-    <strong>__construct</strong>(<a href="../pq/Connection.html"><abbr title="pq\Connection">Connection</abbr></a> $conn, string $name, string $query, array $types = null, bool $async = false)
+    <strong>__construct</strong>(<a href="../pq/Connection.html"><abbr title="pq\Connection">Connection</abbr></a> $conn, string $name, string $query, array|null $types = null, bool $async = false)
         </code>
     </h3>
     <div class="details">    
@@ -287,7 +287,7 @@ deallocated. This is a no-op on already open statements.</p></p>                
                 <td><p>The actual query to prepare.</p></td>
             </tr>
                     <tr>
-                <td>array</td>
+                <td>array|null</td>
                 <td>$types</td>
                 <td><p>A list of corresponding query parameter type OIDs.</p></td>
             </tr>
@@ -572,7 +572,7 @@ A callback to receive list of type OIDs of the substitution parameters.</p></td>
                     <h3 id="method_exec">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/pq/pq.php#L1644">at line 1644</a></div>
         <code>                    <a href="../pq/Result.html"><abbr title="pq\Result">Result</abbr></a>
-    <strong>exec</strong>(array $params = null)
+    <strong>exec</strong>(array|null $params = null)
         </code>
     </h3>
     <div class="details">    
@@ -588,7 +588,7 @@ A callback to receive list of type OIDs of the substitution parameters.</p></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array</td>
+                <td>array|null</td>
                 <td>$params</td>
                 <td><p>Any parameters to substitute in the prepared statement (defaults to any bou
 nd variables).</p></td>
@@ -633,7 +633,7 @@ nd variables).</p></td>
                     <h3 id="method_execAsync">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/pq/pq.php#L1657">at line 1657</a></div>
         <code>                    
-    <strong>execAsync</strong>(array $params = null, callable $cb = null)
+    <strong>execAsync</strong>(array|null $params = null, callable|null $cb = null)
         </code>
     </h3>
     <div class="details">    
@@ -649,13 +649,13 @@ nd variables).</p></td>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array</td>
+                <td>array|null</td>
                 <td>$params</td>
                 <td><p>Any parameters to substitute in the prepared statement (defaults to any bou
 nd variables).</p></td>
             </tr>
                     <tr>
-                <td>callable</td>
+                <td>callable|null</td>
                 <td>$cb</td>
                 <td><p>as function(\pq\Result $res) : void
 Result handler callback.</p></td>

@@ -1585,7 +1585,7 @@ Return the message describing the result of the last operation</p></p>          
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_get">get</a>(string $key, callable $cache_cb = null, int $flags = 0)
+                    <a href="#method_get">get</a>(string $key, callable|null $cache_cb = null, int $flags = 0)
         
                                             <p><p>(PECL memcached &gt;= 0.1.0)<br/>
 Retrieve an item</p></p>                </div>
@@ -1596,7 +1596,7 @@ Retrieve an item</p></p>                </div>
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getByKey">getByKey</a>(string $server_key, string $key, callable $cache_cb = null, int $flags = 0)
+                    <a href="#method_getByKey">getByKey</a>(string $server_key, string $key, callable|null $cache_cb = null, int $flags = 0)
         
                                             <p><p>(PECL memcached &gt;= 0.1.0)<br/>
 Retrieve an item from a specific server</p></p>                </div>
@@ -1629,7 +1629,7 @@ Retrieve multiple items from a specific server</p></p>                </div>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getDelayed">getDelayed</a>(array $keys, bool $with_cas = null, callable $value_cb = null)
+                    <a href="#method_getDelayed">getDelayed</a>(array $keys, bool $with_cas = null, callable|null $value_cb = null)
         
                                             <p><p>(PECL memcached &gt;= 0.1.0)<br/>
 Request multiple items</p></p>                </div>
@@ -1640,7 +1640,7 @@ Request multiple items</p></p>                </div>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getDelayedByKey">getDelayedByKey</a>(string $server_key, array $keys, bool $with_cas = null, callable $value_cb = null)
+                    <a href="#method_getDelayedByKey">getDelayedByKey</a>(string $server_key, array $keys, bool $with_cas = null, callable|null $value_cb = null)
         
                                             <p><p>(PECL memcached &gt;= 0.1.0)<br/>
 Request multiple items from a specific server</p></p>                </div>
@@ -1706,7 +1706,7 @@ Set a new expiration on an item</p></p>                </div>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_touchByKey">touchByKey</a>(string $server_key, string $key, int $expiration)
+                    <a href="#method_touchByKey">touchByKey</a>(string $server_key, string $key, int $expiration = 0)
         
                                             <p><p>(PECL memcached &gt;= 2.0.0)<br/>
 Set a new expiration on an item on a specific server</p></p>                </div>
@@ -2312,7 +2312,7 @@ Return the message describing the result of the last operation</p></p>
                     <h3 id="method_get">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L737">at line 737</a></div>
         <code>                    mixed
-    <strong>get</strong>(string $key, callable $cache_cb = null, int $flags = 0)
+    <strong>get</strong>(string $key, callable|null $cache_cb = null, int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -2336,7 +2336,7 @@ The key of the item to retrieve.
 </p></td>
             </tr>
                     <tr>
-                <td>callable</td>
+                <td>callable|null</td>
                 <td>$cache_cb</td>
                 <td><p>[optional] <p>
 Read-through caching callback or <b>NULL</b>.
@@ -2374,7 +2374,7 @@ The <b>Memcached::getResultCode</b> will return
                     <h3 id="method_getByKey">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L759">at line 759</a></div>
         <code>                    mixed
-    <strong>getByKey</strong>(string $server_key, string $key, callable $cache_cb = null, int $flags = 0)
+    <strong>getByKey</strong>(string $server_key, string $key, callable|null $cache_cb = null, int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -2405,7 +2405,7 @@ The key of the item to fetch.
 </p></td>
             </tr>
                     <tr>
-                <td>callable</td>
+                <td>callable|null</td>
                 <td>$cache_cb</td>
                 <td><p>[optional] <p>
 Read-through caching callback or <b>NULL</b>
@@ -2558,7 +2558,7 @@ Use <b>Memcached::getResultCode</b> if necessary.</p></td>
                     <h3 id="method_getDelayed">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L810">at line 810</a></div>
         <code>                    bool
-    <strong>getDelayed</strong>(array $keys, bool $with_cas = null, callable $value_cb = null)
+    <strong>getDelayed</strong>(array $keys, bool $with_cas = null, callable|null $value_cb = null)
         </code>
     </h3>
     <div class="details">    
@@ -2589,7 +2589,7 @@ Whether to request CAS token values also.
 </p></p></td>
             </tr>
                     <tr>
-                <td>callable</td>
+                <td>callable|null</td>
                 <td>$value_cb</td>
                 <td><p>[optional] <p>
 The result callback or <b>NULL</b>.
@@ -2619,7 +2619,7 @@ Use <b>Memcached::getResultCode</b> if necessary.</p></td>
                     <h3 id="method_getDelayedByKey">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L831">at line 831</a></div>
         <code>                    bool
-    <strong>getDelayedByKey</strong>(string $server_key, array $keys, bool $with_cas = null, callable $value_cb = null)
+    <strong>getDelayedByKey</strong>(string $server_key, array $keys, bool $with_cas = null, callable|null $value_cb = null)
         </code>
     </h3>
     <div class="details">    
@@ -2657,7 +2657,7 @@ Whether to request CAS token values also.
 </p></p></td>
             </tr>
                     <tr>
-                <td>callable</td>
+                <td>callable|null</td>
                 <td>$value_cb</td>
                 <td><p>[optional] <p>
 The result callback or <b>NULL</b>.
@@ -2941,7 +2941,7 @@ Use <b>Memcached::getResultCode</b> if necessary.</p></td>
                     <h3 id="method_touchByKey">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcached/memcached.php#L922">at line 922</a></div>
         <code>                    bool
-    <strong>touchByKey</strong>(string $server_key, string $key, int $expiration)
+    <strong>touchByKey</strong>(string $server_key, string $key, int $expiration = 0)
         </code>
     </h3>
     <div class="details">    

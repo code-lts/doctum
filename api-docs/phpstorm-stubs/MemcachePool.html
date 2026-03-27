@@ -111,7 +111,7 @@ Open memcached server connection</p></p>                </div>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_addServer">addServer</a>(string $host, int $port = 11211, bool $persistent = true, int $weight = null, int $timeout = 1, int $retry_interval = 15, bool $status = true, callable $failure_callback = null, int $timeoutms = null)
+                    <a href="#method_addServer">addServer</a>(string $host, int $port = 11211, bool $persistent = true, int $weight = null, int $timeout = 1, int $retry_interval = 15, bool $status = true, callable|null $failure_callback = null, int $timeoutms = null)
         
                                             <p><p>(PECL memcache &gt;= 2.0.0)<br/>
 Add a memcached server to connection pool</p></p>                </div>
@@ -122,7 +122,7 @@ Add a memcached server to connection pool</p></p>                </div>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setServerParams">setServerParams</a>(string $host, int $port = 11211, int $timeout = 1, int $retry_interval = 15, bool $status = true, callable $failure_callback = null)
+                    <a href="#method_setServerParams">setServerParams</a>(string $host, int $port = 11211, int $timeout = 1, int $retry_interval = 15, bool $status = true, callable|null $failure_callback = null)
         
                                             <p><p>(PECL memcache &gt;= 2.1.0)<br/>
 Changes server parameters and status at runtime</p></p>                </div>
@@ -416,7 +416,7 @@ explicitly in this method call.
                     <h3 id="method_addServer">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcache/memcache.php#L97">at line 97</a></div>
         <code>                    bool
-    <strong>addServer</strong>(string $host, int $port = 11211, bool $persistent = true, int $weight = null, int $timeout = 1, int $retry_interval = 15, bool $status = true, callable $failure_callback = null, int $timeoutms = null)
+    <strong>addServer</strong>(string $host, int $port = 11211, bool $persistent = true, int $weight = null, int $timeout = 1, int $retry_interval = 15, bool $status = true, callable|null $failure_callback = null, int $timeoutms = null)
         </code>
     </h3>
     <div class="details">    
@@ -513,7 +513,7 @@ Default to <b>TRUE</b>, meaning the server should be considered online.
 </p></p></td>
             </tr>
                     <tr>
-                <td>callable</td>
+                <td>callable|null</td>
                 <td>$failure_callback</td>
                 <td><p>[optional] <p>
 Allows the user to specify a callback function to run upon encountering an
@@ -550,7 +550,7 @@ two parameters, the hostname and port of the failed server.
                     <h3 id="method_setServerParams">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/memcache/memcache.php#L130">at line 130</a></div>
         <code>                    bool
-    <strong>setServerParams</strong>(string $host, int $port = 11211, int $timeout = 1, int $retry_interval = 15, bool $status = true, callable $failure_callback = null)
+    <strong>setServerParams</strong>(string $host, int $port = 11211, int $timeout = 1, int $retry_interval = 15, bool $status = true, callable|null $failure_callback = null)
         </code>
     </h3>
     <div class="details">    
@@ -608,7 +608,7 @@ Default to <b>TRUE</b>, meaning the server should be considered online.
 </p></p></td>
             </tr>
                     <tr>
-                <td>callable</td>
+                <td>callable|null</td>
                 <td>$failure_callback</td>
                 <td><p>[optional] <p>
 Allows the user to specify a callback function to run upon encountering an error. The callback is run before failover is attempted.

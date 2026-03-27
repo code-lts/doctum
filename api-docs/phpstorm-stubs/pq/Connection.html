@@ -544,7 +544,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_execAsync">execAsync</a>(string $query, callable $callback = null)
+                    <a href="#method_execAsync">execAsync</a>(string $query, callable|null $callback = null)
         
                                             <p><p>[Asynchronously](pq/Connection/: Asynchronous Usage) [execute an SQL query](pq/Connection: Executing Queries) on the connection.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -554,7 +554,7 @@
                     <a href="../pq/Result.html"><abbr title="pq\Result">Result</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_execParams">execParams</a>(string $query, array $params, array $types = null)
+                    <a href="#method_execParams">execParams</a>(string $query, array $params, array|null $types = null)
         
                                             <p><p>[Execute an SQL query](pq/Connection: Executing Queries) with properly escaped parameters substituted.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -564,7 +564,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_execParamsAsync">execParamsAsync</a>(string $query, array $params, array $types = null, callable $cb = null)
+                    <a href="#method_execParamsAsync">execParamsAsync</a>(string $query, array $params, array|null $types = null, callable|null $cb = null)
         
                                             <p><p>[Asynchronously](pq/Connection/: Asynchronous Usage) [execute an SQL query](pq/Connection: Executing Queries) with properly escaped parameters substituted.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -664,7 +664,7 @@
                     <a href="../pq/Statement.html"><abbr title="pq\Statement">Statement</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_prepare">prepare</a>(string $name, string $query, array $types = null)
+                    <a href="#method_prepare">prepare</a>(string $name, string $query, array|null $types = null)
         
                                             <p><p>Prepare a named statement for later execution with pq\Statement::execute().</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -674,7 +674,7 @@
                     <a href="../pq/Statement.html"><abbr title="pq\Statement">Statement</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_prepareAsync">prepareAsync</a>(string $name, string $query, array $types = null)
+                    <a href="#method_prepareAsync">prepareAsync</a>(string $name, string $query, array|null $types = null)
         
                                             <p><p>[Asynchronously](pq/Connection/: Asynchronous Usage) prepare a named statement for later execution with pq\Statement::exec().</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -1127,7 +1127,7 @@ Only the last result will be returned, if the query string contains more than on
                     <h3 id="method_execAsync">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/pq/pq.php#L520">at line 520</a></div>
         <code>                    
-    <strong>execAsync</strong>(string $query, callable $callback = null)
+    <strong>execAsync</strong>(string $query, callable|null $callback = null)
         </code>
     </h3>
     <div class="details">    
@@ -1151,7 +1151,7 @@ If pq\Connection::$unbuffered is TRUE, each call to pq\Connection::getResult() w
                 <td><p>The query to send to the server.</p></td>
             </tr>
                     <tr>
-                <td>callable</td>
+                <td>callable|null</td>
                 <td>$callback</td>
                 <td><p>as function(pq\Result $res)
 The callback to execute when the query finishes.</p></td>
@@ -1187,7 +1187,7 @@ The callback to execute when the query finishes.</p></td>
                     <h3 id="method_execParams">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/pq/pq.php#L533">at line 533</a></div>
         <code>                    <a href="../pq/Result.html"><abbr title="pq\Result">Result</abbr></a>
-    <strong>execParams</strong>(string $query, array $params, array $types = null)
+    <strong>execParams</strong>(string $query, array $params, array|null $types = null)
         </code>
     </h3>
     <div class="details">    
@@ -1213,7 +1213,7 @@ The callback to execute when the query finishes.</p></td>
                 <td><p>The parameter list to substitute.</p></td>
             </tr>
                     <tr>
-                <td>array</td>
+                <td>array|null</td>
                 <td>$types</td>
                 <td><p>Corresponding list of type OIDs for the parameters.</p></td>
             </tr>
@@ -1257,7 +1257,7 @@ The callback to execute when the query finishes.</p></td>
                     <h3 id="method_execParamsAsync">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/pq/pq.php#L550">at line 550</a></div>
         <code>                    
-    <strong>execParamsAsync</strong>(string $query, array $params, array $types = null, callable $cb = null)
+    <strong>execParamsAsync</strong>(string $query, array $params, array|null $types = null, callable|null $cb = null)
         </code>
     </h3>
     <div class="details">    
@@ -1286,12 +1286,12 @@ If pq\Connection::$unbuffered is TRUE, each call to pq\Connection::getResult() w
                 <td><p>The parameter list to substitute.</p></td>
             </tr>
                     <tr>
-                <td>array</td>
+                <td>array|null</td>
                 <td>$types</td>
                 <td><p>Corresponding list of type OIDs for the parameters.</p></td>
             </tr>
                     <tr>
-                <td>callable</td>
+                <td>callable|null</td>
                 <td>$cb</td>
                 <td><p>as function(\pq\Result $res) : void
 Result handler callback.</p></td>
@@ -1820,7 +1820,7 @@ The callback to invoke on event.</p></td>
                     <h3 id="method_prepare">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/pq/pq.php#L674">at line 674</a></div>
         <code>                    <a href="../pq/Statement.html"><abbr title="pq\Statement">Statement</abbr></a>
-    <strong>prepare</strong>(string $name, string $query, array $types = null)
+    <strong>prepare</strong>(string $name, string $query, array|null $types = null)
         </code>
     </h3>
     <div class="details">    
@@ -1846,7 +1846,7 @@ The callback to invoke on event.</p></td>
                 <td><p>The query to prepare.</p></td>
             </tr>
                     <tr>
-                <td>array</td>
+                <td>array|null</td>
                 <td>$types</td>
                 <td><p>An array of type OIDs for the substitution parameters.</p></td>
             </tr>
@@ -1890,7 +1890,7 @@ The callback to invoke on event.</p></td>
                     <h3 id="method_prepareAsync">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/pq/pq.php#L690">at line 690</a></div>
         <code>                    <a href="../pq/Statement.html"><abbr title="pq\Statement">Statement</abbr></a>
-    <strong>prepareAsync</strong>(string $name, string $query, array $types = null)
+    <strong>prepareAsync</strong>(string $name, string $query, array|null $types = null)
         </code>
     </h3>
     <div class="details">    
@@ -1919,7 +1919,7 @@ If pq\Connection::$unbuffered is TRUE, each call to pq\Connection::getResult() w
                 <td><p>The query to prepare.</p></td>
             </tr>
                     <tr>
-                <td>array</td>
+                <td>array|null</td>
                 <td>$types</td>
                 <td><p>An array of type OIDs for the substitution parameters.</p></td>
             </tr>
