@@ -175,7 +175,7 @@
 
     
     <p>        class
-    <strong>MenuManager</strong>        (<a href="https://github.com/dolibarr/dolibarr/blob/20.0/htdocs/core/menus/standard/empty.php">View source</a>)
+    <strong>MenuManager</strong>        (<a href="https://github.com/dolibarr/dolibarr/blob/20.0/htdocs/core/menus/standard/auguria_menu.php">View source</a>)
 </p>
 
         
@@ -184,7 +184,7 @@
         
 
             <div class="description">
-            <p><p>Class to manage empty menu</p></p>                    </div>
+            <p><p>Class to manage menu Auguria</p></p>                    </div>
             
         
     
@@ -202,7 +202,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_type_user">
-                                                                                
+                                                                                int
                                                                                 
                                     </td>
                 <td>$type_user</td>
@@ -211,7 +211,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_atarget">
-                                                                                
+                                                                                string
                                                                                 
                                     </td>
                 <td>$atarget</td>
@@ -220,7 +220,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_name">
-                                                                                
+                                                                                string
                                                                                 
                                     </td>
                 <td>$name</td>
@@ -233,6 +233,15 @@
                                                                                 
                                     </td>
                 <td>$menu</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_menu_array">
+                                                                                
+                                                                                
+                                    </td>
+                <td>$menu_array</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -251,24 +260,6 @@
                                                                                 
                                     </td>
                 <td>$tabMenu</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_topmenu">
-                                                                                
-                                                                                
-                                    </td>
-                <td>$topmenu</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_leftmenu">
-                                                                                
-                                                                                
-                                    </td>
-                <td>$leftmenu</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -305,7 +296,7 @@
                 <div class="col-md-8">
                     <a href="#method_showmenu">showmenu</a>(string $mode, $moredata = null)
         
-                                            <p><p>Show menu</p></p>                </div>
+                                            <p><p>Show menu.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -316,7 +307,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/20.0/htdocs/core/menus/standard/empty.php#L55">at line 55</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/20.0/htdocs/core/menus/standard/auguria_menu.php#L70">at line 70</a></div>
         <code>                    
     <strong>__construct</strong>($db, int $type_user)
         </code>
@@ -327,7 +318,7 @@
             
 
         <div class="method-description">
-                            <p>Constructor</p>                <p><p>@param DoliDB      $db             Database handler</p></p>        
+                            <p>Constructor</p>                <p><p>@param DoliDB      $db         Database handler</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -355,7 +346,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_loadMenu">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/20.0/htdocs/core/menus/standard/empty.php#L69">at line 69</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/20.0/htdocs/core/menus/standard/auguria_menu.php#L84">at line 84</a></div>
         <code>                    void
     <strong>loadMenu</strong>(string $forcemainmenu = &#039;&#039;, string $forceleftmenu = &#039;&#039;)
         </code>
@@ -403,7 +394,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_showmenu">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/20.0/htdocs/core/menus/standard/empty.php#L83">at line 83</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/20.0/htdocs/core/menus/standard/auguria_menu.php#L148">at line 148</a></div>
         <code>                    
     <strong>showmenu</strong>(string $mode, $moredata = null)
         </code>
@@ -414,7 +405,7 @@
             
 
         <div class="method-description">
-                            <p><p>Show menu</p></p>                        
+                            <p><p>Show menu.</p></p>                <p><p>Menu defined in sql tables were stored into $this-&gt;tabMenu BEFORE this is called.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -423,9 +414,9 @@
                     <tr>
                 <td>string</td>
                 <td>$mode</td>
-                <td><p>'top', 'left', 'jmobile'
+                <td><p>'top', 'topnb', 'left', 'jmobile' (used to get full xml ul/li menu)
 @param  array   $moredata       An array with more data to output
-@return int|string              0 or nb of top menu entries if $mode = 'topnb', string inc ase of bad parameter</p></td>
+@return int                     0 or nb of top menu entries if $mode = 'topnb'</p></td>
             </tr>
                     <tr>
                 <td></td>
