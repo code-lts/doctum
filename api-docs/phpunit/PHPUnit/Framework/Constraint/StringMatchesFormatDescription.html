@@ -401,7 +401,7 @@ failure.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_matches">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/Constraint/String/StringMatchesFormatDescription.php#L50">at line 50</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/Constraint/String/StringMatchesFormatDescription.php#L55">at line 55</a></div>
         <code>            protected        bool
     <strong>matches</strong>(mixed $other)
         </code>
@@ -517,7 +517,7 @@ constraint is met, false otherwise.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_additionalFailureDescription">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/Constraint/String/StringMatchesFormatDescription.php#L93">at line 93</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/Constraint/String/StringMatchesFormatDescription.php#L97">at line 97</a></div>
         <code>            protected        string
     <strong>additionalFailureDescription</strong>(mixed $other)
         </code>
@@ -533,11 +533,10 @@ By using 'diff' such placeholders compared to the real output will
 always be different, although we don't want to show them as different.
 This method removes the expected differences by figuring out if a difference
 is allowed by the use of a placeholder.</p>
-<p>The problem here are %A and %a multiline placeholders since we look at the
-expected and actual output line by line. If differences allowed by those placeholders
-stretch over multiple lines they will still end up in the final diff.
-And since they mess up the line sync between the expected and actual output
-all following allowed changes will not be detected/removed anymore.</p></p>        
+<p>For %A and %a multiline placeholders that can match across multiple lines,
+we use anchor lookahead: find the next non-multiline expected line and search
+for it in the actual output to determine how many actual lines the placeholder
+consumed, keeping expected and actual in sync.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -569,7 +568,7 @@ all following allowed changes will not be detected/removed anymore.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_failureDescription">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/Constraint/String/StringMatchesFormatDescription.php#L73">at line 73</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/Constraint/String/StringMatchesFormatDescription.php#L78">at line 78</a></div>
         <code>            protected        string
     <strong>failureDescription</strong>(mixed $other)
         </code>
@@ -851,7 +850,7 @@ LogicalNot operators</p>
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/Constraint/String/StringMatchesFormatDescription.php#L34">at line 34</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/Constraint/String/StringMatchesFormatDescription.php#L39">at line 39</a></div>
         <code>                    
     <strong>__construct</strong>(string $formatDescription)
         </code>
@@ -886,7 +885,7 @@ LogicalNot operators</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_toString">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/Constraint/String/StringMatchesFormatDescription.php#L39">at line 39</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/Constraint/String/StringMatchesFormatDescription.php#L44">at line 44</a></div>
         <code>                    string
     <strong>toString</strong>()
         </code>
