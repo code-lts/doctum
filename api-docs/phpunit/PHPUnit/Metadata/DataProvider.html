@@ -334,7 +334,7 @@
                     static&nbsp;<a href="../../PHPUnit/Metadata/DataProvider.html"><abbr title="PHPUnit\Metadata\DataProvider">DataProvider</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_dataProvider">dataProvider</a>(string $className, string $methodName, bool $validateArgumentCount)
+                    <a href="#method_dataProvider">dataProvider</a>(string $className, string $methodName, bool $validateArgumentCount, bool $skipWhenEmpty)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -1042,7 +1042,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<abbr title="PHPUnit\Metadata\Level">Level</abbr> $level, string $className, string $methodName, bool $validateArgumentCount)
+                    <a href="#method___construct">__construct</a>(<abbr title="PHPUnit\Metadata\Level">Level</abbr> $level, string $className, string $methodName, bool $validateArgumentCount, bool $skipWhenEmpty)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -1759,6 +1759,17 @@
                 </div>
                 <div class="col-md-8">
                     <a href="#method_validateArgumentCount">validateArgumentCount</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_skipWhenEmpty">skipWhenEmpty</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -2595,7 +2606,7 @@
         <div class="location">in <a href="../../PHPUnit/Metadata/Metadata.html#method_dataProvider">
 <abbr title="PHPUnit\Metadata\Metadata">Metadata</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/Metadata.php#L146">at line 146</a></div>
         <code>        static            <a href="../../PHPUnit/Metadata/DataProvider.html"><abbr title="PHPUnit\Metadata\DataProvider">DataProvider</abbr></a>
-    <strong>dataProvider</strong>(string $className, string $methodName, bool $validateArgumentCount)
+    <strong>dataProvider</strong>(string $className, string $methodName, bool $validateArgumentCount, bool $skipWhenEmpty)
         </code>
     </h3>
     <div class="details">    
@@ -2624,6 +2635,11 @@
                     <tr>
                 <td>bool</td>
                 <td>$validateArgumentCount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$skipWhenEmpty</td>
                 <td></td>
             </tr>
             </table>
@@ -5286,9 +5302,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/DataProvider.php#L34">at line 34</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/DataProvider.php#L35">at line 35</a></div>
         <code>            protected        
-    <strong>__construct</strong>(<abbr title="PHPUnit\Metadata\Level">Level</abbr> $level, string $className, string $methodName, bool $validateArgumentCount)
+    <strong>__construct</strong>(<abbr title="PHPUnit\Metadata\Level">Level</abbr> $level, string $className, string $methodName, bool $validateArgumentCount, bool $skipWhenEmpty)
         </code>
     </h3>
     <div class="details">    
@@ -5322,6 +5338,11 @@
                     <tr>
                 <td>bool</td>
                 <td>$validateArgumentCount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$skipWhenEmpty</td>
                 <td></td>
             </tr>
             </table>
@@ -5931,7 +5952,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isDataProvider">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/DataProvider.php#L43">at line 43</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/DataProvider.php#L45">at line 45</a></div>
         <code>                    bool
     <strong>isDataProvider</strong>()
         </code>
@@ -7337,7 +7358,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_className">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/DataProvider.php#L51">at line 51</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/DataProvider.php#L53">at line 53</a></div>
         <code>                    string
     <strong>className</strong>()
         </code>
@@ -7371,7 +7392,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_methodName">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/DataProvider.php#L59">at line 59</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/DataProvider.php#L61">at line 61</a></div>
         <code>                    string
     <strong>methodName</strong>()
         </code>
@@ -7405,9 +7426,43 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_validateArgumentCount">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/DataProvider.php#L64">at line 64</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/DataProvider.php#L66">at line 66</a></div>
         <code>                    bool
     <strong>validateArgumentCount</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_skipWhenEmpty">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/DataProvider.php#L71">at line 71</a></div>
+        <code>                    bool
+    <strong>skipWhenEmpty</strong>()
         </code>
     </h3>
     <div class="details">    
