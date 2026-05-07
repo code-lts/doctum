@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>PHPUnit\Util\Exporter | PHPUnit</title>
+    <title>PHPUnit\Util\Sanitizer | PHPUnit</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:PHPUnit_Util_Exporter" data-root-path="../../" data-search-index-url="../../doctum-search.json">
+    <body id="class" data-name="class:PHPUnit_Util_Sanitizer" data-root-path="../../" data-search-index-url="../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,24 +75,31 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../PHPUnit/Util.html">Util</a></li><li class="backslash">\</li><li>Exporter</li>
+                        <li><a href="../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../PHPUnit/Util.html">Util</a></li><li class="backslash">\</li><li>Sanitizer</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>Exporter    
+        <h1>Sanitizer    
             </h1>
     </div>
 
     
     <p>final         class
-    <strong>Exporter</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/Exporter.php">View source</a>)
+    <strong>Sanitizer</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/Sanitizer.php">View source</a>)
 </p>
 
         
         
     
-        
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;This class is not covered by the backward compatibility promise for PHPUnit</td>
+            </tr>
+        </table>
+                &nbsp;
+    
 
             
         
@@ -106,32 +113,9 @@
                     static&nbsp;string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_export">export</a>(mixed $value)
+                    <a href="#method_sanitizeBidirectionalControlCharacters">sanitizeBidirectionalControlCharacters</a>(string $value)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;string
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_shortenedRecursiveExport">shortenedRecursiveExport</a>(array $data)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;string
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_shortenedExport">shortenedExport</a>(mixed $value)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Replaces Unicode bidirectional formatting characters with their visible \u{NNNN} escape sequence.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -141,10 +125,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_export">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/Exporter.php#L22">at line 22</a></div>
+                    <h3 id="method_sanitizeBidirectionalControlCharacters">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/Sanitizer.php#L31">at line 31</a></div>
         <code>        static            string
-    <strong>export</strong>(mixed $value)
+    <strong>sanitizeBidirectionalControlCharacters</strong>(string $value)
         </code>
     </h3>
     <div class="details">    
@@ -153,15 +137,15 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Replaces Unicode bidirectional formatting characters with their visible \u{NNNN} escape sequence.</p></p>                <p><p>Matches the UTF-8 byte sequences for U+202A-U+202E and U+2066-U+2069 directly so that
+the function is safe to call on strings that are not valid UTF-8.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
+                <td>string</td>
                 <td>$value</td>
                 <td></td>
             </tr>
@@ -179,94 +163,17 @@
 
             
             
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_shortenedRecursiveExport">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/Exporter.php#L32">at line 32</a></div>
-        <code>        static            string
-    <strong>shortenedRecursiveExport</strong>(array $data)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
+                            <h4>See also</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array</td>
-                <td>$data</td>
+                <td>
+                                            <a href="https://github.com/sebastianbergmann/phpunit/issues/6605">https://github.com/sebastianbergmann/phpunit/issues/6605</a>
+                                    </td>
                 <td></td>
             </tr>
             </table>
 
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_shortenedExport">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/Exporter.php#L39">at line 39</a></div>
-        <code>        static            string
-    <strong>shortenedExport</strong>(mixed $value)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>mixed</td>
-                <td>$value</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
             
                     </div>
     </div>
