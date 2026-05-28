@@ -175,7 +175,7 @@
 
     
     <p>        class
-    <strong>MenuManager</strong>        (<a href="https://github.com/dolibarr/dolibarr/blob/15.0/htdocs/core/menus/standard/empty.php">View source</a>)
+    <strong>MenuManager</strong>        (<a href="https://github.com/dolibarr/dolibarr/blob/15.0/htdocs/core/menus/standard/auguria_menu.php">View source</a>)
 </p>
 
         
@@ -184,7 +184,7 @@
         
 
             <div class="description">
-            <p><p>Class to manage empty menu</p></p>                    </div>
+            <p><p>Class to manage menu Auguria</p></p>                    </div>
             
         
     
@@ -228,11 +228,11 @@
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_menu">
+                <td class="type" id="property_menu_array">
                                                                                 
                                                                                 
                                     </td>
-                <td>$menu</td>
+                <td>$menu_array</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -287,7 +287,7 @@
                 <div class="col-md-8">
                     <a href="#method_showmenu">showmenu</a>(string $mode, $moredata = null)
         
-                                            <p><p>Show menu</p></p>                </div>
+                                            <p><p>Show menu.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -298,7 +298,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/15.0/htdocs/core/menus/standard/empty.php#L49">at line 49</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/15.0/htdocs/core/menus/standard/auguria_menu.php#L52">at line 52</a></div>
         <code>                    
     <strong>__construct</strong>($db, int $type_user)
         </code>
@@ -309,7 +309,7 @@
             
 
         <div class="method-description">
-                            <p>Constructor</p>                <p><p>@param DoliDB      $db             Database handler</p></p>        
+                            <p>Constructor</p>                <p><p>@param DoliDB      $db         Database handler</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -337,7 +337,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_loadMenu">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/15.0/htdocs/core/menus/standard/empty.php#L63">at line 63</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/15.0/htdocs/core/menus/standard/auguria_menu.php#L66">at line 66</a></div>
         <code>                    void
     <strong>loadMenu</strong>(string $forcemainmenu = &#039;&#039;, string $forceleftmenu = &#039;&#039;)
         </code>
@@ -385,7 +385,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_showmenu">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/15.0/htdocs/core/menus/standard/empty.php#L77">at line 77</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/15.0/htdocs/core/menus/standard/auguria_menu.php#L130">at line 130</a></div>
         <code>                    
     <strong>showmenu</strong>(string $mode, $moredata = null)
         </code>
@@ -396,7 +396,7 @@
             
 
         <div class="method-description">
-                            <p><p>Show menu</p></p>                        
+                            <p><p>Show menu.</p></p>                <p><p>Menu defined in sql tables were stored into $this-&gt;tabMenu BEFORE this is called.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -405,7 +405,7 @@
                     <tr>
                 <td>string</td>
                 <td>$mode</td>
-                <td><p>'top', 'left', 'jmobile'
+                <td><p>'top', 'topnb', 'left', 'jmobile' (used to get full xml ul/li menu)
 @param  array   $moredata       An array with more data to output
 @return int                     0 or nb of top menu entries if $mode = 'topnb'</p></td>
             </tr>

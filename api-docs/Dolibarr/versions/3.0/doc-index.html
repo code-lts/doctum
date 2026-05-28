@@ -473,7 +473,7 @@ DolCookie::add_cookiecryptkeyconf</a>() &mdash; <em>Method in class <a href="Dol
 \return     int     &lt;0 if KO, &gt;0 if OK</p></dd><dt><a href="DoliDb.html#method_affected_rows">
 DoliDb::affected_rows</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd><p>\brief      Renvoie le nombre de lignes dans le resultat d'une requete INSERT, DELETE ou UPDATE
-\see        num_rows
+\see           num_rows
 \param      resultset   Curseur de la requete voulue
 \return     int         Nombre de lignes</p></dd><dt>$<a href="Don.html#property_amount">
 Don#amount</a> &mdash; <em>Property in class <a href="Don.html">Don</a></em></dt>
@@ -1227,7 +1227,7 @@ DoliDb::convertSQLFromMysql</a>() &mdash; <em>Method in class <a href="DoliDb.ht
 DoliDb::connect</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd><p>Connection vers le serveur</p></dd><dt><a href="DoliDb.html#method_close">
 DoliDb::close</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd><p>\brief       Fermeture d'une connexion vers une database.</p></dd><dt><a href="DoliDb.html#method_commit">
+                    <dd><p>\brief      Fermeture d'une connexion vers une database.</p></dd><dt><a href="DoliDb.html#method_commit">
 DoliDb::commit</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd><p>Validate a database transaction</p></dd><dt>$<a href="Don.html#property_cp">
 Don#cp</a> &mdash; <em>Property in class <a href="Don.html">Don</a></em></dt>
@@ -1969,8 +1969,7 @@ DolGraph::draw</a>() &mdash; <em>Method in class <a href="DolGraph.html">DolGrap
 DolGraph::draw_artichow</a>() &mdash; <em>Method in class <a href="DolGraph.html">DolGraph</a></em></dt>
                     <dd><p>Build a graph onto disk using Artichow library</p></dd><dt><a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd><p>\class      DoliDb
-\brief      Classe de gestion de la database de dolibarr
-\remarks    Works with PHP5 Only</p></dd><dt>$<a href="DoliDb.html#property_db">
+\brief      Class to drive a Postgresql database for Dolibarr</p></dd><dt>$<a href="DoliDb.html#property_db">
 DoliDb#db</a> &mdash; <em>Property in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd></dd><dt>$<a href="DoliDb.html#property_database_selected">
 DoliDb#database_selected</a> &mdash; <em>Property in class <a href="DoliDb.html">DoliDb</a></em></dt>
@@ -1980,7 +1979,7 @@ DoliDb#database_name</a> &mdash; <em>Property in class <a href="DoliDb.html">Dol
 DoliDb#database_user</a> &mdash; <em>Property in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd></dd><dt><a href="DoliDb.html#method_DoliDb">
 DoliDb::DoliDb</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd><p>Ouverture d'une connexion vers le serveur et eventuellement une database.</p></dd><dt><a href="DoliDb.html#method_decrypt">
+                    <dd><p>\brief      Ouverture d'une connexion vers le serveur et une database.</p></dd><dt><a href="DoliDb.html#method_decrypt">
 DoliDb::decrypt</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd><p>\brief          Decrypt sensitive data in database
 \param          value           Value to decrypt
@@ -1993,11 +1992,13 @@ DoliDb::DDLCreateDb</a>() &mdash; <em>Method in class <a href="DoliDb.html">Doli
 \param          database        Database name to create
 \param          charset         Charset used to store data
 \param          collation       Charset used to sort data
+\param          owner           Username of database owner
 \return         resource        resource defined if OK, null if KO
-\remarks        Ne pas utiliser les fonctions xxx_create_db (xxx=mssql, ...) car elles sont deprecated
-On force creation de la base avec le charset forcecharset</p></dd><dt><a href="DoliDb.html#method_DDLListTables">
+\remarks        Ne pas utiliser les fonctions xxx_create_db (xxx=mysql, ...) car elles sont deprecated</p></dd><dt><a href="DoliDb.html#method_DDLListTables">
 DoliDb::DDLListTables</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd><p>\brief      List tables into a database.</p></dd><dt><a href="DoliDb.html#method_DDLCreateTable">
+                    <dd><p>\brief      Liste des tables dans une database.</p></dd><dt><a href="DoliDb.html#method_DDLInfoTable">
+DoliDb::DDLInfoTable</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
+                    <dd><p>\brief      Liste les informations des champs d'une table.</p></dd><dt><a href="DoliDb.html#method_DDLCreateTable">
 DoliDb::DDLCreateTable</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd><p>\brief      Cree une table
 \param      table           Nom de la table
@@ -2007,7 +2008,15 @@ DoliDb::DDLCreateTable</a>() &mdash; <em>Method in class <a href="DoliDb.html">D
 \param      fulltext        Tableau des Nom de champs qui seront indexes en fulltext
 \param      key             Tableau des champs cles noms =&gt; valeur
 \param      type            Type de la table
-\return     int             &lt;0 si KO, &gt;=0 si OK</p></dd><dt><a href="DoliDb.html#method_DDLDescTable">
+\return     int             &lt;0 si KO, &gt;=0 si OK
+TODO</p></dd><dt><a href="DoliDb.html#method_DDLCreateUser">
+DoliDb::DDLCreateUser</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
+                    <dd><p>\brief      Create a user
+\param      dolibarr_main_db_host       Ip serveur
+\param      dolibarr_main_db_user       Nom user a creer
+\param      dolibarr_main_db_pass       Mot de passe user a creer
+\param      dolibarr_main_db_name       Database name where user must be granted
+\return     int                         &lt;0 si KO, &gt;=0 si OK</p></dd><dt><a href="DoliDb.html#method_DDLDescTable">
 DoliDb::DDLDescTable</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd><p>\brief      decrit une table dans une database.</p></dd><dt><a href="DoliDb.html#method_DDLAddField">
 DoliDb::DDLAddField</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
@@ -2640,11 +2649,11 @@ DolGraph#error</a> &mdash; <em>Property in class <a href="DolGraph.html">DolGrap
 DoliDb#error</a> &mdash; <em>Property in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd></dd><dt><a href="DoliDb.html#method_escape">
 DoliDb::escape</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd><p>\brief      Escape a string to insert data.</p></dd><dt><a href="DoliDb.html#method_errno">
+                    <dd><p>\brief     Escape a string to insert data.</p></dd><dt><a href="DoliDb.html#method_errno">
 DoliDb::errno</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd><p>\brief     Renvoie le code erreur generique de l'operation precedente.</p></dd><dt><a href="DoliDb.html#method_error">
 DoliDb::error</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd><p>\brief     Renvoie le texte de l'erreur mssql de l'operation precedente.</p></dd><dt><a href="DoliDb.html#method_encrypt">
+                    <dd><p>\brief      Renvoie le texte de l'erreur pgsql de l'operation precedente.</p></dd><dt><a href="DoliDb.html#method_encrypt">
 DoliDb::encrypt</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd><p>Encrypt sensitive data in database
 Warning: This function includes the escape, so it must use direct value</p></dd><dt>$<a href="Don.html#property_error">
@@ -3125,8 +3134,6 @@ DiscountAbsolute::fetch</a>() &mdash; <em>Method in class <a href="DiscountAbsol
 \param      fk_facture_source   fk_facture_source
 \return     int                 &lt;0 if KO, =0 if not found, &gt;0 if OK</p></dd><dt>$<a href="DoliDb.html#property_forcecharset">
 DoliDb#forcecharset</a> &mdash; <em>Property in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd></dd><dt>$<a href="DoliDb.html#property_forcecollate">
-DoliDb#forcecollate</a> &mdash; <em>Property in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd></dd><dt><a href="DoliDb.html#method_fetch_object">
 DoliDb::fetch_object</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd><p>\brief      Renvoie la ligne courante (comme un objet) pour le curseur resultset.</p></dd><dt><a href="DoliDb.html#method_fetch_array">
@@ -3922,23 +3929,36 @@ DoliDb::getLabel</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb<
                     <dd><p>\brief              Return label of manager
 \return         string      Label</p></dd><dt><a href="DoliDb.html#method_getVersion">
 DoliDb::getVersion</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd><p>\brief          Renvoie la version du serveur
-\return         string      Chaine version</p></dd><dt><a href="DoliDb.html#method_getVersionArray">
+                    <dd><p>\brief          Return version of server
+\return        string      String with version</p></dd><dt><a href="DoliDb.html#method_getIntVersion">
+DoliDb::getIntVersion</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
+                    <dd><p>\brief      Renvoie la version du serveur sous forme de nombre
+\return     string      Chaine version</p></dd><dt><a href="DoliDb.html#method_getVersionArray">
 DoliDb::getVersionArray</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd><p>\brief          Renvoie la version du serveur dans un tableau
-\return         array       Tableau de chaque niveau de version</p></dd><dt><a href="DoliDb.html#method_getDefaultCharacterSetDatabase">
+                    <dd><p>\brief      Renvoie la version du serveur dans un tableau
+\return     array       Tableau de chaque niveau de version</p></dd><dt><a href="DoliDb.html#method_getDefaultCharacterSetDatabase">
 DoliDb::getDefaultCharacterSetDatabase</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd></dd><dt><a href="DoliDb.html#method_getListOfCharacterSet">
+                    <dd><p>\brief      Return charset used to store data in database
+\return     string      Charset</p></dd><dt><a href="DoliDb.html#method_getListOfCharacterSet">
 DoliDb::getListOfCharacterSet</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd></dd><dt><a href="DoliDb.html#method_getDefaultCollationDatabase">
+                    <dd><p>\brief      Return list of available charset that can be used to store data in database
+\return     array       List of Charset</p></dd><dt><a href="DoliDb.html#method_getDefaultCollationDatabase">
 DoliDb::getDefaultCollationDatabase</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd></dd><dt><a href="DoliDb.html#method_getListOfCollation">
+                    <dd><p>\brief      Return collation used in database
+\return     string      Collation value</p></dd><dt><a href="DoliDb.html#method_getListOfCollation">
 DoliDb::getListOfCollation</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd></dd><dt><a href="DoliDb.html#method_getPathOfDump">
+                    <dd><p>\brief      Return list of available collation that can be used for database
+\return     array       Liste of Collation</p></dd><dt><a href="DoliDb.html#method_getPathOfDump">
 DoliDb::getPathOfDump</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd></dd><dt><a href="DoliDb.html#method_getPathOfRestore">
+                    <dd><p>\brief      Return full path of dump program
+\return     string      Full path of dump program</p></dd><dt><a href="DoliDb.html#method_getPathOfRestore">
 DoliDb::getPathOfRestore</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd></dd><dt><a href="Don.html#method_getLibStatut">
+                    <dd><p>\brief      Return full path of restore program
+\return     string      Full path of restore program</p></dd><dt><a href="DoliDb.html#method_getServerParametersValues">
+DoliDb::getServerParametersValues</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
+                    <dd><p>\brief      Return value of server parameters
+\param      filter      Filter list on a particular value
+\return     string      Value for parameter</p></dd><dt><a href="Don.html#method_getLibStatut">
 Don::getLibStatut</a>() &mdash; <em>Method in class <a href="Don.html">Don</a></em></dt>
                     <dd><p>\brief      Retourne le libelle du statut d'un don (brouillon, validee, abandonnee, payee)
 \param      mode          0=libelle long, 1=libelle court, 2=Picto + Libelle court, 3=Picto, 4=Picto + Libelle long
@@ -4540,13 +4560,13 @@ DiscountAbsolute#id</a> &mdash; <em>Property in class <a href="DiscountAbsolute.
 DolGraph::isGraphKo</a>() &mdash; <em>Method in class <a href="DolGraph.html">DolGraph</a></em></dt>
                     <dd></dd><dt><a href="DoliDb.html#method_idate">
 DoliDb::idate</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd><p>\brief     Convert (by PHP) a GM Timestamp date into a PHP server TZ to insert into a date field.</p></dd><dt><a href="DoliDb.html#method_ifsql">
+                    <dd><p>\brief     Convert (by PHP) a GM Timestamp date into a GM string date to insert into a date field.</p></dd><dt><a href="DoliDb.html#method_ifsql">
 DoliDb::ifsql</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd><p>\brief      Formatage d'un if SQL
-\param      test            chaine test
-\param      resok           resultat si test egal
-\param      resko           resultat si test non egal
-\return     string          chaine formate SQL</p></dd><dt>$<a href="Don.html#property_id">
+\param        test            chaine test
+\param        resok           resultat si test egal
+\param        resko           resultat si test non egal
+\return       string          chaine formate SQL</p></dd><dt>$<a href="Don.html#property_id">
 Don#id</a> &mdash; <em>Property in class <a href="Don.html">Don</a></em></dt>
                     <dd></dd><dt><a href="Don.html#method_initAsSpecimen">
 Don::initAsSpecimen</a>() &mdash; <em>Method in class <a href="Don.html">Don</a></em></dt>
@@ -5024,15 +5044,13 @@ DoliDb#lastquery</a> &mdash; <em>Property in class <a href="DoliDb.html">DoliDb<
 DoliDb#lastqueryerror</a> &mdash; <em>Property in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd></dd><dt>$<a href="DoliDb.html#property_lasterror">
 DoliDb#lasterror</a> &mdash; <em>Property in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd></dd><dt>$<a href="DoliDb.html#property_lasterrno">
-DoliDb#lasterrno</a> &mdash; <em>Property in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd></dd><dt><a href="DoliDb.html#method_lastquery">
 DoliDb::lastquery</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd><p>\brief      Renvoie la derniere requete soumise par la methode query()
-\return     lastquery</p></dd><dt><a href="DoliDb.html#method_lastqueryerror">
+\return       lastquery</p></dd><dt><a href="DoliDb.html#method_lastqueryerror">
 DoliDb::lastqueryerror</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd><p>\brief      Renvoie la derniere requete en erreur
-\return     string  lastqueryerror</p></dd><dt><a href="DoliDb.html#method_lasterror">
+\return       string  lastqueryerror</p></dd><dt><a href="DoliDb.html#method_lasterror">
 DoliDb::lasterror</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd><p>\brief      Renvoie le libelle derniere erreur
 \return     string  lasterror</p></dd><dt><a href="DoliDb.html#method_lasterrno">
@@ -5040,7 +5058,7 @@ DoliDb::lasterrno</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb
                     <dd><p>\brief      Renvoie le code derniere erreur
 \return     string  lasterrno</p></dd><dt><a href="DoliDb.html#method_last_insert_id">
 DoliDb::last_insert_id</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd><p>\brief     Recupere l'id genere par le dernier INSERT.</p></dd><dt><a href="Don.html#method_LibStatut">
+                    <dd><p>\brief      Get last ID after an insert INSERT.</p></dd><dt><a href="Don.html#method_LibStatut">
 Don::LibStatut</a>() &mdash; <em>Method in class <a href="Don.html">Don</a></em></dt>
                     <dd><p>\brief      Renvoi le libelle d'un statut donne
 \param      statut          Id statut
@@ -5658,8 +5676,8 @@ Deplacement#note_public</a> &mdash; <em>Property in class <a href="Deplacement.h
 DoliDb::num_rows</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd><p>\brief      Renvoie le nombre de lignes dans le resultat d'une requete SELECT
 \see           affected_rows
-\param      resultset           Curseur de la requete voulue
-\return     int                Nombre de lignes</p></dd><dt>$<a href="Don.html#property_nom">
+\param      resultset   Curseur de la requete voulue
+\return     int         Nombre de lignes</p></dd><dt>$<a href="Don.html#property_nom">
 Don#nom</a> &mdash; <em>Property in class <a href="Don.html">Don</a></em></dt>
                     <dd></dd><dt>$<a href="Don.html#property_note">
 Don#note</a> &mdash; <em>Property in class <a href="Don.html">Don</a></em></dt>
@@ -5782,7 +5800,7 @@ Contact#oldcopy</a> &mdash; <em>Property in class <a href="Contact.html">Contact
 DoliDb#ok</a> &mdash; <em>Property in class <a href="DoliDb.html">DoliDb</a></em></dt>
                     <dd></dd><dt><a href="DoliDb.html#method_order">
 DoliDb::order</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd><p>\brief      Defini le tri de la requete.</p></dd><dt>$<a href="Expedition.html#property_origin">
+                    <dd><p>\brief       Defini le tri de la requete.</p></dd><dt>$<a href="Expedition.html#property_origin">
 Expedition#origin</a> &mdash; <em>Property in class <a href="Expedition.html">Expedition</a></em></dt>
                     <dd></dd><dt>$<a href="Expedition.html#property_origin_id">
 Expedition#origin_id</a> &mdash; <em>Property in class <a href="Expedition.html">Expedition</a></em></dt>
@@ -5922,7 +5940,7 @@ ContratLigne#price_ht</a> &mdash; <em>Property in class <a href="ContratLigne.ht
 DolGraph#PrecisionY</a> &mdash; <em>Property in class <a href="DolGraph.html">DolGraph</a></em></dt>
                     <dd></dd><dt><a href="DoliDb.html#method_plimit">
 DoliDb::plimit</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd><p>\brief      Defini les limites de la requete.</p></dd><dt>$<a href="Don.html#property_prenom">
+                    <dd><p>\brief       Defini les limites de la requete.</p></dd><dt>$<a href="Don.html#property_prenom">
 Don#prenom</a> &mdash; <em>Property in class <a href="Don.html">Don</a></em></dt>
                     <dd></dd><dt>$<a href="Don.html#property_pays">
 Don#pays</a> &mdash; <em>Property in class <a href="Don.html">Don</a></em></dt>
@@ -6164,7 +6182,7 @@ CommandeFournisseurLigne#qty</a> &mdash; <em>Property in class <a href="Commande
 ContratLigne#qty</a> &mdash; <em>Property in class <a href="ContratLigne.html">ContratLigne</a></em></dt>
                     <dd></dd><dt><a href="DoliDb.html#method_query">
 DoliDb::query</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd><p>Execute a SQL request and return the resultset</p></dd><dt>$<a href="ExpeditionLigne.html#property_qty">
+                    <dd><p>Convert request to PostgreSQL syntax, execute it and return the resultset.</p></dd><dt>$<a href="ExpeditionLigne.html#property_qty">
 ExpeditionLigne#qty</a> &mdash; <em>Property in class <a href="ExpeditionLigne.html">ExpeditionLigne</a></em></dt>
                     <dd></dd><dt>$<a href="ExpeditionLigne.html#property_qty_shipped">
 ExpeditionLigne#qty_shipped</a> &mdash; <em>Property in class <a href="ExpeditionLigne.html">ExpeditionLigne</a></em></dt>
@@ -6685,9 +6703,11 @@ DolGraph::SetBgColor</a>() &mdash; <em>Method in class <a href="DolGraph.html">D
 \param      bg_color        array(R,G,B) ou 'onglet' ou 'default'</p></dd><dt><a href="DolGraph.html#method_SetBgColorGrid">
 DolGraph::SetBgColorGrid</a>() &mdash; <em>Method in class <a href="DolGraph.html">DolGraph</a></em></dt>
                     <dd><p>\brief      Definie la couleur de fond de la grille
-\param      bg_colorgrid        array(R,G,B) ou 'onglet' ou 'default'</p></dd><dt><a href="DoliDb.html#method_select_db">
+\param      bg_colorgrid        array(R,G,B) ou 'onglet' ou 'default'</p></dd><dt>$<a href="DoliDb.html#property_standard_conforming_strings">
+DoliDb#standard_conforming_strings</a> &mdash; <em>Property in class <a href="DoliDb.html">DoliDb</a></em></dt>
+                    <dd></dd><dt><a href="DoliDb.html#method_select_db">
 DoliDb::select_db</a>() &mdash; <em>Method in class <a href="DoliDb.html">DoliDb</a></em></dt>
-                    <dd><p>Selectionne une database.</p></dd><dt>$<a href="Don.html#property_societe">
+                    <dd><p>Select a database.</p></dd><dt>$<a href="Don.html#property_societe">
 Don#societe</a> &mdash; <em>Property in class <a href="Don.html">Don</a></em></dt>
                     <dd></dd><dt>$<a href="Don.html#property_statut">
 Don#statut</a> &mdash; <em>Property in class <a href="Don.html">Don</a></em></dt>
@@ -7958,7 +7978,9 @@ DiscountAbsolute::unlink_invoice</a>() &mdash; <em>Method in class <a href="Disc
 \remarks    Do not call this if discount is linked to a reconcialiated invoice
 \param      rowidline           Invoice line id
 \param      rowidinvoice        Invoice id
-\return     int                 &lt;0 if KO, &gt;0 if OK</p></dd><dt><a href="Don.html#method_update">
+\return     int                 &lt;0 if KO, &gt;0 if OK</p></dd><dt>$<a href="DoliDb.html#property_unescapeslashquot">
+DoliDb#unescapeslashquot</a> &mdash; <em>Property in class <a href="DoliDb.html">DoliDb</a></em></dt>
+                    <dd></dd><dt><a href="Don.html#method_update">
 Don::update</a>() &mdash; <em>Method in class <a href="Don.html">Don</a></em></dt>
                     <dd><p>Update a donation record</p></dd><dt><a href="EcmDirectory.html#method_update">
 EcmDirectory::update</a>() &mdash; <em>Method in class <a href="EcmDirectory.html">EcmDirectory</a></em></dt>

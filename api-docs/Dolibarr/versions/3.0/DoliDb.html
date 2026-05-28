@@ -174,7 +174,7 @@
 
     
     <p>        class
-    <strong>DoliDb</strong>        (<a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php">View source</a>)
+    <strong>DoliDb</strong>        (<a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php">View source</a>)
 </p>
 
         
@@ -184,8 +184,7 @@
 
             <div class="description">
             <p><p>\class      DoliDb
-\brief      Classe de gestion de la database de dolibarr
-\remarks    Works with PHP5 Only</p></p>                    </div>
+\brief      Class to drive a Postgresql database for Dolibarr</p></p>                    </div>
             
         
     
@@ -225,15 +224,6 @@
                                                                                 
                                     </td>
                 <td>$forcecharset</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_forcecollate">
-                                                                                
-                                                                                
-                                    </td>
-                <td>$forcecollate</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -319,20 +309,20 @@
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_lasterror">
+                <td class="type" id="property_unescapeslashquot">
                                                                                 
                                                                                 
                                     </td>
-                <td>$lasterror</td>
+                <td>$unescapeslashquot</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_lasterrno">
+                <td class="type" id="property_standard_conforming_strings">
                                                                                 
                                                                                 
                                     </td>
-                <td>$lasterrno</td>
+                <td>$standard_conforming_strings</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -354,6 +344,15 @@
                 <td class="last"></td>
                 <td></td>
             </tr>
+                    <tr>
+                <td class="type" id="property_lasterror">
+                                                                                
+                                                                                
+                                    </td>
+                <td>$lasterror</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
             </table>
 
     
@@ -365,9 +364,9 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_DoliDb">DoliDb</a>($type = &#039;mssql&#039;, $host, $user, $pass, $name = &#039;&#039;, $port = 0)
+                    <a href="#method_DoliDb">DoliDb</a>($type = &#039;pgsql&#039;, $host, $user, $pass, $name = &#039;&#039;, $port = 0)
         
-                                            <p><p>Ouverture d'une connexion vers le serveur et eventuellement une database.</p></p>                </div>
+                                            <p><p>\brief      Ouverture d'une connexion vers le serveur et une database.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -375,7 +374,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_convertSQLFromMysql">convertSQLFromMysql</a>($line, $type = &#039;ddl&#039;)
+                    <a href="#method_convertSQLFromMysql">convertSQLFromMysql</a>($line, $type = &#039;auto&#039;)
         
                                             <p><p>Convert a SQL request in Mysql syntax to PostgreSQL syntax</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -387,7 +386,7 @@
                 <div class="col-md-8">
                     <a href="#method_select_db">select_db</a>($database)
         
-                                            <p><p>Selectionne une database.</p></p>                </div>
+                                            <p><p>Select a database.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -418,8 +417,19 @@
                 <div class="col-md-8">
                     <a href="#method_getVersion">getVersion</a>()
         
-                                            <p><p>\brief          Renvoie la version du serveur
-\return         string      Chaine version</p></p>                </div>
+                                            <p><p>\brief          Return version of server
+\return        string      String with version</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getIntVersion">getIntVersion</a>()
+        
+                                            <p><p>\brief      Renvoie la version du serveur sous forme de nombre
+\return     string      Chaine version</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -429,8 +439,8 @@
                 <div class="col-md-8">
                     <a href="#method_getVersionArray">getVersionArray</a>()
         
-                                            <p><p>\brief          Renvoie la version du serveur dans un tableau
-\return         array       Tableau de chaque niveau de version</p></p>                </div>
+                                            <p><p>\brief      Renvoie la version du serveur dans un tableau
+\return     array       Tableau de chaque niveau de version</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -440,7 +450,7 @@
                 <div class="col-md-8">
                     <a href="#method_close">close</a>()
         
-                                            <p><p>\brief       Fermeture d'une connexion vers une database.</p></p>                </div>
+                                            <p><p>\brief      Fermeture d'une connexion vers une database.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -458,7 +468,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_commit">commit</a>()
+                    <a href="#method_commit">commit</a>($log = &#039;&#039;)
         
                                             <p><p>Validate a database transaction</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -481,7 +491,7 @@
                 <div class="col-md-8">
                     <a href="#method_query">query</a>($query, $usesavepoint = 0, $type = &#039;auto&#039;)
         
-                                            <p><p>Execute a SQL request and return the resultset</p></p>                </div>
+                                            <p><p>Convert request to PostgreSQL syntax, execute it and return the resultset.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -523,8 +533,8 @@
         
                                             <p><p>\brief      Renvoie le nombre de lignes dans le resultat d'une requete SELECT
 \see           affected_rows
-\param      resultset           Curseur de la requete voulue
-\return     int                Nombre de lignes</p></p>                </div>
+\param      resultset   Curseur de la requete voulue
+\return     int         Nombre de lignes</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -535,7 +545,7 @@
                     <a href="#method_affected_rows">affected_rows</a>($resultset)
         
                                             <p><p>\brief      Renvoie le nombre de lignes dans le resultat d'une requete INSERT, DELETE ou UPDATE
-\see        num_rows
+\see           num_rows
 \param      resultset   Curseur de la requete voulue
 \return     int         Nombre de lignes</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -557,7 +567,7 @@
                 <div class="col-md-8">
                     <a href="#method_plimit">plimit</a>($limit = 0, $offset = 0)
         
-                                            <p><p>\brief      Defini les limites de la requete.</p></p>                </div>
+                                            <p><p>\brief       Defini les limites de la requete.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -567,7 +577,7 @@
                 <div class="col-md-8">
                     <a href="#method_order">order</a>($sortfield = 0, $sortorder = 0)
         
-                                            <p><p>\brief      Defini le tri de la requete.</p></p>                </div>
+                                            <p><p>\brief       Defini le tri de la requete.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -577,7 +587,7 @@
                 <div class="col-md-8">
                     <a href="#method_escape">escape</a>($stringtoencode)
         
-                                            <p><p>\brief      Escape a string to insert data.</p></p>                </div>
+                                            <p><p>\brief     Escape a string to insert data.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -587,7 +597,7 @@
                 <div class="col-md-8">
                     <a href="#method_idate">idate</a>($param)
         
-                                            <p><p>\brief     Convert (by PHP) a GM Timestamp date into a PHP server TZ to insert into a date field.</p></p>                </div>
+                                            <p><p>\brief     Convert (by PHP) a GM Timestamp date into a GM string date to insert into a date field.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -611,10 +621,10 @@
                     <a href="#method_ifsql">ifsql</a>($test, $resok, $resko)
         
                                             <p><p>\brief      Formatage d'un if SQL
-\param      test            chaine test
-\param      resok           resultat si test egal
-\param      resko           resultat si test non egal
-\return     string          chaine formate SQL</p></p>                </div>
+\param        test            chaine test
+\param        resok           resultat si test egal
+\param        resko           resultat si test non egal
+\return       string          chaine formate SQL</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -625,7 +635,7 @@
                     <a href="#method_lastquery">lastquery</a>()
         
                                             <p><p>\brief      Renvoie la derniere requete soumise par la methode query()
-\return     lastquery</p></p>                </div>
+\return       lastquery</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -636,7 +646,7 @@
                     <a href="#method_lastqueryerror">lastqueryerror</a>()
         
                                             <p><p>\brief      Renvoie la derniere requete en erreur
-\return     string  lastqueryerror</p></p>                </div>
+\return       string  lastqueryerror</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -678,7 +688,7 @@
                 <div class="col-md-8">
                     <a href="#method_error">error</a>()
         
-                                            <p><p>\brief     Renvoie le texte de l'erreur mssql de l'operation precedente.</p></p>                </div>
+                                            <p><p>\brief      Renvoie le texte de l'erreur pgsql de l'operation precedente.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -686,9 +696,9 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_last_insert_id">last_insert_id</a>($tab)
+                    <a href="#method_last_insert_id">last_insert_id</a>($tab, $fieldid = &#039;rowid&#039;)
         
-                                            <p><p>\brief     Recupere l'id genere par le dernier INSERT.</p></p>                </div>
+                                            <p><p>\brief      Get last ID after an insert INSERT.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -730,15 +740,15 @@ Warning: This function includes the escape, so it must use direct value</p></p> 
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_DDLCreateDb">DDLCreateDb</a>($database, $charset = &#039;&#039;, $collation = &#039;&#039;)
+                    <a href="#method_DDLCreateDb">DDLCreateDb</a>($database, $charset = &#039;&#039;, $collation = &#039;&#039;, $owner = &#039;&#039;)
         
                                             <p><p>\brief          Create a new database
 \param          database        Database name to create
 \param          charset         Charset used to store data
 \param          collation       Charset used to sort data
+\param          owner           Username of database owner
 \return         resource        resource defined if OK, null if KO
-\remarks        Ne pas utiliser les fonctions xxx_create_db (xxx=mssql, ...) car elles sont deprecated
-On force creation de la base avec le charset forcecharset</p></p>                </div>
+\remarks        Ne pas utiliser les fonctions xxx_create_db (xxx=mysql, ...) car elles sont deprecated</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -748,7 +758,17 @@ On force creation de la base avec le charset forcecharset</p></p>               
                 <div class="col-md-8">
                     <a href="#method_DDLListTables">DDLListTables</a>($database, $table = &#039;&#039;)
         
-                                            <p><p>\brief      List tables into a database.</p></p>                </div>
+                                            <p><p>\brief      Liste des tables dans une database.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_DDLInfoTable">DDLInfoTable</a>($table)
+        
+                                            <p><p>\brief      Liste les informations des champs d'une table.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -766,7 +786,23 @@ On force creation de la base avec le charset forcecharset</p></p>               
 \param      fulltext        Tableau des Nom de champs qui seront indexes en fulltext
 \param      key             Tableau des champs cles noms =&gt; valeur
 \param      type            Type de la table
-\return     int             &lt;0 si KO, &gt;=0 si OK</p></p>                </div>
+\return     int             &lt;0 si KO, &gt;=0 si OK
+TODO</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_DDLCreateUser">DDLCreateUser</a>($dolibarr_main_db_host, $dolibarr_main_db_user, $dolibarr_main_db_pass, $dolibarr_main_db_name)
+        
+                                            <p><p>\brief      Create a user
+\param      dolibarr_main_db_host       Ip serveur
+\param      dolibarr_main_db_user       Nom user a creer
+\param      dolibarr_main_db_pass       Mot de passe user a creer
+\param      dolibarr_main_db_name       Database name where user must be granted
+\return     int                         &lt;0 si KO, &gt;=0 si OK</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -814,8 +850,8 @@ On force creation de la base avec le charset forcecharset</p></p>               
                 <div class="col-md-8">
                     <a href="#method_getDefaultCharacterSetDatabase">getDefaultCharacterSetDatabase</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>\brief      Return charset used to store data in database
+\return     string      Charset</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -825,8 +861,8 @@ On force creation de la base avec le charset forcecharset</p></p>               
                 <div class="col-md-8">
                     <a href="#method_getListOfCharacterSet">getListOfCharacterSet</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>\brief      Return list of available charset that can be used to store data in database
+\return     array       List of Charset</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -836,8 +872,8 @@ On force creation de la base avec le charset forcecharset</p></p>               
                 <div class="col-md-8">
                     <a href="#method_getDefaultCollationDatabase">getDefaultCollationDatabase</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>\brief      Return collation used in database
+\return     string      Collation value</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -847,8 +883,8 @@ On force creation de la base avec le charset forcecharset</p></p>               
                 <div class="col-md-8">
                     <a href="#method_getListOfCollation">getListOfCollation</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>\brief      Return list of available collation that can be used for database
+\return     array       Liste of Collation</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -858,8 +894,8 @@ On force creation de la base avec le charset forcecharset</p></p>               
                 <div class="col-md-8">
                     <a href="#method_getPathOfDump">getPathOfDump</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>\brief      Return full path of dump program
+\return     string      Full path of dump program</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -869,8 +905,20 @@ On force creation de la base avec le charset forcecharset</p></p>               
                 <div class="col-md-8">
                     <a href="#method_getPathOfRestore">getPathOfRestore</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>\brief      Return full path of restore program
+\return     string      Full path of restore program</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getServerParametersValues">getServerParametersValues</a>($filter = &#039;&#039;)
+        
+                                            <p><p>\brief      Return value of server parameters
+\param      filter      Filter list on a particular value
+\return     string      Value for parameter</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -881,9 +929,9 @@ On force creation de la base avec le charset forcecharset</p></p>               
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_DoliDb">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L87">at line 87</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L76">at line 76</a></div>
         <code>                    
-    <strong>DoliDb</strong>($type = &#039;mssql&#039;, $host, $user, $pass, $name = &#039;&#039;, $port = 0)
+    <strong>DoliDb</strong>($type = &#039;pgsql&#039;, $host, $user, $pass, $name = &#039;&#039;, $port = 0)
         </code>
     </h3>
     <div class="details">    
@@ -892,7 +940,13 @@ On force creation de la base avec le charset forcecharset</p></p>               
             
 
         <div class="method-description">
-                            <p><p>Ouverture d'une connexion vers le serveur et eventuellement une database.</p></p>                        
+                            <p><p>\brief      Ouverture d'une connexion vers le serveur et une database.</p></p>                <p><p>\param      type        type de base de donnees (mysql ou pgsql)
+\param      host        addresse de la base de donnees
+\param      user        nom de l'utilisateur autorise
+\param      pass        mot de passe
+\param      name        nom de la database
+\param      port        Port of database server
+\return     int         1 en cas de succes, 0 sinon</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -940,9 +994,9 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_convertSQLFromMysql">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L163">at line 163</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L157">at line 157</a></div>
         <code>                    
-    <strong>convertSQLFromMysql</strong>($line, $type = &#039;ddl&#039;)
+    <strong>convertSQLFromMysql</strong>($line, $type = &#039;auto&#039;)
         </code>
     </h3>
     <div class="details">    
@@ -951,7 +1005,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             
 
         <div class="method-description">
-                            <p><p>Convert a SQL request in Mysql syntax to PostgreSQL syntax</p></p>                <p><p>@param     line     SQL request line to convert</p></p>        
+                            <p><p>Convert a SQL request in Mysql syntax to PostgreSQL syntax</p></p>                <p><pre><code>@param     line     SQL request line to convert</code></pre></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -979,7 +1033,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_select_db">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L173">at line 173</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L331">at line 331</a></div>
         <code>                    
     <strong>select_db</strong>($database)
         </code>
@@ -990,7 +1044,8 @@ On force creation de la base avec le charset forcecharset</p></p>               
             
 
         <div class="method-description">
-                            <p><p>Selectionne une database.</p></p>                        
+                            <p><p>Select a database.</p></p>                <p><p>Ici postgresql n'a aucune fonction equivalente de mysql_select_db
+On compare juste manuellement si la database choisie est bien celle activee par la connexion</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1013,7 +1068,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_connect">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L188">at line 188</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L346">at line 346</a></div>
         <code>                    
     <strong>connect</strong>($host, $login, $passwd, $name, $port = 0)
         </code>
@@ -1024,7 +1079,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             
 
         <div class="method-description">
-                            <p><p>Connection vers le serveur</p></p>                <p><p>@param host        addresse de la base de donnees</p></p>        
+                            <p><p>Connection vers le serveur</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1067,7 +1122,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_getLabel">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L206">at line 206</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L369">at line 369</a></div>
         <code>                    
     <strong>getLabel</strong>()
         </code>
@@ -1092,7 +1147,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_getVersion">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L215">at line 215</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L378">at line 378</a></div>
         <code>                    
     <strong>getVersion</strong>()
         </code>
@@ -1103,8 +1158,33 @@ On force creation de la base avec le charset forcecharset</p></p>               
             
 
         <div class="method-description">
-                            <p><p>\brief          Renvoie la version du serveur
-\return         string      Chaine version</p></p>                        
+                            <p><p>\brief          Return version of server
+\return        string      String with version</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getIntVersion">
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L393">at line 393</a></div>
+        <code>                    
+    <strong>getIntVersion</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>\brief      Renvoie la version du serveur sous forme de nombre
+\return     string      Chaine version</p></p>                        
         </div>
         <div class="tags">
             
@@ -1117,7 +1197,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_getVersionArray">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L227">at line 227</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L410">at line 410</a></div>
         <code>                    
     <strong>getVersionArray</strong>()
         </code>
@@ -1128,8 +1208,8 @@ On force creation de la base avec le charset forcecharset</p></p>               
             
 
         <div class="method-description">
-                            <p><p>\brief          Renvoie la version du serveur dans un tableau
-\return         array       Tableau de chaque niveau de version</p></p>                        
+                            <p><p>\brief      Renvoie la version du serveur dans un tableau
+\return     array       Tableau de chaque niveau de version</p></p>                        
         </div>
         <div class="tags">
             
@@ -1142,7 +1222,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_close">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L238">at line 238</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L419">at line 419</a></div>
         <code>                    
     <strong>close</strong>()
         </code>
@@ -1153,8 +1233,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             
 
         <div class="method-description">
-                            <p><p>\brief       Fermeture d'une connexion vers une database.</p></p>                <p><p>\return     resource
-\see            connect</p></p>        
+                            <p><p>\brief      Fermeture d'une connexion vers une database.</p></p>                <p><p>\return     resource</p></p>        
         </div>
         <div class="tags">
             
@@ -1167,7 +1246,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_begin">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L249">at line 249</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L429">at line 429</a></div>
         <code>                    
     <strong>begin</strong>()
         </code>
@@ -1191,9 +1270,9 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_commit">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L273">at line 273</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L453">at line 453</a></div>
         <code>                    
-    <strong>commit</strong>()
+    <strong>commit</strong>($log = &#039;&#039;)
         </code>
     </h3>
     <div class="details">    
@@ -1205,6 +1284,16 @@ On force creation de la base avec le charset forcecharset</p></p>               
                             <p><p>Validate a database transaction</p></p>                        
         </div>
         <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$log</td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
             
@@ -1215,7 +1304,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_rollback">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L296">at line 296</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L476">at line 476</a></div>
         <code>                    
     <strong>rollback</strong>()
         </code>
@@ -1240,7 +1329,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_query">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L320">at line 320</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L500">at line 500</a></div>
         <code>                    
     <strong>query</strong>($query, $usesavepoint = 0, $type = &#039;auto&#039;)
         </code>
@@ -1251,7 +1340,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             
 
         <div class="method-description">
-                            <p><p>Execute a SQL request and return the resultset</p></p>                <p><p>@param      query           SQL query string</p></p>        
+                            <p><p>Convert request to PostgreSQL syntax, execute it and return the resultset.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1284,7 +1373,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch_object">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L408">at line 408</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L555">at line 555</a></div>
         <code>                    
     <strong>fetch_object</strong>($resultset)
         </code>
@@ -1319,7 +1408,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch_array">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L420">at line 420</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L567">at line 567</a></div>
         <code>                    
     <strong>fetch_array</strong>($resultset)
         </code>
@@ -1330,8 +1419,8 @@ On force creation de la base avec le charset forcecharset</p></p>               
             
 
         <div class="method-description">
-                            <p><p>\brief      Renvoie les donnees dans un tableau.</p></p>                <p><p>\param      resultset           Curseur de la requete voulue
-\return    array</p></p>        
+                            <p><p>\brief      Renvoie les donnees dans un tableau.</p></p>                <p><p>\param      resultset   Curseur de la requete voulue
+\return     array</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1354,7 +1443,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch_row">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L433">at line 433</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L579">at line 579</a></div>
         <code>                    
     <strong>fetch_row</strong>($resultset)
         </code>
@@ -1365,8 +1454,8 @@ On force creation de la base avec le charset forcecharset</p></p>               
             
 
         <div class="method-description">
-                            <p><p>\brief      Renvoie les donnees comme un tableau.</p></p>                <p><p>\param      resultset           Curseur de la requete voulue
-\return    array</p></p>        
+                            <p><p>\brief      Renvoie les donnees comme un tableau.</p></p>                <p><p>\param      resultset   Curseur de la requete voulue
+\return     array</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1389,7 +1478,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_num_rows">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L446">at line 446</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L592">at line 592</a></div>
         <code>                    
     <strong>num_rows</strong>($resultset)
         </code>
@@ -1402,8 +1491,8 @@ On force creation de la base avec le charset forcecharset</p></p>               
         <div class="method-description">
                             <p><p>\brief      Renvoie le nombre de lignes dans le resultat d'une requete SELECT
 \see           affected_rows
-\param      resultset           Curseur de la requete voulue
-\return     int                Nombre de lignes</p></p>                        
+\param      resultset   Curseur de la requete voulue
+\return     int         Nombre de lignes</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1426,7 +1515,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_affected_rows">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L459">at line 459</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L605">at line 605</a></div>
         <code>                    
     <strong>affected_rows</strong>($resultset)
         </code>
@@ -1438,7 +1527,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
 
         <div class="method-description">
                             <p><p>\brief      Renvoie le nombre de lignes dans le resultat d'une requete INSERT, DELETE ou UPDATE
-\see        num_rows
+\see           num_rows
 \param      resultset   Curseur de la requete voulue
 \return     int         Nombre de lignes</p></p>                        
         </div>
@@ -1463,7 +1552,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_free">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L475">at line 475</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L619">at line 619</a></div>
         <code>                    
     <strong>free</strong>($resultset = 0)
         </code>
@@ -1497,7 +1586,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_plimit">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L490">at line 490</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L634">at line 634</a></div>
         <code>                    
     <strong>plimit</strong>($limit = 0, $offset = 0)
         </code>
@@ -1508,8 +1597,8 @@ On force creation de la base avec le charset forcecharset</p></p>               
             
 
         <div class="method-description">
-                            <p><p>\brief      Defini les limites de la requete.</p></p>                <p><p>\param      limit       nombre maximum de lignes retournees
-\param      offset      numero de la ligne a partir de laquelle recuperer les ligne
+                            <p><p>\brief       Defini les limites de la requete.</p></p>                <p><p>\param      limit       nombre maximum de lignes retournees
+\param      offset      numero de la ligne a partir de laquelle recuperer les lignes
 \return     string      chaine exprimant la syntax sql de la limite</p></p>        
         </div>
         <div class="tags">
@@ -1538,7 +1627,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_order">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L506">at line 506</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L650">at line 650</a></div>
         <code>                    
     <strong>order</strong>($sortfield = 0, $sortorder = 0)
         </code>
@@ -1549,8 +1638,8 @@ On force creation de la base avec le charset forcecharset</p></p>               
             
 
         <div class="method-description">
-                            <p><p>\brief      Defini le tri de la requete.</p></p>                <p><p>\param      sortfield   liste des champ de tri
-\param      sortorder   ordre du tri ('ASC' or 'DESC')
+                            <p><p>\brief       Defini le tri de la requete.</p></p>                <p><p>\param      sortfield   liste des champ de tri
+\param      sortorder   ordre du tri
 \return     string      chaine exprimant la syntax sql de l'ordre de tri
 \TODO       A mutualiser dans classe mere</p></p>        
         </div>
@@ -1580,7 +1669,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_escape">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L534">at line 534</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L678">at line 678</a></div>
         <code>                    
     <strong>escape</strong>($stringtoencode)
         </code>
@@ -1591,8 +1680,8 @@ On force creation de la base avec le charset forcecharset</p></p>               
             
 
         <div class="method-description">
-                            <p><p>\brief      Escape a string to insert data.</p></p>                <p><p>\param      stringtoencode      String to escape
-\return     string              String escaped</p></p>        
+                            <p><p>\brief     Escape a string to insert data.</p></p>                <p><p>\param      stringtoencode      String to escape
+\return string              String escaped</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1615,7 +1704,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_idate">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L546">at line 546</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L689">at line 689</a></div>
         <code>                    
     <strong>idate</strong>($param)
         </code>
@@ -1626,7 +1715,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             
 
         <div class="method-description">
-                            <p><p>\brief     Convert (by PHP) a GM Timestamp date into a PHP server TZ to insert into a date field.</p></p>                <p><p>Function to use to build INSERT, UPDATE or WHERE predica
+                            <p><p>\brief     Convert (by PHP) a GM Timestamp date into a GM string date to insert into a date field.</p></p>                <p><p>Function to use to build INSERT, UPDATE or WHERE predica
 \param      param       Date TMS to convert
 \return string      Date in a string YYYYMMDDHHMMSS</p></p>        
         </div>
@@ -1651,7 +1740,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_jdate">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L557">at line 557</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L700">at line 700</a></div>
         <code>                    
     <strong>jdate</strong>($string)
         </code>
@@ -1688,7 +1777,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_ifsql">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L572">at line 572</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L715">at line 715</a></div>
         <code>                    
     <strong>ifsql</strong>($test, $resok, $resko)
         </code>
@@ -1700,10 +1789,10 @@ On force creation de la base avec le charset forcecharset</p></p>               
 
         <div class="method-description">
                             <p><p>\brief      Formatage d'un if SQL
-\param      test            chaine test
-\param      resok           resultat si test egal
-\param      resko           resultat si test non egal
-\return     string          chaine formate SQL</p></p>                        
+\param        test            chaine test
+\param        resok           resultat si test egal
+\param        resko           resultat si test non egal
+\return       string          chaine formate SQL</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1736,7 +1825,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_lastquery">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L582">at line 582</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L725">at line 725</a></div>
         <code>                    
     <strong>lastquery</strong>()
         </code>
@@ -1748,7 +1837,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
 
         <div class="method-description">
                             <p><p>\brief      Renvoie la derniere requete soumise par la methode query()
-\return     lastquery</p></p>                        
+\return       lastquery</p></p>                        
         </div>
         <div class="tags">
             
@@ -1761,7 +1850,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_lastqueryerror">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L591">at line 591</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L734">at line 734</a></div>
         <code>                    
     <strong>lastqueryerror</strong>()
         </code>
@@ -1773,7 +1862,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
 
         <div class="method-description">
                             <p><p>\brief      Renvoie la derniere requete en erreur
-\return     string  lastqueryerror</p></p>                        
+\return       string  lastqueryerror</p></p>                        
         </div>
         <div class="tags">
             
@@ -1786,7 +1875,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_lasterror">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L600">at line 600</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L743">at line 743</a></div>
         <code>                    
     <strong>lasterror</strong>()
         </code>
@@ -1811,7 +1900,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_lasterrno">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L609">at line 609</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L752">at line 752</a></div>
         <code>                    
     <strong>lasterrno</strong>()
         </code>
@@ -1836,7 +1925,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_errno">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L618">at line 618</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L761">at line 761</a></div>
         <code>                    
     <strong>errno</strong>()
         </code>
@@ -1860,7 +1949,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_error">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L667">at line 667</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L826">at line 826</a></div>
         <code>                    
     <strong>error</strong>()
         </code>
@@ -1871,7 +1960,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             
 
         <div class="method-description">
-                            <p><p>\brief     Renvoie le texte de l'erreur mssql de l'operation precedente.</p></p>                <p><p>\return    error_text</p></p>        
+                            <p><p>\brief      Renvoie le texte de l'erreur pgsql de l'operation precedente.</p></p>                <p><p>\return     error_text</p></p>        
         </div>
         <div class="tags">
             
@@ -1884,9 +1973,9 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_last_insert_id">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L683">at line 683</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L836">at line 836</a></div>
         <code>                    
-    <strong>last_insert_id</strong>($tab)
+    <strong>last_insert_id</strong>($tab, $fieldid = &#039;rowid&#039;)
         </code>
     </h3>
     <div class="details">    
@@ -1895,8 +1984,8 @@ On force creation de la base avec le charset forcecharset</p></p>               
             
 
         <div class="method-description">
-                            <p><p>\brief     Recupere l'id genere par le dernier INSERT.</p></p>                <p><p>\param     tab     Nom de la table concernee par l'insert. Ne sert pas sous mssql mais requis pour compatibilite avec Postgresql
-\return    int     id</p></p>        
+                            <p><p>\brief      Get last ID after an insert INSERT.</p></p>                <p><p>\param      tab     Table name concerned by insert. Ne sert pas sous MySql mais requis pour compatibilite avec Postgresql
+\return         int     id</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1905,6 +1994,11 @@ On force creation de la base avec le charset forcecharset</p></p>               
                     <tr>
                 <td></td>
                 <td>$tab</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$fieldid</td>
                 <td></td>
             </tr>
             </table>
@@ -1919,7 +2013,7 @@ On force creation de la base avec le charset forcecharset</p></p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_encrypt">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L703">at line 703</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L857">at line 857</a></div>
         <code>                    
     <strong>encrypt</strong>($fieldorvalue, $withQuotes = 0)
         </code>
@@ -1959,7 +2053,7 @@ Warning: This function includes the escape, so it must use direct value</p></p> 
             </div>
                     <div class="method-item">
                     <h3 id="method_decrypt">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L722">at line 722</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L877">at line 877</a></div>
         <code>                    
     <strong>decrypt</strong>($value)
         </code>
@@ -1995,7 +2089,7 @@ Warning: This function includes the escape, so it must use direct value</p></p> 
             </div>
                     <div class="method-item">
                     <h3 id="method_DDLGetConnectId">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L744">at line 744</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L900">at line 900</a></div>
         <code>                    
     <strong>DDLGetConnectId</strong>()
         </code>
@@ -2020,9 +2114,9 @@ Warning: This function includes the escape, so it must use direct value</p></p> 
             </div>
                     <div class="method-item">
                     <h3 id="method_DDLCreateDb">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L760">at line 760</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L916">at line 916</a></div>
         <code>                    
-    <strong>DDLCreateDb</strong>($database, $charset = &#039;&#039;, $collation = &#039;&#039;)
+    <strong>DDLCreateDb</strong>($database, $charset = &#039;&#039;, $collation = &#039;&#039;, $owner = &#039;&#039;)
         </code>
     </h3>
     <div class="details">    
@@ -2035,9 +2129,9 @@ Warning: This function includes the escape, so it must use direct value</p></p> 
 \param          database        Database name to create
 \param          charset         Charset used to store data
 \param          collation       Charset used to sort data
+\param          owner           Username of database owner
 \return         resource        resource defined if OK, null if KO
-\remarks        Ne pas utiliser les fonctions xxx_create_db (xxx=mssql, ...) car elles sont deprecated
-On force creation de la base avec le charset forcecharset</p></p>                        
+\remarks        Ne pas utiliser les fonctions xxx_create_db (xxx=mysql, ...) car elles sont deprecated</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -2058,6 +2152,11 @@ On force creation de la base avec le charset forcecharset</p></p>
                 <td>$collation</td>
                 <td></td>
             </tr>
+                    <tr>
+                <td></td>
+                <td>$owner</td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -2070,7 +2169,7 @@ On force creation de la base avec le charset forcecharset</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_DDLListTables">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L782">at line 782</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L930">at line 930</a></div>
         <code>                    
     <strong>DDLListTables</strong>($database, $table = &#039;&#039;)
         </code>
@@ -2081,9 +2180,8 @@ On force creation de la base avec le charset forcecharset</p></p>
             
 
         <div class="method-description">
-                            <p><p>\brief      List tables into a database.</p></p>                <p><p>\param      database        Name of database
-\param      table           Filter on some tables
-\return     array           Array list of tables</p></p>        
+                            <p><p>\brief      Liste des tables dans une database.</p></p>                <p><p>\param      database    Nom de la database
+\return     resource</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -2110,8 +2208,44 @@ On force creation de la base avec le charset forcecharset</p></p>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_DDLInfoTable">
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L950">at line 950</a></div>
+        <code>                    
+    <strong>DDLInfoTable</strong>($table)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>\brief      Liste les informations des champs d'une table.</p></p>                <p><p>\param      table           Nom de la table
+\return     array           Tableau des informations des champs de la table
+TODO modifier pour postgresql</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$table</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_DDLCreateTable">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L799">at line 799</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L980">at line 980</a></div>
         <code>                    
     <strong>DDLCreateTable</strong>($table, $fields, $primary_key, $type, $unique_keys = &quot;&quot;, $fulltext_keys = &quot;&quot;, $keys = &quot;&quot;)
         </code>
@@ -2130,7 +2264,8 @@ On force creation de la base avec le charset forcecharset</p></p>
 \param      fulltext        Tableau des Nom de champs qui seront indexes en fulltext
 \param      key             Tableau des champs cles noms =&gt; valeur
 \param      type            Type de la table
-\return     int             &lt;0 si KO, &gt;=0 si OK</p></p>                        
+\return     int             &lt;0 si KO, &gt;=0 si OK
+TODO</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -2182,8 +2317,62 @@ On force creation de la base avec le charset forcecharset</p></p>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_DDLCreateUser">
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1053">at line 1053</a></div>
+        <code>                    
+    <strong>DDLCreateUser</strong>($dolibarr_main_db_host, $dolibarr_main_db_user, $dolibarr_main_db_pass, $dolibarr_main_db_name)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>\brief      Create a user
+\param      dolibarr_main_db_host       Ip serveur
+\param      dolibarr_main_db_user       Nom user a creer
+\param      dolibarr_main_db_pass       Mot de passe user a creer
+\param      dolibarr_main_db_name       Database name where user must be granted
+\return     int                         &lt;0 si KO, &gt;=0 si OK</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$dolibarr_main_db_host</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$dolibarr_main_db_user</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$dolibarr_main_db_pass</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$dolibarr_main_db_name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_DDLDescTable">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L870">at line 870</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1073">at line 1073</a></div>
         <code>                    
     <strong>DDLDescTable</strong>($table, $field = &quot;&quot;)
         </code>
@@ -2224,7 +2413,7 @@ On force creation de la base avec le charset forcecharset</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_DDLAddField">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L887">at line 887</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1092">at line 1092</a></div>
         <code>                    
     <strong>DDLAddField</strong>($table, $field_name, $field_desc, $field_position = &quot;&quot;)
         </code>
@@ -2278,7 +2467,7 @@ On force creation de la base avec le charset forcecharset</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_DDLDropField">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L921">at line 921</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1126">at line 1126</a></div>
         <code>                    
     <strong>DDLDropField</strong>($table, $field_name)
         </code>
@@ -2320,7 +2509,7 @@ On force creation de la base avec le charset forcecharset</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDefaultCharacterSetDatabase">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L934">at line 934</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1142">at line 1142</a></div>
         <code>                    
     <strong>getDefaultCharacterSetDatabase</strong>()
         </code>
@@ -2331,8 +2520,8 @@ On force creation de la base avec le charset forcecharset</p></p>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>\brief      Return charset used to store data in database
+\return     string      Charset</p></p>                        
         </div>
         <div class="tags">
             
@@ -2345,7 +2534,7 @@ On force creation de la base avec le charset forcecharset</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getListOfCharacterSet">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L947">at line 947</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1153">at line 1153</a></div>
         <code>                    
     <strong>getListOfCharacterSet</strong>()
         </code>
@@ -2356,8 +2545,8 @@ On force creation de la base avec le charset forcecharset</p></p>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>\brief      Return list of available charset that can be used to store data in database
+\return     array       List of Charset</p></p>                        
         </div>
         <div class="tags">
             
@@ -2370,7 +2559,7 @@ On force creation de la base avec le charset forcecharset</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDefaultCollationDatabase">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L969">at line 969</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1177">at line 1177</a></div>
         <code>                    
     <strong>getDefaultCollationDatabase</strong>()
         </code>
@@ -2381,8 +2570,8 @@ On force creation de la base avec le charset forcecharset</p></p>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>\brief      Return collation used in database
+\return     string      Collation value</p></p>                        
         </div>
         <div class="tags">
             
@@ -2395,7 +2584,7 @@ On force creation de la base avec le charset forcecharset</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getListOfCollation">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L980">at line 980</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1188">at line 1188</a></div>
         <code>                    
     <strong>getListOfCollation</strong>()
         </code>
@@ -2406,8 +2595,8 @@ On force creation de la base avec le charset forcecharset</p></p>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>\brief      Return list of available collation that can be used for database
+\return     array       Liste of Collation</p></p>                        
         </div>
         <div class="tags">
             
@@ -2420,7 +2609,7 @@ On force creation de la base avec le charset forcecharset</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPathOfDump">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L1002">at line 1002</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1211">at line 1211</a></div>
         <code>                    
     <strong>getPathOfDump</strong>()
         </code>
@@ -2431,8 +2620,8 @@ On force creation de la base avec le charset forcecharset</p></p>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>\brief      Return full path of dump program
+\return     string      Full path of dump program</p></p>                        
         </div>
         <div class="tags">
             
@@ -2445,7 +2634,7 @@ On force creation de la base avec le charset forcecharset</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPathOfRestore">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/mssql.lib.php#L1007">at line 1007</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1238">at line 1238</a></div>
         <code>                    
     <strong>getPathOfRestore</strong>()
         </code>
@@ -2456,10 +2645,46 @@ On force creation de la base avec le charset forcecharset</p></p>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>\brief      Return full path of restore program
+\return     string      Full path of restore program</p></p>                        
         </div>
         <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getServerParametersValues">
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/3.0/htdocs/lib/databases/pgsql.lib.php#L1266">at line 1266</a></div>
+        <code>                    
+    <strong>getServerParametersValues</strong>($filter = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>\brief      Return value of server parameters
+\param      filter      Filter list on a particular value
+\return     string      Value for parameter</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$filter</td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
             
