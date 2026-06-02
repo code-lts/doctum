@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>StubTests\Framework\Validator\Services\PhpDocConformanceService | PHP Jetbrains phpstorm-stubs</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:StubTests_Framework_Validator_Services_PhpDocConformanceService" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">PHP Jetbrains phpstorm-stubs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../StubTests.html">StubTests</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Framework.html">Framework</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Framework/Validator.html">Validator</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Framework/Validator/Services.html">Services</a></li><li class="backslash">\</li><li>PhpDocConformanceService</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>PhpDocConformanceService    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>PhpDocConformanceService</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/PhpDocConformanceService.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            <div class="description">
+            <p><p>Service for PhpDoc-vs-signature conformance checks.</p></p>            <p><p>Provides the compatibility algorithm and helper methods used by
+FunctionPhpDocConformsSignatureCheck, ClassMethodsPhpDocConformsSignatureCheck,
+and their Enum/Interface variants.</p>
+<p>Extracted from PhpDocConformanceTrait for independent testability.</p></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        PRIMITIVES
+                                    </td>
+                <td class="last">
+                    <p><em><p>PHP primitive types — used to distinguish class names from scalar/pseudo types.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                PHPSTAN_LEAF_MAP
+                                    </td>
+                <td class="last">
+                    <p><em><p>Maps phpstan/psalm pseudo-type leaves to the closest built-in PHP type.</p></em></p>
+                    <p><p>Keys are lowercased leaf tokens (after generics/shapes/<code>[]</code> have been stripped).
+A value may itself be a union (e.g. 'array-key' → 'int|string'); it is substituted
+verbatim and later flattened/sorted by TypeResolver::normalizeType().</p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isPhpDocCompatibleWithSignature">isPhpDocCompatibleWithSignature</a>(string $sig, string $doc, array $templateNames = [])
+        
+                                            <p><p>Check if a PhpDoc type is compatible with a signature type.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_extractTemplateNames">extractTemplateNames</a>(string|null $rawPhpDoc)
+        
+                                            <p><p>Extract @template variable names from a raw PhpDoc comment.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_normalizeDocType">normalizeDocType</a>(string $type)
+        
+                                            <p><p>Normalise a PhpDoc type string.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_splitUnionComponents">splitUnionComponents</a>(string $type)
+        
+                                            <p><p>Split a union type string into individual components.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getParamSigTypeForPhpDoc">getParamSigTypeForPhpDoc</a>(<a href="../../../../StubTests/Framework/Parsers/Model/PHPParameter.html"><abbr title="StubTests\Framework\Parsers\Model\PHPParameter">PHPParameter</abbr></a> $param, string $phpVersion)
+        
+                                            <p><p>Get the signature type string for a parameter.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPropertySigTypeForPhpDoc">getPropertySigTypeForPhpDoc</a>(<a href="../../../../StubTests/Framework/Parsers/Model/PHPProperty.html"><abbr title="StubTests\Framework\Parsers\Model\PHPProperty">PHPProperty</abbr></a> $property, string $phpVersion)
+        
+                                            <p><p>Get the signature type string for a property.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_filterAndDeduplicateParamsPhpDoc">filterAndDeduplicateParamsPhpDoc</a>(array $params, string $phpVersion)
+        
+                                            <p><p>Filter parameters by version availability and deduplicate same-named variadic pairs.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_isPhpDocCompatibleWithSignature">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/PhpDocConformanceService.php#L55">at line 55</a></div>
+        <code>                    bool
+    <strong>isPhpDocCompatibleWithSignature</strong>(string $sig, string $doc, array $templateNames = [])
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Check if a PhpDoc type is compatible with a signature type.</p></p>                <p><p>Permissive algorithm — avoids false positives from intentional patterns:</p>
+<ul>
+<li>Typed-array narrowing:     sig <code>array</code>, doc <code>string[]</code> → pass (string[] normalises to array)</li>
+<li>phpstan generics:          sig <code>array</code>, doc <code>array&lt;K,V&gt;</code> → pass (generics stripped)</li>
+<li>resource widening:         sig <code>GMP</code>,   doc <code>resource|GMP</code> → pass (intersection non-empty)</li>
+<li>bool/false split:          sig <code>bool</code>,  doc <code>false</code> → pass (bool expands to {false, true})</li>
+<li>union reordering:          sig <code>string|false</code>, doc <code>false|string</code> → pass (normalised)</li>
+<li>mixed sig or doc:          sig <code>mixed</code>, doc <code>string</code> → pass (mixed encompasses all)</li>
+<li>object sig with class doc: sig <code>object</code>, doc <code>SomeClass</code> → pass</li>
+<li>class sig with object doc: sig <code>SomeClass</code>, doc <code>object</code> → pass</li>
+<li>resource→class migration:  sig <code>SomeClass</code>, doc <code>resource</code> → pass (PHP8 object migration)</li>
+<li>@template variable in doc: sig <code>\SplFileInfo</code>, doc <code>\T</code> (T declared via @template) → pass</li>
+<li>static ↔ class name:       sig <code>\DateTime</code>, doc <code>static</code> → pass</li>
+<li>class-to-class narrowing:  sig <code>\Iterator</code>, doc <code>\ArrayIterator</code> → pass</li>
+</ul>
+<p>Catches: sig <code>string</code>, doc <code>int</code> → fail (no shared component)</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$sig</td>
+                <td><p>Signature type string (always a real PHP type — no template variables)</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$doc</td>
+                <td><p>PhpDoc type string (may contain @template variable names)</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$templateNames</td>
+                <td><p>@template variable names declared on the enclosing entity</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true = compatible, false = mismatch detected</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_extractTemplateNames">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/PhpDocConformanceService.php#L114">at line 114</a></div>
+        <code>                    array
+    <strong>extractTemplateNames</strong>(string|null $rawPhpDoc)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Extract @template variable names from a raw PhpDoc comment.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$rawPhpDoc</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Template variable names (without any leading backslash)</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_normalizeDocType">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/PhpDocConformanceService.php#L152">at line 152</a></div>
+        <code>                    string
+    <strong>normalizeDocType</strong>(string $type)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Normalise a PhpDoc type string.</p></p>                <p><p>Strips phpstan/psalm annotations first, then applies standard
+normalizeType() (union ordering, FQN backslash, T[] → array).</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_splitUnionComponents">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/PhpDocConformanceService.php#L163">at line 163</a></div>
+        <code>                    array
+    <strong>splitUnionComponents</strong>(string $type)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Split a union type string into individual components.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getParamSigTypeForPhpDoc">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/PhpDocConformanceService.php#L178">at line 178</a></div>
+        <code>                    string|null
+    <strong>getParamSigTypeForPhpDoc</strong>(<a href="../../../../StubTests/Framework/Parsers/Model/PHPParameter.html"><abbr title="StubTests\Framework\Parsers\Model\PHPParameter">PHPParameter</abbr></a> $param, string $phpVersion)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the signature type string for a parameter.</p></p>                <p><p>Priority:</p>
+<ol>
+<li>Declared type from getDeclaredType() — if non-empty (not NoType)</li>
+<li>LanguageLevelTypeAware — highest version &lt;= $phpVersion, or defaultType</li>
+</ol></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../StubTests/Framework/Parsers/Model/PHPParameter.html"><abbr title="StubTests\Framework\Parsers\Model\PHPParameter">PHPParameter</abbr></a></td>
+                <td>$param</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$phpVersion</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPropertySigTypeForPhpDoc">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/PhpDocConformanceService.php#L203">at line 203</a></div>
+        <code>                    string|null
+    <strong>getPropertySigTypeForPhpDoc</strong>(<a href="../../../../StubTests/Framework/Parsers/Model/PHPProperty.html"><abbr title="StubTests\Framework\Parsers\Model\PHPProperty">PHPProperty</abbr></a> $property, string $phpVersion)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the signature type string for a property.</p></p>                <p><p>Priority:</p>
+<ol>
+<li>Signature type from getType() — if non-empty (not NoType)</li>
+<li>LanguageLevelTypeAware — highest version &lt;= $phpVersion, or defaultType</li>
+</ol></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../StubTests/Framework/Parsers/Model/PHPProperty.html"><abbr title="StubTests\Framework\Parsers\Model\PHPProperty">PHPProperty</abbr></a></td>
+                <td>$property</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$phpVersion</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_filterAndDeduplicateParamsPhpDoc">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/PhpDocConformanceService.php#L229">at line 229</a></div>
+        <code>                    array
+    <strong>filterAndDeduplicateParamsPhpDoc</strong>(array $params, string $phpVersion)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Filter parameters by version availability and deduplicate same-named variadic pairs.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$params</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$phpVersion</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built using <a href="https://github.com/JetBrains/phpstorm-stubs#readme" rel="noreferrer noopener" target="_blank">phpstorm-stubs</a> from JetBrains.</div></div>
+    </div>
+    </body>
+
+</html>

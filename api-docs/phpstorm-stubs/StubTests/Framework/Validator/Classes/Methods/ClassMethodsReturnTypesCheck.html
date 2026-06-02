@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>StubTests\Framework\Validator\Classes\Methods\ClassMethodsReturnTypesCheck | PHP Jetbrains phpstorm-stubs</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
+        <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../doctum.js"></script>
+        <script async defer src="../../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:StubTests_Framework_Validator_Classes_Methods_ClassMethodsReturnTypesCheck" data-root-path="../../../../../" data-search-index-url="../../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../../index.html">PHP Jetbrains phpstorm-stubs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../../StubTests.html">StubTests</a></li><li class="backslash">\</li><li><a href="../../../../../StubTests/Framework.html">Framework</a></li><li class="backslash">\</li><li><a href="../../../../../StubTests/Framework/Validator.html">Validator</a></li><li class="backslash">\</li><li><a href="../../../../../StubTests/Framework/Validator/Classes.html">Classes</a></li><li class="backslash">\</li><li><a href="../../../../../StubTests/Framework/Validator/Classes/Methods.html">Methods</a></li><li class="backslash">\</li><li>ClassMethodsReturnTypesCheck</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ClassMethodsReturnTypesCheck    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>ClassMethodsReturnTypesCheck</strong>        extends <a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html"><abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/ClassMethodsReturnTypesCheck.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            <div class="description">
+            <p><p>Validates that return types in stub methods match those in reflection.</p></p>            <p><p>For each class identified by $entityId the validator:</p>
+<ol>
+<li>Iterates all methods reported by reflection for the class.</li>
+<li>Looks up each method in the version-filtered stub hierarchy (parent classes
+and interfaces), stripping PS_UNRESERVE<em>PREFIX</em> where needed.</li>
+<li>If the stub method is not found it is silently skipped — existence is
+ClassMethodsExistCheck's responsibility.</li>
+<li>When both sides are found, return types are compared using version-aware
+resolution (LanguageLevelTypeAware attribute) and semantic normalisation.</li>
+</ol>
+<p>When reflection has no return type information (null), the check passes
+— the stub may correctly document a type that the Reflection API does not expose.</p>
+<p>Known problems are supported at two granularities:</p>
+<ul>
+<li>class-level:  EntityType::CLASS_TYPE + classId + 'ReturnTypesCheck'
+→ skips all return-type checks for the class.</li>
+<li>method-level: EntityType::METHOD + '\ClassName::methodName' + 'ReturnTypesCheck'
+→ skips only that specific mismatch.</li>
+</ul></p>        </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_reflectionProvider">
+                                        protected                                        <a href="../../../../../StubTests/Framework/Validator/Contracts/ReflectionProviderInterface.html"><abbr title="StubTests\Framework\Validator\Contracts\ReflectionProviderInterface">ReflectionProviderInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$reflectionProvider</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#property_reflectionProvider">
+<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_knownProblemsRegistry">
+                                        protected                                        <a href="../../../../../StubTests/Framework/Validator/KnownProblemsRegistry.html"><abbr title="StubTests\Framework\Validator\KnownProblemsRegistry">KnownProblemsRegistry</abbr></a>
+                                                                                
+                                    </td>
+                <td>$knownProblemsRegistry</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#property_knownProblemsRegistry">
+<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_entityLookup">
+                                        protected                                        <a href="../../../../../StubTests/Framework/Validator/Services/EntityLookupService.html"><abbr title="StubTests\Framework\Validator\Services\EntityLookupService">EntityLookupService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$entityLookup</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#property_entityLookup">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_methodCollection">
+                                        protected                                        <a href="../../../../../StubTests/Framework/Validator/Services/MethodCollectionService.html"><abbr title="StubTests\Framework\Validator\Services\MethodCollectionService">MethodCollectionService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$methodCollection</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#property_methodCollection">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_entityTypeConfig">
+                                        protected                                        <a href="../../../../../StubTests/Framework/Validator/Contracts/EntityTypeConfig.html"><abbr title="StubTests\Framework\Validator\Contracts\EntityTypeConfig">EntityTypeConfig</abbr></a>|null
+                                                                                
+                                    </td>
+                <td>$entityTypeConfig</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#property_entityTypeConfig">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a></small></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../../../StubTests/Framework/Validator/Contracts/ReflectionProviderInterface.html"><abbr title="StubTests\Framework\Validator\Contracts\ReflectionProviderInterface">ReflectionProviderInterface</abbr></a>|null $reflectionProvider = null, <a href="../../../../../StubTests/Framework/Validator/KnownProblemsRegistry.html"><abbr title="StubTests\Framework\Validator\KnownProblemsRegistry">KnownProblemsRegistry</abbr></a>|null $knownProblemsRegistry = null, <a href="../../../../../StubTests/Framework/Validator/Services/EntityLookupService.html"><abbr title="StubTests\Framework\Validator\Services\EntityLookupService">EntityLookupService</abbr></a>|null $entityLookup = null, <a href="../../../../../StubTests/Framework/Validator/Services/MethodCollectionService.html"><abbr title="StubTests\Framework\Validator\Services\MethodCollectionService">MethodCollectionService</abbr></a>|null $methodCollection = null, <a href="../../../../../StubTests/Framework/Validator/Contracts/EntityTypeConfig.html"><abbr title="StubTests\Framework\Validator\Contracts\EntityTypeConfig">EntityTypeConfig</abbr></a>|null $entityTypeConfig = null)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method___construct">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_skipWithKnownProblem">skipWithKnownProblem</a>(<a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, string $checkName, string $phpVersion)
+        
+                                            <p><p>Records a skipped-success result if a known problem covers this entity, and returns true.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#method_skipWithKnownProblem">
+<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../StubTests/Framework/Parsers/Model/PHPClassLikeObject.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClassLikeObject">PHPClassLikeObject</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_lookupEntityById">lookupEntityById</a>(<a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $storage, string $entityId)
+        
+                                            <p><p>Look up an entity by ID, dispatching to the right lookup method based on config.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method_lookupEntityById">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_collectEntityMethodsByConfig">collectEntityMethodsByConfig</a>(<a href="../../../../../StubTests/Framework/Parsers/Model/PHPClassLikeObject.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClassLikeObject">PHPClassLikeObject</abbr></a> $entity, string $phpVersion)
+        
+                                            <p><p>Collect version-filtered methods, dispatching based on config.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method_collectEntityMethodsByConfig">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_collectEntityPropertiesByConfig">collectEntityPropertiesByConfig</a>(<a href="../../../../../StubTests/Framework/Parsers/Model/PHPClassLikeObject.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClassLikeObject">PHPClassLikeObject</abbr></a> $entity, string $phpVersion)
+        
+                                            <p><p>Collect version-filtered properties, dispatching based on config.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method_collectEntityPropertiesByConfig">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getEntityLabel">getEntityLabel</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method_getEntityLabel">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getEntityType">getEntityType</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method_getEntityType">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getConstantEntityType">getConstantEntityType</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method_getConstantEntityType">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../StubTests/Framework/Parsers/Model/PHPClass.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClass">PHPClass</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findClassById">findClassById</a>(<a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $storage, string $entityId)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method_findClassById">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../StubTests/Framework/Parsers/Model/PHPEnum.html"><abbr title="StubTests\Framework\Parsers\Model\PHPEnum">PHPEnum</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findEnumById">findEnumById</a>(<a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $storage, string $entityId)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method_findEnumById">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../StubTests/Framework/Parsers/Model/PHPInterface.html"><abbr title="StubTests\Framework\Parsers\Model\PHPInterface">PHPInterface</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findInterfaceById">findInterfaceById</a>(<a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $storage, string $entityId)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method_findInterfaceById">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCheckName">getCheckName</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_describeMismatch">describeMismatch</a>(string $methodEntityId, mixed $reflMethod, <a href="../../../../../StubTests/Framework/Parsers/Model/PHPMethod.html"><abbr title="StubTests\Framework\Parsers\Model\PHPMethod">PHPMethod</abbr></a> $stubMethod, string $phpVersion)
+        
+                                            <p><p>Compare a flag on the reflection and stub method.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_supports">supports</a>(string $phpVersion)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_run">run</a>(<a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $stubs, string $entityId, string $phpVersion)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html#method_run">
+<abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a></small></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method___construct">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractClassCheck.php#L31">at line 31</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../../../StubTests/Framework/Validator/Contracts/ReflectionProviderInterface.html"><abbr title="StubTests\Framework\Validator\Contracts\ReflectionProviderInterface">ReflectionProviderInterface</abbr></a>|null $reflectionProvider = null, <a href="../../../../../StubTests/Framework/Validator/KnownProblemsRegistry.html"><abbr title="StubTests\Framework\Validator\KnownProblemsRegistry">KnownProblemsRegistry</abbr></a>|null $knownProblemsRegistry = null, <a href="../../../../../StubTests/Framework/Validator/Services/EntityLookupService.html"><abbr title="StubTests\Framework\Validator\Services\EntityLookupService">EntityLookupService</abbr></a>|null $entityLookup = null, <a href="../../../../../StubTests/Framework/Validator/Services/MethodCollectionService.html"><abbr title="StubTests\Framework\Validator\Services\MethodCollectionService">MethodCollectionService</abbr></a>|null $methodCollection = null, <a href="../../../../../StubTests/Framework/Validator/Contracts/EntityTypeConfig.html"><abbr title="StubTests\Framework\Validator\Contracts\EntityTypeConfig">EntityTypeConfig</abbr></a>|null $entityTypeConfig = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../StubTests/Framework/Validator/Contracts/ReflectionProviderInterface.html"><abbr title="StubTests\Framework\Validator\Contracts\ReflectionProviderInterface">ReflectionProviderInterface</abbr></a>|null</td>
+                <td>$reflectionProvider</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../StubTests/Framework/Validator/KnownProblemsRegistry.html"><abbr title="StubTests\Framework\Validator\KnownProblemsRegistry">KnownProblemsRegistry</abbr></a>|null</td>
+                <td>$knownProblemsRegistry</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../StubTests/Framework/Validator/Services/EntityLookupService.html"><abbr title="StubTests\Framework\Validator\Services\EntityLookupService">EntityLookupService</abbr></a>|null</td>
+                <td>$entityLookup</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../StubTests/Framework/Validator/Services/MethodCollectionService.html"><abbr title="StubTests\Framework\Validator\Services\MethodCollectionService">MethodCollectionService</abbr></a>|null</td>
+                <td>$methodCollection</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../StubTests/Framework/Validator/Contracts/EntityTypeConfig.html"><abbr title="StubTests\Framework\Validator\Contracts\EntityTypeConfig">EntityTypeConfig</abbr></a>|null</td>
+                <td>$entityTypeConfig</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_skipWithKnownProblem">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#method_skipWithKnownProblem">
+<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractReflectionCheck.php#L26">at line 26</a></div>
+        <code>            protected        bool
+    <strong>skipWithKnownProblem</strong>(<a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, string $checkName, string $phpVersion)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Records a skipped-success result if a known problem covers this entity, and returns true.</p></p>                <p><p>Returns false if validation should proceed normally.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a></td>
+                <td>$results</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$entityType</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$entityId</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$checkName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$phpVersion</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_lookupEntityById">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method_lookupEntityById">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractClassCheck.php#L50">at line 50</a></div>
+        <code>            protected        <a href="../../../../../StubTests/Framework/Parsers/Model/PHPClassLikeObject.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClassLikeObject">PHPClassLikeObject</abbr></a>|null
+    <strong>lookupEntityById</strong>(<a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $storage, string $entityId)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Look up an entity by ID, dispatching to the right lookup method based on config.</p></p>                <p><p>Defaults to class lookup when no config is set.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a></td>
+                <td>$storage</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$entityId</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../StubTests/Framework/Parsers/Model/PHPClassLikeObject.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClassLikeObject">PHPClassLikeObject</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_collectEntityMethodsByConfig">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method_collectEntityMethodsByConfig">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractClassCheck.php#L65">at line 65</a></div>
+        <code>            protected        array
+    <strong>collectEntityMethodsByConfig</strong>(<a href="../../../../../StubTests/Framework/Parsers/Model/PHPClassLikeObject.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClassLikeObject">PHPClassLikeObject</abbr></a> $entity, string $phpVersion)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Collect version-filtered methods, dispatching based on config.</p></p>                <p><p>Defaults to class hierarchy traversal when no config is set.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../StubTests/Framework/Parsers/Model/PHPClassLikeObject.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClassLikeObject">PHPClassLikeObject</abbr></a></td>
+                <td>$entity</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$phpVersion</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_collectEntityPropertiesByConfig">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method_collectEntityPropertiesByConfig">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractClassCheck.php#L80">at line 80</a></div>
+        <code>            protected        array
+    <strong>collectEntityPropertiesByConfig</strong>(<a href="../../../../../StubTests/Framework/Parsers/Model/PHPClassLikeObject.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClassLikeObject">PHPClassLikeObject</abbr></a> $entity, string $phpVersion)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Collect version-filtered properties, dispatching based on config.</p></p>                <p><p>Only classes have properties; returns empty array for enum/interface.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../StubTests/Framework/Parsers/Model/PHPClassLikeObject.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClassLikeObject">PHPClassLikeObject</abbr></a></td>
+                <td>$entity</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$phpVersion</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getEntityLabel">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method_getEntityLabel">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractClassCheck.php#L92">at line 92</a></div>
+        <code>            protected        string
+    <strong>getEntityLabel</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getEntityType">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method_getEntityType">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractClassCheck.php#L97">at line 97</a></div>
+        <code>            protected        string
+    <strong>getEntityType</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getConstantEntityType">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method_getConstantEntityType">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractClassCheck.php#L102">at line 102</a></div>
+        <code>            protected        string
+    <strong>getConstantEntityType</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findClassById">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method_findClassById">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractClassCheck.php#L109">at line 109</a></div>
+        <code>            protected        <a href="../../../../../StubTests/Framework/Parsers/Model/PHPClass.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClass">PHPClass</abbr></a>|null
+    <strong>findClassById</strong>(<a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $storage, string $entityId)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a></td>
+                <td>$storage</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$entityId</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../StubTests/Framework/Parsers/Model/PHPClass.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClass">PHPClass</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findEnumById">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method_findEnumById">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractClassCheck.php#L114">at line 114</a></div>
+        <code>            protected        <a href="../../../../../StubTests/Framework/Parsers/Model/PHPEnum.html"><abbr title="StubTests\Framework\Parsers\Model\PHPEnum">PHPEnum</abbr></a>|null
+    <strong>findEnumById</strong>(<a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $storage, string $entityId)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a></td>
+                <td>$storage</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$entityId</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../StubTests/Framework/Parsers/Model/PHPEnum.html"><abbr title="StubTests\Framework\Parsers\Model\PHPEnum">PHPEnum</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findInterfaceById">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractClassCheck.html#method_findInterfaceById">
+<abbr title="StubTests\Framework\Validator\AbstractClassCheck">AbstractClassCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractClassCheck.php#L119">at line 119</a></div>
+        <code>            protected        <a href="../../../../../StubTests/Framework/Parsers/Model/PHPInterface.html"><abbr title="StubTests\Framework\Parsers\Model\PHPInterface">PHPInterface</abbr></a>|null
+    <strong>findInterfaceById</strong>(<a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $storage, string $entityId)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a></td>
+                <td>$storage</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$entityId</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../StubTests/Framework/Parsers/Model/PHPInterface.html"><abbr title="StubTests\Framework\Parsers\Model\PHPInterface">PHPInterface</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCheckName">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/ClassMethodsReturnTypesCheck.php#L40">at line 40</a></div>
+        <code>            protected        string
+    <strong>getCheckName</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_describeMismatch">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/ClassMethodsReturnTypesCheck.php#L45">at line 45</a></div>
+        <code>            protected        string|null
+    <strong>describeMismatch</strong>(string $methodEntityId, mixed $reflMethod, <a href="../../../../../StubTests/Framework/Parsers/Model/PHPMethod.html"><abbr title="StubTests\Framework\Parsers\Model\PHPMethod">PHPMethod</abbr></a> $stubMethod, string $phpVersion)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Compare a flag on the reflection and stub method.</p></p>                <p><p>Return a descriptive failure message if there is a mismatch, or null if they match.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$methodEntityId</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$reflMethod</td>
+                <td><p>reflection method object</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../StubTests/Framework/Parsers/Model/PHPMethod.html"><abbr title="StubTests\Framework\Parsers\Model\PHPMethod">PHPMethod</abbr></a></td>
+                <td>$stubMethod</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$phpVersion</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_supports">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/ClassMethodsReturnTypesCheck.php#L34">at line 34</a></div>
+        <code>                    bool
+    <strong>supports</strong>(string $phpVersion)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$phpVersion</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_run">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html#method_run">
+<abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractMethodFlagCheck.php#L40">at line 40</a></div>
+        <code>                    <a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a>
+    <strong>run</strong>(<a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $stubs, string $entityId, string $phpVersion)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a></td>
+                <td>$stubs</td>
+                <td><p>Parsed stubs data</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$entityId</td>
+                <td><p>Entity identifier to validate</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$phpVersion</td>
+                <td><p>PHP version string</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built using <a href="https://github.com/JetBrains/phpstorm-stubs#readme" rel="noreferrer noopener" target="_blank">phpstorm-stubs</a> from JetBrains.</div></div>
+    </div>
+    </body>
+
+</html>
