@@ -4600,7 +4600,7 @@ CommonSubtotal</a></small></div>
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_createFromClone">createFromClone</a>(<a href="User.html">User</a> $user, $fromid = 0)
+                    <a href="#method_createFromClone">createFromClone</a>(<a href="User.html">User</a> $user, $fromid = 0, $forceentity = null)
         
                                             <p><p>Load an object from its id and create a new one in database</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -5704,7 +5704,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/
             </div>
                     <div class="method-item">
                     <h3 id="method_getTooltipContentArray">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L1979">at line 1979</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L1994">at line 1994</a></div>
         <code>                    
     <strong>getTooltipContentArray</strong>($params)
         </code>
@@ -13506,7 +13506,7 @@ CommonInvoice</a> <a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs
             </div>
                     <div class="method-item">
                     <h3 id="method_getNextNumRef">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5098">at line 5098</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5113">at line 5113</a></div>
         <code>                    string
     <strong>getNextNumRef</strong>(<a href="Societe.html">Societe</a> $soc, string $mode = &#039;next&#039;)
         </code>
@@ -14814,9 +14814,9 @@ Note: this-&gt;fac_rec must be set to create invoice from a recurring invoice</p
             </div>
                     <div class="method-item">
                     <h3 id="method_createFromClone">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L1274">at line 1274</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L1275">at line 1275</a></div>
         <code>                    
-    <strong>createFromClone</strong>(<a href="User.html">User</a> $user, $fromid = 0)
+    <strong>createFromClone</strong>(<a href="User.html">User</a> $user, $fromid = 0, $forceentity = null)
         </code>
     </h3>
     <div class="details">    
@@ -14836,11 +14836,17 @@ Note: this-&gt;fac_rec must be set to create invoice from a recurring invoice</p
                 <td>$user</td>
                 <td><p>User that clone
 @param      int     $fromid         Id of object to clone
+@param      int     $forceentity    Entity id to force (used by multicompany to clone into another entity)
 @return     int                     New id of clone</p></td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$fromid</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$forceentity</td>
                 <td></td>
             </tr>
             </table>
@@ -14855,7 +14861,7 @@ Note: this-&gt;fac_rec must be set to create invoice from a recurring invoice</p
             </div>
                     <div class="method-item">
                     <h3 id="method_createFromOrder">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L1419">at line 1419</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L1422">at line 1422</a></div>
         <code>                    int&lt;-1, 1&gt;
     <strong>createFromOrder</strong>(<a href="Commande.html">Commande</a> $object, <a href="User.html">User</a> $user)
         </code>
@@ -14903,7 +14909,7 @@ Note: this-&gt;fac_rec must be set to create invoice from a recurring invoice</p
             </div>
                     <div class="method-item">
                     <h3 id="method_createFromContract">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L1558">at line 1558</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L1561">at line 1561</a></div>
         <code>                    
     <strong>createFromContract</strong>($object, <a href="User.html">User</a> $user, $lines = array())
         </code>
@@ -14949,7 +14955,7 @@ Note: this-&gt;fac_rec must be set to create invoice from a recurring invoice</p
             </div>
                     <div class="method-item">
                     <h3 id="method_createDepositFromOrigin">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L1698">at line 1698</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L1701">at line 1701</a></div>
         <code>        static            <abbr title="?\Facture">Facture</abbr>
     <strong>createDepositFromOrigin</strong>(<a href="CommonObject.html">CommonObject</a> $origin, int $date, int $payment_terms_id, <a href="User.html">User</a> $user, int&lt;0, 1&gt; $notrigger = 0, bool $autoValidateDeposit = false, array&lt;string, int|float|string&gt; $overrideFields = array())
         </code>
@@ -15022,7 +15028,7 @@ Note: this-&gt;fac_rec must be set to create invoice from a recurring invoice</p
             </div>
                     <div class="method-item">
                     <h3 id="method_getNomUrl">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L2067">at line 2067</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L2082">at line 2082</a></div>
         <code>                    
     <strong>getNomUrl</strong>($withpicto = 0, string $option = &#039;&#039;, $max = 0, $short = 0, $moretitle = &#039;&#039;, $notooltip = 0, $addlinktonotes = 0, $save_lastsearch_value = -1, $target = &#039;&#039;)
         </code>
@@ -15104,7 +15110,7 @@ Note: this-&gt;fac_rec must be set to create invoice from a recurring invoice</p
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L2192">at line 2192</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L2207">at line 2207</a></div>
         <code>                    int
     <strong>fetch</strong>(int $rowid, $ref = &#039;&#039;, $ref_ext = &#039;&#039;, $notused = 0, $fetch_situation = false)
         </code>
@@ -15173,7 +15179,7 @@ Note: this-&gt;fac_rec must be set to create invoice from a recurring invoice</p
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch_lines">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L2462">at line 2462</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L2477">at line 2477</a></div>
         <code>                    int
     <strong>fetch_lines</strong>(int|string $only_type_product = &#039;&#039;, int $loadalsotranslation = 0)
         </code>
@@ -15221,7 +15227,7 @@ Note: this-&gt;fac_rec must be set to create invoice from a recurring invoice</p
             </div>
                     <div class="method-item">
                     <h3 id="method_fetchPreviousNextSituationInvoice">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L2674">at line 2674</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L2689">at line 2689</a></div>
         <code>                    void
     <strong>fetchPreviousNextSituationInvoice</strong>()
         </code>
@@ -15254,7 +15260,7 @@ Note: this-&gt;fac_rec must be set to create invoice from a recurring invoice</p
             </div>
                     <div class="method-item">
                     <h3 id="method_update">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L2712">at line 2712</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L2727">at line 2727</a></div>
         <code>                    
     <strong>update</strong>(<a href="User.html">User</a> $user, int $notrigger = 0)
         </code>
@@ -15294,7 +15300,7 @@ Note: this-&gt;fac_rec must be set to create invoice from a recurring invoice</p
             </div>
                     <div class="method-item">
                     <h3 id="method_insert_discount">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L2862">at line 2862</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L2877">at line 2877</a></div>
         <code>                    int
     <strong>insert_discount</strong>($idremise)
         </code>
@@ -15339,7 +15345,7 @@ Note: this-&gt;fac_rec must be set to create invoice from a recurring invoice</p
             </div>
                     <div class="method-item">
                     <h3 id="method_set_ref_client">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L2960">at line 2960</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L2975">at line 2975</a></div>
         <code>                    int
     <strong>set_ref_client</strong>(string $ref_client, $notrigger = 0)
         </code>
@@ -15388,7 +15394,7 @@ Note: this-&gt;fac_rec must be set to create invoice from a recurring invoice</p
             </div>
                     <div class="method-item">
                     <h3 id="method_setInputReason">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3022">at line 3022</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3037">at line 3037</a></div>
         <code>                    
     <strong>setInputReason</strong>($inputReasonId, int $notrigger = 0)
         </code>
@@ -15428,7 +15434,7 @@ Note: this-&gt;fac_rec must be set to create invoice from a recurring invoice</p
             </div>
                     <div class="method-item">
                     <h3 id="method_delete">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3085">at line 3085</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3100">at line 3100</a></div>
         <code>                    int
     <strong>delete</strong>(<a href="User.html">User</a> $user, int $notrigger = 0, int $idwarehouse = -1)
         </code>
@@ -15481,7 +15487,7 @@ Note: this-&gt;fac_rec must be set to create invoice from a recurring invoice</p
             </div>
                     <div class="method-item">
                     <h3 id="method_set_paid">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3291">at line 3291</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3306">at line 3306</a></div>
         <code>                    
     <strong>set_paid</strong>($user, string $close_code = &#039;&#039;, string $close_note = &#039;&#039;)
         <small><span class="label label-danger">deprecated</span></small></code>
@@ -15535,7 +15541,7 @@ or partially (if close_code filled) + appel trigger BILL_PAYED =&gt; this-&gt;fk
             </div>
                     <div class="method-item">
                     <h3 id="method_setPaid">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3308">at line 3308</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3323">at line 3323</a></div>
         <code>                    
     <strong>setPaid</strong>($user, string $close_code = &#039;&#039;, string $close_note = &#039;&#039;)
         </code>
@@ -15584,7 +15590,7 @@ or partially (if close_code filled) + appel trigger BILL_PAYED =&gt; this-&gt;fk
             </div>
                     <div class="method-item">
                     <h3 id="method_set_unpaid">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3373">at line 3373</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3388">at line 3388</a></div>
         <code>                    
     <strong>set_unpaid</strong>($user)
         <small><span class="label label-danger">deprecated</span></small></code>
@@ -15629,7 +15635,7 @@ or when a canceled invoice is reopened.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setUnpaid">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3388">at line 3388</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3403">at line 3403</a></div>
         <code>                    int
     <strong>setUnpaid</strong>($user)
         </code>
@@ -15674,7 +15680,7 @@ or when a canceled invoice is reopened.</p></p>                <p><p>@param User
             </div>
                     <div class="method-item">
                     <h3 id="method_set_canceled">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3438">at line 3438</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3453">at line 3453</a></div>
         <code>                    int
     <strong>set_canceled</strong>(<a href="User.html">User</a> $user, string $close_code = &#039;&#039;, string $close_note = &#039;&#039;)
         <small><span class="label label-danger">deprecated</span></small></code>
@@ -15736,7 +15742,7 @@ of no payment even if merchandises were sent).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setCanceled">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3455">at line 3455</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3470">at line 3470</a></div>
         <code>                    int
     <strong>setCanceled</strong>(<a href="User.html">User</a> $user, string $close_code = &#039;&#039;, string $close_note = &#039;&#039;)
         </code>
@@ -15791,7 +15797,7 @@ of no payment even if merchandises were sent).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_validate">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3518">at line 3518</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3533">at line 3533</a></div>
         <code>                    int
     <strong>validate</strong>(<a href="User.html">User</a> $user, string $force_number = &#039;&#039;, int $idwarehouse = 0, int $notrigger = 0, int $batch_rule = 0)
         </code>
@@ -15856,7 +15862,7 @@ This may rename files on disk because ref is modified but it does not generate a
             </div>
                     <div class="method-item">
                     <h3 id="method_updatePriceNextInvoice">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L3990">at line 3990</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L4005">at line 4005</a></div>
         <code>                    bool
     <strong>updatePriceNextInvoice</strong>(<a href="Translate.html">Translate</a> $langs)
         </code>
@@ -15899,7 +15905,7 @@ This may rename files on disk because ref is modified but it does not generate a
             </div>
                     <div class="method-item">
                     <h3 id="method_setDraft">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L4046">at line 4046</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L4061">at line 4061</a></div>
         <code>                    int
     <strong>setDraft</strong>(<a href="User.html">User</a> $user, int $idwarehouse = -1)
         </code>
@@ -15947,7 +15953,7 @@ This may rename files on disk because ref is modified but it does not generate a
             </div>
                     <div class="method-item">
                     <h3 id="method_addline">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L4167">at line 4167</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L4182">at line 4182</a></div>
         <code>                    
     <strong>addline</strong>(string $desc, $pu_ht, $qty, $txtva, $txlocaltax1 = 0, $txlocaltax2 = 0, $fk_product = 0, $remise_percent = 0, $date_start = &#039;&#039;, $date_end = &#039;&#039;, $fk_code_ventilation = 0, $info_bits = 0, $fk_remise_except = 0, $price_base_type = &#039;HT&#039;, $pu_ttc = 0, $type = 0, $rang = -1, $special_code = 0, $origin = &#039;&#039;, $origin_id = 0, $fk_parent_line = 0, $fk_fournprice = null, $pa_ht = 0, $label = &#039;&#039;, $array_options = array(), $situation_percent = 100, $fk_prev_id = 0, $fk_unit = null, $pu_ht_devise = 0, $ref_ext = &#039;&#039;, $noupdateafterinsertline = 0)
         </code>
@@ -16166,7 +16172,7 @@ et le desc doit deja avoir la bonne valeur (a l'appelant de gerer le multilangue
             </div>
                     <div class="method-item">
                     <h3 id="method_updateline">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L4526">at line 4526</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L4541">at line 4541</a></div>
         <code>                    
     <strong>updateline</strong>($rowid, string $desc, $pu, $qty, $remise_percent, $date_start, $date_end, $txtva, $txlocaltax1 = 0, $txlocaltax2 = 0, $price_base_type = &#039;HT&#039;, $info_bits = 0, $type = self::TYPE_STANDARD, $fk_parent_line = 0, $skip_update_total = 0, $fk_fournprice = null, $pa_ht = 0, $label = &#039;&#039;, $special_code = 0, $array_options = array(), $situation_percent = 100, $fk_unit = null, $pu_ht_devise = 0, $notrigger = 0, $ref_ext = &#039;&#039;, $rang = 0)
         </code>
@@ -16350,7 +16356,7 @@ et le desc doit deja avoir la bonne valeur (a l'appelant de gerer le multilangue
             </div>
                     <div class="method-item">
                     <h3 id="method_checkProgressLine">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L4795">at line 4795</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L4810">at line 4810</a></div>
         <code>                    bool
     <strong>checkProgressLine</strong>(int $idline, float $situation_percent)
         </code>
@@ -16398,7 +16404,7 @@ et le desc doit deja avoir la bonne valeur (a l'appelant de gerer le multilangue
             </div>
                     <div class="method-item">
                     <h3 id="method_update_percent">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L4825">at line 4825</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L4840">at line 4840</a></div>
         <code>                    void
     <strong>update_percent</strong>(<a href="FactureLigne.html">FactureLigne</a> $line, int|float $percent, bool $update_price = true)
         </code>
@@ -16451,7 +16457,7 @@ et le desc doit deja avoir la bonne valeur (a l'appelant de gerer le multilangue
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteLine">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L4873">at line 4873</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L4888">at line 4888</a></div>
         <code>                    int
     <strong>deleteLine</strong>(int $rowid, $id = 0)
         </code>
@@ -16500,7 +16506,7 @@ et le desc doit deja avoir la bonne valeur (a l'appelant de gerer le multilangue
             </div>
                     <div class="method-item">
                     <h3 id="method_set_remise">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L4935">at line 4935</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L4950">at line 4950</a></div>
         <code>                    int
     <strong>set_remise</strong>(<a href="User.html">User</a> $user, float $remise, $notrigger = 0)
         </code>
@@ -16565,7 +16571,7 @@ et le desc doit deja avoir la bonne valeur (a l'appelant de gerer le multilangue
             </div>
                     <div class="method-item">
                     <h3 id="method_setDiscount">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L4951">at line 4951</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L4966">at line 4966</a></div>
         <code>                    int
     <strong>setDiscount</strong>(<a href="User.html">User</a> $user, float $remise, $notrigger = 0)
         </code>
@@ -16619,7 +16625,7 @@ et le desc doit deja avoir la bonne valeur (a l'appelant de gerer le multilangue
             </div>
                     <div class="method-item">
                     <h3 id="method_setCategories">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5084">at line 5084</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5099">at line 5099</a></div>
         <code>                    int
     <strong>setCategories</strong>(int[]|int $categories)
         </code>
@@ -16663,7 +16669,7 @@ Existing categories are left untouch.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_info">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5204">at line 5204</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5219">at line 5219</a></div>
         <code>                    void
     <strong>info</strong>(int $id)
         </code>
@@ -16706,7 +16712,7 @@ Existing categories are left untouch.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_liste_array">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5249">at line 5249</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5264">at line 5264</a></div>
         <code>                    array&lt;int, string&gt;|array&lt;array{id: int, ref: string, name: string}&gt;|int&lt;-1, -1&gt;
     <strong>liste_array</strong>($shortlist = 0, int $draft = 0, $excluser = null, $socid = 0, $limit = 0, $offset = 0, $sortfield = &#039;f.datef,f.rowid&#039;, $sortorder = &#039;DESC&#039;)
         </code>
@@ -16790,7 +16796,7 @@ Existing categories are left untouch.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_list_replacable_invoices">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5324">at line 5324</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5339">at line 5339</a></div>
         <code>                    int&lt;-1, -1&gt;|array&lt;int, array{id: int, ref: string, status: int, paid: int&lt;0, 1&gt;, alreadypaid: int&lt;0, 1&gt;}&gt;
     <strong>list_replacable_invoices</strong>(int $socid = 0)
         </code>
@@ -16834,7 +16840,7 @@ Existing categories are left untouch.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_list_qualified_avoir_invoices">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5379">at line 5379</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5394">at line 5394</a></div>
         <code>                    array&lt;int, array{ref: string, status: int, type: int, paye: int&lt;0, 1&gt;, paymentornot: int&lt;0, 1&gt;}&gt;|int&lt;-1, -1&gt;
     <strong>list_qualified_avoir_invoices</strong>(int $socid = 0)
         </code>
@@ -16878,7 +16884,7 @@ Existing categories are left untouch.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_load_board">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5461">at line 5461</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5476">at line 5476</a></div>
         <code>                    <a href="WorkboardResponse.html">WorkboardResponse</a>|int
     <strong>load_board</strong>(<a href="User.html">User</a> $user)
         </code>
@@ -16921,7 +16927,7 @@ Existing categories are left untouch.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getIdBillingContact">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5526">at line 5526</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5541">at line 5541</a></div>
         <code>                    int[]
     <strong>getIdBillingContact</strong>()
         </code>
@@ -16954,7 +16960,7 @@ Existing categories are left untouch.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getIdShippingContact">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5536">at line 5536</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5551">at line 5551</a></div>
         <code>                    int[]
     <strong>getIdShippingContact</strong>()
         </code>
@@ -16987,7 +16993,7 @@ Existing categories are left untouch.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_initAsSpecimen">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5550">at line 5550</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5565">at line 5565</a></div>
         <code>                    
     <strong>initAsSpecimen</strong>(string $option = &#039;&#039;)
         </code>
@@ -17023,7 +17029,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_loadStateBoard">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5721">at line 5721</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5736">at line 5736</a></div>
         <code>                    
     <strong>loadStateBoard</strong>()
         </code>
@@ -17047,7 +17053,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getLinesArray">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5758">at line 5758</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5773">at line 5773</a></div>
         <code>                    
     <strong>getLinesArray</strong>()
         </code>
@@ -17071,7 +17077,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_generateDocument">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5774">at line 5774</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5789">at line 5789</a></div>
         <code>                    int&lt;-1, 1&gt;
     <strong>generateDocument</strong>(string $modele, <a href="Translate.html">Translate</a> $outputlangs, $hidedetails = 0, $hidedesc = 0, $hideref = 0, $moreparams = null)
         </code>
@@ -17143,7 +17149,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_newCycle">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5801">at line 5801</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5816">at line 5816</a></div>
         <code>                    int
     <strong>newCycle</strong>()
         </code>
@@ -17178,7 +17184,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_is_first">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5834">at line 5834</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5849">at line 5849</a></div>
         <code>                    bool
     <strong>is_first</strong>()
         </code>
@@ -17211,7 +17217,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_get_prev_sits">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5846">at line 5846</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5861">at line 5861</a></div>
         <code>                    <a href="Facture.html">Facture</a>[]|int&lt;-1, -1&gt;
     <strong>get_prev_sits</strong>()
         </code>
@@ -17244,7 +17250,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setFinal">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5880">at line 5880</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5895">at line 5895</a></div>
         <code>                    int
     <strong>setFinal</strong>(<a href="User.html">User</a> $user, int $notrigger = 0)
         </code>
@@ -17292,7 +17298,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_is_last_in_cycle">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5923">at line 5923</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5938">at line 5938</a></div>
         <code>                    bool
     <strong>is_last_in_cycle</strong>()
         </code>
@@ -17325,7 +17331,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_replaceThirdparty">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5956">at line 5956</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5971">at line 5971</a></div>
         <code>        static            bool
     <strong>replaceThirdparty</strong>(<a href="DoliDB.html">DoliDB</a> $dbs, int $origin_id, int $dest_id)
         </code>
@@ -17378,7 +17384,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_replaceProduct">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5973">at line 5973</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5988">at line 5988</a></div>
         <code>        static            bool
     <strong>replaceProduct</strong>(<a href="DoliDB.html">DoliDB</a> $db, int $origin_id, int $dest_id)
         </code>
@@ -17431,7 +17437,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasDelay">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L5987">at line 5987</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L6002">at line 6002</a></div>
         <code>                    bool
     <strong>hasDelay</strong>()
         </code>
@@ -17464,7 +17470,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isSituationInvoice">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L6022">at line 6022</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L6037">at line 6037</a></div>
         <code>                    int
     <strong>isSituationInvoice</strong>()
         </code>
@@ -17497,7 +17503,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_displayRetainedWarranty">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L6031">at line 6031</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L6046">at line 6046</a></div>
         <code>                    bool
     <strong>displayRetainedWarranty</strong>()
         </code>
@@ -17530,7 +17536,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getRetainedWarrantyAmount">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L6067">at line 6067</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L6082">at line 6082</a></div>
         <code>                    float
     <strong>getRetainedWarrantyAmount</strong>(int $rounding = -1)
         </code>
@@ -17574,7 +17580,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setRetainedWarranty">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L6124">at line 6124</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L6139">at line 6139</a></div>
         <code>                    int
     <strong>setRetainedWarranty</strong>($value)
         </code>
@@ -17619,7 +17625,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setRetainedWarrantyDateLimit">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L6157">at line 6157</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L6172">at line 6172</a></div>
         <code>                    
     <strong>setRetainedWarrantyDateLimit</strong>($timestamp, string $dateYmd = &#039;&#039;)
         </code>
@@ -17659,7 +17665,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sendEmailsRemindersOnInvoiceDueDate">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L6198">at line 6198</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L6213">at line 6213</a></div>
         <code>                    
     <strong>sendEmailsRemindersOnInvoiceDueDate</strong>(int $nbdays = 0, $paymentmode = &#039;all&#039;, $template = &#039;&#039;, $datetouse = &#039;duedate&#039;, $forcerecipient = &#039;&#039;)
         </code>
@@ -17718,7 +17724,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_willBeLastOfSameType">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L6514">at line 6514</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L6529">at line 6529</a></div>
         <code>                    array{0?: bool, 1?: string}
     <strong>willBeLastOfSameType</strong>(bool $allow_validated_drafts = false)
         </code>
@@ -17761,7 +17767,7 @@ id must be 0 if object instance is a specimen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getKanbanView">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L6556">at line 6556</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/facture/class/facture.class.php#L6571">at line 6571</a></div>
         <code>                    
     <strong>getKanbanView</strong>(string $option = &#039;&#039;, $arraydata = null)
         </code>
