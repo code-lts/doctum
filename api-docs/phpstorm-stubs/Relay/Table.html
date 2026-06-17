@@ -95,7 +95,7 @@
         
 
             <div class="description">
-            <p><p>Relay Table is a persistent per-worker hash table that can store arbitrary data.</p></p>                    </div>
+            <p><p>Relay Table is a persistent hash table shared across workers that can store arbitrary data.</p></p>                    </div>
             
         
     
@@ -105,87 +105,108 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    static&nbsp;mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(string|null $namespace = null, int $serializer = Relay::SERIALIZER_PHP)
+                    <a href="#method_get">get</a>(string $key, string|null $namespace = null)
         
-                                            <p><p>Create a Relay table instance.</p></p>                </div>
+                                            <p><p>Returns a key's value, or <code>null</code> if key doesn't exist.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    mixed
+                    static&nbsp;array|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_get">get</a>(string $key)
+                    <a href="#method_getWithMeta">getWithMeta</a>(mixed $key, string|null $namespace = null)
         
-                                            <p><p>Returns a key, or <code>null</code> if key doesn't exist.</p></p>                </div>
+                                            <p><p>Get the value and metadata of key.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    mixed
+                    static&nbsp;bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_pluck">pluck</a>(string $key, string $field)
+                    <a href="#method_set">set</a>(string $key, mixed $value, int|null $expire = null, string|null $namespace = null)
         
-                                            <p><p>Pluck a key from a cached key.</p></p>                </div>
+                                            <p><p>Sets a key and its value.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    static&nbsp;bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_set">set</a>(string $key, mixed $value)
+                    <a href="#method_exists">exists</a>(string $key, string|null $namespace = null)
         
-                                            <p><p>Set a key and its value.</p></p>                </div>
+                                            <p><p>Checks if a key exists in the table.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    static&nbsp;bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_exists">exists</a>(string $key)
-        
-                                            <p><p>Check if a key exists in the table.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    bool
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_delete">delete</a>(string $key)
+                    <a href="#method_delete">delete</a>(string $key, string|null $namespace = null)
         
                                             <p><p>Remove a key from the table.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    static&nbsp;int|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_count">count</a>()
+                    <a href="#method_ttl">ttl</a>(string $key, string|null $namespace = null)
         
-                                            <p><p>The number of keys stored in the table.</p></p>                </div>
+                                            <p><p>Returns the remaining time to live of a key that has a timeout,
+or <code>false</code> if the key doesn't exist or has no timeout.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string|null
+                    static&nbsp;int|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_namespace">namespace</a>()
+                    <a href="#method_count">count</a>(string|null $namespace = null)
         
-                                            <p><p>Get the table's namespace.</p></p>                </div>
+                                            <p><p>Returns the number of keys stored in the table.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;array
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_clear">clear</a>(string|null $namespace = null)
+        
+                                            <p><p>Removes all keys from the table.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array|false
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_keys">keys</a>(mixed $pattern, string|null $namespace = null)
+        
+                                            <p><p>Returns all keys matching pattern.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;int|false
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_memory">memory</a>(string|null $namespace = null)
+        
+                                            <p><p>Returns the number of bytes allocated for all elements.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array|false
                 </div>
                 <div class="col-md-8">
                     <a href="#method_namespaces">namespaces</a>()
@@ -195,22 +216,32 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_clear">clear</a>()
-        
-                                            <p><p>Removes all keys from the table.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;int
+                    static&nbsp;int|false
                 </div>
                 <div class="col-md-8">
                     <a href="#method_clearAll">clearAll</a>()
         
-                                            <p><p>Removes all keys from all tables.</p></p>                </div>
+                                            <p><p>Removes all keys from all namespaces.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../Generator.html">Generator</a>|false
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_fullscan">fullscan</a>(mixed $match = null, int $count = 0)
+        
+                                            <p><p>Scan the keyspace for matching keys on each namespace.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array|false
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_stats">stats</a>()
+        
+                                            <p><p>Returns statistics about Table.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -220,49 +251,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L16">at line 16</a></div>
-        <code>                    
-    <strong>__construct</strong>(string|null $namespace = null, int $serializer = Relay::SERIALIZER_PHP)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>Create a Relay table instance.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string|null</td>
-                <td>$namespace</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$serializer</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_get">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L24">at line 24</a></div>
-        <code>                    mixed
-    <strong>get</strong>(string $key)
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L17">at line 17</a></div>
+        <code>        static            mixed
+    <strong>get</strong>(string $key, string|null $namespace = null)
         </code>
     </h3>
     <div class="details">    
@@ -271,7 +263,7 @@
             
 
         <div class="method-description">
-                            <p><p>Returns a key, or <code>null</code> if key doesn't exist.</p></p>                        
+                            <p><p>Returns a key's value, or <code>null</code> if key doesn't exist.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -280,6 +272,11 @@
                     <tr>
                 <td>string</td>
                 <td>$key</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$namespace</td>
                 <td></td>
             </tr>
             </table>
@@ -302,10 +299,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_pluck">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L33">at line 33</a></div>
-        <code>                    mixed
-    <strong>pluck</strong>(string $key, string $field)
+                    <h3 id="method_getWithMeta">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L26">at line 26</a></div>
+        <code>        static            array|false
+    <strong>getWithMeta</strong>(mixed $key, string|null $namespace = null)
         </code>
     </h3>
     <div class="details">    
@@ -314,20 +311,20 @@
             
 
         <div class="method-description">
-                            <p><p>Pluck a key from a cached key.</p></p>                        
+                            <p><p>Get the value and metadata of key.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>mixed</td>
                 <td>$key</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>string</td>
-                <td>$field</td>
+                <td>string|null</td>
+                <td>$namespace</td>
                 <td></td>
             </tr>
             </table>
@@ -337,7 +334,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>mixed</td>
+            <td>array|false</td>
             <td></td>
         </tr>
     </table>
@@ -351,9 +348,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_set">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L42">at line 42</a></div>
-        <code>                    bool
-    <strong>set</strong>(string $key, mixed $value)
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L37">at line 37</a></div>
+        <code>        static            bool
+    <strong>set</strong>(string $key, mixed $value, int|null $expire = null, string|null $namespace = null)
         </code>
     </h3>
     <div class="details">    
@@ -362,7 +359,7 @@
             
 
         <div class="method-description">
-                            <p><p>Set a key and its value.</p></p>                        
+                            <p><p>Sets a key and its value.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -376,6 +373,16 @@
                     <tr>
                 <td>mixed</td>
                 <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$expire</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$namespace</td>
                 <td></td>
             </tr>
             </table>
@@ -399,9 +406,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_exists">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L50">at line 50</a></div>
-        <code>                    bool
-    <strong>exists</strong>(string $key)
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L46">at line 46</a></div>
+        <code>        static            bool
+    <strong>exists</strong>(string $key, string|null $namespace = null)
         </code>
     </h3>
     <div class="details">    
@@ -410,7 +417,7 @@
             
 
         <div class="method-description">
-                            <p><p>Check if a key exists in the table.</p></p>                        
+                            <p><p>Checks if a key exists in the table.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -419,6 +426,11 @@
                     <tr>
                 <td>string</td>
                 <td>$key</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$namespace</td>
                 <td></td>
             </tr>
             </table>
@@ -442,9 +454,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_delete">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L58">at line 58</a></div>
-        <code>                    bool
-    <strong>delete</strong>(string $key)
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L55">at line 55</a></div>
+        <code>        static            bool
+    <strong>delete</strong>(string $key, string|null $namespace = null)
         </code>
     </h3>
     <div class="details">    
@@ -462,6 +474,11 @@
                     <tr>
                 <td>string</td>
                 <td>$key</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$namespace</td>
                 <td></td>
             </tr>
             </table>
@@ -484,10 +501,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_count">
+                    <h3 id="method_ttl">
         <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L65">at line 65</a></div>
-        <code>                    int
-    <strong>count</strong>()
+        <code>        static            int|false
+    <strong>ttl</strong>(string $key, string|null $namespace = null)
         </code>
     </h3>
     <div class="details">    
@@ -496,15 +513,31 @@
             
 
         <div class="method-description">
-                            <p><p>The number of keys stored in the table.</p></p>                        
+                            <p><p>Returns the remaining time to live of a key that has a timeout,
+or <code>false</code> if the key doesn't exist or has no timeout.</p></p>                        
         </div>
         <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$namespace</td>
+                <td></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
+            <td>int|false</td>
             <td></td>
         </tr>
     </table>
@@ -517,10 +550,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_namespace">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L72">at line 72</a></div>
-        <code>                    string|null
-    <strong>namespace</strong>()
+                    <h3 id="method_count">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L73">at line 73</a></div>
+        <code>        static            int|false
+    <strong>count</strong>(string|null $namespace = null)
         </code>
     </h3>
     <div class="details">    
@@ -529,48 +562,25 @@
             
 
         <div class="method-description">
-                            <p><p>Get the table's namespace.</p></p>                        
+                            <p><p>Returns the number of keys stored in the table.</p></p>                        
         </div>
         <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$namespace</td>
+                <td></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>string|null</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_namespaces">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L79">at line 79</a></div>
-        <code>        static            array
-    <strong>namespaces</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>Returns all table namespaces.</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
+            <td>int|false</td>
             <td></td>
         </tr>
     </table>
@@ -584,9 +594,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_clear">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L86">at line 86</a></div>
-        <code>                    bool
-    <strong>clear</strong>()
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L81">at line 81</a></div>
+        <code>        static            bool
+    <strong>clear</strong>(string|null $namespace = null)
         </code>
     </h3>
     <div class="details">    
@@ -598,6 +608,16 @@
                             <p><p>Removes all keys from the table.</p></p>                        
         </div>
         <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$namespace</td>
+                <td></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
@@ -616,9 +636,133 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_keys">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L90">at line 90</a></div>
+        <code>        static            array|false
+    <strong>keys</strong>(mixed $pattern, string|null $namespace = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns all keys matching pattern.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$pattern</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$namespace</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|false</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_memory">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L98">at line 98</a></div>
+        <code>        static            int|false
+    <strong>memory</strong>(string|null $namespace = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the number of bytes allocated for all elements.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$namespace</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|false</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_namespaces">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L105">at line 105</a></div>
+        <code>        static            array|false
+    <strong>namespaces</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns all table namespaces.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|false</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_clearAll">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L93">at line 93</a></div>
-        <code>        static            int
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L112">at line 112</a></div>
+        <code>        static            int|false
     <strong>clearAll</strong>()
         </code>
     </h3>
@@ -628,7 +772,7 @@
             
 
         <div class="method-description">
-                            <p><p>Removes all keys from all tables.</p></p>                        
+                            <p><p>Removes all keys from all namespaces.</p></p>                        
         </div>
         <div class="tags">
             
@@ -636,7 +780,88 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
+            <td>int|false</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fullscan">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L121">at line 121</a></div>
+        <code>        static            <a href="../Generator.html">Generator</a>|false
+    <strong>fullscan</strong>(mixed $match = null, int $count = 0)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Scan the keyspace for matching keys on each namespace.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$match</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$count</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../Generator.html">Generator</a>|false</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stats">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L128">at line 128</a></div>
+        <code>        static            array|false
+    <strong>stats</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns statistics about Table.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|false</td>
             <td></td>
         </tr>
     </table>
