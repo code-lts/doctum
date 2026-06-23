@@ -1903,7 +1903,13 @@ concrete subclass.</p></dd><dt><a href="PHPUnit/Framework/Constraint/ArraysAreId
 <abbr title="PHPUnit\Util\Json">Json</abbr>::canonicalize</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/Json.html"><abbr title="PHPUnit\Util\Json">Json</abbr></a></em></dt>
                     <dd><p>Element 0 is true and element 1 is null when JSON decoding did not work.</p></dd><dt><a href="PHPUnit/Util/PHP/Job.html#method_code">
 <abbr title="PHPUnit\Util\PHP\Job">Job</abbr>::code</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/PHP/Job.html"><abbr title="PHPUnit\Util\PHP\Job">Job</abbr></a></em></dt>
-                    <dd></dd><dt><a href="PHPUnit/Util/Test.html#method_currentTestCase">
+                    <dd></dd><dt><a href="PHPUnit/Util/PHP/RunningJob.html#method_closeStdin">
+<abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr>::closeStdin</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/PHP/RunningJob.html"><abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr></a></em></dt>
+                    <dd><p>Signal end-of-input to the worker process by closing its standard input.</p></dd><dt><a href="PHPUnit/Util/PHP/RunningJob.html#method_consume">
+<abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr>::consume</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/PHP/RunningJob.html"><abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr></a></em></dt>
+                    <dd><p>Read whatever output is currently available without blocking. Intended
+to be called after stream_select() has reported one of the streams
+returned by readableStreams() as ready.</p></dd><dt><a href="PHPUnit/Util/Test.html#method_currentTestCase">
 <abbr title="PHPUnit\Util\Test">Test</abbr>::currentTestCase</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/Test.html"><abbr title="PHPUnit\Util\Test">Test</abbr></a></em></dt>
                     <dd></dd>        </dl><h2 id="letterD">D</h2>
         <dl id="indexD"><dt><a href="PHPUnit/Event/Code/ComparisonFailure.html#method_diff">
@@ -6969,7 +6975,11 @@ looked up using lookupMatcher() to figure out if it has been invoked.</p></dd><d
                     <dd></dd><dt><a href="PHPUnit/Util/PHP/JobRunnerRegistry.html#method_runTestJob">
 <abbr title="PHPUnit\Util\PHP\JobRunnerRegistry">JobRunnerRegistry</abbr>::runTestJob</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/PHP/JobRunnerRegistry.html"><abbr title="PHPUnit\Util\PHP\JobRunnerRegistry">JobRunnerRegistry</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Util/PHP/Result.html"><abbr title="PHPUnit\Util\PHP\Result">Result</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Util/PHP.html">PHPUnit\Util\PHP</a></em></dt>
-                    <dd></dd><dt><a href="PHPUnit/Util/Reflection.html"><abbr title="PHPUnit\Util\Reflection">Reflection</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Util.html">PHPUnit\Util</a></em></dt>
+                    <dd></dd><dt><a href="PHPUnit/Util/PHP/RunningJob.html"><abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Util/PHP.html">PHPUnit\Util\PHP</a></em></dt>
+                    <dd><p>Handle for a worker process that has been spawned by the JobRunner.</p></dd><dt><a href="PHPUnit/Util/PHP/RunningJob.html#method_readableStreams">
+<abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr>::readableStreams</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/PHP/RunningJob.html"><abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr></a></em></dt>
+                    <dd><p>The output streams that are still open and can be passed to
+stream_select() to wait for the worker process to produce output.</p></dd><dt><a href="PHPUnit/Util/Reflection.html"><abbr title="PHPUnit\Util\Reflection">Reflection</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Util.html">PHPUnit\Util</a></em></dt>
                     <dd></dd>        </dl><h2 id="letterS">S</h2>
         <dl id="indexS"><dt><a href="PHPUnit/Event/Application/Finished.html#method_shellExitCode">
 <abbr title="PHPUnit\Event\Application\Finished">Finished</abbr>::shellExitCode</a>() &mdash; <em>Method in class <a href="PHPUnit/Event/Application/Finished.html"><abbr title="PHPUnit\Event\Application\Finished">Finished</abbr></a></em></dt>
@@ -7428,12 +7438,17 @@ that those tests are not hoisted to the front.</p></dd><dt><a href="PHPUnit/Fram
 <abbr title="PHPUnit\Util\Filter">Filter</abbr>::stackTraceFromThrowableAsString</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/Filter.html"><abbr title="PHPUnit\Util\Filter">Filter</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Util/GlobalStateResult.html#method_skippedGlobals">
 <abbr title="PHPUnit\Util\GlobalStateResult">GlobalStateResult</abbr>::skippedGlobals</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/GlobalStateResult.html"><abbr title="PHPUnit\Util\GlobalStateResult">GlobalStateResult</abbr></a></em></dt>
-                    <dd></dd><dt><a href="PHPUnit/Util/PHP/JobRunnerRegistry.html#method_set">
+                    <dd></dd><dt><a href="PHPUnit/Util/PHP/JobRunner.html#method_start">
+<abbr title="PHPUnit\Util\PHP\JobRunner">JobRunner</abbr>::start</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/PHP/JobRunner.html"><abbr title="PHPUnit\Util\PHP\JobRunner">JobRunner</abbr></a></em></dt>
+                    <dd><p>Spawn the code of the given job as a long-running worker process whose
+standard input remains open as a control channel.</p></dd><dt><a href="PHPUnit/Util/PHP/JobRunnerRegistry.html#method_set">
 <abbr title="PHPUnit\Util\PHP\JobRunnerRegistry">JobRunnerRegistry</abbr>::set</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/PHP/JobRunnerRegistry.html"><abbr title="PHPUnit\Util\PHP\JobRunnerRegistry">JobRunnerRegistry</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Util/PHP/Result.html#method_stdout">
 <abbr title="PHPUnit\Util\PHP\Result">Result</abbr>::stdout</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/PHP/Result.html"><abbr title="PHPUnit\Util\PHP\Result">Result</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Util/PHP/Result.html#method_stderr">
 <abbr title="PHPUnit\Util\PHP\Result">Result</abbr>::stderr</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/PHP/Result.html"><abbr title="PHPUnit\Util\PHP\Result">Result</abbr></a></em></dt>
+                    <dd></dd><dt><a href="PHPUnit/Util/PHP/RunningJob.html#method_stdout">
+<abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr>::stdout</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/PHP/RunningJob.html"><abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Util/Reflection.html#method_sourceLocationFor">
 <abbr title="PHPUnit\Util\Reflection">Reflection</abbr>::sourceLocationFor</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/Reflection.html"><abbr title="PHPUnit\Util\Reflection">Reflection</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Util/Sanitizer.html"><abbr title="PHPUnit\Util\Sanitizer">Sanitizer</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Util.html">PHPUnit\Util</a></em></dt>
@@ -9480,7 +9495,12 @@ if an expectation is met.</p></dd><dt><a href="PHPUnit/Framework/TestCase.html#m
 <abbr title="PHPUnit\TextUI\XmlConfiguration\Configuration">Configuration</abbr>::wasLoadedFromFile</a>() &mdash; <em>Method in class <a href="PHPUnit/TextUI/XmlConfiguration/Configuration.html"><abbr title="PHPUnit\TextUI\XmlConfiguration\Configuration">Configuration</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/TextUI/XmlConfiguration/LoadedFromFileConfiguration.html#method_wasLoadedFromFile">
 <abbr title="PHPUnit\TextUI\XmlConfiguration\LoadedFromFileConfiguration">LoadedFromFileConfiguration</abbr>::wasLoadedFromFile</a>() &mdash; <em>Method in class <a href="PHPUnit/TextUI/XmlConfiguration/LoadedFromFileConfiguration.html"><abbr title="PHPUnit\TextUI\XmlConfiguration\LoadedFromFileConfiguration">LoadedFromFileConfiguration</abbr></a></em></dt>
-                    <dd></dd>        </dl><h2 id="letterX">X</h2>
+                    <dd></dd><dt><a href="PHPUnit/Util/PHP/RunningJob.html#method_write">
+<abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr>::write</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/PHP/RunningJob.html"><abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr></a></em></dt>
+                    <dd><p>Write to the standard input of the worker process.</p></dd><dt><a href="PHPUnit/Util/PHP/RunningJob.html#method_wait">
+<abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr>::wait</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/PHP/RunningJob.html"><abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr></a></em></dt>
+                    <dd><p>Block until the worker process has terminated, then reap it and return
+its accumulated output.</p></dd>        </dl><h2 id="letterX">X</h2>
         <dl id="indexX"><dt><a href="PHPUnit/TextUI/CliArguments/XmlConfigurationFileFinder.html"><abbr title="PHPUnit\TextUI\CliArguments\XmlConfigurationFileFinder">XmlConfigurationFileFinder</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/TextUI/CliArguments.html">PHPUnit\TextUI\CliArguments</a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/TextUI/XmlConfiguration/CodeCoverage/CodeCoverage.html#method_xml">
 <abbr title="PHPUnit\TextUI\XmlConfiguration\CodeCoverage\CodeCoverage">CodeCoverage</abbr>::xml</a>() &mdash; <em>Method in class <a href="PHPUnit/TextUI/XmlConfiguration/CodeCoverage/CodeCoverage.html"><abbr title="PHPUnit\TextUI\XmlConfiguration\CodeCoverage\CodeCoverage">CodeCoverage</abbr></a></em></dt>
@@ -10476,6 +10496,8 @@ if an expectation is met.</p></dd><dt><a href="PHPUnit/Framework/TestCase.html#m
 <abbr title="PHPUnit\Util\PHP\JobRunner">JobRunner</abbr>::__construct</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/PHP/JobRunner.html"><abbr title="PHPUnit\Util\PHP\JobRunner">JobRunner</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Util/PHP/Result.html#method___construct">
 <abbr title="PHPUnit\Util\PHP\Result">Result</abbr>::__construct</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/PHP/Result.html"><abbr title="PHPUnit\Util\PHP\Result">Result</abbr></a></em></dt>
+                    <dd></dd><dt><a href="PHPUnit/Util/PHP/RunningJob.html#method___construct">
+<abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr>::__construct</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/PHP/RunningJob.html"><abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Util/VersionComparisonOperator.html#method___construct">
 <abbr title="PHPUnit\Util\VersionComparisonOperator">VersionComparisonOperator</abbr>::__construct</a>() &mdash; <em>Method in class <a href="PHPUnit/Util/VersionComparisonOperator.html"><abbr title="PHPUnit\Util\VersionComparisonOperator">VersionComparisonOperator</abbr></a></em></dt>
                     <dd></dd>        </dl></div><div id="footer">
