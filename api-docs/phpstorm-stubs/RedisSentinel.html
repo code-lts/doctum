@@ -102,14 +102,14 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(array|null $options = null)
+                    <a href="#method___construct">__construct</a>(array|string|null $options_or_host = null, int $port = 26379, float $timeout = 0.0, string|null $persistent = null, int $retryInterval = 0, float $readTimeout = 0.0)
         
                                             <p><p>Creates a Redis Sentinel</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    <a href="RedisSentinel.html">RedisSentinel</a>|bool
                 </div>
                 <div class="col-md-8">
                     <a href="#method_ckquorum">ckquorum</a>(string $master)
@@ -121,7 +121,7 @@ Sentinel deployment is ok.</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    <a href="RedisSentinel.html">RedisSentinel</a>|bool
                 </div>
                 <div class="col-md-8">
                     <a href="#method_failover">failover</a>(string $master)
@@ -133,7 +133,7 @@ their configurations).</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    <a href="RedisSentinel.html">RedisSentinel</a>|bool
                 </div>
                 <div class="col-md-8">
                     <a href="#method_flushconfig">flushconfig</a>()
@@ -143,7 +143,7 @@ their configurations).</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <a href="RedisSentinel.html">RedisSentinel</a>|array|bool
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getMasterAddrByName">getMasterAddrByName</a>(string $master)
@@ -154,7 +154,7 @@ successfully for this master it returns the address and port of the promoted rep
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <a href="RedisSentinel.html">RedisSentinel</a>|array|bool
                 </div>
                 <div class="col-md-8">
                     <a href="#method_master">master</a>(string $master)
@@ -164,7 +164,7 @@ successfully for this master it returns the address and port of the promoted rep
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <a href="RedisSentinel.html">RedisSentinel</a>|array|bool
                 </div>
                 <div class="col-md-8">
                     <a href="#method_masters">masters</a>()
@@ -174,7 +174,17 @@ successfully for this master it returns the address and port of the promoted rep
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_myid">myid</a>()
+        
+                                            <p><p>Return the run ID of this Sentinel instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="RedisSentinel.html">RedisSentinel</a>|bool
                 </div>
                 <div class="col-md-8">
                     <a href="#method_ping">ping</a>()
@@ -184,7 +194,7 @@ successfully for this master it returns the address and port of the promoted rep
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    <a href="RedisSentinel.html">RedisSentinel</a>|int
                 </div>
                 <div class="col-md-8">
                     <a href="#method_reset">reset</a>(string $pattern)
@@ -194,7 +204,7 @@ successfully for this master it returns the address and port of the promoted rep
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <a href="RedisSentinel.html">RedisSentinel</a>|array|bool
                 </div>
                 <div class="col-md-8">
                     <a href="#method_sentinels">sentinels</a>(string $master)
@@ -204,7 +214,7 @@ successfully for this master it returns the address and port of the promoted rep
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    <a href="RedisSentinel.html">RedisSentinel</a>|array|bool
                 </div>
                 <div class="col-md-8">
                     <a href="#method_slaves">slaves</a>(string $master)
@@ -220,9 +230,9 @@ successfully for this master it returns the address and port of the promoted rep
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L80">at line 80</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L61">at line 61</a></div>
         <code>                    
-    <strong>__construct</strong>(array|null $options = null)
+    <strong>__construct</strong>(array|string|null $options_or_host = null, int $port = 26379, float $timeout = 0.0, string|null $persistent = null, int $retryInterval = 0, float $readTimeout = 0.0)
         </code>
     </h3>
     <div class="details">    
@@ -231,16 +241,16 @@ successfully for this master it returns the address and port of the promoted rep
             
 
         <div class="method-description">
-                            <p><p>Creates a Redis Sentinel</p></p>                <p><p>Accepts and array of options.</p>
-<p>Available options:</p>
+                            <p><p>Creates a Redis Sentinel</p></p>                <p><p>You can either pass an array of options (recommended &gt;= 6.0.0) or separate parameters (legacy).</p>
+<p>Available options for array:</p>
 <ul>
-<li>'host' =&gt; string, Sentinel IP address or hostname</li>
-<li>'port' =&gt; int, Sentinel Port (optional, default is 26379)</li>
+<li>'host'           =&gt; string, Sentinel IP address or hostname</li>
+<li>'port'           =&gt; int, Sentinel Port (optional, default is 26379)</li>
 <li>'connectTimeout' =&gt; float, Value in seconds (optional, default is 0 meaning unlimited)</li>
-<li>'persistent' =&gt; string, Persistent connection id (optional, default is NULL meaning not persistent)</li>
-<li>'retryInterval' =&gt; int, Value in milliseconds (optional, default is 0)</li>
-<li>'readTimeout' =&gt; float, Value in seconds (optional, default is 0 meaning unlimited)</li>
-<li>'auth' =&gt; string|array, Authentication credentials (optional, default is NULL meaning NOAUTH)</li>
+<li>'persistent'     =&gt; string, Persistent connection id (optional, default is NULL meaning not persistent)</li>
+<li>'retryInterval'  =&gt; int, Value in milliseconds (optional, default is 0)</li>
+<li>'readTimeout'    =&gt; float, Value in seconds (optional, default is 0 meaning unlimited)</li>
+<li>'auth'           =&gt; string|array, Authentication credentials (optional, default is NULL meaning NOAUTH)</li>
 </ul></p>        
         </div>
         <div class="tags">
@@ -248,9 +258,34 @@ successfully for this master it returns the address and port of the promoted rep
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array|null</td>
-                <td>$options</td>
-                <td></td>
+                <td>array|string|null</td>
+                <td>$options_or_host</td>
+                <td><p>Associative array of options, or Sentinel IP address/hostname</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$port</td>
+                <td><p>Sentinel Port (ignored if $options_or_host is an array)</p></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$timeout</td>
+                <td><p>Value in seconds (optional, default is 0 meaning unlimited)</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$persistent</td>
+                <td><p>Persistent connection id (optional, default is null meaning not persistent)</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$retryInterval</td>
+                <td><p>Value in milliseconds (optional, default is 0)</p></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$readTimeout</td>
+                <td><p>Value in seconds (optional, default is 0 meaning unlimited)</p></td>
             </tr>
             </table>
 
@@ -258,14 +293,25 @@ successfully for this master it returns the address and port of the promoted rep
             
             
             
+                            <h4>Examples</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><pre class="examples">$sentinel = new RedisSentinel([&#039;host&#039; =&gt; &#039;127.0.0.1&#039;]); // Default parameters (&gt;= 6.0.0)</pre></td>
+            </tr>
+                    <tr>
+                <td><pre class="examples">$sentinel = new RedisSentinel(&#039;127.0.0.1&#039;, 26379, 1, null, 100); // Legacy format</pre></td>
+            </tr>
+            </table>
+
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_ckquorum">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L95">at line 95</a></div>
-        <code>                    bool
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L83">at line 83</a></div>
+        <code>                    <a href="RedisSentinel.html">RedisSentinel</a>|bool
     <strong>ckquorum</strong>(string $master)
         </code>
     </h3>
@@ -295,7 +341,7 @@ Sentinel deployment is ok.</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
+            <td><a href="RedisSentinel.html">RedisSentinel</a>|bool</td>
             <td></td>
         </tr>
     </table>
@@ -309,8 +355,8 @@ Sentinel deployment is ok.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_failover">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L110">at line 110</a></div>
-        <code>                    bool
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L98">at line 98</a></div>
+        <code>                    <a href="RedisSentinel.html">RedisSentinel</a>|bool
     <strong>failover</strong>(string $master)
         </code>
     </h3>
@@ -340,7 +386,7 @@ their configurations).</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
+            <td><a href="RedisSentinel.html">RedisSentinel</a>|bool</td>
             <td></td>
         </tr>
     </table>
@@ -354,8 +400,8 @@ their configurations).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_flushconfig">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L128">at line 128</a></div>
-        <code>                    bool
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L116">at line 116</a></div>
+        <code>                    <a href="RedisSentinel.html">RedisSentinel</a>|bool
     <strong>flushconfig</strong>()
         </code>
     </h3>
@@ -377,7 +423,7 @@ managers. In those cases a way to to force Sentinel to rewrite the configuration
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
+            <td><a href="RedisSentinel.html">RedisSentinel</a>|bool</td>
             <td></td>
         </tr>
     </table>
@@ -391,8 +437,8 @@ managers. In those cases a way to to force Sentinel to rewrite the configuration
             </div>
                     <div class="method-item">
                     <h3 id="method_getMasterAddrByName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L142">at line 142</a></div>
-        <code>                    
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L130">at line 130</a></div>
+        <code>                    <a href="RedisSentinel.html">RedisSentinel</a>|array|bool
     <strong>getMasterAddrByName</strong>(string $master)
         </code>
     </h3>
@@ -417,6 +463,15 @@ successfully for this master it returns the address and port of the promoted rep
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="RedisSentinel.html">RedisSentinel</a>|array|bool</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
             
@@ -426,8 +481,8 @@ successfully for this master it returns the address and port of the promoted rep
             </div>
                     <div class="method-item">
                     <h3 id="method_master">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L155">at line 155</a></div>
-        <code>                    
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L143">at line 143</a></div>
+        <code>                    <a href="RedisSentinel.html">RedisSentinel</a>|array|bool
     <strong>master</strong>(string $master)
         </code>
     </h3>
@@ -451,6 +506,15 @@ successfully for this master it returns the address and port of the promoted rep
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="RedisSentinel.html">RedisSentinel</a>|array|bool</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
             
@@ -460,8 +524,8 @@ successfully for this master it returns the address and port of the promoted rep
             </div>
                     <div class="method-item">
                     <h3 id="method_masters">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L166">at line 166</a></div>
-        <code>                    
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L154">at line 154</a></div>
+        <code>                    <a href="RedisSentinel.html">RedisSentinel</a>|array|bool
     <strong>masters</strong>()
         </code>
     </h3>
@@ -475,6 +539,48 @@ successfully for this master it returns the address and port of the promoted rep
         </div>
         <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="RedisSentinel.html">RedisSentinel</a>|array|bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_myid">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L165">at line 165</a></div>
+        <code>                    string
+    <strong>myid</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return the run ID of this Sentinel instance.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
             
@@ -484,8 +590,8 @@ successfully for this master it returns the address and port of the promoted rep
             </div>
                     <div class="method-item">
                     <h3 id="method_ping">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L177">at line 177</a></div>
-        <code>                    bool
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L176">at line 176</a></div>
+        <code>                    <a href="RedisSentinel.html">RedisSentinel</a>|bool
     <strong>ping</strong>()
         </code>
     </h3>
@@ -503,7 +609,7 @@ successfully for this master it returns the address and port of the promoted rep
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
+            <td><a href="RedisSentinel.html">RedisSentinel</a>|bool</td>
             <td></td>
         </tr>
     </table>
@@ -517,8 +623,8 @@ successfully for this master it returns the address and port of the promoted rep
             </div>
                     <div class="method-item">
                     <h3 id="method_reset">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L192">at line 192</a></div>
-        <code>                    bool
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L191">at line 191</a></div>
+        <code>                    <a href="RedisSentinel.html">RedisSentinel</a>|int
     <strong>reset</strong>(string $pattern)
         </code>
     </h3>
@@ -547,7 +653,7 @@ replica and sentinel already discovered and associated with the master.</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
+            <td><a href="RedisSentinel.html">RedisSentinel</a>|int</td>
             <td></td>
         </tr>
     </table>
@@ -561,8 +667,8 @@ replica and sentinel already discovered and associated with the master.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sentinels">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L205">at line 205</a></div>
-        <code>                    
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L204">at line 204</a></div>
+        <code>                    <a href="RedisSentinel.html">RedisSentinel</a>|array|bool
     <strong>sentinels</strong>(string $master)
         </code>
     </h3>
@@ -586,6 +692,15 @@ replica and sentinel already discovered and associated with the master.</p></p>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="RedisSentinel.html">RedisSentinel</a>|array|bool</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
             
@@ -595,8 +710,8 @@ replica and sentinel already discovered and associated with the master.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_slaves">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L218">at line 218</a></div>
-        <code>                    
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/redis/RedisSentinel.php#L217">at line 217</a></div>
+        <code>                    <a href="RedisSentinel.html">RedisSentinel</a>|array|bool
     <strong>slaves</strong>(string $master)
         </code>
     </h3>
@@ -620,6 +735,15 @@ replica and sentinel already discovered and associated with the master.</p></p>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="RedisSentinel.html">RedisSentinel</a>|array|bool</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
             

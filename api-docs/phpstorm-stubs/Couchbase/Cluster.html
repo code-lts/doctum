@@ -86,7 +86,7 @@
 
     
     <p>        class
-    <strong>Cluster</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php">View source</a>)
+    <strong>Cluster</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php">View source</a>)
 </p>
 
         
@@ -95,8 +95,8 @@
         
 
             <div class="description">
-            <p><p>Cluster is an object containing functionality for performing cluster level operations
-against a cluster and for access to buckets.</p></p>                    </div>
+            <p><p>Represents a Couchbase Server Cluster.</p></p>            <p><p>It is an entry point to the library, and in charge of opening connections to the Buckets.
+In addition it can instantiate \Couchbase\ClusterManager to peform cluster-wide operations.</p></p>        </div>
             
         
     
@@ -109,10 +109,9 @@ against a cluster and for access to buckets.</p></p>                    </div>
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(string $connstr, <a href="../Couchbase/ClusterOptions.html"><abbr title="Couchbase\ClusterOptions">ClusterOptions</abbr></a> $options)
+                    <a href="#method___construct">__construct</a>(string $connstr)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Create cluster object</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -120,89 +119,39 @@ against a cluster and for access to buckets.</p></p>                    </div>
                     <a href="../Couchbase/Bucket.html"><abbr title="Couchbase\Bucket">Bucket</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_bucket">bucket</a>(string $name)
+                    <a href="#method_openBucket">openBucket</a>(string $name = &quot;default&quot;, string $password = &quot;&quot;)
         
-                                            <p><p>Returns a new bucket object.</p></p>                </div>
+                                            <p><p>Open connection to the Couchbase bucket</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../Couchbase/QueryResult.html"><abbr title="Couchbase\QueryResult">QueryResult</abbr></a>
+                    <a href="../Couchbase/ClusterManager.html"><abbr title="Couchbase\ClusterManager">ClusterManager</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_query">query</a>(string $statement, <a href="../Couchbase/QueryOptions.html"><abbr title="Couchbase\QueryOptions">QueryOptions</abbr></a> $options = null)
+                    <a href="#method_manager">manager</a>(string $username = null, string $password = null)
         
-                                            <p><p>Executes a N1QL query against the cluster.</p></p>                </div>
+                                            <p><p>Open management connection to the Couchbase cluster.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../Couchbase/AnalyticsResult.html"><abbr title="Couchbase\AnalyticsResult">AnalyticsResult</abbr></a>
+                    null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_analyticsQuery">analyticsQuery</a>(string $statement, <a href="../Couchbase/AnalyticsOptions.html"><abbr title="Couchbase\AnalyticsOptions">AnalyticsOptions</abbr></a> $options = null)
+                    <a href="#method_authenticate">authenticate</a>(<a href="../Couchbase/Authenticator.html"><abbr title="Couchbase\Authenticator">Authenticator</abbr></a> $authenticator)
         
-                                            <p><p>Executes an analytics query against the cluster.</p></p>                </div>
+                                            <p><p>Associate authenticator with Cluster</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../Couchbase/SearchResult.html"><abbr title="Couchbase\SearchResult">SearchResult</abbr></a>
+                    null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_searchQuery">searchQuery</a>(string $indexName, <a href="../Couchbase/SearchQuery.html"><abbr title="Couchbase\SearchQuery">SearchQuery</abbr></a> $query, <a href="../Couchbase/SearchOptions.html"><abbr title="Couchbase\SearchOptions">SearchOptions</abbr></a> $options = null)
+                    <a href="#method_authenticateAs">authenticateAs</a>(string $username, string $password)
         
-                                            <p><p>Executes a full text search query against the cluster.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../Couchbase/BucketManager.html"><abbr title="Couchbase\BucketManager">BucketManager</abbr></a>
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_buckets">buckets</a>()
-        
-                                            <p><p>Creates a new bucket manager object for managing buckets.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../Couchbase/UserManager.html"><abbr title="Couchbase\UserManager">UserManager</abbr></a>
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_users">users</a>()
-        
-                                            <p><p>Creates a new user manager object for managing users and groups.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../Couchbase/AnalyticsIndexManager.html"><abbr title="Couchbase\AnalyticsIndexManager">AnalyticsIndexManager</abbr></a>
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_analyticsIndexes">analyticsIndexes</a>()
-        
-                                            <p><p>Creates a new query index manager object for managing analytics query indexes.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../Couchbase/QueryIndexManager.html"><abbr title="Couchbase\QueryIndexManager">QueryIndexManager</abbr></a>
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_queryIndexes">queryIndexes</a>()
-        
-                                            <p><p>Creates a new query index manager object for managing N1QL query indexes.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../Couchbase/SearchIndexManager.html"><abbr title="Couchbase\SearchIndexManager">SearchIndexManager</abbr></a>
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_searchIndexes">searchIndexes</a>()
-        
-                                            <p><p>Creates a new search index manager object for managing search query indexes.</p></p>                </div>
+                                            <p><p>Create \Couchbase\PasswordAuthenticator from given credentials and associate it with Cluster</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -213,9 +162,9 @@ against a cluster and for access to buckets.</p></p>                    </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1299">at line 1299</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L316">at line 316</a></div>
         <code>                    
-    <strong>__construct</strong>(string $connstr, <a href="../Couchbase/ClusterOptions.html"><abbr title="Couchbase\ClusterOptions">ClusterOptions</abbr></a> $options)
+    <strong>__construct</strong>(string $connstr)
         </code>
     </h3>
     <div class="details">    
@@ -224,8 +173,7 @@ against a cluster and for access to buckets.</p></p>                    </div>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Create cluster object</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -234,12 +182,7 @@ against a cluster and for access to buckets.</p></p>                    </div>
                     <tr>
                 <td>string</td>
                 <td>$connstr</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../Couchbase/ClusterOptions.html"><abbr title="Couchbase\ClusterOptions">ClusterOptions</abbr></a></td>
-                <td>$options</td>
-                <td></td>
+                <td><p>connection string</p></td>
             </tr>
             </table>
 
@@ -252,10 +195,10 @@ against a cluster and for access to buckets.</p></p>                    </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_bucket">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1307">at line 1307</a></div>
+                    <h3 id="method_openBucket">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L327">at line 327</a></div>
         <code>                    <a href="../Couchbase/Bucket.html"><abbr title="Couchbase\Bucket">Bucket</abbr></a>
-    <strong>bucket</strong>(string $name)
+    <strong>openBucket</strong>(string $name = &quot;default&quot;, string $password = &quot;&quot;)
         </code>
     </h3>
     <div class="details">    
@@ -264,7 +207,7 @@ against a cluster and for access to buckets.</p></p>                    </div>
             
 
         <div class="method-description">
-                            <p><p>Returns a new bucket object.</p></p>                        
+                            <p><p>Open connection to the Couchbase bucket</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -273,7 +216,12 @@ against a cluster and for access to buckets.</p></p>                    </div>
                     <tr>
                 <td>string</td>
                 <td>$name</td>
-                <td><p>the name of the bucket</p></td>
+                <td><p>Name of the bucket.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$password</td>
+                <td><p>Password of the bucket to override authenticator.</p></td>
             </tr>
             </table>
 
@@ -289,16 +237,27 @@ against a cluster and for access to buckets.</p></p>                    </div>
 
             
             
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="../Couchbase/Authenticator.html"><abbr title="Couchbase\Authenticator">Authenticator</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_query">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1317">at line 1317</a></div>
-        <code>                    <a href="../Couchbase/QueryResult.html"><abbr title="Couchbase\QueryResult">QueryResult</abbr></a>
-    <strong>query</strong>(string $statement, <a href="../Couchbase/QueryOptions.html"><abbr title="Couchbase\QueryOptions">QueryOptions</abbr></a> $options = null)
+                    <h3 id="method_manager">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L338">at line 338</a></div>
+        <code>                    <a href="../Couchbase/ClusterManager.html"><abbr title="Couchbase\ClusterManager">ClusterManager</abbr></a>
+    <strong>manager</strong>(string $username = null, string $password = null)
         </code>
     </h3>
     <div class="details">    
@@ -307,7 +266,7 @@ against a cluster and for access to buckets.</p></p>                    </div>
             
 
         <div class="method-description">
-                            <p><p>Executes a N1QL query against the cluster.</p></p>                <p><p>Note: On Couchbase Server versions &lt; 6.5 a bucket must be opened before using query.</p></p>        
+                            <p><p>Open management connection to the Couchbase cluster.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -315,13 +274,13 @@ against a cluster and for access to buckets.</p></p>                    </div>
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$statement</td>
-                <td><p>the N1QL query statement to execute</p></td>
+                <td>$username</td>
+                <td><p>Name of the administrator to override authenticator or NULL.</p></td>
             </tr>
                     <tr>
-                <td><a href="../Couchbase/QueryOptions.html"><abbr title="Couchbase\QueryOptions">QueryOptions</abbr></a></td>
-                <td>$options</td>
-                <td><p>the options to use when executing the query</p></td>
+                <td>string</td>
+                <td>$password</td>
+                <td><p>Password of the administrator to override authenticator or NULL.</p></td>
             </tr>
             </table>
 
@@ -330,23 +289,34 @@ against a cluster and for access to buckets.</p></p>                    </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../Couchbase/QueryResult.html"><abbr title="Couchbase\QueryResult">QueryResult</abbr></a></td>
+            <td><a href="../Couchbase/ClusterManager.html"><abbr title="Couchbase\ClusterManager">ClusterManager</abbr></a></td>
             <td></td>
         </tr>
     </table>
 
             
             
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="../Couchbase/Authenticator.html"><abbr title="Couchbase\Authenticator">Authenticator</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_analyticsQuery">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1327">at line 1327</a></div>
-        <code>                    <a href="../Couchbase/AnalyticsResult.html"><abbr title="Couchbase\AnalyticsResult">AnalyticsResult</abbr></a>
-    <strong>analyticsQuery</strong>(string $statement, <a href="../Couchbase/AnalyticsOptions.html"><abbr title="Couchbase\AnalyticsOptions">AnalyticsOptions</abbr></a> $options = null)
+                    <h3 id="method_authenticate">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L350">at line 350</a></div>
+        <code>                    null
+    <strong>authenticate</strong>(<a href="../Couchbase/Authenticator.html"><abbr title="Couchbase\Authenticator">Authenticator</abbr></a> $authenticator)
         </code>
     </h3>
     <div class="details">    
@@ -355,21 +325,16 @@ against a cluster and for access to buckets.</p></p>                    </div>
             
 
         <div class="method-description">
-                            <p><p>Executes an analytics query against the cluster.</p></p>                <p><p>Note: On Couchbase Server versions &lt; 6.5 a bucket must be opened before using analyticsQuery.</p></p>        
+                            <p><p>Associate authenticator with Cluster</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
-                <td>$statement</td>
-                <td><p>the analytics query statement to execute</p></td>
-            </tr>
-                    <tr>
-                <td><a href="../Couchbase/AnalyticsOptions.html"><abbr title="Couchbase\AnalyticsOptions">AnalyticsOptions</abbr></a></td>
-                <td>$options</td>
-                <td><p>the options to use when executing the query</p></td>
+                <td><a href="../Couchbase/Authenticator.html"><abbr title="Couchbase\Authenticator">Authenticator</abbr></a></td>
+                <td>$authenticator</td>
+                <td></td>
             </tr>
             </table>
 
@@ -378,23 +343,46 @@ against a cluster and for access to buckets.</p></p>                    </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../Couchbase/AnalyticsResult.html"><abbr title="Couchbase\AnalyticsResult">AnalyticsResult</abbr></a></td>
+            <td>null</td>
             <td></td>
         </tr>
     </table>
 
             
             
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="../Couchbase/Authenticator.html"><abbr title="Couchbase\Authenticator">Authenticator</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>
+                                            <a href="../Couchbase/ClassicAuthenticator.html"><abbr title="Couchbase\ClassicAuthenticator">ClassicAuthenticator</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>
+                                            <a href="../Couchbase/PasswordAuthenticator.html"><abbr title="Couchbase\PasswordAuthenticator">PasswordAuthenticator</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_searchQuery">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1338">at line 1338</a></div>
-        <code>                    <a href="../Couchbase/SearchResult.html"><abbr title="Couchbase\SearchResult">SearchResult</abbr></a>
-    <strong>searchQuery</strong>(string $indexName, <a href="../Couchbase/SearchQuery.html"><abbr title="Couchbase\SearchQuery">SearchQuery</abbr></a> $query, <a href="../Couchbase/SearchOptions.html"><abbr title="Couchbase\SearchOptions">SearchOptions</abbr></a> $options = null)
+                    <h3 id="method_authenticateAs">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase_v2/couchbase.php#L362">at line 362</a></div>
+        <code>                    null
+    <strong>authenticateAs</strong>(string $username, string $password)
         </code>
     </h3>
     <div class="details">    
@@ -403,7 +391,7 @@ against a cluster and for access to buckets.</p></p>                    </div>
             
 
         <div class="method-description">
-                            <p><p>Executes a full text search query against the cluster.</p></p>                <p><p>Note: On Couchbase Server versions &lt; 6.5 a bucket must be opened before using searchQuery.</p></p>        
+                            <p><p>Create \Couchbase\PasswordAuthenticator from given credentials and associate it with Cluster</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -411,18 +399,13 @@ against a cluster and for access to buckets.</p></p>                    </div>
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$indexName</td>
-                <td><p>the fts index to use for the query</p></td>
+                <td>$username</td>
+                <td></td>
             </tr>
                     <tr>
-                <td><a href="../Couchbase/SearchQuery.html"><abbr title="Couchbase\SearchQuery">SearchQuery</abbr></a></td>
-                <td>$query</td>
-                <td><p>the search query to execute</p></td>
-            </tr>
-                    <tr>
-                <td><a href="../Couchbase/SearchOptions.html"><abbr title="Couchbase\SearchOptions">SearchOptions</abbr></a></td>
-                <td>$options</td>
-                <td><p>the options to use when executing the query</p></td>
+                <td>string</td>
+                <td>$password</td>
+                <td></td>
             </tr>
             </table>
 
@@ -431,178 +414,30 @@ against a cluster and for access to buckets.</p></p>                    </div>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../Couchbase/SearchResult.html"><abbr title="Couchbase\SearchResult">SearchResult</abbr></a></td>
+            <td>null</td>
             <td></td>
         </tr>
     </table>
 
             
             
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_buckets">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1345">at line 1345</a></div>
-        <code>                    <a href="../Couchbase/BucketManager.html"><abbr title="Couchbase\BucketManager">BucketManager</abbr></a>
-    <strong>buckets</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>Creates a new bucket manager object for managing buckets.</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
+                            <h4>See also</h4>
 
                     <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/BucketManager.html"><abbr title="Couchbase\BucketManager">BucketManager</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
+                    <tr>
+                <td>
+                                            <a href="../Couchbase/Authenticator.html"><abbr title="Couchbase\Authenticator">Authenticator</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>
+                                            <a href="../Couchbase/PasswordAuthenticator.html"><abbr title="Couchbase\PasswordAuthenticator">PasswordAuthenticator</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
 
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_users">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1352">at line 1352</a></div>
-        <code>                    <a href="../Couchbase/UserManager.html"><abbr title="Couchbase\UserManager">UserManager</abbr></a>
-    <strong>users</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>Creates a new user manager object for managing users and groups.</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/UserManager.html"><abbr title="Couchbase\UserManager">UserManager</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_analyticsIndexes">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1359">at line 1359</a></div>
-        <code>                    <a href="../Couchbase/AnalyticsIndexManager.html"><abbr title="Couchbase\AnalyticsIndexManager">AnalyticsIndexManager</abbr></a>
-    <strong>analyticsIndexes</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>Creates a new query index manager object for managing analytics query indexes.</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/AnalyticsIndexManager.html"><abbr title="Couchbase\AnalyticsIndexManager">AnalyticsIndexManager</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_queryIndexes">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1366">at line 1366</a></div>
-        <code>                    <a href="../Couchbase/QueryIndexManager.html"><abbr title="Couchbase\QueryIndexManager">QueryIndexManager</abbr></a>
-    <strong>queryIndexes</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>Creates a new query index manager object for managing N1QL query indexes.</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/QueryIndexManager.html"><abbr title="Couchbase\QueryIndexManager">QueryIndexManager</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_searchIndexes">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/couchbase/couchbase.php#L1373">at line 1373</a></div>
-        <code>                    <a href="../Couchbase/SearchIndexManager.html"><abbr title="Couchbase\SearchIndexManager">SearchIndexManager</abbr></a>
-    <strong>searchIndexes</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>Creates a new search index manager object for managing search query indexes.</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../Couchbase/SearchIndexManager.html"><abbr title="Couchbase\SearchIndexManager">SearchIndexManager</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
             
                     </div>
     </div>
