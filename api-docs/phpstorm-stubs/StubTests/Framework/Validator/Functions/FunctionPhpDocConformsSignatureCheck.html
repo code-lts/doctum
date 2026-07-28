@@ -100,7 +100,7 @@ for global functions.</p></p>            <p><p>This is a stubs-only check (refle
 identified by $entityId the validator:</p>
 <ol>
 <li>Looks up the function in stubs using version-aware selection.</li>
-<li>If not found, silently succeeds — FunctionExistsCheck handles absence.</li>
+<li>If not found, silently succeeds — EntityExistsCheck handles absence.</li>
 <li>For both return type and each parameter, compares the signature type with the
 PhpDoc type using the permissive compatibility algorithm in PhpDocConformanceTrait.</li>
 <li>Reports mismatches where sig and PhpDoc types share no common component.</li>
@@ -170,7 +170,7 @@ bool/false split) are accepted by the algorithm and will not be reported.</p>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_skipWithKnownProblem">skipWithKnownProblem</a>(<a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, string $checkName, string $phpVersion)
+                    <a href="#method_skipWithKnownProblem">skipWithKnownProblem</a>(<a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr> $checkType, string $phpVersion)
         
                                             <p><p>Records a skipped-success result if a known problem covers this entity, and returns true.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#method_skipWithKnownProblem">
@@ -217,7 +217,7 @@ bool/false split) are accepted by the algorithm and will not be reported.</p>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Functions/FunctionPhpDocConformsSignatureCheck.php#L37">at line 37</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Functions/FunctionPhpDocConformsSignatureCheck.php#L38">at line 38</a></div>
         <code>                    
     <strong>__construct</strong>(<a href="../../../../StubTests/Framework/Validator/Contracts/ReflectionProviderInterface.html"><abbr title="StubTests\Framework\Validator\Contracts\ReflectionProviderInterface">ReflectionProviderInterface</abbr></a>|null $reflectionProvider = null, <a href="../../../../StubTests/Framework/Validator/KnownProblemsRegistry.html"><abbr title="StubTests\Framework\Validator\KnownProblemsRegistry">KnownProblemsRegistry</abbr></a>|null $knownProblemsRegistry = null, <a href="../../../../StubTests/Framework/Validator/Services/PhpDocConformanceService.html"><abbr title="StubTests\Framework\Validator\Services\PhpDocConformanceService">PhpDocConformanceService</abbr></a>|null $conformanceService = null)
         </code>
@@ -263,9 +263,9 @@ bool/false split) are accepted by the algorithm and will not be reported.</p>
                     <div class="method-item">
                     <h3 id="method_skipWithKnownProblem">
         <div class="location">in <a href="../../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#method_skipWithKnownProblem">
-<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractReflectionCheck.php#L26">at line 26</a></div>
+<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractReflectionCheck.php#L27">at line 27</a></div>
         <code>            protected        bool
-    <strong>skipWithKnownProblem</strong>(<a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, string $checkName, string $phpVersion)
+    <strong>skipWithKnownProblem</strong>(<a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr> $checkType, string $phpVersion)
         </code>
     </h3>
     <div class="details">    
@@ -296,8 +296,8 @@ bool/false split) are accepted by the algorithm and will not be reported.</p>
                 <td></td>
             </tr>
                     <tr>
-                <td>string</td>
-                <td>$checkName</td>
+                <td><abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr></td>
+                <td>$checkType</td>
                 <td></td>
             </tr>
                     <tr>
@@ -380,7 +380,7 @@ bool/false split) are accepted by the algorithm and will not be reported.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_supports">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Functions/FunctionPhpDocConformsSignatureCheck.php#L46">at line 46</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Functions/FunctionPhpDocConformsSignatureCheck.php#L47">at line 47</a></div>
         <code>                    bool
     <strong>supports</strong>(string $phpVersion)
         </code>
@@ -424,7 +424,7 @@ bool/false split) are accepted by the algorithm and will not be reported.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_run">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Functions/FunctionPhpDocConformsSignatureCheck.php#L51">at line 51</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Functions/FunctionPhpDocConformsSignatureCheck.php#L52">at line 52</a></div>
         <code>                    <a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a>
     <strong>run</strong>(<a href="../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $stubs, string $entityId, string $phpVersion)
         </code>

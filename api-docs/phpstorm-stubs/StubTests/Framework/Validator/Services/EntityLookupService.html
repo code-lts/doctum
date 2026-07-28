@@ -95,7 +95,19 @@
         
 
             <div class="description">
-            <p><p>Service for looking up entities by ID with lazy indexing and caching.</p></p>            <p><p>Extracted from AbstractClassCheck to enable reuse without inheritance.</p></p>        </div>
+            <p><p>Service for looking up entities by ID with lazy indexing and caching.</p></p>            <p><p>Extracted from AbstractClassCheck to enable reuse without inheritance.</p>
+<p>The index is cached per <em>storage object</em>, shared across every instance of this service.
+That matters because ValidatorTestBase constructs a fresh check — and therefore a fresh
+service — for every data-provider row, so an instance-level index was rebuilt and thrown
+away once per test case: a full linear scan of the storage (thousands of entities) per
+lookup. Sharing is safe because the index is a pure function of the storage contents.</p>
+<p>A WeakMap keyed on the storage object is used rather than spl_object_id(): object ids are
+reused once an object is freed, so an id-keyed cache could hand back the index of an
+unrelated storage that happened to reuse the id. WeakMap entries also disappear with the
+storage, so nothing is retained after a test's mock storage goes out of scope.</p>
+<p>Caveat: the index snapshots the storage the first time a kind is queried. Storages are
+read-only during validation, so this holds; a caller that mutates a storage after a
+lookup must call clearIndexCache().</p></p>        </div>
             
         
     
@@ -103,6 +115,17 @@
             <h2>Methods</h2>
 
             <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_clearIndexCache">clearIndexCache</a>()
+        
+                                            <p><p>Discards every cached index. Only needed when a storage is mutated after being
+queried, or to guarantee isolation between tests that reuse a storage instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <a href="../../../../StubTests/Framework/Parsers/Model/PHPClass.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClass">PHPClass</abbr></a>|null
@@ -175,8 +198,42 @@
 
             <div id="method-details">
                     <div class="method-item">
+                    <h3 id="method_clearIndexCache">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/EntityLookupService.php#L48">at line 48</a></div>
+        <code>        static            void
+    <strong>clearIndexCache</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Discards every cached index. Only needed when a storage is mutated after being
+queried, or to guarantee isolation between tests that reuse a storage instance.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_findClassById">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/EntityLookupService.php#L47">at line 47</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/EntityLookupService.php#L82">at line 82</a></div>
         <code>                    <a href="../../../../StubTests/Framework/Parsers/Model/PHPClass.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClass">PHPClass</abbr></a>|null
     <strong>findClassById</strong>(<a href="../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $storage, string $entityId)
         </code>
@@ -225,7 +282,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_findEnumById">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/EntityLookupService.php#L52">at line 52</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/EntityLookupService.php#L87">at line 87</a></div>
         <code>                    <a href="../../../../StubTests/Framework/Parsers/Model/PHPEnum.html"><abbr title="StubTests\Framework\Parsers\Model\PHPEnum">PHPEnum</abbr></a>|null
     <strong>findEnumById</strong>(<a href="../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $storage, string $entityId)
         </code>
@@ -274,7 +331,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_findInterfaceById">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/EntityLookupService.php#L57">at line 57</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/EntityLookupService.php#L92">at line 92</a></div>
         <code>                    <a href="../../../../StubTests/Framework/Parsers/Model/PHPInterface.html"><abbr title="StubTests\Framework\Parsers\Model\PHPInterface">PHPInterface</abbr></a>|null
     <strong>findInterfaceById</strong>(<a href="../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $storage, string $entityId)
         </code>
@@ -323,7 +380,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_findFunctionById">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/EntityLookupService.php#L62">at line 62</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/EntityLookupService.php#L97">at line 97</a></div>
         <code>                    <a href="../../../../StubTests/Framework/Parsers/Model/PHPFunction.html"><abbr title="StubTests\Framework\Parsers\Model\PHPFunction">PHPFunction</abbr></a>|null
     <strong>findFunctionById</strong>(<a href="../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $storage, string $entityId)
         </code>
@@ -372,7 +429,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_findConstantById">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/EntityLookupService.php#L67">at line 67</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/EntityLookupService.php#L102">at line 102</a></div>
         <code>                    <a href="../../../../StubTests/Framework/Parsers/Model/PHPConstant.html"><abbr title="StubTests\Framework\Parsers\Model\PHPConstant">PHPConstant</abbr></a>|null
     <strong>findConstantById</strong>(<a href="../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $storage, string $entityId)
         </code>
@@ -421,7 +478,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_findAnyEntityById">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/EntityLookupService.php#L77">at line 77</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/EntityLookupService.php#L112">at line 112</a></div>
         <code>                    array|null
     <strong>findAnyEntityById</strong>(<a href="../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $storage, string $entityId)
         </code>

@@ -101,15 +101,16 @@
 <li>Looks up the function in stubs using version-aware selection
 (PhpStormStubsElementAvailable <code>from</code>/<code>to</code> on the function itself).</li>
 <li>If the stub function is not found it is silently skipped — existence is
-FunctionExistsCheck's responsibility.</li>
+EntityExistsCheck's responsibility.</li>
 <li>When both sides are found, the stub parameter list is filtered by version
 (PhpStormStubsElementAvailable <code>from</code>/<code>to</code> on parameters →
 sinceVersion/removedVersion) and the resulting count is compared with
 the reflection count.</li>
 </ol>
-<p>Parameter version filtering uses inclusive boundaries for removedVersion (<code>&lt;=</code>),
-consistent with how PhpStormStubsElementAvailable <code>to</code> is interpreted elsewhere
-(e.g. <code>to: '7.0'</code> means the parameter is still available in PHP 7.0).</p>
+<p>Parameter version filtering compares removedVersion <strong>exclusively</strong> (<code>phpVersion &lt; removedVersion</code>), per StubsMetadata::isAvailableIn(). The inclusive reading belongs to
+the attribute, not to removedVersion: DefaultAvailableVersionParser converts
+<code>to: '7.0'</code> into <code>removedVersion = '7.1'</code>, so the parameter is still available in
+PHP 7.0 even though the comparison itself is exclusive.</p>
 <p>Known problems are supported:</p>
 <ul>
 <li>EntityType::FUNCTION + functionId + 'ParametersCountCheck'
@@ -174,7 +175,7 @@ consistent with how PhpStormStubsElementAvailable <code>to</code> is interpreted
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_skipWithKnownProblem">skipWithKnownProblem</a>(<a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, string $checkName, string $phpVersion)
+                    <a href="#method_skipWithKnownProblem">skipWithKnownProblem</a>(<a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr> $checkType, string $phpVersion)
         
                                             <p><p>Records a skipped-success result if a known problem covers this entity, and returns true.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#method_skipWithKnownProblem">
@@ -268,9 +269,9 @@ consistent with how PhpStormStubsElementAvailable <code>to</code> is interpreted
                     <div class="method-item">
                     <h3 id="method_skipWithKnownProblem">
         <div class="location">in <a href="../../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#method_skipWithKnownProblem">
-<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractReflectionCheck.php#L26">at line 26</a></div>
+<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractReflectionCheck.php#L27">at line 27</a></div>
         <code>            protected        bool
-    <strong>skipWithKnownProblem</strong>(<a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, string $checkName, string $phpVersion)
+    <strong>skipWithKnownProblem</strong>(<a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr> $checkType, string $phpVersion)
         </code>
     </h3>
     <div class="details">    
@@ -301,8 +302,8 @@ consistent with how PhpStormStubsElementAvailable <code>to</code> is interpreted
                 <td></td>
             </tr>
                     <tr>
-                <td>string</td>
-                <td>$checkName</td>
+                <td><abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr></td>
+                <td>$checkType</td>
                 <td></td>
             </tr>
                     <tr>
@@ -385,7 +386,7 @@ consistent with how PhpStormStubsElementAvailable <code>to</code> is interpreted
             </div>
                     <div class="method-item">
                     <h3 id="method_supports">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Functions/FunctionParametersCountCheck.php#L35">at line 35</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Functions/FunctionParametersCountCheck.php#L38">at line 38</a></div>
         <code>                    bool
     <strong>supports</strong>(string $phpVersion)
         </code>
@@ -429,7 +430,7 @@ consistent with how PhpStormStubsElementAvailable <code>to</code> is interpreted
             </div>
                     <div class="method-item">
                     <h3 id="method_run">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Functions/FunctionParametersCountCheck.php#L40">at line 40</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Functions/FunctionParametersCountCheck.php#L43">at line 43</a></div>
         <code>                    <a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a>
     <strong>run</strong>(<a href="../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $stubs, string $entityId, string $phpVersion)
         </code>

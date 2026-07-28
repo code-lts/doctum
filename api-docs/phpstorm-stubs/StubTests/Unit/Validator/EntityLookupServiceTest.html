@@ -456,6 +456,63 @@
                                     </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testIndexIsSharedAcrossServiceInstancesForTheSameStorage">testIndexIsSharedAcrossServiceInstancesForTheSameStorage</a>()
+        
+                                            <p><p>The index is cached per storage object and shared across service instances, because
+ValidatorTestBase builds a fresh check (and service) per data-provider row. Without
+sharing, every lookup rescanned the whole storage.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testIndexesOfDistinctStoragesDoNotLeakIntoEachOther">testIndexesOfDistinctStoragesDoNotLeakIntoEachOther</a>()
+        
+                                            <p><p>The correctness property that matters most: sharing must be keyed on the storage, so
+two storages never see each other's entities. A cache keyed on spl_object_id() could
+violate this once an id is reused after an object is freed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testKindsAreIndexedIndependently">testKindsAreIndexedIndependently</a>()
+        
+                                            <p><p>Each entity kind is indexed independently, so indexing classes must not mask a
+later interface lookup on the same storage.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testStorageIsScannedOnlyOncePerKind">testStorageIsScannedOnlyOncePerKind</a>()
+        
+                                            <p><p>The storage is only scanned once per kind: the mock is configured to allow a single
+getClasses() call, so a second lookup that rescanned would fail the expectation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testClearIndexCacheForcesAReindex">testClearIndexCacheForcesAReindex</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -1042,7 +1099,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_setUp">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L16">at line 16</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L15">at line 15</a></div>
         <code>            protected        void
     <strong>setUp</strong>()
         </code>
@@ -1076,7 +1133,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testFindClassByIdReturnsEntityWhenFound">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L50">at line 50</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L41">at line 41</a></div>
         <code>                    void
     <strong>testFindClassByIdReturnsEntityWhenFound</strong>()
         </code>
@@ -1110,7 +1167,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testFindClassByIdReturnsNullWhenNotFound">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L60">at line 60</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L51">at line 51</a></div>
         <code>                    void
     <strong>testFindClassByIdReturnsNullWhenNotFound</strong>()
         </code>
@@ -1144,7 +1201,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testFindEnumByIdReturnsEntityWhenFound">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L71">at line 71</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L62">at line 62</a></div>
         <code>                    void
     <strong>testFindEnumByIdReturnsEntityWhenFound</strong>()
         </code>
@@ -1178,7 +1235,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testFindEnumByIdReturnsNullWhenNotFound">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L81">at line 81</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L72">at line 72</a></div>
         <code>                    void
     <strong>testFindEnumByIdReturnsNullWhenNotFound</strong>()
         </code>
@@ -1212,7 +1269,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testFindInterfaceByIdReturnsEntityWhenFound">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L90">at line 90</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L81">at line 81</a></div>
         <code>                    void
     <strong>testFindInterfaceByIdReturnsEntityWhenFound</strong>()
         </code>
@@ -1246,7 +1303,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testFindInterfaceByIdReturnsNullWhenNotFound">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L98">at line 98</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L89">at line 89</a></div>
         <code>                    void
     <strong>testFindInterfaceByIdReturnsNullWhenNotFound</strong>()
         </code>
@@ -1280,7 +1337,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testFindConstantByIdReturnsEntityWhenFound">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L107">at line 107</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L98">at line 98</a></div>
         <code>                    void
     <strong>testFindConstantByIdReturnsEntityWhenFound</strong>()
         </code>
@@ -1314,7 +1371,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testFindConstantByIdReturnsNullWhenNotFound">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L119">at line 119</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L110">at line 110</a></div>
         <code>                    void
     <strong>testFindConstantByIdReturnsNullWhenNotFound</strong>()
         </code>
@@ -1348,7 +1405,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testFindFunctionByIdReturnsEntityWhenFound">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L128">at line 128</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L119">at line 119</a></div>
         <code>                    void
     <strong>testFindFunctionByIdReturnsEntityWhenFound</strong>()
         </code>
@@ -1382,7 +1439,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testFindFunctionByIdReturnsNullWhenNotFound">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L136">at line 136</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L127">at line 127</a></div>
         <code>                    void
     <strong>testFindFunctionByIdReturnsNullWhenNotFound</strong>()
         </code>
@@ -1416,7 +1473,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testSecondCallWithSameStorageUsesCachedIndex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L145">at line 145</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L136">at line 136</a></div>
         <code>                    void
     <strong>testSecondCallWithSameStorageUsesCachedIndex</strong>()
         </code>
@@ -1450,7 +1507,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testDifferentStorageObjectsGetSeparateIndexes">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L160">at line 160</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L151">at line 151</a></div>
         <code>                    void
     <strong>testDifferentStorageObjectsGetSeparateIndexes</strong>()
         </code>
@@ -1484,7 +1541,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testEntitiesWithNullIdAreSkippedDuringIndexing">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L178">at line 178</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L169">at line 169</a></div>
         <code>                    void
     <strong>testEntitiesWithNullIdAreSkippedDuringIndexing</strong>()
         </code>
@@ -1518,7 +1575,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testFindAnyEntityByIdReturnsClassWithCorrectType">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L193">at line 193</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L184">at line 184</a></div>
         <code>                    void
     <strong>testFindAnyEntityByIdReturnsClassWithCorrectType</strong>()
         </code>
@@ -1552,7 +1609,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testFindAnyEntityByIdReturnsInterfaceWithCorrectType">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L205">at line 205</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L196">at line 196</a></div>
         <code>                    void
     <strong>testFindAnyEntityByIdReturnsInterfaceWithCorrectType</strong>()
         </code>
@@ -1586,7 +1643,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testFindAnyEntityByIdReturnsEnumWithCorrectType">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L217">at line 217</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L208">at line 208</a></div>
         <code>                    void
     <strong>testFindAnyEntityByIdReturnsEnumWithCorrectType</strong>()
         </code>
@@ -1620,7 +1677,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testFindAnyEntityByIdReturnsFunctionWithCorrectType">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L229">at line 229</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L220">at line 220</a></div>
         <code>                    void
     <strong>testFindAnyEntityByIdReturnsFunctionWithCorrectType</strong>()
         </code>
@@ -1654,7 +1711,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testFindAnyEntityByIdReturnsNullWhenNotFound">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L241">at line 241</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L232">at line 232</a></div>
         <code>                    void
     <strong>testFindAnyEntityByIdReturnsNullWhenNotFound</strong>()
         </code>
@@ -1688,9 +1745,181 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testFindAnyEntityByIdPrefersClassOverOtherTypes">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L250">at line 250</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L241">at line 241</a></div>
         <code>                    void
     <strong>testFindAnyEntityByIdPrefersClassOverOtherTypes</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testIndexIsSharedAcrossServiceInstancesForTheSameStorage">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L270">at line 270</a></div>
+        <code>                    void
+    <strong>testIndexIsSharedAcrossServiceInstancesForTheSameStorage</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The index is cached per storage object and shared across service instances, because
+ValidatorTestBase builds a fresh check (and service) per data-provider row. Without
+sharing, every lookup rescanned the whole storage.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testIndexesOfDistinctStoragesDoNotLeakIntoEachOther">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L287">at line 287</a></div>
+        <code>                    void
+    <strong>testIndexesOfDistinctStoragesDoNotLeakIntoEachOther</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The correctness property that matters most: sharing must be keyed on the storage, so
+two storages never see each other's entities. A cache keyed on spl_object_id() could
+violate this once an id is reused after an object is freed.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testKindsAreIndexedIndependently">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L306">at line 306</a></div>
+        <code>                    void
+    <strong>testKindsAreIndexedIndependently</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Each entity kind is indexed independently, so indexing classes must not mask a
+later interface lookup on the same storage.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testStorageIsScannedOnlyOncePerKind">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L323">at line 323</a></div>
+        <code>                    void
+    <strong>testStorageIsScannedOnlyOncePerKind</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The storage is only scanned once per kind: the mock is configured to allow a single
+getClasses() call, so a second lookup that rescanned would fail the expectation.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testClearIndexCacheForcesAReindex">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/EntityLookupServiceTest.php#L334">at line 334</a></div>
+        <code>                    void
+    <strong>testClearIndexCacheForcesAReindex</strong>()
         </code>
     </h3>
     <div class="details">    

@@ -142,7 +142,9 @@
                 <div class="col-md-8">
                     <a href="#method_parseType">parseType</a>(string|null $typeStr)
         
-                                            <p><p>Parse a type string back into the correct type object.</p></p>                </div>
+                                            <p><p>Parse a type string (already fully-qualified, as stored in the cache) back into
+the correct type object. Leaf names are used verbatim — see {TypeStringParser}
+for the grammar handled.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../StubTests/Framework/Parsers/Serializers/SerializerUtilsTrait.html#method_parseType">
 <abbr title="StubTests\Framework\Parsers\Serializers\SerializerUtilsTrait">SerializerUtilsTrait</abbr></a></small></div>
             </div>
@@ -166,7 +168,7 @@
                     <div class="method-item">
                     <h3 id="method_shortClassName">
         <div class="location">in <a href="../../../../StubTests/Framework/Parsers/Serializers/SerializerUtilsTrait.html#method_shortClassName">
-<abbr title="StubTests\Framework\Parsers\Serializers\SerializerUtilsTrait">SerializerUtilsTrait</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/Serializers/SerializerUtilsTrait.php#L20">at line 20</a></div>
+<abbr title="StubTests\Framework\Parsers\Serializers\SerializerUtilsTrait">SerializerUtilsTrait</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/Serializers/SerializerUtilsTrait.php#L23">at line 23</a></div>
         <code>            protected        string|null
     <strong>shortClassName</strong>(string|null $name)
         </code>
@@ -210,7 +212,7 @@
                     <div class="method-item">
                     <h3 id="method_toJsonSafe">
         <div class="location">in <a href="../../../../StubTests/Framework/Parsers/Serializers/SerializerUtilsTrait.html#method_toJsonSafe">
-<abbr title="StubTests\Framework\Parsers\Serializers\SerializerUtilsTrait">SerializerUtilsTrait</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/Serializers/SerializerUtilsTrait.php#L32">at line 32</a></div>
+<abbr title="StubTests\Framework\Parsers\Serializers\SerializerUtilsTrait">SerializerUtilsTrait</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/Serializers/SerializerUtilsTrait.php#L35">at line 35</a></div>
         <code>            protected        
     <strong>toJsonSafe</strong>($value)
         </code>
@@ -245,7 +247,7 @@
                     <div class="method-item">
                     <h3 id="method_parseType">
         <div class="location">in <a href="../../../../StubTests/Framework/Parsers/Serializers/SerializerUtilsTrait.html#method_parseType">
-<abbr title="StubTests\Framework\Parsers\Serializers\SerializerUtilsTrait">SerializerUtilsTrait</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/Serializers/SerializerUtilsTrait.php#L77">at line 77</a></div>
+<abbr title="StubTests\Framework\Parsers\Serializers\SerializerUtilsTrait">SerializerUtilsTrait</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/Serializers/SerializerUtilsTrait.php#L72">at line 72</a></div>
         <code>            protected        <a href="../../../../StubTests/Framework/Parsers/Model/Types/StandaloneType.html"><abbr title="StubTests\Framework\Parsers\Model\Types\StandaloneType">StandaloneType</abbr></a>|<a href="../../../../StubTests/Framework/Parsers/Model/Types/UnionType.html"><abbr title="StubTests\Framework\Parsers\Model\Types\UnionType">UnionType</abbr></a>|<a href="../../../../StubTests/Framework/Parsers/Model/Types/NullableType.html"><abbr title="StubTests\Framework\Parsers\Model\Types\NullableType">NullableType</abbr></a>|<a href="../../../../StubTests/Framework/Parsers/Model/Types/NoType.html"><abbr title="StubTests\Framework\Parsers\Model\Types\NoType">NoType</abbr></a>|<a href="../../../../StubTests/Framework/Parsers/Model/Types/IntersectionType.html"><abbr title="StubTests\Framework\Parsers\Model\Types\IntersectionType">IntersectionType</abbr></a>
     <strong>parseType</strong>(string|null $typeStr)
         </code>
@@ -256,15 +258,9 @@
             
 
         <div class="method-description">
-                            <p><p>Parse a type string back into the correct type object.</p></p>                <p><p>Rules:
-&quot;&quot;              -&gt; NoType
-&quot;A&amp;B&quot;           -&gt; IntersectionType
-&quot;(A&amp;B)&quot;         -&gt; IntersectionType  (parenthesised pure intersection)
-&quot;A|null&quot;        -&gt; NullableType  (exactly 2 parts, one is &quot;null&quot;)
-&quot;int|(A&amp;B)|...&quot;  -&gt; UnionType with IntersectionType member (DNF)
-&quot;A|B|...&quot;       -&gt; UnionType
-&quot;?A&quot;            -&gt; NullableType
-&quot;A&quot;             -&gt; StandaloneType</p></p>        
+                            <p><p>Parse a type string (already fully-qualified, as stored in the cache) back into
+the correct type object. Leaf names are used verbatim — see {TypeStringParser}
+for the grammar handled.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>

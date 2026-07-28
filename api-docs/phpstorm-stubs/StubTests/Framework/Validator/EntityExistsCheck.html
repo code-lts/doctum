@@ -86,7 +86,7 @@
 
     
     <p>        class
-    <strong>EntityExistsCheck</strong>        implements        <a href="../../../StubTests/Framework/Validator/Contracts/CheckInterface.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckInterface">CheckInterface</abbr></a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/EntityExistsCheck.php">View source</a>)
+    <strong>EntityExistsCheck</strong>        extends <a href="../../../StubTests/Framework/Validator/AbstractReflectionCheck.html"><abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/EntityExistsCheck.php">View source</a>)
 </p>
 
         
@@ -95,11 +95,38 @@
         
 
             <div class="description">
-            <p><p>Parameterized check that validates an entity from reflection exists in stubs.</p></p>            <p><p>Accepts either an EntityTypeConfig or raw LookupKind + label.
-When used via CheckDescriptor, EntityTypeConfig is passed as a named argument.</p></p>        </div>
+            <p><p>Validates that a top-level entity present in reflection also exists in stubs.</p></p>            <p><p>Config-driven across function / class / enum / interface via EntityTypeConfig: it always
+reports the check name 'EntityExistsCheck', and the entity variant is distinguished by the
+EntityType passed to the known-problem lookup. (Global constants use ConstantExistsCheck;
+member existence is handled by the <em>MethodsExist / </em>PropertiesExist / EnumCases checks.)</p></p>        </div>
             
         
     
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_reflectionProvider">
+                                        protected                                        <a href="../../../StubTests/Framework/Validator/Contracts/ReflectionProviderInterface.html"><abbr title="StubTests\Framework\Validator\Contracts\ReflectionProviderInterface">ReflectionProviderInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$reflectionProvider</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#property_reflectionProvider">
+<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_knownProblemsRegistry">
+                                        protected                                        <a href="../../../StubTests/Framework/Validator/KnownProblemsRegistry.html"><abbr title="StubTests\Framework\Validator\KnownProblemsRegistry">KnownProblemsRegistry</abbr></a>
+                                                                                
+                                    </td>
+                <td>$knownProblemsRegistry</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#property_knownProblemsRegistry">
+<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a></small></td>
+            </tr>
+            </table>
+
     
             <h2>Methods</h2>
 
@@ -109,11 +136,22 @@ When used via CheckDescriptor, EntityTypeConfig is passed as a named argument.</
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<abbr title="StubTests\Framework\Validator\Contracts\LookupKind">LookupKind</abbr>|null $lookupKind = null, string|null $label = null, <a href="../../../StubTests/Framework/Validator/Contracts/EntityTypeConfig.html"><abbr title="StubTests\Framework\Validator\Contracts\EntityTypeConfig">EntityTypeConfig</abbr></a>|null $entityTypeConfig = null)
+                    <a href="#method___construct">__construct</a>(<a href="../../../StubTests/Framework/Validator/Contracts/EntityTypeConfig.html"><abbr title="StubTests\Framework\Validator\Contracts\EntityTypeConfig">EntityTypeConfig</abbr></a>|null $entityTypeConfig = null, <a href="../../../StubTests/Framework/Validator/KnownProblemsRegistry.html"><abbr title="StubTests\Framework\Validator\KnownProblemsRegistry">KnownProblemsRegistry</abbr></a>|null $knownProblemsRegistry = null, <a href="../../../StubTests/Framework/Validator/Services/EntityLookupService.html"><abbr title="StubTests\Framework\Validator\Services\EntityLookupService">EntityLookupService</abbr></a>|null $entityLookup = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_skipWithKnownProblem">skipWithKnownProblem</a>(<a href="../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr> $checkType, string $phpVersion)
+        
+                                            <p><p>Records a skipped-success result if a known problem covers this entity, and returns true.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#method_skipWithKnownProblem">
+<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -145,9 +183,9 @@ When used via CheckDescriptor, EntityTypeConfig is passed as a named argument.</
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/EntityExistsCheck.php#L22">at line 22</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/EntityExistsCheck.php#L28">at line 28</a></div>
         <code>                    
-    <strong>__construct</strong>(<abbr title="StubTests\Framework\Validator\Contracts\LookupKind">LookupKind</abbr>|null $lookupKind = null, string|null $label = null, <a href="../../../StubTests/Framework/Validator/Contracts/EntityTypeConfig.html"><abbr title="StubTests\Framework\Validator\Contracts\EntityTypeConfig">EntityTypeConfig</abbr></a>|null $entityTypeConfig = null)
+    <strong>__construct</strong>(<a href="../../../StubTests/Framework/Validator/Contracts/EntityTypeConfig.html"><abbr title="StubTests\Framework\Validator\Contracts\EntityTypeConfig">EntityTypeConfig</abbr></a>|null $entityTypeConfig = null, <a href="../../../StubTests/Framework/Validator/KnownProblemsRegistry.html"><abbr title="StubTests\Framework\Validator\KnownProblemsRegistry">KnownProblemsRegistry</abbr></a>|null $knownProblemsRegistry = null, <a href="../../../StubTests/Framework/Validator/Services/EntityLookupService.html"><abbr title="StubTests\Framework\Validator\Services\EntityLookupService">EntityLookupService</abbr></a>|null $entityLookup = null)
         </code>
     </h3>
     <div class="details">    
@@ -164,18 +202,18 @@ When used via CheckDescriptor, EntityTypeConfig is passed as a named argument.</
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="StubTests\Framework\Validator\Contracts\LookupKind">LookupKind</abbr>|null</td>
-                <td>$lookupKind</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>string|null</td>
-                <td>$label</td>
-                <td></td>
-            </tr>
-                    <tr>
                 <td><a href="../../../StubTests/Framework/Validator/Contracts/EntityTypeConfig.html"><abbr title="StubTests\Framework\Validator\Contracts\EntityTypeConfig">EntityTypeConfig</abbr></a>|null</td>
                 <td>$entityTypeConfig</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../StubTests/Framework/Validator/KnownProblemsRegistry.html"><abbr title="StubTests\Framework\Validator\KnownProblemsRegistry">KnownProblemsRegistry</abbr></a>|null</td>
+                <td>$knownProblemsRegistry</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../StubTests/Framework/Validator/Services/EntityLookupService.html"><abbr title="StubTests\Framework\Validator\Services\EntityLookupService">EntityLookupService</abbr></a>|null</td>
+                <td>$entityLookup</td>
                 <td></td>
             </tr>
             </table>
@@ -189,8 +227,72 @@ When used via CheckDescriptor, EntityTypeConfig is passed as a named argument.</
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_skipWithKnownProblem">
+        <div class="location">in <a href="../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#method_skipWithKnownProblem">
+<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractReflectionCheck.php#L27">at line 27</a></div>
+        <code>            protected        bool
+    <strong>skipWithKnownProblem</strong>(<a href="../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr> $checkType, string $phpVersion)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Records a skipped-success result if a known problem covers this entity, and returns true.</p></p>                <p><p>Returns false if validation should proceed normally.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a></td>
+                <td>$results</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$entityType</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$entityId</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr></td>
+                <td>$checkType</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$phpVersion</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_supports">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/EntityExistsCheck.php#L36">at line 36</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/EntityExistsCheck.php#L41">at line 41</a></div>
         <code>                    bool
     <strong>supports</strong>(string $phpVersion)
         </code>
@@ -234,7 +336,7 @@ When used via CheckDescriptor, EntityTypeConfig is passed as a named argument.</
             </div>
                     <div class="method-item">
                     <h3 id="method_run">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/EntityExistsCheck.php#L41">at line 41</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/EntityExistsCheck.php#L46">at line 46</a></div>
         <code>                    <a href="../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a>
     <strong>run</strong>(<a href="../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $stubs, string $entityId, string $phpVersion)
         </code>

@@ -191,7 +191,7 @@ is reported as a failure.</li>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_skipWithKnownProblem">skipWithKnownProblem</a>(<a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, string $checkName, string $phpVersion)
+                    <a href="#method_skipWithKnownProblem">skipWithKnownProblem</a>(<a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr> $checkType, string $phpVersion)
         
                                             <p><p>Records a skipped-success result if a known problem covers this entity, and returns true.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#method_skipWithKnownProblem">
@@ -304,7 +304,7 @@ is reported as a failure.</li>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr>
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getCheckName">getCheckName</a>()
@@ -315,13 +315,69 @@ is reported as a failure.</li>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    <a href="../../../../../StubTests/Framework/Parsers/Model/PHPClassLikeObject.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClassLikeObject">PHPClassLikeObject</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_lookupFlagEntity">lookupFlagEntity</a>(<a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $storage, string $entityId)
+        
+                                            <p><p>Look up the owning entity (class/enum/interface) by id in the given storage.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html#method_lookupFlagEntity">
+<abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="StubTests\Framework\Validator\iterable">iterable</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_collectReflectionMembers">collectReflectionMembers</a>(<a href="../../../../../StubTests/Framework/Parsers/Model/PHPClassLikeObject.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClassLikeObject">PHPClassLikeObject</abbr></a> $reflectionEntity)
+        
+                                            <p><p>Return the reflection members to iterate. Each element must expose getName().</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html#method_collectReflectionMembers">
+<abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_collectStubMemberMap">collectStubMemberMap</a>(<a href="../../../../../StubTests/Framework/Parsers/Model/PHPClassLikeObject.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClassLikeObject">PHPClassLikeObject</abbr></a> $stubEntity, string $phpVersion)
+        
+                                            <p><p>Return the version-filtered stub members keyed by name.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html#method_collectStubMemberMap">
+<abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_formatMemberId">formatMemberId</a>(string $entityId, string $memberName)
+        
+                                            <p><p>Build the fully-qualified member id used for failures and known-problem lookups.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html#method_formatMemberId">
+<abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getMemberEntityType">getMemberEntityType</a>()
+        
+                                            <p><p>The EntityType (as its string value) used for per-member known-problem lookups.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html#method_getMemberEntityType">
+<abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     string|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_describeMismatch">describeMismatch</a>(string $methodEntityId, mixed $reflMethod, <a href="../../../../../StubTests/Framework/Parsers/Model/PHPMethod.html"><abbr title="StubTests\Framework\Parsers\Model\PHPMethod">PHPMethod</abbr></a> $stubMethod, string $phpVersion)
+                    <a href="#method_describeMemberMismatch">describeMemberMismatch</a>(string $memberId, mixed $reflectionMember, mixed $stubMember, string $phpVersion)
         
-                                            <p><p>Compare a flag on the reflection and stub method.</p></p>                </div>
-                <div class="col-md-2"></div>
+                                            <p><p>Compare the attribute on the reflection and stub member.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html#method_describeMemberMismatch">
+<abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -332,8 +388,8 @@ is reported as a failure.</li>
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html#method_supports">
-<abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractMemberFlagCheck.html#method_supports">
+<abbr title="StubTests\Framework\Validator\AbstractMemberFlagCheck">AbstractMemberFlagCheck</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -344,8 +400,18 @@ is reported as a failure.</li>
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html#method_run">
-<abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractMemberFlagCheck.html#method_run">
+<abbr title="StubTests\Framework\Validator\AbstractMemberFlagCheck">AbstractMemberFlagCheck</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_describeMismatch">describeMismatch</a>(string $methodEntityId, mixed $reflMethod, <a href="../../../../../StubTests/Framework/Parsers/Model/PHPMethod.html"><abbr title="StubTests\Framework\Parsers\Model\PHPMethod">PHPMethod</abbr></a> $stubMethod, string $phpVersion)
+        
+                                            <p><p>Compare a flag on the reflection and stub method.</p></p>                </div>
+                <div class="col-md-2"></div>
             </div>
             </div>
 
@@ -412,9 +478,9 @@ is reported as a failure.</li>
                     <div class="method-item">
                     <h3 id="method_skipWithKnownProblem">
         <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#method_skipWithKnownProblem">
-<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractReflectionCheck.php#L26">at line 26</a></div>
+<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractReflectionCheck.php#L27">at line 27</a></div>
         <code>            protected        bool
-    <strong>skipWithKnownProblem</strong>(<a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, string $checkName, string $phpVersion)
+    <strong>skipWithKnownProblem</strong>(<a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr> $checkType, string $phpVersion)
         </code>
     </h3>
     <div class="details">    
@@ -445,8 +511,8 @@ is reported as a failure.</li>
                 <td></td>
             </tr>
                     <tr>
-                <td>string</td>
-                <td>$checkName</td>
+                <td><abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr></td>
+                <td>$checkType</td>
                 <td></td>
             </tr>
                     <tr>
@@ -877,8 +943,8 @@ is reported as a failure.</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCheckName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/ClassMethodsVisibilityCheck.php#L28">at line 28</a></div>
-        <code>            protected        string
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/ClassMethodsVisibilityCheck.php#L29">at line 29</a></div>
+        <code>            protected        <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr>
     <strong>getCheckName</strong>()
         </code>
     </h3>
@@ -890,6 +956,231 @@ is reported as a failure.</li>
         <div class="method-description">
                             <p class="no-description">No description</p>
                     
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_lookupFlagEntity">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html#method_lookupFlagEntity">
+<abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractMethodFlagCheck.php#L36">at line 36</a></div>
+        <code>            protected        <a href="../../../../../StubTests/Framework/Parsers/Model/PHPClassLikeObject.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClassLikeObject">PHPClassLikeObject</abbr></a>|null
+    <strong>lookupFlagEntity</strong>(<a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $storage, string $entityId)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Look up the owning entity (class/enum/interface) by id in the given storage.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a></td>
+                <td>$storage</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$entityId</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../StubTests/Framework/Parsers/Model/PHPClassLikeObject.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClassLikeObject">PHPClassLikeObject</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_collectReflectionMembers">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html#method_collectReflectionMembers">
+<abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractMethodFlagCheck.php#L41">at line 41</a></div>
+        <code>            protected        <abbr title="StubTests\Framework\Validator\iterable">iterable</abbr>
+    <strong>collectReflectionMembers</strong>(<a href="../../../../../StubTests/Framework/Parsers/Model/PHPClassLikeObject.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClassLikeObject">PHPClassLikeObject</abbr></a> $reflectionEntity)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return the reflection members to iterate. Each element must expose getName().</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../StubTests/Framework/Parsers/Model/PHPClassLikeObject.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClassLikeObject">PHPClassLikeObject</abbr></a></td>
+                <td>$reflectionEntity</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="StubTests\Framework\Validator\iterable">iterable</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_collectStubMemberMap">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html#method_collectStubMemberMap">
+<abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractMethodFlagCheck.php#L46">at line 46</a></div>
+        <code>            protected        array
+    <strong>collectStubMemberMap</strong>(<a href="../../../../../StubTests/Framework/Parsers/Model/PHPClassLikeObject.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClassLikeObject">PHPClassLikeObject</abbr></a> $stubEntity, string $phpVersion)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return the version-filtered stub members keyed by name.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../StubTests/Framework/Parsers/Model/PHPClassLikeObject.html"><abbr title="StubTests\Framework\Parsers\Model\PHPClassLikeObject">PHPClassLikeObject</abbr></a></td>
+                <td>$stubEntity</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$phpVersion</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_formatMemberId">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html#method_formatMemberId">
+<abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractMethodFlagCheck.php#L51">at line 51</a></div>
+        <code>            protected        string
+    <strong>formatMemberId</strong>(string $entityId, string $memberName)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Build the fully-qualified member id used for failures and known-problem lookups.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$entityId</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$memberName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMemberEntityType">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html#method_getMemberEntityType">
+<abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractMethodFlagCheck.php#L56">at line 56</a></div>
+        <code>            protected        string
+    <strong>getMemberEntityType</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The EntityType (as its string value) used for per-member known-problem lookups.</p></p>                        
         </div>
         <div class="tags">
             
@@ -910,8 +1201,167 @@ is reported as a failure.</li>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_describeMemberMismatch">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html#method_describeMemberMismatch">
+<abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractMethodFlagCheck.php#L61">at line 61</a></div>
+        <code>            protected        string|null
+    <strong>describeMemberMismatch</strong>(string $memberId, mixed $reflectionMember, mixed $stubMember, string $phpVersion)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Compare the attribute on the reflection and stub member.</p></p>                <p><p>Return a descriptive failure message if there is a mismatch, or null if they match.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$memberId</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$reflectionMember</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$stubMember</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$phpVersion</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_supports">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractMemberFlagCheck.html#method_supports">
+<abbr title="StubTests\Framework\Validator\AbstractMemberFlagCheck">AbstractMemberFlagCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractMemberFlagCheck.php#L72">at line 72</a></div>
+        <code>                    bool
+    <strong>supports</strong>(string $phpVersion)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$phpVersion</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_run">
+        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractMemberFlagCheck.html#method_run">
+<abbr title="StubTests\Framework\Validator\AbstractMemberFlagCheck">AbstractMemberFlagCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractMemberFlagCheck.php#L77">at line 77</a></div>
+        <code>                    <a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a>
+    <strong>run</strong>(<a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $stubs, string $entityId, string $phpVersion)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a></td>
+                <td>$stubs</td>
+                <td><p>Parsed stubs data</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$entityId</td>
+                <td><p>Entity identifier to validate</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$phpVersion</td>
+                <td><p>PHP version string</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_describeMismatch">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/ClassMethodsVisibilityCheck.php#L33">at line 33</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/ClassMethodsVisibilityCheck.php#L34">at line 34</a></div>
         <code>            protected        string|null
     <strong>describeMismatch</strong>(string $methodEntityId, mixed $reflMethod, <a href="../../../../../StubTests/Framework/Parsers/Model/PHPMethod.html"><abbr title="StubTests\Framework\Parsers\Model\PHPMethod">PHPMethod</abbr></a> $stubMethod, string $phpVersion)
         </code>
@@ -956,106 +1406,6 @@ is reported as a failure.</li>
                     <table class="table table-condensed">
         <tr>
             <td>string|null</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_supports">
-        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html#method_supports">
-<abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractMethodFlagCheck.php#L35">at line 35</a></div>
-        <code>                    bool
-    <strong>supports</strong>(string $phpVersion)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$phpVersion</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_run">
-        <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractMethodFlagCheck.html#method_run">
-<abbr title="StubTests\Framework\Validator\AbstractMethodFlagCheck">AbstractMethodFlagCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractMethodFlagCheck.php#L40">at line 40</a></div>
-        <code>                    <a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a>
-    <strong>run</strong>(<a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $stubs, string $entityId, string $phpVersion)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a></td>
-                <td>$stubs</td>
-                <td><p>Parsed stubs data</p></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$entityId</td>
-                <td><p>Entity identifier to validate</p></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$phpVersion</td>
-                <td><p>PHP version string</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a></td>
             <td></td>
         </tr>
     </table>

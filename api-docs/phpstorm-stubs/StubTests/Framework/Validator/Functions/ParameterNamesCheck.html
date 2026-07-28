@@ -99,7 +99,7 @@
 <p>Algorithm:</p>
 <ol>
 <li>Look up the callable in both reflection and stubs using findCallable().</li>
-<li>If not found in stubs, silently succeed — FunctionExistsCheck handles existence.</li>
+<li>If not found in stubs, silently succeed — EntityExistsCheck handles existence.</li>
 <li>Filter and deduplicate stub parameters by version (merges same-named variadic pairs).</li>
 <li>If parameter counts differ, silently succeed — ParametersCountCheck handles that.</li>
 <li>Compare names positionally; collect all mismatches into one failure message.</li>
@@ -165,7 +165,7 @@ from the entityId format) with checkName 'ParameterNamesCheck'.</p></p>        <
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_skipWithKnownProblem">skipWithKnownProblem</a>(<a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, string $checkName, string $phpVersion)
+                    <a href="#method_skipWithKnownProblem">skipWithKnownProblem</a>(<a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr> $checkType, string $phpVersion)
         
                                             <p><p>Records a skipped-success result if a known problem covers this entity, and returns true.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#method_skipWithKnownProblem">
@@ -259,9 +259,9 @@ from the entityId format) with checkName 'ParameterNamesCheck'.</p></p>        <
                     <div class="method-item">
                     <h3 id="method_skipWithKnownProblem">
         <div class="location">in <a href="../../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#method_skipWithKnownProblem">
-<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractReflectionCheck.php#L26">at line 26</a></div>
+<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractReflectionCheck.php#L27">at line 27</a></div>
         <code>            protected        bool
-    <strong>skipWithKnownProblem</strong>(<a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, string $checkName, string $phpVersion)
+    <strong>skipWithKnownProblem</strong>(<a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr> $checkType, string $phpVersion)
         </code>
     </h3>
     <div class="details">    
@@ -292,8 +292,8 @@ from the entityId format) with checkName 'ParameterNamesCheck'.</p></p>        <
                 <td></td>
             </tr>
                     <tr>
-                <td>string</td>
-                <td>$checkName</td>
+                <td><abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr></td>
+                <td>$checkType</td>
                 <td></td>
             </tr>
                     <tr>
@@ -376,7 +376,7 @@ from the entityId format) with checkName 'ParameterNamesCheck'.</p></p>        <
             </div>
                     <div class="method-item">
                     <h3 id="method_supports">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Functions/ParameterNamesCheck.php#L29">at line 29</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Functions/ParameterNamesCheck.php#L30">at line 30</a></div>
         <code>                    bool
     <strong>supports</strong>(string $phpVersion)
         </code>
@@ -420,7 +420,7 @@ from the entityId format) with checkName 'ParameterNamesCheck'.</p></p>        <
             </div>
                     <div class="method-item">
                     <h3 id="method_run">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Functions/ParameterNamesCheck.php#L35">at line 35</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Functions/ParameterNamesCheck.php#L36">at line 36</a></div>
         <code>                    <a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a>
     <strong>run</strong>(<a href="../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $stubs, string $entityId, string $phpVersion)
         </code>

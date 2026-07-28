@@ -94,6 +94,11 @@
     
         
 
+            <div class="description">
+            <p><p>Validates that directly implemented interfaces in stubs match reflection.</p></p>            <p><p>Entity-agnostic: reused for classes and enums via EntityTypeConfig. The check
+always reports the name 'ClassInterfacesCheck', so known problems for enums are
+keyed by (ENUM_TYPE, ClassInterfacesCheck) — the entity variant is distinguished
+by the EntityType of the known problem, not by a separate check name.</p></p>        </div>
             
         
     
@@ -161,7 +166,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="../../../../StubTests/Framework/Validator/Contracts/ReflectionProviderInterface.html"><abbr title="StubTests\Framework\Validator\Contracts\ReflectionProviderInterface">ReflectionProviderInterface</abbr></a>|null $reflectionProvider = null, <a href="../../../../StubTests/Framework/Validator/KnownProblemsRegistry.html"><abbr title="StubTests\Framework\Validator\KnownProblemsRegistry">KnownProblemsRegistry</abbr></a>|null $knownProblemsRegistry = null, <a href="../../../../StubTests/Framework/Validator/Services/ClassInterfaceFqnsExtractor.html"><abbr title="StubTests\Framework\Validator\Services\ClassInterfaceFqnsExtractor">ClassInterfaceFqnsExtractor</abbr></a>|null $fqnsExtractor = null)
+                    <a href="#method___construct">__construct</a>(<a href="../../../../StubTests/Framework/Validator/Contracts/ReflectionProviderInterface.html"><abbr title="StubTests\Framework\Validator\Contracts\ReflectionProviderInterface">ReflectionProviderInterface</abbr></a>|null $reflectionProvider = null, <a href="../../../../StubTests/Framework/Validator/KnownProblemsRegistry.html"><abbr title="StubTests\Framework\Validator\KnownProblemsRegistry">KnownProblemsRegistry</abbr></a>|null $knownProblemsRegistry = null, <a href="../../../../StubTests/Framework/Validator/Services/ClassInterfaceFqnsExtractor.html"><abbr title="StubTests\Framework\Validator\Services\ClassInterfaceFqnsExtractor">ClassInterfaceFqnsExtractor</abbr></a>|null $fqnsExtractor = null, <a href="../../../../StubTests/Framework/Validator/Contracts/EntityTypeConfig.html"><abbr title="StubTests\Framework\Validator\Contracts\EntityTypeConfig">EntityTypeConfig</abbr></a>|null $entityTypeConfig = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -172,7 +177,7 @@
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_skipWithKnownProblem">skipWithKnownProblem</a>(<a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, string $checkName, string $phpVersion)
+                    <a href="#method_skipWithKnownProblem">skipWithKnownProblem</a>(<a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr> $checkType, string $phpVersion)
         
                                             <p><p>Records a skipped-success result if a known problem covers this entity, and returns true.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#method_skipWithKnownProblem">
@@ -313,9 +318,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/ClassInterfacesCheck.php#L17">at line 17</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/ClassInterfacesCheck.php#L26">at line 26</a></div>
         <code>                    
-    <strong>__construct</strong>(<a href="../../../../StubTests/Framework/Validator/Contracts/ReflectionProviderInterface.html"><abbr title="StubTests\Framework\Validator\Contracts\ReflectionProviderInterface">ReflectionProviderInterface</abbr></a>|null $reflectionProvider = null, <a href="../../../../StubTests/Framework/Validator/KnownProblemsRegistry.html"><abbr title="StubTests\Framework\Validator\KnownProblemsRegistry">KnownProblemsRegistry</abbr></a>|null $knownProblemsRegistry = null, <a href="../../../../StubTests/Framework/Validator/Services/ClassInterfaceFqnsExtractor.html"><abbr title="StubTests\Framework\Validator\Services\ClassInterfaceFqnsExtractor">ClassInterfaceFqnsExtractor</abbr></a>|null $fqnsExtractor = null)
+    <strong>__construct</strong>(<a href="../../../../StubTests/Framework/Validator/Contracts/ReflectionProviderInterface.html"><abbr title="StubTests\Framework\Validator\Contracts\ReflectionProviderInterface">ReflectionProviderInterface</abbr></a>|null $reflectionProvider = null, <a href="../../../../StubTests/Framework/Validator/KnownProblemsRegistry.html"><abbr title="StubTests\Framework\Validator\KnownProblemsRegistry">KnownProblemsRegistry</abbr></a>|null $knownProblemsRegistry = null, <a href="../../../../StubTests/Framework/Validator/Services/ClassInterfaceFqnsExtractor.html"><abbr title="StubTests\Framework\Validator\Services\ClassInterfaceFqnsExtractor">ClassInterfaceFqnsExtractor</abbr></a>|null $fqnsExtractor = null, <a href="../../../../StubTests/Framework/Validator/Contracts/EntityTypeConfig.html"><abbr title="StubTests\Framework\Validator\Contracts\EntityTypeConfig">EntityTypeConfig</abbr></a>|null $entityTypeConfig = null)
         </code>
     </h3>
     <div class="details">    
@@ -346,6 +351,11 @@
                 <td>$fqnsExtractor</td>
                 <td></td>
             </tr>
+                    <tr>
+                <td><a href="../../../../StubTests/Framework/Validator/Contracts/EntityTypeConfig.html"><abbr title="StubTests\Framework\Validator\Contracts\EntityTypeConfig">EntityTypeConfig</abbr></a>|null</td>
+                <td>$entityTypeConfig</td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -359,9 +369,9 @@
                     <div class="method-item">
                     <h3 id="method_skipWithKnownProblem">
         <div class="location">in <a href="../../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#method_skipWithKnownProblem">
-<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractReflectionCheck.php#L26">at line 26</a></div>
+<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractReflectionCheck.php#L27">at line 27</a></div>
         <code>            protected        bool
-    <strong>skipWithKnownProblem</strong>(<a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, string $checkName, string $phpVersion)
+    <strong>skipWithKnownProblem</strong>(<a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr> $checkType, string $phpVersion)
         </code>
     </h3>
     <div class="details">    
@@ -392,8 +402,8 @@
                 <td></td>
             </tr>
                     <tr>
-                <td>string</td>
-                <td>$checkName</td>
+                <td><abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr></td>
+                <td>$checkType</td>
                 <td></td>
             </tr>
                     <tr>
@@ -824,7 +834,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_supports">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/ClassInterfacesCheck.php#L26">at line 26</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/ClassInterfacesCheck.php#L40">at line 40</a></div>
         <code>                    bool
     <strong>supports</strong>(string $phpVersion)
         </code>
@@ -868,7 +878,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_run">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/ClassInterfacesCheck.php#L31">at line 31</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/ClassInterfacesCheck.php#L45">at line 45</a></div>
         <code>                    <a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a>
     <strong>run</strong>(<a href="../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $stubs, string $entityId, string $phpVersion)
         </code>

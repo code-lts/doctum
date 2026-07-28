@@ -108,8 +108,10 @@ attributes during stub parsing). A stub method is considered available for a giv
 PHP version if:</p>
 <ul>
 <li>sinceVersion is null OR phpVersion &gt;= sinceVersion</li>
-<li>AND removedVersion is null OR phpVersion &lt;= removedVersion</li>
+<li>AND removedVersion is null OR phpVersion &lt; removedVersion</li>
 </ul>
+<p>removedVersion is exclusive: a method with @removed 8.0 is absent from 8.0 itself.
+See StubsMetadata::isAvailableIn(), which is the single implementation of this rule.</p>
 <p>Known problems are supported at two granularities:</p>
 <ul>
 <li>class-level: EntityType::CLASS_TYPE + classId + 'ClassMethodsExistCheck'
@@ -196,7 +198,7 @@ PHP version if:</p>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_skipWithKnownProblem">skipWithKnownProblem</a>(<a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, string $checkName, string $phpVersion)
+                    <a href="#method_skipWithKnownProblem">skipWithKnownProblem</a>(<a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr> $checkType, string $phpVersion)
         
                                             <p><p>Records a skipped-success result if a known problem covers this entity, and returns true.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#method_skipWithKnownProblem">
@@ -309,7 +311,7 @@ PHP version if:</p>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr>
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getCheckName">getCheckName</a>()
@@ -405,9 +407,9 @@ PHP version if:</p>
                     <div class="method-item">
                     <h3 id="method_skipWithKnownProblem">
         <div class="location">in <a href="../../../../../StubTests/Framework/Validator/AbstractReflectionCheck.html#method_skipWithKnownProblem">
-<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractReflectionCheck.php#L26">at line 26</a></div>
+<abbr title="StubTests\Framework\Validator\AbstractReflectionCheck">AbstractReflectionCheck</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/AbstractReflectionCheck.php#L27">at line 27</a></div>
         <code>            protected        bool
-    <strong>skipWithKnownProblem</strong>(<a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, string $checkName, string $phpVersion)
+    <strong>skipWithKnownProblem</strong>(<a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a> $results, string $entityType, string $entityId, <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr> $checkType, string $phpVersion)
         </code>
     </h3>
     <div class="details">    
@@ -438,8 +440,8 @@ PHP version if:</p>
                 <td></td>
             </tr>
                     <tr>
-                <td>string</td>
-                <td>$checkName</td>
+                <td><abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr></td>
+                <td>$checkType</td>
                 <td></td>
             </tr>
                     <tr>
@@ -870,8 +872,8 @@ PHP version if:</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCheckName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/ClassMethodsExistCheck.php#L34">at line 34</a></div>
-        <code>            protected        string
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/ClassMethodsExistCheck.php#L38">at line 38</a></div>
+        <code>            protected        <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr>
     <strong>getCheckName</strong>()
         </code>
     </h3>
@@ -890,7 +892,7 @@ PHP version if:</p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
+            <td><abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -904,7 +906,7 @@ PHP version if:</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_supports">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/ClassMethodsExistCheck.php#L39">at line 39</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/ClassMethodsExistCheck.php#L43">at line 43</a></div>
         <code>                    bool
     <strong>supports</strong>(string $phpVersion)
         </code>
@@ -948,7 +950,7 @@ PHP version if:</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_run">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/ClassMethodsExistCheck.php#L44">at line 44</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/ClassMethodsExistCheck.php#L48">at line 48</a></div>
         <code>                    <a href="../../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a>
     <strong>run</strong>(<a href="../../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $stubs, string $entityId, string $phpVersion)
         </code>

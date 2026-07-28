@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>StubTests\Framework\Validator\Functions\FunctionExistsCheck | PHP Jetbrains phpstorm-stubs</title>
+    <title>StubTests\Unit\Parsers\Processors\EntityProcessingPipelineFactoryTest | PHP Jetbrains phpstorm-stubs</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:StubTests_Framework_Validator_Functions_FunctionExistsCheck" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
+    <body id="class" data-name="class:StubTests_Unit_Parsers_Processors_EntityProcessingPipelineFactoryTest" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,18 +75,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../../StubTests.html">StubTests</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Framework.html">Framework</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Framework/Validator.html">Validator</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Framework/Validator/Functions.html">Functions</a></li><li class="backslash">\</li><li>FunctionExistsCheck</li>
+                        <li><a href="../../../../StubTests.html">StubTests</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Unit.html">Unit</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Unit/Parsers.html">Parsers</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Unit/Parsers/Processors.html">Processors</a></li><li class="backslash">\</li><li>EntityProcessingPipelineFactoryTest</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>FunctionExistsCheck    
+        <h1>EntityProcessingPipelineFactoryTest    
             </h1>
     </div>
 
     
     <p>        class
-    <strong>FunctionExistsCheck</strong>        implements        <a href="../../../../StubTests/Framework/Validator/Contracts/CheckInterface.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckInterface">CheckInterface</abbr></a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Functions/FunctionExistsCheck.php">View source</a>)
+    <strong>EntityProcessingPipelineFactoryTest</strong>        extends <abbr title="PHPUnit\Framework\TestCase">TestCase</abbr>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Processors/EntityProcessingPipelineFactoryTest.php">View source</a>)
 </p>
 
         
@@ -95,7 +95,11 @@
         
 
             <div class="description">
-            <p><p>Validates that functions from reflection exist in stubs.</p></p>                    </div>
+            <p><p>Guards the cache-generation pipelines against drifting apart.</p></p>            <p><p>Runner::getReflection() once built its storage manager with the default empty pipeline
+while run-reflection-processor.php installed ReflectionDeduplicationProcessor, so a
+Runner-triggered regeneration silently wrote a non-deduplicated cache over the committed
+file. Both paths now build their pipeline here, and these tests assert the deduplication
+processor is actually present.</p></p>        </div>
             
         
     
@@ -108,7 +112,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="../../../../StubTests/Framework/Validator/Services/EntityLookupService.html"><abbr title="StubTests\Framework\Validator\Services\EntityLookupService">EntityLookupService</abbr></a>|null $entityLookup = null)
+                    <a href="#method_testReflectionPipelineInstallsDeduplication">testReflectionPipelineInstallsDeduplication</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -116,10 +120,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_supports">supports</a>(string $phpVersion)
+                    <a href="#method_testStubsPipelineInstallsDeduplication">testStubsPipelineInstallsDeduplication</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -127,10 +131,21 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a>
+                    
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_run">run</a>(<a href="../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $stubs, string $entityId, string $phpVersion)
+                    <a href="#method_testEachCallReturnsAnIndependentPipeline">testEachCallReturnsAnIndependentPipeline</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testReflectionAndStubsPipelinesUseDifferentProcessors">testReflectionAndStubsPipelinesUseDifferentProcessors</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -143,10 +158,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Functions/FunctionExistsCheck.php#L17">at line 17</a></div>
+                    <h3 id="method_testReflectionPipelineInstallsDeduplication">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Processors/EntityProcessingPipelineFactoryTest.php#L21">at line 21</a></div>
         <code>                    
-    <strong>__construct</strong>(<a href="../../../../StubTests/Framework/Validator/Services/EntityLookupService.html"><abbr title="StubTests\Framework\Validator\Services\EntityLookupService">EntityLookupService</abbr></a>|null $entityLookup = null)
+    <strong>testReflectionPipelineInstallsDeduplication</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -159,16 +174,6 @@
                     
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../StubTests/Framework/Validator/Services/EntityLookupService.html"><abbr title="StubTests\Framework\Validator\Services\EntityLookupService">EntityLookupService</abbr></a>|null</td>
-                <td>$entityLookup</td>
-                <td></td>
-            </tr>
-            </table>
-
             
             
             
@@ -178,10 +183,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_supports">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Functions/FunctionExistsCheck.php#L22">at line 22</a></div>
-        <code>                    bool
-    <strong>supports</strong>(string $phpVersion)
+                    <h3 id="method_testStubsPipelineInstallsDeduplication">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Processors/EntityProcessingPipelineFactoryTest.php#L29">at line 29</a></div>
+        <code>                    
+    <strong>testStubsPipelineInstallsDeduplication</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -194,26 +199,7 @@
                     
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$phpVersion</td>
-                <td></td>
-            </tr>
-            </table>
-
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
             
@@ -222,10 +208,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_run">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Functions/FunctionExistsCheck.php#L27">at line 27</a></div>
-        <code>                    <a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a>
-    <strong>run</strong>(<a href="../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a> $stubs, string $entityId, string $phpVersion)
+                    <h3 id="method_testEachCallReturnsAnIndependentPipeline">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Processors/EntityProcessingPipelineFactoryTest.php#L37">at line 37</a></div>
+        <code>                    
+    <strong>testEachCallReturnsAnIndependentPipeline</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -238,36 +224,32 @@
                     
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../StubTests/Framework/Parsers/StubDataQueryInterface.html"><abbr title="StubTests\Framework\Parsers\StubDataQueryInterface">StubDataQueryInterface</abbr></a></td>
-                <td>$stubs</td>
-                <td><p>Parsed stubs data</p></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$entityId</td>
-                <td><p>Entity identifier to validate</p></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$phpVersion</td>
-                <td><p>PHP version string</p></td>
-            </tr>
-            </table>
-
             
-                            <h4>Return Value</h4>
+            
+            
+            
+                    </div>
+    </div>
 
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../StubTests/Framework/Validator/Contracts/CheckResultSet.html"><abbr title="StubTests\Framework\Validator\Contracts\CheckResultSet">CheckResultSet</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testReflectionAndStubsPipelinesUseDifferentProcessors">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Processors/EntityProcessingPipelineFactoryTest.php#L46">at line 46</a></div>
+        <code>                    
+    <strong>testReflectionAndStubsPipelinesUseDifferentProcessors</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
 
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
             
             
             

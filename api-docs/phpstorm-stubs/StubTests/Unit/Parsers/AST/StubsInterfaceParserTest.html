@@ -343,6 +343,96 @@
                                     </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testUnqualifiedParentResolvesWithinTheDeclaringNamespace">testUnqualifiedParentResolvesWithinTheDeclaringNamespace</a>()
+        
+                                            <p><p>An unqualified parent resolves within the declaring namespace, per PHP's rule for
+class-like names. Storing only the short name let ClassHierarchyResolver match
+<code>MongoDB\BSON\Persistable extends Serializable</code> against the <em>global</em> \Serializable.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testParentInRootNamespaceKeepsASingleLeadingSeparator">testParentInRootNamespaceKeepsASingleLeadingSeparator</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testQualifiedParentKeepsShortNameAndQualifiedId">testQualifiedParentKeepsShortNameAndQualifiedId</a>()
+        
+                                            <p><p>The stored name stays short even when the source writes a qualified parent, so the
+resolver's short-name fallback still works for stubs whose qualified id does not exist.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testMultipleParentsAreEachResolved">testMultipleParentsAreEachResolved</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testImportedParentResolvesToTheImportedNamespace">testImportedParentResolvesToTheImportedNamespace</a>()
+        
+                                            <p><p>A <code>use</code> statement must win over the declaring namespace, otherwise an imported parent
+is silently rewritten to a same-namespace name that does not exist.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testAliasedImportResolvesToTheTargetAndKeepsTheTargetShortName">testAliasedImportResolvesToTheTargetAndKeepsTheTargetShortName</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testImportOfAGlobalInterfaceResolvesToTheRootNamespace">testImportOfAGlobalInterfaceResolvesToTheRootNamespace</a>()
+        
+                                            <p><p>Importing a global interface is how a stub says &quot;the root-namespace one&quot; — the case
+<code>namespace Ds; interface Collection extends Countable</code> cannot express.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testParseWithoutImportsResolvesAgainstTheNamespaceInstead">testParseWithoutImportsResolvesAgainstTheNamespaceInstead</a>()
+        
+                                            <p><p>Guards the trap that makes the tests above necessary: parse() is a convenience wrapper
+that calls parseNode() with no imports, so it resolves an imported parent against the
+declaring namespace instead. Production always goes through extractAndParseAll().</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -898,6 +988,208 @@
         <div class="method-description">
                             <p class="no-description">No description</p>
                     
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testUnqualifiedParentResolvesWithinTheDeclaringNamespace">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/StubsInterfaceParserTest.php#L228">at line 228</a></div>
+        <code>                    
+    <strong>testUnqualifiedParentResolvesWithinTheDeclaringNamespace</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>An unqualified parent resolves within the declaring namespace, per PHP's rule for
+class-like names. Storing only the short name let ClassHierarchyResolver match
+<code>MongoDB\BSON\Persistable extends Serializable</code> against the <em>global</em> \Serializable.</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testParentInRootNamespaceKeepsASingleLeadingSeparator">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/StubsInterfaceParserTest.php#L241">at line 241</a></div>
+        <code>                    
+    <strong>testParentInRootNamespaceKeepsASingleLeadingSeparator</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testQualifiedParentKeepsShortNameAndQualifiedId">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/StubsInterfaceParserTest.php#L252">at line 252</a></div>
+        <code>                    
+    <strong>testQualifiedParentKeepsShortNameAndQualifiedId</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The stored name stays short even when the source writes a qualified parent, so the
+resolver's short-name fallback still works for stubs whose qualified id does not exist.</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testMultipleParentsAreEachResolved">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/StubsInterfaceParserTest.php#L259">at line 259</a></div>
+        <code>                    
+    <strong>testMultipleParentsAreEachResolved</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testImportedParentResolvesToTheImportedNamespace">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/StubsInterfaceParserTest.php#L286">at line 286</a></div>
+        <code>                    
+    <strong>testImportedParentResolvesToTheImportedNamespace</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>A <code>use</code> statement must win over the declaring namespace, otherwise an imported parent
+is silently rewritten to a same-namespace name that does not exist.</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testAliasedImportResolvesToTheTargetAndKeepsTheTargetShortName">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/StubsInterfaceParserTest.php#L298">at line 298</a></div>
+        <code>                    
+    <strong>testAliasedImportResolvesToTheTargetAndKeepsTheTargetShortName</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testImportOfAGlobalInterfaceResolvesToTheRootNamespace">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/StubsInterfaceParserTest.php#L314">at line 314</a></div>
+        <code>                    
+    <strong>testImportOfAGlobalInterfaceResolvesToTheRootNamespace</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Importing a global interface is how a stub says &quot;the root-namespace one&quot; — the case
+<code>namespace Ds; interface Collection extends Countable</code> cannot express.</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testParseWithoutImportsResolvesAgainstTheNamespaceInstead">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/StubsInterfaceParserTest.php#L332">at line 332</a></div>
+        <code>                    
+    <strong>testParseWithoutImportsResolvesAgainstTheNamespaceInstead</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Guards the trap that makes the tests above necessary: parse() is a convenience wrapper
+that calls parseNode() with no imports, so it resolves an imported parent against the
+declaring namespace instead. Production always goes through extractAndParseAll().</p></p>                <p><p>Asserted so the discrepancy is visible rather than quietly misleading a test author.</p></p>        
         </div>
         <div class="tags">
             

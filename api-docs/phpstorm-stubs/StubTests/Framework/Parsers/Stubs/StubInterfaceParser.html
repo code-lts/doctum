@@ -153,7 +153,7 @@ Uses dedicated parsers for child entities (methods, constants).</p></p>        <
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/Stubs/StubInterfaceParser.php#L30">at line 30</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/Stubs/StubInterfaceParser.php#L32">at line 32</a></div>
         <code>                    
     <strong>__construct</strong>(<a href="../../../../StubTests/Framework/Parsers/Stubs/InterfaceNodeExtractorInterface.html"><abbr title="StubTests\Framework\Parsers\Stubs\InterfaceNodeExtractorInterface">InterfaceNodeExtractorInterface</abbr></a>|null $nodeExtractor = null, <a href="../../../../StubTests/Framework/Parsers/Stubs/PhpDoc/PhpDocParserInterface.html"><abbr title="StubTests\Framework\Parsers\Stubs\PhpDoc\PhpDocParserInterface">PhpDocParserInterface</abbr></a>|null $phpDocParser = null, <a href="../../../../StubTests/Framework/Parsers/Stubs/Types/TypeParserInterface.html"><abbr title="StubTests\Framework\Parsers\Stubs\Types\TypeParserInterface">TypeParserInterface</abbr></a>|null $typeParser = null, <a href="../../../../StubTests/Framework/Parsers/Stubs/Versions/AvailableVersionParserInterface.html"><abbr title="StubTests\Framework\Parsers\Stubs\Versions\AvailableVersionParserInterface">AvailableVersionParserInterface</abbr></a>|null $versionParser = null)
         </code>
@@ -203,7 +203,7 @@ Uses dedicated parsers for child entities (methods, constants).</p></p>        <
             </div>
                     <div class="method-item">
                     <h3 id="method_parse">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/Stubs/StubInterfaceParser.php#L51">at line 51</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/Stubs/StubInterfaceParser.php#L58">at line 58</a></div>
         <code>                    <a href="../../../../StubTests/Framework/Parsers/Model/PHPInterface.html"><abbr title="StubTests\Framework\Parsers\Model\PHPInterface">PHPInterface</abbr></a>
     <strong>parse</strong>(string $stubCode)
         </code>
@@ -214,7 +214,10 @@ Uses dedicated parsers for child entities (methods, constants).</p></p>        <
             
 
         <div class="method-description">
-                            <p><p>Parses stub code string into PHPInterface.</p></p>                <p><p>This is a convenience method that delegates to parseNode().</p></p>        
+                            <p><p>Parses stub code string into PHPInterface.</p></p>                <p><p>Convenience wrapper that delegates to parseNode() <strong>without imports</strong>, so a parent
+declared via a <code>use</code> statement resolves against the declaring namespace rather than
+the imported one. Production parsing goes through extractAndParseAll(), which supplies
+them; prefer that whenever import handling matters.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -246,7 +249,7 @@ Uses dedicated parsers for child entities (methods, constants).</p></p>        <
             </div>
                     <div class="method-item">
                     <h3 id="method_parseNode">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/Stubs/StubInterfaceParser.php#L64">at line 64</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/Stubs/StubInterfaceParser.php#L71">at line 71</a></div>
         <code>                    <a href="../../../../StubTests/Framework/Parsers/Model/PHPInterface.html"><abbr title="StubTests\Framework\Parsers\Model\PHPInterface">PHPInterface</abbr></a>
     <strong>parseNode</strong>(<a href="../../../../StubTests/Framework/Parsers/Stubs/Nodes/InterfaceNode.html"><abbr title="StubTests\Framework\Parsers\Stubs\Nodes\InterfaceNode">InterfaceNode</abbr></a> $node, array $imports = [])
         </code>
@@ -294,7 +297,7 @@ Uses dedicated parsers for child entities (methods, constants).</p></p>        <
             </div>
                     <div class="method-item">
                     <h3 id="method_extractAndParseAll">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/Stubs/StubInterfaceParser.php#L125">at line 125</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/Stubs/StubInterfaceParser.php#L145">at line 145</a></div>
         <code>                    array
     <strong>extractAndParseAll</strong>(string $stubContent)
         </code>

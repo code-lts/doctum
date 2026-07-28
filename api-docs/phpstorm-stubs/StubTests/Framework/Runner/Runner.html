@@ -134,6 +134,16 @@
                                     </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isStubsCacheComplete">isStubsCacheComplete</a>()
+        
+                                            <p><p>Whether every stub cache artifact required by the read-from-cache path is present.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -142,7 +152,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Runner/Runner.php#L36">at line 36</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Runner/Runner.php#L35">at line 35</a></div>
         <code>                    
     <strong>__construct</strong>(string|null $cacheDir = null, <a href="../../../StubTests/Framework/Parsers/Hierarchy/ClassHierarchyResolver.html"><abbr title="StubTests\Framework\Parsers\Hierarchy\ClassHierarchyResolver">ClassHierarchyResolver</abbr></a>|null $hierarchyResolver = null, <a href="../../../StubTests/Framework/Parsers/Hierarchy/InheritDocVersionResolver.html"><abbr title="StubTests\Framework\Parsers\Hierarchy\InheritDocVersionResolver">InheritDocVersionResolver</abbr></a>|null $inheritDocResolver = null)
         </code>
@@ -187,7 +197,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getReflection">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Runner/Runner.php#L46">at line 46</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Runner/Runner.php#L45">at line 45</a></div>
         <code>                    <a href="../../../StubTests/Framework/Parsers/Storage/ParsedDataStorageManager.html"><abbr title="StubTests\Framework\Parsers\Storage\ParsedDataStorageManager">ParsedDataStorageManager</abbr></a>
     <strong>getReflection</strong>(string $phpVersion)
         </code>
@@ -231,7 +241,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getStubs">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Runner/Runner.php#L89">at line 89</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Runner/Runner.php#L92">at line 92</a></div>
         <code>                    <a href="../../../StubTests/Framework/Parsers/Storage/ParsedDataStorageManager.html"><abbr title="StubTests\Framework\Parsers\Storage\ParsedDataStorageManager">ParsedDataStorageManager</abbr></a>
     <strong>getStubs</strong>()
         </code>
@@ -252,6 +262,44 @@
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../../StubTests/Framework/Parsers/Storage/ParsedDataStorageManager.html"><abbr title="StubTests\Framework\Parsers\Storage\ParsedDataStorageManager">ParsedDataStorageManager</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isStubsCacheComplete">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Runner/Runner.php#L143">at line 143</a></div>
+        <code>                    bool
+    <strong>isStubsCacheComplete</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether every stub cache artifact required by the read-from-cache path is present.</p></p>                <p><p>MultiFileJsonStorage reads the five per-type files (StubsClasses/Functions/Interfaces/
+Enums/Constants.json) — the &quot;Stubs.json&quot; base path is only used to derive those names and
+is never read itself — and PhpDocStorage reads StubsPhpDoc.json. A partial cache (e.g. the
+per-type files present but StubsPhpDoc.json missing) must fall through to regeneration;
+otherwise the entities would load with all PhpDoc metadata (sinceVersion, removedVersion,
+typeFromPhpDoc, …) silently dropped, yielding wrong validation results.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
             <td></td>
         </tr>
     </table>
