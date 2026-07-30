@@ -86,7 +86,7 @@
 
     
     <p>        interface
-    <strong>StubDataQueryInterface</strong>        implements        <a href="../../../StubTests/Framework/Parsers/ClassQueryInterface.html"><abbr title="StubTests\Framework\Parsers\ClassQueryInterface">ClassQueryInterface</abbr></a>, <a href="../../../StubTests/Framework/Parsers/FunctionQueryInterface.html"><abbr title="StubTests\Framework\Parsers\FunctionQueryInterface">FunctionQueryInterface</abbr></a>, <a href="../../../StubTests/Framework/Parsers/InterfaceQueryInterface.html"><abbr title="StubTests\Framework\Parsers\InterfaceQueryInterface">InterfaceQueryInterface</abbr></a>, <a href="../../../StubTests/Framework/Parsers/EnumQueryInterface.html"><abbr title="StubTests\Framework\Parsers\EnumQueryInterface">EnumQueryInterface</abbr></a>, <a href="../../../StubTests/Framework/Parsers/ConstantQueryInterface.html"><abbr title="StubTests\Framework\Parsers\ConstantQueryInterface">ConstantQueryInterface</abbr></a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php">View source</a>)
+    <strong>StubDataQueryInterface</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php">View source</a>)
 </p>
 
         
@@ -95,11 +95,17 @@
         
 
             <div class="description">
-            <p><p>Composed read-only query interface for accessing parsed stub/reflection data.</p></p>            <p><p>Extends five entity-specific query interfaces so that clients can depend on
-only the slice they need (Interface Segregation Principle).</p>
-<p>Validators that need multiple entity types should depend on this composed
-interface; validators that only need one type can depend on the narrower
-interface (e.g. ConstantQueryInterface).</p></p>        </div>
+            <p><p>Read-only query interface for accessing parsed stub/reflection data.</p></p>            <p><p>These eight methods were previously spread across five per-entity interfaces
+(Class/Function/Interface/Enum/ConstantQueryInterface) that this one composed, written so that
+&quot;clients can depend on only the slice they need&quot;. No client ever did: all five were referenced
+by nothing but the composite, while this type is the declared parameter type in ~48 files.</p>
+<p>The split also could not deliver what it promised, because the coupling it aimed at is fixed by
+CheckInterface::run(StubDataQueryInterface, ...). PHP does not permit narrowing a parameter type
+in an override — only widening — so no check can declare a narrower dependency however the
+interfaces are cut. Doing that would mean changing CheckInterface itself, at which point the
+per-entity interfaces can be reintroduced from here in a single commit.</p>
+<p>Contrast the parallel <em>NodeExtractorInterface split, which is genuine: five narrow interfaces
+that six Stub</em>Parser classes actually declare as their parameter types.</p></p>        </div>
             
         
     
@@ -116,8 +122,7 @@ interface (e.g. ConstantQueryInterface).</p></p>        </div>
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../StubTests/Framework/Parsers/ClassQueryInterface.html#method_getClasses">
-<abbr title="StubTests\Framework\Parsers\ClassQueryInterface">ClassQueryInterface</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -128,8 +133,7 @@ interface (e.g. ConstantQueryInterface).</p></p>        </div>
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../StubTests/Framework/Parsers/ClassQueryInterface.html#method_hasClass">
-<abbr title="StubTests\Framework\Parsers\ClassQueryInterface">ClassQueryInterface</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -140,8 +144,7 @@ interface (e.g. ConstantQueryInterface).</p></p>        </div>
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../StubTests/Framework/Parsers/FunctionQueryInterface.html#method_getFunctions">
-<abbr title="StubTests\Framework\Parsers\FunctionQueryInterface">FunctionQueryInterface</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -152,8 +155,7 @@ interface (e.g. ConstantQueryInterface).</p></p>        </div>
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../StubTests/Framework/Parsers/InterfaceQueryInterface.html#method_getInterfaces">
-<abbr title="StubTests\Framework\Parsers\InterfaceQueryInterface">InterfaceQueryInterface</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -164,8 +166,7 @@ interface (e.g. ConstantQueryInterface).</p></p>        </div>
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../StubTests/Framework/Parsers/InterfaceQueryInterface.html#method_hasInterface">
-<abbr title="StubTests\Framework\Parsers\InterfaceQueryInterface">InterfaceQueryInterface</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -176,8 +177,7 @@ interface (e.g. ConstantQueryInterface).</p></p>        </div>
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../StubTests/Framework/Parsers/EnumQueryInterface.html#method_getEnums">
-<abbr title="StubTests\Framework\Parsers\EnumQueryInterface">EnumQueryInterface</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -188,8 +188,7 @@ interface (e.g. ConstantQueryInterface).</p></p>        </div>
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../StubTests/Framework/Parsers/EnumQueryInterface.html#method_hasEnum">
-<abbr title="StubTests\Framework\Parsers\EnumQueryInterface">EnumQueryInterface</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -200,8 +199,7 @@ interface (e.g. ConstantQueryInterface).</p></p>        </div>
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../StubTests/Framework/Parsers/ConstantQueryInterface.html#method_getConstants">
-<abbr title="StubTests\Framework\Parsers\ConstantQueryInterface">ConstantQueryInterface</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
             </div>
 
@@ -211,8 +209,7 @@ interface (e.g. ConstantQueryInterface).</p></p>        </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getClasses">
-        <div class="location">in <a href="../../../StubTests/Framework/Parsers/ClassQueryInterface.html#method_getClasses">
-<abbr title="StubTests\Framework\Parsers\ClassQueryInterface">ClassQueryInterface</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/ClassQueryInterface.php#L10">at line 10</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php#L31">at line 31</a></div>
         <code>                    array
     <strong>getClasses</strong>()
         </code>
@@ -246,8 +243,7 @@ interface (e.g. ConstantQueryInterface).</p></p>        </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasClass">
-        <div class="location">in <a href="../../../StubTests/Framework/Parsers/ClassQueryInterface.html#method_hasClass">
-<abbr title="StubTests\Framework\Parsers\ClassQueryInterface">ClassQueryInterface</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/ClassQueryInterface.php#L12">at line 12</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php#L33">at line 33</a></div>
         <code>                    bool
     <strong>hasClass</strong>(string $id)
         </code>
@@ -291,8 +287,7 @@ interface (e.g. ConstantQueryInterface).</p></p>        </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getFunctions">
-        <div class="location">in <a href="../../../StubTests/Framework/Parsers/FunctionQueryInterface.html#method_getFunctions">
-<abbr title="StubTests\Framework\Parsers\FunctionQueryInterface">FunctionQueryInterface</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/FunctionQueryInterface.php#L10">at line 10</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php#L36">at line 36</a></div>
         <code>                    array
     <strong>getFunctions</strong>()
         </code>
@@ -326,8 +321,7 @@ interface (e.g. ConstantQueryInterface).</p></p>        </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getInterfaces">
-        <div class="location">in <a href="../../../StubTests/Framework/Parsers/InterfaceQueryInterface.html#method_getInterfaces">
-<abbr title="StubTests\Framework\Parsers\InterfaceQueryInterface">InterfaceQueryInterface</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/InterfaceQueryInterface.php#L10">at line 10</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php#L39">at line 39</a></div>
         <code>                    array
     <strong>getInterfaces</strong>()
         </code>
@@ -361,8 +355,7 @@ interface (e.g. ConstantQueryInterface).</p></p>        </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasInterface">
-        <div class="location">in <a href="../../../StubTests/Framework/Parsers/InterfaceQueryInterface.html#method_hasInterface">
-<abbr title="StubTests\Framework\Parsers\InterfaceQueryInterface">InterfaceQueryInterface</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/InterfaceQueryInterface.php#L12">at line 12</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php#L41">at line 41</a></div>
         <code>                    bool
     <strong>hasInterface</strong>(string $id)
         </code>
@@ -406,8 +399,7 @@ interface (e.g. ConstantQueryInterface).</p></p>        </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getEnums">
-        <div class="location">in <a href="../../../StubTests/Framework/Parsers/EnumQueryInterface.html#method_getEnums">
-<abbr title="StubTests\Framework\Parsers\EnumQueryInterface">EnumQueryInterface</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/EnumQueryInterface.php#L10">at line 10</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php#L44">at line 44</a></div>
         <code>                    array
     <strong>getEnums</strong>()
         </code>
@@ -441,8 +433,7 @@ interface (e.g. ConstantQueryInterface).</p></p>        </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasEnum">
-        <div class="location">in <a href="../../../StubTests/Framework/Parsers/EnumQueryInterface.html#method_hasEnum">
-<abbr title="StubTests\Framework\Parsers\EnumQueryInterface">EnumQueryInterface</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/EnumQueryInterface.php#L12">at line 12</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php#L46">at line 46</a></div>
         <code>                    bool
     <strong>hasEnum</strong>(string $id)
         </code>
@@ -486,8 +477,7 @@ interface (e.g. ConstantQueryInterface).</p></p>        </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getConstants">
-        <div class="location">in <a href="../../../StubTests/Framework/Parsers/ConstantQueryInterface.html#method_getConstants">
-<abbr title="StubTests\Framework\Parsers\ConstantQueryInterface">ConstantQueryInterface</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/ConstantQueryInterface.php#L10">at line 10</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php#L49">at line 49</a></div>
         <code>                    array
     <strong>getConstants</strong>()
         </code>

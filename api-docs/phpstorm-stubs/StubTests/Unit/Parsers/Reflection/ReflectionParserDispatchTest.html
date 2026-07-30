@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>StubTests\Unit\Parsers\Reflection\ReflectionParserDispatchTest | PHP Jetbrains phpstorm-stubs</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:StubTests_Unit_Parsers_Reflection_ReflectionParserDispatchTest" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">PHP Jetbrains phpstorm-stubs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../StubTests.html">StubTests</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Unit.html">Unit</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Unit/Parsers.html">Parsers</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Unit/Parsers/Reflection.html">Reflection</a></li><li class="backslash">\</li><li>ReflectionParserDispatchTest</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ReflectionParserDispatchTest    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>ReflectionParserDispatchTest</strong>        extends <abbr title="PHPUnit\Framework\TestCase">TestCase</abbr>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/ReflectionParserDispatchTest.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            <div class="description">
+            <p><p>Dispatch contract for the reflection parsers' canParse().</p></p>            <p><p>canParse() was covered only for ReflectionEnumParser and ReflectionInterfaceParser, even though
+EntityReflectionObjectParsersRegistry routes every reflected object purely on its result. The
+three class-like parsers form a partition of AdaptedReflectionClass on (isInterface, isEnum), so
+the property that matters is not just &quot;the right one accepts&quot; but &quot;<strong>exactly one</strong> accepts&quot; —
+an overlap would make dispatch order-dependent and a gap would silently drop entities.</p>
+<p>The remaining parsers are sub-parsers invoked directly by their owners, and return false
+unconditionally so they can never claim a dispatch slot. That is pinned too, because a
+well-meaning &quot;implement this properly&quot; would introduce an overlap.</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testExactlyTheExpectedParserClaimsEachClassLikeShape">testExactlyTheExpectedParserClaimsEachClassLikeShape</a>(bool $internal, bool $interface, bool $enum, array $expected)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_classLikeShapes">classLikeShapes</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testAtMostOneParserClaimsAnyShape">testAtMostOneParserClaimsAnyShape</a>(bool $internal, bool $interface, bool $enum)
+        
+                                            <p><p>No overlap for any shape PHP can actually produce.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_allFlagCombinations">allFlagCombinations</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testInterfaceAndEnumIsTheOnePairThatOverlaps">testInterfaceAndEnumIsTheOnePairThatOverlaps</a>()
+        
+                                            <p><p>The one shape where the partition overlaps: an object reporting both isInterface() and
+isEnum() is claimed by the enum <em>and</em> the interface parser, so which one wins would depend
+on registration order in EntityReflectionObjectParsersRegistry.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testNoInternalClassLikeShapeIsDropped">testNoInternalClassLikeShapeIsDropped</a>(bool $interface, bool $enum)
+        
+                                            <p><p>Every internal class-like shape PHP can actually produce must be claimed by someone.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_realisticInternalShapes">realisticInternalShapes</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testFunctionParserClaimsOnlyAdaptedFunctions">testFunctionParserClaimsOnlyAdaptedFunctions</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testParameterParserClaimsOnlyAdaptedParameters">testParameterParserClaimsOnlyAdaptedParameters</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testClassLikeObjectsAreNotClaimedByCallableParsers">testClassLikeObjectsAreNotClaimedByCallableParsers</a>()
+        
+                                            <p><p>A class-like object must never be claimed by the function or parameter parsers.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testSubParsersNeverClaimAnything">testSubParsersNeverClaimAnything</a>(string $parserClass)
+        
+                                            <p><p>Sub-parsers are invoked directly by their owning parser, never through registry dispatch, and
+declare canParse() === false unconditionally. Pinned so that &quot;implementing it properly&quot; is a
+deliberate decision rather than an accident that creates an overlap.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_subParsers">subParsers</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_testExactlyTheExpectedParserClaimsEachClassLikeShape">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/ReflectionParserDispatchTest.php#L64">at line 64</a></div>
+        <code>                    
+    <strong>testExactlyTheExpectedParserClaimsEachClassLikeShape</strong>(bool $internal, bool $interface, bool $enum, array $expected)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$internal</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$interface</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$enum</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$expected</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_classLikeShapes">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/ReflectionParserDispatchTest.php#L76">at line 76</a></div>
+        <code>        static            array
+    <strong>classLikeShapes</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testAtMostOneParserClaimsAnyShape">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/ReflectionParserDispatchTest.php#L95">at line 95</a></div>
+        <code>                    
+    <strong>testAtMostOneParserClaimsAnyShape</strong>(bool $internal, bool $interface, bool $enum)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>No overlap for any shape PHP can actually produce.</p></p>                <p><p>The contradictory interface-and-enum shape is excluded deliberately — see
+testInterfaceAndEnumIsTheOnePairThatOverlaps() for why it is left out rather than asserted.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$internal</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$interface</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$enum</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_allFlagCombinations">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/ReflectionParserDispatchTest.php#L113">at line 113</a></div>
+        <code>        static            array
+    <strong>allFlagCombinations</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testInterfaceAndEnumIsTheOnePairThatOverlaps">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/ReflectionParserDispatchTest.php#L142">at line 142</a></div>
+        <code>                    
+    <strong>testInterfaceAndEnumIsTheOnePairThatOverlaps</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The one shape where the partition overlaps: an object reporting both isInterface() and
+isEnum() is claimed by the enum <em>and</em> the interface parser, so which one wins would depend
+on registration order in EntityReflectionObjectParsersRegistry.</p></p>                <p><p>This is asserted as the current behaviour rather than fixed, because the shape is not
+reachable: across 255 internal class-likes at PHP 8.6 (6 enums, 27 interfaces) there are
+<strong>0</strong> where both flags are set, and an enum is not an interface in PHP's object model. The
+mutual exclusion is therefore an invariant of the reflection API rather than of these three
+canParse() implementations — which is worth knowing, since it means the partition is total
+only for as long as that holds.</p></p>        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testNoInternalClassLikeShapeIsDropped">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/ReflectionParserDispatchTest.php#L154">at line 154</a></div>
+        <code>                    
+    <strong>testNoInternalClassLikeShapeIsDropped</strong>(bool $interface, bool $enum)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Every internal class-like shape PHP can actually produce must be claimed by someone.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$interface</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$enum</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_realisticInternalShapes">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/ReflectionParserDispatchTest.php#L160">at line 160</a></div>
+        <code>        static            array
+    <strong>realisticInternalShapes</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testFunctionParserClaimsOnlyAdaptedFunctions">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/ReflectionParserDispatchTest.php#L169">at line 169</a></div>
+        <code>                    
+    <strong>testFunctionParserClaimsOnlyAdaptedFunctions</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testParameterParserClaimsOnlyAdaptedParameters">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/ReflectionParserDispatchTest.php#L180">at line 180</a></div>
+        <code>                    
+    <strong>testParameterParserClaimsOnlyAdaptedParameters</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testClassLikeObjectsAreNotClaimedByCallableParsers">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/ReflectionParserDispatchTest.php#L190">at line 190</a></div>
+        <code>                    
+    <strong>testClassLikeObjectsAreNotClaimedByCallableParsers</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>A class-like object must never be claimed by the function or parameter parsers.</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testSubParsersNeverClaimAnything">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/ReflectionParserDispatchTest.php#L205">at line 205</a></div>
+        <code>                    
+    <strong>testSubParsersNeverClaimAnything</strong>(string $parserClass)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sub-parsers are invoked directly by their owning parser, never through registry dispatch, and
+declare canParse() === false unconditionally. Pinned so that &quot;implementing it properly&quot; is a
+deliberate decision rather than an accident that creates an overlap.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$parserClass</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_subParsers">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/ReflectionParserDispatchTest.php#L222">at line 222</a></div>
+        <code>        static            array
+    <strong>subParsers</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built using <a href="https://github.com/JetBrains/phpstorm-stubs#readme" rel="noreferrer noopener" target="_blank">phpstorm-stubs</a> from JetBrains.</div></div>
+    </div>
+    </body>
+
+</html>

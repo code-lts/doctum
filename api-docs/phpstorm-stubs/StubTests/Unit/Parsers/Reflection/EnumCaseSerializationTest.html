@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>StubTests\Unit\Parsers\Reflection\EnumCaseSerializationTest | PHP Jetbrains phpstorm-stubs</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:StubTests_Unit_Parsers_Reflection_EnumCaseSerializationTest" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">PHP Jetbrains phpstorm-stubs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../StubTests.html">StubTests</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Unit.html">Unit</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Unit/Parsers.html">Parsers</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Unit/Parsers/Reflection.html">Reflection</a></li><li class="backslash">\</li><li>EnumCaseSerializationTest</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>EnumCaseSerializationTest    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>EnumCaseSerializationTest</strong>        extends <abbr title="PHPUnit\Framework\TestCase">TestCase</abbr>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/EnumCaseSerializationTest.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            <div class="description">
+            <p><p>Enum-case values captured from reflection must not travel as live enum instances.</p></p>            <p><p>The reflection pipeline serializes in the container for the version being reflected and
+unserializes in test_runner. A live enum instance only survives if the declaring class exists on
+both sides, and unlike ordinary objects an enum cannot degrade to __PHP_Incomplete_Class — so an
+unresolvable one aborts the <em>entire</em> payload, not just that value.</p>
+<p>makeSerializable() had a branch meant to handle this, but it tested
+<code>method_exists($value, 'name')</code>; <code>name</code> is a property on an enum case, not a method, so the branch
+never fired and enums fell through to a bare class-name fallback that lost the case entirely.</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testPureEnumCaseBecomesAPortableReference">testPureEnumCaseBecomesAPortableReference</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testBackedEnumCaseIsAlsoConverted">testBackedEnumCaseIsAlsoConverted</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testReferenceSurvivesTheSerializationHop">testReferenceSurvivesTheSerializationHop</a>()
+        
+                                            <p><p>The whole point: the converted value must survive a serialize/unserialize hop.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testLiveEnumUsesTheFragileSerializationFormat">testLiveEnumUsesTheFragileSerializationFormat</a>()
+        
+                                            <p><p>A live enum instance uses PHP's <code>E:</code> serialization format, which hard-fails when the class is
+absent. This documents the hazard the reference avoids — it is why an unresolvable enum takes
+the entire payload down rather than degrading.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testReferenceRendersIdenticallyToALiveEnum">testReferenceRendersIdenticallyToALiveEnum</a>()
+        
+                                            <p><p>The reference must render exactly as a live instance did, so caches generated before and after
+this change are byte-identical. Verified end-to-end against Reflection8.6.json as well.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testEnumFqnIsNormalised">testEnumFqnIsNormalised</a>()
+        
+                                            <p><p>A leading backslash is normalised away, matching get_class() of a real case.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testOrdinaryValuesAreUnaffected">testOrdinaryValuesAreUnaffected</a>()
+        
+                                            <p><p>Non-enum values must be untouched by the new branch.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_testPureEnumCaseBecomesAPortableReference">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/EnumCaseSerializationTest.php#L34">at line 34</a></div>
+        <code>                    
+    <strong>testPureEnumCaseBecomesAPortableReference</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testBackedEnumCaseIsAlsoConverted">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/EnumCaseSerializationTest.php#L43">at line 43</a></div>
+        <code>                    
+    <strong>testBackedEnumCaseIsAlsoConverted</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testReferenceSurvivesTheSerializationHop">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/EnumCaseSerializationTest.php#L52">at line 52</a></div>
+        <code>                    
+    <strong>testReferenceSurvivesTheSerializationHop</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The whole point: the converted value must survive a serialize/unserialize hop.</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testLiveEnumUsesTheFragileSerializationFormat">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/EnumCaseSerializationTest.php#L67">at line 67</a></div>
+        <code>                    
+    <strong>testLiveEnumUsesTheFragileSerializationFormat</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>A live enum instance uses PHP's <code>E:</code> serialization format, which hard-fails when the class is
+absent. This documents the hazard the reference avoids — it is why an unresolvable enum takes
+the entire payload down rather than degrading.</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testReferenceRendersIdenticallyToALiveEnum">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/EnumCaseSerializationTest.php#L77">at line 77</a></div>
+        <code>                    
+    <strong>testReferenceRendersIdenticallyToALiveEnum</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The reference must render exactly as a live instance did, so caches generated before and after
+this change are byte-identical. Verified end-to-end against Reflection8.6.json as well.</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testEnumFqnIsNormalised">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/EnumCaseSerializationTest.php#L87">at line 87</a></div>
+        <code>                    
+    <strong>testEnumFqnIsNormalised</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>A leading backslash is normalised away, matching get_class() of a real case.</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testOrdinaryValuesAreUnaffected">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/EnumCaseSerializationTest.php#L93">at line 93</a></div>
+        <code>                    
+    <strong>testOrdinaryValuesAreUnaffected</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Non-enum values must be untouched by the new branch.</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built using <a href="https://github.com/JetBrains/phpstorm-stubs#readme" rel="noreferrer noopener" target="_blank">phpstorm-stubs</a> from JetBrains.</div></div>
+    </div>
+    </body>
+
+</html>
