@@ -94,6 +94,13 @@
     
         
 
+            <div class="description">
+            <p><p>What the serializers do with a PhpDoc: hoist it out of the entity array and into the repository
+under the entity's id, and put it back on the way in.</p></p>            <p><p>Most of these are pure array transforms and use the in-memory repository — no temp file, no lazy
+loading, no save() to forget. Only testDeserializationLoadsPhpDocFromStorage goes through a real
+file, because the thing it verifies <em>is</em> the round trip through one; it owns its own path.
+PhpDocStorageTest::testEveryPhpDocRepositoryAgreesOnBlankDocSemantics pins the two implementations
+to the same semantics so the cheap double can't drift from the real writer.</p></p>        </div>
             
         
     
@@ -107,17 +114,6 @@
                 </div>
                 <div class="col-md-8">
                     <a href="#method_setUp">setUp</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    void
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_tearDown">tearDown</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -174,8 +170,9 @@
                 <div class="col-md-8">
                     <a href="#method_testDeserializationLoadsPhpDocFromStorage">testDeserializationLoadsPhpDocFromStorage</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>The only test here that needs a real file: it asserts a doc survives serialize → save() → a
+fresh process's lazy load → deserialize, which is exactly what the cache does and what an
+in-memory double cannot show.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -197,7 +194,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_setUp">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Serialization/PhpDocSeparationTest.php#L19">at line 19</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Serialization/PhpDocSeparationTest.php#L29">at line 29</a></div>
         <code>            protected        void
     <strong>setUp</strong>()
         </code>
@@ -230,42 +227,8 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_tearDown">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Serialization/PhpDocSeparationTest.php#L26">at line 26</a></div>
-        <code>            protected        void
-    <strong>tearDown</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>void</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_testClassPhpDocIsSeparated">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Serialization/PhpDocSeparationTest.php#L33">at line 33</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Serialization/PhpDocSeparationTest.php#L35">at line 35</a></div>
         <code>                    void
     <strong>testClassPhpDocIsSeparated</strong>()
         </code>
@@ -299,7 +262,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_testFunctionPhpDocIsSeparated">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Serialization/PhpDocSeparationTest.php#L49">at line 49</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Serialization/PhpDocSeparationTest.php#L51">at line 51</a></div>
         <code>                    void
     <strong>testFunctionPhpDocIsSeparated</strong>()
         </code>
@@ -333,7 +296,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_testMethodPhpDocIsSeparated">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Serialization/PhpDocSeparationTest.php#L65">at line 65</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Serialization/PhpDocSeparationTest.php#L67">at line 67</a></div>
         <code>                    void
     <strong>testMethodPhpDocIsSeparated</strong>()
         </code>
@@ -367,7 +330,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_testPropertyPhpDocIsSeparated">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Serialization/PhpDocSeparationTest.php#L91">at line 91</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Serialization/PhpDocSeparationTest.php#L93">at line 93</a></div>
         <code>                    void
     <strong>testPropertyPhpDocIsSeparated</strong>()
         </code>
@@ -401,7 +364,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_testDeserializationLoadsPhpDocFromStorage">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Serialization/PhpDocSeparationTest.php#L112">at line 112</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Serialization/PhpDocSeparationTest.php#L119">at line 119</a></div>
         <code>                    void
     <strong>testDeserializationLoadsPhpDocFromStorage</strong>()
         </code>
@@ -412,8 +375,9 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>The only test here that needs a real file: it asserts a doc survives serialize → save() → a
+fresh process's lazy load → deserialize, which is exactly what the cache does and what an
+in-memory double cannot show.</p></p>                        
         </div>
         <div class="tags">
             
@@ -435,7 +399,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_testWithoutPhpDocStoragePhpDocIsInline">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Serialization/PhpDocSeparationTest.php#L134">at line 134</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Serialization/PhpDocSeparationTest.php#L148">at line 148</a></div>
         <code>                    void
     <strong>testWithoutPhpDocStoragePhpDocIsInline</strong>()
         </code>

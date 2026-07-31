@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>StubTests\Framework\CodeStyle\BracesOneLineFixer | PHP Jetbrains phpstorm-stubs</title>
+    <title>StubTests\Unit\Runner\PhpVersionManifestTest | PHP Jetbrains phpstorm-stubs</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:StubTests_Framework_CodeStyle_BracesOneLineFixer" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:StubTests_Unit_Runner_PhpVersionManifestTest" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,18 +75,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../StubTests.html">StubTests</a></li><li class="backslash">\</li><li><a href="../../../StubTests/Framework.html">Framework</a></li><li class="backslash">\</li><li><a href="../../../StubTests/Framework/CodeStyle.html">CodeStyle</a></li><li class="backslash">\</li><li>BracesOneLineFixer</li>
+                        <li><a href="../../../StubTests.html">StubTests</a></li><li class="backslash">\</li><li><a href="../../../StubTests/Unit.html">Unit</a></li><li class="backslash">\</li><li><a href="../../../StubTests/Unit/Runner.html">Runner</a></li><li class="backslash">\</li><li>PhpVersionManifestTest</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>BracesOneLineFixer    
+        <h1>PhpVersionManifestTest    
             </h1>
     </div>
 
     
     <p>final         class
-    <strong>BracesOneLineFixer</strong>        implements        <abbr title="PhpCsFixer\Fixer\FixerInterface">FixerInterface</abbr>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/CodeStyle/BracesOneLineFixer.php">View source</a>)
+    <strong>PhpVersionManifestTest</strong>        extends <abbr title="PHPUnit\Framework\TestCase">TestCase</abbr>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Runner/PhpVersionManifestTest.php">View source</a>)
 </p>
 
         
@@ -94,6 +94,11 @@
     
         
 
+            <div class="description">
+            <p><p>Pins the rule that tests/cache/php-versions.json only ever moves forward.</p></p>            <p><p>check-and-update-php-versions.php used to assign the fetched patch unconditionally and <em>then</em>
+compare, so a fetch that came back older overwrote the manifest with the older patch while
+printing the newer one labelled &quot;(up to date)&quot;. The next regeneration then built from a
+different PHP patch than the committed cache came from.</p></p>        </div>
             
         
     
@@ -103,21 +108,10 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_isCandidate">isCandidate</a>(<abbr title="PhpCsFixer\Tokenizer\Tokens">Tokens</abbr> $tokens)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    bool
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_isRisky">isRisky</a>()
+                    <a href="#method_testItRecordsTheFetchedPatchOnTheFirstRun">testItRecordsTheFetchedPatchOnTheFirstRun</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -128,7 +122,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_fix">fix</a>(<a href="../../../SplFileInfo.html">SplFileInfo</a> $file, <abbr title="PhpCsFixer\Tokenizer\Tokens">Tokens</abbr> $tokens)
+                    <a href="#method_testItAdvancesToANewerPatch">testItAdvancesToANewerPatch</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -136,10 +130,22 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getName">getName</a>()
+                    <a href="#method_testItKeepsTheRecordedPatchWhenTheFetchedOneIsOlder">testItKeepsTheRecordedPatchWhenTheFetchedOneIsOlder</a>()
+        
+                                            <p><p>The case the bug produced: Docker Hub rebuilds <code>8.4.22-*</code>, its last_updated jumps above
+<code>8.4.23-alpine</code>'s, and <code>8.4.23-alpine</code> falls out of the paged tag window — so the fetch
+legitimately returns a patch below the recorded one.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testItIsAStableNoOpWhenNothingChanged">testItIsAStableNoOpWhenNothingChanged</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -147,35 +153,13 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getPriority">getPriority</a>()
+                    <a href="#method_testItComparesNumericallyRatherThanLexicographically">testItComparesNumericallyRatherThanLexicographically</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    bool
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_supports">supports</a>(<a href="../../../SplFileInfo.html">SplFileInfo</a> $file)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="PhpCsFixer\FixerDefinition\FixerDefinitionInterface">FixerDefinitionInterface</abbr>
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_getDefinition">getDefinition</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Double-digit patches are where a string comparison diverges from a version comparison, and
+the tracked lines have long since passed patch 9.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -185,88 +169,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_isCandidate">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/CodeStyle/BracesOneLineFixer.php#L17">at line 17</a></div>
-        <code>                    bool
-    <strong>isCandidate</strong>(<abbr title="PhpCsFixer\Tokenizer\Tokens">Tokens</abbr> $tokens)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><abbr title="PhpCsFixer\Tokenizer\Tokens">Tokens</abbr></td>
-                <td>$tokens</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isRisky">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/CodeStyle/BracesOneLineFixer.php#L22">at line 22</a></div>
-        <code>                    bool
-    <strong>isRisky</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_fix">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/CodeStyle/BracesOneLineFixer.php#L27">at line 27</a></div>
+                    <h3 id="method_testItRecordsTheFetchedPatchOnTheFirstRun">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Runner/PhpVersionManifestTest.php#L18">at line 18</a></div>
         <code>                    void
-    <strong>fix</strong>(<a href="../../../SplFileInfo.html">SplFileInfo</a> $file, <abbr title="PhpCsFixer\Tokenizer\Tokens">Tokens</abbr> $tokens)
+    <strong>testItRecordsTheFetchedPatchOnTheFirstRun</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -279,21 +185,6 @@
                     
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../SplFileInfo.html">SplFileInfo</a></td>
-                <td>$file</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="PhpCsFixer\Tokenizer\Tokens">Tokens</abbr></td>
-                <td>$tokens</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
@@ -312,10 +203,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/CodeStyle/BracesOneLineFixer.php#L56">at line 56</a></div>
-        <code>                    string
-    <strong>getName</strong>()
+                    <h3 id="method_testItAdvancesToANewerPatch">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Runner/PhpVersionManifestTest.php#L27">at line 27</a></div>
+        <code>                    void
+    <strong>testItAdvancesToANewerPatch</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -333,7 +224,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
+            <td>void</td>
             <td></td>
         </tr>
     </table>
@@ -346,10 +237,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getPriority">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/CodeStyle/BracesOneLineFixer.php#L61">at line 61</a></div>
-        <code>                    int
-    <strong>getPriority</strong>()
+                    <h3 id="method_testItKeepsTheRecordedPatchWhenTheFetchedOneIsOlder">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Runner/PhpVersionManifestTest.php#L38">at line 38</a></div>
+        <code>                    void
+    <strong>testItKeepsTheRecordedPatchWhenTheFetchedOneIsOlder</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -358,8 +249,9 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>The case the bug produced: Docker Hub rebuilds <code>8.4.22-*</code>, its last_updated jumps above
+<code>8.4.23-alpine</code>'s, and <code>8.4.23-alpine</code> falls out of the paged tag window — so the fetch
+legitimately returns a patch below the recorded one.</p></p>                        
         </div>
         <div class="tags">
             
@@ -367,7 +259,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
+            <td>void</td>
             <td></td>
         </tr>
     </table>
@@ -380,10 +272,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_supports">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/CodeStyle/BracesOneLineFixer.php#L66">at line 66</a></div>
-        <code>                    bool
-    <strong>supports</strong>(<a href="../../../SplFileInfo.html">SplFileInfo</a> $file)
+                    <h3 id="method_testItIsAStableNoOpWhenNothingChanged">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Runner/PhpVersionManifestTest.php#L47">at line 47</a></div>
+        <code>                    void
+    <strong>testItIsAStableNoOpWhenNothingChanged</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -396,22 +288,12 @@
                     
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../SplFileInfo.html">SplFileInfo</a></td>
-                <td>$file</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
+            <td>void</td>
             <td></td>
         </tr>
     </table>
@@ -424,10 +306,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getDefinition">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/CodeStyle/BracesOneLineFixer.php#L71">at line 71</a></div>
-        <code>                    <abbr title="PhpCsFixer\FixerDefinition\FixerDefinitionInterface">FixerDefinitionInterface</abbr>
-    <strong>getDefinition</strong>()
+                    <h3 id="method_testItComparesNumericallyRatherThanLexicographically">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Runner/PhpVersionManifestTest.php#L60">at line 60</a></div>
+        <code>                    void
+    <strong>testItComparesNumericallyRatherThanLexicographically</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -436,8 +318,8 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Double-digit patches are where a string comparison diverges from a version comparison, and
+the tracked lines have long since passed patch 9.</p></p>                        
         </div>
         <div class="tags">
             
@@ -445,7 +327,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="PhpCsFixer\FixerDefinition\FixerDefinitionInterface">FixerDefinitionInterface</abbr></td>
+            <td>void</td>
             <td></td>
         </tr>
     </table>

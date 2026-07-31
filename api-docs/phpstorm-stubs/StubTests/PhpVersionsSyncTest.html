@@ -95,11 +95,30 @@
         
 
             <div class="description">
-            <p><p>Guards against drift between PhpVersions.php and the reflection cache directory.</p></p>            <p><p>When a new PHP version is added to PhpVersions.php, the corresponding
+            <p><p>Guards against drift between PhpVersions.php and everything keyed off it: the reflection
+cache files, the pinned-patch manifest, the per-version Docker images, and the
+EARLIEST/LATEST boundary constants.</p></p>            <p><p>When a new PHP version is added to PhpVersions.php, the corresponding
 Reflection{X.Y}.json cache file must also be generated. These tests catch
 that omission in CI before validators silently skip the new version.</p></p>        </div>
             
         
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                            private
+                                                                                EXTENSION_SENTINELS
+                                    </td>
+                <td class="last">
+                    <p><em><p>One representative symbol per extension the per-version Docker images build, and the PHP
+version that dropped the extension from core (<code>null</code> while it is still bundled).</p></em></p>
+                    <p><p>Every entry is a <em>sentinel</em>, not an inventory: if the symbol is in the cache the extension was
+loaded when that version's reflection cache was generated, and all of its symbols came with
+it. Extensions whose only symbols are PDO drivers (pdo_mysql, pdo_odbc, …) are absent from the
+list on purpose — they expose nothing reflectable of their own.</p></p>
+                </td>
+            </tr>
+            </table>
+
     
     
             <h2>Methods</h2>
@@ -132,6 +151,53 @@ that omission in CI before validators silently skip the new version.</p></p>    
                     void
                 </div>
                 <div class="col-md-8">
+                    <a href="#method_testEarliestAndLatestPointAtTheBoundaryCases">testEarliestAndLatestPointAtTheBoundaryCases</a>()
+        
+                                            <p><p>EARLIEST/LATEST are hand-maintained, and ~456 CheckDescriptors are ranged against LATEST.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testEachPhpVersionHasAPinnedPatchInTheManifest">testEachPhpVersionHasAPinnedPatchInTheManifest</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testEachPhpVersionHasADockerImage">testEachPhpVersionHasADockerImage</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testExtensionCoverageNeverRegressesBetweenVersions">testExtensionCoverageNeverRegressesBetweenVersions</a>()
+        
+                                            <p><p>The per-version Dockerfiles are maintained by hand, and an extension that fails to build on
+one Alpine edge snapshot tends to get commented out to get the image green again. Nothing
+noticed: the cache for that version is simply generated without the extension, every entity it
+declares becomes invisible to the validators, and the suite goes green <em>because</em> there is
+nothing left to compare. 696 entities were missing at LATEST when this guard was written —
+tidy, odbc, xsl, ftp, gettext, exif and mbstring, all still bundled with PHP.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
                     <a href="#method_testNoOrphanedReflectionCacheFiles">testNoOrphanedReflectionCacheFiles</a>()
         
                                             <p class="no-description">No description</p>
@@ -146,7 +212,7 @@ that omission in CI before validators silently skip the new version.</p></p>    
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_setUp">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/PhpVersionsSyncTest.php#L19">at line 19</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/PhpVersionsSyncTest.php#L69">at line 69</a></div>
         <code>            protected        void
     <strong>setUp</strong>()
         </code>
@@ -180,7 +246,7 @@ that omission in CI before validators silently skip the new version.</p></p>    
             </div>
                     <div class="method-item">
                     <h3 id="method_testEachPhpVersionHasReflectionCacheFile">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/PhpVersionsSyncTest.php#L24">at line 24</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/PhpVersionsSyncTest.php#L74">at line 74</a></div>
         <code>                    void
     <strong>testEachPhpVersionHasReflectionCacheFile</strong>()
         </code>
@@ -213,8 +279,151 @@ that omission in CI before validators silently skip the new version.</p></p>    
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_testEarliestAndLatestPointAtTheBoundaryCases">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/PhpVersionsSyncTest.php#L91">at line 91</a></div>
+        <code>                    void
+    <strong>testEarliestAndLatestPointAtTheBoundaryCases</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>EARLIEST/LATEST are hand-maintained, and ~456 CheckDescriptors are ranged against LATEST.</p></p>                <p><p>Adding a case without bumping LATEST silently yields zero test cases for the new version
+(PhpVersionRange::includes() returns false) while every other test still passes.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testEachPhpVersionHasAPinnedPatchInTheManifest">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/PhpVersionsSyncTest.php#L109">at line 109</a></div>
+        <code>                    void
+    <strong>testEachPhpVersionHasAPinnedPatchInTheManifest</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testEachPhpVersionHasADockerImage">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/PhpVersionsSyncTest.php#L135">at line 135</a></div>
+        <code>                    void
+    <strong>testEachPhpVersionHasADockerImage</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testExtensionCoverageNeverRegressesBetweenVersions">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/PhpVersionsSyncTest.php#L159">at line 159</a></div>
+        <code>                    void
+    <strong>testExtensionCoverageNeverRegressesBetweenVersions</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The per-version Dockerfiles are maintained by hand, and an extension that fails to build on
+one Alpine edge snapshot tends to get commented out to get the image green again. Nothing
+noticed: the cache for that version is simply generated without the extension, every entity it
+declares becomes invisible to the validators, and the suite goes green <em>because</em> there is
+nothing left to compare. 696 entities were missing at LATEST when this guard was written —
+tidy, odbc, xsl, ftp, gettext, exif and mbstring, all still bundled with PHP.</p></p>                <p><p>The rule is monotonic coverage: once an extension appears in some version's cache it must
+appear in every later one, unless EXTENSION_SENTINELS declares the release that dropped it
+from core. That way a genuine unbundling (imap, pspell, wddx) is a one-line declaration and a
+broken image build is a failure.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_testNoOrphanedReflectionCacheFiles">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/PhpVersionsSyncTest.php#L36">at line 36</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/PhpVersionsSyncTest.php#L224">at line 224</a></div>
         <code>                    void
     <strong>testNoOrphanedReflectionCacheFiles</strong>()
         </code>

@@ -99,6 +99,24 @@
 that compare type information between reflection data and stubs.</p></p>                    </div>
             
         
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        PRIMITIVES
+                                    </td>
+                <td class="last">
+                    <p><em><p>PHP primitive and pseudo types — anything <em>not</em> in this list is a class name.</p></em></p>
+                    <p><p>That &quot;is it a class name&quot; question is general type vocabulary, not a PhpDoc question. It lived
+on PhpDocConformanceService, which meant ReturnTypeComparator — which has nothing to do with
+PhpDoc — had to reach into the conformance service to answer it. Both now read it from here.</p>
+<p><code>self</code>, <code>parent</code> and <code>static</code> are listed because they are <em>relative</em> names: they denote a class
+but say nothing about which one, so a comparison that treats them as class names would be
+comparing a placeholder against a resolved FQN. Callers that care about late static binding
+handle them explicitly before consulting this list.</p></p>
+                </td>
+            </tr>
+            </table>
+
     
     
             <h2>Methods</h2>
@@ -142,7 +160,7 @@ that compare type information between reflection data and stubs.</p></p>        
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_resolveVersionAwareType">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/TypeResolver.php#L21">at line 21</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/TypeResolver.php#L39">at line 39</a></div>
         <code>        static            string|null
     <strong>resolveVersionAwareType</strong>(<a href="../../../../StubTests/Framework/Model/BasePHPElement.html"><abbr title="StubTests\Framework\Model\BasePHPElement">BasePHPElement</abbr></a> $entity, string $phpVersion)
         </code>
@@ -192,7 +210,7 @@ Returns null when neither languageLevelTypes nor defaultType is set.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_normalizeType">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/TypeResolver.php#L55">at line 55</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/TypeResolver.php#L73">at line 73</a></div>
         <code>        static            string|null
     <strong>normalizeType</strong>(string|null $type)
         </code>
@@ -240,7 +258,7 @@ Returns null when neither languageLevelTypes nor defaultType is set.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getParamTypeString">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/TypeResolver.php#L79">at line 79</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/TypeResolver.php#L97">at line 97</a></div>
         <code>        static            string|null
     <strong>getParamTypeString</strong>(<a href="../../../../StubTests/Framework/Model/PHPParameter.html"><abbr title="StubTests\Framework\Model\PHPParameter">PHPParameter</abbr></a> $param, string $phpVersion)
         </code>

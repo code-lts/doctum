@@ -337,6 +337,27 @@
                     
                 </div>
                 <div class="col-md-8">
+                    <a href="#method_testExclusionIsRelativeToTheStubsRootSoACheckoutUnderSuchADirectoryStillWorks">testExclusionIsRelativeToTheStubsRootSoACheckoutUnderSuchADirectoryStillWorks</a>()
+        
+                                            <p><p>Exclusion must be evaluated relative to the stubs root, never against the absolute path.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testItDiscoversStubsWhenTheCheckoutSitsUnderAnExcludedDirectoryName">testItDiscoversStubsWhenTheCheckoutSitsUnderAnExcludedDirectoryName</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
                     <a href="#method_testItRecursivelyDiscoversNestedStubsAndPrunesExcludedDirectories">testItRecursivelyDiscoversNestedStubsAndPrunesExcludedDirectories</a>()
         
                                             <p class="no-description">No description</p>
@@ -910,8 +931,65 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_testExclusionIsRelativeToTheStubsRootSoACheckoutUnderSuchADirectoryStillWorks">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/AllStubsDataProviderTest.php#L255">at line 255</a></div>
+        <code>                    
+    <strong>testExclusionIsRelativeToTheStubsRootSoACheckoutUnderSuchADirectoryStillWorks</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Exclusion must be evaluated relative to the stubs root, never against the absolute path.</p></p>                <p><p>The framework only ever runs from a clone of this repository (StubTests\ is registered
+under autoload-dev, and phpunit.xml.dist is export-ignored, so it cannot run from a
+Composer install). The reachable trigger is therefore the <em>clone location</em>: if any
+ancestor directory is named vendor/tests/.git/.idea, absolute-path matching excluded every
+discovered file. getAllStubFiles() returned an empty array, run-stubs-parser.php wrote five
+empty Stubs*.json caches and printed SUCCESS, and every validator then compared reflection
+against an empty stub set — a fully green run that validated nothing.</p>
+<p><code>~/work/tests/phpstorm-stubs</code> is an ordinary checkout path, and <code>.git/worktrees/&lt;name&gt;</code> is
+where <code>git worktree add</code> puts a linked worktree by convention.</p></p>        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testItDiscoversStubsWhenTheCheckoutSitsUnderAnExcludedDirectoryName">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/AllStubsDataProviderTest.php#L275">at line 275</a></div>
+        <code>                    
+    <strong>testItDiscoversStubsWhenTheCheckoutSitsUnderAnExcludedDirectoryName</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_testItRecursivelyDiscoversNestedStubsAndPrunesExcludedDirectories">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/AllStubsDataProviderTest.php#L236">at line 236</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/AllStubsDataProviderTest.php#L298">at line 298</a></div>
         <code>                    
     <strong>testItRecursivelyDiscoversNestedStubsAndPrunesExcludedDirectories</strong>()
         </code>
@@ -936,7 +1014,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_testGetStubFileContentDoesNotPrependRootToWindowsAbsolutePaths">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/AllStubsDataProviderTest.php#L281">at line 281</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/AllStubsDataProviderTest.php#L343">at line 343</a></div>
         <code>                    
     <strong>testGetStubFileContentDoesNotPrependRootToWindowsAbsolutePaths</strong>()
         </code>

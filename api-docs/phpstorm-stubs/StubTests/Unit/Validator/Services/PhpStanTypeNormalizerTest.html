@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>StubTests\Unit\Validator\Services\PhpStanTypeNormalizerTest | PHP Jetbrains phpstorm-stubs</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:StubTests_Unit_Validator_Services_PhpStanTypeNormalizerTest" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">PHP Jetbrains phpstorm-stubs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../StubTests.html">StubTests</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Unit.html">Unit</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Unit/Validator.html">Validator</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Unit/Validator/Services.html">Services</a></li><li class="backslash">\</li><li>PhpStanTypeNormalizerTest</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>PhpStanTypeNormalizerTest    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>PhpStanTypeNormalizerTest</strong>        extends <abbr title="PHPUnit\Framework\TestCase">TestCase</abbr>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Services/PhpStanTypeNormalizerTest.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            <div class="description">
+            <p><p>The lexical half of the PhpDoc conformance check: turning a phpstan/psalm annotation into the plain
+PHP type it refines.</p></p>            <p><p>The leaf table here grows every time a stub picks up a new psalm annotation, so the tests that
+matter most are the ones that constrain <em>future</em> entries rather than re-state today's:
+testEveryLeafMapsToATypeThatSurvivesNormalisation walks the table itself, so a new row with a
+typo'd or still-phpstan-flavoured target fails without anyone remembering to add a case.</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testEveryLeafMapsToATypeThatSurvivesNormalisation">testEveryLeafMapsToATypeThatSurvivesNormalisation</a>(string $leaf)
+        
+                                            <p><p>Every mapped leaf must resolve to something that is <em>already</em> plain PHP — feeding the target
+back through strip() has to be a no-op. A row like <code>'even-int' =&gt; 'positive-int'</code>, whose target
+is itself still a phpstan leaf, is caught here rather than as a puzzling conformance failure in
+one stub.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testEveryLeafTargetIsAPlainPhpType">testEveryLeafTargetIsAPlainPhpType</a>(string $leaf, string $target)
+        
+                                            <p><p>A leaf's target must name a type PHP actually has: a primitive, or a class that exists.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_leafMappings">leafMappings</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testEveryLeafIsMappedInsideWrappers">testEveryLeafIsMappedInsideWrappers</a>(string $leaf)
+        
+                                            <p><p>A mapped leaf must still be mapped when it appears inside a generic or an array suffix.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_leafTokens">leafTokens</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testStripsPhpStanSyntaxDownToPlainPhp">testStripsPhpStanSyntaxDownToPlainPhp</a>(string $input, string $expected)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_strippedForms">strippedForms</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testNormalizeAppliesSharedTypeNormalisationOnTop">testNormalizeAppliesSharedTypeNormalisationOnTop</a>(string $input, string $expected)
+        
+                                            <p><p>normalize() is strip() plus the shared type normalisation, so union ordering and the FQN
+backslash are applied on top. Kept separate from strip() so a change to either is attributable.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_normalizedForms">normalizedForms</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_testEveryLeafMapsToATypeThatSurvivesNormalisation">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Services/PhpStanTypeNormalizerTest.php#L31">at line 31</a></div>
+        <code>                    void
+    <strong>testEveryLeafMapsToATypeThatSurvivesNormalisation</strong>(string $leaf)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Every mapped leaf must resolve to something that is <em>already</em> plain PHP — feeding the target
+back through strip() has to be a no-op. A row like <code>'even-int' =&gt; 'positive-int'</code>, whose target
+is itself still a phpstan leaf, is caught here rather than as a puzzling conformance failure in
+one stub.</p></p>                <p><p>Note what this cannot catch on its own: a <em>typo'd</em> target such as <code>'list' =&gt; 'aray'</code> is stable
+under strip() (nothing maps it, so it survives untouched) and so passes both assertions below.
+That case is testEveryLeafTargetIsAPlainPhpType's job.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$leaf</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testEveryLeafTargetIsAPlainPhpType">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Services/PhpStanTypeNormalizerTest.php#L50">at line 50</a></div>
+        <code>                    void
+    <strong>testEveryLeafTargetIsAPlainPhpType</strong>(string $leaf, string $target)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>A leaf's target must name a type PHP actually has: a primitive, or a class that exists.</p></p>                <p><p>This is the assertion that catches a misspelled target. <code>'list' =&gt; 'aray'</code> looks harmless —
+every other test still passes, because an unrecognised token is left alone by every rule in
+strip(). It would then reach the compatibility relation as a <em>class name</em>, so <code>array</code> in the
+signature versus <code>list&lt;Foo&gt;</code> in the doc would be reported as a mismatch on every stub using it.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$leaf</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$target</td>
+                <td><p>the union the leaf maps to, e.g. 'int|string'</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_leafMappings">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Services/PhpStanTypeNormalizerTest.php#L65">at line 65</a></div>
+        <code>        static            array
+    <strong>leafMappings</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testEveryLeafIsMappedInsideWrappers">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Services/PhpStanTypeNormalizerTest.php#L76">at line 76</a></div>
+        <code>                    void
+    <strong>testEveryLeafIsMappedInsideWrappers</strong>(string $leaf)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>A mapped leaf must still be mapped when it appears inside a generic or an array suffix.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$leaf</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_leafTokens">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Services/PhpStanTypeNormalizerTest.php#L102">at line 102</a></div>
+        <code>        static            array
+    <strong>leafTokens</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testStripsPhpStanSyntaxDownToPlainPhp">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Services/PhpStanTypeNormalizerTest.php#L117">at line 117</a></div>
+        <code>                    void
+    <strong>testStripsPhpStanSyntaxDownToPlainPhp</strong>(string $input, string $expected)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$input</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$expected</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_strippedForms">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Services/PhpStanTypeNormalizerTest.php#L123">at line 123</a></div>
+        <code>        static            array
+    <strong>strippedForms</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testNormalizeAppliesSharedTypeNormalisationOnTop">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Services/PhpStanTypeNormalizerTest.php#L177">at line 177</a></div>
+        <code>                    void
+    <strong>testNormalizeAppliesSharedTypeNormalisationOnTop</strong>(string $input, string $expected)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>normalize() is strip() plus the shared type normalisation, so union ordering and the FQN
+backslash are applied on top. Kept separate from strip() so a change to either is attributable.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$input</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$expected</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_normalizedForms">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Services/PhpStanTypeNormalizerTest.php#L183">at line 183</a></div>
+        <code>        static            array
+    <strong>normalizedForms</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built using <a href="https://github.com/JetBrains/phpstorm-stubs#readme" rel="noreferrer noopener" target="_blank">phpstorm-stubs</a> from JetBrains.</div></div>
+    </div>
+    </body>
+
+</html>

@@ -86,7 +86,7 @@
 
     
     <p>        class
-    <strong>PhpDocStorage</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/PhpDocStorage.php">View source</a>)
+    <strong>PhpDocStorage</strong>        implements        <a href="../../../StubTests/Framework/Serialization/PhpDocRepository.html"><abbr title="StubTests\Framework\Serialization\PhpDocRepository">PhpDocRepository</abbr></a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/PhpDocStorage.php">View source</a>)
 </p>
 
         
@@ -105,7 +105,10 @@ for ids that no longer exist.</p>
 <p>Both writers honour this today — run-stubs-parser.php and the cache-incomplete branch of
 Runner::getStubs() pass false — and the only $loadExisting = true construction (the
 cache-complete branch of Runner::getStubs()) is a pure reader that never saves. That is
-why the file currently has zero orphaned ids. Preserve the split when adding a writer.</p></p>        </div>
+why the file currently has zero orphaned ids. Preserve the split when adding a writer.</p>
+<p>Serializers see only the two-method {\StubTests\Framework\Serialization\PhpDocRepository} slice of this class, so they cannot
+reach save()/load()/clear() and cannot break the invariant above. Keep depending on the concrete
+class wherever the file lifecycle actually matters.</p></p>        </div>
             
         
     
@@ -202,7 +205,7 @@ why the file currently has zero orphaned ids. Preserve the split when adding a w
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/PhpDocStorage.php#L29">at line 29</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/PhpDocStorage.php#L35">at line 35</a></div>
         <code>                    
     <strong>__construct</strong>(string $pathToJsonFile, bool $loadExisting = true)
         </code>
@@ -242,7 +245,7 @@ why the file currently has zero orphaned ids. Preserve the split when adding a w
             </div>
                     <div class="method-item">
                     <h3 id="method_getPhpDoc">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/PhpDocStorage.php#L42">at line 42</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/PhpDocStorage.php#L48">at line 48</a></div>
         <code>                    string|null
     <strong>getPhpDoc</strong>(string $entityId)
         </code>
@@ -272,7 +275,7 @@ why the file currently has zero orphaned ids. Preserve the split when adding a w
                     <table class="table table-condensed">
         <tr>
             <td>string|null</td>
-            <td></td>
+            <td><p>The stored doc comment, or null when the id has none</p></td>
         </tr>
     </table>
 
@@ -285,7 +288,7 @@ why the file currently has zero orphaned ids. Preserve the split when adding a w
             </div>
                     <div class="method-item">
                     <h3 id="method_setPhpDoc">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/PhpDocStorage.php#L53">at line 53</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/PhpDocStorage.php#L59">at line 59</a></div>
         <code>                    void
     <strong>setPhpDoc</strong>(string $entityId, string|null $phpDoc)
         </code>
@@ -333,7 +336,7 @@ why the file currently has zero orphaned ids. Preserve the split when adding a w
             </div>
                     <div class="method-item">
                     <h3 id="method_hasPhpDoc">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/PhpDocStorage.php#L66">at line 66</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/PhpDocStorage.php#L72">at line 72</a></div>
         <code>                    bool
     <strong>hasPhpDoc</strong>(string $entityId)
         </code>
@@ -376,7 +379,7 @@ why the file currently has zero orphaned ids. Preserve the split when adding a w
             </div>
                     <div class="method-item">
                     <h3 id="method_getAllPhpDocs">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/PhpDocStorage.php#L77">at line 77</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/PhpDocStorage.php#L83">at line 83</a></div>
         <code>                    array
     <strong>getAllPhpDocs</strong>()
         </code>
@@ -409,7 +412,7 @@ why the file currently has zero orphaned ids. Preserve the split when adding a w
             </div>
                     <div class="method-item">
                     <h3 id="method_save">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/PhpDocStorage.php#L88">at line 88</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/PhpDocStorage.php#L94">at line 94</a></div>
         <code>                    void
     <strong>save</strong>()
         </code>
@@ -442,7 +445,7 @@ why the file currently has zero orphaned ids. Preserve the split when adding a w
             </div>
                     <div class="method-item">
                     <h3 id="method_load">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/PhpDocStorage.php#L121">at line 121</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/PhpDocStorage.php#L127">at line 127</a></div>
         <code>                    void
     <strong>load</strong>()
         </code>
@@ -475,7 +478,7 @@ why the file currently has zero orphaned ids. Preserve the split when adding a w
             </div>
                     <div class="method-item">
                     <h3 id="method_clear">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/PhpDocStorage.php#L155">at line 155</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/PhpDocStorage.php#L161">at line 161</a></div>
         <code>                    void
     <strong>clear</strong>()
         </code>

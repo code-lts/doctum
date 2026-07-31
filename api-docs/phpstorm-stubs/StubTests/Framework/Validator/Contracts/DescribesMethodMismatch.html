@@ -116,7 +116,7 @@ they previously had a protected describeMismatch(). AbstractMemberFlagCheck is t
                     string|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_describeMethodMismatch">describeMethodMismatch</a>(string $methodEntityId, mixed $reflMethod, <a href="../../../../StubTests/Framework/Model/PHPMethod.html"><abbr title="StubTests\Framework\Model\PHPMethod">PHPMethod</abbr></a> $stubMethod, string $phpVersion)
+                    <a href="#method_describeMethodMismatch">describeMethodMismatch</a>(string $methodEntityId, <a href="../../../../StubTests/Framework/Model/PHPMethod.html"><abbr title="StubTests\Framework\Model\PHPMethod">PHPMethod</abbr></a> $reflMethod, <a href="../../../../StubTests/Framework/Model/PHPMethod.html"><abbr title="StubTests\Framework\Model\PHPMethod">PHPMethod</abbr></a> $stubMethod, string $phpVersion)
         
                                             <p><p>Compare an attribute on the reflection and stub method.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -129,9 +129,9 @@ they previously had a protected describeMismatch(). AbstractMemberFlagCheck is t
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_describeMethodMismatch">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Contracts/DescribesMethodMismatch.php#L32">at line 32</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Contracts/DescribesMethodMismatch.php#L38">at line 38</a></div>
         <code>                    string|null
-    <strong>describeMethodMismatch</strong>(string $methodEntityId, mixed $reflMethod, <a href="../../../../StubTests/Framework/Model/PHPMethod.html"><abbr title="StubTests\Framework\Model\PHPMethod">PHPMethod</abbr></a> $stubMethod, string $phpVersion)
+    <strong>describeMethodMismatch</strong>(string $methodEntityId, <a href="../../../../StubTests/Framework/Model/PHPMethod.html"><abbr title="StubTests\Framework\Model\PHPMethod">PHPMethod</abbr></a> $reflMethod, <a href="../../../../StubTests/Framework/Model/PHPMethod.html"><abbr title="StubTests\Framework\Model\PHPMethod">PHPMethod</abbr></a> $stubMethod, string $phpVersion)
         </code>
     </h3>
     <div class="details">    
@@ -140,7 +140,14 @@ they previously had a protected describeMismatch(). AbstractMemberFlagCheck is t
             
 
         <div class="method-description">
-                            <p><p>Compare an attribute on the reflection and stub method.</p></p>                <p><p>Return a descriptive failure message if there is a mismatch, or null if they match.</p></p>        
+                            <p><p>Compare an attribute on the reflection and stub method.</p></p>                <p><p>Return a descriptive failure message if there is a mismatch, or null if they match.</p>
+<p>Both sides are PHPMethod: the reflection half is read back out of the reflection cache into
+the same model as the stub half, and MemberKind::METHOD only ever yields
+PHPClassLikeObject::getMethods(). Declaring it rather than <code>mixed</code> is the whole point of
+this interface — it lets the 12 leaves state a concrete signature instead of narrowing an
+inherited one — and it matches DescribesPropertyMismatch, which types both sides
+PHPProperty. AbstractMemberFlagCheck dispatches through a <code>mixed</code> argument, so a wrong type
+now surfaces as a TypeError here instead of a silently skipped comparison.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -152,9 +159,9 @@ they previously had a protected describeMismatch(). AbstractMemberFlagCheck is t
                 <td></td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td><a href="../../../../StubTests/Framework/Model/PHPMethod.html"><abbr title="StubTests\Framework\Model\PHPMethod">PHPMethod</abbr></a></td>
                 <td>$reflMethod</td>
-                <td><p>reflection method object</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a href="../../../../StubTests/Framework/Model/PHPMethod.html"><abbr title="StubTests\Framework\Model\PHPMethod">PHPMethod</abbr></a></td>

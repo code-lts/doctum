@@ -97,6 +97,20 @@
             
         
     
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_scanCount">
+                                                                                int
+                                                                                
+                                    </td>
+                <td>$scanCount</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
     
             <h2>Methods</h2>
 
@@ -140,6 +154,17 @@
                 </div>
                 <div class="col-md-8">
                     <a href="#method_testItReturnsOnlyPeclStubs">testItReturnsOnlyPeclStubs</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testItReturnsOnlyOthersStubs">testItReturnsOnlyOthersStubs</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -216,98 +241,13 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_testItCachesStubFilesForPerformance">testItCachesStubFilesForPerformance</a>()
+                    <a href="#method_testItScansTheInnerProviderOnlyOnceAndReusesTheResult">testItScansTheInnerProviderOnlyOnceAndReusesTheResult</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_testItReturnsConfiguredCategories">testItReturnsConfiguredCategories</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_testCoreAndBundledHaveMoreFilesThanCoreAlone">testCoreAndBundledHaveMoreFilesThanCoreAlone</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_testItIncludesExpectedCoreDirectories">testItIncludesExpectedCoreDirectories</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_testItIncludesExpectedBundledDirectories">testItIncludesExpectedBundledDirectories</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_testItIncludesExpectedExternalDirectories">testItIncludesExpectedExternalDirectories</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_separatorStyleProvider">separatorStyleProvider</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_testItDerivesTopLevelDirectoryRegardlessOfSeparatorStyle">testItDerivesTopLevelDirectoryRegardlessOfSeparatorStyle</a>(string $root, array $files)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(string $root, array $files)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>The caching contract is &quot;the inner provider is scanned once&quot;, and only a call count can state
+it. The previous version asserted <code>assertSame($files1, $files2)</code> under the comment &quot;should
+return the same array instance (cached)&quot; — but PHP arrays are values, and assertSame on two
+arrays compares contents, not identity. Re-scanning the whole tree on every call produces
+equal arrays, so that assertion passed whether or not the cache existed.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -450,8 +390,33 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_testItReturnsOnlyOthersStubs">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L96">at line 96</a></div>
+        <code>                    
+    <strong>testItReturnsOnlyOthersStubs</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_testItReturnsMultipleCategories">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L100">at line 100</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L115">at line 115</a></div>
         <code>                    
     <strong>testItReturnsMultipleCategories</strong>()
         </code>
@@ -476,7 +441,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_testItExcludesVendorAndTestDirectories">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L123">at line 123</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L138">at line 138</a></div>
         <code>                    
     <strong>testItExcludesVendorAndTestDirectories</strong>()
         </code>
@@ -501,7 +466,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_testItExcludesPhpStormStubsMap">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L137">at line 137</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L152">at line 152</a></div>
         <code>                    
     <strong>testItExcludesPhpStormStubsMap</strong>()
         </code>
@@ -526,7 +491,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_testItExcludesPhpStormMetaFiles">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L148">at line 148</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L163">at line 163</a></div>
         <code>                    
     <strong>testItExcludesPhpStormMetaFiles</strong>()
         </code>
@@ -551,7 +516,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_testItCanReadStubFileContent">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L159">at line 159</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L174">at line 174</a></div>
         <code>                    
     <strong>testItCanReadStubFileContent</strong>()
         </code>
@@ -576,7 +541,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_testItThrowsExceptionForNonexistentFile">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L175">at line 175</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L190">at line 190</a></div>
         <code>                    
     <strong>testItThrowsExceptionForNonexistentFile</strong>()
         </code>
@@ -600,10 +565,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_testItCachesStubFilesForPerformance">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L185">at line 185</a></div>
+                    <h3 id="method_testItScansTheInnerProviderOnlyOnceAndReusesTheResult">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L207">at line 207</a></div>
         <code>                    
-    <strong>testItCachesStubFilesForPerformance</strong>()
+    <strong>testItScansTheInnerProviderOnlyOnceAndReusesTheResult</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -612,249 +577,13 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>The caching contract is &quot;the inner provider is scanned once&quot;, and only a call count can state
+it. The previous version asserted <code>assertSame($files1, $files2)</code> under the comment &quot;should
+return the same array instance (cached)&quot; — but PHP arrays are values, and assertSame on two
+arrays compares contents, not identity. Re-scanning the whole tree on every call produces
+equal arrays, so that assertion passed whether or not the cache existed.</p></p>                        
         </div>
         <div class="tags">
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_testItReturnsConfiguredCategories">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L196">at line 196</a></div>
-        <code>                    
-    <strong>testItReturnsConfiguredCategories</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_testCoreAndBundledHaveMoreFilesThanCoreAlone">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L208">at line 208</a></div>
-        <code>                    
-    <strong>testCoreAndBundledHaveMoreFilesThanCoreAlone</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_testItIncludesExpectedCoreDirectories">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L223">at line 223</a></div>
-        <code>                    
-    <strong>testItIncludesExpectedCoreDirectories</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_testItIncludesExpectedBundledDirectories">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L246">at line 246</a></div>
-        <code>                    
-    <strong>testItIncludesExpectedBundledDirectories</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_testItIncludesExpectedExternalDirectories">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L269">at line 269</a></div>
-        <code>                    
-    <strong>testItIncludesExpectedExternalDirectories</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_separatorStyleProvider">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L295">at line 295</a></div>
-        <code>        static            array
-    <strong>separatorStyleProvider</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td><p>[root, files] for a fake inner provider.</p></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_testItDerivesTopLevelDirectoryRegardlessOfSeparatorStyle">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L315">at line 315</a></div>
-        <code>                    
-    <strong>testItDerivesTopLevelDirectoryRegardlessOfSeparatorStyle</strong>(string $root, array $files)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$root</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$files</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L334">at line 334</a></div>
-        <code>                    
-    <strong>__construct</strong>(string $root, array $files)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$root</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$files</td>
-                <td></td>
-            </tr>
-            </table>
-
             
             
             
@@ -865,7 +594,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getAllStubFiles">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L336">at line 336</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L212">at line 212</a></div>
         <code>                    array
     <strong>getAllStubFiles</strong>()
         </code>
@@ -899,7 +628,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getStubFileContent">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L341">at line 341</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L222">at line 222</a></div>
         <code>                    string
     <strong>getStubFileContent</strong>(string $path)
         </code>
@@ -943,7 +672,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getStubsRootPath">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L346">at line 346</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/DataProviders/CoreStubsDataProviderTest.php#L227">at line 227</a></div>
         <code>                    string
     <strong>getStubsRootPath</strong>()
         </code>

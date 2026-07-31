@@ -231,6 +231,43 @@ half of the split that has genuine client types.</p></p>                </div>
                                     </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testSerializationDoesNotDependOnStorage">testSerializationDoesNotDependOnStorage</a>()
+        
+                                            <p><p>Serialization/ must not name Storage\PhpDocStorage. Fourteen files there used to, while
+Storage\JsonParsedDataStorage names Serialization\EntitySerializerInterface — a cycle. Only
+SerializerHelperTrait ever called anything on it (getPhpDoc/setPhpDoc); the rest mentioned the
+class purely in type declarations, so the cycle bought nothing and cost a serializer unit test
+a real PhpDocStorage — file path, lazy loading, and a save() it must never call — to exercise a
+pure array transform.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testTheQueryContractLivesWithItsImplementor">testTheQueryContractLivesWithItsImplementor</a>()
+        
+                                            <p><p>The query contract must stay in Storage/, next to the only class that satisfies it. It sat in
+Parsers/ while nothing under Parsers/ referenced it — the framework's only Storage -&gt; Parsers
+edge existed purely so Storage/ could import its own contract back.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testThePhpDocSliceExposesNothingButOneReaderAndOneWriter">testThePhpDocSliceExposesNothingButOneReaderAndOneWriter</a>()
+        
+                                            <p><p>The slice handed to serializers must stay a slice: no file lifecycle, no bulk access.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -239,7 +276,7 @@ half of the split that has genuine client types.</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_testRunnerHandsOutOnlyTheReadInterface">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L34">at line 34</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L36">at line 36</a></div>
         <code>                    
     <strong>testRunnerHandsOutOnlyTheReadInterface</strong>(string $method)
         </code>
@@ -274,7 +311,7 @@ half of the split that has genuine client types.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_runnerAccessors">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L42">at line 42</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L44">at line 44</a></div>
         <code>        static            array
     <strong>runnerAccessors</strong>()
         </code>
@@ -308,7 +345,7 @@ half of the split that has genuine client types.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_testTheReadInterfaceExposesNoMutatingMethod">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L47">at line 47</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L49">at line 49</a></div>
         <code>                    
     <strong>testTheReadInterfaceExposesNoMutatingMethod</strong>(string $method)
         </code>
@@ -343,7 +380,7 @@ half of the split that has genuine client types.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_mutatingMethods">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L56">at line 56</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L58">at line 58</a></div>
         <code>        static            array
     <strong>mutatingMethods</strong>()
         </code>
@@ -377,7 +414,7 @@ half of the split that has genuine client types.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_testTheReadInterfaceIsTheEightQueryMethods">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L61">at line 61</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L63">at line 63</a></div>
         <code>                    
     <strong>testTheReadInterfaceIsTheEightQueryMethods</strong>()
         </code>
@@ -402,7 +439,7 @@ half of the split that has genuine client types.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_testParsersDeclareOnlyTheWriter">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L82">at line 82</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L84">at line 84</a></div>
         <code>                    
     <strong>testParsersDeclareOnlyTheWriter</strong>(string $parserClass, int $parameterIndex)
         </code>
@@ -442,7 +479,7 @@ half of the split that has genuine client types.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_producers">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L91">at line 91</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L93">at line 93</a></div>
         <code>        static            array
     <strong>producers</strong>()
         </code>
@@ -476,7 +513,7 @@ half of the split that has genuine client types.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_testWriterDoesNotGrantPersistence">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L100">at line 100</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L102">at line 102</a></div>
         <code>                    
     <strong>testWriterDoesNotGrantPersistence</strong>()
         </code>
@@ -500,7 +537,7 @@ half of the split that has genuine client types.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_testCompositeStillComposesEveryConcern">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L109">at line 109</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L111">at line 111</a></div>
         <code>                    
     <strong>testCompositeStillComposesEveryConcern</strong>()
         </code>
@@ -524,7 +561,7 @@ half of the split that has genuine client types.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_testTheSoleImplementorStillSatisfiesTheComposite">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L118">at line 118</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L120">at line 120</a></div>
         <code>                    
     <strong>testTheSoleImplementorStillSatisfiesTheComposite</strong>()
         </code>
@@ -537,6 +574,87 @@ half of the split that has genuine client types.</p></p>
         <div class="method-description">
                             <p class="no-description">No description</p>
                     
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testSerializationDoesNotDependOnStorage">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L140">at line 140</a></div>
+        <code>                    
+    <strong>testSerializationDoesNotDependOnStorage</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Serialization/ must not name Storage\PhpDocStorage. Fourteen files there used to, while
+Storage\JsonParsedDataStorage names Serialization\EntitySerializerInterface — a cycle. Only
+SerializerHelperTrait ever called anything on it (getPhpDoc/setPhpDoc); the rest mentioned the
+class purely in type declarations, so the cycle bought nothing and cost a serializer unit test
+a real PhpDocStorage — file path, lazy loading, and a save() it must never call — to exercise a
+pure array transform.</p></p>                <p><p>Asserted on source text rather than on reflection because the coupling this guards against is
+a <em>type declaration</em>, and a <code>?PhpDocStorage $x = null</code> parameter that nobody passes is
+invisible to any runtime check.</p></p>        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testTheQueryContractLivesWithItsImplementor">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L168">at line 168</a></div>
+        <code>                    
+    <strong>testTheQueryContractLivesWithItsImplementor</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The query contract must stay in Storage/, next to the only class that satisfies it. It sat in
+Parsers/ while nothing under Parsers/ referenced it — the framework's only Storage -&gt; Parsers
+edge existed purely so Storage/ could import its own contract back.</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testThePhpDocSliceExposesNothingButOneReaderAndOneWriter">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Storage/StorageInterfaceSegregationTest.php#L193">at line 193</a></div>
+        <code>                    
+    <strong>testThePhpDocSliceExposesNothingButOneReaderAndOneWriter</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The slice handed to serializers must stay a slice: no file lifecycle, no bulk access.</p></p>                        
         </div>
         <div class="tags">
             

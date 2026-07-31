@@ -129,7 +129,7 @@
                     <a href="../../../../StubTests/Framework/Model/PHPParameter.html"><abbr title="StubTests\Framework\Model\PHPParameter">PHPParameter</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_parseNode">parseNode</a>(<a href="../../../../StubTests/Framework/Parsers/Stubs/Nodes/ParameterNode.html"><abbr title="StubTests\Framework\Parsers\Stubs\Nodes\ParameterNode">ParameterNode</abbr></a> $node, array $paramTypesFromPhpDoc = [], array $imports = [], string $namespace = &#039;\\&#039;, array $optionalParamsFromPhpDoc = [])
+                    <a href="#method_parseNode">parseNode</a>(<a href="../../../../StubTests/Framework/Parsers/Stubs/Nodes/ParameterNode.html"><abbr title="StubTests\Framework\Parsers\Stubs\Nodes\ParameterNode">ParameterNode</abbr></a> $node, array $paramTypesFromPhpDoc = [], array $imports = [], string $namespace = &#039;\\&#039;, array $optionalParamsFromPhpDoc = [], int $position = 0)
         
                                             <p><p>Parses a parameter AST node into PHPParameter domain object.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -182,9 +182,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_parseNode">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/Stubs/StubParameterParser.php#L41">at line 41</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/Stubs/StubParameterParser.php#L46">at line 46</a></div>
         <code>                    <a href="../../../../StubTests/Framework/Model/PHPParameter.html"><abbr title="StubTests\Framework\Model\PHPParameter">PHPParameter</abbr></a>
-    <strong>parseNode</strong>(<a href="../../../../StubTests/Framework/Parsers/Stubs/Nodes/ParameterNode.html"><abbr title="StubTests\Framework\Parsers\Stubs\Nodes\ParameterNode">ParameterNode</abbr></a> $node, array $paramTypesFromPhpDoc = [], array $imports = [], string $namespace = &#039;\\&#039;, array $optionalParamsFromPhpDoc = [])
+    <strong>parseNode</strong>(<a href="../../../../StubTests/Framework/Parsers/Stubs/Nodes/ParameterNode.html"><abbr title="StubTests\Framework\Parsers\Stubs\Nodes\ParameterNode">ParameterNode</abbr></a> $node, array $paramTypesFromPhpDoc = [], array $imports = [], string $namespace = &#039;\\&#039;, array $optionalParamsFromPhpDoc = [], int $position = 0)
         </code>
     </h3>
     <div class="details">    
@@ -223,6 +223,15 @@
                 <td>array</td>
                 <td>$optionalParamsFromPhpDoc</td>
                 <td><p>Names of params marked [optional] in @param descriptions</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$position</td>
+                <td><p>Zero-based index of the parameter in the signature. Supplied by the
+caller because a bare AST parameter node does not know its own index — only the
+enclosing function/method does. The reflection side populates the same field from
+ReflectionParameter::getPosition(), so the two must agree for any positional comparison
+to mean anything.</p></td>
             </tr>
             </table>
 

@@ -155,10 +155,32 @@ equivalence that keeps the reflection caches byte-identical.</p></p>        </di
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_testItPreventsInfiniteRecursion">testItPreventsInfiniteRecursion</a>()
+                    <a href="#method_testItTruncatesAtMaxDepthInsteadOfRecursingForever">testItTruncatesAtMaxDepthInsteadOfRecursingForever</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Asserts <em>where</em> the recursion stops, not merely that it stopped.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testItAppliesMaxDepthThreeByDefault">testItAppliesMaxDepthThreeByDefault</a>()
+        
+                                            <p><p>The default $maxDepth is part of the contract: every caller in the reflection pipeline relies
+on it rather than passing a depth. Pinned behaviourally so that changing the default fails
+here rather than silently altering every cached reflection payload.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testItReturnsNullWhenAlreadyAtMaxDepth">testItReturnsNullWhenAlreadyAtMaxDepth</a>()
+        
+                                            <p><p>The boundary is <code>&gt;=</code>, so a depth already at the limit yields null without inspecting the
+value at all — including for a plain scalar that would otherwise pass straight through.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -301,10 +323,10 @@ equivalence that keeps the reflection caches byte-identical.</p></p>        </di
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_testItPreventsInfiniteRecursion">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/Wrappers/ReflectionValueNormalizerTest.php#L57">at line 57</a></div>
+                    <h3 id="method_testItTruncatesAtMaxDepthInsteadOfRecursingForever">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/Wrappers/ReflectionValueNormalizerTest.php#L80">at line 80</a></div>
         <code>                    
-    <strong>testItPreventsInfiniteRecursion</strong>()
+    <strong>testItTruncatesAtMaxDepthInsteadOfRecursingForever</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -313,8 +335,61 @@ equivalence that keeps the reflection caches byte-identical.</p></p>        </di
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Asserts <em>where</em> the recursion stops, not merely that it stopped.</p></p>                <p><p><code>assertIsArray($result)</code> alone could not fail: the top-level value is an array whatever
+$maxDepth does, so deleting the depth guard entirely left the test green while the recursion
+became unbounded. The exact expected tree below pins both halves of the contract — that
+truncation happens, and that it happens no earlier than $maxDepth.</p></p>        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testItAppliesMaxDepthThreeByDefault">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/Wrappers/ReflectionValueNormalizerTest.php#L104">at line 104</a></div>
+        <code>                    
+    <strong>testItAppliesMaxDepthThreeByDefault</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The default $maxDepth is part of the contract: every caller in the reflection pipeline relies
+on it rather than passing a depth. Pinned behaviourally so that changing the default fails
+here rather than silently altering every cached reflection payload.</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testItReturnsNullWhenAlreadyAtMaxDepth">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/Wrappers/ReflectionValueNormalizerTest.php#L116">at line 116</a></div>
+        <code>                    
+    <strong>testItReturnsNullWhenAlreadyAtMaxDepth</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The boundary is <code>&gt;=</code>, so a depth already at the limit yields null without inspecting the
+value at all — including for a plain scalar that would otherwise pass straight through.</p></p>                        
         </div>
         <div class="tags">
             
@@ -327,7 +402,7 @@ equivalence that keeps the reflection caches byte-identical.</p></p>        </di
             </div>
                     <div class="method-item">
                     <h3 id="method_testItReturnsAdaptedReflectionObjectsAsIs">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/Wrappers/ReflectionValueNormalizerTest.php#L72">at line 72</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/Wrappers/ReflectionValueNormalizerTest.php#L122">at line 122</a></div>
         <code>                    
     <strong>testItReturnsAdaptedReflectionObjectsAsIs</strong>()
         </code>
@@ -352,7 +427,7 @@ equivalence that keeps the reflection caches byte-identical.</p></p>        </di
             </div>
                     <div class="method-item">
                     <h3 id="method_testItConvertsObjectsWithToStringToString">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/Wrappers/ReflectionValueNormalizerTest.php#L82">at line 82</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/Wrappers/ReflectionValueNormalizerTest.php#L132">at line 132</a></div>
         <code>                    
     <strong>testItConvertsObjectsWithToStringToString</strong>()
         </code>
@@ -377,7 +452,7 @@ equivalence that keeps the reflection caches byte-identical.</p></p>        </di
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/Wrappers/ReflectionValueNormalizerTest.php#L85">at line 85</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Reflection/Wrappers/ReflectionValueNormalizerTest.php#L135">at line 135</a></div>
         <code>                    
     <strong>__toString</strong>()
         </code>

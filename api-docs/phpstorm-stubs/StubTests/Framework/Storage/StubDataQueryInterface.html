@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>StubTests\Framework\Parsers\StubDataQueryInterface | PHP Jetbrains phpstorm-stubs</title>
+    <title>StubTests\Framework\Storage\StubDataQueryInterface | PHP Jetbrains phpstorm-stubs</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:StubTests_Framework_Parsers_StubDataQueryInterface" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:StubTests_Framework_Storage_StubDataQueryInterface" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,7 +75,7 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">interface</span></li>
-                        <li><a href="../../../StubTests.html">StubTests</a></li><li class="backslash">\</li><li><a href="../../../StubTests/Framework.html">Framework</a></li><li class="backslash">\</li><li><a href="../../../StubTests/Framework/Parsers.html">Parsers</a></li><li class="backslash">\</li><li>StubDataQueryInterface</li>
+                        <li><a href="../../../StubTests.html">StubTests</a></li><li class="backslash">\</li><li><a href="../../../StubTests/Framework.html">Framework</a></li><li class="backslash">\</li><li><a href="../../../StubTests/Framework/Storage.html">Storage</a></li><li class="backslash">\</li><li>StubDataQueryInterface</li>
             </ol>
         </div>
                 <div id="page-content">
@@ -86,7 +86,7 @@
 
     
     <p>        interface
-    <strong>StubDataQueryInterface</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php">View source</a>)
+    <strong>StubDataQueryInterface</strong>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/StubDataQueryInterface.php">View source</a>)
 </p>
 
         
@@ -95,7 +95,14 @@
         
 
             <div class="description">
-            <p><p>Read-only query interface for accessing parsed stub/reflection data.</p></p>            <p><p>These eight methods were previously spread across five per-entity interfaces
+            <p><p>Read-only query interface for accessing parsed stub/reflection data.</p></p>            <p><p>Lives in Storage/ because that is where its implementor does: ParsedDataStorageManager composes it
+and DefaultParsedDataStorageManager is the only class that satisfies it. It sat in Parsers/ until
+nothing under Parsers/ referenced it at all — not one file — while Storage/ had to import across
+the namespace boundary to compose it. That was the only Storage -&gt; Parsers edge in the framework.</p>
+<p>The name still says &quot;Stub&quot;, but both of Runner's handles are this type: getStubs() and
+getReflection() alike. Reading it as &quot;the parsed-data query&quot; rather than &quot;the stubs query&quot; is what
+the code means; renaming it would touch 64 files for no behavioural gain.</p>
+<p>These eight methods were previously spread across five per-entity interfaces
 (Class/Function/Interface/Enum/ConstantQueryInterface) that this one composed, written so that
 &quot;clients can depend on only the slice they need&quot;. No client ever did: all five were referenced
 by nothing but the composite, while this type is the declared parameter type in ~48 files.</p>
@@ -209,7 +216,7 @@ that six Stub</em>Parser classes actually declare as their parameter types.</p><
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getClasses">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php#L31">at line 31</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/StubDataQueryInterface.php#L40">at line 40</a></div>
         <code>                    array
     <strong>getClasses</strong>()
         </code>
@@ -243,7 +250,7 @@ that six Stub</em>Parser classes actually declare as their parameter types.</p><
             </div>
                     <div class="method-item">
                     <h3 id="method_hasClass">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php#L33">at line 33</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/StubDataQueryInterface.php#L42">at line 42</a></div>
         <code>                    bool
     <strong>hasClass</strong>(string $id)
         </code>
@@ -287,7 +294,7 @@ that six Stub</em>Parser classes actually declare as their parameter types.</p><
             </div>
                     <div class="method-item">
                     <h3 id="method_getFunctions">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php#L36">at line 36</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/StubDataQueryInterface.php#L45">at line 45</a></div>
         <code>                    array
     <strong>getFunctions</strong>()
         </code>
@@ -321,7 +328,7 @@ that six Stub</em>Parser classes actually declare as their parameter types.</p><
             </div>
                     <div class="method-item">
                     <h3 id="method_getInterfaces">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php#L39">at line 39</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/StubDataQueryInterface.php#L48">at line 48</a></div>
         <code>                    array
     <strong>getInterfaces</strong>()
         </code>
@@ -355,7 +362,7 @@ that six Stub</em>Parser classes actually declare as their parameter types.</p><
             </div>
                     <div class="method-item">
                     <h3 id="method_hasInterface">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php#L41">at line 41</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/StubDataQueryInterface.php#L50">at line 50</a></div>
         <code>                    bool
     <strong>hasInterface</strong>(string $id)
         </code>
@@ -399,7 +406,7 @@ that six Stub</em>Parser classes actually declare as their parameter types.</p><
             </div>
                     <div class="method-item">
                     <h3 id="method_getEnums">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php#L44">at line 44</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/StubDataQueryInterface.php#L53">at line 53</a></div>
         <code>                    array
     <strong>getEnums</strong>()
         </code>
@@ -433,7 +440,7 @@ that six Stub</em>Parser classes actually declare as their parameter types.</p><
             </div>
                     <div class="method-item">
                     <h3 id="method_hasEnum">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php#L46">at line 46</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/StubDataQueryInterface.php#L55">at line 55</a></div>
         <code>                    bool
     <strong>hasEnum</strong>(string $id)
         </code>
@@ -477,7 +484,7 @@ that six Stub</em>Parser classes actually declare as their parameter types.</p><
             </div>
                     <div class="method-item">
                     <h3 id="method_getConstants">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Parsers/StubDataQueryInterface.php#L49">at line 49</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/StubDataQueryInterface.php#L58">at line 58</a></div>
         <code>                    array
     <strong>getConstants</strong>()
         </code>
