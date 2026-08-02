@@ -3651,7 +3651,7 @@ defined into HOLIDAY_ADDON</p></p>                </div>
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_fetchAll">fetchAll</a>($order, string $filter)
+                    <a href="#method_fetchAll">fetchAll</a>($sqlOrder, string $sqlFilter)
         
                                             <p><p>List all holidays of all users</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -3812,7 +3812,7 @@ TODO Move this into llx_const table</p></p>                </div>
                     array&lt;array{rowid: int, id: int, name: string, lastname: string, firstname: string, gender: string, status: int, employee: int, photo: string, fk_user: int, type?: int, nb_holiday?: int}&gt;|string|int&lt;-1, -1&gt;
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_fetchUsers">fetchUsers</a>(bool $stringlist = true, bool $type = true, string $filters = &#039;&#039;)
+                    <a href="#method_fetchUsers">fetchUsers</a>(bool $stringlist = true, bool $type = true, string $sqlFilters = &#039;&#039;)
         
                                             <p><p>Get list of Users or list of vacation balance.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -11868,7 +11868,7 @@ defined into HOLIDAY_ADDON</p></p>
                     <h3 id="method_fetchAll">
         <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/holiday/class/holiday.class.php#L639">at line 639</a></div>
         <code>                    
-    <strong>fetchAll</strong>($order, string $filter)
+    <strong>fetchAll</strong>($sqlOrder, string $sqlFilter)
         </code>
     </h3>
     <div class="details">    
@@ -11877,7 +11877,7 @@ defined into HOLIDAY_ADDON</p></p>
             
 
         <div class="method-description">
-                            <p><p>List all holidays of all users</p></p>                <p><p>@param      string $order      Sort order</p></p>        
+                            <p><p>List all holidays of all users</p></p>                <p><p>@param      string $sqlOrder   Sort order</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -11885,14 +11885,14 @@ defined into HOLIDAY_ADDON</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
-                <td>$order</td>
+                <td>$sqlOrder</td>
                 <td></td>
             </tr>
                     <tr>
                 <td>string</td>
-                <td>$filter</td>
+                <td>$sqlFilter</td>
                 <td><p>SQL Filter
-@return     int                 -1 if KO, 1 if OK, 2 if no result</p></td>
+@return     int&lt;-1,-1&gt;|int&lt;1,2&gt; -1 if KO, 1 if OK, 2 if no result</p></td>
             </tr>
             </table>
 
@@ -12582,7 +12582,7 @@ TODO Move this into llx_const table</p></p>                <p><p>@param string  
                     <h3 id="method_fetchUsers">
         <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/holiday/class/holiday.class.php#L1928">at line 1928</a></div>
         <code>                    array&lt;array{rowid: int, id: int, name: string, lastname: string, firstname: string, gender: string, status: int, employee: int, photo: string, fk_user: int, type?: int, nb_holiday?: int}&gt;|string|int&lt;-1, -1&gt;
-    <strong>fetchUsers</strong>(bool $stringlist = true, bool $type = true, string $filters = &#039;&#039;)
+    <strong>fetchUsers</strong>(bool $stringlist = true, bool $type = true, string $sqlFilters = &#039;&#039;)
         </code>
     </h3>
     <div class="details">    
@@ -12609,8 +12609,8 @@ TODO Move this into llx_const table</p></p>                <p><p>@param string  
             </tr>
                     <tr>
                 <td>string</td>
-                <td>$filters</td>
-                <td><p>Filters. Warning: This must not contains data from user input.</p></td>
+                <td>$sqlFilters</td>
+                <td><p>Filters. Warning: This must not contain data from user input.</p></td>
             </tr>
             </table>
 
