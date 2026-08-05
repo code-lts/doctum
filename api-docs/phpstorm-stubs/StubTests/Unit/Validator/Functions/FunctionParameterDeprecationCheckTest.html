@@ -184,7 +184,7 @@ with() or assert call counts with expects().</p></p>                </div>
                     <a href="../../../../StubTests/Framework/Model/PHPParameter.html"><abbr title="StubTests\Framework\Model\PHPParameter">PHPParameter</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_createMockParameter">createMockParameter</a>(string $name, mixed|null $type = null, string|null $sinceVersion = null, string|null $removedVersion = null)
+                    <a href="#method_createMockParameter">createMockParameter</a>(string $name, mixed|null $type = null, string|null $sinceVersion = null, string|null $removedVersion = null, bool $isDeprecated = false, string|null $deprecatedSinceVersion = null)
         
                                             <p><p>Create a mock PHPParameter with the given name and type.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../StubTests/Unit/Validator/CheckTestCase.html#method_createMockParameter">
@@ -331,6 +331,28 @@ with() or assert call counts with expects().</p></p>                </div>
                 </div>
                 <div class="col-md-8">
                     <a href="#method_testDeprecatedInReflectionButNotInStubsIsFailure">testDeprecatedInReflectionButNotInStubsIsFailure</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testStubParameterDeprecationStartingLaterDoesNotSatisfyReflection">testStubParameterDeprecationStartingLaterDoesNotSatisfyReflection</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testStubParameterDeprecationSatisfiesReflectionFromItsSinceVersionOnwards">testStubParameterDeprecationSatisfiesReflectionFromItsSinceVersionOnwards</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -755,9 +777,9 @@ argument while actually accepting anything.</p></p>
                     <div class="method-item">
                     <h3 id="method_createMockParameter">
         <div class="location">in <a href="../../../../StubTests/Unit/Validator/CheckTestCase.html#method_createMockParameter">
-<abbr title="StubTests\Unit\Validator\CheckTestCase">CheckTestCase</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/CheckTestCase.php#L187">at line 187</a></div>
+<abbr title="StubTests\Unit\Validator\CheckTestCase">CheckTestCase</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/CheckTestCase.php#L190">at line 190</a></div>
         <code>            protected        <a href="../../../../StubTests/Framework/Model/PHPParameter.html"><abbr title="StubTests\Framework\Model\PHPParameter">PHPParameter</abbr></a>
-    <strong>createMockParameter</strong>(string $name, mixed|null $type = null, string|null $sinceVersion = null, string|null $removedVersion = null)
+    <strong>createMockParameter</strong>(string $name, mixed|null $type = null, string|null $sinceVersion = null, string|null $removedVersion = null, bool $isDeprecated = false, string|null $deprecatedSinceVersion = null)
         </code>
     </h3>
     <div class="details">    
@@ -793,6 +815,17 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
                 <td>$removedVersion</td>
                 <td><p>Version when parameter was removed (optional)</p></td>
             </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$isDeprecated</td>
+                <td><p>Whether the parameter is marked deprecated</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$deprecatedSinceVersion</td>
+                <td><p>PHP version the deprecation starts at; null
+means &quot;deprecated in every version&quot;</p></td>
+            </tr>
             </table>
 
             
@@ -815,7 +848,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
                     <div class="method-item">
                     <h3 id="method_createType">
         <div class="location">in <a href="../../../../StubTests/Unit/Validator/CheckTestCase.html#method_createType">
-<abbr title="StubTests\Unit\Validator\CheckTestCase">CheckTestCase</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/CheckTestCase.php#L204">at line 204</a></div>
+<abbr title="StubTests\Unit\Validator\CheckTestCase">CheckTestCase</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/CheckTestCase.php#L217">at line 217</a></div>
         <code>            protected        <a href="../../../../StubTests/Framework/Model/Types/StandaloneType.html"><abbr title="StubTests\Framework\Model\Types\StandaloneType">StandaloneType</abbr></a>
     <strong>createType</strong>(string $typeName)
         </code>
@@ -859,7 +892,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
                     <div class="method-item">
                     <h3 id="method_createMockType">
         <div class="location">in <a href="../../../../StubTests/Unit/Validator/CheckTestCase.html#method_createMockType">
-<abbr title="StubTests\Unit\Validator\CheckTestCase">CheckTestCase</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/CheckTestCase.php#L212">at line 212</a></div>
+<abbr title="StubTests\Unit\Validator\CheckTestCase">CheckTestCase</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/CheckTestCase.php#L225">at line 225</a></div>
         <code>            protected        object
     <strong>createMockType</strong>(string $typeString)
         </code>
@@ -903,7 +936,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
                     <div class="method-item">
                     <h3 id="method___construct">
         <div class="location">in <a href="../../../../StubTests/Unit/Validator/CheckTestCase.html#method___construct">
-<abbr title="StubTests\Unit\Validator\CheckTestCase">CheckTestCase</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/CheckTestCase.php#L215">at line 215</a></div>
+<abbr title="StubTests\Unit\Validator\CheckTestCase">CheckTestCase</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/CheckTestCase.php#L228">at line 228</a></div>
         <code>                    
     <strong>__construct</strong>(string $typeName)
         </code>
@@ -939,7 +972,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
                     <div class="method-item">
                     <h3 id="method___toString">
         <div class="location">in <a href="../../../../StubTests/Unit/Validator/CheckTestCase.html#method___toString">
-<abbr title="StubTests\Unit\Validator\CheckTestCase">CheckTestCase</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/CheckTestCase.php#L217">at line 217</a></div>
+<abbr title="StubTests\Unit\Validator\CheckTestCase">CheckTestCase</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/CheckTestCase.php#L230">at line 230</a></div>
         <code>                    string
     <strong>__toString</strong>()
         </code>
@@ -974,7 +1007,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
                     <div class="method-item">
                     <h3 id="method_getTypeName">
         <div class="location">in <a href="../../../../StubTests/Unit/Validator/CheckTestCase.html#method_getTypeName">
-<abbr title="StubTests\Unit\Validator\CheckTestCase">CheckTestCase</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/CheckTestCase.php#L219">at line 219</a></div>
+<abbr title="StubTests\Unit\Validator\CheckTestCase">CheckTestCase</abbr></a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/CheckTestCase.php#L232">at line 232</a></div>
         <code>                    string
     <strong>getTypeName</strong>()
         </code>
@@ -1279,8 +1312,76 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_testStubParameterDeprecationStartingLaterDoesNotSatisfyReflection">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Functions/FunctionParameterDeprecationCheckTest.php#L144">at line 144</a></div>
+        <code>                    void
+    <strong>testStubParameterDeprecationStartingLaterDoesNotSatisfyReflection</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testStubParameterDeprecationSatisfiesReflectionFromItsSinceVersionOnwards">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Functions/FunctionParameterDeprecationCheckTest.php#L166">at line 166</a></div>
+        <code>                    void
+    <strong>testStubParameterDeprecationSatisfiesReflectionFromItsSinceVersionOnwards</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_testDeprecatedInStubsButNotInReflectionIsSuccess">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Functions/FunctionParameterDeprecationCheckTest.php#L142">at line 142</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Functions/FunctionParameterDeprecationCheckTest.php#L185">at line 185</a></div>
         <code>                    void
     <strong>testDeprecatedInStubsButNotInReflectionIsSuccess</strong>()
         </code>
@@ -1314,7 +1415,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testMultipleParamsMismatchReportsAll">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Functions/FunctionParameterDeprecationCheckTest.php#L161">at line 161</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Functions/FunctionParameterDeprecationCheckTest.php#L204">at line 204</a></div>
         <code>                    void
     <strong>testMultipleParamsMismatchReportsAll</strong>()
         </code>
@@ -1348,7 +1449,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testParamMissingFromStubsIsNotReported">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Functions/FunctionParameterDeprecationCheckTest.php#L189">at line 189</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Functions/FunctionParameterDeprecationCheckTest.php#L232">at line 232</a></div>
         <code>                    void
     <strong>testParamMissingFromStubsIsNotReported</strong>()
         </code>
@@ -1382,7 +1483,7 @@ with different validators (ParameterNamesCheck uses getName, ParameterTypesCheck
             </div>
                     <div class="method-item">
                     <h3 id="method_testKnownProblemSkipsValidation">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Functions/FunctionParameterDeprecationCheckTest.php#L213">at line 213</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Validator/Functions/FunctionParameterDeprecationCheckTest.php#L256">at line 256</a></div>
         <code>                    void
     <strong>testKnownProblemSkipsValidation</strong>()
         </code>

@@ -95,8 +95,13 @@
         
 
             <div class="description">
-            <p><p>Checks if a function/method is deprecated in reflection but not in stubs.</p></p>            <p><p>One-directional: reflection-deprecated -&gt; stub must be deprecated.
-The reverse is not enforced.</p></p>        </div>
+            <p><p>Resolves deprecation state at a given PHP version, and compares the two sides.</p></p>            <p><p>Reflection reports deprecation for the single version it was captured under, so its flag is
+already version-specific. Stubs describe every version at once, so a stub flag alone says
+nothing about <em>when</em> deprecation starts — <code>#[Deprecated(since: '8.4')]</code> has to read as &quot;not
+deprecated&quot; on 8.3 and &quot;deprecated&quot; on 8.4. That version lives in
+{<a href="../../../../StubTests/Framework/Model/StubsMetadata.html">\StubTests\Framework\Model\StubsMetadata::getDeprecatedSinceVersion()};</a> without it,
+deprecation applies to every version, which is also how reflection-side elements behave
+(they carry no stub metadata at all).</p></p>        </div>
             
         
     
@@ -109,10 +114,19 @@ The reverse is not enforced.</p></p>        </div>
                     static&nbsp;bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_isMismatch">isMismatch</a>(<a href="../../../../StubTests/Framework/Model/PHPFunction.html"><abbr title="StubTests\Framework\Model\PHPFunction">PHPFunction</abbr></a> $reflCallable, <a href="../../../../StubTests/Framework/Model/PHPFunction.html"><abbr title="StubTests\Framework\Model\PHPFunction">PHPFunction</abbr></a> $stubCallable)
+                    <a href="#method_isDeprecatedIn">isDeprecatedIn</a>(<a href="../../../../StubTests/Framework/Model/PHPFunction.html"><abbr title="StubTests\Framework\Model\PHPFunction">PHPFunction</abbr></a>|<a href="../../../../StubTests/Framework/Model/PHPParameter.html"><abbr title="StubTests\Framework\Model\PHPParameter">PHPParameter</abbr></a> $element, string $phpVersion)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Is the element deprecated as of $phpVersion?</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isMismatch">isMismatch</a>(<a href="../../../../StubTests/Framework/Model/PHPFunction.html"><abbr title="StubTests\Framework\Model\PHPFunction">PHPFunction</abbr></a> $reflCallable, <a href="../../../../StubTests/Framework/Model/PHPFunction.html"><abbr title="StubTests\Framework\Model\PHPFunction">PHPFunction</abbr></a> $stubCallable, string $phpVersion)
+        
+                                            <p><p>Is the callable deprecated in reflection for $phpVersion but not in stubs?</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -122,10 +136,10 @@ The reverse is not enforced.</p></p>        </div>
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_isMismatch">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/DeprecationComparator.php#L15">at line 15</a></div>
+                    <h3 id="method_isDeprecatedIn">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/DeprecationComparator.php#L24">at line 24</a></div>
         <code>        static            bool
-    <strong>isMismatch</strong>(<a href="../../../../StubTests/Framework/Model/PHPFunction.html"><abbr title="StubTests\Framework\Model\PHPFunction">PHPFunction</abbr></a> $reflCallable, <a href="../../../../StubTests/Framework/Model/PHPFunction.html"><abbr title="StubTests\Framework\Model\PHPFunction">PHPFunction</abbr></a> $stubCallable)
+    <strong>isDeprecatedIn</strong>(<a href="../../../../StubTests/Framework/Model/PHPFunction.html"><abbr title="StubTests\Framework\Model\PHPFunction">PHPFunction</abbr></a>|<a href="../../../../StubTests/Framework/Model/PHPParameter.html"><abbr title="StubTests\Framework\Model\PHPParameter">PHPParameter</abbr></a> $element, string $phpVersion)
         </code>
     </h3>
     <div class="details">    
@@ -134,8 +148,56 @@ The reverse is not enforced.</p></p>        </div>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Is the element deprecated as of $phpVersion?</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../StubTests/Framework/Model/PHPFunction.html"><abbr title="StubTests\Framework\Model\PHPFunction">PHPFunction</abbr></a>|<a href="../../../../StubTests/Framework/Model/PHPParameter.html"><abbr title="StubTests\Framework\Model\PHPParameter">PHPParameter</abbr></a></td>
+                <td>$element</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$phpVersion</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isMismatch">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Services/DeprecationComparator.php#L41">at line 41</a></div>
+        <code>        static            bool
+    <strong>isMismatch</strong>(<a href="../../../../StubTests/Framework/Model/PHPFunction.html"><abbr title="StubTests\Framework\Model\PHPFunction">PHPFunction</abbr></a> $reflCallable, <a href="../../../../StubTests/Framework/Model/PHPFunction.html"><abbr title="StubTests\Framework\Model\PHPFunction">PHPFunction</abbr></a> $stubCallable, string $phpVersion)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Is the callable deprecated in reflection for $phpVersion but not in stubs?</p></p>                <p><p>One-directional: reflection-deprecated -&gt; stub must be deprecated. The reverse is not
+enforced here.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -149,6 +211,11 @@ The reverse is not enforced.</p></p>        </div>
                     <tr>
                 <td><a href="../../../../StubTests/Framework/Model/PHPFunction.html"><abbr title="StubTests\Framework\Model\PHPFunction">PHPFunction</abbr></a></td>
                 <td>$stubCallable</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$phpVersion</td>
                 <td></td>
             </tr>
             </table>

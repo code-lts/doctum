@@ -102,11 +102,13 @@
 and interfaces), stripping PS_UNRESERVE<em>PREFIX</em> where needed.</li>
 <li>If the stub method is not found it is silently skipped — existence is
 ClassMethodsExistCheck's responsibility.</li>
-<li>When both sides are found, their deprecation status is compared: if reflection
-reports the method as deprecated but the stub does not, a failure is reported.</li>
+<li>When both sides are found, their deprecation status at $phpVersion is compared and any
+disagreement is reported.</li>
 </ol>
-<p>The check is one-directional: reflection-deprecated → stub must be deprecated.
-The reverse is not enforced.</p>
+<p>The check is bidirectional: the two sides must agree. A stub deprecation that starts later
+than the version under test does not count as deprecated here — <code>#[Deprecated(since: '8.4')]</code>
+reads as deprecated on 8.4 and above only, which is what makes the reverse direction
+(stub-deprecated → reflection must be deprecated) checkable at all.</p>
 <p>Known problems are supported at two granularities:</p>
 <ul>
 <li>class-level: EntityType::CLASS_TYPE + classId + 'MethodDeprecationCheck'
@@ -913,7 +915,7 @@ and the reflection-member accessor, all of which used to be one-line abstract ho
             </div>
                     <div class="method-item">
                     <h3 id="method_getCheckName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/MethodDeprecationCheck.php#L39">at line 39</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/MethodDeprecationCheck.php#L42">at line 42</a></div>
         <code>            protected        <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr>
     <strong>getCheckName</strong>()
         </code>
@@ -947,7 +949,7 @@ and the reflection-member accessor, all of which used to be one-line abstract ho
             </div>
                     <div class="method-item">
                     <h3 id="method_memberKind">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/MethodDeprecationCheck.php#L34">at line 34</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/MethodDeprecationCheck.php#L37">at line 37</a></div>
         <code>            protected        <abbr title="StubTests\Framework\Validator\Contracts\MemberKind">MemberKind</abbr>
     <strong>memberKind</strong>()
         </code>
@@ -1081,7 +1083,7 @@ and the reflection-member accessor, all of which used to be one-line abstract ho
             </div>
                     <div class="method-item">
                     <h3 id="method_describeMethodMismatch">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/MethodDeprecationCheck.php#L44">at line 44</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Methods/MethodDeprecationCheck.php#L47">at line 47</a></div>
         <code>                    string|null
     <strong>describeMethodMismatch</strong>(string $methodEntityId, <a href="../../../../../StubTests/Framework/Model/PHPMethod.html"><abbr title="StubTests\Framework\Model\PHPMethod">PHPMethod</abbr></a> $reflMethod, <a href="../../../../../StubTests/Framework/Model/PHPMethod.html"><abbr title="StubTests\Framework\Model\PHPMethod">PHPMethod</abbr></a> $stubMethod, string $phpVersion)
         </code>

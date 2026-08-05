@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>StubTests\Unit\Parsers\AST\DeprecationParserTest | PHP Jetbrains phpstorm-stubs</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:StubTests_Unit_Parsers_AST_DeprecationParserTest" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">PHP Jetbrains phpstorm-stubs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../StubTests.html">StubTests</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Unit.html">Unit</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Unit/Parsers.html">Parsers</a></li><li class="backslash">\</li><li><a href="../../../../StubTests/Unit/Parsers/AST.html">AST</a></li><li class="backslash">\</li><li>DeprecationParserTest</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>DeprecationParserTest    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>DeprecationParserTest</strong>        extends <abbr title="PHPUnit\Framework\TestCase">TestCase</abbr>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/DeprecationParserTest.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            <div class="description">
+            <p><p>Covers extraction of the deprecation version — <code>#[Deprecated(since:)]</code> and
+<code>@_deprecated &lt;version&gt;</code> — into StubsMetadata::getDeprecatedSinceVersion().</p></p>            <p><p>Parsing goes through extractAndParseAll() rather than the single-entity parse() convenience
+method, because only the former supplies the import map. Resolving <code>Deprecated</code> through
+imports is what distinguishes the JetBrains attribute from the built-in one, and the two
+order their positional arguments differently.</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setUp">setUp</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_attributeDeprecationProvider">attributeDeprecationProvider</a>()
+        
+                                            <p><p>Attribute forms are single-line variants of one construct, so the code stays next to the
+version it is expected to yield. The PhpDoc forms need a docblock and live in fixtures —
+see {phpDocDeprecationProvider}.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testItParsesDeprecationFromAttributes">testItParsesDeprecationFromAttributes</a>(string $stubCode, bool $expectedDeprecated, string|null $expectedSince)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_phpDocDeprecationProvider">phpDocDeprecationProvider</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testItParsesDeprecationFromPhpDoc">testItParsesDeprecationFromPhpDoc</a>(string $fixtureFile, string|null $expectedSince)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testItParsesMethodDeprecationVersion">testItParsesMethodDeprecationVersion</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testItParsesParameterDeprecationVersion">testItParsesParameterDeprecationVersion</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testItLeavesTheVersionNullWhenNotDeprecated">testItLeavesTheVersionNullWhenNotDeprecated</a>()
+        
+                                            <p><p>A version is only carried when the element is actually deprecated, so a stale <code>@_deprecated</code>
+version can never leak onto a non-deprecated element.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_phpVersionNormalizationProvider">phpVersionNormalizationProvider</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testItAcceptsOnlyKnownPhpVersionsFromPhpDoc">testItAcceptsOnlyKnownPhpVersionsFromPhpDoc</a>(string $version, string|null $expected)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testItAcceptsTheNewestAndOldestSupportedPhpVersions">testItAcceptsTheNewestAndOldestSupportedPhpVersions</a>()
+        
+                                            <p><p>Guards the boundary the filter silently depends on. If the newest supported version ever
+stopped being recognised, every <code>@_deprecated &lt;newest&gt;</code> would collapse to null — i.e. to
+&quot;deprecated in every version&quot; — which is the widest possible claim and the opposite of
+what the tag says. The failure would otherwise be silent.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_setUp">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/DeprecationParserTest.php#L28">at line 28</a></div>
+        <code>            protected        void
+    <strong>setUp</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_attributeDeprecationProvider">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/DeprecationParserTest.php#L40">at line 40</a></div>
+        <code>        static            array
+    <strong>attributeDeprecationProvider</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Attribute forms are single-line variants of one construct, so the code stays next to the
+version it is expected to yield. The PhpDoc forms need a docblock and live in fixtures —
+see {phpDocDeprecationProvider}.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testItParsesDeprecationFromAttributes">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/DeprecationParserTest.php#L93">at line 93</a></div>
+        <code>                    
+    <strong>testItParsesDeprecationFromAttributes</strong>(string $stubCode, bool $expectedDeprecated, string|null $expectedSince)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$stubCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$expectedDeprecated</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$expectedSince</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_phpDocDeprecationProvider">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/DeprecationParserTest.php#L102">at line 102</a></div>
+        <code>        static            array
+    <strong>phpDocDeprecationProvider</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testItParsesDeprecationFromPhpDoc">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/DeprecationParserTest.php#L115">at line 115</a></div>
+        <code>                    
+    <strong>testItParsesDeprecationFromPhpDoc</strong>(string $fixtureFile, string|null $expectedSince)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$fixtureFile</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$expectedSince</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testItParsesMethodDeprecationVersion">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/DeprecationParserTest.php#L125">at line 125</a></div>
+        <code>                    
+    <strong>testItParsesMethodDeprecationVersion</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testItParsesParameterDeprecationVersion">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/DeprecationParserTest.php#L134">at line 134</a></div>
+        <code>                    
+    <strong>testItParsesParameterDeprecationVersion</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testItLeavesTheVersionNullWhenNotDeprecated">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/DeprecationParserTest.php#L150">at line 150</a></div>
+        <code>                    
+    <strong>testItLeavesTheVersionNullWhenNotDeprecated</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>A version is only carried when the element is actually deprecated, so a stale <code>@_deprecated</code>
+version can never leak onto a non-deprecated element.</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_phpVersionNormalizationProvider">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/DeprecationParserTest.php#L158">at line 158</a></div>
+        <code>        static            array
+    <strong>phpVersionNormalizationProvider</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testItAcceptsOnlyKnownPhpVersionsFromPhpDoc">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/DeprecationParserTest.php#L174">at line 174</a></div>
+        <code>                    
+    <strong>testItAcceptsOnlyKnownPhpVersionsFromPhpDoc</strong>(string $version, string|null $expected)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$version</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$expected</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testItAcceptsTheNewestAndOldestSupportedPhpVersions">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/AST/DeprecationParserTest.php#L186">at line 186</a></div>
+        <code>                    
+    <strong>testItAcceptsTheNewestAndOldestSupportedPhpVersions</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Guards the boundary the filter silently depends on. If the newest supported version ever
+stopped being recognised, every <code>@_deprecated &lt;newest&gt;</code> would collapse to null — i.e. to
+&quot;deprecated in every version&quot; — which is the widest possible claim and the opposite of
+what the tag says. The failure would otherwise be silent.</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built using <a href="https://github.com/JetBrains/phpstorm-stubs#readme" rel="noreferrer noopener" target="_blank">phpstorm-stubs</a> from JetBrains.</div></div>
+    </div>
+    </body>
+
+</html>
