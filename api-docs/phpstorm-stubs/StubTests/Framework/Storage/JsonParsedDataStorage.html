@@ -165,7 +165,7 @@ Optionally coordinates with PhpDocStorage for separated PhpDoc storage.</p></p> 
                 <div class="col-md-8">
                     <a href="#method_load">load</a>()
         
-                                            <p><p>Load entities from persistent storage</p></p>                </div>
+                                            <p><p>Load entities from the cache file.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -376,7 +376,7 @@ Optionally coordinates with PhpDocStorage for separated PhpDoc storage.</p></p> 
             </div>
                     <div class="method-item">
                     <h3 id="method_load">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/JsonParsedDataStorage.php#L105">at line 105</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Storage/JsonParsedDataStorage.php#L121">at line 121</a></div>
         <code>                    void
     <strong>load</strong>()
         </code>
@@ -387,7 +387,15 @@ Optionally coordinates with PhpDocStorage for separated PhpDoc storage.</p></p> 
             
 
         <div class="method-description">
-                            <p><p>Load entities from persistent storage</p></p>                        
+                            <p><p>Load entities from the cache file.</p></p>                <p><p>A missing file yields no entities and is not an error: callers decide whether to
+regenerate (see <code>Runner::isStubsCacheComplete()</code>), and <code>MultiFileJsonStorage</code> constructs a
+storage per entity type whether or not every file has been written yet.</p>
+<p>A file that <em>exists</em> but cannot be read as JSON is a different matter and throws. Returning
+no entities there is indistinguishable from a legitimately empty cache, and the
+consequences are silent: a truncated <code>StubsClasses.json</code> yielded zero classes while the
+other four type files loaded normally, so every class-level check iterated an empty list
+and reported success. The suite stayed green while validating nothing. This happened —
+commit 51b2a776 carried a 2.3 MB prefix of a 20.4 MB file.</p></p>        
         </div>
         <div class="tags">
             
@@ -401,6 +409,15 @@ Optionally coordinates with PhpDocStorage for separated PhpDoc storage.</p></p> 
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../RuntimeException.html">RuntimeException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
