@@ -2740,8 +2740,7 @@ PDO</a></small></div>
                 <div class="col-md-8">
                     <a href="#method_createAggregate">createAggregate</a>(string $name, callable $step, callable $finalize, int $numArgs = -1)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Registers an aggregating user-defined function for use in SQL statements</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -2751,8 +2750,7 @@ PDO</a></small></div>
                 <div class="col-md-8">
                     <a href="#method_createCollation">createCollation</a>(string $name, callable $callback)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Registers a user-defined function for use as a collating function in SQL statements</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -2762,8 +2760,7 @@ PDO</a></small></div>
                 <div class="col-md-8">
                     <a href="#method_createFunction">createFunction</a>(string $function_name, callable $callback, int $num_args = -1, int $flags = 0)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Registers a user-defined function for use in SQL statements</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -4529,7 +4526,7 @@ PDO</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO
             </div>
                     <div class="method-item">
                     <h3 id="method_createAggregate">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L2219">at line 2219</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L2248">at line 2248</a></div>
         <code>                    bool
     <strong>createAggregate</strong>(string $name, callable $step, callable $finalize, int $numArgs = -1)
         </code>
@@ -4540,8 +4537,8 @@ PDO</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Registers an aggregating user-defined function for use in SQL statements</p></p>                <p><p>This method is similar to Pdo\Sqlite::createFunction except that it registers functions
+that can be used to calculate a result aggregated across all the rows of a query.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -4550,22 +4547,38 @@ PDO</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO
                     <tr>
                 <td>string</td>
                 <td>$name</td>
-                <td></td>
+                <td><p>The name of the function used in SQL statements.</p></td>
             </tr>
                     <tr>
                 <td>callable</td>
                 <td>$step</td>
-                <td></td>
+                <td><p>Callback function called for each row of the result set. The
+callback should accumulate the result and store it in the aggregation context. This
+function need to be defined as: mixedstep mixedcontext intrownumber mixedvalue
+mixedvalues context null for the first row; on subsequent rows it will have the value
+that was previously returned from the step function; you should use this to maintain the
+aggregate state. rownumber The current row number. value The first argument passed to the
+aggregate. values Further arguments passed to the aggregate. The return value of this
+function will be used as the context argument in the next call of the step or finalize
+functions.</p></td>
             </tr>
                     <tr>
                 <td>callable</td>
                 <td>$finalize</td>
-                <td></td>
+                <td><p>Callback function to aggregate the &quot;stepped&quot; data from each
+row. Once all the rows have been processed, this function will be called, and it should
+then take the data from the aggregation context and return the result. This callback
+function should return a type understood by SQLite (i.e. scalar type). This function need
+to be defined as: mixedfini mixedcontext introwcount context Holds the return value from
+the very last call to the step function. rowcount Holds the number of rows over which the
+aggregate was performed. The return value of this function will be used as the return
+value for the aggregate.</p></td>
             </tr>
                     <tr>
                 <td>int</td>
                 <td>$numArgs</td>
-                <td></td>
+                <td><p>Hint to the SQLite parser if the callback function accepts a
+predetermined number of arguments.</p></td>
             </tr>
             </table>
 
@@ -4575,7 +4588,7 @@ PDO</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -4588,7 +4601,7 @@ PDO</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO
             </div>
                     <div class="method-item">
                     <h3 id="method_createCollation">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L2226">at line 2226</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L2270">at line 2270</a></div>
         <code>                    bool
     <strong>createCollation</strong>(string $name, callable $callback)
         </code>
@@ -4599,8 +4612,8 @@ PDO</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Registers a user-defined function for use as a collating function in SQL statements</p></p>                <p><p>This method is similar to Pdo\Sqlite::createFunction except that it registers functions
+that are used to collate strings.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -4609,12 +4622,16 @@ PDO</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO
                     <tr>
                 <td>string</td>
                 <td>$name</td>
-                <td></td>
+                <td><p>Name of the SQL collating function to be created or redefined.</p></td>
             </tr>
                     <tr>
                 <td>callable</td>
                 <td>$callback</td>
-                <td></td>
+                <td><p>Callback function that defines the behaviour of a collation. It
+must accept two strings and return -1, 0, or 1 if the first string sorts before, sorts
+identically, or sorts after the second string respectively. An internal function that
+behaves like this is strcmp. This function need to be defined as: intcollation
+stringstring1 stringstring2</p></td>
             </tr>
             </table>
 
@@ -4624,7 +4641,7 @@ PDO</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -4637,7 +4654,7 @@ PDO</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO
             </div>
                     <div class="method-item">
                     <h3 id="method_createFunction">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L2228">at line 2228</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L2292">at line 2292</a></div>
         <code>                    bool
     <strong>createFunction</strong>(string $function_name, callable $callback, int $num_args = -1, int $flags = 0)
         </code>
@@ -4648,8 +4665,9 @@ PDO</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Registers a user-defined function for use in SQL statements</p></p>                <p><p>This method allows PHP function to be registered with SQLite as a user-defined function,
+so that it can be called within SQL queries. The defined function can be used in any SQL
+query that allows function calls, for example SELECT, UPDATE, or triggers.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -4658,22 +4676,28 @@ PDO</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO
                     <tr>
                 <td>string</td>
                 <td>$function_name</td>
-                <td></td>
+                <td><p>The name of the function used in SQL statements.</p></td>
             </tr>
                     <tr>
                 <td>callable</td>
                 <td>$callback</td>
-                <td></td>
+                <td><p>Callback function to handle the defined SQL function. Callback
+functions should return a type understood by SQLite (i.e. scalar type). This function
+need to be defined as: mixedcallback mixedvalue mixedvalues value The first argument
+passed to the SQL function. values Further arguments passed to the SQL function.</p></td>
             </tr>
                     <tr>
                 <td>int</td>
                 <td>$num_args</td>
-                <td></td>
+                <td><p>The number of arguments that the SQL function takes. If this
+parameter is -1, then the SQL function may take any number of arguments.</p></td>
             </tr>
                     <tr>
                 <td>int</td>
                 <td>$flags</td>
-                <td></td>
+                <td><p>A bitmask of flags. Currently, only Pdo\Sqlite::DETERMINISTIC is
+supported, which specifies that the function always returns the same result given the
+same inputs within a single SQL statement.</p></td>
             </tr>
             </table>
 
@@ -4683,7 +4707,7 @@ PDO</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -4696,7 +4720,7 @@ PDO</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO
             </div>
                     <div class="method-item">
                     <h3 id="method_loadExtension">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L2235">at line 2235</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L2299">at line 2299</a></div>
         <code>                    void
     <strong>loadExtension</strong>(string $name)
         </code>
@@ -4740,7 +4764,7 @@ PDO</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO
             </div>
                     <div class="method-item">
                     <h3 id="method_openBlob">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L2238">at line 2238</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L2302">at line 2302</a></div>
         <code>                    resource|false
     <strong>openBlob</strong>(string $table, string $column, int $rowid, string|null $dbname = &quot;main&quot;, int $flags = \Pdo\Sqlite::OPEN_READONLY)
         </code>
@@ -4804,7 +4828,7 @@ PDO</a> <a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO
             </div>
                     <div class="method-item">
                     <h3 id="method_setAuthorizer">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L2249">at line 2249</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/PDO/PDO.php#L2313">at line 2313</a></div>
         <code>                    void
     <strong>setAuthorizer</strong>(callable|null $callback)
         </code>
