@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>StubTests\Unit\Parsers\Stubs\PhpDoc\PhpDocumentorRenderingContractTest | PHP Jetbrains phpstorm-stubs</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
+        <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../doctum.js"></script>
+        <script async defer src="../../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:StubTests_Unit_Parsers_Stubs_PhpDoc_PhpDocumentorRenderingContractTest" data-root-path="../../../../../" data-search-index-url="../../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../../index.html">PHP Jetbrains phpstorm-stubs</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../../StubTests.html">StubTests</a></li><li class="backslash">\</li><li><a href="../../../../../StubTests/Unit.html">Unit</a></li><li class="backslash">\</li><li><a href="../../../../../StubTests/Unit/Parsers.html">Parsers</a></li><li class="backslash">\</li><li><a href="../../../../../StubTests/Unit/Parsers/Stubs.html">Stubs</a></li><li class="backslash">\</li><li><a href="../../../../../StubTests/Unit/Parsers/Stubs/PhpDoc.html">PhpDoc</a></li><li class="backslash">\</li><li>PhpDocumentorRenderingContractTest</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>PhpDocumentorRenderingContractTest    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>PhpDocumentorRenderingContractTest</strong>        extends <abbr title="PHPUnit\Framework\TestCase">TestCase</abbr>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Stubs/PhpDoc/PhpDocumentorRenderingContractTest.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            <div class="description">
+            <p><p>Asserts the assumptions this repository makes about phpdocumentor/type-resolver, rather than
+about our own output.</p></p>            <p><p>The stub parsers store phpDocumentor's rendering of a type verbatim, so a change in how the
+library stringifies types rewrites tests/cache/*.json wholesale. Without this file such a change
+surfaces only as a scattering of opaque string diffs in unrelated parser tests — which is exactly
+how the 5.6 → 6.0 bump presented: six failures that each looked like a local expectation being
+stale, when in fact one upstream commit had changed the rendering of every generic.</p>
+<p>Two properties are pinned:</p>
+<ol>
+<li>Idempotency — resolving a rendered type must reproduce that rendering exactly. This is the
+general test for lossless rendering and the one {<a href="../../../../../StubTests/Framework/Parsers/Stubs/PhpDoc/PhpDocumentorParser.html">\StubTests\Framework\Parsers\Stubs\PhpDoc\PhpDocumentorParser::preferFaithfulType()}
+</a>   relies on, so a regression here silently changes which types get recovered from raw text.</li>
+<li>Spacing — type arguments are separated by <code>,</code>. Cosmetic, but it is baked into the parsed
+cache, so it should change deliberately and not as a surprise.</li>
+</ol></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setUp">setUp</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_typeShapes">typeShapes</a>()
+        
+                                            <p><p>The type shapes the stub tree actually uses, one per construct.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testRenderingIsIdempotent">testRenderingIsIdempotent</a>(string $type)
+        
+                                            <p><p>A rendered type must survive being fed back to the resolver unchanged.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testCompoundArrayElementRenderingIsStillAmbiguousUpstream">testCompoundArrayElementRenderingIsStillAmbiguousUpstream</a>()
+        
+                                            <p><p>Pins the one rendering defect this repository works around, so that its <em>fix</em> is noticed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_argumentSpacing">argumentSpacing</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testTypeArgumentsAreCommaSpaceSeparated">testTypeArgumentsAreCommaSpaceSeparated</a>(string $input, string $expected)
+        
+                                            <p><p>Type arguments are rendered <code>,</code>-separated regardless of the input spacing.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_setUp">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Stubs/PhpDoc/PhpDocumentorRenderingContractTest.php#L34">at line 34</a></div>
+        <code>            protected        void
+    <strong>setUp</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_typeShapes">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Stubs/PhpDoc/PhpDocumentorRenderingContractTest.php#L46">at line 46</a></div>
+        <code>        static            array
+    <strong>typeShapes</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The type shapes the stub tree actually uses, one per construct.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testRenderingIsIdempotent">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Stubs/PhpDoc/PhpDocumentorRenderingContractTest.php#L85">at line 85</a></div>
+        <code>                    void
+    <strong>testRenderingIsIdempotent</strong>(string $type)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>A rendered type must survive being fed back to the resolver unchanged.</p></p>                <p><p>Note this pins rendering stability, not round-tripping of the <em>input</em>: normalisation such as
+FQN-prefixing a bare identifier or rewriting <code>T[]</code> as <code>array&lt;T&gt;</code> legitimately changes the
+string on the first pass. Only the second pass must be a no-op.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testCompoundArrayElementRenderingIsStillAmbiguousUpstream">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Stubs/PhpDoc/PhpDocumentorRenderingContractTest.php#L112">at line 112</a></div>
+        <code>                    void
+    <strong>testCompoundArrayElementRenderingIsStillAmbiguousUpstream</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Pins the one rendering defect this repository works around, so that its <em>fix</em> is noticed.</p></p>                <p><p><code>Array_::__toString()</code> appends <code>[]</code> to the rendered element type whenever that string already
+ends in <code>[]</code>, instead of falling through to the unambiguous <code>array&lt;…&gt;</code> branch. For a compound
+element that changes the type: <code>A|B[]</code> parses as <code>A|(B[])</code>, never as <code>(A|B)[]</code>. type-resolver
+1.x rendered these correctly via an explicit <code>instanceof Compound</code> branch, dropped in upstream
+commit cbc0615 (&quot;Move the logic of <code>AbstractList::__toString()</code> to <code>Array_::__toString()</code>&quot;).</p>
+<p>{<a href="../../../../../StubTests/Framework/Parsers/Stubs/PhpDoc/PhpDocumentorParser.html">\StubTests\Framework\Parsers\Stubs\PhpDoc\PhpDocumentorParser::rendersCompoundArrayAmbiguously()}</a> detects the shape from the
+resolved object graph and keeps the raw docblock text instead. When this test starts failing,
+upstream has fixed the rendering and that workaround — plus the corresponding cases in
+{\StubTests\Unit\Parsers\Stubs\PhpDoc\PhpDocumentorParserTypeRecoveryTest} — can be removed.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_argumentSpacing">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Stubs/PhpDoc/PhpDocumentorRenderingContractTest.php#L127">at line 127</a></div>
+        <code>        static            array
+    <strong>argumentSpacing</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testTypeArgumentsAreCommaSpaceSeparated">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Unit/Parsers/Stubs/PhpDoc/PhpDocumentorRenderingContractTest.php#L148">at line 148</a></div>
+        <code>                    void
+    <strong>testTypeArgumentsAreCommaSpaceSeparated</strong>(string $input, string $expected)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Type arguments are rendered <code>,</code>-separated regardless of the input spacing.</p></p>                <p><p>type-resolver 1.x emitted a bare <code>,</code> for arrays, iterables and collections while already
+using <code>,</code> for shapes, int ranges and int masks; 2.0 normalised everything to <code>,</code>
+(upstream commit 492a638, &quot;Improve the conversion of lists to strings&quot;), matching
+phpstan/phpdoc-parser's own stringification.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$input</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$expected</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built using <a href="https://github.com/JetBrains/phpstorm-stubs#readme" rel="noreferrer noopener" target="_blank">phpstorm-stubs</a> from JetBrains.</div></div>
+    </div>
+    </body>
+
+</html>
