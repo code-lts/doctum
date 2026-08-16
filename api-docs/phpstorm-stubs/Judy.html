@@ -80,7 +80,7 @@
 
     
     <p>        class
-    <strong>Judy</strong>        implements        <a href="ArrayAccess.html">ArrayAccess</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php">View source</a>)
+    <strong>Judy</strong>        implements        <a href="ArrayAccess.html">ArrayAccess</a>, <a href="Countable.html">Countable</a>, <a href="Iterator.html">Iterator</a>, <a href="JsonSerializable.html">JsonSerializable</a>        (<a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php">View source</a>)
 </p>
 
         
@@ -89,7 +89,7 @@
         
 
             <div class="description">
-            <p><p>Class Judy.</p></p>                    </div>
+            <p><p>Judy arrays are fast, memory-efficient, ordered sparse dynamic arrays.</p></p>            <p><p>A Judy object can be accessed like a PHP array and iterated with foreach.</p></p>        </div>
             
         
             <h2>Constants</h2>    <table class="table table-condensed">
@@ -98,7 +98,7 @@
                                                                                                                         BITSET
                                     </td>
                 <td class="last">
-                    <p><em><p>Define the Judy Array as a Bitset with keys as Integer and Values as a Boolean.</p></em></p>
+                    <p><em><p>Judy array as a bitset, with integer keys and boolean values.</p></em></p>
                     <p></p>
                 </td>
             </tr>
@@ -107,7 +107,7 @@
                                                                                                                         INT_TO_INT
                                     </td>
                 <td class="last">
-                    <p><em><p>Define the Judy Array with key/values as Integer, and Integer only.</p></em></p>
+                    <p><em><p>Judy array with integer keys and integer values.</p></em></p>
                     <p></p>
                 </td>
             </tr>
@@ -116,7 +116,7 @@
                                                                                                                         INT_TO_MIXED
                                     </td>
                 <td class="last">
-                    <p><em><p>Define the Judy Array with keys as Integer and Values of any type.</p></em></p>
+                    <p><em><p>Judy array with integer keys and values of any type.</p></em></p>
                     <p></p>
                 </td>
             </tr>
@@ -125,7 +125,7 @@
                                                                                                                         STRING_TO_INT
                                     </td>
                 <td class="last">
-                    <p><em><p>Define the Judy Array with keys as a String and Values as Integer, and Integer only.</p></em></p>
+                    <p><em><p>Judy array with string keys and integer values (sorted, trie-based).</p></em></p>
                     <p></p>
                 </td>
             </tr>
@@ -134,7 +134,52 @@
                                                                                                                         STRING_TO_MIXED
                                     </td>
                 <td class="last">
-                    <p><em><p>Define the Judy Array with keys as a String and Values of any type.</p></em></p>
+                    <p><em><p>Judy array with string keys and values of any type (sorted, trie-based).</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        INT_TO_PACKED
+                                    </td>
+                <td class="last">
+                    <p><em><p>Judy array with integer keys and packed integer values.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        STRING_TO_MIXED_HASH
+                                    </td>
+                <td class="last">
+                    <p><em><p>Judy array with string keys and values of any type (unsorted, hash-based).</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        STRING_TO_INT_HASH
+                                    </td>
+                <td class="last">
+                    <p><em><p>Judy array with string keys and integer values (unsorted, hash-based).</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        STRING_TO_MIXED_ADAPTIVE
+                                    </td>
+                <td class="last">
+                    <p><em><p>Judy array with string keys and values of any type (adaptive storage).</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        STRING_TO_INT_ADAPTIVE
+                                    </td>
+                <td class="last">
+                    <p><em><p>Judy array with string keys and integer values (adaptive storage).</p></em></p>
                     <p></p>
                 </td>
             </tr>
@@ -150,10 +195,9 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(int $judy_type)
+                    <a href="#method___construct">__construct</a>(int $type)
         
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Construct a new Judy object. A Judy object can be accessed like a PHP Array.</p></p>                </div>
+                                            <p><p>Create a new Judy array of the specified type.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -163,63 +207,7 @@ Construct a new Judy object. A Judy object can be accessed like a PHP Array.</p>
                 <div class="col-md-8">
                     <a href="#method___destruct">__destruct</a>()
         
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Destruct a Judy object.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    int
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_byCount">byCount</a>(int $nth_index)
-        
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Locate the Nth index present in the Judy array.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    int
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_count">count</a>(int $index_start = 0, int $index_end = -1)
-        
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Count the number of elements in the Judy array.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    mixed
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_first">first</a>(mixed $index = 0)
-        
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Search (inclusive) for the first index present that is equal to or greater than the passed Index.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    mixed
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_firstEmpty">firstEmpty</a>(mixed $index = 0)
-        
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Search (inclusive) for the first absent index that is equal to or greater than the passed Index.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_free">free</a>()
-        
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Free the entire Judy array.</p></p>                </div>
+                                            <p><p>Free the Judy array and release all associated resources.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -229,30 +217,7 @@ Free the entire Judy array.</p></p>                </div>
                 <div class="col-md-8">
                     <a href="#method_getType">getType</a>()
         
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Return an integer corresponding to the Judy type of the current object.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    mixed
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_last">last</a>(int|string $index = -1)
-        
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Search (inclusive) for the last index present that is equal to or less than the passed Index.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    mixed
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_lastEmpty">lastEmpty</a>(int|string $index = -1)
-        
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Search (inclusive) for the last absent index that is equal to or less than the passed Index.</p></p>                </div>
+                                            <p><p>Return the type constant of this Judy array.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -260,10 +225,40 @@ Search (inclusive) for the last absent index that is equal to or less than the p
                     int
                 </div>
                 <div class="col-md-8">
+                    <a href="#method_free">free</a>()
+        
+                                            <p><p>Free the entire Judy array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int|null
+                </div>
+                <div class="col-md-8">
                     <a href="#method_memoryUsage">memoryUsage</a>()
         
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Return the memory used by the Judy array.</p></p>                </div>
+                                            <p><p>Return the memory used by the internal Judy structure.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_size">size</a>(mixed $index_start = 0, mixed $index_end = -1)
+        
+                                            <p><p>Return the number of elements, optionally within a key range
+(integer-keyed types only).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_count">count</a>()
+        
+                                            <p><p>Return the number of elements. Implements Countable.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -271,10 +266,9 @@ Return the memory used by the Judy array.</p></p>                </div>
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_next">next</a>(mixed $index)
+                    <a href="#method_byCount">byCount</a>(mixed $nth_index)
         
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Search (exclusive) for the next index present that is greater than the passed Index.</p></p>                </div>
+                                            <p><p>Locate the Nth index present in the array (1-based).</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -282,21 +276,10 @@ Search (exclusive) for the next index present that is greater than the passed In
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_nextEmpty">nextEmpty</a>(int|string $index)
+                    <a href="#method_first">first</a>(mixed $index = null)
         
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Search (exclusive) for the next absent index that is greater than the passed Index.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    bool
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_offsetExists">offsetExists</a>(TKey $offset)
-        
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Whether or not an offset exists.</p></p>                </div>
+                                            <p><p>Search (inclusive) for the first index present that is equal to or
+greater than the given index.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -304,32 +287,21 @@ Whether or not an offset exists.</p></p>                </div>
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetGet">offsetGet</a>(TKey $offset)
+                    <a href="#method_searchNext">searchNext</a>(mixed $index)
         
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Returns the value at specified offset.</p></p>                </div>
+                                            <p><p>Search (exclusive) for the next index present that is greater than
+the given index.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    void
+                    mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_offsetSet">offsetSet</a>(TKey $offset, TValue $value)
+                    <a href="#method_last">last</a>(mixed $index = null)
         
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Assigns a value to the specified offset.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    void
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_offsetUnset">offsetUnset</a>(TKey $offset)
-        
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Unsets an offset.</p></p>                </div>
+                                            <p><p>Search (inclusive) for the last index present that is equal to or
+less than the given index.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -339,8 +311,41 @@ Unsets an offset.</p></p>                </div>
                 <div class="col-md-8">
                     <a href="#method_prev">prev</a>(mixed $index)
         
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Search (exclusive) for the previous index present that is less than the passed Index.</p></p>                </div>
+                                            <p><p>Search (exclusive) for the previous index present that is less than
+the given index.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_firstEmpty">firstEmpty</a>(mixed $index = null)
+        
+                                            <p><p>Search (inclusive) for the first absent index that is equal to or
+greater than the given index. Integer-keyed types only.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_nextEmpty">nextEmpty</a>(mixed $index)
+        
+                                            <p><p>Search (exclusive) for the next absent index greater than the given
+index. Integer-keyed types only.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_lastEmpty">lastEmpty</a>(mixed $index = null)
+        
+                                            <p><p>Search (inclusive) for the last absent index that is equal to or
+less than the given index. Integer-keyed types only.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -350,8 +355,183 @@ Search (exclusive) for the previous index present that is less than the passed I
                 <div class="col-md-8">
                     <a href="#method_prevEmpty">prevEmpty</a>(mixed $index)
         
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Search (exclusive) for the previous index absent that is less than the passed Index.</p></p>                </div>
+                                            <p><p>Search (exclusive) for the previous absent index less than the given
+index. Integer-keyed types only.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="Judy.html">Judy</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_union">union</a>(<a href="Judy.html">Judy</a> $other)
+        
+                                            <p><p>Return a new Judy array containing all indices present in either array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="Judy.html">Judy</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_intersect">intersect</a>(<a href="Judy.html">Judy</a> $other)
+        
+                                            <p><p>Return a new Judy array containing only indices present in both arrays.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="Judy.html">Judy</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_diff">diff</a>(<a href="Judy.html">Judy</a> $other)
+        
+                                            <p><p>Return a new Judy array containing indices present in this array but
+not in the other.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="Judy.html">Judy</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_xor">xor</a>(<a href="Judy.html">Judy</a> $other)
+        
+                                            <p><p>Return a new Judy array containing indices present in exactly one of
+the arrays (symmetric difference).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_mergeWith">mergeWith</a>(<a href="Judy.html">Judy</a> $other)
+        
+                                            <p><p>Merge another Judy array into this one in-place. Both arrays must use
+the same key category (both integer-keyed or both string-keyed).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="Judy.html">Judy</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_slice">slice</a>(mixed $start, mixed $end)
+        
+                                            <p><p>Return a new Judy array containing entries in the [$start, $end]
+range (inclusive). For string-keyed types, comparison is lexicographic.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_offsetExists">offsetExists</a>(TKey $offset)
+        
+                                            <p><p>Check whether the given offset exists in the array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_offsetGet">offsetGet</a>(TKey $offset)
+        
+                                            <p><p>Return the value at the given offset.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_offsetSet">offsetSet</a>(TKey $offset, TValue $value)
+        
+                                            <p><p>Set the value at the given offset.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_offsetUnset">offsetUnset</a>(TKey $offset)
+        
+                                            <p><p>Remove the element at the given offset.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_jsonSerialize">jsonSerialize</a>()
+        
+                                            <p><p>Return data suitable for json_encode(). Implements JsonSerializable.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___serialize">__serialize</a>()
+        
+                                            <p><p>Return serialization data as ['type' =&gt; int, 'data' =&gt; array].</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___unserialize">__unserialize</a>(array $data)
+        
+                                            <p><p>Restore a Judy array from serialized data.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_toArray">toArray</a>()
+        
+                                            <p><p>Convert the Judy array to a native PHP array. Uses native C iteration
+internally, faster than a manual foreach.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="Judy.html">Judy</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_fromArray">fromArray</a>(int $type, array $data)
+        
+                                            <p><p>Create a new Judy array from a PHP array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_putAll">putAll</a>(array $data)
+        
+                                            <p><p>Bulk-insert entries from a PHP array into this Judy array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getAll">getAll</a>(array $keys)
+        
+                                            <p><p>Retrieve multiple values at once.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -359,11 +539,162 @@ Search (exclusive) for the previous index absent that is less than the passed In
                     int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_size">size</a>(int $index_start = 0, int $index_end = -1)
+                    <a href="#method_increment">increment</a>(mixed $key, int $amount = 1)
         
-                                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Count the number of elements in the Judy array.<br/>
-This method is an alias of      const count.</p></p>                </div>
+                                            <p><p>Atomically increment the value at the given key. If the key does not
+exist, it is created with the given amount. The amount may be negative.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_rewind">rewind</a>()
+        
+                                            <p><p>Rewind the iterator to the first element.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_valid">valid</a>()
+        
+                                            <p><p>Check whether the current iterator position is valid.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_current">current</a>()
+        
+                                            <p><p>Return the value at the current iterator position.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_key">key</a>()
+        
+                                            <p><p>Return the key at the current iterator position.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_next">next</a>()
+        
+                                            <p><p>Advance the iterator to the next element.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_keys">keys</a>()
+        
+                                            <p><p>Return all keys as a PHP array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_values">values</a>()
+        
+                                            <p><p>Return all values as a PHP array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_forEach">forEach</a>(callable $callback)
+        
+                                            <p><p>Call a callback for each element, iterating in C. The callback
+receives ($key, $value) for each element.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="Judy.html">Judy</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_filter">filter</a>(callable $predicate)
+        
+                                            <p><p>Return a new Judy array containing only elements matching the predicate.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="Judy.html">Judy</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_map">map</a>(callable $transform)
+        
+                                            <p><p>Return a new Judy array with values transformed by the callback.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int|float
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_sumValues">sumValues</a>()
+        
+                                            <p><p>Return the sum of all values in the array. For BITSET, returns the
+population count.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    float|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_averageValues">averageValues</a>()
+        
+                                            <p><p>Return the average of all values, or null if the array is empty.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_populationCount">populationCount</a>(mixed $start = 0, mixed $end = -1)
+        
+                                            <p><p>Return the number of keys in the [$start, $end] range (inclusive).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_deleteRange">deleteRange</a>(mixed $start, mixed $end)
+        
+                                            <p><p>Delete all keys in the [$start, $end] range (inclusive).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_equals">equals</a>(<a href="Judy.html">Judy</a> $other)
+        
+                                            <p><p>Check if two Judy arrays have identical type, size, and key-value pairs.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -374,9 +705,9 @@ This method is an alias of      const count.</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L47">at line 47</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L80">at line 80</a></div>
         <code>                    
-    <strong>__construct</strong>(int $judy_type)
+    <strong>__construct</strong>(int $type)
         </code>
     </h3>
     <div class="details">    
@@ -385,8 +716,7 @@ This method is an alias of      const count.</p></p>                </div>
             
 
         <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Construct a new Judy object. A Judy object can be accessed like a PHP Array.</p></p>                        
+                            <p><p>Create a new Judy array of the specified type.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -394,8 +724,8 @@ Construct a new Judy object. A Judy object can be accessed like a PHP Array.</p>
                     <table class="table table-condensed">
                     <tr>
                 <td>int</td>
-                <td>$judy_type</td>
-                <td><p>The Judy type to be used.</p></td>
+                <td>$type</td>
+                <td><p>One of the Judy type constants (e.g. Judy::INT_TO_INT).</p></td>
             </tr>
             </table>
 
@@ -409,7 +739,7 @@ Construct a new Judy object. A Judy object can be accessed like a PHP Array.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L54">at line 54</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L85">at line 85</a></div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -420,214 +750,7 @@ Construct a new Judy object. A Judy object can be accessed like a PHP Array.</p>
             
 
         <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Destruct a Judy object.</p></p>                        
-        </div>
-        <div class="tags">
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_byCount">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L63">at line 63</a></div>
-        <code>                    int
-    <strong>byCount</strong>(int $nth_index)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Locate the Nth index present in the Judy array.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>int</td>
-                <td>$nth_index</td>
-                <td><p>Nth index to return. If nth_index equal 1, then it will return the first index in the array.</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int</td>
-            <td><p>Return the index at the given Nth position.</p></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_count">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L73">at line 73</a></div>
-        <code>                    int
-    <strong>count</strong>(int $index_start = 0, int $index_end = -1)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Count the number of elements in the Judy array.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>int</td>
-                <td>$index_start</td>
-                <td><p>[optional] <p>Start counting from the given index. Default is first index.</p></p></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$index_end</td>
-                <td><p>[optional] <p>Stop counting when reaching this index. Default is last index.</p></p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>int</td>
-            <td><p>Return the number of elements.</p></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_first">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L82">at line 82</a></div>
-        <code>                    mixed
-    <strong>first</strong>(mixed $index = 0)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Search (inclusive) for the first index present that is equal to or greater than the passed Index.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>mixed</td>
-                <td>$index</td>
-                <td><p>[optional] <p>The index can be an integer or a string corresponding to the index where to start the search.</p></p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed</td>
-            <td><p>Return the corresponding index in the array.</p></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_firstEmpty">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L91">at line 91</a></div>
-        <code>                    mixed
-    <strong>firstEmpty</strong>(mixed $index = 0)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Search (inclusive) for the first absent index that is equal to or greater than the passed Index.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>mixed</td>
-                <td>$index</td>
-                <td><p>[optional] <p>The index can be an integer or a string corresponding to the index where to start the search.</p></p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed</td>
-            <td><p>Return the corresponding index in the array.</p></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_free">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L98">at line 98</a></div>
-        <code>                    
-    <strong>free</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Free the entire Judy array.</p></p>                        
+                            <p><p>Free the Judy array and release all associated resources.</p></p>                        
         </div>
         <div class="tags">
             
@@ -640,7 +763,7 @@ Free the entire Judy array.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getType">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L106">at line 106</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L91">at line 91</a></div>
         <code>                    int
     <strong>getType</strong>()
         </code>
@@ -651,8 +774,7 @@ Free the entire Judy array.</p></p>
             
 
         <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Return an integer corresponding to the Judy type of the current object.</p></p>                        
+                            <p><p>Return the type constant of this Judy array.</p></p>                        
         </div>
         <div class="tags">
             
@@ -661,7 +783,7 @@ Return an integer corresponding to the Judy type of the current object.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td><p>Return an integer corresponding to a Judy type.</p></td>
+            <td><p>One of the Judy type constants.</p></td>
         </tr>
     </table>
 
@@ -673,10 +795,10 @@ Return an integer corresponding to the Judy type of the current object.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_last">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L115">at line 115</a></div>
-        <code>                    mixed
-    <strong>last</strong>(int|string $index = -1)
+                    <h3 id="method_free">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L97">at line 97</a></div>
+        <code>                    int
+    <strong>free</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -685,71 +807,16 @@ Return an integer corresponding to the Judy type of the current object.</p></p>
             
 
         <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Search (inclusive) for the last index present that is equal to or less than the passed Index.</p></p>                        
+                            <p><p>Free the entire Judy array.</p></p>                        
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>int|string</td>
-                <td>$index</td>
-                <td><p>[optional] <p>The index can be an integer or a string corresponding to the index where to start the search.</p></p></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>mixed</td>
-            <td><p>Return the corresponding index in the array.</p></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_lastEmpty">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L124">at line 124</a></div>
-        <code>                    mixed
-    <strong>lastEmpty</strong>(int|string $index = -1)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Search (inclusive) for the last absent index that is equal to or less than the passed Index.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>int|string</td>
-                <td>$index</td>
-                <td><p>[optional] <p>The index can be an integer or a string corresponding to the index where to start the search.</p></p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed</td>
-            <td><p>Return the corresponding index in the array.</p></td>
+            <td>int</td>
+            <td><p>The number of bytes freed.</p></td>
         </tr>
     </table>
 
@@ -762,8 +829,8 @@ Search (inclusive) for the last absent index that is equal to or less than the p
             </div>
                     <div class="method-item">
                     <h3 id="method_memoryUsage">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L132">at line 132</a></div>
-        <code>                    int
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L104">at line 104</a></div>
+        <code>                    int|null
     <strong>memoryUsage</strong>()
         </code>
     </h3>
@@ -773,8 +840,7 @@ Search (inclusive) for the last absent index that is equal to or less than the p
             
 
         <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Return the memory used by the Judy array.</p></p>                        
+                            <p><p>Return the memory used by the internal Judy structure.</p></p>                        
         </div>
         <div class="tags">
             
@@ -782,8 +848,9 @@ Return the memory used by the Judy array.</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
-            <td><p>Return the memory used in bytes.</p></td>
+            <td>int|null</td>
+            <td><p>Memory used in bytes, or null for string-keyed types
+(JudySL/JudyHS do not provide memory accounting).</p></td>
         </tr>
     </table>
 
@@ -795,10 +862,10 @@ Return the memory used by the Judy array.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_next">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L141">at line 141</a></div>
-        <code>                    mixed
-    <strong>next</strong>(mixed $index)
+                    <h3 id="method_size">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L113">at line 113</a></div>
+        <code>                    int
+    <strong>size</strong>(mixed $index_start = 0, mixed $index_end = -1)
         </code>
     </h3>
     <div class="details">    
@@ -807,8 +874,8 @@ Return the memory used by the Judy array.</p></p>
             
 
         <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Search (exclusive) for the next index present that is greater than the passed Index.</p></p>                        
+                            <p><p>Return the number of elements, optionally within a key range
+(integer-keyed types only).</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -816,8 +883,92 @@ Search (exclusive) for the next index present that is greater than the passed In
                     <table class="table table-condensed">
                     <tr>
                 <td>mixed</td>
-                <td>$index</td>
-                <td><p>The index can be an integer or a string corresponding to the index where to start the search.</p></td>
+                <td>$index_start</td>
+                <td><p>[optional] Start counting from the given index.</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$index_end</td>
+                <td><p>[optional] Stop counting at the given index.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>The number of elements.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_count">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L118">at line 118</a></div>
+        <code>                    int
+    <strong>count</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return the number of elements. Implements Countable.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>The custom count as an integer.</p>
+<p>
+The return value is cast to an integer.
+</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_byCount">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L126">at line 126</a></div>
+        <code>                    mixed
+    <strong>byCount</strong>(mixed $nth_index)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Locate the Nth index present in the array (1-based).</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$nth_index</td>
+                <td><p>The ordinal position to look up.</p></td>
             </tr>
             </table>
 
@@ -827,7 +978,228 @@ Search (exclusive) for the next index present that is greater than the passed In
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>Return the corresponding index in the array.</p></td>
+            <td><p>The index at the given position. Only supported for
+integer-keyed types; returns null for string-keyed types.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_first">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L134">at line 134</a></div>
+        <code>                    mixed
+    <strong>first</strong>(mixed $index = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Search (inclusive) for the first index present that is equal to or
+greater than the given index.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$index</td>
+                <td><p>[optional] Integer or string index to start from.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The corresponding index in the array.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_searchNext">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L142">at line 142</a></div>
+        <code>                    mixed
+    <strong>searchNext</strong>(mixed $index)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Search (exclusive) for the next index present that is greater than
+the given index.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$index</td>
+                <td><p>Integer or string index to start from.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The corresponding index in the array.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_last">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L150">at line 150</a></div>
+        <code>                    mixed
+    <strong>last</strong>(mixed $index = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Search (inclusive) for the last index present that is equal to or
+less than the given index.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$index</td>
+                <td><p>[optional] Integer or string index to start from.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The corresponding index in the array.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_prev">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L158">at line 158</a></div>
+        <code>                    mixed
+    <strong>prev</strong>(mixed $index)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Search (exclusive) for the previous index present that is less than
+the given index.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$index</td>
+                <td><p>Integer or string index to start from.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The corresponding index in the array.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_firstEmpty">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L166">at line 166</a></div>
+        <code>                    mixed
+    <strong>firstEmpty</strong>(mixed $index = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Search (inclusive) for the first absent index that is equal to or
+greater than the given index. Integer-keyed types only.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$index</td>
+                <td><p>[optional] Integer index to start from.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The corresponding absent index, or null for string-keyed types.</p></td>
         </tr>
     </table>
 
@@ -840,9 +1212,9 @@ Search (exclusive) for the next index present that is greater than the passed In
             </div>
                     <div class="method-item">
                     <h3 id="method_nextEmpty">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L150">at line 150</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L174">at line 174</a></div>
         <code>                    mixed
-    <strong>nextEmpty</strong>(int|string $index)
+    <strong>nextEmpty</strong>(mixed $index)
         </code>
     </h3>
     <div class="details">    
@@ -851,17 +1223,17 @@ Search (exclusive) for the next index present that is greater than the passed In
             
 
         <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Search (exclusive) for the next absent index that is greater than the passed Index.</p></p>                        
+                            <p><p>Search (exclusive) for the next absent index greater than the given
+index. Integer-keyed types only.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int|string</td>
+                <td>mixed</td>
                 <td>$index</td>
-                <td><p>The index can be an integer or a string corresponding to the index where to start the search.</p></td>
+                <td><p>Integer index to start from.</p></td>
             </tr>
             </table>
 
@@ -871,7 +1243,363 @@ Search (exclusive) for the next absent index that is greater than the passed Ind
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>Return the corresponding index in the array.</p></td>
+            <td><p>The corresponding absent index, or null for string-keyed types.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_lastEmpty">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L182">at line 182</a></div>
+        <code>                    mixed
+    <strong>lastEmpty</strong>(mixed $index = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Search (inclusive) for the last absent index that is equal to or
+less than the given index. Integer-keyed types only.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$index</td>
+                <td><p>[optional] Integer index to start from.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The corresponding absent index, or null for string-keyed types.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_prevEmpty">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L190">at line 190</a></div>
+        <code>                    mixed
+    <strong>prevEmpty</strong>(mixed $index)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Search (exclusive) for the previous absent index less than the given
+index. Integer-keyed types only.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$index</td>
+                <td><p>Integer index to start from.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The corresponding absent index, or null for string-keyed types.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_union">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L197">at line 197</a></div>
+        <code>                    <a href="Judy.html">Judy</a>
+    <strong>union</strong>(<a href="Judy.html">Judy</a> $other)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return a new Judy array containing all indices present in either array.</p></p>                <p><p>For integer-valued types, values from the other array overwrite on
+duplicate keys.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="Judy.html">Judy</a></td>
+                <td>$other</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="Judy.html">Judy</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_intersect">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L203">at line 203</a></div>
+        <code>                    <a href="Judy.html">Judy</a>
+    <strong>intersect</strong>(<a href="Judy.html">Judy</a> $other)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return a new Judy array containing only indices present in both arrays.</p></p>                <p><p>For integer-valued types, values from this array are used.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="Judy.html">Judy</a></td>
+                <td>$other</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="Judy.html">Judy</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_diff">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L209">at line 209</a></div>
+        <code>                    <a href="Judy.html">Judy</a>
+    <strong>diff</strong>(<a href="Judy.html">Judy</a> $other)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return a new Judy array containing indices present in this array but
+not in the other.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="Judy.html">Judy</a></td>
+                <td>$other</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="Judy.html">Judy</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_xor">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L215">at line 215</a></div>
+        <code>                    <a href="Judy.html">Judy</a>
+    <strong>xor</strong>(<a href="Judy.html">Judy</a> $other)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return a new Judy array containing indices present in exactly one of
+the arrays (symmetric difference).</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="Judy.html">Judy</a></td>
+                <td>$other</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="Judy.html">Judy</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_mergeWith">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L222">at line 222</a></div>
+        <code>                    void
+    <strong>mergeWith</strong>(<a href="Judy.html">Judy</a> $other)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Merge another Judy array into this one in-place. Both arrays must use
+the same key category (both integer-keyed or both string-keyed).</p></p>                <p><p>Existing keys are overwritten.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="Judy.html">Judy</a></td>
+                <td>$other</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_slice">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L228">at line 228</a></div>
+        <code>                    <a href="Judy.html">Judy</a>
+    <strong>slice</strong>(mixed $start, mixed $end)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return a new Judy array containing entries in the [$start, $end]
+range (inclusive). For string-keyed types, comparison is lexicographic.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$start</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$end</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="Judy.html">Judy</a></td>
+            <td></td>
         </tr>
     </table>
 
@@ -884,7 +1612,7 @@ Search (exclusive) for the next absent index that is greater than the passed Ind
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetExists">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L159">at line 159</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L233">at line 233</a></div>
         <code>                    bool
     <strong>offsetExists</strong>(TKey $offset)
         </code>
@@ -895,8 +1623,7 @@ Search (exclusive) for the next absent index that is greater than the passed Ind
             
 
         <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Whether or not an offset exists.</p></p>                        
+                            <p><p>Check whether the given offset exists in the array.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -933,7 +1660,7 @@ The return value will be casted to boolean if non-boolean was returned.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetGet">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L168">at line 168</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L238">at line 238</a></div>
         <code>                    mixed
     <strong>offsetGet</strong>(TKey $offset)
         </code>
@@ -944,8 +1671,7 @@ The return value will be casted to boolean if non-boolean was returned.</td>
             
 
         <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Returns the value at specified offset.</p></p>                        
+                            <p><p>Return the value at the given offset.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -979,7 +1705,7 @@ The offset to retrieve.
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetSet">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L177">at line 177</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L243">at line 243</a></div>
         <code>                    void
     <strong>offsetSet</strong>(TKey $offset, TValue $value)
         </code>
@@ -990,8 +1716,7 @@ The offset to retrieve.
             
 
         <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Assigns a value to the specified offset.</p></p>                        
+                            <p><p>Set the value at the given offset.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1032,7 +1757,7 @@ The value to set.
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetUnset">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L185">at line 185</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L248">at line 248</a></div>
         <code>                    void
     <strong>offsetUnset</strong>(TKey $offset)
         </code>
@@ -1043,8 +1768,7 @@ The value to set.
             
 
         <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Unsets an offset.</p></p>                        
+                            <p><p>Remove the element at the given offset.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1077,10 +1801,10 @@ The offset to unset.
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_prev">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L194">at line 194</a></div>
+                    <h3 id="method_jsonSerialize">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L253">at line 253</a></div>
         <code>                    mixed
-    <strong>prev</strong>(mixed $index)
+    <strong>jsonSerialize</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -1089,27 +1813,17 @@ The offset to unset.
             
 
         <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Search (exclusive) for the previous index present that is less than the passed Index.</p></p>                        
+                            <p><p>Return data suitable for json_encode(). Implements JsonSerializable.</p></p>                        
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>mixed</td>
-                <td>$index</td>
-                <td><p>The index can be an integer or a string corresponding to the index where to start the search.</p></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td><p>Return the corresponding index in the array.</p></td>
+            <td><p>data which can be serialized by <b>json_encode</b>,
+which is a value of any type other than a resource.</p></td>
         </tr>
     </table>
 
@@ -1121,10 +1835,10 @@ Search (exclusive) for the previous index present that is less than the passed I
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_prevEmpty">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L203">at line 203</a></div>
-        <code>                    mixed
-    <strong>prevEmpty</strong>(mixed $index)
+                    <h3 id="method___serialize">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L258">at line 258</a></div>
+        <code>                    array
+    <strong>__serialize</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -1133,27 +1847,16 @@ Search (exclusive) for the previous index present that is less than the passed I
             
 
         <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Search (exclusive) for the previous index absent that is less than the passed Index.</p></p>                        
+                            <p><p>Return serialization data as ['type' =&gt; int, 'data' =&gt; array].</p></p>                        
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>mixed</td>
-                <td>$index</td>
-                <td><p>The index can be an integer or a string corresponding to the index where to start the search.</p></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>mixed</td>
-            <td><p>Return the corresponding index in the array.</p></td>
+            <td>array</td>
+            <td></td>
         </tr>
     </table>
 
@@ -1165,10 +1868,222 @@ Search (exclusive) for the previous index absent that is less than the passed In
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_size">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L214">at line 214</a></div>
+                    <h3 id="method___unserialize">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L263">at line 263</a></div>
+        <code>                    void
+    <strong>__unserialize</strong>(array $data)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Restore a Judy array from serialized data.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_toArray">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L269">at line 269</a></div>
+        <code>                    array
+    <strong>toArray</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Convert the Judy array to a native PHP array. Uses native C iteration
+internally, faster than a manual foreach.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fromArray">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L276">at line 276</a></div>
+        <code>        static            <a href="Judy.html">Judy</a>
+    <strong>fromArray</strong>(int $type, array $data)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a new Judy array from a PHP array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$type</td>
+                <td><p>One of the Judy type constants.</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td><p>Key-value pairs to populate the array with.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="Judy.html">Judy</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_putAll">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L281">at line 281</a></div>
+        <code>                    void
+    <strong>putAll</strong>(array $data)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Bulk-insert entries from a PHP array into this Judy array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAll">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L289">at line 289</a></div>
+        <code>                    array
+    <strong>getAll</strong>(array $keys)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Retrieve multiple values at once.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$keys</td>
+                <td><p>Keys to look up.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Associative array mapping each requested key to its
+value (or null if absent).</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_increment">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L296">at line 296</a></div>
         <code>                    int
-    <strong>size</strong>(int $index_start = 0, int $index_end = -1)
+    <strong>increment</strong>(mixed $key, int $amount = 1)
         </code>
     </h3>
     <div class="details">    
@@ -1177,23 +2092,22 @@ Search (exclusive) for the previous index absent that is less than the passed In
             
 
         <div class="method-description">
-                            <p><p>(PECL judy &gt;= 0.1.1)<br/>
-Count the number of elements in the Judy array.<br/>
-This method is an alias of      const count.</p></p>                        
+                            <p><p>Atomically increment the value at the given key. If the key does not
+exist, it is created with the given amount. The amount may be negative.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
-                <td>$index_start</td>
-                <td><p>[optional] <p>Start counting from the given index. Default is first index.</p></p></td>
+                <td>mixed</td>
+                <td>$key</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>int</td>
-                <td>$index_end</td>
-                <td><p>[optional] <p>Stop counting when reaching this index. Default is last index.</p></p></td>
+                <td>$amount</td>
+                <td></td>
             </tr>
             </table>
 
@@ -1203,7 +2117,575 @@ This method is an alias of      const count.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td><p>Return the number of elements.</p></td>
+            <td><p>The new value.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_rewind">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L301">at line 301</a></div>
+        <code>                    void
+    <strong>rewind</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Rewind the iterator to the first element.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td><p>Any returned value is ignored.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_valid">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L306">at line 306</a></div>
+        <code>                    bool
+    <strong>valid</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Check whether the current iterator position is valid.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>The return value will be casted to boolean and then evaluated.
+Returns true on success or false on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_current">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L311">at line 311</a></div>
+        <code>                    mixed
+    <strong>current</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return the value at the current iterator position.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>Can return any type.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_key">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L316">at line 316</a></div>
+        <code>                    mixed
+    <strong>key</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return the key at the current iterator position.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>TKey on success, or null on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_next">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L321">at line 321</a></div>
+        <code>                    void
+    <strong>next</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Advance the iterator to the next element.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td><p>Any returned value is ignored.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_keys">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L326">at line 326</a></div>
+        <code>                    array
+    <strong>keys</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return all keys as a PHP array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_values">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L331">at line 331</a></div>
+        <code>                    array
+    <strong>values</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return all values as a PHP array.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_forEach">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L337">at line 337</a></div>
+        <code>                    void
+    <strong>forEach</strong>(callable $callback)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Call a callback for each element, iterating in C. The callback
+receives ($key, $value) for each element.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_filter">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L342">at line 342</a></div>
+        <code>                    <a href="Judy.html">Judy</a>
+    <strong>filter</strong>(callable $predicate)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return a new Judy array containing only elements matching the predicate.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$predicate</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="Judy.html">Judy</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_map">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L347">at line 347</a></div>
+        <code>                    <a href="Judy.html">Judy</a>
+    <strong>map</strong>(callable $transform)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return a new Judy array with values transformed by the callback.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$transform</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="Judy.html">Judy</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sumValues">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L353">at line 353</a></div>
+        <code>                    int|float
+    <strong>sumValues</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return the sum of all values in the array. For BITSET, returns the
+population count.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|float</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_averageValues">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L359">at line 359</a></div>
+        <code>                    float|null
+    <strong>averageValues</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return the average of all values, or null if the array is empty.</p></p>                <p><p>For BITSET, always returns 1.0.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>float|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_populationCount">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L365">at line 365</a></div>
+        <code>                    int
+    <strong>populationCount</strong>(mixed $start = 0, mixed $end = -1)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return the number of keys in the [$start, $end] range (inclusive).</p></p>                <p><p>Integer-keyed types only.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$start</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$end</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteRange">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L371">at line 371</a></div>
+        <code>                    int
+    <strong>deleteRange</strong>(mixed $start, mixed $end)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Delete all keys in the [$start, $end] range (inclusive).</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$start</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$end</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>The number of elements deleted.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_equals">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L376">at line 376</a></div>
+        <code>                    bool
+    <strong>equals</strong>(<a href="Judy.html">Judy</a> $other)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Check if two Judy arrays have identical type, size, and key-value pairs.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="Judy.html">Judy</a></td>
+                <td>$other</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
         </tr>
     </table>
 
