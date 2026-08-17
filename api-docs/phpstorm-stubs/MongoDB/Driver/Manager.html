@@ -389,7 +389,7 @@ Any write or query can throw connection exceptions as connections are created la
             </div>
                     <div class="method-item">
                     <h3 id="method_createClientEncryption">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L44">at line 44</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L66">at line 66</a></div>
         <code>final                    <a href="../../MongoDB/Driver/ClientEncryption.html"><abbr title="MongoDB\Driver\ClientEncryption">ClientEncryption</abbr></a>
     <strong>createClientEncryption</strong>(array $options)
         </code>
@@ -409,7 +409,28 @@ Any write or query can throw connection exceptions as connections are created la
                     <tr>
                 <td>array</td>
                 <td>$options</td>
-                <td></td>
+                <td><p>options Option Type Description keyVaultClient MongoDB\Driver\Manager
+The Manager used to route data key queries to a separate MongoDB cluster. By default, the
+current Manager and cluster is used. keyVaultNamespace string A fully qualified namespace
+(e.g. &quot;databaseName.collectionName&quot;) denoting the collection that contains all data keys used
+for encryption and decryption. This option is required. kmsProviders array A document
+containing the configuration for one or more KMS providers, which are used to encrypt data
+keys. Supported providers include &quot;aws&quot;, &quot;azure&quot;, &quot;gcp&quot;, &quot;kmip&quot;, and &quot;local&quot; and at least one
+must be specified. If an empty document is specified for &quot;aws&quot;, &quot;azure&quot;, or &quot;gcp&quot;, the driver
+will attempt to configure the provider using Automatic Credentials. The format for &quot;aws&quot; is
+as follows: aws: { accessKeyId: <string>, secretAccessKey: <string>, sessionToken: &lt;optional
+string&gt; } The format for &quot;azure&quot; is as follows: azure: { tenantId: <string>, clientId:</p>
+<string>, clientSecret: <string>, identityPlatformEndpoint: <optional string> // Defaults to
+"login.microsoftonline.com" } The format for "gcp" is as follows: gcp: { email: <string>,
+privateKey: <base64 string>|<MongoDB\BSON\Binary>, endpoint: <optional string> // Defaults to
+"oauth2.googleapis.com" } The format for "kmip" is as follows: kmip: { endpoint: <string> }
+The format for "local" is as follows: local: { // 96-byte master key used to encrypt/decrypt
+data keys key: <base64 string>|<MongoDB\BSON\Binary> } tlsOptions array A document containing
+the TLS configuration for one or more KMS providers. Supported providers include "aws",
+"azure", "gcp", and "kmip". All providers support the following options: <provider>: {
+tlsCaFile: <optional string>, tlsCertificateKeyFile: <optional string>,
+tlsCertificateKeyFilePassword: <optional string>, tlsDisableOCSPEndpointCheck: <optional
+bool> }</td>
             </tr>
             </table>
 
@@ -419,7 +440,8 @@ Any write or query can throw connection exceptions as connections are created la
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../MongoDB/Driver/ClientEncryption.html"><abbr title="MongoDB\Driver\ClientEncryption">ClientEncryption</abbr></a></td>
-            <td></td>
+            <td><p>Returns a new MongoDB\Driver\ClientEncryption
+instance.</p></td>
         </tr>
     </table>
 
@@ -445,7 +467,7 @@ Any write or query can throw connection exceptions as connections are created la
             </div>
                     <div class="method-item">
                     <h3 id="method_executeBulkWrite">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L59">at line 59</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L81">at line 81</a></div>
         <code>final                    <a href="../../MongoDB/Driver/WriteResult.html"><abbr title="MongoDB\Driver\WriteResult">WriteResult</abbr></a>
     <strong>executeBulkWrite</strong>(string $namespace, <a href="../../MongoDB/Driver/BulkWrite.html"><abbr title="MongoDB\Driver\BulkWrite">BulkWrite</abbr></a> $bulk, array|null $options = null)
         </code>
@@ -524,7 +546,7 @@ Any write or query can throw connection exceptions as connections are created la
             </div>
                     <div class="method-item">
                     <h3 id="method_executeBulkWriteCommand">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L74">at line 74</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L98">at line 98</a></div>
         <code>final                    <a href="../../MongoDB/Driver/BulkWriteCommandResult.html"><abbr title="MongoDB\Driver\BulkWriteCommandResult">BulkWriteCommandResult</abbr></a>
     <strong>executeBulkWriteCommand</strong>(<a href="../../MongoDB/Driver/BulkWriteCommand.html"><abbr title="MongoDB\Driver\BulkWriteCommand">BulkWriteCommand</abbr></a> $bulkWriteCommand, array|null $options = null)
         </code>
@@ -550,7 +572,9 @@ Any write or query can throw connection exceptions as connections are created la
                     <tr>
                 <td>array|null</td>
                 <td>$options</td>
-                <td></td>
+                <td><p>options Option Type Description session MongoDB\Driver\Session A
+session to associate with the operation. writeConcern MongoDB\Driver\WriteConcern A write
+concern to apply to the operation.</p></td>
             </tr>
             </table>
 
@@ -560,7 +584,7 @@ Any write or query can throw connection exceptions as connections are created la
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../MongoDB/Driver/BulkWriteCommandResult.html"><abbr title="MongoDB\Driver\BulkWriteCommandResult">BulkWriteCommandResult</abbr></a></td>
-            <td></td>
+            <td><p>Returns MongoDB\Driver\BulkWriteCommandResult on success.</p></td>
         </tr>
     </table>
 
@@ -598,7 +622,7 @@ Any write or query can throw connection exceptions as connections are created la
             </div>
                     <div class="method-item">
                     <h3 id="method_executeCommand">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L89">at line 89</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L113">at line 113</a></div>
         <code>final                    <a href="../../MongoDB/Driver/CursorInterface.html"><abbr title="MongoDB\Driver\CursorInterface">CursorInterface</abbr></a>
     <strong>executeCommand</strong>(string $db, <a href="../../MongoDB/Driver/Command.html"><abbr title="MongoDB\Driver\Command">Command</abbr></a> $command, array|null $options = null)
         </code>
@@ -682,7 +706,7 @@ Any write or query can throw connection exceptions as connections are created la
             </div>
                     <div class="method-item">
                     <h3 id="method_executeQuery">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L103">at line 103</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L127">at line 127</a></div>
         <code>final                    <a href="../../MongoDB/Driver/CursorInterface.html"><abbr title="MongoDB\Driver\CursorInterface">CursorInterface</abbr></a>
     <strong>executeQuery</strong>(string $namespace, <a href="../../MongoDB/Driver/Query.html"><abbr title="MongoDB\Driver\Query">Query</abbr></a> $query, array|null $options = null)
         </code>
@@ -757,7 +781,7 @@ Any write or query can throw connection exceptions as connections are created la
             </div>
                     <div class="method-item">
                     <h3 id="method_executeReadCommand">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L118">at line 118</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L150">at line 150</a></div>
         <code>final                    <a href="../../MongoDB/Driver/CursorInterface.html"><abbr title="MongoDB\Driver\CursorInterface">CursorInterface</abbr></a>
     <strong>executeReadCommand</strong>(string $db, <a href="../../MongoDB/Driver/Command.html"><abbr title="MongoDB\Driver\Command">Command</abbr></a> $command, array|null $options = null)
         </code>
@@ -789,7 +813,15 @@ Any write or query can throw connection exceptions as connections are created la
                     <tr>
                 <td>array|null</td>
                 <td>$options</td>
-                <td></td>
+                <td><p>options Option Type Description readConcern
+MongoDB\Driver\ReadConcern A read concern to apply to the operation. This option is available
+in MongoDB 3.2+ and will result in an exception at execution time if specified for an older
+server version. readPreference MongoDB\Driver\ReadPreference A read preference to use for
+selecting a server for the operation. session MongoDB\Driver\Session A session to associate
+with the operation. If you are using a &quot;session&quot; which has a transaction in progress, you
+cannot specify a &quot;readConcern&quot; or &quot;writeConcern&quot; option. This will result in an
+MongoDB\Driver\Exception\InvalidArgumentException being thrown. Instead, you should set these
+two options when you create the transaction with MongoDB\Driver\Session::startTransaction.</p></td>
             </tr>
             </table>
 
@@ -841,7 +873,7 @@ Any write or query can throw connection exceptions as connections are created la
             </div>
                     <div class="method-item">
                     <h3 id="method_executeReadWriteCommand">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L133">at line 133</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L173">at line 173</a></div>
         <code>final                    <a href="../../MongoDB/Driver/CursorInterface.html"><abbr title="MongoDB\Driver\CursorInterface">CursorInterface</abbr></a>
     <strong>executeReadWriteCommand</strong>(string $db, <a href="../../MongoDB/Driver/Command.html"><abbr title="MongoDB\Driver\Command">Command</abbr></a> $command, array|null $options = null)
         </code>
@@ -873,7 +905,15 @@ Any write or query can throw connection exceptions as connections are created la
                     <tr>
                 <td>array|null</td>
                 <td>$options</td>
-                <td></td>
+                <td><p>options Option Type Description readConcern
+MongoDB\Driver\ReadConcern A read concern to apply to the operation. This option is available
+in MongoDB 3.2+ and will result in an exception at execution time if specified for an older
+server version. session MongoDB\Driver\Session A session to associate with the operation.
+writeConcern MongoDB\Driver\WriteConcern A write concern to apply to the operation. If you
+are using a &quot;session&quot; which has a transaction in progress, you cannot specify a &quot;readConcern&quot;
+or &quot;writeConcern&quot; option. This will result in an
+MongoDB\Driver\Exception\InvalidArgumentException being thrown. Instead, you should set these
+two options when you create the transaction with MongoDB\Driver\Session::startTransaction.</p></td>
             </tr>
             </table>
 
@@ -925,7 +965,7 @@ Any write or query can throw connection exceptions as connections are created la
             </div>
                     <div class="method-item">
                     <h3 id="method_executeWriteCommand">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L148">at line 148</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L193">at line 193</a></div>
         <code>final                    <a href="../../MongoDB/Driver/CursorInterface.html"><abbr title="MongoDB\Driver\CursorInterface">CursorInterface</abbr></a>
     <strong>executeWriteCommand</strong>(string $db, <a href="../../MongoDB/Driver/Command.html"><abbr title="MongoDB\Driver\Command">Command</abbr></a> $command, array|null $options = null)
         </code>
@@ -957,7 +997,12 @@ Any write or query can throw connection exceptions as connections are created la
                     <tr>
                 <td>array|null</td>
                 <td>$options</td>
-                <td></td>
+                <td><p>options Option Type Description session MongoDB\Driver\Session A
+session to associate with the operation. writeConcern MongoDB\Driver\WriteConcern A write
+concern to apply to the operation. If you are using a &quot;session&quot; which has a transaction in
+progress, you cannot specify a &quot;readConcern&quot; or &quot;writeConcern&quot; option. This will result in an
+MongoDB\Driver\Exception\InvalidArgumentException being thrown. Instead, you should set these
+two options when you create the transaction with MongoDB\Driver\Session::startTransaction.</p></td>
             </tr>
             </table>
 
@@ -1009,7 +1054,7 @@ Any write or query can throw connection exceptions as connections are created la
             </div>
                     <div class="method-item">
                     <h3 id="method_getEncryptedFieldsMap">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L155">at line 155</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L200">at line 200</a></div>
         <code>final                    array|object|null
     <strong>getEncryptedFieldsMap</strong>()
         </code>
@@ -1043,7 +1088,7 @@ Any write or query can throw connection exceptions as connections are created la
             </div>
                     <div class="method-item">
                     <h3 id="method_getReadConcern">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L162">at line 162</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L207">at line 207</a></div>
         <code>final                    <a href="../../MongoDB/Driver/ReadConcern.html"><abbr title="MongoDB\Driver\ReadConcern">ReadConcern</abbr></a>
     <strong>getReadConcern</strong>()
         </code>
@@ -1085,7 +1130,7 @@ Any write or query can throw connection exceptions as connections are created la
             </div>
                     <div class="method-item">
                     <h3 id="method_getReadPreference">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L170">at line 170</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L215">at line 215</a></div>
         <code>final                    <a href="../../MongoDB/Driver/ReadPreference.html"><abbr title="MongoDB\Driver\ReadPreference">ReadPreference</abbr></a>
     <strong>getReadPreference</strong>()
         </code>
@@ -1105,7 +1150,7 @@ Any write or query can throw connection exceptions as connections are created la
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../MongoDB/Driver/ReadPreference.html"><abbr title="MongoDB\Driver\ReadPreference">ReadPreference</abbr></a></td>
-            <td></td>
+            <td><p>The MongoDB\Driver\ReadPreference for the Manager.</p></td>
         </tr>
     </table>
 
@@ -1127,7 +1172,7 @@ Any write or query can throw connection exceptions as connections are created la
             </div>
                     <div class="method-item">
                     <h3 id="method_getServers">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L178">at line 178</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L224">at line 224</a></div>
         <code>final                    array
     <strong>getServers</strong>()
         </code>
@@ -1147,7 +1192,8 @@ Any write or query can throw connection exceptions as connections are created la
                     <table class="table table-condensed">
         <tr>
             <td>array</td>
-            <td></td>
+            <td><p>Returns an array of MongoDB\Driver\Server instances to which this manager is
+connected.</p></td>
         </tr>
     </table>
 
@@ -1169,7 +1215,7 @@ Any write or query can throw connection exceptions as connections are created la
             </div>
                     <div class="method-item">
                     <h3 id="method_getWriteConcern">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L186">at line 186</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L232">at line 232</a></div>
         <code>final                    <a href="../../MongoDB/Driver/WriteConcern.html"><abbr title="MongoDB\Driver\WriteConcern">WriteConcern</abbr></a>
     <strong>getWriteConcern</strong>()
         </code>
@@ -1189,7 +1235,7 @@ Any write or query can throw connection exceptions as connections are created la
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../MongoDB/Driver/WriteConcern.html"><abbr title="MongoDB\Driver\WriteConcern">WriteConcern</abbr></a></td>
-            <td></td>
+            <td><p>The MongoDB\Driver\WriteConcern for the Manager.</p></td>
         </tr>
     </table>
 
@@ -1211,7 +1257,7 @@ Any write or query can throw connection exceptions as connections are created la
             </div>
                     <div class="method-item">
                     <h3 id="method_selectServer">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L198">at line 198</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L244">at line 244</a></div>
         <code>final                    <a href="../../MongoDB/Driver/Server.html"><abbr title="MongoDB\Driver\Server">Server</abbr></a>
     <strong>selectServer</strong>(<a href="../../MongoDB/Driver/ReadPreference.html"><abbr title="MongoDB\Driver\ReadPreference">ReadPreference</abbr></a>|null $readPreference = null)
         </code>
@@ -1241,7 +1287,7 @@ Any write or query can throw connection exceptions as connections are created la
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../MongoDB/Driver/Server.html"><abbr title="MongoDB\Driver\Server">Server</abbr></a></td>
-            <td></td>
+            <td><p>Returns a MongoDB\Driver\Server matching the read preference.</p></td>
         </tr>
     </table>
 
@@ -1275,7 +1321,7 @@ Any write or query can throw connection exceptions as connections are created la
             </div>
                     <div class="method-item">
                     <h3 id="method_startSession">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L209">at line 209</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L276">at line 276</a></div>
         <code>final                    <a href="../../MongoDB/Driver/Session.html"><abbr title="MongoDB\Driver\Session">Session</abbr></a>
     <strong>startSession</strong>(array|null $options = null)
         </code>
@@ -1296,7 +1342,28 @@ Any write or query can throw connection exceptions as connections are created la
                     <tr>
                 <td>array|null</td>
                 <td>$options</td>
-                <td></td>
+                <td><p>options Option Type Description Default causalConsistency bool
+Configure causal consistency in a session. If true, each operation in the session will be
+causally ordered after the previous read or write operation. Set to false to disable causal
+consistency. See Causal Consistency in the MongoDB manual for more information. true
+defaultTransactionOptions array Default options to apply to newly created transactions. These
+options are used unless they are overridden when a transaction is started with different
+value for each option. options Option Type Description maxCommitTimeMS integer The maximum
+amount of time in milliseconds to allow a single commitTransaction command to run. If
+specified, maxCommitTimeMS must be a signed 32-bit integer greater than or equal to zero.
+readConcern MongoDB\Driver\ReadConcern A read concern to apply to the operation. This option
+is available in MongoDB 3.2+ and will result in an exception at execution time if specified
+for an older server version. readPreference MongoDB\Driver\ReadPreference A read preference
+to use for selecting a server for the operation. writeConcern MongoDB\Driver\WriteConcern A
+write concern to apply to the operation. This option is available in MongoDB 4.0+. []
+snapshot bool Configure snapshot reads in a session. If true, a timestamp will be obtained
+from the first supported read operation in the session (i.e. find, aggregate, or unsharded
+distinct). Subsequent read operations within the session will then utilize a &quot;snapshot&quot; read
+concern level to read majority-committed data from that timestamp. Set to false to disable
+snapshot reads. Snapshot reads require MongoDB 5.0+ and cannot be used with causal
+consistency, transactions, or write operations. If &quot;snapshot&quot; is true, &quot;causalConsistency&quot;
+will default to false. See Read Concern &quot;snapshot&quot; in the MongoDB manual for more
+information. false</p></td>
             </tr>
             </table>
 
@@ -1306,7 +1373,7 @@ Any write or query can throw connection exceptions as connections are created la
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../MongoDB/Driver/Session.html"><abbr title="MongoDB\Driver\Session">Session</abbr></a></td>
-            <td></td>
+            <td><p>Returns a MongoDB\Driver\Session.</p></td>
         </tr>
     </table>
 
@@ -1332,7 +1399,7 @@ Any write or query can throw connection exceptions as connections are created la
             </div>
                     <div class="method-item">
                     <h3 id="method_addSubscriber">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L216">at line 216</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L283">at line 283</a></div>
         <code>final                    void
     <strong>addSubscriber</strong>(<a href="../../MongoDB/Driver/Monitoring/Subscriber.html"><abbr title="MongoDB\Driver\Monitoring\Subscriber">Subscriber</abbr></a> $subscriber)
         </code>
@@ -1376,7 +1443,7 @@ Any write or query can throw connection exceptions as connections are created la
             </div>
                     <div class="method-item">
                     <h3 id="method_removeSubscriber">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L223">at line 223</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Manager.php#L290">at line 290</a></div>
         <code>final                    void
     <strong>removeSubscriber</strong>(<a href="../../MongoDB/Driver/Monitoring/Subscriber.html"><abbr title="MongoDB\Driver\Monitoring\Subscriber">Subscriber</abbr></a> $subscriber)
         </code>

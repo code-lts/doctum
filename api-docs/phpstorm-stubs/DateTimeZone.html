@@ -348,7 +348,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1059">at line 1059</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1195">at line 1195</a></div>
         <code>                    
     <strong>__construct</strong>(string $timezone)
         </code>
@@ -368,7 +368,8 @@
                     <tr>
                 <td>string</td>
                 <td>$timezone</td>
-                <td></td>
+                <td><p>One of the supported timezone names, an offset value (+0200), or a
+timezone abbreviation (BST).</p></td>
             </tr>
             </table>
 
@@ -391,7 +392,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1066">at line 1066</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1205">at line 1205</a></div>
         <code>                    string
     <strong>getName</strong>()
         </code>
@@ -411,7 +412,10 @@
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td></td>
+            <td><p>Depending on zone type, UTC offset (type 1), timezone abbreviation (type 2),
+and timezone identifiers as published in the IANA timezone database (type 3), the descriptor
+string to create a new DateTimeZone object with the same offset and/or rules. For example
+02:00, CEST, or one of the timezone names in the list of timezones.</p></td>
         </tr>
     </table>
 
@@ -424,7 +428,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getLocation">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1074">at line 1074</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1213">at line 1213</a></div>
         <code>                    array|false
     <strong>getLocation</strong>()
         </code>
@@ -444,7 +448,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>array|false</td>
-            <td></td>
+            <td><p>Array containing location information about timezone or false on failure.</p></td>
         </tr>
     </table>
 
@@ -457,7 +461,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getOffset">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1089">at line 1089</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1229">at line 1229</a></div>
         <code>                    int
     <strong>getOffset</strong>(<a href="DateTimeInterface.html">DateTimeInterface</a> $datetime)
         </code>
@@ -477,7 +481,8 @@
                     <tr>
                 <td><a href="DateTimeInterface.html">DateTimeInterface</a></td>
                 <td>$datetime</td>
-                <td></td>
+                <td><p>DateTime that contains the date/time to compute the offset
+from.</p></td>
             </tr>
             </table>
 
@@ -487,7 +492,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td></td>
+            <td><p>Returns time zone offset in seconds.</p></td>
         </tr>
     </table>
 
@@ -500,7 +505,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getTransitions">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1099">at line 1099</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1247">at line 1247</a></div>
         <code>                    array|false
     <strong>getTransitions</strong>(int $timestampBegin = PHP_INT_MIN, int $timestampEnd = 2147483647)
         </code>
@@ -520,12 +525,12 @@
                     <tr>
                 <td>int</td>
                 <td>$timestampBegin</td>
-                <td></td>
+                <td><p>Begin timestamp.</p></td>
             </tr>
                     <tr>
                 <td>int</td>
                 <td>$timestampEnd</td>
-                <td></td>
+                <td><p>End timestamp.</p></td>
             </tr>
             </table>
 
@@ -535,7 +540,15 @@
                     <table class="table table-condensed">
         <tr>
             <td>array|false</td>
-            <td></td>
+            <td><p>Returns a numerically indexed array of transition arrays on success, or
+false on failure. DateTimeZone objects wrapping type 1 (UTC offsets) and type 2
+(abbreviations) do not contain any transitions, and calling this method on them will return
+false. If timestampBegin is given, the first entry in the returned array will contain a
+transition element at the time of timestampBegin. Transition Array Structure Key Type
+Description ts int Unix timestamp time string DateTimeInterface::ISO8601_EXPANDED (PHP 8.2
+and later), or DateTimeInterface::ISO8601 (PHP 8.1 and lower) time string offset int Offset
+to UTC in seconds isdst bool Whether daylight saving time is active abbr string Timezone
+abbreviation</p></td>
         </tr>
     </table>
 
@@ -548,7 +561,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_listAbbreviations">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1112">at line 1112</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1261">at line 1261</a></div>
         <code>        static            array
     <strong>listAbbreviations</strong>()
         </code>
@@ -568,7 +581,8 @@
                     <table class="table table-condensed">
         <tr>
             <td>array</td>
-            <td></td>
+            <td><p>Returns
+the array of timezone abbreviations.</p></td>
         </tr>
     </table>
 
@@ -581,7 +595,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_listIdentifiers">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1122">at line 1122</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1272">at line 1272</a></div>
         <code>        static            array|false
     <strong>listIdentifiers</strong>(int $timezoneGroup = DateTimeZone::ALL, string $countryCode = null)
         </code>
@@ -601,12 +615,13 @@
                     <tr>
                 <td>int</td>
                 <td>$timezoneGroup</td>
-                <td></td>
+                <td><p>One of the DateTimeZone class constants (or a combination).</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$countryCode</td>
-                <td></td>
+                <td><p>A two-letter (uppercase) ISO 3166-1 compatible country code. This
+option is only used when timezoneGroup is set to DateTimeZone::PER_COUNTRY.</p></td>
             </tr>
             </table>
 
@@ -629,7 +644,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___wakeup">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1132">at line 1132</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1282">at line 1282</a></div>
         <code>                    void
     <strong>__wakeup</strong>()
         </code>
@@ -663,7 +678,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___set_state">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1136">at line 1136</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1286">at line 1286</a></div>
         <code>        static            <a href="DateTimeZone.html">DateTimeZone</a>
     <strong>__set_state</strong>(array $array)
         </code>
@@ -707,7 +722,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___serialize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1139">at line 1139</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1289">at line 1289</a></div>
         <code>                    array
     <strong>__serialize</strong>()
         </code>
@@ -741,7 +756,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___unserialize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1142">at line 1142</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L1292">at line 1292</a></div>
         <code>                    void
     <strong>__unserialize</strong>(array $data)
         </code>

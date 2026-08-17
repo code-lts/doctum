@@ -243,7 +243,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/event/event.php#L1167">at line 1167</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/event/event.php#L1211">at line 1211</a></div>
         <code>                    
     <strong>__construct</strong>(<a href="EventBase.html">EventBase</a> $base, bool $initialize)
         </code>
@@ -263,12 +263,20 @@
                     <tr>
                 <td><a href="EventBase.html">EventBase</a></td>
                 <td>$base</td>
-                <td></td>
+                <td><p>Event base.</p></td>
             </tr>
                     <tr>
                 <td>bool</td>
                 <td>$initialize</td>
-                <td></td>
+                <td><p>If initialize is true, it attempts to use the underlying
+operating system defaults to configure the DNS base sensibly. If it is false, the DNS base is
+left unconfigured, with no nameservers or options set. In the latter case the DNS base should
+be configured manually, e.g. with EventDnsBase::parseResolvConf. If initialize is an integer,
+it must be one of the following flags: Flag Description EventDnsBase::DISABLE_WHEN_INACTIVE
+Do not prevent the libevent event loop from exiting when we have no active DNS requests.
+EventDnsBase::INITIALIZE_NAMESERVERS Process the resolv.conf.
+EventDnsBase::NAMESERVERS_NO_DEFAULT Do not add default nameserver if there are no
+nameservers in the resolv.conf.</p></td>
             </tr>
             </table>
 
@@ -293,7 +301,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_addNameserverIp">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/event/event.php#L1180">at line 1180</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/event/event.php#L1225">at line 1225</a></div>
         <code>                    bool
     <strong>addNameserverIp</strong>(string $ip)
         </code>
@@ -313,7 +321,8 @@
                     <tr>
                 <td>string</td>
                 <td>$ip</td>
-                <td></td>
+                <td><p>The nameserver string, either as an IPv4 address, an IPv6 address, an IPv4
+address with a port ( IPv4:Port ), or an IPv6 address with a port ( [IPv6]:Port ).</p></td>
             </tr>
             </table>
 
@@ -323,7 +332,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -347,7 +356,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_addSearch">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/event/event.php#L1190">at line 1190</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/event/event.php#L1235">at line 1235</a></div>
         <code>                    void
     <strong>addSearch</strong>(string $domain)
         </code>
@@ -367,7 +376,7 @@
                     <tr>
                 <td>string</td>
                 <td>$domain</td>
-                <td></td>
+                <td><p>Search domain.</p></td>
             </tr>
             </table>
 
@@ -401,7 +410,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_clearSearch">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/event/event.php#L1198">at line 1198</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/event/event.php#L1243">at line 1243</a></div>
         <code>                    void
     <strong>clearSearch</strong>()
         </code>
@@ -445,7 +454,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_countNameservers">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/event/event.php#L1208">at line 1208</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/event/event.php#L1255">at line 1255</a></div>
         <code>                    int
     <strong>countNameservers</strong>()
         </code>
@@ -465,7 +474,9 @@
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td></td>
+            <td><p>Returns the number of configured nameservers(not necessarily the number of
+running nameservers). This is useful for double-checking whether our calls to the various
+nameserver configuration functions have been successful.</p></td>
         </tr>
     </table>
 
@@ -489,7 +500,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_loadHosts">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/event/event.php#L1220">at line 1220</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/event/event.php#L1267">at line 1267</a></div>
         <code>                    bool
     <strong>loadHosts</strong>(string $hosts)
         </code>
@@ -509,7 +520,7 @@
                     <tr>
                 <td>string</td>
                 <td>$hosts</td>
-                <td></td>
+                <td><p>Path to the hosts' file.</p></td>
             </tr>
             </table>
 
@@ -519,7 +530,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -543,7 +554,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_parseResolvConf">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/event/event.php#L1233">at line 1233</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/event/event.php#L1285">at line 1285</a></div>
         <code>                    bool
     <strong>parseResolvConf</strong>(int $flags, string $filename)
         </code>
@@ -563,12 +574,17 @@
                     <tr>
                 <td>int</td>
                 <td>$flags</td>
-                <td></td>
+                <td><p>Determines what information is parsed from the resolv.conf file. See the
+man page for resolv.conf for the format of this file. The following directives are not parsed
+from the file: sortlist, rotate, no-check-names, inet6, debug. If this function encounters an
+error, the possible return values are: 1 = failed to open file 2 = failed to stat file 3 =
+file too large 4 = out of memory 5 = short read from file 6 = no nameservers listed in the
+file</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$filename</td>
-                <td></td>
+                <td><p>Path to resolv.conf file.</p></td>
             </tr>
             </table>
 
@@ -578,7 +594,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -602,7 +618,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setOption">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/event/event.php#L1246">at line 1246</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/event/event.php#L1299">at line 1299</a></div>
         <code>                    bool
     <strong>setOption</strong>(string $option, string $value)
         </code>
@@ -622,12 +638,13 @@
                     <tr>
                 <td>string</td>
                 <td>$option</td>
-                <td></td>
+                <td><p>The currently available configuration options are: &quot;ndots&quot;, &quot;timeout&quot;,
+&quot;max-timeouts&quot;, &quot;max-inflight&quot;, and &quot;attempts&quot;.</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$value</td>
-                <td></td>
+                <td><p>Option value.</p></td>
             </tr>
             </table>
 
@@ -637,7 +654,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -661,7 +678,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setSearchNdots">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/event/event.php#L1258">at line 1258</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/event/event.php#L1311">at line 1311</a></div>
         <code>                    void
     <strong>setSearchNdots</strong>(int $ndots)
         </code>
@@ -681,7 +698,7 @@
                     <tr>
                 <td>int</td>
                 <td>$ndots</td>
-                <td></td>
+                <td><p>The number of dots.</p></td>
             </tr>
             </table>
 
@@ -691,7 +708,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td></td>
+            <td><p>Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 

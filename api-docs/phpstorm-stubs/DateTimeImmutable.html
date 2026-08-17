@@ -454,7 +454,7 @@ Adds an amount of days, months, years, hours, minutes and seconds</p></p>
                     <tr>
                 <td><a href="DateInterval.html">DateInterval</a></td>
                 <td>$interval</td>
-                <td></td>
+                <td><p>A DateInterval object</p></td>
             </tr>
             </table>
 
@@ -464,7 +464,7 @@ Adds an amount of days, months, years, hours, minutes and seconds</p></p>
                     <table class="table table-condensed">
         <tr>
             <td><a href="DateTimeImmutable.html">DateTimeImmutable</a></td>
-            <td></td>
+            <td><p>Returns a new DateTimeImmutable object with the modified data.</p></td>
         </tr>
     </table>
 
@@ -477,7 +477,7 @@ Adds an amount of days, months, years, hours, minutes and seconds</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_createFromFormat">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L297">at line 297</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L372">at line 372</a></div>
         <code>        static            <a href="DateTimeImmutable.html">DateTimeImmutable</a>|false
     <strong>createFromFormat</strong>(string $format, string $datetime, null|<a href="DateTimeZone.html">DateTimeZone</a> $timezone = null)
         </code>
@@ -498,12 +498,89 @@ Returns new DateTimeImmutable object formatted according to the specified format
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td></td>
+                <td><p>The format that the passed in string should be in. See the formatting
+options below. In most cases, the same letters as for the date can be used. All fields are
+initialised with the current date/time. In most cases you would want to reset these to &quot;zero&quot;
+(the Unix epoch, 1970-01-01 00:00:00 UTC). You do that by including the ! character as first
+character in your format, or | as your last. Please see the documentation for each character
+below for more information. The format is parsed from left to right, which means that in some
+situations the order in which the format characters are present affects the result. In the
+case of z (the day of the year), it is required that a year has already been parsed, for
+example through the Y or y characters. Letters that are used for parsing numbers allow a wide
+range of values, outside of what the logical range would be. For example, the d (day of the
+month) accepts values in the range from 00 to 99. The only constraint is on the amount of
+digits. The date/time parser's overflow mechanism is used when out-of-range values are given.
+The examples below show some of this behaviour. This also means that the data parsed for a
+format letter is greedy, and will read up to the amount of digits its format allows for. That
+can then also mean that there are no longer enough characters in the datetime string for
+following format characters. An example on this page also illustrates this issue. The
+following characters are recognized in the format parameter string format character
+Description Example parsable values Day --- --- d and j Day of the month, 2 digits with or
+without leading zeros 01 to 31 or 1 to 31. (2 digit numbers higher than the number of days in
+the month are accepted, in which case they will make the month overflow. For example using 33
+with January, means February 2nd) D and l A textual representation of a day Mon through Sun
+or Sunday through Saturday. If the day name given is different than the day name belonging to
+a parsed (or default) date is different, then an overflow occurs to the next date with the
+given day name. See the examples below for an explanation. S English ordinal suffix for the
+day of the month, 2 characters. It's ignored while processing. st, nd, rd or th. z The day of
+the year (starting from 0); must be preceded by Y or y. 0 through 365. (3 digit numbers
+higher than the numbers in a year are accepted, in which case they will make the year
+overflow. For example using 366 with 2022, means January 2nd, 2023) Month --- --- F and M A
+textual representation of a month, such as January or Sept January through December or Jan
+through Dec m and n Numeric representation of a month, with or without leading zeros 01
+through 12 or 1 through 12. (2 digit numbers higher than 12 are accepted, in which case they
+will make the year overflow. For example using 13 means January in the next year) Year ---
+--- X and x A full numeric representation of a year, up to 19 digits, optionally prefixed by</p>
+<ul>
+<li>or - Examples: 0055, 787, 1999, -2003, +10191 Y A full numeric representation of a year, up
+to 4 digits Examples: 25 (same as 0025), 787, 1999, 2003 y A two digit representation of a
+year (which is assumed to be in the range 1970-2069, inclusive) Examples: 99 or 03 (which
+will be interpreted as 1999 and 2003, respectively) Time --- --- a and A Ante meridiem and
+Post meridiem am or pm g and h 12-hour format of an hour with or without leading zero 1
+through 12 or 01 through 12 (2 digit numbers higher than 12 are accepted, in which case they
+will make the day overflow. For example using 14 means 02 in the next AM/PM period) G and H
+24-hour format of an hour with or without leading zeros 0 through 23 or 00 through 23 (2
+digit numbers higher than 24 are accepted, in which case they will make the day overflow. For
+example using 26 means 02:00 the next day) i Minutes with leading zeros 00 to 59. (2 digit
+numbers higher than 59 are accepted, in which case they will make the hour overflow. For
+example using 66 means :06 the next hour) s Seconds, with leading zeros 00 through 59 (2
+digit numbers higher than 59 are accepted, in which case they will make the minute overflow.
+For example using 90 means :30 the next minute) v Fraction in milliseconds (up to three
+digits) Example: 12 (0.12 seconds), 345 (0.345 seconds) u Fraction in microseconds (up to six
+digits) Example: 45 (0.45 seconds), 654321 (0.654321 seconds) Timezone --- --- e, O, p, P and
+T Timezone identifier, or difference to UTC in hours, or difference to UTC with colon between
+hours and minutes, or timezone abbreviation Examples: UTC, GMT, Atlantic/Azores or +0200 or
++02:00 or EST, MDT Full Date/Time --- --- U Seconds since the Unix Epoch (January 1 1970
+00:00:00 GMT) Example: 1292177455 Whitespace and Separators --- --- (space) Zero or more
+spaces, tabs, NBSP (U+A0), or NNBSP (U+202F) characters Example: &quot;\t&quot;, &quot; &quot; # One of the
+following separation symbol: ;, :, /, ., ,, -, ( or ) Example: / ;, :, /, ., ,, -, ( or ) The
+specified character. Example: - ? A random byte Example: ^ (Be aware that for UTF-8
+characters you might need more than one ?. In this case, using <em> is probably what you want
+instead) </em> Random bytes until the next separator or digit Example: <em> in Y-</em>-d with the string
+2009-aWord-08 will match aWord ! Resets all fields (year, month, day, hour, minute, second,
+fraction and timezone information) to zero-like values ( 0 for hour, minute, second and
+fraction, 1 for month and day, 1970 for year and the default timezone) Without !, all fields
+will be set to the current date and time. | Resets all fields (year, month, day, hour,
+minute, second, fraction and timezone information) to zero-like values if they have not been
+parsed yet Y-m-d| will set the year, month and day to the information found in the string to
+parse, and sets the hour, minute and second to 0. + If this format specifier is present,
+trailing data in the string will not cause an error, but a warning instead Use
+DateTimeImmutable::getLastErrors to find out whether trailing data was present. Unrecognized
+characters in the format string will cause the parsing to fail and an error message is
+appended to the returned structure. You can query error messages with
+DateTimeImmutable::getLastErrors. To include literal characters in format, you have to escape
+them with a backslash (). If format does not contain the character ! then portions of the
+generated date/time which are not specified in format will be set to the current system time.
+If format contains the character !, then portions of the generated date/time not provided in
+format, as well as values to the left-hand side of the !, will be set to corresponding values
+from the Unix epoch. If any time character is parsed, then all other time-related fields are
+set to &quot;0&quot;, unless also parsed. The Unix epoch is 1970-01-01 00:00:00 UTC.</li>
+</ul></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$datetime</td>
-                <td></td>
+                <td><p>String representing the time.</p></td>
             </tr>
                     <tr>
                 <td>null|<a href="DateTimeZone.html">DateTimeZone</a></td>
@@ -518,7 +595,7 @@ Returns new DateTimeImmutable object formatted according to the specified format
                     <table class="table table-condensed">
         <tr>
             <td><a href="DateTimeImmutable.html">DateTimeImmutable</a>|false</td>
-            <td></td>
+            <td><p>Returns a new DateTimeImmutable instance or false on failure.</p></td>
         </tr>
     </table>
 
@@ -540,7 +617,7 @@ Returns new DateTimeImmutable object formatted according to the specified format
             </div>
                     <div class="method-item">
                     <h3 id="method_createFromMutable">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L312">at line 312</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L387">at line 387</a></div>
         <code>        static            <a href="DateTimeImmutable.html">DateTimeImmutable</a>
     <strong>createFromMutable</strong>(<a href="DateTime.html">DateTime</a> $object)
         </code>
@@ -584,7 +661,7 @@ Returns new DateTimeImmutable object encapsulating the given DateTime object</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getLastErrors">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L322">at line 322</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L397">at line 397</a></div>
         <code>        static            array|false
     <strong>getLastErrors</strong>()
         </code>
@@ -618,7 +695,7 @@ Returns the warnings and errors</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_modify">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L351">at line 351</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L426">at line 426</a></div>
         <code>                    <a href="DateTimeImmutable.html">DateTimeImmutable</a>|false
     <strong>modify</strong>(string $modifier)
         </code>
@@ -672,7 +749,7 @@ https://php.net/manual/en/datetime.formats.php Date and Time Formats.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method___set_state">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L366">at line 366</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L441">at line 441</a></div>
         <code>        static            <a href="DateTimeImmutable.html">DateTimeImmutable</a>
     <strong>__set_state</strong>(array $array)
         </code>
@@ -716,7 +793,7 @@ The __set_state handler</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setDate">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L379">at line 379</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L454">at line 454</a></div>
         <code>                    <a href="DateTimeImmutable.html">DateTimeImmutable</a>
     <strong>setDate</strong>(int $year, int $month, int $day)
         </code>
@@ -770,7 +847,7 @@ Sets the date</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setISODate">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L397">at line 397</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L472">at line 472</a></div>
         <code>                    <a href="DateTimeImmutable.html">DateTimeImmutable</a>
     <strong>setISODate</strong>(int $year, int $week, int $dayOfWeek = 1)
         </code>
@@ -824,7 +901,7 @@ Sets the ISO date</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setTime">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L416">at line 416</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L491">at line 491</a></div>
         <code>                    <a href="DateTimeImmutable.html">DateTimeImmutable</a>
     <strong>setTime</strong>(int $hour, int $minute, int $second = 0, int $microsecond = 0)
         </code>
@@ -883,7 +960,7 @@ Sets the time</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setTimestamp">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L434">at line 434</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L510">at line 510</a></div>
         <code>                    <a href="DateTimeImmutable.html">DateTimeImmutable</a>
     <strong>setTimestamp</strong>(int $timestamp)
         </code>
@@ -914,7 +991,8 @@ Sets the date and time based on an Unix timestamp</p></p>
                     <table class="table table-condensed">
         <tr>
             <td><a href="DateTimeImmutable.html">DateTimeImmutable</a></td>
-            <td><p>Returns the <a href="https://php.net/manual/en/class.datetimeimmutable.php">https://php.net/manual/en/class.datetimeimmutable.php</a> DateTimeImmutable object for method chaining or <b>FALSE</b> on failure.</p></td>
+            <td><p>Returns the <a href="https://php.net/manual/en/class.datetimeimmutable.php">https://php.net/manual/en/class.datetimeimmutable.php</a> DateTimeImmutable object for method chaining.
+Prior to PHP 8.0, <b>FALSE</b> was returned on failure.</p></td>
         </tr>
     </table>
 
@@ -927,7 +1005,7 @@ Sets the date and time based on an Unix timestamp</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setTimezone">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L449">at line 449</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L526">at line 526</a></div>
         <code>                    <a href="DateTimeImmutable.html">DateTimeImmutable</a>
     <strong>setTimezone</strong>(<a href="DateTimeZone.html">DateTimeZone</a> $timezone)
         </code>
@@ -961,7 +1039,8 @@ desired time zone.
                     <table class="table table-condensed">
         <tr>
             <td><a href="DateTimeImmutable.html">DateTimeImmutable</a></td>
-            <td><p>Returns the <a href="https://php.net/manual/en/class.datetimeimmutable.php">https://php.net/manual/en/class.datetimeimmutable.php</a> DateTimeImmutable object for method chaining or <b>FALSE</b> on failure.</p></td>
+            <td><p>Returns the <a href="https://php.net/manual/en/class.datetimeimmutable.php">https://php.net/manual/en/class.datetimeimmutable.php</a> DateTimeImmutable object for method chaining.
+Prior to PHP 8.0, <b>FALSE</b> was returned on failure.</p></td>
         </tr>
     </table>
 
@@ -974,7 +1053,7 @@ desired time zone.
             </div>
                     <div class="method-item">
                     <h3 id="method_sub">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L464">at line 464</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L541">at line 541</a></div>
         <code>                    <a href="DateTimeImmutable.html">DateTimeImmutable</a>
     <strong>sub</strong>(<a href="DateInterval.html">DateInterval</a> $interval)
         </code>
@@ -1007,7 +1086,7 @@ A https://php.net/manual/en/class.dateinterval.php DateInterval object
                     <table class="table table-condensed">
         <tr>
             <td><a href="DateTimeImmutable.html">DateTimeImmutable</a></td>
-            <td></td>
+            <td><p>Returns a new DateTimeImmutable object with the modified data.</p></td>
         </tr>
     </table>
 
@@ -1029,7 +1108,7 @@ A https://php.net/manual/en/class.dateinterval.php DateInterval object
             </div>
                     <div class="method-item">
                     <h3 id="method_diff">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L478">at line 478</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L555">at line 555</a></div>
         <code>                    <a href="DateInterval.html">DateInterval</a>
     <strong>diff</strong>(<a href="DateTimeInterface.html">DateTimeInterface</a> $targetObject, bool $absolute = false)
         </code>
@@ -1079,7 +1158,7 @@ difference between the two dates.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_format">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L494">at line 494</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L572">at line 572</a></div>
         <code>                    string
     <strong>format</strong>(string $format)
         </code>
@@ -1126,7 +1205,7 @@ Since PHP8, it always returns <b>STRING</b>.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getOffset">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L506">at line 506</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L584">at line 584</a></div>
         <code>                    int
     <strong>getOffset</strong>()
         </code>
@@ -1161,7 +1240,7 @@ or <b>FALSE</b> on failure. Since PHP8, it always returns <b>INT</b>.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTimestamp">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L516">at line 516</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L594">at line 594</a></div>
         <code>                    int
     <strong>getTimestamp</strong>()
         </code>
@@ -1195,7 +1274,7 @@ Gets the Unix timestamp</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTimezone">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L527">at line 527</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L605">at line 605</a></div>
         <code>                    <a href="DateTimeZone.html">DateTimeZone</a>|false
     <strong>getTimezone</strong>()
         </code>
@@ -1230,7 +1309,7 @@ or <b>FALSE</b> on failure.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method___wakeup">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L536">at line 536</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L614">at line 614</a></div>
         <code>                    void
     <strong>__wakeup</strong>()
         </code>
@@ -1264,7 +1343,7 @@ The __wakeup handler</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_createFromInterface">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L547">at line 547</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L627">at line 627</a></div>
         <code>        static            <a href="DateTimeImmutable.html">DateTimeImmutable</a>
     <strong>createFromInterface</strong>(<a href="DateTimeInterface.html">DateTimeInterface</a> $object)
         </code>
@@ -1285,7 +1364,9 @@ The __wakeup handler</p></p>
                     <tr>
                 <td><a href="DateTimeInterface.html">DateTimeInterface</a></td>
                 <td>$object</td>
-                <td></td>
+                <td><p>The DateTimeInterface object that needs to be converted to
+an immutable version. This object is not modified, but instead a new DateTimeImmutable object
+is created containing the same date, time, and timezone information.</p></td>
             </tr>
             </table>
 
@@ -1295,7 +1376,7 @@ The __wakeup handler</p></p>
                     <table class="table table-condensed">
         <tr>
             <td><a href="DateTimeImmutable.html">DateTimeImmutable</a></td>
-            <td></td>
+            <td><p>Returns a new DateTimeImmutable instance.</p></td>
         </tr>
     </table>
 
@@ -1308,7 +1389,7 @@ The __wakeup handler</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method___serialize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L557">at line 557</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L637">at line 637</a></div>
         <code>                    array
     <strong>__serialize</strong>()
         </code>
@@ -1341,7 +1422,7 @@ The __wakeup handler</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method___unserialize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L568">at line 568</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L648">at line 648</a></div>
         <code>                    void
     <strong>__unserialize</strong>(array $data)
         </code>
@@ -1384,7 +1465,7 @@ The __wakeup handler</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_createFromTimestamp">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L578">at line 578</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L658">at line 658</a></div>
         <code>        static            <a href="DateTimeImmutable.html">DateTimeImmutable</a>
     <strong>createFromTimestamp</strong>(int|float $timestamp)
         </code>
@@ -1437,7 +1518,7 @@ The __wakeup handler</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getMicrosecond">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L586">at line 586</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L666">at line 666</a></div>
         <code>                    int
     <strong>getMicrosecond</strong>()
         </code>
@@ -1471,7 +1552,7 @@ The __wakeup handler</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setMicrosecond">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L599">at line 599</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/date/date_c.php#L679">at line 679</a></div>
         <code>                    <a href="DateTimeImmutable.html">DateTimeImmutable</a>
     <strong>setMicrosecond</strong>(int $microsecond)
         </code>

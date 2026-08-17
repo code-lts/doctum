@@ -1626,7 +1626,7 @@ equal to the second.
             </div>
                     <div class="method-item">
                     <h3 id="method_enableExceptions">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/sqlite3/sqlite3.php#L419">at line 419</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/sqlite3/sqlite3.php#L423">at line 423</a></div>
         <code>                    bool
     <strong>enableExceptions</strong>(bool $enable = false)
         </code>
@@ -1646,7 +1646,11 @@ equal to the second.
                     <tr>
                 <td>bool</td>
                 <td>$enable</td>
-                <td></td>
+                <td><p>When true, the SQLite3 instance, and SQLite3Stmt and SQLite3Result
+instances derived from it, will throw exceptions on error. When false, the SQLite3 instance,
+and SQLite3Stmt and SQLite3Result instances derived from it, will raise warnings on error.
+For either mode, the error code and message, if any, will be available via
+SQLite3::lastErrorCode and SQLite3::lastErrorMsg respectively.</p></td>
             </tr>
             </table>
 
@@ -1669,7 +1673,7 @@ equal to the second.
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/sqlite3/sqlite3.php#L445">at line 445</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/sqlite3/sqlite3.php#L449">at line 449</a></div>
         <code>                    
     <strong>__construct</strong>(string $filename, int $flags = SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE, string $encryptionKey = &#039;&#039;)
         </code>
@@ -1734,7 +1738,7 @@ SQLite database.
             </div>
                     <div class="method-item">
                     <h3 id="method_lastExtendedErrorCode">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/sqlite3/sqlite3.php#L457">at line 457</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/sqlite3/sqlite3.php#L461">at line 461</a></div>
         <code>                    int
     <strong>lastExtendedErrorCode</strong>()
         </code>
@@ -1769,7 +1773,7 @@ SQLite database.
             </div>
                     <div class="method-item">
                     <h3 id="method_enableExtendedResultCodes">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/sqlite3/sqlite3.php#L464">at line 464</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/sqlite3/sqlite3.php#L468">at line 468</a></div>
         <code>                    bool
     <strong>enableExtendedResultCodes</strong>(bool $enable = true)
         </code>
@@ -1814,7 +1818,7 @@ SQLite database.
             </div>
                     <div class="method-item">
                     <h3 id="method_backup">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/sqlite3/sqlite3.php#L484">at line 484</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/sqlite3/sqlite3.php#L490">at line 490</a></div>
         <code>                    bool
     <strong>backup</strong>(<a href="SQLite3.html">SQLite3</a> $destination, string $sourceDatabase = &#039;main&#039;, string $destinationDatabase = &#039;main&#039;)
         </code>
@@ -1837,17 +1841,19 @@ copying in-memory databases to or from persistent files.</p></p>
                     <tr>
                 <td><a href="SQLite3.html">SQLite3</a></td>
                 <td>$destination</td>
-                <td></td>
+                <td><p>A database connection opened with SQLite3::open.</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$sourceDatabase</td>
-                <td></td>
+                <td><p>The database name is &quot;main&quot; for the main database, &quot;temp&quot; for
+the temporary database, or the name specified after the AS keyword in an ATTACH statement for
+an attached database.</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$destinationDatabase</td>
-                <td></td>
+                <td><p>Analogous to sourceDatabase but for the destination.</p></td>
             </tr>
             </table>
 
@@ -1857,7 +1863,7 @@ copying in-memory databases to or from persistent files.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -1870,7 +1876,7 @@ copying in-memory databases to or from persistent files.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setAuthorizer">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/sqlite3/sqlite3.php#L504">at line 504</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/sqlite3/sqlite3.php#L511">at line 511</a></div>
         <code>                    bool
     <strong>setAuthorizer</strong>(callable|null $callback)
         </code>
@@ -1898,7 +1904,8 @@ prepared that disallows everything except SELECT statements.</p></p>
                     <tr>
                 <td>callable|null</td>
                 <td>$callback</td>
-                <td></td>
+                <td><p>The callable to be called. If null is passed instead, this
+will disable the current authorizer callback.</p></td>
             </tr>
             </table>
 
@@ -1908,7 +1915,7 @@ prepared that disallows everything except SELECT statements.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 

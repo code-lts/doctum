@@ -312,7 +312,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadPreference.php#L79">at line 79</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadPreference.php#L108">at line 108</a></div>
         <code>final                    
     <strong>__construct</strong>(string $mode, array|null $tagSets = null, array|null $options = null)
         </code>
@@ -332,17 +332,46 @@
                     <tr>
                 <td>string</td>
                 <td>$mode</td>
-                <td></td>
+                <td><p>Read preference mode Value Description &quot;primary&quot; All operations read from
+the current replica set primary. This is the default read preference for MongoDB.
+&quot;primaryPreferred&quot; In most situations, operations read from the primary but if it is
+unavailable, operations read from secondary members. &quot;secondary&quot; All operations read from the
+secondary members of the replica set. &quot;secondaryPreferred&quot; In most situations, operations
+read from secondary members but if no secondary members are available, operations read from
+the primary. &quot;nearest&quot; Operations read from member of the replica set with the least network
+latency, irrespective of the member's type.</p></td>
             </tr>
                     <tr>
                 <td>array|null</td>
                 <td>$tagSets</td>
-                <td></td>
+                <td><p>Tag sets allow you to target read operations to specific members
+of a replica set. This parameter should be an array of associative arrays, each of which
+contain zero or more key/value pairs. When selecting a server for a read operation, the
+driver attempt to select a node having all tags in a set (i.e. the associative array of
+key/value pairs). If selection fails, the driver will attempt subsequent sets. An empty tag
+set (array()) will match any node and may be used as a fallback. Tags are not compatible with
+the &quot;primary&quot; mode and, in general, only apply when selecting a secondary member of a set for
+a read operation. However, the &quot;nearest&quot; mode, when combined with a tag set, selects the
+matching member with the lowest network latency. This member may be a primary or secondary.</p></td>
             </tr>
                     <tr>
                 <td>array|null</td>
                 <td>$options</td>
-                <td></td>
+                <td><p>options Option Type Description hedge objectarray Specifies
+whether to use hedged reads, which are supported by MongoDB 4.4+ for sharded queries. Server
+hedged reads are available for all non-primary read preferences and are enabled by default
+when using the &quot;nearest&quot; mode. This option allows explicitly enabling server hedged reads for
+non-primary read preferences by specifying ['enabled' =&gt; true], or explicitly disabling
+server hedged reads for the &quot;nearest&quot; read preference by specifying ['enabled' =&gt; false].
+maxStalenessSeconds int Specifies a maximum replication lag, or &quot;staleness&quot;, for reads from
+secondaries. When a secondary's estimated staleness exceeds this value, the driver stops
+using it for read operations. If specified, the max staleness must be a signed 32-bit integer
+greater than or equal to MongoDB\Driver\ReadPreference::SMALLEST_MAX_STALENESS_SECONDS.
+Defaults to MongoDB\Driver\ReadPreference::NO_MAX_STALENESS, which means that the driver will
+not consider a secondary's lag when choosing where to direct a read operation. This option is
+not compatible with the &quot;primary&quot; mode. Specifying a max staleness also requires all MongoDB
+instances in the deployment to be using MongoDB 3.4+. An exception will be thrown at
+execution time if any MongoDB instances in the deployment are of an older server version.</p></td>
             </tr>
             </table>
 
@@ -365,7 +394,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___set_state">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadPreference.php#L81">at line 81</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadPreference.php#L110">at line 110</a></div>
         <code>        static            
     <strong>__set_state</strong>(array $properties)
         </code>
@@ -400,7 +429,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getHedge">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadPreference.php#L89">at line 89</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadPreference.php#L118">at line 118</a></div>
         <code>final                    object|null
     <strong>getHedge</strong>()
         <small><span class="label label-danger">deprecated</span></small></code>
@@ -441,7 +470,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getModeString">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadPreference.php#L97">at line 97</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadPreference.php#L126">at line 126</a></div>
         <code>final                    string
     <strong>getModeString</strong>()
         </code>
@@ -484,7 +513,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getTagSets">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadPreference.php#L103">at line 103</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadPreference.php#L132">at line 132</a></div>
         <code>final                    array
     <strong>getTagSets</strong>()
         </code>
@@ -517,7 +546,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_bsonSerialize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadPreference.php#L112">at line 112</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadPreference.php#L141">at line 141</a></div>
         <code>final                    array|<a href="../../stdClass.html">stdClass</a>|<a href="../../MongoDB/BSON/Document.html"><abbr title="MongoDB\BSON\Document">Document</abbr></a>|<a href="../../MongoDB/BSON/PackedArray.html"><abbr title="MongoDB\BSON\PackedArray">PackedArray</abbr></a>
     <strong>bsonSerialize</strong>()
         </code>
@@ -560,7 +589,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getMaxStalenessSeconds">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadPreference.php#L114">at line 114</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/ReadPreference.php#L143">at line 143</a></div>
         <code>final                    
     <strong>getMaxStalenessSeconds</strong>()
         </code>

@@ -877,7 +877,7 @@ and all its operations are rolled back.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isInTransaction">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Session.php#L162">at line 162</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Session.php#L163">at line 163</a></div>
         <code>final                    bool
     <strong>isInTransaction</strong>()
         </code>
@@ -898,7 +898,8 @@ and all its operations are rolled back.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true if a transaction is currently in progress for this session, and
+false otherwise.</p></td>
         </tr>
     </table>
 
@@ -920,7 +921,7 @@ and all its operations are rolled back.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_startTransaction">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Session.php#L174">at line 174</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/mongodb/Session.php#L185">at line 185</a></div>
         <code>final                    void
     <strong>startTransaction</strong>(array|null $options = null)
         </code>
@@ -941,7 +942,17 @@ and all its operations are rolled back.</p></p>
                     <tr>
                 <td>array|null</td>
                 <td>$options</td>
-                <td></td>
+                <td><p>Options can be passed as argument to this method. Each element
+in this options array overrides the corresponding option from the &quot;defaultTransactionOptions&quot;
+option, if set when starting the session with MongoDB\Driver\Manager::startSession. options
+Option Type Description maxCommitTimeMS integer The maximum amount of time in milliseconds to
+allow a single commitTransaction command to run. If specified, maxCommitTimeMS must be a
+signed 32-bit integer greater than or equal to zero. readConcern MongoDB\Driver\ReadConcern A
+read concern to apply to the operation. This option is available in MongoDB 3.2+ and will
+result in an exception at execution time if specified for an older server version.
+readPreference MongoDB\Driver\ReadPreference A read preference to use for selecting a server
+for the operation. writeConcern MongoDB\Driver\WriteConcern A write concern to apply to the
+operation.</p></td>
             </tr>
             </table>
 
@@ -951,7 +962,7 @@ and all its operations are rolled back.</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td></td>
+            <td><p>No value is returned.</p></td>
         </tr>
     </table>
 

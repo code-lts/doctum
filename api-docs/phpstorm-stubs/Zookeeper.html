@@ -764,7 +764,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L81">at line 81</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L84">at line 84</a></div>
         <code>                    
     <strong>__construct</strong>(string $host = &#039;&#039;, callable $watcher_cb = null, int $recv_timeout = 10000)
         </code>
@@ -784,17 +784,20 @@
                     <tr>
                 <td>string</td>
                 <td>$host</td>
-                <td></td>
+                <td><p>comma separated host:port pairs, each corresponding to a zk server. e.g.
+&quot;127.0.0.1:3000,127.0.0.1:3001,127.0.0.1:3002&quot;</p></td>
             </tr>
                     <tr>
                 <td>callable</td>
                 <td>$watcher_cb</td>
-                <td></td>
+                <td><p>the global watcher callback function. When notifications are
+triggered this function will be invoked.</p></td>
             </tr>
                     <tr>
                 <td>int</td>
                 <td>$recv_timeout</td>
-                <td></td>
+                <td><p>the timeout for this session, only valid if the connections is
+currently connected (ie. last watcher state is ZOO_CONNECTED_STATE).</p></td>
             </tr>
             </table>
 
@@ -821,7 +824,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_connect">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L92">at line 92</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L98">at line 98</a></div>
         <code>                    
     <strong>connect</strong>(string $host, callable $watcher_cb = null, int $recv_timeout = 10000)
         </code>
@@ -841,17 +844,20 @@
                     <tr>
                 <td>string</td>
                 <td>$host</td>
-                <td></td>
+                <td><p>Comma separated host:port pairs, each corresponding to a zk server. e.g.
+&quot;127.0.0.1:3000,127.0.0.1:3001,127.0.0.1:3002&quot;</p></td>
             </tr>
                     <tr>
                 <td>callable</td>
                 <td>$watcher_cb</td>
-                <td></td>
+                <td><p>The global watcher callback function. When notifications are
+triggered this function will be invoked.</p></td>
             </tr>
                     <tr>
                 <td>int</td>
                 <td>$recv_timeout</td>
-                <td></td>
+                <td><p>The timeout for this session, only valid if the connection is
+currently connected (ie. last watcher state is ZOO_CONNECTED_STATE).</p></td>
             </tr>
             </table>
 
@@ -878,7 +884,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_close">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L100">at line 100</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L106">at line 106</a></div>
         <code>                    
     <strong>close</strong>()
         </code>
@@ -915,7 +921,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_create">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L113">at line 113</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L122">at line 122</a></div>
         <code>                    string
     <strong>create</strong>(string $path, string $value, array $acl, int $flags = null)
         </code>
@@ -935,12 +941,13 @@
                     <tr>
                 <td>string</td>
                 <td>$path</td>
-                <td></td>
+                <td><p>The name of the node. Expressed as a file name with slashes separating
+ancestors of the node.</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$value</td>
-                <td></td>
+                <td><p>The data to be stored in the node.</p></td>
             </tr>
                     <tr>
                 <td>array</td>
@@ -950,7 +957,8 @@
                     <tr>
                 <td>int</td>
                 <td>$flags</td>
-                <td></td>
+                <td><p>this parameter can be set to 0 for normal create or an OR of the Create
+Flags</p></td>
             </tr>
             </table>
 
@@ -960,7 +968,8 @@
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td></td>
+            <td><p>Returns the path of the new node (this might be different than the supplied
+path because of the ZOO_SEQUENCE flag) on success, and false on failure.</p></td>
         </tr>
     </table>
 
@@ -986,7 +995,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_delete">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L124">at line 124</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L136">at line 136</a></div>
         <code>                    bool
     <strong>delete</strong>(string $path, int $version = -1)
         </code>
@@ -1006,12 +1015,15 @@
                     <tr>
                 <td>string</td>
                 <td>$path</td>
-                <td></td>
+                <td><p>The name of the node. Expressed as a file name with slashes separating
+ancestors of the node.</p></td>
             </tr>
                     <tr>
                 <td>int</td>
                 <td>$version</td>
-                <td></td>
+                <td><p>The expected version of the node. The function will fail if the actual
+version of the node does not match the expected version. If -1 is used the version check will
+not take place.</p></td>
             </tr>
             </table>
 
@@ -1021,7 +1033,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -1047,7 +1059,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_set">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L137">at line 137</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L152">at line 152</a></div>
         <code>                    bool
     <strong>set</strong>(string $path, string $data, int $version = -1, array $stat = null)
         </code>
@@ -1067,7 +1079,8 @@
                     <tr>
                 <td>string</td>
                 <td>$path</td>
-                <td></td>
+                <td><p>The name of the node. Expressed as a file name with slashes separating
+ancestors of the node.</p></td>
             </tr>
                     <tr>
                 <td>string</td>
@@ -1077,12 +1090,14 @@
                     <tr>
                 <td>int</td>
                 <td>$version</td>
-                <td></td>
+                <td><p>The expected version of the node. The function will fail if the actual
+version of the node does not match the expected version. If -1 is used the version check will
+not take place.</p></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$stat</td>
-                <td></td>
+                <td><p>If not NULL, will hold the value of stat for the path on return.</p></td>
             </tr>
             </table>
 
@@ -1092,7 +1107,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -1118,7 +1133,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L150">at line 150</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L168">at line 168</a></div>
         <code>                    string
     <strong>get</strong>(string $path, callable $watcher_cb = null, array $stat = null, int $max_size = 0)
         </code>
@@ -1138,22 +1153,25 @@
                     <tr>
                 <td>string</td>
                 <td>$path</td>
-                <td></td>
+                <td><p>The name of the node. Expressed as a file name with slashes separating
+ancestors of the node.</p></td>
             </tr>
                     <tr>
                 <td>callable</td>
                 <td>$watcher_cb</td>
-                <td></td>
+                <td><p>If nonzero, a watch will be set at the server to notify the
+client if the node changes.</p></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$stat</td>
-                <td></td>
+                <td><p>If not NULL, will hold the value of stat for the path on return.</p></td>
             </tr>
                     <tr>
                 <td>int</td>
                 <td>$max_size</td>
-                <td></td>
+                <td><p>Max size of the data. If 0 is used, this method will return the whole
+data.</p></td>
             </tr>
             </table>
 
@@ -1163,7 +1181,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td></td>
+            <td><p>Returns the data on success, and false on failure.</p></td>
         </tr>
     </table>
 
@@ -1189,7 +1207,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getChildren">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L161">at line 161</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L181">at line 181</a></div>
         <code>                    array|false
     <strong>getChildren</strong>(string $path, callable $watcher_cb = null)
         </code>
@@ -1209,12 +1227,14 @@
                     <tr>
                 <td>string</td>
                 <td>$path</td>
-                <td></td>
+                <td><p>The name of the node. Expressed as a file name with slashes separating
+ancestors of the node.</p></td>
             </tr>
                     <tr>
                 <td>callable</td>
                 <td>$watcher_cb</td>
-                <td></td>
+                <td><p>If nonzero, a watch will be set at the server to notify the
+client if the node changes.</p></td>
             </tr>
             </table>
 
@@ -1224,7 +1244,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>array|false</td>
-            <td></td>
+            <td><p>Returns an array with children paths on success, and false on failure.</p></td>
         </tr>
     </table>
 
@@ -1250,7 +1270,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_exists">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L172">at line 172</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L195">at line 195</a></div>
         <code>                    bool
     <strong>exists</strong>(string $path, callable $watcher_cb = null)
         </code>
@@ -1270,12 +1290,14 @@
                     <tr>
                 <td>string</td>
                 <td>$path</td>
-                <td></td>
+                <td><p>The name of the node. Expressed as a file name with slashes separating
+ancestors of the node.</p></td>
             </tr>
                     <tr>
                 <td>callable</td>
                 <td>$watcher_cb</td>
-                <td></td>
+                <td><p>if nonzero, a watch will be set at the server to notify the
+client if the node changes. The watch will be set even if the node does not</p></td>
             </tr>
             </table>
 
@@ -1285,7 +1307,8 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns the value of stat for the path if the given node exists, otherwise
+false.</p></td>
         </tr>
     </table>
 
@@ -1307,7 +1330,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getAcl">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L181">at line 181</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L205">at line 205</a></div>
         <code>                    array
     <strong>getAcl</strong>(string $path)
         </code>
@@ -1327,7 +1350,8 @@
                     <tr>
                 <td>string</td>
                 <td>$path</td>
-                <td></td>
+                <td><p>The name of the node. Expressed as a file name with slashes separating
+ancestors of the node.</p></td>
             </tr>
             </table>
 
@@ -1337,7 +1361,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>array</td>
-            <td></td>
+            <td><p>Return acl array on success and false on failure.</p></td>
         </tr>
     </table>
 
@@ -1359,7 +1383,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setAcl">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L193">at line 193</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L218">at line 218</a></div>
         <code>                    bool
     <strong>setAcl</strong>(string $path, int $version, array $acls)
         </code>
@@ -1379,12 +1403,13 @@
                     <tr>
                 <td>string</td>
                 <td>$path</td>
-                <td></td>
+                <td><p>The name of the node. Expressed as a file name with slashes separating
+ancestors of the node.</p></td>
             </tr>
                     <tr>
                 <td>int</td>
                 <td>$version</td>
-                <td></td>
+                <td><p>The expected version of the path.</p></td>
             </tr>
                     <tr>
                 <td>array</td>
@@ -1399,7 +1424,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -1421,7 +1446,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getClientId">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L203">at line 203</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L228">at line 228</a></div>
         <code>                    int
     <strong>getClientId</strong>()
         </code>
@@ -1442,7 +1467,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td></td>
+            <td><p>Returns the client session id on success, and false on failure.</p></td>
         </tr>
     </table>
 
@@ -1468,7 +1493,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setWatcher">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L214">at line 214</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L240">at line 240</a></div>
         <code>                    bool
     <strong>setWatcher</strong>(callable $watcher_cb)
         </code>
@@ -1488,7 +1513,8 @@
                     <tr>
                 <td>callable</td>
                 <td>$watcher_cb</td>
-                <td></td>
+                <td><p>A watch will be set at the server to notify the client if the
+node changes.</p></td>
             </tr>
             </table>
 
@@ -1498,7 +1524,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -1524,7 +1550,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getState">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L223">at line 223</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L249">at line 249</a></div>
         <code>                    int
     <strong>getState</strong>()
         </code>
@@ -1544,7 +1570,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td></td>
+            <td><p>Returns the state of zookeeper connection on success, and false on failure.</p></td>
         </tr>
     </table>
 
@@ -1570,7 +1596,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getRecvTimeout">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L234">at line 234</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L260">at line 260</a></div>
         <code>                    int
     <strong>getRecvTimeout</strong>()
         </code>
@@ -1591,7 +1617,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td></td>
+            <td><p>Returns the timeout for this session on success, and false on failure.</p></td>
         </tr>
     </table>
 
@@ -1617,7 +1643,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_addAuth">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L247">at line 247</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L276">at line 276</a></div>
         <code>                    bool
     <strong>addAuth</strong>(string $scheme, string $cert, callable $completion_cb = null)
         </code>
@@ -1637,17 +1663,20 @@
                     <tr>
                 <td>string</td>
                 <td>$scheme</td>
-                <td></td>
+                <td><p>The id of authentication scheme. Natively supported: &quot;digest&quot;
+password-based authentication</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$cert</td>
-                <td></td>
+                <td><p>Application credentials. The actual value depends on the scheme.</p></td>
             </tr>
                     <tr>
                 <td>callable</td>
                 <td>$completion_cb</td>
-                <td></td>
+                <td><p>The routine to invoke when the request completes. One of the
+following result codes may be passed into the completion callback: - ZOK operation completed
+successfully - ZAUTHFAILED authentication failed</p></td>
             </tr>
             </table>
 
@@ -1657,7 +1686,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -1683,7 +1712,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isRecoverable">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L256">at line 256</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L285">at line 285</a></div>
         <code>                    bool
     <strong>isRecoverable</strong>()
         </code>
@@ -1703,7 +1732,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true/false on success, and false on failure.</p></td>
         </tr>
     </table>
 
@@ -1729,7 +1758,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setLogStream">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L265">at line 265</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L294">at line 294</a></div>
         <code>                    bool
     <strong>setLogStream</strong>(resource $file)
         </code>
@@ -1759,7 +1788,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -1772,7 +1801,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setDebugLevel">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L273">at line 273</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L302">at line 302</a></div>
         <code>        static            bool
     <strong>setDebugLevel</strong>(int $level)
         </code>
@@ -1802,7 +1831,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 
@@ -1815,7 +1844,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setDeterministicConnOrder">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L281">at line 281</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zookeeper/zookeeper.php#L310">at line 310</a></div>
         <code>        static            bool
     <strong>setDeterministicConnOrder</strong>(bool $trueOrFalse)
         </code>
@@ -1845,7 +1874,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true on success or false on failure.</p></td>
         </tr>
     </table>
 

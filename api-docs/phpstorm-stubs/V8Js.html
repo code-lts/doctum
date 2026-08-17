@@ -283,7 +283,7 @@ works similar to the set_time_limit php</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L23">at line 23</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L31">at line 31</a></div>
         <code>                    
     <strong>__construct</strong>(string $object_name = &quot;PHP&quot;, array $variables = [], array $extensions = [], bool $report_uncaught_exceptions = true, string $snapshot_blob = null)
         </code>
@@ -303,22 +303,30 @@ works similar to the set_time_limit php</p></p>                </div>
                     <tr>
                 <td>string</td>
                 <td>$object_name</td>
-                <td></td>
+                <td><p>The name of the object passed to Javascript.</p></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$variables</td>
-                <td></td>
+                <td><p>Map of PHP variables that will be available in Javascript. Must be an
+associative array in format array(&quot;name-for-js&quot; =&gt; &quot;name-of-php-variable&quot;). Defaults to empty
+array.</p></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$extensions</td>
-                <td></td>
+                <td><p>List of extensions registered using V8Js::registerExtension which
+should be available in the Javascript context of the created V8Js object. Extensions
+registered to be enabled automatically do not need to be listed in this array. Also if an
+extension has dependencies, those dependencies can be omitted as well. Defaults to empty
+array.</p></td>
             </tr>
                     <tr>
                 <td>bool</td>
                 <td>$report_uncaught_exceptions</td>
-                <td></td>
+                <td><p>Controls whether uncaught Javascript exceptions are
+reported immediately or not. Defaults to true. If set to false the uncaught exception can be
+accessed using V8Js::getPendingException.</p></td>
             </tr>
                     <tr>
                 <td>string</td>
@@ -337,7 +345,7 @@ works similar to the set_time_limit php</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setModuleLoader">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L30">at line 30</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L38">at line 38</a></div>
         <code>                    
     <strong>setModuleLoader</strong>(callable $loader)
         </code>
@@ -371,7 +379,7 @@ works similar to the set_time_limit php</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setModuleNormaliser">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L42">at line 42</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L50">at line 50</a></div>
         <code>                    
     <strong>setModuleNormaliser</strong>(callable $normaliser)
         </code>
@@ -410,7 +418,7 @@ module loader (unless the module was cached before).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_executeString">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L54">at line 54</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L65">at line 65</a></div>
         <code>                    mixed
     <strong>executeString</strong>(string $script, string $identifier = &#039;&#039;, int $flags = V8Js::FLAG_NONE, int $time_limit = 0, int $memory_limit = 0)
         </code>
@@ -430,17 +438,19 @@ module loader (unless the module was cached before).</p></p>
                     <tr>
                 <td>string</td>
                 <td>$script</td>
-                <td></td>
+                <td><p>The code string to be executed.</p></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$identifier</td>
-                <td></td>
+                <td><p>Identifier string for the executed code. Used for debugging.</p></td>
             </tr>
                     <tr>
                 <td>int</td>
                 <td>$flags</td>
-                <td></td>
+                <td><p>Execution flags. This value must be one of the V8Js::FLAG_* constants,
+defaulting to V8Js::FLAG_NONE. V8Js::FLAG_NONE: no flags V8Js::FLAG_FORCE_ARRAY: forces all
+Javascript objects passed to PHP to be associative arrays</p></td>
             </tr>
                     <tr>
                 <td>int</td>
@@ -460,7 +470,8 @@ module loader (unless the module was cached before).</p></p>
                     <table class="table table-condensed">
         <tr>
             <td>mixed</td>
-            <td></td>
+            <td><p>Returns the last variable instantiated in the Javascript code converted to
+matching PHP variable type.</p></td>
         </tr>
     </table>
 
@@ -473,7 +484,7 @@ module loader (unless the module was cached before).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_compileString">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L62">at line 62</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L73">at line 73</a></div>
         <code>                    resource
     <strong>compileString</strong>(mixed $script, string $identifier = &#039;&#039;)
         </code>
@@ -521,7 +532,7 @@ module loader (unless the module was cached before).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_executeScript">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L72">at line 72</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L83">at line 83</a></div>
         <code>                    
     <strong>executeScript</strong>(resource $script, int $flags = V8Js::FLAG_NONE, int $time_limit = 0, int $memory_limit = 0)
         </code>
@@ -570,7 +581,7 @@ module loader (unless the module was cached before).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setTimeLimit">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L79">at line 79</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L90">at line 90</a></div>
         <code>                    
     <strong>setTimeLimit</strong>(int $limit)
         </code>
@@ -605,7 +616,7 @@ works similar to the set_time_limit php</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setMemoryLimit">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L85">at line 85</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L96">at line 96</a></div>
         <code>                    
     <strong>setMemoryLimit</strong>(int $limit)
         </code>
@@ -639,7 +650,7 @@ works similar to the set_time_limit php</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setAverageObjectSize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L92">at line 92</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L103">at line 103</a></div>
         <code>                    
     <strong>setAverageObjectSize</strong>(int $average_object_size)
         </code>
@@ -673,7 +684,7 @@ works similar to the set_time_limit php</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPendingException">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L98">at line 98</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L109">at line 109</a></div>
         <code>                    <a href="V8JsScriptException.html">V8JsScriptException</a>|null
     <strong>getPendingException</strong>()
         </code>
@@ -693,7 +704,7 @@ works similar to the set_time_limit php</p></p>
                     <table class="table table-condensed">
         <tr>
             <td><a href="V8JsScriptException.html">V8JsScriptException</a>|null</td>
-            <td></td>
+            <td><p>Either V8JsException or null.</p></td>
         </tr>
     </table>
 
@@ -706,7 +717,7 @@ works similar to the set_time_limit php</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_clearPendingException">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L103">at line 103</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L114">at line 114</a></div>
         <code>                    
     <strong>clearPendingException</strong>()
         </code>
@@ -730,7 +741,7 @@ works similar to the set_time_limit php</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_registerExtension">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L117">at line 117</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L132">at line 132</a></div>
         <code>        static            bool
     <strong>registerExtension</strong>(string $extension_name, string $code, array $dependencies = [], bool $auto_enable = false)
         </code>
@@ -751,7 +762,7 @@ For best performance V8 is initialized only once per process thus this call has 
                     <tr>
                 <td>string</td>
                 <td>$extension_name</td>
-                <td></td>
+                <td><p>Name of the extension to be registered.</p></td>
             </tr>
                     <tr>
                 <td>string</td>
@@ -761,12 +772,16 @@ For best performance V8 is initialized only once per process thus this call has 
                     <tr>
                 <td>array</td>
                 <td>$dependencies</td>
-                <td></td>
+                <td><p>Array of extension names the extension to be registered depends
+on. Any such extension is enabled automatically when this extension is loaded. All
+extensions, including the dependencies, must be registered before any V8Js are created which
+use them.</p></td>
             </tr>
                     <tr>
                 <td>bool</td>
                 <td>$auto_enable</td>
-                <td></td>
+                <td><p>If set to true, the extension will be enabled automatically in all
+V8Js contexts.</p></td>
             </tr>
             </table>
 
@@ -776,7 +791,7 @@ For best performance V8 is initialized only once per process thus this call has 
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>Returns true if extension was registered successfully, false otherwise.</p></td>
         </tr>
     </table>
 
@@ -789,7 +804,7 @@ For best performance V8 is initialized only once per process thus this call has 
             </div>
                     <div class="method-item">
                     <h3 id="method_getExtensions">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L123">at line 123</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L139">at line 139</a></div>
         <code>        static            string[]
     <strong>getExtensions</strong>()
         </code>
@@ -809,7 +824,8 @@ For best performance V8 is initialized only once per process thus this call has 
                     <table class="table table-condensed">
         <tr>
             <td>string[]</td>
-            <td></td>
+            <td><p>Returns an array of registered extensions or an empty array if there are
+none.</p></td>
         </tr>
     </table>
 
@@ -822,7 +838,7 @@ For best performance V8 is initialized only once per process thus this call has 
             </div>
                     <div class="method-item">
                     <h3 id="method_createSnapshot">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L132">at line 132</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/v8js/v8js.php#L148">at line 148</a></div>
         <code>        static            string|false
     <strong>createSnapshot</strong>(string $embed_source)
         </code>
