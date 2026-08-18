@@ -15514,7 +15514,9 @@ themselves internally.</p></dd><dt><a href="IteratorAggregate.html">IteratorAggr
                     <dd><p>Interface to create an external Iterator.</p></dd><dt><a href="IteratorIterator.html">IteratorIterator</a> &mdash; <em>Class in namespace <a href="[Global_Namespace].html">[Global Namespace]</a></em></dt>
                     <dd><p>This iterator wrapper allows the conversion of anything that is
 Traversable into an Iterator.</p></dd><dt><a href="JetBrains/PhpStorm/Immutable.html"><abbr title="JetBrains\PhpStorm\Immutable">Immutable</abbr></a> &mdash; <em>Class in namespace <a href="JetBrains/PhpStorm.html">JetBrains\PhpStorm</a></em></dt>
-                    <dd><p>Mark a property (or all class properties in the case of a class) as immutable.</p></dd><dt><a href="Judy.html#method_intersect">
+                    <dd><p>Mark a property (or all class properties in the case of a class) as immutable.</p></dd><dt><a href="Judy.html#method_isIterationOptimized">
+Judy::isIterationOptimized</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
+                    <dd><p>Whether the optimizeIteration trade is actually in effect here.</p></dd><dt><a href="Judy.html#method_intersect">
 Judy::intersect</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
                     <dd><p>Return a new Judy array containing only indices present in both arrays.</p></dd><dt><a href="Judy.html#method_increment">
 Judy::increment</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
@@ -17032,7 +17034,11 @@ IteratorIterator::key</a>() &mdash; <em>Method in class <a href="IteratorIterato
 Judy::key</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
                     <dd><p>Return the key at the current iterator position.</p></dd><dt><a href="Judy.html#method_keys">
 Judy::keys</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd><p>Return all keys as a PHP array.</p></dd><dt><a href="LevelDBIterator.html#method_key">
+                    <dd><p>Return all keys as a PHP array, optionally limited to an inclusive key
+range. All key types are supported; string-keyed types require string
+bounds and compare them lexicographically. This is the primitive to
+reach for on a bounded read: one traversal writing straight into the
+returned array, so prefer it to slice($start, $end)-&gt;keys().</p></dd><dt><a href="LevelDBIterator.html#method_key">
 LevelDBIterator::key</a>() &mdash; <em>Method in class <a href="LevelDBIterator.html">LevelDBIterator</a></em></dt>
                     <dd><p>Return the key of the current element</p></dd><dt><a href="LimitIterator.html#method_key">
 LimitIterator::key</a>() &mdash; <em>Method in class <a href="LimitIterator.html">LimitIterator</a></em></dt>
@@ -22335,8 +22341,8 @@ DirectoryIterator::rewind</a>() &mdash; <em>Method in class <a href="DirectoryIt
 <abbr title="Ds\Deque">Deque</abbr>::rotate</a>() &mdash; <em>Method in class <a href="Ds/Deque.html"><abbr title="Ds\Deque">Deque</abbr></a></em></dt>
                     <dd><p>Rotates the deque by a given number of rotations, which is
 equivalent to successively calling
-$deque-&gt;push($deque-&gt;shift()) if the number of rotations is
-positive, or $deque-&gt;unshift($deque-&gt;pop()) if negative.</p></dd><dt><a href="Ds/Map.html#method_reduce">
+\$deque-&gt;push(\$deque-&gt;shift()) if the number of rotations is
+positive, or \$deque-&gt;unshift(\$deque-&gt;pop()) if negative.</p></dd><dt><a href="Ds/Map.html#method_reduce">
 <abbr title="Ds\Map">Map</abbr>::reduce</a>() &mdash; <em>Method in class <a href="Ds/Map.html"><abbr title="Ds\Map">Map</abbr></a></em></dt>
                     <dd></dd><dt><a href="Ds/Map.html#method_remove">
 <abbr title="Ds\Map">Map</abbr>::remove</a>() &mdash; <em>Method in class <a href="Ds/Map.html"><abbr title="Ds\Map">Map</abbr></a></em></dt>
@@ -22366,8 +22372,8 @@ positive, or $deque-&gt;unshift($deque-&gt;pop()) if negative.</p></dd><dt><a hr
 <abbr title="Ds\Sequence">Sequence</abbr>::rotate</a>() &mdash; <em>Method in class <a href="Ds/Sequence.html"><abbr title="Ds\Sequence">Sequence</abbr></a></em></dt>
                     <dd><p>Rotates the sequence by a given number of rotations, which is
 equivalent to successively calling
-$sequence-&gt;push($sequence-&gt;shift()) if the number of rotations is
-positive, or $sequence-&gt;unshift($sequence-&gt;pop()) if negative.</p></dd><dt><a href="Ds/Set.html#method_reduce">
+\$sequence-&gt;push(\$sequence-&gt;shift()) if the number of rotations is
+positive, or \$sequence-&gt;unshift(\$sequence-&gt;pop()) if negative.</p></dd><dt><a href="Ds/Set.html#method_reduce">
 <abbr title="Ds\Set">Set</abbr>::reduce</a>() &mdash; <em>Method in class <a href="Ds/Set.html"><abbr title="Ds\Set">Set</abbr></a></em></dt>
                     <dd></dd><dt><a href="Ds/Set.html#method_remove">
 <abbr title="Ds\Set">Set</abbr>::remove</a>() &mdash; <em>Method in class <a href="Ds/Set.html"><abbr title="Ds\Set">Set</abbr></a></em></dt>
@@ -25639,8 +25645,7 @@ Set the leniency of the parser</p></dd><dt><a href="IntlGregorianCalendar.html#m
 IntlGregorianCalendar::setGregorianChange</a>() &mdash; <em>Method in class <a href="IntlGregorianCalendar.html">IntlGregorianCalendar</a></em></dt>
                     <dd><p>Set the Gregorian Calendar the change date</p></dd><dt><a href="Judy.html#method_size">
 Judy::size</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd><p>Return the number of elements, optionally within a key range
-(integer-keyed types only).</p></dd><dt><a href="Judy.html#method_searchNext">
+                    <dd><p>Return the number of elements, optionally within an inclusive key range.</p></dd><dt><a href="Judy.html#method_searchNext">
 Judy::searchNext</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
                     <dd><p>Search (exclusive) for the next index present that is greater than
 the given index.</p></dd><dt><a href="Judy.html#method_slice">
@@ -29631,8 +29636,10 @@ IntlTimeZone::toDateTimeZone</a>() &mdash; <em>Method in class <a href="IntlTime
 Convert to DateTimeZone object</p></dd><dt><a href="JetBrains/PhpStorm/Internal/TentativeType.html"><abbr title="JetBrains\PhpStorm\Internal\TentativeType">TentativeType</abbr></a> &mdash; <em>Class in namespace <a href="JetBrains/PhpStorm/Internal.html">JetBrains\PhpStorm\Internal</a></em></dt>
                     <dd><p>For PhpStorm internal use only</p></dd><dt><a href="Judy.html#method_toArray">
 Judy::toArray</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd><p>Convert the Judy array to a native PHP array. Uses native C iteration
-internally, faster than a manual foreach.</p></dd><dt><a href="Memcached.html#method_touch">
+                    <dd><p>Convert the Judy array to a native PHP array, optionally limited to an
+inclusive key range. Uses native C iteration internally, faster than a
+manual foreach. A bounded read is one traversal writing straight into
+the returned array, so prefer it to slice($start, $end)-&gt;toArray().</p></dd><dt><a href="Memcached.html#method_touch">
 Memcached::touch</a>() &mdash; <em>Method in class <a href="Memcached.html">Memcached</a></em></dt>
                     <dd><p>(PECL memcached &gt;= 2.0.0)<br/>
 Set a new expiration on an item</p></dd><dt><a href="Memcached.html#method_touchByKey">
@@ -35797,7 +35804,8 @@ IteratorIterator::valid</a>() &mdash; <em>Method in class <a href="IteratorItera
 Judy::valid</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
                     <dd><p>Check whether the current iterator position is valid.</p></dd><dt><a href="Judy.html#method_values">
 Judy::values</a>() &mdash; <em>Method in class <a href="Judy.html">Judy</a></em></dt>
-                    <dd><p>Return all values as a PHP array.</p></dd><dt><a href="LevelDBIterator.html#method_valid">
+                    <dd><p>Return all values as a PHP array, optionally limited to an inclusive
+key range. The bounds are keys, not values.</p></dd><dt><a href="LevelDBIterator.html#method_valid">
 LevelDBIterator::valid</a>() &mdash; <em>Method in class <a href="LevelDBIterator.html">LevelDBIterator</a></em></dt>
                     <dd><p>Checks if current position is valid</p></dd><dt><a href="LimitIterator.html#method_valid">
 LimitIterator::valid</a>() &mdash; <em>Method in class <a href="LimitIterator.html">LimitIterator</a></em></dt>

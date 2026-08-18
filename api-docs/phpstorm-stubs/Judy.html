@@ -195,7 +195,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(int $type)
+                    <a href="#method___construct">__construct</a>(int $type, bool $optimizeIteration = false)
         
                                             <p><p>Create a new Judy array of the specified type.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -218,6 +218,16 @@
                     <a href="#method_getType">getType</a>()
         
                                             <p><p>Return the type constant of this Judy array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isIterationOptimized">isIterationOptimized</a>()
+        
+                                            <p><p>Whether the optimizeIteration trade is actually in effect here.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -245,10 +255,9 @@
                     int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_size">size</a>(mixed $index_start = 0, mixed $index_end = -1)
+                    <a href="#method_size">size</a>(mixed $start = null, mixed $end = null)
         
-                                            <p><p>Return the number of elements, optionally within a key range
-(integer-keyed types only).</p></p>                </div>
+                                            <p><p>Return the number of elements, optionally within an inclusive key range.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -498,10 +507,12 @@ range (inclusive). For string-keyed types, comparison is lexicographic.</p></p> 
                     array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_toArray">toArray</a>()
+                    <a href="#method_toArray">toArray</a>(mixed $start = null, mixed $end = null)
         
-                                            <p><p>Convert the Judy array to a native PHP array. Uses native C iteration
-internally, faster than a manual foreach.</p></p>                </div>
+                                            <p><p>Convert the Judy array to a native PHP array, optionally limited to an
+inclusive key range. Uses native C iteration internally, faster than a
+manual foreach. A bounded read is one traversal writing straight into
+the returned array, so prefer it to slice($start, $end)-&gt;toArray().</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -509,7 +520,7 @@ internally, faster than a manual foreach.</p></p>                </div>
                     static&nbsp;<a href="Judy.html">Judy</a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_fromArray">fromArray</a>(int $type, array $data)
+                    <a href="#method_fromArray">fromArray</a>(int $type, array $data, bool $optimizeIteration = false)
         
                                             <p><p>Create a new Judy array from a PHP array.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -600,9 +611,13 @@ exist, it is created with the given amount. The amount may be negative.</p></p> 
                     array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_keys">keys</a>()
+                    <a href="#method_keys">keys</a>(mixed $start = null, mixed $end = null)
         
-                                            <p><p>Return all keys as a PHP array.</p></p>                </div>
+                                            <p><p>Return all keys as a PHP array, optionally limited to an inclusive key
+range. All key types are supported; string-keyed types require string
+bounds and compare them lexicographically. This is the primitive to
+reach for on a bounded read: one traversal writing straight into the
+returned array, so prefer it to slice($start, $end)-&gt;keys().</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -610,9 +625,10 @@ exist, it is created with the given amount. The amount may be negative.</p></p> 
                     array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_values">values</a>()
+                    <a href="#method_values">values</a>(mixed $start = null, mixed $end = null)
         
-                                            <p><p>Return all values as a PHP array.</p></p>                </div>
+                                            <p><p>Return all values as a PHP array, optionally limited to an inclusive
+key range. The bounds are keys, not values.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -705,9 +721,9 @@ population count.</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L80">at line 80</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L85">at line 85</a></div>
         <code>                    
-    <strong>__construct</strong>(int $type)
+    <strong>__construct</strong>(int $type, bool $optimizeIteration = false)
         </code>
     </h3>
     <div class="details">    
@@ -727,6 +743,15 @@ population count.</p></p>                </div>
                 <td>$type</td>
                 <td><p>One of the Judy type constants (e.g. Judy::INT_TO_INT).</p></td>
             </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$optimizeIteration</td>
+                <td><p>[optional] Mirror payloads into the key
+index for faster ordered reads, at a write-path and memory cost. Only
+Judy::STRING_TO_INT_HASH and Judy::STRING_TO_INT_ADAPTIVE honour it;
+every other type accepts the argument and ignores it. Cannot be changed
+after construction. Since 2.5.0.</p></td>
+            </tr>
             </table>
 
             
@@ -739,7 +764,7 @@ population count.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method___destruct">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L85">at line 85</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L90">at line 90</a></div>
         <code>                    
     <strong>__destruct</strong>()
         </code>
@@ -763,7 +788,7 @@ population count.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getType">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L91">at line 91</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L96">at line 96</a></div>
         <code>                    int
     <strong>getType</strong>()
         </code>
@@ -795,8 +820,43 @@ population count.</p></p>                </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_isIterationOptimized">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L106">at line 106</a></div>
+        <code>                    bool
+    <strong>isIterationOptimized</strong>()
+        </code>
+    </h3>
+    <div class="details"><i>Since: 2.5.0</i>
+            <br>    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether the optimizeIteration trade is actually in effect here.</p></p>                <p><p>Returns what was honoured, not what was asked for: a type that cannot
+mirror its payload accepts the constructor argument and returns false.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>True if payloads are mirrored into the key index.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_free">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L97">at line 97</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L112">at line 112</a></div>
         <code>                    int
     <strong>free</strong>()
         </code>
@@ -829,7 +889,7 @@ population count.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_memoryUsage">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L104">at line 104</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L119">at line 119</a></div>
         <code>                    int|null
     <strong>memoryUsage</strong>()
         </code>
@@ -863,9 +923,9 @@ population count.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_size">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L113">at line 113</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L134">at line 134</a></div>
         <code>                    int
-    <strong>size</strong>(mixed $index_start = 0, mixed $index_end = -1)
+    <strong>size</strong>(mixed $start = null, mixed $end = null)
         </code>
     </h3>
     <div class="details">    
@@ -874,8 +934,12 @@ population count.</p></p>                </div>
             
 
         <div class="method-description">
-                            <p><p>Return the number of elements, optionally within a key range
-(integer-keyed types only).</p></p>                        
+                            <p><p>Return the number of elements, optionally within an inclusive key range.</p></p>                <p><p>All key types are supported; string-keyed types require string bounds
+and compare them lexicographically. Counts without materialising the
+range, so prefer it to count($judy-&gt;keys($start, $end)).</p>
+<p>The bounds are keys, not offsets. Prior to 2.5.0 the parameters were
+named $index_start/$index_end, and string bounds were accepted but
+ignored on string-keyed types, returning the whole-array count.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -883,13 +947,13 @@ population count.</p></p>                </div>
                     <table class="table table-condensed">
                     <tr>
                 <td>mixed</td>
-                <td>$index_start</td>
-                <td><p>[optional] Start counting from the given index.</p></td>
+                <td>$start</td>
+                <td><p>[optional] Inclusive lower bound; null for unbounded.</p></td>
             </tr>
                     <tr>
                 <td>mixed</td>
-                <td>$index_end</td>
-                <td><p>[optional] Stop counting at the given index.</p></td>
+                <td>$end</td>
+                <td><p>[optional] Inclusive upper bound; null for unbounded.</p></td>
             </tr>
             </table>
 
@@ -899,7 +963,7 @@ population count.</p></p>                </div>
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
-            <td><p>The number of elements.</p></td>
+            <td><p>The number of elements in the range.</p></td>
         </tr>
     </table>
 
@@ -912,7 +976,7 @@ population count.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L118">at line 118</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L139">at line 139</a></div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -948,7 +1012,7 @@ The return value is cast to an integer.
             </div>
                     <div class="method-item">
                     <h3 id="method_byCount">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L126">at line 126</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L147">at line 147</a></div>
         <code>                    mixed
     <strong>byCount</strong>(mixed $nth_index)
         </code>
@@ -992,7 +1056,7 @@ integer-keyed types; returns null for string-keyed types.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_first">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L134">at line 134</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L155">at line 155</a></div>
         <code>                    mixed
     <strong>first</strong>(mixed $index = null)
         </code>
@@ -1036,7 +1100,7 @@ greater than the given index.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_searchNext">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L142">at line 142</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L163">at line 163</a></div>
         <code>                    mixed
     <strong>searchNext</strong>(mixed $index)
         </code>
@@ -1080,7 +1144,7 @@ the given index.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_last">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L150">at line 150</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L171">at line 171</a></div>
         <code>                    mixed
     <strong>last</strong>(mixed $index = null)
         </code>
@@ -1124,7 +1188,7 @@ less than the given index.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_prev">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L158">at line 158</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L179">at line 179</a></div>
         <code>                    mixed
     <strong>prev</strong>(mixed $index)
         </code>
@@ -1168,7 +1232,7 @@ the given index.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_firstEmpty">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L166">at line 166</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L187">at line 187</a></div>
         <code>                    mixed
     <strong>firstEmpty</strong>(mixed $index = null)
         </code>
@@ -1212,7 +1276,7 @@ greater than the given index. Integer-keyed types only.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_nextEmpty">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L174">at line 174</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L195">at line 195</a></div>
         <code>                    mixed
     <strong>nextEmpty</strong>(mixed $index)
         </code>
@@ -1256,7 +1320,7 @@ index. Integer-keyed types only.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_lastEmpty">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L182">at line 182</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L203">at line 203</a></div>
         <code>                    mixed
     <strong>lastEmpty</strong>(mixed $index = null)
         </code>
@@ -1300,7 +1364,7 @@ less than the given index. Integer-keyed types only.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_prevEmpty">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L190">at line 190</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L211">at line 211</a></div>
         <code>                    mixed
     <strong>prevEmpty</strong>(mixed $index)
         </code>
@@ -1344,7 +1408,7 @@ index. Integer-keyed types only.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_union">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L197">at line 197</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L218">at line 218</a></div>
         <code>                    <a href="Judy.html">Judy</a>
     <strong>union</strong>(<a href="Judy.html">Judy</a> $other)
         </code>
@@ -1388,7 +1452,7 @@ duplicate keys.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_intersect">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L203">at line 203</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L224">at line 224</a></div>
         <code>                    <a href="Judy.html">Judy</a>
     <strong>intersect</strong>(<a href="Judy.html">Judy</a> $other)
         </code>
@@ -1431,7 +1495,7 @@ duplicate keys.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_diff">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L209">at line 209</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L230">at line 230</a></div>
         <code>                    <a href="Judy.html">Judy</a>
     <strong>diff</strong>(<a href="Judy.html">Judy</a> $other)
         </code>
@@ -1475,7 +1539,7 @@ not in the other.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_xor">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L215">at line 215</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L236">at line 236</a></div>
         <code>                    <a href="Judy.html">Judy</a>
     <strong>xor</strong>(<a href="Judy.html">Judy</a> $other)
         </code>
@@ -1519,7 +1583,7 @@ the arrays (symmetric difference).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_mergeWith">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L222">at line 222</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L243">at line 243</a></div>
         <code>                    void
     <strong>mergeWith</strong>(<a href="Judy.html">Judy</a> $other)
         </code>
@@ -1563,7 +1627,7 @@ the same key category (both integer-keyed or both string-keyed).</p></p>        
             </div>
                     <div class="method-item">
                     <h3 id="method_slice">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L228">at line 228</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L249">at line 249</a></div>
         <code>                    <a href="Judy.html">Judy</a>
     <strong>slice</strong>(mixed $start, mixed $end)
         </code>
@@ -1612,7 +1676,7 @@ range (inclusive). For string-keyed types, comparison is lexicographic.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetExists">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L233">at line 233</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L254">at line 254</a></div>
         <code>                    bool
     <strong>offsetExists</strong>(TKey $offset)
         </code>
@@ -1660,7 +1724,7 @@ The return value will be casted to boolean if non-boolean was returned.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetGet">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L238">at line 238</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L259">at line 259</a></div>
         <code>                    mixed
     <strong>offsetGet</strong>(TKey $offset)
         </code>
@@ -1705,7 +1769,7 @@ The offset to retrieve.
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetSet">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L243">at line 243</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L264">at line 264</a></div>
         <code>                    void
     <strong>offsetSet</strong>(TKey $offset, TValue $value)
         </code>
@@ -1757,7 +1821,7 @@ The value to set.
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetUnset">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L248">at line 248</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L269">at line 269</a></div>
         <code>                    void
     <strong>offsetUnset</strong>(TKey $offset)
         </code>
@@ -1802,7 +1866,7 @@ The offset to unset.
             </div>
                     <div class="method-item">
                     <h3 id="method_jsonSerialize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L253">at line 253</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L274">at line 274</a></div>
         <code>                    mixed
     <strong>jsonSerialize</strong>()
         </code>
@@ -1836,7 +1900,7 @@ which is a value of any type other than a resource.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method___serialize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L258">at line 258</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L279">at line 279</a></div>
         <code>                    array
     <strong>__serialize</strong>()
         </code>
@@ -1869,7 +1933,7 @@ which is a value of any type other than a resource.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method___unserialize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L263">at line 263</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L284">at line 284</a></div>
         <code>                    void
     <strong>__unserialize</strong>(array $data)
         </code>
@@ -1912,9 +1976,9 @@ which is a value of any type other than a resource.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L269">at line 269</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L296">at line 296</a></div>
         <code>                    array
-    <strong>toArray</strong>()
+    <strong>toArray</strong>(mixed $start = null, mixed $end = null)
         </code>
     </h3>
     <div class="details">    
@@ -1923,10 +1987,29 @@ which is a value of any type other than a resource.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Convert the Judy array to a native PHP array. Uses native C iteration
-internally, faster than a manual foreach.</p></p>                        
+                            <p><p>Convert the Judy array to a native PHP array, optionally limited to an
+inclusive key range. Uses native C iteration internally, faster than a
+manual foreach. A bounded read is one traversal writing straight into
+the returned array, so prefer it to slice($start, $end)-&gt;toArray().</p></p>                        
         </div>
         <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$start</td>
+                <td><p>[optional] Inclusive lower bound; null for unbounded.
+Since 2.5.0.</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$end</td>
+                <td><p>[optional] Inclusive upper bound; null for unbounded.
+Since 2.5.0.</p></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
@@ -1946,9 +2029,9 @@ internally, faster than a manual foreach.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_fromArray">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L276">at line 276</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L305">at line 305</a></div>
         <code>        static            <a href="Judy.html">Judy</a>
-    <strong>fromArray</strong>(int $type, array $data)
+    <strong>fromArray</strong>(int $type, array $data, bool $optimizeIteration = false)
         </code>
     </h3>
     <div class="details">    
@@ -1973,6 +2056,12 @@ internally, faster than a manual foreach.</p></p>
                 <td>$data</td>
                 <td><p>Key-value pairs to populate the array with.</p></td>
             </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$optimizeIteration</td>
+                <td><p>[optional] See Judy::__construct().
+Since 2.5.0.</p></td>
+            </tr>
             </table>
 
             
@@ -1994,7 +2083,7 @@ internally, faster than a manual foreach.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_putAll">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L281">at line 281</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L310">at line 310</a></div>
         <code>                    void
     <strong>putAll</strong>(array $data)
         </code>
@@ -2037,7 +2126,7 @@ internally, faster than a manual foreach.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getAll">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L289">at line 289</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L318">at line 318</a></div>
         <code>                    array
     <strong>getAll</strong>(array $keys)
         </code>
@@ -2081,7 +2170,7 @@ value (or null if absent).</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_increment">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L296">at line 296</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L325">at line 325</a></div>
         <code>                    int
     <strong>increment</strong>(mixed $key, int $amount = 1)
         </code>
@@ -2130,7 +2219,7 @@ exist, it is created with the given amount. The amount may be negative.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_rewind">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L301">at line 301</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L330">at line 330</a></div>
         <code>                    void
     <strong>rewind</strong>()
         </code>
@@ -2163,7 +2252,7 @@ exist, it is created with the given amount. The amount may be negative.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_valid">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L306">at line 306</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L335">at line 335</a></div>
         <code>                    bool
     <strong>valid</strong>()
         </code>
@@ -2197,7 +2286,7 @@ Returns true on success or false on failure.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_current">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L311">at line 311</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L340">at line 340</a></div>
         <code>                    mixed
     <strong>current</strong>()
         </code>
@@ -2230,7 +2319,7 @@ Returns true on success or false on failure.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_key">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L316">at line 316</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L345">at line 345</a></div>
         <code>                    mixed
     <strong>key</strong>()
         </code>
@@ -2263,7 +2352,7 @@ Returns true on success or false on failure.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_next">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L321">at line 321</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L350">at line 350</a></div>
         <code>                    void
     <strong>next</strong>()
         </code>
@@ -2296,9 +2385,9 @@ Returns true on success or false on failure.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_keys">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L326">at line 326</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L366">at line 366</a></div>
         <code>                    array
-    <strong>keys</strong>()
+    <strong>keys</strong>(mixed $start = null, mixed $end = null)
         </code>
     </h3>
     <div class="details">    
@@ -2307,9 +2396,31 @@ Returns true on success or false on failure.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Return all keys as a PHP array.</p></p>                        
+                            <p><p>Return all keys as a PHP array, optionally limited to an inclusive key
+range. All key types are supported; string-keyed types require string
+bounds and compare them lexicographically. This is the primitive to
+reach for on a bounded read: one traversal writing straight into the
+returned array, so prefer it to slice($start, $end)-&gt;keys().</p></p>                <p><p>Note that a string upper bound is a bound, not a prefix match — for a
+prefix sweep, bound with the prefix and its successor.</p></p>        
         </div>
         <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$start</td>
+                <td><p>[optional] Inclusive lower bound; null for unbounded.
+Since 2.5.0.</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$end</td>
+                <td><p>[optional] Inclusive upper bound; null for unbounded.
+Since 2.5.0.</p></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
@@ -2329,9 +2440,9 @@ Returns true on success or false on failure.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_values">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L331">at line 331</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L376">at line 376</a></div>
         <code>                    array
-    <strong>values</strong>()
+    <strong>values</strong>(mixed $start = null, mixed $end = null)
         </code>
     </h3>
     <div class="details">    
@@ -2340,9 +2451,27 @@ Returns true on success or false on failure.</p></td>
             
 
         <div class="method-description">
-                            <p><p>Return all values as a PHP array.</p></p>                        
+                            <p><p>Return all values as a PHP array, optionally limited to an inclusive
+key range. The bounds are keys, not values.</p></p>                        
         </div>
         <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$start</td>
+                <td><p>[optional] Inclusive lower bound; null for unbounded.
+Since 2.5.0.</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$end</td>
+                <td><p>[optional] Inclusive upper bound; null for unbounded.
+Since 2.5.0.</p></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
@@ -2362,7 +2491,7 @@ Returns true on success or false on failure.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_forEach">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L337">at line 337</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L382">at line 382</a></div>
         <code>                    void
     <strong>forEach</strong>(callable $callback)
         </code>
@@ -2406,7 +2535,7 @@ receives ($key, $value) for each element.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_filter">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L342">at line 342</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L387">at line 387</a></div>
         <code>                    <a href="Judy.html">Judy</a>
     <strong>filter</strong>(callable $predicate)
         </code>
@@ -2449,7 +2578,7 @@ receives ($key, $value) for each element.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_map">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L347">at line 347</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L392">at line 392</a></div>
         <code>                    <a href="Judy.html">Judy</a>
     <strong>map</strong>(callable $transform)
         </code>
@@ -2492,7 +2621,7 @@ receives ($key, $value) for each element.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sumValues">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L353">at line 353</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L398">at line 398</a></div>
         <code>                    int|float
     <strong>sumValues</strong>()
         </code>
@@ -2526,7 +2655,7 @@ population count.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_averageValues">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L359">at line 359</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L404">at line 404</a></div>
         <code>                    float|null
     <strong>averageValues</strong>()
         </code>
@@ -2559,7 +2688,7 @@ population count.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_populationCount">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L365">at line 365</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L413">at line 413</a></div>
         <code>                    int
     <strong>populationCount</strong>(mixed $start = 0, mixed $end = -1)
         </code>
@@ -2570,7 +2699,10 @@ population count.</p></p>
             
 
         <div class="method-description">
-                            <p><p>Return the number of keys in the [$start, $end] range (inclusive).</p></p>                <p><p>Integer-keyed types only.</p></p>        
+                            <p><p>Return the number of keys in the [$start, $end] range (inclusive).</p></p>                <p><p>Integer-keyed types only — it answers from libJudy's O(1) population
+cache, which the JudySL/JudyHS string stores do not have, and throws on
+a string-keyed array. To count a range on string keys, use
+Judy::size($start, $end).</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -2607,7 +2739,7 @@ population count.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteRange">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L371">at line 371</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L419">at line 419</a></div>
         <code>                    int
     <strong>deleteRange</strong>(mixed $start, mixed $end)
         </code>
@@ -2655,7 +2787,7 @@ population count.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_equals">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L376">at line 376</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/judy/judy.php#L424">at line 424</a></div>
         <code>                    bool
     <strong>equals</strong>(<a href="Judy.html">Judy</a> $other)
         </code>

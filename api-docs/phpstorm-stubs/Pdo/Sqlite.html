@@ -678,7 +678,7 @@ not be supported by your driver.</p></em></p>
                     <p><p>
 using <b>PDO::ATTR_DRIVER_NAME</b>
 ```
-if ($db->getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql') {
+if (\$db->getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql') {
 echo "Running on mysql; doing something mysql specific here\n";
 }
 ```
@@ -922,11 +922,11 @@ should use <b>PDOStatement::fetchAll</b> instead.</p></em></p>
                     <p><p>
 Forcing queries to be buffered in mysql
 ```
-if ($db->getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql') {
-$stmt = $db->prepare('select * from foo',
+if (\$db->getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql') {
+\$stmt = \$db->prepare('select * from foo',
 array(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true));
 } else {
-die("my application only works with mysql; I should use \$stmt->fetchAll() instead");
+die("my application only works with mysql; I should use \\$stmt->fetchAll() instead");
 }
 ```
 </p></p>
@@ -3241,7 +3241,7 @@ The following example incorrectly relies on the return value of
 <b>PDO::exec</b>, wherein a statement that affected 0 rows
 results in a call to <b>die</b>:
 ```
-$db->exec() or die(print_r($db->errorInfo(), true));
+\$db->exec() or die(print_r(\$db->errorInfo(), true));
 ```</td>
         </tr>
     </table>
@@ -4566,13 +4566,13 @@ that can be used to calculate a result aggregated across all the rows of a query
                 <td><p>Callback function called for each row of the result set. The
 callback should accumulate the result and store it in the aggregation context. This
 function need to be defined as:
-<code>step ( mixed $context , int $rownumber , mixed $value , mixed $values ): mixed</code>
-<br/>$context - null for the first row; on subsequent rows it will have the value that was
+<code>step ( mixed \$context , int \$rownumber , mixed \$value , mixed \$values ): mixed</code>
+<br/>\$context - null for the first row; on subsequent rows it will have the value that was
 previously returned from the step function; you should use this to maintain the aggregate
 state.
-<br/>$rownumber - The current row number.
-<br/>$value - The first argument passed to the aggregate.
-<br/>$values - Further arguments passed to the aggregate.
+<br/>\$rownumber - The current row number.
+<br/>\$value - The first argument passed to the aggregate.
+<br/>\$values - Further arguments passed to the aggregate.
 <br/>The return value of this function will be used as the context argument in the next
 call of the step or finalize functions.</p></td>
             </tr>
@@ -4584,9 +4584,9 @@ row. Once all the rows have been processed, this function will be called, and it
 then take the data from the aggregation context and return the result. This callback
 function should return a type understood by SQLite (i.e. scalar type). This function need
 to be defined as:
-<code>fini ( mixed $context , int $rowcount ): mixed</code>
-<br/>$context - Holds the return value from the very last call to the step function.
-<br/>$rowcount - Holds the number of rows over which the aggregate was performed.
+<code>fini ( mixed \$context , int \$rowcount ): mixed</code>
+<br/>\$context - Holds the return value from the very last call to the step function.
+<br/>\$rowcount - Holds the number of rows over which the aggregate was performed.
 <br/>The return value of this function will be used as the return value for the
 aggregate.</p></td>
             </tr>
@@ -4700,9 +4700,9 @@ query that allows function calls, for example SELECT, UPDATE, or triggers.</p></
                 <td><p>Callback function to handle the defined SQL function. Callback
 functions should return a type understood by SQLite (i.e. scalar type). This function
 need to be defined as:
-<code>callback ( mixed $value , mixed $values ): mixed</code>
-<br/>$value - The first argument passed to the SQL function.
-<br/>$values - Further arguments passed to the SQL function.</p></td>
+<code>callback ( mixed \$value , mixed \$values ): mixed</code>
+<br/>\$value - The first argument passed to the SQL function.
+<br/>\$values - Further arguments passed to the SQL function.</p></td>
             </tr>
                     <tr>
                 <td>int</td>

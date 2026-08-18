@@ -676,7 +676,7 @@ not be supported by your driver.</p></em></p>
                     <p><p>
 using <b>PDO::ATTR_DRIVER_NAME</b>
 ```
-if ($db->getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql') {
+if (\$db->getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql') {
 echo "Running on mysql; doing something mysql specific here\n";
 }
 ```
@@ -920,11 +920,11 @@ should use <b>PDOStatement::fetchAll</b> instead.</p></em></p>
                     <p><p>
 Forcing queries to be buffered in mysql
 ```
-if ($db->getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql') {
-$stmt = $db->prepare('select * from foo',
+if (\$db->getAttribute(PDO::ATTR_DRIVER_NAME) == 'mysql') {
+\$stmt = \$db->prepare('select * from foo',
 array(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true));
 } else {
-die("my application only works with mysql; I should use \$stmt->fetchAll() instead");
+die("my application only works with mysql; I should use \\$stmt->fetchAll() instead");
 }
 ```
 </p></p>
@@ -3046,7 +3046,7 @@ The following example incorrectly relies on the return value of
 <b>PDO::exec</b>, wherein a statement that affected 0 rows
 results in a call to <b>die</b>:
 ```
-$db->exec() or die(print_r($db->errorInfo(), true));
+\$db->exec() or die(print_r(\$db->errorInfo(), true));
 ```</td>
         </tr>
     </table>
