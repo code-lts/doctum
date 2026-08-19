@@ -261,7 +261,8 @@ IterativeTestSuite must be treated as an atomic unit.</p></p>                </d
                 <div class="col-md-8">
                     <a href="#method_tests">tests</a>()
         
-                                            <p><p>Returns the tests as an enumeration.</p></p>                </div>
+                                            <p><p>Returns the tests aggregated by this test suite: all of them, and not
+only those that the test selection has selected.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../PHPUnit/Framework/TestSuite.html#method_tests">
 <abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a></small></div>
             </div>
@@ -1085,7 +1086,7 @@ IterativeTestSuite must be treated as an atomic unit.</p></p>
                     <div class="method-item">
                     <h3 id="method_tests">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_tests">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L432">at line 432</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L443">at line 443</a></div>
         <code>                    array
     <strong>tests</strong>()
         </code>
@@ -1096,7 +1097,15 @@ IterativeTestSuite must be treated as an atomic unit.</p></p>
             
 
         <div class="method-description">
-                            <p><p>Returns the tests as an enumeration.</p></p>                        
+                            <p><p>Returns the tests aggregated by this test suite: all of them, and not
+only those that the test selection has selected.</p></p>                <p><p>The test selection that --filter, --group, --exclude-group, and
+--filter-test-id configure is a filter iterator that injectFilter()
+puts on the test suite, so it only takes effect while the test suite is
+iterated. Iterate the test suite wherever the selected tests are
+wanted, as count(), isEmpty(), and the takeTests() that run() uses do.</p>
+<p>The filter accepts every test suite it is asked about and applies the
+selection to the tests inside it, so iterating can yield a test suite
+that the selection has emptied.</p></p>        
         </div>
         <div class="tags">
             
@@ -1119,7 +1128,7 @@ IterativeTestSuite must be treated as an atomic unit.</p></p>
                     <div class="method-item">
                     <h3 id="method_setTests">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_setTests">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L442">at line 442</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L453">at line 453</a></div>
         <code>                    void
     <strong>setTests</strong>(array $tests)
         </code>
@@ -1163,7 +1172,7 @@ IterativeTestSuite must be treated as an atomic unit.</p></p>
                     <div class="method-item">
                     <h3 id="method_markTestSuiteSkipped">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_markTestSuiteSkipped">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L452">at line 452</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L463">at line 463</a></div>
         <code>                    <abbr title="PHPUnit\Framework\never">never</abbr>
     <strong>markTestSuiteSkipped</strong>(string $message = &#039;&#039;)
         </code>
@@ -1216,7 +1225,7 @@ IterativeTestSuite must be treated as an atomic unit.</p></p>
                     <div class="method-item">
                     <h3 id="method_getIterator">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_getIterator">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L460">at line 460</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L471">at line 471</a></div>
         <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a>
     <strong>getIterator</strong>()
         </code>
@@ -1251,7 +1260,7 @@ IterativeTestSuite must be treated as an atomic unit.</p></p>
                     <div class="method-item">
                     <h3 id="method_injectFilter">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_injectFilter">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L472">at line 472</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L483">at line 483</a></div>
         <code>                    void
     <strong>injectFilter</strong>(<a href="../../PHPUnit/Runner/Filter/Factory.html"><abbr title="PHPUnit\Runner\Filter\Factory">Factory</abbr></a> $filter)
         </code>
@@ -1401,7 +1410,7 @@ IterativeTestSuite must be treated as an atomic unit.</p></p>
                     <div class="method-item">
                     <h3 id="method_isForTestClass">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_isForTestClass">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L600">at line 600</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L611">at line 611</a></div>
         <code>                    bool
     <strong>isForTestClass</strong>()
         </code>
@@ -1511,7 +1520,7 @@ IterativeTestSuite must be treated as an atomic unit.</p></p>
                     <div class="method-item">
                     <h3 id="method_addTestMethod">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_addTestMethod">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L639">at line 639</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L650">at line 650</a></div>
         <code>            protected        void
     <strong>addTestMethod</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a> $class, <a target="_blank" rel="noopener" href="https://www.php.net/ReflectionMethod">ReflectionMethod</a> $method, array $groups, int $numberOfRuns = 1, int $maxAttempts = 1)
         </code>
