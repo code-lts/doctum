@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>PHPUnit\TextUI\Configuration\TestSuiteBuilder | PHPUnit</title>
+    <title>PHPUnit\Runner\TestIndex\NameFilterPruner | PHPUnit</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:PHPUnit_TextUI_Configuration_TestSuiteBuilder" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:PHPUnit_Runner_TestIndex_NameFilterPruner" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,18 +75,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/TextUI.html">TextUI</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/TextUI/Configuration.html">Configuration</a></li><li class="backslash">\</li><li>TestSuiteBuilder</li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner.html">Runner</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner/TestIndex.html">TestIndex</a></li><li class="backslash">\</li><li>NameFilterPruner</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>TestSuiteBuilder    
+        <h1>NameFilterPruner    
             </h1>
     </div>
 
     
     <p>final         class
-    <strong>TestSuiteBuilder</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/TextUI/Configuration/TestSuiteBuilder.php">View source</a>)
+    <strong>NameFilterPruner</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/NameFilterPruner.php">View source</a>)
 </p>
 
         
@@ -101,6 +101,13 @@
                 &nbsp;
     
 
+            <div class="description">
+            <p><p>Decides whether a test file can be skipped for a run that selects tests by
+their name.</p></p>            <p><p>Unlike a selection by group, a selection by name can only be decided for a
+test that has no data set: NameFilterIterator matches the filter against the
+entire name of a test, including the name of its data set, and the name of a
+data set is not known until the data provider has been invoked (#6741). A
+file that has a single test method with data sets is therefore always loaded.</p></p>        </div>
             
         
     
@@ -110,10 +117,10 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    static&nbsp;<a href="../../../PHPUnit/Runner/TestIndex/NameFilterPruner.html"><abbr title="PHPUnit\Runner\TestIndex\NameFilterPruner">NameFilterPruner</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="../../../PHPUnit/Runner/TestIndex/TestFileSkipper.html"><abbr title="PHPUnit\Runner\TestIndex\TestFileSkipper">TestFileSkipper</abbr></a>|null $skipper = null)
+                    <a href="#method_fromFilter">fromFilter</a>(string $filter)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -121,10 +128,32 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../PHPUnit/Framework/TestSuite.html"><abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a>
+                    static&nbsp;<a href="../../../PHPUnit/Runner/TestIndex/NameFilterPruner.html"><abbr title="PHPUnit\Runner\TestIndex\NameFilterPruner">NameFilterPruner</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_build">build</a>(<a href="../../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a> $configuration)
+                    <a href="#method_withoutFilter">withoutFilter</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_prunes">prunes</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_canSkip">canSkip</a>(<a href="../../../PHPUnit/Runner/TestIndex/TestIndexEntry.html"><abbr title="PHPUnit\Runner\TestIndex\TestIndexEntry">TestIndexEntry</abbr></a> $entry)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -137,10 +166,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/TextUI/Configuration/TestSuiteBuilder.php#L44">at line 44</a></div>
-        <code>                    
-    <strong>__construct</strong>(<a href="../../../PHPUnit/Runner/TestIndex/TestFileSkipper.html"><abbr title="PHPUnit\Runner\TestIndex\TestFileSkipper">TestFileSkipper</abbr></a>|null $skipper = null)
+                    <h3 id="method_fromFilter">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/NameFilterPruner.php#L33">at line 33</a></div>
+        <code>        static            <a href="../../../PHPUnit/Runner/TestIndex/NameFilterPruner.html"><abbr title="PHPUnit\Runner\TestIndex\NameFilterPruner">NameFilterPruner</abbr></a>
+    <strong>fromFilter</strong>(string $filter)
         </code>
     </h3>
     <div class="details">    
@@ -157,43 +186,8 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../PHPUnit/Runner/TestIndex/TestFileSkipper.html"><abbr title="PHPUnit\Runner\TestIndex\TestFileSkipper">TestFileSkipper</abbr></a>|null</td>
-                <td>$skipper</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_build">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/TextUI/Configuration/TestSuiteBuilder.php#L59">at line 59</a></div>
-        <code>                    <a href="../../../PHPUnit/Framework/TestSuite.html"><abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a>
-    <strong>build</strong>(<a href="../../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a> $configuration)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a></td>
-                <td>$configuration</td>
+                <td>string</td>
+                <td>$filter</td>
                 <td></td>
             </tr>
             </table>
@@ -203,33 +197,124 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../PHPUnit/Framework/TestSuite.html"><abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a></td>
+            <td><a href="../../../PHPUnit/Runner/TestIndex/NameFilterPruner.html"><abbr title="PHPUnit\Runner\TestIndex\NameFilterPruner">NameFilterPruner</abbr></a></td>
             <td></td>
         </tr>
     </table>
 
             
-                            <h4>Exceptions</h4>
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_withoutFilter">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/NameFilterPruner.php#L38">at line 38</a></div>
+        <code>        static            <a href="../../../PHPUnit/Runner/TestIndex/NameFilterPruner.html"><abbr title="PHPUnit\Runner\TestIndex\NameFilterPruner">NameFilterPruner</abbr></a>
+    <strong>withoutFilter</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../PHPUnit/Runner/TestIndex/NameFilterPruner.html"><abbr title="PHPUnit\Runner\TestIndex\NameFilterPruner">NameFilterPruner</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_prunes">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/NameFilterPruner.php#L51">at line 51</a></div>
+        <code>                    bool
+    <strong>prunes</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_canSkip">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/NameFilterPruner.php#L56">at line 56</a></div>
+        <code>                    bool
+    <strong>canSkip</strong>(<a href="../../../PHPUnit/Runner/TestIndex/TestIndexEntry.html"><abbr title="PHPUnit\Runner\TestIndex\TestIndexEntry">TestIndexEntry</abbr></a> $entry)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../PHPUnit/Framework/Exception.html"><abbr title="PHPUnit\Framework\Exception">Exception</abbr></a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../PHPUnit/TextUI/RuntimeException.html"><abbr title="PHPUnit\TextUI\RuntimeException">RuntimeException</abbr></a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../PHPUnit/TextUI/TestDirectoryNotFoundException.html"><abbr title="PHPUnit\TextUI\TestDirectoryNotFoundException">TestDirectoryNotFoundException</abbr></a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../PHPUnit/TextUI/TestFileNotFoundException.html"><abbr title="PHPUnit\TextUI\TestFileNotFoundException">TestFileNotFoundException</abbr></a></td>
+                <td><a href="../../../PHPUnit/Runner/TestIndex/TestIndexEntry.html"><abbr title="PHPUnit\Runner\TestIndex\TestIndexEntry">TestIndexEntry</abbr></a></td>
+                <td>$entry</td>
                 <td></td>
             </tr>
             </table>
 
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
             
             
                     </div>

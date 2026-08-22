@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>PHPUnit\TextUI\Configuration\TestSuiteBuilder | PHPUnit</title>
+    <title>PHPUnit\Runner\TestIndex\GroupPruner | PHPUnit</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:PHPUnit_TextUI_Configuration_TestSuiteBuilder" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:PHPUnit_Runner_TestIndex_GroupPruner" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,18 +75,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/TextUI.html">TextUI</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/TextUI/Configuration.html">Configuration</a></li><li class="backslash">\</li><li>TestSuiteBuilder</li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner.html">Runner</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner/TestIndex.html">TestIndex</a></li><li class="backslash">\</li><li>GroupPruner</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>TestSuiteBuilder    
+        <h1>GroupPruner    
             </h1>
     </div>
 
     
     <p>final         class
-    <strong>TestSuiteBuilder</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/TextUI/Configuration/TestSuiteBuilder.php">View source</a>)
+    <strong>GroupPruner</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/GroupPruner.php">View source</a>)
 </p>
 
         
@@ -101,6 +101,14 @@
                 &nbsp;
     
 
+            <div class="description">
+            <p><p>Decides whether a test file can be skipped for a run that selects tests by
+group.</p></p>            <p><p>Unlike a filter for the name of a test, a selection by group can be decided
+exactly: the groups of a test are a property of its class and its method, and
+every row of a data provider inherits the groups of its test method, see
+TestBuilder::buildDataProviderTestSuite(). Knowing the test methods of a file
+and their groups is therefore enough to know that none of the tests in it can
+be selected.</p></p>        </div>
             
         
     
@@ -113,21 +121,31 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="../../../PHPUnit/Runner/TestIndex/TestFileSkipper.html"><abbr title="PHPUnit\Runner\TestIndex\TestFileSkipper">TestFileSkipper</abbr></a>|null $skipper = null)
+                    <a href="#method___construct">__construct</a>(array $includedGroups, array $excludedGroups)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>The included groups are expected to already contain the virtual groups
+that back --covers, --uses and --requires-php-extension.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../PHPUnit/Framework/TestSuite.html"><abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a>
+                    bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_build">build</a>(<a href="../../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a> $configuration)
+                    <a href="#method_prunes">prunes</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Nothing can be skipped when no groups are selected at all.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_canSkip">canSkip</a>(<a href="../../../PHPUnit/Runner/TestIndex/TestIndexEntry.html"><abbr title="PHPUnit\Runner\TestIndex\TestIndexEntry">TestIndexEntry</abbr></a> $entry, array $groupsFromConfiguration = [])
+        
+                                            <p><p>The groups configured for a test file in the XML configuration file are
+added to the groups of every test in it, see TestSuiteMapper::map().</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -138,9 +156,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/TextUI/Configuration/TestSuiteBuilder.php#L44">at line 44</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/GroupPruner.php#L50">at line 50</a></div>
         <code>                    
-    <strong>__construct</strong>(<a href="../../../PHPUnit/Runner/TestIndex/TestFileSkipper.html"><abbr title="PHPUnit\Runner\TestIndex\TestFileSkipper">TestFileSkipper</abbr></a>|null $skipper = null)
+    <strong>__construct</strong>(array $includedGroups, array $excludedGroups)
         </code>
     </h3>
     <div class="details">    
@@ -149,16 +167,21 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>The included groups are expected to already contain the virtual groups
+that back --covers, --uses and --requires-php-extension.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../PHPUnit/Runner/TestIndex/TestFileSkipper.html"><abbr title="PHPUnit\Runner\TestIndex\TestFileSkipper">TestFileSkipper</abbr></a>|null</td>
-                <td>$skipper</td>
+                <td>array</td>
+                <td>$includedGroups</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$excludedGroups</td>
                 <td></td>
             </tr>
             </table>
@@ -172,10 +195,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_build">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/TextUI/Configuration/TestSuiteBuilder.php#L59">at line 59</a></div>
-        <code>                    <a href="../../../PHPUnit/Framework/TestSuite.html"><abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a>
-    <strong>build</strong>(<a href="../../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a> $configuration)
+                    <h3 id="method_prunes">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/GroupPruner.php#L59">at line 59</a></div>
+        <code>                    bool
+    <strong>prunes</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -184,16 +207,54 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Nothing can be skipped when no groups are selected at all.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_canSkip">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/GroupPruner.php#L70">at line 70</a></div>
+        <code>                    bool
+    <strong>canSkip</strong>(<a href="../../../PHPUnit/Runner/TestIndex/TestIndexEntry.html"><abbr title="PHPUnit\Runner\TestIndex\TestIndexEntry">TestIndexEntry</abbr></a> $entry, array $groupsFromConfiguration = [])
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The groups configured for a test file in the XML configuration file are
+added to the groups of every test in it, see TestSuiteMapper::map().</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a></td>
-                <td>$configuration</td>
+                <td><a href="../../../PHPUnit/Runner/TestIndex/TestIndexEntry.html"><abbr title="PHPUnit\Runner\TestIndex\TestIndexEntry">TestIndexEntry</abbr></a></td>
+                <td>$entry</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$groupsFromConfiguration</td>
                 <td></td>
             </tr>
             </table>
@@ -203,33 +264,12 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../PHPUnit/Framework/TestSuite.html"><abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a></td>
+            <td>bool</td>
             <td></td>
         </tr>
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../PHPUnit/Framework/Exception.html"><abbr title="PHPUnit\Framework\Exception">Exception</abbr></a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../PHPUnit/TextUI/RuntimeException.html"><abbr title="PHPUnit\TextUI\RuntimeException">RuntimeException</abbr></a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../PHPUnit/TextUI/TestDirectoryNotFoundException.html"><abbr title="PHPUnit\TextUI\TestDirectoryNotFoundException">TestDirectoryNotFoundException</abbr></a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../PHPUnit/TextUI/TestFileNotFoundException.html"><abbr title="PHPUnit\TextUI\TestFileNotFoundException">TestFileNotFoundException</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
             
                     </div>

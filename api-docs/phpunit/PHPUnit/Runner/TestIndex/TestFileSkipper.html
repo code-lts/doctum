@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>PHPUnit\TextUI\Configuration\TestSuiteBuilder | PHPUnit</title>
+    <title>PHPUnit\Runner\TestIndex\TestFileSkipper | PHPUnit</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:PHPUnit_TextUI_Configuration_TestSuiteBuilder" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:PHPUnit_Runner_TestIndex_TestFileSkipper" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -74,19 +74,19 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/TextUI.html">TextUI</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/TextUI/Configuration.html">Configuration</a></li><li class="backslash">\</li><li>TestSuiteBuilder</li>
+                <li><span class="label label-default">interface</span></li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner.html">Runner</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner/TestIndex.html">TestIndex</a></li><li class="backslash">\</li><li>TestFileSkipper</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>TestSuiteBuilder    
+        <h1>TestFileSkipper    
             </h1>
     </div>
 
     
-    <p>final         class
-    <strong>TestSuiteBuilder</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/TextUI/Configuration/TestSuiteBuilder.php">View source</a>)
+    <p>        interface
+    <strong>TestFileSkipper</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/TestFileSkipper.php">View source</a>)
 </p>
 
         
@@ -95,12 +95,16 @@
                         <table>
             <tr>
                 <td><span class="label label-warning">internal</span></td>
-                <td>&nbsp;This class is not covered by the backward compatibility promise for PHPUnit</td>
+                <td>&nbsp;This interface is not covered by the backward compatibility promise for PHPUnit</td>
             </tr>
         </table>
                 &nbsp;
     
 
+            <div class="description">
+            <p><p>Decides whether a test file has to be loaded while the test suite is built.</p></p>            <p><p>A file that does not have to be loaded contributes no test at all. This is
+unrelated to a test that is skipped: a skipped test is part of the test suite
+and is reported, a test in a file that was not loaded is neither.</p></p>        </div>
             
         
     
@@ -110,10 +114,10 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="../../../PHPUnit/Runner/TestIndex/TestFileSkipper.html"><abbr title="PHPUnit\Runner\TestIndex\TestFileSkipper">TestFileSkipper</abbr></a>|null $skipper = null)
+                    <a href="#method_canSkipLoading">canSkipLoading</a>(string $file, array $groupsFromConfiguration)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -121,10 +125,21 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../PHPUnit/Framework/TestSuite.html"><abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a>
+                    mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_build">build</a>(<a href="../../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a> $configuration)
+                    <a href="#method_record">record</a>(string $file, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $load)
+        
+                                            <p><p>Loads a test file, and remembers what it contains and whether PHPUnit had
+something to say about it while it was being loaded.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_persist">persist</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -137,10 +152,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/TextUI/Configuration/TestSuiteBuilder.php#L44">at line 44</a></div>
-        <code>                    
-    <strong>__construct</strong>(<a href="../../../PHPUnit/Runner/TestIndex/TestFileSkipper.html"><abbr title="PHPUnit\Runner\TestIndex\TestFileSkipper">TestFileSkipper</abbr></a>|null $skipper = null)
+                    <h3 id="method_canSkipLoading">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/TestFileSkipper.php#L32">at line 32</a></div>
+        <code>                    bool
+    <strong>canSkipLoading</strong>(string $file, array $groupsFromConfiguration)
         </code>
     </h3>
     <div class="details">    
@@ -157,43 +172,13 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../PHPUnit/Runner/TestIndex/TestFileSkipper.html"><abbr title="PHPUnit\Runner\TestIndex\TestFileSkipper">TestFileSkipper</abbr></a>|null</td>
-                <td>$skipper</td>
+                <td>string</td>
+                <td>$file</td>
                 <td></td>
             </tr>
-            </table>
-
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_build">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/TextUI/Configuration/TestSuiteBuilder.php#L59">at line 59</a></div>
-        <code>                    <a href="../../../PHPUnit/Framework/TestSuite.html"><abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a>
-    <strong>build</strong>(<a href="../../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a> $configuration)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a></td>
-                <td>$configuration</td>
+                <td>array</td>
+                <td>$groupsFromConfiguration</td>
                 <td></td>
             </tr>
             </table>
@@ -203,7 +188,62 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../PHPUnit/Framework/TestSuite.html"><abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a></td>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_record">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/TestFileSkipper.php#L56">at line 56</a></div>
+        <code>                    mixed
+    <strong>record</strong>(string $file, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $load)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Loads a test file, and remembers what it contains and whether PHPUnit had
+something to say about it while it was being loaded.</p></p>                <p><p>Loading the file is what this is given, and not something the caller does
+around it, because what PHPUnit has to say about a file is said while the
+file itself is being executed: a file that is loaded before this is told
+about it would be remembered as one PHPUnit says nothing about.</p>
+<p>A file that could not be loaded is not remembered, and must not be: what
+it contains is not known, and a later run has to load it again in order
+to fail the same way.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$file</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>$load</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
             <td></td>
         </tr>
     </table>
@@ -213,23 +253,45 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../PHPUnit/Framework/Exception.html"><abbr title="PHPUnit\Framework\Exception">Exception</abbr></a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../PHPUnit/TextUI/RuntimeException.html"><abbr title="PHPUnit\TextUI\RuntimeException">RuntimeException</abbr></a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../PHPUnit/TextUI/TestDirectoryNotFoundException.html"><abbr title="PHPUnit\TextUI\TestDirectoryNotFoundException">TestDirectoryNotFoundException</abbr></a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../PHPUnit/TextUI/TestFileNotFoundException.html"><abbr title="PHPUnit\TextUI\TestFileNotFoundException">TestFileNotFoundException</abbr></a></td>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a></td>
                 <td></td>
             </tr>
             </table>
 
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_persist">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/TestFileSkipper.php#L58">at line 58</a></div>
+        <code>                    void
+    <strong>persist</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
             
             
                     </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>PHPUnit\Metadata\Api\Groups | PHPUnit</title>
+    <title>PHPUnit\Runner\TestIndex\TestIndex | PHPUnit</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:PHPUnit_Metadata_Api_Groups" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:PHPUnit_Runner_TestIndex_TestIndex" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,18 +75,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Metadata.html">Metadata</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Metadata/Api.html">Api</a></li><li class="backslash">\</li><li>Groups</li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner.html">Runner</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner/TestIndex.html">TestIndex</a></li><li class="backslash">\</li><li>TestIndex</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>Groups    
+        <h1>TestIndex    
             </h1>
     </div>
 
     
     <p>final         class
-    <strong>Groups</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/Api/Groups.php">View source</a>)
+    <strong>TestIndex</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/TestIndex.php">View source</a>)
 </p>
 
         
@@ -101,8 +101,40 @@
                 &nbsp;
     
 
+            <div class="description">
+            <p><p>What is known about the tests in a set of test files without loading them.</p></p>            <p><p>The index makes it possible to decide that a test file cannot contribute a
+test to a run before the file is loaded. An entry is only handed out while
+every source file it was derived from is unchanged, and the index as a whole
+is discarded when it was written by a different version of PHPUnit, or by a
+different version of PHP, as the meaning of the metadata it stores is defined
+by both: a test class can be declared conditionally, and the metadata for it
+can depend on the version of PHP that reads the file, while the file itself is
+unchanged.</p></p>        </div>
             
         
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                            private
+                                                                                VERSION
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                DEFAULT_INDEX_FILENAME
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
     
     
             <h2>Methods</h2>
@@ -110,23 +142,10 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;string
+                    
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_virtualGroupForCovers">virtualGroupForCovers</a>(string $name)
-        
-                                            <p><p>The metadata that backs --covers, --uses and --requires-php-extension is
-mapped to a group of its own so that these options can be implemented as
-a selection by group. Everything that selects tests this way has to name
-these groups the same way, which is why they are only named here.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    static&nbsp;string
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_virtualGroupForUses">virtualGroupForUses</a>(string $name)
+                    <a href="#method___construct">__construct</a>(string $filepath, <a href="../../../PHPUnit/Runner/TestIndex/FileHasher.html"><abbr title="PHPUnit\Runner\TestIndex\FileHasher">FileHasher</abbr></a>|null $hasher = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -134,10 +153,21 @@ these groups the same way, which is why they are only named here.</p></p>       
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;string
+                    <a href="../../../PHPUnit/Runner/TestIndex/TestIndexEntry.html"><abbr title="PHPUnit\Runner\TestIndex\TestIndexEntry">TestIndexEntry</abbr></a>|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_virtualGroupForRequiredPhpExtension">virtualGroupForRequiredPhpExtension</a>(string $name)
+                    <a href="#method_entryFor">entryFor</a>(string $file)
+        
+                                            <p><p>Returns null when the file is not indexed or when the entry for it is no
+longer valid. Callers must load the file in that case.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_record">record</a>(<a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a> $class, bool $madePhpUnitWarn)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -145,10 +175,10 @@ these groups the same way, which is why they are only named here.</p></p>       
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_groups">groups</a>(string $className, string $methodName, bool $includeVirtual = true)
+                    <a href="#method_load">load</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -156,13 +186,15 @@ these groups the same way, which is why they are only named here.</p></p>       
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../PHPUnit/Framework/TestSize/TestSize.html"><abbr title="PHPUnit\Framework\TestSize\TestSize">TestSize</abbr></a>
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_size">size</a>(string $className, string $methodName)
+                    <a href="#method_persist">persist</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Entries that were not recorded during this run are written back
+unchanged: a run that skipped a file did not learn anything about it and
+must not cause what is known about it to be forgotten. Entries for files
+that no longer exist are dropped.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -172,56 +204,10 @@ these groups the same way, which is why they are only named here.</p></p>       
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_virtualGroupForCovers">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/Api/Groups.php#L48">at line 48</a></div>
-        <code>        static            string
-    <strong>virtualGroupForCovers</strong>(string $name)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>The metadata that backs --covers, --uses and --requires-php-extension is
-mapped to a group of its own so that these options can be implemented as
-a selection by group. Everything that selects tests this way has to name
-these groups the same way, which is why they are only named here.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$name</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_virtualGroupForUses">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/Api/Groups.php#L56">at line 56</a></div>
-        <code>        static            string
-    <strong>virtualGroupForUses</strong>(string $name)
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/TestIndex.php#L63">at line 63</a></div>
+        <code>                    
+    <strong>__construct</strong>(string $filepath, <a href="../../../PHPUnit/Runner/TestIndex/FileHasher.html"><abbr title="PHPUnit\Runner\TestIndex\FileHasher">FileHasher</abbr></a>|null $hasher = null)
         </code>
     </h3>
     <div class="details">    
@@ -239,7 +225,47 @@ these groups the same way, which is why they are only named here.</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$name</td>
+                <td>$filepath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/TestIndex/FileHasher.html"><abbr title="PHPUnit\Runner\TestIndex\FileHasher">FileHasher</abbr></a>|null</td>
+                <td>$hasher</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_entryFor">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/TestIndex.php#L82">at line 82</a></div>
+        <code>                    <a href="../../../PHPUnit/Runner/TestIndex/TestIndexEntry.html"><abbr title="PHPUnit\Runner\TestIndex\TestIndexEntry">TestIndexEntry</abbr></a>|null
+    <strong>entryFor</strong>(string $file)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns null when the file is not indexed or when the entry for it is no
+longer valid. Callers must load the file in that case.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$file</td>
                 <td></td>
             </tr>
             </table>
@@ -249,7 +275,7 @@ these groups the same way, which is why they are only named here.</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
+            <td><a href="../../../PHPUnit/Runner/TestIndex/TestIndexEntry.html"><abbr title="PHPUnit\Runner\TestIndex\TestIndexEntry">TestIndexEntry</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -262,10 +288,10 @@ these groups the same way, which is why they are only named here.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_virtualGroupForRequiredPhpExtension">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/Api/Groups.php#L64">at line 64</a></div>
-        <code>        static            string
-    <strong>virtualGroupForRequiredPhpExtension</strong>(string $name)
+                    <h3 id="method_record">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/TestIndex.php#L108">at line 108</a></div>
+        <code>                    void
+    <strong>record</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a> $class, bool $madePhpUnitWarn)
         </code>
     </h3>
     <div class="details">    
@@ -282,62 +308,13 @@ these groups the same way, which is why they are only named here.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
-                <td>$name</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_groups">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/Api/Groups.php#L75">at line 75</a></div>
-        <code>                    array
-    <strong>groups</strong>(string $className, string $methodName, bool $includeVirtual = true)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$className</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$methodName</td>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a></td>
+                <td>$class</td>
                 <td></td>
             </tr>
                     <tr>
                 <td>bool</td>
-                <td>$includeVirtual</td>
+                <td>$madePhpUnitWarn</td>
                 <td></td>
             </tr>
             </table>
@@ -347,7 +324,7 @@ these groups the same way, which is why they are only named here.</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
+            <td>void</td>
             <td></td>
         </tr>
     </table>
@@ -360,10 +337,10 @@ these groups the same way, which is why they are only named here.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_size">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/Api/Groups.php#L142">at line 142</a></div>
-        <code>                    <a href="../../../PHPUnit/Framework/TestSize/TestSize.html"><abbr title="PHPUnit\Framework\TestSize\TestSize">TestSize</abbr></a>
-    <strong>size</strong>(string $className, string $methodName)
+                    <h3 id="method_load">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/TestIndex.php#L127">at line 127</a></div>
+        <code>                    void
+    <strong>load</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -376,32 +353,62 @@ these groups the same way, which is why they are only named here.</p></p>
                     
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$className</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$methodName</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../PHPUnit/Framework/TestSize/TestSize.html"><abbr title="PHPUnit\Framework\TestSize\TestSize">TestSize</abbr></a></td>
+            <td>void</td>
             <td></td>
         </tr>
     </table>
 
             
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_persist">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestIndex/TestIndex.php#L192">at line 192</a></div>
+        <code>                    void
+    <strong>persist</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Entries that were not recorded during this run are written back
+unchanged: a run that skipped a file did not learn anything about it and
+must not cause what is known about it to be forgotten. Entries for files
+that no longer exist are dropped.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/Exception.html"><abbr title="PHPUnit\Runner\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
