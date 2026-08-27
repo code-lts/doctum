@@ -297,7 +297,7 @@ DolibarrApi</a></small></div>
                     static&nbsp;bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method__checkAccessToResource">_checkAccessToResource</a>(string $resource, int|string|object $resource_id = 0, string $dbtablename = &#039;&#039;, string $feature2 = &#039;&#039;, string $dbt_keyfield = &#039;fk_soc&#039;, string $dbt_select = &#039;rowid&#039;)
+                    <a href="#method__checkAccessToResource">_checkAccessToResource</a>(string $resource, int|string|object $resource_id = 0, string $dbtablename = &#039;&#039;, string $feature2 = &#039;&#039;, string $dbt_keyfield = &#039;fk_soc&#039;, string $dbt_select = &#039;rowid&#039;, string $parenttableforentity = &#039;&#039;)
         
                                             <p><p>Check access by user to a given resource</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="DolibarrApi.html#method__checkAccessToResource">
@@ -331,7 +331,7 @@ DolibarrApi</a></small></div>
                     array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_index">index</a>(string $sortfield = &quot;t.rowid&quot;, string $sortorder = &#039;ASC&#039;, int $limit = 100, int $page = 0)
+                    <a href="#method_index">index</a>(string $sortfield = &quot;t.rowid&quot;, string $sortorder = &#039;ASC&#039;, int $limit = 100, int $page = 0, string $sqlfilters = &#039;&#039;)
         
                                             <p><p>Get the list of salaries.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -604,7 +604,7 @@ DolibarrApi</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/a
             </div>
                     <div class="method-item">
                     <h3 id="method__cleanObjectDatas">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/salaries/class/api_salaries.class.php#L528">at line 528</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/salaries/class/api_salaries.class.php#L538">at line 538</a></div>
         <code>            protected        object
     <strong>_cleanObjectDatas</strong>(object $object)
         </code>
@@ -648,9 +648,9 @@ DolibarrApi</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/a
                     <div class="method-item">
                     <h3 id="method__checkAccessToResource">
         <div class="location">in <a href="DolibarrApi.html#method__checkAccessToResource">
-DolibarrApi</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/api/class/api.class.php#L494">at line 494</a></div>
+DolibarrApi</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/api/class/api.class.php#L495">at line 495</a></div>
         <code>        static    protected        bool
-    <strong>_checkAccessToResource</strong>(string $resource, int|string|object $resource_id = 0, string $dbtablename = &#039;&#039;, string $feature2 = &#039;&#039;, string $dbt_keyfield = &#039;fk_soc&#039;, string $dbt_select = &#039;rowid&#039;)
+    <strong>_checkAccessToResource</strong>(string $resource, int|string|object $resource_id = 0, string $dbtablename = &#039;&#039;, string $feature2 = &#039;&#039;, string $dbt_keyfield = &#039;fk_soc&#039;, string $dbt_select = &#039;rowid&#039;, string $parenttableforentity = &#039;&#039;)
         </code>
     </h3>
     <div class="details">    
@@ -668,7 +668,7 @@ DolibarrApi</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/a
                     <tr>
                 <td>string</td>
                 <td>$resource</td>
-                <td><p>element to check</p></td>
+                <td><p>Element code to check</p></td>
             </tr>
                     <tr>
                 <td>int|string|object</td>
@@ -695,6 +695,11 @@ DolibarrApi</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/a
                 <td>$dbt_select</td>
                 <td><p>Field name for select if not rowid. Not used if objectid is null (optional)</p></td>
             </tr>
+                    <tr>
+                <td>string</td>
+                <td>$parenttableforentity</td>
+                <td><p>Parent table for entity. Example 'fk_website@website'</p></td>
+            </tr>
             </table>
 
             
@@ -717,7 +722,7 @@ DolibarrApi</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/a
                     <div class="method-item">
                     <h3 id="method__checkFilters">
         <div class="location">in <a href="DolibarrApi.html#method__checkFilters">
-DolibarrApi</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/api/class/api.class.php#L522">at line 522</a></div>
+DolibarrApi</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/api/class/api.class.php#L523">at line 523</a></div>
         <code>            protected        bool|string
     <strong>_checkFilters</strong>(string $sqlfilters, string $error = &#039;&#039;)
         </code>
@@ -767,7 +772,7 @@ Function no more used. Kept for backward compatibility with old APIs of modules<
                     <div class="method-item">
                     <h3 id="method__forge_criteria_callback">
         <div class="location">in <a href="DolibarrApi.html#method__forge_criteria_callback">
-DolibarrApi</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/api/class/api.class.php#L540">at line 540</a></div>
+DolibarrApi</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/api/class/api.class.php#L541">at line 541</a></div>
         <code>        static    protected        string
     <strong>_forge_criteria_callback</strong>(string[] $matches)
         </code>
@@ -812,9 +817,9 @@ Example: &quot;t.ref:like:'SO-%'&quot;, &quot;t.date_creation:&gt;:'20160101'&qu
             </div>
                     <div class="method-item">
                     <h3 id="method_index">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/salaries/class/api_salaries.class.php#L77">at line 77</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/salaries/class/api_salaries.class.php#L78">at line 78</a></div>
         <code>                    array
-    <strong>index</strong>(string $sortfield = &quot;t.rowid&quot;, string $sortorder = &#039;ASC&#039;, int $limit = 100, int $page = 0)
+    <strong>index</strong>(string $sortfield = &quot;t.rowid&quot;, string $sortorder = &#039;ASC&#039;, int $limit = 100, int $page = 0, string $sqlfilters = &#039;&#039;)
         </code>
     </h3>
     <div class="details">    
@@ -849,6 +854,11 @@ Example: &quot;t.ref:like:'SO-%'&quot;, &quot;t.date_creation:&gt;:'20160101'&qu
                 <td>$page</td>
                 <td><p>Page number</p></td>
             </tr>
+                    <tr>
+                <td>string</td>
+                <td>$sqlfilters</td>
+                <td><p>Other criteria to filter answers separated by a comma. Syntax example &quot;(t.fk_user:=:6) and (t.datep:&gt;:'20250101')&quot;</p></td>
+            </tr>
             </table>
 
             
@@ -879,7 +889,7 @@ Example: &quot;t.ref:like:'SO-%'&quot;, &quot;t.date_creation:&gt;:'20160101'&qu
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/salaries/class/api_salaries.class.php#L136">at line 136</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/salaries/class/api_salaries.class.php#L146">at line 146</a></div>
         <code>                    object
     <strong>get</strong>(int $id)
         </code>
@@ -931,7 +941,7 @@ Example: &quot;t.ref:like:'SO-%'&quot;, &quot;t.date_creation:&gt;:'20160101'&qu
             </div>
                     <div class="method-item">
                     <h3 id="method_post">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/salaries/class/api_salaries.class.php#L174">at line 174</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/salaries/class/api_salaries.class.php#L184">at line 184</a></div>
         <code>                    int
     <strong>post</strong>(array $request_data = null)
         </code>
@@ -974,7 +984,7 @@ Example: &quot;t.ref:like:'SO-%'&quot;, &quot;t.date_creation:&gt;:'20160101'&qu
             </div>
                     <div class="method-item">
                     <h3 id="method_put">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/salaries/class/api_salaries.class.php#L202">at line 202</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/salaries/class/api_salaries.class.php#L212">at line 212</a></div>
         <code>                    object
     <strong>put</strong>(int $id, array $request_data = null)
         </code>
@@ -1022,7 +1032,7 @@ Example: &quot;t.ref:like:'SO-%'&quot;, &quot;t.date_creation:&gt;:'20160101'&qu
             </div>
                     <div class="method-item">
                     <h3 id="method_getAllPayments">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/salaries/class/api_salaries.class.php#L273">at line 273</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/salaries/class/api_salaries.class.php#L283">at line 283</a></div>
         <code>                    array
     <strong>getAllPayments</strong>(string $sortfield = &quot;t.rowid&quot;, string $sortorder = &#039;ASC&#039;, int $limit = 100, int $page = 0)
         </code>
@@ -1089,7 +1099,7 @@ Example: &quot;t.ref:like:'SO-%'&quot;, &quot;t.date_creation:&gt;:'20160101'&qu
             </div>
                     <div class="method-item">
                     <h3 id="method_getPayments">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/salaries/class/api_salaries.class.php#L335">at line 335</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/salaries/class/api_salaries.class.php#L345">at line 345</a></div>
         <code>                    object
     <strong>getPayments</strong>(int $pid)
         </code>
@@ -1141,7 +1151,7 @@ Example: &quot;t.ref:like:'SO-%'&quot;, &quot;t.date_creation:&gt;:'20160101'&qu
             </div>
                     <div class="method-item">
                     <h3 id="method_addPayment">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/salaries/class/api_salaries.class.php#L367">at line 367</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/salaries/class/api_salaries.class.php#L377">at line 377</a></div>
         <code>                    int
     <strong>addPayment</strong>(int $id, array $request_data = null)
         </code>
@@ -1198,7 +1208,7 @@ Example: &quot;t.ref:like:'SO-%'&quot;, &quot;t.date_creation:&gt;:'20160101'&qu
             </div>
                     <div class="method-item">
                     <h3 id="method_updatePayment">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/salaries/class/api_salaries.class.php#L410">at line 410</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/salaries/class/api_salaries.class.php#L420">at line 420</a></div>
         <code>                    object
     <strong>updatePayment</strong>(int $id, array $request_data = null)
         </code>
