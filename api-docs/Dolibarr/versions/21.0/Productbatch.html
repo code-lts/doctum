@@ -3466,7 +3466,7 @@ Id must be 0 if object instance is a specimen</p></p>                </div>
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_find">find</a>($fk_product_stock = 0, int $eatby = null, $sellby = null, $batch_number = &#039;&#039;, $fk_warehouse = 0)
+                    <a href="#method_find">find</a>($fk_product_stock = 0, int $eatby = null, $sellby = null, $batch_number = &#039;&#039;, $fk_warehouse = 0, $fk_product = 0)
         
                                             <p><p>Find first detailed record that match either eat-by, sell-by or batch within the warehouse</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -11345,9 +11345,9 @@ Id must be 0 if object instance is a specimen</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_find">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/21.0/htdocs/product/class/productbatch.class.php#L411">at line 411</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/21.0/htdocs/product/class/productbatch.class.php#L412">at line 412</a></div>
         <code>                    
-    <strong>find</strong>($fk_product_stock = 0, int $eatby = null, $sellby = null, $batch_number = &#039;&#039;, $fk_warehouse = 0)
+    <strong>find</strong>($fk_product_stock = 0, int $eatby = null, $sellby = null, $batch_number = &#039;&#039;, $fk_warehouse = 0, $fk_product = 0)
         </code>
     </h3>
     <div class="details">    
@@ -11374,6 +11374,7 @@ Id must be 0 if object instance is a specimen</p></p>
 @param  integer     $sellby             sell-by date for object - deprecated: a search must be done on batch number
 @param  string      $batch_number       batch number for object
 @param  int         $fk_warehouse       filter on warehouse (use it if you don't have $fk_product_stock)
+@param  int         $fk_product         filter on product (same batch number can exist on several products)
 @return int                             Return integer &lt;0 if KO, &gt;0 if OK</p></td>
             </tr>
                     <tr>
@@ -11391,6 +11392,11 @@ Id must be 0 if object instance is a specimen</p></p>
                 <td>$fk_warehouse</td>
                 <td></td>
             </tr>
+                    <tr>
+                <td></td>
+                <td>$fk_product</td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -11403,7 +11409,7 @@ Id must be 0 if object instance is a specimen</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_findAll">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/21.0/htdocs/product/class/productbatch.class.php#L479">at line 479</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/21.0/htdocs/product/class/productbatch.class.php#L483">at line 483</a></div>
         <code>        static            <a href="Productbatch.html">Productbatch</a>[]|int
     <strong>findAll</strong>(<a href="DoliDB.html">DoliDB</a> $dbs, int $fk_product_stock, int $with_qty = 0, int $fk_product = 0)
         </code>
@@ -11461,7 +11467,7 @@ Id must be 0 if object instance is a specimen</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_findAllForProduct">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/21.0/htdocs/product/class/productbatch.class.php#L584">at line 584</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/21.0/htdocs/product/class/productbatch.class.php#L588">at line 588</a></div>
         <code>                    int&lt;-1, -1&gt;|<a href="Productbatch.html">Productbatch</a>[]
     <strong>findAllForProduct</strong>(int $fk_product, int $fk_warehouse = 0, int $qty_min = null, string $sortfield = null, string $sortorder = null)
         </code>
