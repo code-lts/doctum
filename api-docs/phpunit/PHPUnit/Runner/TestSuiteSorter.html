@@ -101,6 +101,10 @@
                 &nbsp;
     
 
+            <div class="description">
+            <p><p>Applies a ReorderPipeline to every test suite of a tree of test suites,
+depth first, so that the tests of a test suite are reordered before the test
+suite itself is reordered within its parent.</p></p>                    </div>
             
         
             <h2>Constants</h2>    <table class="table table-condensed">
@@ -178,8 +182,16 @@
             </tr>
                     <tr>
                 <td>
-                                                            private
-                                                                                SIZE_SORT_WEIGHT
+                                                                                                                        ORDER_MODIFIED_ASCENDING
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ORDER_MODIFIED_DESCENDING
                                     </td>
                 <td class="last">
                     <p><em></em></p>
@@ -209,7 +221,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_reorderTestsInSuite">reorderTestsInSuite</a>(<a href="../../PHPUnit/Framework/Test.html"><abbr title="PHPUnit\Framework\Test">Test</abbr></a> $suite, int $order, bool $resolveDependencies, int $orderDefects)
+                    <a href="#method_apply">apply</a>(<a href="../../PHPUnit/Framework/Test.html"><abbr title="PHPUnit\Framework\Test">Test</abbr></a> $suite, <a href="../../PHPUnit/Runner/ExecutionOrder/ReorderPipeline.html"><abbr title="PHPUnit\Runner\ExecutionOrder\ReorderPipeline">ReorderPipeline</abbr></a> $pipeline)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -223,7 +235,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestSuiteSorter.php#L63">at line 63</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestSuiteSorter.php#L43">at line 43</a></div>
         <code>                    
     <strong>__construct</strong>(<a href="../../PHPUnit/Runner/TestRunHistory/TestRunHistory.html"><abbr title="PHPUnit\Runner\TestRunHistory\TestRunHistory">TestRunHistory</abbr></a> $testRunHistory = new NullTestRunHistory())
         </code>
@@ -257,10 +269,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_reorderTestsInSuite">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestSuiteSorter.php#L70">at line 70</a></div>
+                    <h3 id="method_apply">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestSuiteSorter.php#L48">at line 48</a></div>
         <code>                    void
-    <strong>reorderTestsInSuite</strong>(<a href="../../PHPUnit/Framework/Test.html"><abbr title="PHPUnit\Framework\Test">Test</abbr></a> $suite, int $order, bool $resolveDependencies, int $orderDefects)
+    <strong>apply</strong>(<a href="../../PHPUnit/Framework/Test.html"><abbr title="PHPUnit\Framework\Test">Test</abbr></a> $suite, <a href="../../PHPUnit/Runner/ExecutionOrder/ReorderPipeline.html"><abbr title="PHPUnit\Runner\ExecutionOrder\ReorderPipeline">ReorderPipeline</abbr></a> $pipeline)
         </code>
     </h3>
     <div class="details">    
@@ -282,18 +294,8 @@
                 <td></td>
             </tr>
                     <tr>
-                <td>int</td>
-                <td>$order</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>bool</td>
-                <td>$resolveDependencies</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$orderDefects</td>
+                <td><a href="../../PHPUnit/Runner/ExecutionOrder/ReorderPipeline.html"><abbr title="PHPUnit\Runner\ExecutionOrder\ReorderPipeline">ReorderPipeline</abbr></a></td>
+                <td>$pipeline</td>
                 <td></td>
             </tr>
             </table>
@@ -309,15 +311,6 @@
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../PHPUnit/Runner/Exception.html"><abbr title="PHPUnit\Runner\Exception">Exception</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
             
                     </div>

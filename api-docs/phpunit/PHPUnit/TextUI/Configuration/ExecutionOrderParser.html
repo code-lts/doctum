@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>PHPUnit\TextUI\CliArguments\Builder | PHPUnit</title>
+    <title>PHPUnit\TextUI\Configuration\ExecutionOrderParser | PHPUnit</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:PHPUnit_TextUI_CliArguments_Builder" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:PHPUnit_TextUI_Configuration_ExecutionOrderParser" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,18 +75,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/TextUI.html">TextUI</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/TextUI/CliArguments.html">CliArguments</a></li><li class="backslash">\</li><li>Builder</li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/TextUI.html">TextUI</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/TextUI/Configuration.html">Configuration</a></li><li class="backslash">\</li><li>ExecutionOrderParser</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>Builder    
+        <h1>ExecutionOrderParser    
             </h1>
     </div>
 
     
     <p>final         class
-    <strong>Builder</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/TextUI/Configuration/Cli/Builder.php">View source</a>)
+    <strong>ExecutionOrderParser</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/TextUI/Configuration/ExecutionOrderParser.php">View source</a>)
 </p>
 
         
@@ -101,46 +101,22 @@
                 &nbsp;
     
 
+            <div class="description">
+            <p><p>Parses the comma-separated list of tokens that the --order-by CLI option and
+the executionOrder XML configuration attribute accept.</p></p>            <p><p>This is the single place where those tokens are given meaning, so that both
+configuration surfaces agree on how a value is interpreted and on which
+values are diagnosed.</p></p>        </div>
             
         
             <h2>Constants</h2>    <table class="table table-condensed">
                     <tr>
                 <td>
                                                             private
-                                                                                LONG_OPTIONS
+                                                                                MAIN_ORDER_TOKENS
                                     </td>
                 <td class="last">
-                    <p><em></em></p>
-                    <p></p>
-                </td>
-            </tr>
-                    <tr>
-                <td>
-                                                            private
-                                                                                SHORT_OPTIONS
-                                    </td>
-                <td class="last">
-                    <p><em></em></p>
-                    <p></p>
-                </td>
-            </tr>
-                    <tr>
-                <td>
-                                                            private
-                                                                                CONFLICTING_OPTIONS
-                                    </td>
-                <td class="last">
-                    <p><em></em></p>
-                    <p></p>
-                </td>
-            </tr>
-                    <tr>
-                <td>
-                                                            private
-                                                                                COMMAND_OPTIONS
-                                    </td>
-                <td class="last">
-                    <p><em></em></p>
+                    <p><em><p>Tokens that select the order in which tests are sorted. At most one of
+them is meaningful.</p></em></p>
                     <p></p>
                 </td>
             </tr>
@@ -153,10 +129,10 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../PHPUnit/TextUI/CliArguments/Configuration.html"><abbr title="PHPUnit\TextUI\CliArguments\Configuration">Configuration</abbr></a>
+                    <a href="../../../PHPUnit/TextUI/Configuration/ExecutionOrder.html"><abbr title="PHPUnit\TextUI\Configuration\ExecutionOrder">ExecutionOrder</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_fromParameters">fromParameters</a>(array $parameters)
+                    <a href="#method_parse">parse</a>(string $value, <abbr title="PHPUnit\TextUI\Configuration\ExecutionOrderSource">ExecutionOrderSource</abbr> $source, int|null $executionOrder, int|null $executionOrderDefects, bool|null $resolveDependencies)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -169,10 +145,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_fromParameters">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/TextUI/Configuration/Cli/Builder.php#L269">at line 269</a></div>
-        <code>                    <a href="../../../PHPUnit/TextUI/CliArguments/Configuration.html"><abbr title="PHPUnit\TextUI\CliArguments\Configuration">Configuration</abbr></a>
-    <strong>fromParameters</strong>(array $parameters)
+                    <h3 id="method_parse">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/TextUI/Configuration/ExecutionOrderParser.php#L57">at line 57</a></div>
+        <code>                    <a href="../../../PHPUnit/TextUI/Configuration/ExecutionOrder.html"><abbr title="PHPUnit\TextUI\Configuration\ExecutionOrder">ExecutionOrder</abbr></a>
+    <strong>parse</strong>(string $value, <abbr title="PHPUnit\TextUI\Configuration\ExecutionOrderSource">ExecutionOrderSource</abbr> $source, int|null $executionOrder, int|null $executionOrderDefects, bool|null $resolveDependencies)
         </code>
     </h3>
     <div class="details">    
@@ -189,8 +165,30 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array</td>
-                <td>$parameters</td>
+                <td>string</td>
+                <td>$value</td>
+                <td><p>the configured value; every token it does not give
+meaning to, including the empty token, is reported
+back to the caller</p></td>
+            </tr>
+                    <tr>
+                <td><abbr title="PHPUnit\TextUI\Configuration\ExecutionOrderSource">ExecutionOrderSource</abbr></td>
+                <td>$source</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$executionOrder</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$executionOrderDefects</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool|null</td>
+                <td>$resolveDependencies</td>
                 <td></td>
             </tr>
             </table>
@@ -200,21 +198,12 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../PHPUnit/TextUI/CliArguments/Configuration.html"><abbr title="PHPUnit\TextUI\CliArguments\Configuration">Configuration</abbr></a></td>
+            <td><a href="../../../PHPUnit/TextUI/Configuration/ExecutionOrder.html"><abbr title="PHPUnit\TextUI\Configuration\ExecutionOrder">ExecutionOrder</abbr></a></td>
             <td></td>
         </tr>
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../PHPUnit/TextUI/CliArguments/Exception.html"><abbr title="PHPUnit\TextUI\CliArguments\Exception">Exception</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
             
                     </div>

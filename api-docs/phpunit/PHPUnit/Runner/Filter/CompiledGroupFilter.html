@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>PHPUnit\Runner\Filter\ExcludeGroupFilterIterator | PHPUnit</title>
+    <title>PHPUnit\Runner\Filter\CompiledGroupFilter | PHPUnit</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:PHPUnit_Runner_Filter_ExcludeGroupFilterIterator" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:PHPUnit_Runner_Filter_CompiledGroupFilter" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,18 +75,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner.html">Runner</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner/Filter.html">Filter</a></li><li class="backslash">\</li><li>ExcludeGroupFilterIterator</li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner.html">Runner</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner/Filter.html">Filter</a></li><li class="backslash">\</li><li>CompiledGroupFilter</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>ExcludeGroupFilterIterator    
+        <h1>CompiledGroupFilter    
             </h1>
     </div>
 
     
     <p>final         class
-    <strong>ExcludeGroupFilterIterator</strong>        extends <a href="../../../PHPUnit/Runner/Filter/GroupFilterIterator.html"><abbr title="PHPUnit\Runner\Filter\GroupFilterIterator">GroupFilterIterator</abbr></a>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Filter/ExcludeGroupFilterIterator.php">View source</a>)
+    <strong>CompiledGroupFilter</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Filter/CompiledGroupFilter.php">View source</a>)
 </p>
 
         
@@ -101,6 +101,24 @@
                 &nbsp;
     
 
+            <div class="description">
+            <p><p>The values of the --group and --exclude-group CLI options, compiled to the
+group memberships a test must have to be selected by them.</p></p>            <p><p>This is the only place where the syntax of those options is parsed. The group
+filter iterators and the group pruner of the test index both evaluate the
+result of that parse so that they cannot disagree about which tests a
+selection selects: a test file that is skipped because the pruner considers
+no test in it selected is never loaded, and a filter that would have selected
+a test in it would therefore never see it.</p>
+<p>&quot;a+b&quot; selects the tests that are in group &quot;a&quot; and in group &quot;b&quot;. Every value
+of the option is such a conjunction of group names, and a test is selected
+when it matches at least one of them.</p>
+<p>The &quot;+&quot; is only an operator between two group names: a value that is &quot;+&quot;, or
+that begins or ends with one, is the name of a group. That keeps the syntax
+from claiming names it does not need, but it cannot keep it from claiming any
+name at all, because every string is a legal group name. A group whose name
+is parsed as a conjunction cannot be selected by name, so PHPUnit warns about
+a name like that where it is declared, see AttributeParser and
+TestSuiteMapper.</p></p>        </div>
             
         
     
@@ -110,34 +128,54 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    static&nbsp;<a href="../../../PHPUnit/Runner/Filter/CompiledGroupFilter.html"><abbr title="PHPUnit\Runner\Filter\CompiledGroupFilter">CompiledGroupFilter</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a target="_blank" rel="noopener" href="https://www.php.net/RecursiveIterator">RecursiveIterator</a> $iterator, array $groups, <a href="../../../PHPUnit/Framework/TestSuite.html"><abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> $suite)
+                    <a href="#method_from">from</a>(array $groups)
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../PHPUnit/Runner/Filter/GroupFilterIterator.html#method___construct">
-<abbr title="PHPUnit\Runner\Filter\GroupFilterIterator">GroupFilterIterator</abbr></a></small></div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isConjunction">isConjunction</a>(string $group)
+        
+                                            <p><p>Whether the name of a group is parsed as a conjunction of the names of
+other groups instead of as the name of that group.</p></p>                </div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_accept">accept</a>()
+                    <a href="#method_isEmpty">isEmpty</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../PHPUnit/Runner/Filter/GroupFilterIterator.html#method_accept">
-<abbr title="PHPUnit\Runner\Filter\GroupFilterIterator">GroupFilterIterator</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_doAccept">doAccept</a>(string $id, array $groupTests)
+                    <a href="#method_mentions">mentions</a>(string $group)
+        
+                                            <p><p>Whether a group is named by this selection, and knowing which tests are
+in it is therefore worth the effort.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_matches">matches</a>(array $groups)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -150,11 +188,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location">in <a href="../../../PHPUnit/Runner/Filter/GroupFilterIterator.html#method___construct">
-<abbr title="PHPUnit\Runner\Filter\GroupFilterIterator">GroupFilterIterator</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Filter/GroupFilterIterator.php#L41">at line 41</a></div>
-        <code>                    
-    <strong>__construct</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/RecursiveIterator">RecursiveIterator</a> $iterator, array $groups, <a href="../../../PHPUnit/Framework/TestSuite.html"><abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> $suite)
+                    <h3 id="method_from">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Filter/CompiledGroupFilter.php#L62">at line 62</a></div>
+        <code>        static            <a href="../../../PHPUnit/Runner/Filter/CompiledGroupFilter.html"><abbr title="PHPUnit\Runner\Filter\CompiledGroupFilter">CompiledGroupFilter</abbr></a>
+    <strong>from</strong>(array $groups)
         </code>
     </h3>
     <div class="details">    
@@ -171,23 +208,22 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/RecursiveIterator">RecursiveIterator</a></td>
-                <td>$iterator</td>
-                <td></td>
-            </tr>
-                    <tr>
                 <td>array</td>
                 <td>$groups</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../PHPUnit/Framework/TestSuite.html"><abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a></td>
-                <td>$suite</td>
                 <td></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../PHPUnit/Runner/Filter/CompiledGroupFilter.html"><abbr title="PHPUnit\Runner\Filter\CompiledGroupFilter">CompiledGroupFilter</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
             
@@ -196,11 +232,54 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_accept">
-        <div class="location">in <a href="../../../PHPUnit/Runner/Filter/GroupFilterIterator.html#method_accept">
-<abbr title="PHPUnit\Runner\Filter\GroupFilterIterator">GroupFilterIterator</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Filter/GroupFilterIterator.php#L82">at line 82</a></div>
+                    <h3 id="method_isConjunction">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Filter/CompiledGroupFilter.php#L86">at line 86</a></div>
+        <code>        static            bool
+    <strong>isConjunction</strong>(string $group)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether the name of a group is parsed as a conjunction of the names of
+other groups instead of as the name of that group.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$group</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isEmpty">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Filter/CompiledGroupFilter.php#L101">at line 101</a></div>
         <code>                    bool
-    <strong>accept</strong>()
+    <strong>isEmpty</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -231,10 +310,55 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_doAccept">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Filter/ExcludeGroupFilterIterator.php#L23">at line 23</a></div>
-        <code>            protected        bool
-    <strong>doAccept</strong>(string $id, array $groupTests)
+                    <h3 id="method_mentions">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Filter/CompiledGroupFilter.php#L115">at line 115</a></div>
+        <code>                    bool
+    <strong>mentions</strong>(string $group)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether a group is named by this selection, and knowing which tests are
+in it is therefore worth the effort.</p></p>                <p><p>A test that is in the group is not necessarily selected: the group can be
+one of several in a conjunction.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$group</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_matches">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Filter/CompiledGroupFilter.php#L123">at line 123</a></div>
+        <code>                    bool
+    <strong>matches</strong>(array $groups)
         </code>
     </h3>
     <div class="details">    
@@ -251,13 +375,8 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
-                <td>$id</td>
-                <td></td>
-            </tr>
-                    <tr>
                 <td>array</td>
-                <td>$groupTests</td>
+                <td>$groups</td>
                 <td></td>
             </tr>
             </table>
