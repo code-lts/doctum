@@ -179,7 +179,7 @@
 
     
     <p>        class
-    <strong>MenuManager</strong>        (<a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/menus/standard/eldy_menu.php">View source</a>)
+    <strong>MenuManager</strong>        (<a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/menus/standard/empty.php">View source</a>)
 </p>
 
         
@@ -188,7 +188,7 @@
         
 
             <div class="description">
-            <p><p>Class to manage menu Eldy</p></p>                    </div>
+            <p><p>Class to manage menu Empty</p></p>            <p><p>@phan-suppress PhanRedefineClass</p></p>        </div>
             
         
     
@@ -241,15 +241,6 @@
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_menu_array">
-                                                                                array&lt;array{rowid: string, fk_menu: string, langs: string, enabled: int&lt;0, 2&gt;, type: string, fk_mainmenu: string, fk_leftmenu: string, url: string, titre: string, perms: string, target: string, mainmenu: string, leftmenu: string, position: int, positionfull: int|string, showtopmenuinframe: int, level: int, prefix: string}&gt;
-                                                                                
-                                    </td>
-                <td>$menu_array</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
                 <td class="type" id="property_menu_array_after">
                                                                                 array&lt;array{rowid: string, fk_menu: string, langs: string, enabled: int&lt;0, 2&gt;, type: string, fk_mainmenu: string, fk_leftmenu: string, url: string, titre: string, perms: string, target: string, mainmenu: string, leftmenu: string, position: int, positionfull: int|string, showtopmenuinframe: int, level: int, prefix: string}&gt;
                                                                                 
@@ -264,6 +255,24 @@
                                                                                 
                                     </td>
                 <td>$tabMenu</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_topmenu">
+                                                                                <a href="Menu.html">Menu</a>
+                                                                                
+                                    </td>
+                <td>$topmenu</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_leftmenu">
+                                                                                <a href="Menu.html">Menu</a>
+                                                                                
+                                    </td>
+                <td>$leftmenu</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -298,9 +307,9 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_showmenu">showmenu</a>(&quot;top&quot;|&quot;topnb&quot;|&quot;left&quot;|&quot;leftdropdown&quot;|&quot;jmobile&quot; $mode, $moredata = null)
+                    <a href="#method_showmenu">showmenu</a>(string $mode, $moredata = null)
         
-                                            <p><p>Output menu on screen.</p></p>                </div>
+                                            <p><p>Output menu on screen</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -311,7 +320,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/menus/standard/eldy_menu.php#L80">at line 80</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/menus/standard/empty.php#L81">at line 81</a></div>
         <code>                    
     <strong>__construct</strong>($db, int&lt;0, 1&gt; $type_user)
         </code>
@@ -322,7 +331,7 @@
             
 
         <div class="method-description">
-                            <p>Constructor</p>                <p><p>@param DoliDB      $db         Database handler</p></p>        
+                            <p>Constructor</p>                <p><p>@param DoliDB      $db             Database handler</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -350,7 +359,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_loadMenu">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/menus/standard/eldy_menu.php#L94">at line 94</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/menus/standard/empty.php#L95">at line 95</a></div>
         <code>                    void
     <strong>loadMenu</strong>(string $forcemainmenu = &#039;&#039;, string $forceleftmenu = &#039;&#039;)
         </code>
@@ -398,9 +407,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_showmenu">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/menus/standard/eldy_menu.php#L153">at line 153</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/menus/standard/empty.php#L109">at line 109</a></div>
         <code>                    
-    <strong>showmenu</strong>(&quot;top&quot;|&quot;topnb&quot;|&quot;left&quot;|&quot;leftdropdown&quot;|&quot;jmobile&quot; $mode, $moredata = null)
+    <strong>showmenu</strong>(string $mode, $moredata = null)
         </code>
     </h3>
     <div class="details">    
@@ -409,18 +418,18 @@
             
 
         <div class="method-description">
-                            <p><p>Output menu on screen.</p></p>                <p><p>Menu defined in sql tables were stored into $this-&gt;tabMenu BEFORE this is called.</p></p>        
+                            <p><p>Output menu on screen</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>&quot;top&quot;|&quot;topnb&quot;|&quot;left&quot;|&quot;leftdropdown&quot;|&quot;jmobile&quot;</td>
+                <td>string</td>
                 <td>$mode</td>
-                <td><p>'top', 'topnb', 'left', 'leftdropdown', 'jmobile' (used to get full xml ul/li menu)
-@param  ?array&lt;string,string&gt;   $moredata   An array with more data to output
-@return int&lt;0,max&gt;              0 or nb of top menu entries if $mode = 'topnb'</p></td>
+                <td><p>'top', 'left', 'jmobile'
+@param  ?array&lt;string,mixed&gt;    $moredata   An array with more data to output
+@return int&lt;0,max&gt;|string                   0 or nb of top menu entries if $mode = 'topnb', string inc ase of bad parameter</p></td>
             </tr>
                     <tr>
                 <td></td>
