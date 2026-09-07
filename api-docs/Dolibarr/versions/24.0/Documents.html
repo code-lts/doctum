@@ -346,7 +346,7 @@ DolibarrApi</a></small></div>
                     string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_post">post</a>(string $filename, string $modulepart, string $ref = &#039;&#039;, string $subdir = &#039;&#039;, string $filecontent = &#039;&#039;, string $fileencoding = &#039;&#039;, int $overwriteifexists = 0, int $createdirifnotexists = 1, int $position = 0, string $cover = &#039;&#039;, array $array_options = [], int $generateThumbs = 0)
+                    <a href="#method_post">post</a>(string $filename, string $modulepart, string $ref = &#039;&#039;, string $subdir = &#039;&#039;, string $filecontent = &#039;&#039;, string $fileencoding = &#039;&#039;, int $overwriteifexists = 0, int $createdirifnotexists = 1, int $position = 0, string $cover = &#039;&#039;, array $array_options = [], int $generateThumbs = 0, int $share = 0)
         
                                             <p><p>Upload a document</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -1035,9 +1035,9 @@ Supported modules: thirdparty, user, member, proposal, order, supplier_order, sh
             </div>
                     <div class="method-item">
                     <h3 id="method_post">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/api/class/api_documents.class.php#L743">at line 743</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/api/class/api_documents.class.php#L744">at line 744</a></div>
         <code>                    string
-    <strong>post</strong>(string $filename, string $modulepart, string $ref = &#039;&#039;, string $subdir = &#039;&#039;, string $filecontent = &#039;&#039;, string $fileencoding = &#039;&#039;, int $overwriteifexists = 0, int $createdirifnotexists = 1, int $position = 0, string $cover = &#039;&#039;, array $array_options = [], int $generateThumbs = 0)
+    <strong>post</strong>(string $filename, string $modulepart, string $ref = &#039;&#039;, string $subdir = &#039;&#039;, string $filecontent = &#039;&#039;, string $fileencoding = &#039;&#039;, int $overwriteifexists = 0, int $createdirifnotexists = 1, int $position = 0, string $cover = &#039;&#039;, array $array_options = [], int $generateThumbs = 0, int $share = 0)
         </code>
     </h3>
     <div class="details"><i>Since: 6.0.0 Initial implementation</i>
@@ -1094,7 +1094,7 @@ Test sample for medias file: { &quot;filename&quot;: &quot;mynewfile.txt&quot;, 
                     <tr>
                 <td>int</td>
                 <td>$createdirifnotexists</td>
-                <td><p>Create subdirectories if the doesn't exists (1 by default)</p></td>
+                <td><p>Create subdirectories if they doesn't exists (1 by default)</p></td>
             </tr>
                     <tr>
                 <td>int</td>
@@ -1115,6 +1115,11 @@ Test sample for medias file: { &quot;filename&quot;: &quot;mynewfile.txt&quot;, 
                 <td>int</td>
                 <td>$generateThumbs</td>
                 <td><p>1=Will generate the small and mini thumbs if applicable</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$share</td>
+                <td><p>1=Make the file public by generating a share key into the ECM table (0 by default)</p></td>
             </tr>
             </table>
 
@@ -1158,7 +1163,7 @@ Test sample for medias file: { &quot;filename&quot;: &quot;mynewfile.txt&quot;, 
             </div>
                     <div class="method-item">
                     <h3 id="method_delete">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/api/class/api_documents.class.php#L1092">at line 1092</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/api/class/api_documents.class.php#L1097">at line 1097</a></div>
         <code>                    array
     <strong>delete</strong>(string $modulepart, string $original_file)
         </code>
