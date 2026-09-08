@@ -138,6 +138,26 @@
                     static&nbsp;bool
                 </div>
                 <div class="col-md-8">
+                    <a href="#method_recordMetrics">recordMetrics</a>(string $key, int $resolution, int $retention, array $metrics, int|null $timestamp = null, string|null $namespace = null)
+        
+                                            <p><p>Records numeric values in a fixed-resolution, fixed-retention time series.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array|false
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getMetrics">getMetrics</a>(string $key, int|null $from = null, int|null $to = null, string|null $namespace = null)
+        
+                                            <p><p>Returns a stats series, optionally restricted by inclusive bucket timestamps.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
                     <a href="#method_exists">exists</a>(string $key, string|null $namespace = null)
         
                                             <p><p>Checks if a key exists in the table.</p></p>                </div>
@@ -405,8 +425,138 @@ or <code>false</code> if the key doesn't exist or has no timeout.</p></p>       
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_recordMetrics">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L56">at line 56</a></div>
+        <code>        static            bool
+    <strong>recordMetrics</strong>(string $key, int $resolution, int $retention, array $metrics, int|null $timestamp = null, string|null $namespace = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Records numeric values in a fixed-resolution, fixed-retention time series.</p></p>                <p><p>Field names must start with <code>+</code> (sum), <code>~</code> (mean), or <code>=</code> (last value).
+The timestamp, resolution, and retention are expressed in Unix milliseconds.</p>
+<p>A <code>null</code> value keeps its field in the schema, but records no sample for it,
+leaving aggregates and the field's type untouched.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$resolution</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$retention</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$metrics</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$timestamp</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$namespace</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMetrics">
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L82">at line 82</a></div>
+        <code>        static            array|false
+    <strong>getMetrics</strong>(string $key, int|null $from = null, int|null $to = null, string|null $namespace = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a stats series, optionally restricted by inclusive bucket timestamps.</p></p>                <p><p>Fields that never held a value have no type, and buckets in which a field
+held no value are returned as <code>null</code>.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$from</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$to</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$namespace</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|false</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_exists">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L46">at line 46</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L96">at line 96</a></div>
         <code>        static            bool
     <strong>exists</strong>(string $key, string|null $namespace = null)
         </code>
@@ -454,7 +604,7 @@ or <code>false</code> if the key doesn't exist or has no timeout.</p></p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_delete">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L55">at line 55</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L105">at line 105</a></div>
         <code>        static            bool
     <strong>delete</strong>(string $key, string|null $namespace = null)
         </code>
@@ -502,7 +652,7 @@ or <code>false</code> if the key doesn't exist or has no timeout.</p></p>       
             </div>
                     <div class="method-item">
                     <h3 id="method_ttl">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L65">at line 65</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L115">at line 115</a></div>
         <code>        static            int|false
     <strong>ttl</strong>(string $key, string|null $namespace = null)
         </code>
@@ -551,7 +701,7 @@ or <code>false</code> if the key doesn't exist or has no timeout.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L73">at line 73</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L123">at line 123</a></div>
         <code>        static            int|false
     <strong>count</strong>(string|null $namespace = null)
         </code>
@@ -594,7 +744,7 @@ or <code>false</code> if the key doesn't exist or has no timeout.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_clear">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L81">at line 81</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L131">at line 131</a></div>
         <code>        static            bool
     <strong>clear</strong>(string|null $namespace = null)
         </code>
@@ -637,7 +787,7 @@ or <code>false</code> if the key doesn't exist or has no timeout.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_keys">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L90">at line 90</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L140">at line 140</a></div>
         <code>        static            array|false
     <strong>keys</strong>(mixed $pattern, string|null $namespace = null)
         </code>
@@ -685,7 +835,7 @@ or <code>false</code> if the key doesn't exist or has no timeout.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_memory">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L98">at line 98</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L148">at line 148</a></div>
         <code>        static            int|false
     <strong>memory</strong>(string|null $namespace = null)
         </code>
@@ -728,7 +878,7 @@ or <code>false</code> if the key doesn't exist or has no timeout.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_namespaces">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L105">at line 105</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L155">at line 155</a></div>
         <code>        static            array|false
     <strong>namespaces</strong>()
         </code>
@@ -761,7 +911,7 @@ or <code>false</code> if the key doesn't exist or has no timeout.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_clearAll">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L112">at line 112</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L162">at line 162</a></div>
         <code>        static            int|false
     <strong>clearAll</strong>()
         </code>
@@ -794,7 +944,7 @@ or <code>false</code> if the key doesn't exist or has no timeout.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_fullscan">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L121">at line 121</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L171">at line 171</a></div>
         <code>        static            <a href="../Generator.html">Generator</a>|false
     <strong>fullscan</strong>(mixed $match = null, int $count = 0)
         </code>
@@ -842,7 +992,7 @@ or <code>false</code> if the key doesn't exist or has no timeout.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_stats">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L128">at line 128</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/relay/Table.php#L178">at line 178</a></div>
         <code>        static            array|false
     <strong>stats</strong>()
         </code>
