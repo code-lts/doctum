@@ -3778,7 +3778,7 @@ CommonObject</a></small></div>
                     int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_create">create</a>(string $banque = &#039;&#039;, string $agence = &#039;&#039;, string $mode = &#039;real&#039;, $format = &#039;ALL&#039;, $executiondate = 0, $notrigger = 0, $type = &#039;direct-debit&#039;, $dids = 0, $fk_bank_account = 0, $sourcetype = &#039;invoice&#039;)
+                    <a href="#method_create">create</a>(string $banque = &#039;&#039;, string $agence = &#039;&#039;, string $mode = &#039;real&#039;, $format = &#039;FRST&#039;, $executiondate = 0, $notrigger = 0, $type = &#039;direct-debit&#039;, $dids = 0, $fk_bank_account = 0, $sourcetype = &#039;invoice&#039;)
         
                                             <p><p>Create a BAN payment order:</p>
 <ul>
@@ -3845,7 +3845,7 @@ TODO delete params banque and agence when not necessary</li>
                     int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_generate">generate</a>(string $format = &#039;ALL&#039;, int $executiondate = 0, string $type = &#039;direct-debit&#039;, int $fk_bank_account = 0, int $forsalary = 0, int $thirdpartyBANId = 0)
+                    <a href="#method_generate">generate</a>(string $format = &#039;FRST&#039;, int $executiondate = 0, string $type = &#039;direct-debit&#039;, int $fk_bank_account = 0, int $forsalary = 0, int $thirdpartyBANId = 0)
         
                                             <p><p>Generate a direct debit or credit transfer file.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -12309,7 +12309,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <h3 id="method_create">
         <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L1097">at line 1097</a></div>
         <code>                    int
-    <strong>create</strong>(string $banque = &#039;&#039;, string $agence = &#039;&#039;, string $mode = &#039;real&#039;, $format = &#039;ALL&#039;, $executiondate = 0, $notrigger = 0, $type = &#039;direct-debit&#039;, $dids = 0, $fk_bank_account = 0, $sourcetype = &#039;invoice&#039;)
+    <strong>create</strong>(string $banque = &#039;&#039;, string $agence = &#039;&#039;, string $mode = &#039;real&#039;, $format = &#039;FRST&#039;, $executiondate = 0, $notrigger = 0, $type = &#039;direct-debit&#039;, $dids = 0, $fk_bank_account = 0, $sourcetype = &#039;invoice&#039;)
         </code>
     </h3>
     <div class="details">    
@@ -12345,7 +12345,7 @@ TODO delete params banque and agence when not necessary</li>
                 <td>string</td>
                 <td>$mode</td>
                 <td><p>real=do action, simu=test only
-@param  string  $format             FRST, RCUR or ALL
+@param  string  $format             FRST, RCUR, OOFF or FNAL. ALL is accepted only in simulation mode.
 @param  int     $executiondate      Date to execute the transfer
 @param  int     $notrigger          Disable triggers
 @param  string  $type               'direct-debit' or 'bank-transfer'
@@ -12414,7 +12414,7 @@ TODO delete params banque and agence when not necessary</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_delete">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L1632">at line 1632</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L1637">at line 1637</a></div>
         <code>                    
     <strong>delete</strong>($user, int $notrigger = 0)
         </code>
@@ -12454,7 +12454,7 @@ TODO delete params banque and agence when not necessary</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_getNomUrl">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L1704">at line 1704</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L1709">at line 1709</a></div>
         <code>                    string
     <strong>getNomUrl</strong>($withpicto = 0, string $option = &#039;&#039;, $notooltip = 0, $morecss = &#039;&#039;, $save_lastsearch_value = -1)
         </code>
@@ -12520,7 +12520,7 @@ TODO delete params banque and agence when not necessary</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteNotificationById">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L1798">at line 1798</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L1803">at line 1803</a></div>
         <code>                    int
     <strong>deleteNotificationById</strong>(int $rowid)
         </code>
@@ -12563,7 +12563,7 @@ TODO delete params banque and agence when not necessary</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteNotification">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L1817">at line 1817</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L1822">at line 1822</a></div>
         <code>                    int
     <strong>deleteNotification</strong>(int|<a href="User.html">User</a> $user, string $action)
         </code>
@@ -12613,7 +12613,7 @@ TODO delete params banque and agence when not necessary</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_addNotification">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L1844">at line 1844</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L1849">at line 1849</a></div>
         <code>                    int
     <strong>addNotification</strong>(<a href="DoliDB.html">DoliDB</a> $db, int|<a href="User.html">User</a> $user, string $action)
         </code>
@@ -12666,9 +12666,9 @@ TODO delete params banque and agence when not necessary</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_generate">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L1889">at line 1889</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L1894">at line 1894</a></div>
         <code>                    int
-    <strong>generate</strong>(string $format = &#039;ALL&#039;, int $executiondate = 0, string $type = &#039;direct-debit&#039;, int $fk_bank_account = 0, int $forsalary = 0, int $thirdpartyBANId = 0)
+    <strong>generate</strong>(string $format = &#039;FRST&#039;, int $executiondate = 0, string $type = &#039;direct-debit&#039;, int $fk_bank_account = 0, int $forsalary = 0, int $thirdpartyBANId = 0)
         </code>
     </h3>
     <div class="details">    
@@ -12691,7 +12691,7 @@ File is generated with name this-&gt;filename</li>
                     <tr>
                 <td>string</td>
                 <td>$format</td>
-                <td><p>FRST, RCUR or ALL</p></td>
+                <td><p>FRST, RCUR, OOFF or FNAL</p></td>
             </tr>
                     <tr>
                 <td>int</td>
@@ -12741,7 +12741,7 @@ File is generated with name this-&gt;filename</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_buildRumNumber">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2341">at line 2341</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2354">at line 2354</a></div>
         <code>        static            string
     <strong>buildRumNumber</strong>(string $row_code_client, int $row_datec, int|string $row_drum)
         </code>
@@ -12794,7 +12794,7 @@ File is generated with name this-&gt;filename</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_EnregDestinataire">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2369">at line 2369</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2382">at line 2382</a></div>
         <code>                    void
     <strong>EnregDestinataire</strong>(int $rowid, string $client_nom, string $rib_banque, string $rib_guichet, string $rib_number, float $amount, string $ref, int $facid, $rib_dom = &#039;&#039;, $type = &#039;direct-debit&#039;)
         </code>
@@ -12884,7 +12884,7 @@ File is generated with name this-&gt;filename</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_EnregDestinataireSEPA">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2453">at line 2453</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2466">at line 2466</a></div>
         <code>                    string
     <strong>EnregDestinataireSEPA</strong>(string $row_code_client, string $row_nom, string $row_address, string $row_zip, $row_town, string $row_country_code, string $row_cb, string $row_cg, string $row_cc, float $row_somme, string $row_ref, int $row_idfac, string $row_iban, string $row_bic, int $row_datec, string $row_drum, $row_rum, $type = &#039;direct-debit&#039;, $row_comment = &#039;&#039;)
         </code>
@@ -13022,7 +13022,7 @@ EnregDestinataire()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_EnregEmetteur">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2645">at line 2645</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2658">at line 2658</a></div>
         <code>                    void
     <strong>EnregEmetteur</strong>(string $type = &#039;direct-debit&#039;)
         </code>
@@ -13065,7 +13065,7 @@ EnregDestinataire()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_EnregEmetteurSEPA">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2722">at line 2722</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2735">at line 2735</a></div>
         <code>                    string
     <strong>EnregEmetteurSEPA</strong>(<a href="Conf.html">Conf</a> $configuration, int $ladate, int $nombre, float $total, string $CrLf = &#039;\n&#039;, $format = &#039;FRST&#039;, $type = &#039;direct-debit&#039;, $fk_bank_account = 0)
         </code>
@@ -13106,7 +13106,7 @@ EnregDestinataire()</p></td>
                 <td>string</td>
                 <td>$CrLf</td>
                 <td><p>End of line character
-@param  string  $format             FRST or RCUR or ALL
+@param  string  $format             FRST, RCUR, OOFF or FNAL
 @param  string  $type               'direct-debit' or 'bank-transfer'
 @param  int     $fk_bank_account    Bank account ID the receipt is generated for. Will use the ID into the setup of module Direct Debit or Credit Transfer if 0.</p></td>
             </tr>
@@ -13146,7 +13146,7 @@ EnregDestinataire()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_EnregTotal">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2914">at line 2914</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2927">at line 2927</a></div>
         <code>                    void
     <strong>EnregTotal</strong>(int $total)
         </code>
@@ -13189,7 +13189,7 @@ EnregDestinataire()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getLibStatut">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2976">at line 2976</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2989">at line 2989</a></div>
         <code>                    string
     <strong>getLibStatut</strong>($mode = 0)
         </code>
@@ -13232,7 +13232,7 @@ EnregDestinataire()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_LibStatut">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2989">at line 2989</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L3002">at line 3002</a></div>
         <code>                    
     <strong>LibStatut</strong>($status, int $mode = 0)
         </code>
@@ -13272,7 +13272,7 @@ EnregDestinataire()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_load_board">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L3032">at line 3032</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L3045">at line 3045</a></div>
         <code>                    
     <strong>load_board</strong>($user, string $mode)
         </code>
@@ -13312,7 +13312,7 @@ EnregDestinataire()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getKanbanView">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L3107">at line 3107</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L3120">at line 3120</a></div>
         <code>                    
     <strong>getKanbanView</strong>(string $option = &#039;&#039;, $arraydata = null)
         </code>
@@ -13353,7 +13353,7 @@ EnregDestinataire()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_checkIfSalaryBonPrelevement">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L3149">at line 3149</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L3162">at line 3162</a></div>
         <code>                    int
     <strong>checkIfSalaryBonPrelevement</strong>()
         </code>
