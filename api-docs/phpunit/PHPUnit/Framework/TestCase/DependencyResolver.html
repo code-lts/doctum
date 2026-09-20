@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>PHPUnit\Metadata\Parser\Registry | PHPUnit</title>
+    <title>PHPUnit\Framework\TestCase\DependencyResolver | PHPUnit</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:PHPUnit_Metadata_Parser_Registry" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:PHPUnit_Framework_TestCase_DependencyResolver" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,18 +75,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Metadata.html">Metadata</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Metadata/Parser.html">Parser</a></li><li class="backslash">\</li><li>Registry</li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Framework.html">Framework</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Framework/TestCase.html">TestCase</a></li><li class="backslash">\</li><li>DependencyResolver</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>Registry    
+        <h1>DependencyResolver    
             </h1>
     </div>
 
     
     <p>final         class
-    <strong>Registry</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/Parser/Registry.php">View source</a>)
+    <strong>DependencyResolver</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase/DependencyResolver.php">View source</a>)
 </p>
 
         
@@ -101,8 +101,6 @@
                 &nbsp;
     
 
-            <div class="description">
-            <p><p>Attribute information is static within a single PHP process.</p></p>            <p><p>It is therefore okay to use a Singleton registry here.</p></p>        </div>
             
         
     
@@ -112,13 +110,12 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;<a href="../../../PHPUnit/Metadata/Parser/Parser.html"><abbr title="PHPUnit\Metadata\Parser\Parser">Parser</abbr></a>
+                    bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_parser">parser</a>()
+                    <a href="#method_resolve">resolve</a>(<a href="../../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a> $test, array $dependencies, <a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Returns true when the test can be run.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -128,10 +125,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_parser">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/Parser/Registry.php#L26">at line 26</a></div>
-        <code>        static            <a href="../../../PHPUnit/Metadata/Parser/Parser.html"><abbr title="PHPUnit\Metadata\Parser\Parser">Parser</abbr></a>
-    <strong>parser</strong>()
+                    <h3 id="method_resolve">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase/DependencyResolver.php#L39">at line 39</a></div>
+        <code>                    bool
+    <strong>resolve</strong>(<a href="../../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a> $test, array $dependencies, <a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter)
         </code>
     </h3>
     <div class="details">    
@@ -140,16 +137,37 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Returns true when the test can be run.</p></p>                <p><p>Returns false when the test cannot be run because one of its
+dependencies does not exist or did not pass. The test's status is set
+and the corresponding event is emitted in that case.</p></p>        
         </div>
         <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a></td>
+                <td>$test</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$dependencies</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a></td>
+                <td>$emitter</td>
+                <td></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../PHPUnit/Metadata/Parser/Parser.html"><abbr title="PHPUnit\Metadata\Parser\Parser">Parser</abbr></a></td>
+            <td>bool</td>
             <td></td>
         </tr>
     </table>

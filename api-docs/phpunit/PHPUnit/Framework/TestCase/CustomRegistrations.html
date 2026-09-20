@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>PHPUnit\Metadata\Parser\Registry | PHPUnit</title>
+    <title>PHPUnit\Framework\TestCase\CustomRegistrations | PHPUnit</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:PHPUnit_Metadata_Parser_Registry" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:PHPUnit_Framework_TestCase_CustomRegistrations" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,18 +75,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Metadata.html">Metadata</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Metadata/Parser.html">Parser</a></li><li class="backslash">\</li><li>Registry</li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Framework.html">Framework</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Framework/TestCase.html">TestCase</a></li><li class="backslash">\</li><li>CustomRegistrations</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>Registry    
+        <h1>CustomRegistrations    
             </h1>
     </div>
 
     
     <p>final         class
-    <strong>Registry</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/Parser/Registry.php">View source</a>)
+    <strong>CustomRegistrations</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase/CustomRegistrations.php">View source</a>)
 </p>
 
         
@@ -102,7 +102,8 @@
     
 
             <div class="description">
-            <p><p>Attribute information is static within a single PHP process.</p></p>            <p><p>It is therefore okay to use a Singleton registry here.</p></p>        </div>
+            <p><p>Keeps track of the comparators and object exporters that a test registers
+so that they can be unregistered once the test has finished.</p></p>                    </div>
             
         
     
@@ -112,10 +113,32 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;<a href="../../../PHPUnit/Metadata/Parser/Parser.html"><abbr title="PHPUnit\Metadata\Parser\Parser">Parser</abbr></a>
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_parser">parser</a>()
+                    <a href="#method_registerComparator">registerComparator</a>(<abbr title="SebastianBergmann\Comparator\Comparator">Comparator</abbr> $comparator)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_registerObjectExporter">registerObjectExporter</a>(<abbr title="SebastianBergmann\Exporter\ObjectExporter">ObjectExporter</abbr> $objectExporter)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_unregisterAll">unregisterAll</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -128,10 +151,98 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_parser">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Metadata/Parser/Registry.php#L26">at line 26</a></div>
-        <code>        static            <a href="../../../PHPUnit/Metadata/Parser/Parser.html"><abbr title="PHPUnit\Metadata\Parser\Parser">Parser</abbr></a>
-    <strong>parser</strong>()
+                    <h3 id="method_registerComparator">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase/CustomRegistrations.php#L37">at line 37</a></div>
+        <code>                    void
+    <strong>registerComparator</strong>(<abbr title="SebastianBergmann\Comparator\Comparator">Comparator</abbr> $comparator)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="SebastianBergmann\Comparator\Comparator">Comparator</abbr></td>
+                <td>$comparator</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_registerObjectExporter">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase/CustomRegistrations.php#L44">at line 44</a></div>
+        <code>                    void
+    <strong>registerObjectExporter</strong>(<abbr title="SebastianBergmann\Exporter\ObjectExporter">ObjectExporter</abbr> $objectExporter)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="SebastianBergmann\Exporter\ObjectExporter">ObjectExporter</abbr></td>
+                <td>$objectExporter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_unregisterAll">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase/CustomRegistrations.php#L51">at line 51</a></div>
+        <code>                    void
+    <strong>unregisterAll</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -149,7 +260,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../PHPUnit/Metadata/Parser/Parser.html"><abbr title="PHPUnit\Metadata\Parser\Parser">Parser</abbr></a></td>
+            <td>void</td>
             <td></td>
         </tr>
     </table>
