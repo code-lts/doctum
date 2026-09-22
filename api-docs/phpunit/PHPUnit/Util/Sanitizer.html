@@ -113,9 +113,10 @@
                     static&nbsp;string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_sanitizeBidirectionalControlCharacters">sanitizeBidirectionalControlCharacters</a>(string $value)
+                    <a href="#method_sanitizeControlCharacters">sanitizeControlCharacters</a>(string $value)
         
-                                            <p><p>Replaces Unicode bidirectional formatting characters with their visible \u{NNNN} escape sequence.</p></p>                </div>
+                                            <p><p>Replaces control characters with their visible \u{NNNN} escape sequence so that user-supplied
+strings cannot distort or hide output that is read by a human:</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -125,10 +126,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_sanitizeBidirectionalControlCharacters">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/Sanitizer.php#L31">at line 31</a></div>
+                    <h3 id="method_sanitizeControlCharacters">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/Sanitizer.php#L40">at line 40</a></div>
         <code>        static            string
-    <strong>sanitizeBidirectionalControlCharacters</strong>(string $value)
+    <strong>sanitizeControlCharacters</strong>(string $value)
         </code>
     </h3>
     <div class="details">    
@@ -137,8 +138,17 @@
             
 
         <div class="method-description">
-                            <p><p>Replaces Unicode bidirectional formatting characters with their visible \u{NNNN} escape sequence.</p></p>                <p><p>Matches the UTF-8 byte sequences for U+202A-U+202E and U+2066-U+2069 directly so that
-the function is safe to call on strings that are not valid UTF-8.</p></p>        
+                            <p><p>Replaces control characters with their visible \u{NNNN} escape sequence so that user-supplied
+strings cannot distort or hide output that is read by a human:</p></p>                <p><ul>
+<li>C0 control characters (U+0000-U+001F) and DEL (U+007F), except for line feed, horizontal tab,
+and carriage return when it is followed by line feed</li>
+<li>C1 control characters (U+0080-U+009F)</li>
+<li>Unicode bidirectional formatting characters (U+202A-U+202E and U+2066-U+2069)</li>
+</ul>
+<p>ANSI escape sequences (CSI, OSC, ...) are neutralized because each of them begins with
+ESC (U+001B) or a C1 control character.</p>
+<p>Matches UTF-8 byte sequences directly so that the function is safe to call on strings that
+are not valid UTF-8.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>

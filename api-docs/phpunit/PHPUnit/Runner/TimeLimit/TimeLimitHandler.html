@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>PHPUnit\Framework\TestRunner\TestRunner | PHPUnit</title>
+    <title>PHPUnit\Runner\TimeLimit\TimeLimitHandler | PHPUnit</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:PHPUnit_Framework_TestRunner_TestRunner" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:PHPUnit_Runner_TimeLimit_TimeLimitHandler" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,18 +75,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Framework.html">Framework</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Framework/TestRunner.html">TestRunner</a></li><li class="backslash">\</li><li>TestRunner</li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner.html">Runner</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner/TimeLimit.html">TimeLimit</a></li><li class="backslash">\</li><li>TimeLimitHandler</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>TestRunner    
+        <h1>TimeLimitHandler    
             </h1>
     </div>
 
     
     <p>final         class
-    <strong>TestRunner</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestRunner/TestRunner.php">View source</a>)
+    <strong>TimeLimitHandler</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TimeLimit/TimeLimitHandler.php">View source</a>)
 </p>
 
         
@@ -101,6 +101,11 @@
                 &nbsp;
     
 
+            <div class="description">
+            <p><p>Enforces the wall-clock time limit for the entire test run.</p></p>            <p><p>The time limit is checked whenever a test has finished. When the pcntl
+extension is available, a SIGALRM-based hard stop is additionally armed
+for each test that runs in the same process as the test runner, so that
+a test that hangs cannot keep the test run from ending.</p></p>        </div>
             
         
     
@@ -110,10 +115,10 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    static&nbsp;void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter)
+                    <a href="#method_init">init</a>(<a href="../../../PHPUnit/Event/Facade.html"><abbr title="PHPUnit\Event\Facade">Facade</abbr></a> $facade, int $timeLimit)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -121,10 +126,33 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_armAlarm">armAlarm</a>()
+        
+                                            <p><p>Arms the hard stop for a test that is about to run in the same process
+as the test runner. This is a no-op when no time limit is configured or
+when the pcntl extension is not available.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_disarmAlarm">disarmAlarm</a>()
+        
+                                            <p><p>Disarms the hard stop after a test that ran in the same process as the
+test runner has finished.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_run">run</a>(<a href="../../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a> $test)
+                    <a href="#method_testFinished">testFinished</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -137,10 +165,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestRunner/TestRunner.php#L62">at line 62</a></div>
-        <code>                    
-    <strong>__construct</strong>(<a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter)
+                    <h3 id="method_init">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TimeLimit/TimeLimitHandler.php#L53">at line 53</a></div>
+        <code>        static            void
+    <strong>init</strong>(<a href="../../../PHPUnit/Event/Facade.html"><abbr title="PHPUnit\Event\Facade">Facade</abbr></a> $facade, int $timeLimit)
         </code>
     </h3>
     <div class="details">    
@@ -157,43 +185,13 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a></td>
-                <td>$emitter</td>
+                <td><a href="../../../PHPUnit/Event/Facade.html"><abbr title="PHPUnit\Event\Facade">Facade</abbr></a></td>
+                <td>$facade</td>
                 <td></td>
             </tr>
-            </table>
-
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_run">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestRunner/TestRunner.php#L78">at line 78</a></div>
-        <code>                    void
-    <strong>run</strong>(<a href="../../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a> $test)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a></td>
-                <td>$test</td>
+                <td>int</td>
+                <td>$timeLimit</td>
                 <td></td>
             </tr>
             </table>
@@ -209,43 +207,109 @@
     </table>
 
             
-                            <h4>Exceptions</h4>
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_armAlarm">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TimeLimit/TimeLimitHandler.php#L63">at line 63</a></div>
+        <code>        static            void
+    <strong>armAlarm</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Arms the hard stop for a test that is about to run in the same process
+as the test runner. This is a no-op when no time limit is configured or
+when the pcntl extension is not available.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
 
                     <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../PHPUnit/Framework/Exception.html"><abbr title="PHPUnit\Framework\Exception">Exception</abbr></a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../PHPUnit/Util/Exception.html"><abbr title="PHPUnit\Util\Exception">Exception</abbr></a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="SebastianBergmann\Template\InvalidArgumentException">InvalidArgumentException</abbr></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../PHPUnit/Runner/Exception.html"><abbr title="PHPUnit\Runner\Exception">Exception</abbr></a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="SebastianBergmann\CodeCoverage\InvalidArgumentException">InvalidArgumentException</abbr></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../PHPUnit/Event/NoPreviousThrowableException.html"><abbr title="PHPUnit\Event\NoPreviousThrowableException">NoPreviousThrowableException</abbr></a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../PHPUnit/Framework/ProcessIsolationException.html"><abbr title="PHPUnit\Framework\ProcessIsolationException">ProcessIsolationException</abbr></a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="SebastianBergmann\CodeCoverage\UnintentionallyCoveredCodeException">UnintentionallyCoveredCodeException</abbr></td>
-                <td></td>
-            </tr>
-            </table>
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
 
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_disarmAlarm">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TimeLimit/TimeLimitHandler.php#L72">at line 72</a></div>
+        <code>        static            void
+    <strong>disarmAlarm</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Disarms the hard stop after a test that ran in the same process as the
+test runner has finished.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testFinished">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TimeLimit/TimeLimitHandler.php#L93">at line 93</a></div>
+        <code>                    void
+    <strong>testFinished</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
             
             
                     </div>
