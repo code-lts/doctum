@@ -3001,7 +3001,7 @@ CommonObject</a></small></div>
                     float|int&lt;-2, -1&gt;
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_defineBuyPrice">defineBuyPrice</a>(float $unitPrice = 0.0, float $discountPercent = 0.0, int $fk_product = 0)
+                    <a href="#method_defineBuyPrice">defineBuyPrice</a>(float $unitPrice = 0.0, float $discountPercent = 0.0, int $fk_product = 0, float $qty = 0)
         
                                             <p><p>Get buy price to use for margin calculation. This function is called when buy price is unknown.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="CommonObject.html#method_defineBuyPrice">
@@ -9462,9 +9462,9 @@ Column name fk_product MUST be used to identify products</p></p>
                     <div class="method-item">
                     <h3 id="method_defineBuyPrice">
         <div class="location">in <a href="CommonObject.html#method_defineBuyPrice">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10096">at line 10096</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10097">at line 10097</a></div>
         <code>                    float|int&lt;-2, -1&gt;
-    <strong>defineBuyPrice</strong>(float $unitPrice = 0.0, float $discountPercent = 0.0, int $fk_product = 0)
+    <strong>defineBuyPrice</strong>(float $unitPrice = 0.0, float $discountPercent = 0.0, int $fk_product = 0, float $qty = 0)
         </code>
     </h3>
     <div class="details">    
@@ -9497,6 +9497,11 @@ else set min buy price as buy price</p></p>
                 <td>$fk_product</td>
                 <td><p>Product id</p></td>
             </tr>
+                    <tr>
+                <td>float</td>
+                <td>$qty</td>
+                <td><p>Line quantity, to select the matching supplier price quantity range (0 = ignore quantity ranges)</p></td>
+            </tr>
             </table>
 
             
@@ -9519,7 +9524,7 @@ else set min buy price as buy price</p></p>
                     <div class="method-item">
                     <h3 id="method_getDataToShowPhoto">
         <div class="location">in <a href="CommonObject.html#method_getDataToShowPhoto">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10158">at line 10158</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10164">at line 10164</a></div>
         <code>                    array{dir: string, file: string, originalfile: string, altfile: string, email: string, capture: string}
     <strong>getDataToShowPhoto</strong>(string $modulepart, string $imagesize)
         </code>
@@ -9568,7 +9573,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_show_photos">
         <div class="location">in <a href="CommonObject.html#method_show_photos">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10185">at line 10185</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10191">at line 10191</a></div>
         <code>                    
     <strong>show_photos</strong>($modulepart, string $sdir, $size = 0, $nbmax = 0, $nbbyrow = 5, $showfilename = 0, $showaction = 0, $maxHeight = 120, $maxWidth = 160, $nolink = 0, $overwritetitle = 0, $usesharelink = 0, $cache = &#039;&#039;, $addphotorefcss = &#039;photoref&#039;)
         </code>
@@ -9681,7 +9686,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_isArray">
         <div class="location">in <a href="CommonObject.html#method_isArray">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10481">at line 10481</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10487">at line 10487</a></div>
         <code>            protected        bool
     <strong>isArray</strong>(array{type: string, label: string, enabled: int&lt;0, 2&gt;|string, position: int, notnull?: int, visible: int, noteditable?: int, default?: string, index?: int, foreignkey?: string, searchall?: int, isameasure?: int, css?: string, csslist?: string, help?: string, showoncombobox?: int, disabled?: int, arrayofkeyval?: array&lt;int, string&gt;, comment?: string} $info)
         </code>
@@ -9725,7 +9730,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_isDate">
         <div class="location">in <a href="CommonObject.html#method_isDate">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10499">at line 10499</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10505">at line 10505</a></div>
         <code>                    bool
     <strong>isDate</strong>(array{type: string, label: string, enabled: int&lt;0, 2&gt;|string, position: int, notnull?: int, visible: int, noteditable?: int, default?: string, index?: int, foreignkey?: string, searchall?: int, isameasure?: int, css?: string, csslist?: string, help?: string, showoncombobox?: int, disabled?: int, arrayofkeyval?: array&lt;int, string&gt;, comment?: string} $info)
         </code>
@@ -9769,7 +9774,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_isDuration">
         <div class="location">in <a href="CommonObject.html#method_isDuration">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10513">at line 10513</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10519">at line 10519</a></div>
         <code>                    bool
     <strong>isDuration</strong>(array{type: string, label: string, enabled: int&lt;0, 2&gt;|string, position: int, notnull?: int, visible: int, noteditable?: int, default?: string, index?: int, foreignkey?: string, searchall?: int, isameasure?: int, css?: string, csslist?: string, help?: string, showoncombobox?: int, disabled?: int, arrayofkeyval?: array&lt;int, string&gt;, comment?: string} $info)
         </code>
@@ -9813,7 +9818,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_isInt">
         <div class="location">in <a href="CommonObject.html#method_isInt">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10532">at line 10532</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10538">at line 10538</a></div>
         <code>                    bool
     <strong>isInt</strong>(array{type: string, label: string, enabled: int&lt;0, 2&gt;|string, position: int, notnull?: int, visible: int, noteditable?: int, default?: string, index?: int, foreignkey?: string, searchall?: int, isameasure?: int, css?: string, csslist?: string, help?: string, showoncombobox?: int, disabled?: int, arrayofkeyval?: array&lt;int, string&gt;, comment?: string} $info)
         </code>
@@ -9857,7 +9862,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_isFloat">
         <div class="location">in <a href="CommonObject.html#method_isFloat">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10551">at line 10551</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10557">at line 10557</a></div>
         <code>                    bool
     <strong>isFloat</strong>(array{type: string, label: string, enabled: int&lt;0, 2&gt;|string, position: int, notnull?: int, visible: int, noteditable?: int, default?: string, index?: int, foreignkey?: string, searchall?: int, isameasure?: int, css?: string, csslist?: string, help?: string, showoncombobox?: int, disabled?: int, arrayofkeyval?: array&lt;int, string&gt;, comment?: string} $info)
         </code>
@@ -9901,7 +9906,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_isText">
         <div class="location">in <a href="CommonObject.html#method_isText">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10569">at line 10569</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10575">at line 10575</a></div>
         <code>                    bool
     <strong>isText</strong>(array{type: string, label: string, enabled: int&lt;0, 2&gt;|string, position: int, notnull?: int, visible: int, noteditable?: int, default?: string, index?: int, foreignkey?: string, searchall?: int, isameasure?: int, css?: string, csslist?: string, help?: string, showoncombobox?: int, disabled?: int, arrayofkeyval?: array&lt;int, string&gt;, comment?: string} $info)
         </code>
@@ -9945,7 +9950,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_canBeNull">
         <div class="location">in <a href="CommonObject.html#method_canBeNull">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10587">at line 10587</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10593">at line 10593</a></div>
         <code>            protected        bool
     <strong>canBeNull</strong>(array{type: string, label: string, enabled: int&lt;0, 2&gt;|string, position: int, notnull?: int, visible: int, noteditable?: int, default?: string, index?: int, foreignkey?: string, searchall?: int, isameasure?: int, css?: string, csslist?: string, help?: string, showoncombobox?: int, disabled?: int, arrayofkeyval?: array&lt;int, string&gt;, comment?: string} $info)
         </code>
@@ -9989,7 +9994,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_isForcedToNullIfZero">
         <div class="location">in <a href="CommonObject.html#method_isForcedToNullIfZero">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10605">at line 10605</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10611">at line 10611</a></div>
         <code>            protected        bool
     <strong>isForcedToNullIfZero</strong>(array{type: string, label: string, enabled: int&lt;0, 2&gt;|string, position: int, notnull?: int, visible: int, noteditable?: int, default?: string, index?: int, foreignkey?: string, searchall?: int, isameasure?: int, css?: string, csslist?: string, help?: string, showoncombobox?: int, disabled?: int, arrayofkeyval?: array&lt;int, string&gt;, comment?: string} $info)
         </code>
@@ -10033,7 +10038,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_isIndex">
         <div class="location">in <a href="CommonObject.html#method_isIndex">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10623">at line 10623</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10629">at line 10629</a></div>
         <code>            protected        bool
     <strong>isIndex</strong>(array{type: string, label: string, enabled: int&lt;0, 2&gt;|string, position: int, notnull?: int, visible: int, noteditable?: int, default?: string, index?: int, foreignkey?: string, searchall?: int, isameasure?: int, css?: string, csslist?: string, help?: string, showoncombobox?: int, disabled?: int, arrayofkeyval?: array&lt;int, string&gt;, comment?: string} $info)
         </code>
@@ -10077,7 +10082,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_setSaveQuery">
         <div class="location">in <a href="CommonObject.html#method_setSaveQuery">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10645">at line 10645</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10651">at line 10651</a></div>
         <code>            protected        array&lt;string, null|int|float|string&gt;
     <strong>setSaveQuery</strong>()
         </code>
@@ -10115,7 +10120,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_setVarsFromFetchObj">
         <div class="location">in <a href="CommonObject.html#method_setVarsFromFetchObj">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10713">at line 10713</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10719">at line 10719</a></div>
         <code>                    void
     <strong>setVarsFromFetchObj</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/stdClass">stdClass</a> $obj)
         </code>
@@ -10159,7 +10164,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_emtpyObjectVars">
         <div class="location">in <a href="CommonObject.html#method_emtpyObjectVars">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10771">at line 10771</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10777">at line 10777</a></div>
         <code>                    void
     <strong>emtpyObjectVars</strong>()
         </code>
@@ -10193,7 +10198,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_getFieldList">
         <div class="location">in <a href="CommonObject.html#method_getFieldList">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10785">at line 10785</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10791">at line 10791</a></div>
         <code>                    string
     <strong>getFieldList</strong>(string $alias = &#039;&#039;, string[] $excludefields = array())
         </code>
@@ -10242,7 +10247,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_quote">
         <div class="location">in <a href="CommonObject.html#method_quote">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10811">at line 10811</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10817">at line 10817</a></div>
         <code>            protected        string|int
     <strong>quote</strong>(string|int $value, array{type: string, label: string, enabled: int&lt;0, 2&gt;|string, position: int, notnull?: int, visible: int, noteditable?: int, default?: string, index?: int, foreignkey?: string, searchall?: int, isameasure?: int, css?: string, csslist?: string, help?: string, showoncombobox?: int, disabled?: int, arrayofkeyval?: array&lt;int, string&gt;, comment?: string} $fieldsentry)
         </code>
@@ -10291,7 +10296,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_createCommon">
         <div class="location">in <a href="CommonObject.html#method_createCommon">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10838">at line 10838</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L10844">at line 10844</a></div>
         <code>                    int&lt;-1, max&gt;
     <strong>createCommon</strong>(<a href="User.html">User</a> $user, int&lt;0, 1&gt; $notrigger = 0)
         </code>
@@ -10340,7 +10345,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_fetchCommon">
         <div class="location">in <a href="CommonObject.html#method_fetchCommon">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11045">at line 11045</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11051">at line 11051</a></div>
         <code>                    int&lt;-4, 1&gt;
     <strong>fetchCommon</strong>(int $id, ?string $ref = null, string $morewhere = &#039;&#039;, int&lt;0, 1&gt; $noextrafields = 0)
         </code>
@@ -10399,7 +10404,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_fetchLinesCommon">
         <div class="location">in <a href="CommonObject.html#method_fetchLinesCommon">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11109">at line 11109</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11115">at line 11115</a></div>
         <code>                    int&lt;-1, 1&gt;
     <strong>fetchLinesCommon</strong>(string $morewhere = &#039;&#039;, int&lt;0, 1&gt; $noextrafields = 0)
         </code>
@@ -10448,7 +10453,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_updateCommon">
         <div class="location">in <a href="CommonObject.html#method_updateCommon">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11167">at line 11167</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11173">at line 11173</a></div>
         <code>                    int&lt;-1, 1&gt;
     <strong>updateCommon</strong>(<a href="User.html">User</a> $user, int&lt;0, 1&gt; $notrigger = 0)
         </code>
@@ -10497,7 +10502,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_deleteCommon">
         <div class="location">in <a href="CommonObject.html#method_deleteCommon">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11298">at line 11298</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11304">at line 11304</a></div>
         <code>                    int&lt;-1, 1&gt;
     <strong>deleteCommon</strong>(<a href="User.html">User</a> $user, int&lt;0, 1&gt; $notrigger = 0, int&lt;0, 1&gt; $forcechilddeletion = 0)
         </code>
@@ -10551,7 +10556,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_deleteByParentField">
         <div class="location">in <a href="CommonObject.html#method_deleteByParentField">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11452">at line 11452</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11458">at line 11458</a></div>
         <code>                    int
     <strong>deleteByParentField</strong>(int $parentId = 0, string $parentField = &#039;&#039;, string $filter = &#039;&#039;, string $filtermode = &quot;AND&quot;)
         </code>
@@ -10620,7 +10625,7 @@ Example: '((client:=:1) OR ((client:&gt;=:2) AND (client:&lt;=:3))) AND (client:
                     <div class="method-item">
                     <h3 id="method_deleteLineCommon">
         <div class="location">in <a href="CommonObject.html#method_deleteLineCommon">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11538">at line 11538</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11544">at line 11544</a></div>
         <code>                    
     <strong>deleteLineCommon</strong>(<a href="User.html">User</a> $user, $idline, $notrigger = 0)
         </code>
@@ -10668,7 +10673,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_setStatusCommon">
         <div class="location">in <a href="CommonObject.html#method_setStatusCommon">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11600">at line 11600</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11606">at line 11606</a></div>
         <code>                    int
     <strong>setStatusCommon</strong>(<a href="User.html">User</a> $user, $status, $notrigger = 0, $triggercode = &#039;&#039;)
         </code>
@@ -10731,7 +10736,7 @@ setStatut()</p></td>
                     <div class="method-item">
                     <h3 id="method_initAsSpecimenCommon">
         <div class="location">in <a href="CommonObject.html#method_initAsSpecimenCommon">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11652">at line 11652</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11658">at line 11658</a></div>
         <code>                    int
     <strong>initAsSpecimenCommon</strong>()
         </code>
@@ -10766,7 +10771,7 @@ Id must be 0 if object instance is a specimen</p></p>
                     <div class="method-item">
                     <h3 id="method_fetchComments">
         <div class="location">in <a href="CommonObject.html#method_fetchComments">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11702">at line 11702</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11708">at line 11708</a></div>
         <code>                    int&lt;0, max&gt;|-1
     <strong>fetchComments</strong>()
         </code>
@@ -10800,7 +10805,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_getNbComments">
         <div class="location">in <a href="CommonObject.html#method_getNbComments">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11722">at line 11722</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11728">at line 11728</a></div>
         <code>                    int
     <strong>getNbComments</strong>()
         </code>
@@ -10834,7 +10839,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_trimParameters">
         <div class="location">in <a href="CommonObject.html#method_trimParameters">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11733">at line 11733</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11739">at line 11739</a></div>
         <code>                    void
     <strong>trimParameters</strong>(string[] $parameters)
         </code>
@@ -10878,7 +10883,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_getCategoriesCommon">
         <div class="location">in <a href="CommonObject.html#method_getCategoriesCommon">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11757">at line 11757</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11763">at line 11763</a></div>
         <code>                    int[]|int
     <strong>getCategoriesCommon</strong>(string $type_categ)
         </code>
@@ -10924,7 +10929,7 @@ Existing categories are left untouch.</p></p>
                     <div class="method-item">
                     <h3 id="method_setCategoriesCommon">
         <div class="location">in <a href="CommonObject.html#method_setCategoriesCommon">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11780">at line 11780</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11786">at line 11786</a></div>
         <code>                    int
     <strong>setCategoriesCommon</strong>(int[]|int $categories, string $type_categ = &#039;&#039;, bool $remove_existing = true)
         </code>
@@ -10980,7 +10985,7 @@ If remove_existing is false, existing categories are left untouch.</p></p>
                     <div class="method-item">
                     <h3 id="method_cloneCategories">
         <div class="location">in <a href="CommonObject.html#method_cloneCategories">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11855">at line 11855</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11861">at line 11861</a></div>
         <code>                    int
     <strong>cloneCategories</strong>(int $fromId, int $toId, string $type = &#039;&#039;)
         </code>
@@ -11034,7 +11039,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_deleteEcmFiles">
         <div class="location">in <a href="CommonObject.html#method_deleteEcmFiles">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11889">at line 11889</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11895">at line 11895</a></div>
         <code>                    bool
     <strong>deleteEcmFiles</strong>(int $mode = 0)
         </code>
@@ -11078,7 +11083,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_checkActiveProductInLines">
         <div class="location">in <a href="CommonObject.html#method_checkActiveProductInLines">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11989">at line 11989</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L11995">at line 11995</a></div>
         <code>                    bool
     <strong>checkActiveProductInLines</strong>(string $status = &#039;onsale&#039;)
         </code>
@@ -11123,7 +11128,7 @@ during validation of propal, order, supplier proposal, supplier order</p></p>
                     <div class="method-item">
                     <h3 id="method_setErrorWithoutLog">
         <div class="location">in <a href="CommonObject.html#method_setErrorWithoutLog">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L12026">at line 12026</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L12032">at line 12032</a></div>
         <code>                    void
     <strong>setErrorWithoutLog</strong>(string $message)
         </code>
@@ -11167,7 +11172,7 @@ CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/
                     <div class="method-item">
                     <h3 id="method_setErrorWithLog">
         <div class="location">in <a href="CommonObject.html#method_setErrorWithLog">
-CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L12039">at line 12039</a></div>
+CommonObject</a> <a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/commonobject.class.php#L12045">at line 12045</a></div>
         <code>                    void
     <strong>setErrorWithLog</strong>(string $message, int&lt;0, 7&gt; $loglevel = LOG_ERR)
         </code>
