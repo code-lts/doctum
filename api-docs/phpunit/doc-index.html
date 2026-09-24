@@ -1152,7 +1152,11 @@ when the pcntl extension is not available.</p></dd><dt><a href="PHPUnit/TestRunn
                     <dd></dd><dt><a href="PHPUnit/Runner/ExecutionOrder/Stage/ByDuration.html"><abbr title="PHPUnit\Runner\ExecutionOrder\Stage\ByDuration">ByDuration</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Runner/ExecutionOrder/Stage.html">PHPUnit\Runner\ExecutionOrder\Stage</a></em></dt>
                     <dd><p>Sorts tests by the time they took during the previous test run.</p></dd><dt><a href="PHPUnit/Runner/ExecutionOrder/Stage/ByModificationTime.html"><abbr title="PHPUnit\Runner\ExecutionOrder\Stage\ByModificationTime">ByModificationTime</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Runner/ExecutionOrder/Stage.html">PHPUnit\Runner\ExecutionOrder\Stage</a></em></dt>
                     <dd><p>Sorts tests by the time their source files were last modified.</p></dd><dt><a href="PHPUnit/Runner/ExecutionOrder/Stage/BySize.html"><abbr title="PHPUnit\Runner\ExecutionOrder\Stage\BySize">BySize</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Runner/ExecutionOrder/Stage.html">PHPUnit\Runner\ExecutionOrder\Stage</a></em></dt>
-                    <dd><p>Sorts tests small before medium before large before unknown.</p></dd><dt><a href="PHPUnit/Runner/Extension/Extension.html#method_bootstrap">
+                    <dd><p>Sorts tests small before medium before large before unknown.</p></dd><dt><a href="PHPUnit/Runner/Extension/ChildProcessExtension.html#method_bootstrapChildProcess">
+<abbr title="PHPUnit\Runner\Extension\ChildProcessExtension">ChildProcessExtension</abbr>::bootstrapChildProcess</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/Extension/ChildProcessExtension.html"><abbr title="PHPUnit\Runner\Extension\ChildProcessExtension">ChildProcessExtension</abbr></a></em></dt>
+                    <dd></dd><dt><a href="PHPUnit/Runner/Extension/ChildProcessExtensionBootstrapper.html#method_bootstrap">
+<abbr title="PHPUnit\Runner\Extension\ChildProcessExtensionBootstrapper">ChildProcessExtensionBootstrapper</abbr>::bootstrap</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/Extension/ChildProcessExtensionBootstrapper.html"><abbr title="PHPUnit\Runner\Extension\ChildProcessExtensionBootstrapper">ChildProcessExtensionBootstrapper</abbr></a></em></dt>
+                    <dd></dd><dt><a href="PHPUnit/Runner/Extension/Extension.html#method_bootstrap">
 <abbr title="PHPUnit\Runner\Extension\Extension">Extension</abbr>::bootstrap</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/Extension/Extension.html"><abbr title="PHPUnit\Runner\Extension\Extension">Extension</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Runner/Extension/ExtensionBootstrapper.html#method_bootstrap">
 <abbr title="PHPUnit\Runner\Extension\ExtensionBootstrapper">ExtensionBootstrapper</abbr>::bootstrap</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/Extension/ExtensionBootstrapper.html"><abbr title="PHPUnit\Runner\Extension\ExtensionBootstrapper">ExtensionBootstrapper</abbr></a></em></dt>
@@ -1692,7 +1696,17 @@ IterativeTestSuite must be treated as an atomic unit.</p></dd><dt><a href="PHPUn
                     <dd></dd><dt><a href="PHPUnit/Runner/ExecutionOrder/Context.html"><abbr title="PHPUnit\Runner\ExecutionOrder\Context">Context</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Runner/ExecutionOrder.html">PHPUnit\Runner\ExecutionOrder</a></em></dt>
                     <dd><p>The state a reordering stage needs in order to transform the tests of a
 single test suite: the test suite itself and the history of previous test
-runs.</p></dd><dt><a href="PHPUnit/Runner/Extension/ExtensionFacade.html#method_capabilities">
+runs.</p></dd><dt><a href="PHPUnit/Runner/Extension/ChildProcessExtension.html"><abbr title="PHPUnit\Runner\Extension\ChildProcessExtension">ChildProcessExtension</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Runner/Extension.html">PHPUnit\Runner\Extension</a></em></dt>
+                    <dd><p>An extension that is bootstrapped in the child process of a test that runs
+in a separate process as well as in the main process.</p></dd><dt><a href="PHPUnit/Runner/Extension/ChildProcessExtensionBootstrapper.html"><abbr title="PHPUnit\Runner\Extension\ChildProcessExtensionBootstrapper">ChildProcessExtensionBootstrapper</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Runner/Extension.html">PHPUnit\Runner\Extension</a></em></dt>
+                    <dd><p>Bootstraps, in the child process of a test that runs in a separate
+process, the configured extensions that implement ChildProcessExtension.</p></dd><dt><a href="PHPUnit/Runner/Extension/ChildProcessExtensionFacade.html"><abbr title="PHPUnit\Runner\Extension\ChildProcessExtensionFacade">ChildProcessExtensionFacade</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Runner/Extension.html">PHPUnit\Runner\Extension</a></em></dt>
+                    <dd><p>Registers the subscribers of the extensions that are bootstrapped in a
+child process with the dispatcher that collects the events of the test
+that the child process runs.</p></dd><dt><a href="PHPUnit/Runner/Extension/ChildProcessFacade.html"><abbr title="PHPUnit\Runner\Extension\ChildProcessFacade">ChildProcessFacade</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Runner/Extension.html">PHPUnit\Runner\Extension</a></em></dt>
+                    <dd><p>What a child process offers an extension that is bootstrapped in it: the
+registration of subscribers that receive the events of the test that the
+child process runs.</p></dd><dt><a href="PHPUnit/Runner/Extension/ExtensionFacade.html#method_capabilities">
 <abbr title="PHPUnit\Runner\Extension\ExtensionFacade">ExtensionFacade</abbr>::capabilities</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/Extension/ExtensionFacade.html"><abbr title="PHPUnit\Runner\Extension\ExtensionFacade">ExtensionFacade</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Runner/Filter/CompiledGroupFilter.html"><abbr title="PHPUnit\Runner\Filter\CompiledGroupFilter">CompiledGroupFilter</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Runner/Filter.html">PHPUnit\Runner\Filter</a></em></dt>
                     <dd><p>The values of the --group and --exclude-group CLI options, compiled to the
@@ -7255,7 +7269,11 @@ the current test run executed every test that exists.</p></dd><dt><a href="PHPUn
 <abbr title="PHPUnit\Event\Code\TestCollectionIterator">TestCollectionIterator</abbr>::rewind</a>() &mdash; <em>Method in class <a href="PHPUnit/Event/Code/TestCollectionIterator.html"><abbr title="PHPUnit\Event\Code\TestCollectionIterator">TestCollectionIterator</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Event/Code/TestMethod.html#method_repetition">
 <abbr title="PHPUnit\Event\Code\TestMethod">TestMethod</abbr>::repetition</a>() &mdash; <em>Method in class <a href="PHPUnit/Event/Code/TestMethod.html"><abbr title="PHPUnit\Event\Code\TestMethod">TestMethod</abbr></a></em></dt>
-                    <dd></dd><dt><a href="PHPUnit/Event/DeferringDispatcher.html#method_registerTracer">
+                    <dd></dd><dt><a href="PHPUnit/Event/CollectingDispatcher.html#method_registerSubscriber">
+<abbr title="PHPUnit\Event\CollectingDispatcher">CollectingDispatcher</abbr>::registerSubscriber</a>() &mdash; <em>Method in class <a href="PHPUnit/Event/CollectingDispatcher.html"><abbr title="PHPUnit\Event\CollectingDispatcher">CollectingDispatcher</abbr></a></em></dt>
+                    <dd><p>Registers a subscriber with the direct dispatcher that events are
+dispatched to as they are collected, so that it receives the events of
+the test that a child process runs while the test is running.</p></dd><dt><a href="PHPUnit/Event/DeferringDispatcher.html#method_registerTracer">
 <abbr title="PHPUnit\Event\DeferringDispatcher">DeferringDispatcher</abbr>::registerTracer</a>() &mdash; <em>Method in class <a href="PHPUnit/Event/DeferringDispatcher.html"><abbr title="PHPUnit\Event\DeferringDispatcher">DeferringDispatcher</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Event/DeferringDispatcher.html#method_registerSubscriber">
 <abbr title="PHPUnit\Event\DeferringDispatcher">DeferringDispatcher</abbr>::registerSubscriber</a>() &mdash; <em>Method in class <a href="PHPUnit/Event/DeferringDispatcher.html"><abbr title="PHPUnit\Event\DeferringDispatcher">DeferringDispatcher</abbr></a></em></dt>
@@ -7524,6 +7542,14 @@ test suite.</p></dd><dt><a href="PHPUnit/Runner/ExecutionOrder/ReorderStage.html
                     <dd><p>Reorders the tests of a test suite in such a way as to resolve as many
 dependencies as possible. The algorithm leaves the tests in their original
 order when it can.</p></dd><dt><a href="PHPUnit/Runner/ExecutionOrder/Stage/Reverse.html"><abbr title="PHPUnit\Runner\ExecutionOrder\Stage\Reverse">Reverse</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Runner/ExecutionOrder/Stage.html">PHPUnit\Runner\ExecutionOrder\Stage</a></em></dt>
+                    <dd></dd><dt><a href="PHPUnit/Runner/Extension/ChildProcessExtensionFacade.html#method_registerSubscribers">
+<abbr title="PHPUnit\Runner\Extension\ChildProcessExtensionFacade">ChildProcessExtensionFacade</abbr>::registerSubscribers</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/Extension/ChildProcessExtensionFacade.html"><abbr title="PHPUnit\Runner\Extension\ChildProcessExtensionFacade">ChildProcessExtensionFacade</abbr></a></em></dt>
+                    <dd></dd><dt><a href="PHPUnit/Runner/Extension/ChildProcessExtensionFacade.html#method_registerSubscriber">
+<abbr title="PHPUnit\Runner\Extension\ChildProcessExtensionFacade">ChildProcessExtensionFacade</abbr>::registerSubscriber</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/Extension/ChildProcessExtensionFacade.html"><abbr title="PHPUnit\Runner\Extension\ChildProcessExtensionFacade">ChildProcessExtensionFacade</abbr></a></em></dt>
+                    <dd></dd><dt><a href="PHPUnit/Runner/Extension/ChildProcessFacade.html#method_registerSubscribers">
+<abbr title="PHPUnit\Runner\Extension\ChildProcessFacade">ChildProcessFacade</abbr>::registerSubscribers</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/Extension/ChildProcessFacade.html"><abbr title="PHPUnit\Runner\Extension\ChildProcessFacade">ChildProcessFacade</abbr></a></em></dt>
+                    <dd></dd><dt><a href="PHPUnit/Runner/Extension/ChildProcessFacade.html#method_registerSubscriber">
+<abbr title="PHPUnit\Runner\Extension\ChildProcessFacade">ChildProcessFacade</abbr>::registerSubscriber</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/Extension/ChildProcessFacade.html"><abbr title="PHPUnit\Runner\Extension\ChildProcessFacade">ChildProcessFacade</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Runner/Extension/ExtensionCapabilities.html#method_requiresCodeCoverageCollection">
 <abbr title="PHPUnit\Runner\Extension\ExtensionCapabilities">ExtensionCapabilities</abbr>::requiresCodeCoverageCollection</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/Extension/ExtensionCapabilities.html"><abbr title="PHPUnit\Runner\Extension\ExtensionCapabilities">ExtensionCapabilities</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Runner/Extension/ExtensionCapabilities.html#method_replacesOutput">
@@ -8040,7 +8066,13 @@ then is skipped, which does not warrant a separate process).</p></dd><dt><a href
                     <dd></dd><dt><a href="PHPUnit/Runner/DeprecationCollector/Subscriber.html"><abbr title="PHPUnit\Runner\DeprecationCollector\Subscriber">Subscriber</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Runner/DeprecationCollector.html">PHPUnit\Runner\DeprecationCollector</a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Runner/ErrorHandler.html#method_snapshotErrorHandlers">
 <abbr title="PHPUnit\Runner\ErrorHandler">ErrorHandler</abbr>::snapshotErrorHandlers</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/ErrorHandler.html"><abbr title="PHPUnit\Runner\ErrorHandler">ErrorHandler</abbr></a></em></dt>
-                    <dd></dd><dt><a href="PHPUnit/Runner/GarbageCollection/Subscriber.html"><abbr title="PHPUnit\Runner\GarbageCollection\Subscriber">Subscriber</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Runner/GarbageCollection.html">PHPUnit\Runner\GarbageCollection</a></em></dt>
+                    <dd></dd><dt><a href="PHPUnit/Runner/Extension/ChildProcessExtension.html#method_shutdownChildProcess">
+<abbr title="PHPUnit\Runner\Extension\ChildProcessExtension">ChildProcessExtension</abbr>::shutdownChildProcess</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/Extension/ChildProcessExtension.html"><abbr title="PHPUnit\Runner\Extension\ChildProcessExtension">ChildProcessExtension</abbr></a></em></dt>
+                    <dd></dd><dt><a href="PHPUnit/Runner/Extension/ChildProcessExtensionBootstrapper.html#method_shutdown">
+<abbr title="PHPUnit\Runner\Extension\ChildProcessExtensionBootstrapper">ChildProcessExtensionBootstrapper</abbr>::shutdown</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/Extension/ChildProcessExtensionBootstrapper.html"><abbr title="PHPUnit\Runner\Extension\ChildProcessExtensionBootstrapper">ChildProcessExtensionBootstrapper</abbr></a></em></dt>
+                    <dd><p>Shuts down the extensions that were bootstrapped successfully, in the
+order in which they were bootstrapped. An extension whose shutdown
+fails does not keep the others from being shut down.</p></dd><dt><a href="PHPUnit/Runner/GarbageCollection/Subscriber.html"><abbr title="PHPUnit\Runner\GarbageCollection\Subscriber">Subscriber</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Runner/GarbageCollection.html">PHPUnit\Runner\GarbageCollection</a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Runner/Phpt/TestCase.html#method_sortId">
 <abbr title="PHPUnit\Runner\Phpt\TestCase">TestCase</abbr>::sortId</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/Phpt/TestCase.html"><abbr title="PHPUnit\Runner\Phpt\TestCase">TestCase</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Runner/ShutdownHandler.html"><abbr title="PHPUnit\Runner\ShutdownHandler">ShutdownHandler</abbr></a> &mdash; <em>Class in namespace <a href="PHPUnit/Runner.html">PHPUnit\Runner</a></em></dt>
@@ -11108,6 +11140,10 @@ its accumulated output.</p></dd>        </dl><h2 id="letterX">X</h2>
 <abbr title="PHPUnit\Runner\ExecutionOrder\Stage\BySize">BySize</abbr>::__construct</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/ExecutionOrder/Stage/BySize.html"><abbr title="PHPUnit\Runner\ExecutionOrder\Stage\BySize">BySize</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Runner/ExecutionOrder/Stage/DefectsFirst.html#method___construct">
 <abbr title="PHPUnit\Runner\ExecutionOrder\Stage\DefectsFirst">DefectsFirst</abbr>::__construct</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/ExecutionOrder/Stage/DefectsFirst.html"><abbr title="PHPUnit\Runner\ExecutionOrder\Stage\DefectsFirst">DefectsFirst</abbr></a></em></dt>
+                    <dd></dd><dt><a href="PHPUnit/Runner/Extension/ChildProcessExtensionBootstrapper.html#method___construct">
+<abbr title="PHPUnit\Runner\Extension\ChildProcessExtensionBootstrapper">ChildProcessExtensionBootstrapper</abbr>::__construct</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/Extension/ChildProcessExtensionBootstrapper.html"><abbr title="PHPUnit\Runner\Extension\ChildProcessExtensionBootstrapper">ChildProcessExtensionBootstrapper</abbr></a></em></dt>
+                    <dd></dd><dt><a href="PHPUnit/Runner/Extension/ChildProcessExtensionFacade.html#method___construct">
+<abbr title="PHPUnit\Runner\Extension\ChildProcessExtensionFacade">ChildProcessExtensionFacade</abbr>::__construct</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/Extension/ChildProcessExtensionFacade.html"><abbr title="PHPUnit\Runner\Extension\ChildProcessExtensionFacade">ChildProcessExtensionFacade</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Runner/Extension/ExtensionBootstrapper.html#method___construct">
 <abbr title="PHPUnit\Runner\Extension\ExtensionBootstrapper">ExtensionBootstrapper</abbr>::__construct</a>() &mdash; <em>Method in class <a href="PHPUnit/Runner/Extension/ExtensionBootstrapper.html"><abbr title="PHPUnit\Runner\Extension\ExtensionBootstrapper">ExtensionBootstrapper</abbr></a></em></dt>
                     <dd></dd><dt><a href="PHPUnit/Runner/Extension/PharLoader.html#method___construct">

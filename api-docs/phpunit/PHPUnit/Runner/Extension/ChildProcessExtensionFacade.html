@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>PHPUnit\Runner\GarbageCollection\GarbageCollectionHandler | PHPUnit</title>
+    <title>PHPUnit\Runner\Extension\ChildProcessExtensionFacade | PHPUnit</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
 
     </head>
 
-    <body id="class" data-name="class:PHPUnit_Runner_GarbageCollection_GarbageCollectionHandler" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+    <body id="class" data-name="class:PHPUnit_Runner_Extension_ChildProcessExtensionFacade" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -75,18 +75,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner.html">Runner</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner/GarbageCollection.html">GarbageCollection</a></li><li class="backslash">\</li><li>GarbageCollectionHandler</li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner.html">Runner</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner/Extension.html">Extension</a></li><li class="backslash">\</li><li>ChildProcessExtensionFacade</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>GarbageCollectionHandler    
+        <h1>ChildProcessExtensionFacade    
             </h1>
     </div>
 
     
     <p>final         class
-    <strong>GarbageCollectionHandler</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/GarbageCollection/GarbageCollectionHandler.php">View source</a>)
+    <strong>ChildProcessExtensionFacade</strong>        implements        <a href="../../../PHPUnit/Runner/Extension/ChildProcessFacade.html"><abbr title="PHPUnit\Runner\Extension\ChildProcessFacade">ChildProcessFacade</abbr></a>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Extension/ChildProcessExtensionFacade.php">View source</a>)
 </p>
 
         
@@ -101,6 +101,10 @@
                 &nbsp;
     
 
+            <div class="description">
+            <p><p>Registers the subscribers of the extensions that are bootstrapped in a
+child process with the dispatcher that collects the events of the test
+that the child process runs.</p></p>                    </div>
             
         
     
@@ -113,7 +117,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="../../../PHPUnit/Event/Facade.html"><abbr title="PHPUnit\Event\Facade">Facade</abbr></a> $facade, int $threshold)
+                    <a href="#method___construct">__construct</a>(<a href="../../../PHPUnit/Event/CollectingDispatcher.html"><abbr title="PHPUnit\Event\CollectingDispatcher">CollectingDispatcher</abbr></a> $dispatcher)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -124,7 +128,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_executionStarted">executionStarted</a>()
+                    <a href="#method_registerSubscribers">registerSubscribers</a>(<a href="../../../PHPUnit/Event/Subscriber.html"><abbr title="PHPUnit\Event\Subscriber">Subscriber</abbr></a> ...$subscribers)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -135,18 +139,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_executionFinished">executionFinished</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    void
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_testFinished">testFinished</a>()
+                    <a href="#method_registerSubscriber">registerSubscriber</a>(<a href="../../../PHPUnit/Event/Subscriber.html"><abbr title="PHPUnit\Event\Subscriber">Subscriber</abbr></a> $subscriber)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -160,9 +153,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/GarbageCollection/GarbageCollectionHandler.php#L29">at line 29</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Extension/ChildProcessExtensionFacade.php#L29">at line 29</a></div>
         <code>                    
-    <strong>__construct</strong>(<a href="../../../PHPUnit/Event/Facade.html"><abbr title="PHPUnit\Event\Facade">Facade</abbr></a> $facade, int $threshold)
+    <strong>__construct</strong>(<a href="../../../PHPUnit/Event/CollectingDispatcher.html"><abbr title="PHPUnit\Event\CollectingDispatcher">CollectingDispatcher</abbr></a> $dispatcher)
         </code>
     </h3>
     <div class="details">    
@@ -179,13 +172,8 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../PHPUnit/Event/Facade.html"><abbr title="PHPUnit\Event\Facade">Facade</abbr></a></td>
-                <td>$facade</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$threshold</td>
+                <td><a href="../../../PHPUnit/Event/CollectingDispatcher.html"><abbr title="PHPUnit\Event\CollectingDispatcher">CollectingDispatcher</abbr></a></td>
+                <td>$dispatcher</td>
                 <td></td>
             </tr>
             </table>
@@ -199,10 +187,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_executionStarted">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/GarbageCollection/GarbageCollectionHandler.php#L37">at line 37</a></div>
+                    <h3 id="method_registerSubscribers">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Extension/ChildProcessExtensionFacade.php#L37">at line 37</a></div>
         <code>                    void
-    <strong>executionStarted</strong>()
+    <strong>registerSubscribers</strong>(<a href="../../../PHPUnit/Event/Subscriber.html"><abbr title="PHPUnit\Event\Subscriber">Subscriber</abbr></a> ...$subscribers)
         </code>
     </h3>
     <div class="details">    
@@ -215,6 +203,16 @@
                     
         </div>
         <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/Subscriber.html"><abbr title="PHPUnit\Event\Subscriber">Subscriber</abbr></a></td>
+                <td>...$subscribers</td>
+                <td></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
@@ -226,6 +224,15 @@
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/UnknownSubscriberTypeException.html"><abbr title="PHPUnit\Event\UnknownSubscriberTypeException">UnknownSubscriberTypeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -233,10 +240,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_executionFinished">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/GarbageCollection/GarbageCollectionHandler.php#L48">at line 48</a></div>
+                    <h3 id="method_registerSubscriber">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Extension/ChildProcessExtensionFacade.php#L47">at line 47</a></div>
         <code>                    void
-    <strong>executionFinished</strong>()
+    <strong>registerSubscriber</strong>(<a href="../../../PHPUnit/Event/Subscriber.html"><abbr title="PHPUnit\Event\Subscriber">Subscriber</abbr></a> $subscriber)
         </code>
     </h3>
     <div class="details">    
@@ -249,6 +256,16 @@
                     
         </div>
         <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/Subscriber.html"><abbr title="PHPUnit\Event\Subscriber">Subscriber</abbr></a></td>
+                <td>$subscriber</td>
+                <td></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
@@ -260,40 +277,15 @@
     </table>
 
             
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_testFinished">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/GarbageCollection/GarbageCollectionHandler.php#L59">at line 59</a></div>
-        <code>                    void
-    <strong>testFinished</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
+                            <h4>Exceptions</h4>
 
                     <table class="table table-condensed">
-        <tr>
-            <td>void</td>
-            <td></td>
-        </tr>
-    </table>
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/UnknownSubscriberTypeException.html"><abbr title="PHPUnit\Event\UnknownSubscriberTypeException">UnknownSubscriberTypeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
 
-            
             
             
                     </div>
