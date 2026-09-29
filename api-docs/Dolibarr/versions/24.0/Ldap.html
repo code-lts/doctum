@@ -587,7 +587,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_connection">
-                                                                                false|resource
+                                                                                bool|resource|<abbr title="LDAP\Connection">Connection</abbr>
                                                                                 
                                     </td>
                 <td>$connection</td>
@@ -858,7 +858,7 @@ LDAP object connect and bind must have been done</p></p>                </div>
                     array&lt;string, array&lt;string, string&gt;&gt;|int&lt;min, -1&gt;
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getRecords">getRecords</a>(string $search, string $userDn, string $useridentifier, string[] $attributeArray, 0|1|&quot;1&quot;|&quot;user&quot;|&quot;group&quot;|&quot;member&quot; $activefilter = 0, string[] $attributeAsArray = array())
+                    <a href="#method_getRecords">getRecords</a>(string $search, string $userDn, string $useridentifier, string[] $attributeArray, int&lt;0, 1&gt;|&quot;1&quot;|&quot;user&quot;|&quot;group&quot;|&quot;member&quot; $activefilter = 0, string[] $attributeAsArray = array())
         
                                             <p><p>Returns an array containing a details or list of LDAP record(s).</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -2044,9 +2044,9 @@ LDAP object connect and bind must have been done</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getRecords">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1190">at line 1190</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1196">at line 1196</a></div>
         <code>                    array&lt;string, array&lt;string, string&gt;&gt;|int&lt;min, -1&gt;
-    <strong>getRecords</strong>(string $search, string $userDn, string $useridentifier, string[] $attributeArray, 0|1|&quot;1&quot;|&quot;user&quot;|&quot;group&quot;|&quot;member&quot; $activefilter = 0, string[] $attributeAsArray = array())
+    <strong>getRecords</strong>(string $search, string $userDn, string $useridentifier, string[] $attributeArray, int&lt;0, 1&gt;|&quot;1&quot;|&quot;user&quot;|&quot;group&quot;|&quot;member&quot; $activefilter = 0, string[] $attributeAsArray = array())
         </code>
     </h3>
     <div class="details">    
@@ -2082,7 +2082,7 @@ LDAP object connect and bind must have been done</p></p>
                 <td><p>Array of fields required. Note this array must also contain field $useridentifier (Ex: sn,userPassword)</p></td>
             </tr>
                     <tr>
-                <td>0|1|&quot;1&quot;|&quot;user&quot;|&quot;group&quot;|&quot;member&quot;</td>
+                <td>int&lt;0, 1&gt;|&quot;1&quot;|&quot;user&quot;|&quot;group&quot;|&quot;member&quot;</td>
                 <td>$activefilter</td>
                 <td><p>'1' or 'user'=use field this-&gt;filter as filter instead of parameter $search, 'group'=use field this-&gt;filtergroup as filter, 'member'=use field this-&gt;filtermember as filter</p></td>
             </tr>
@@ -2112,7 +2112,7 @@ LDAP object connect and bind must have been done</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_littleEndian">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1282">at line 1282</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1288">at line 1288</a></div>
         <code>                    string
     <strong>littleEndian</strong>(string $hex)
         </code>
@@ -2156,7 +2156,7 @@ Required by Active Directory</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getObjectSid">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1299">at line 1299</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1305">at line 1305</a></div>
         <code>                    int|string
     <strong>getObjectSid</strong>(string $ldapUser)
         </code>
@@ -2199,7 +2199,7 @@ Required by Active Directory</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_binSIDtoText">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1350">at line 1350</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1356">at line 1356</a></div>
         <code>                    string
     <strong>binSIDtoText</strong>(string $binsid)
         </code>
@@ -2243,7 +2243,7 @@ Required by Active Directory</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_search">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1377">at line 1377</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1383">at line 1383</a></div>
         <code>                    array&lt;int|string, int|string|mixed[]&gt;|int&lt;-1, -1&gt;
     <strong>search</strong>($checkDn, $filter)
         </code>
@@ -2308,7 +2308,7 @@ Only use for pages.
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1410">at line 1410</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1416">at line 1416</a></div>
         <code>                    int
     <strong>fetch</strong>($user, string $filter)
         </code>
@@ -2357,7 +2357,7 @@ Examples: &amp;(objectClass=inetOrgPerson) &amp;(objectClass=user)(objectCategor
             </div>
                     <div class="method-item">
                     <h3 id="method_getUserIdentifier">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1494">at line 1494</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1500">at line 1500</a></div>
         <code>                    string
     <strong>getUserIdentifier</strong>()
         </code>
@@ -2390,7 +2390,7 @@ Examples: &amp;(objectClass=inetOrgPerson) &amp;(objectClass=user)(objectCategor
             </div>
                     <div class="method-item">
                     <h3 id="method_parseUACF">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1509">at line 1509</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1515">at line 1515</a></div>
         <code>                    array&lt;int, string&gt;
     <strong>parseUACF</strong>(string $uacf)
         </code>
@@ -2433,7 +2433,7 @@ Examples: &amp;(objectClass=inetOrgPerson) &amp;(objectClass=user)(objectCategor
             </div>
                     <div class="method-item">
                     <h3 id="method_parseSAT">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1556">at line 1556</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1562">at line 1562</a></div>
         <code>                    string
     <strong>parseSAT</strong>(string $samtype)
         </code>
@@ -2476,7 +2476,7 @@ Examples: &amp;(objectClass=inetOrgPerson) &amp;(objectClass=user)(objectCategor
             </div>
                     <div class="method-item">
                     <h3 id="method_convertTime">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1588">at line 1588</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1594">at line 1594</a></div>
         <code>                    int
     <strong>convertTime</strong>(string $value)
         </code>
@@ -2519,7 +2519,7 @@ Examples: &amp;(objectClass=inetOrgPerson) &amp;(objectClass=user)(objectCategor
             </div>
                     <div class="method-item">
                     <h3 id="method_convFromOutputCharset">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1630">at line 1630</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1636">at line 1636</a></div>
         <code>                    
     <strong>convFromOutputCharset</strong>($str, string $pagecodeto = &#039;UTF-8&#039;)
         </code>
@@ -2559,7 +2559,7 @@ Examples: &amp;(objectClass=inetOrgPerson) &amp;(objectClass=user)(objectCategor
             </div>
                     <div class="method-item">
                     <h3 id="method_getNextGroupGid">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1649">at line 1649</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/ldap.class.php#L1655">at line 1655</a></div>
         <code>                    int
     <strong>getNextGroupGid</strong>(string $keygroup = &#039;LDAP_KEY_GROUPS&#039;)
         </code>
