@@ -3700,6 +3700,29 @@ at most N times.</p></p>                </div>
                     void
                 </div>
                 <div class="col-md-8">
+                    <a href="#method_suspendOutputBuffering">suspendOutputBuffering</a>()
+        
+                                            <p><p>Suspends the buffering of the test's output so that it can be resumed
+in another output buffering context, for instance inside a coroutine
+started by an implementation of invokeTestMethod().</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resumeOutputBuffering">resumeOutputBuffering</a>()
+        
+                                            <p><p>Resumes the buffering of the test's output that was suspended
+using suspendOutputBuffering().</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
                     <a href="#method_expectErrorLog">expectErrorLog</a>()
         
                                             <p class="no-description">No description</p>
@@ -21035,8 +21058,78 @@ at most N times.</p></p>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_suspendOutputBuffering">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L931">at line 931</a></div>
+        <code>final            protected        void
+    <strong>suspendOutputBuffering</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Suspends the buffering of the test's output so that it can be resumed
+in another output buffering context, for instance inside a coroutine
+started by an implementation of invokeTestMethod().</p></p>                <p><p>Output that was captured before buffering was suspended is retained.
+Output buffering that is not resumed causes the test to be considered risky.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resumeOutputBuffering">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L940">at line 940</a></div>
+        <code>final            protected        void
+    <strong>resumeOutputBuffering</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Resumes the buffering of the test's output that was suspended
+using suspendOutputBuffering().</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_expectErrorLog">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L923">at line 923</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L945">at line 945</a></div>
         <code>final            protected        void
     <strong>expectErrorLog</strong>()
         </code>
@@ -21070,7 +21163,7 @@ at most N times.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_expectException">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L931">at line 931</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L953">at line 953</a></div>
         <code>final            protected        void
     <strong>expectException</strong>(string $exception)
         </code>
@@ -21114,7 +21207,7 @@ at most N times.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_expectExceptionCode">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L936">at line 936</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L958">at line 958</a></div>
         <code>final            protected        void
     <strong>expectExceptionCode</strong>(int|string $code)
         </code>
@@ -21158,7 +21251,7 @@ at most N times.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_expectExceptionMessage">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L944">at line 944</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L966">at line 966</a></div>
         <code>final            protected        void
     <strong>expectExceptionMessage</strong>(string $message)
         <small><span class="label label-danger">deprecated</span></small></code>
@@ -21209,7 +21302,7 @@ at most N times.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_expectExceptionMessageIs">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L949">at line 949</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L971">at line 971</a></div>
         <code>final            protected        void
     <strong>expectExceptionMessageIs</strong>(string $message)
         </code>
@@ -21253,7 +21346,7 @@ at most N times.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_expectExceptionMessageIsOrContains">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L954">at line 954</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L976">at line 976</a></div>
         <code>final            protected        void
     <strong>expectExceptionMessageIsOrContains</strong>(string $message)
         </code>
@@ -21297,7 +21390,7 @@ at most N times.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_expectExceptionMessageMatches">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L959">at line 959</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L981">at line 981</a></div>
         <code>final            protected        void
     <strong>expectExceptionMessageMatches</strong>(string $regularExpression)
         </code>
@@ -21341,7 +21434,7 @@ at most N times.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_expectExceptionObject">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L969">at line 969</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L991">at line 991</a></div>
         <code>final            protected        void
     <strong>expectExceptionObject</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $exception)
         </code>
@@ -21385,7 +21478,7 @@ expected exception code are retrieved from a given Exception object.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_expectNotToPerformAssertions">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L976">at line 976</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L998">at line 998</a></div>
         <code>final            protected        void
     <strong>expectNotToPerformAssertions</strong>()
         </code>
@@ -21419,7 +21512,7 @@ expected exception code are retrieved from a given Exception object.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_expectUserDeprecationMessage">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L984">at line 984</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1006">at line 1006</a></div>
         <code>final            protected        void
     <strong>expectUserDeprecationMessage</strong>(string $expectedUserDeprecationMessage)
         </code>
@@ -21463,7 +21556,7 @@ expected exception code are retrieved from a given Exception object.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_expectUserDeprecationMessageMatches">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L992">at line 992</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1014">at line 1014</a></div>
         <code>final            protected        void
     <strong>expectUserDeprecationMessageMatches</strong>(string $expectedUserDeprecationMessageRegularExpression)
         </code>
@@ -21507,7 +21600,7 @@ expected exception code are retrieved from a given Exception object.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getMockBuilder">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1006">at line 1006</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1028">at line 1028</a></div>
         <code>final            protected        <a href="../../PHPUnit/Framework/MockObject/MockBuilder.html"><abbr title="PHPUnit\Framework\MockObject\MockBuilder">MockBuilder</abbr></a>
     <strong>getMockBuilder</strong>(string $className)
         </code>
@@ -21550,7 +21643,7 @@ expected exception code are retrieved from a given Exception object.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_registerComparator">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1011">at line 1011</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1033">at line 1033</a></div>
         <code>final            protected        void
     <strong>registerComparator</strong>(<abbr title="SebastianBergmann\Comparator\Comparator">Comparator</abbr> $comparator)
         </code>
@@ -21594,7 +21687,7 @@ expected exception code are retrieved from a given Exception object.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_registerObjectExporter">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1018">at line 1018</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1040">at line 1040</a></div>
         <code>final            protected        void
     <strong>registerObjectExporter</strong>(<abbr title="SebastianBergmann\Exporter\ObjectExporter">ObjectExporter</abbr> $objectExporter)
         </code>
@@ -21638,7 +21731,7 @@ expected exception code are retrieved from a given Exception object.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_registerFailureType">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1026">at line 1026</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1048">at line 1048</a></div>
         <code>final            protected        void
     <strong>registerFailureType</strong>(string $classOrInterface)
         </code>
@@ -21682,7 +21775,7 @@ expected exception code are retrieved from a given Exception object.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_createMock">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1044">at line 1044</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1066">at line 1066</a></div>
         <code>final            protected        <a href="../../PHPUnit/Framework/MockObject/MockObject.html"><abbr title="PHPUnit\Framework\MockObject\MockObject">MockObject</abbr></a>
     <strong>createMock</strong>(string $type)
         </code>
@@ -21742,7 +21835,7 @@ expected exception code are retrieved from a given Exception object.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_createMockForIntersectionOfInterfaces">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1054">at line 1054</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1076">at line 1076</a></div>
         <code>final            protected        <a href="../../PHPUnit/Framework/MockObject/MockObject.html"><abbr title="PHPUnit\Framework\MockObject\MockObject">MockObject</abbr></a>
     <strong>createMockForIntersectionOfInterfaces</strong>(array $interfaces)
         </code>
@@ -21795,7 +21888,7 @@ expected exception code are retrieved from a given Exception object.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_createInvocationJournal">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1063">at line 1063</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1085">at line 1085</a></div>
         <code>final            protected        <a href="../../PHPUnit/Framework/MockObject/InvocationJournal.html"><abbr title="PHPUnit\Framework\MockObject\InvocationJournal">InvocationJournal</abbr></a>
     <strong>createInvocationJournal</strong>()
         </code>
@@ -21829,7 +21922,7 @@ recorded in, in the order in which they happen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_createConfiguredMock">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1082">at line 1082</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1104">at line 1104</a></div>
         <code>final            protected        <a href="../../PHPUnit/Framework/MockObject/MockObject.html"><abbr title="PHPUnit\Framework\MockObject\MockObject">MockObject</abbr></a>
     <strong>createConfiguredMock</strong>(string $type, array $configuration)
         </code>
@@ -21894,7 +21987,7 @@ recorded in, in the order in which they happen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_createPartialMock">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1100">at line 1100</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1122">at line 1122</a></div>
         <code>final            protected        <a href="../../PHPUnit/Framework/MockObject/MockObject.html"><abbr title="PHPUnit\Framework\MockObject\MockObject">MockObject</abbr></a>
     <strong>createPartialMock</strong>(string $type, array $methods)
         </code>
@@ -21955,7 +22048,7 @@ recorded in, in the order in which they happen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_provideAdditionalInformation">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1108">at line 1108</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1130">at line 1130</a></div>
         <code>final            protected        void
     <strong>provideAdditionalInformation</strong>(string $additionalInformation)
         </code>
@@ -21999,7 +22092,7 @@ recorded in, in the order in which they happen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_transformException">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1116">at line 1116</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1138">at line 1138</a></div>
         <code>            protected        <a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a>
     <strong>transformException</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $t)
         </code>
@@ -22043,7 +22136,7 @@ recorded in, in the order in which they happen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_onNotSuccessfulTest">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1126">at line 1126</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1148">at line 1148</a></div>
         <code>            protected        <abbr title="PHPUnit\Framework\never">never</abbr>
     <strong>onNotSuccessfulTest</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $t)
         </code>
@@ -22095,7 +22188,7 @@ recorded in, in the order in which they happen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_invokeTestMethod">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1134">at line 1134</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1156">at line 1156</a></div>
         <code>            protected        mixed
     <strong>invokeTestMethod</strong>(string $methodName, array $testArguments)
         </code>
@@ -22144,7 +22237,7 @@ recorded in, in the order in which they happen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getStubBuilder">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1543">at line 1543</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1567">at line 1567</a></div>
         <code>final        static    protected        <a href="../../PHPUnit/Framework/MockObject/TestStubBuilder.html"><abbr title="PHPUnit\Framework\MockObject\TestStubBuilder">TestStubBuilder</abbr></a>
     <strong>getStubBuilder</strong>(string $className)
         </code>
@@ -22187,7 +22280,7 @@ recorded in, in the order in which they happen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_createStub">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1561">at line 1561</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1585">at line 1585</a></div>
         <code>final        static    protected        <a href="../../PHPUnit/Framework/MockObject/Stub.html"><abbr title="PHPUnit\Framework\MockObject\Stub">Stub</abbr></a>
     <strong>createStub</strong>(string $type)
         </code>
@@ -22247,7 +22340,7 @@ recorded in, in the order in which they happen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_createStubForIntersectionOfInterfaces">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1571">at line 1571</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1595">at line 1595</a></div>
         <code>final        static    protected        <a href="../../PHPUnit/Framework/MockObject/Stub.html"><abbr title="PHPUnit\Framework\MockObject\Stub">Stub</abbr></a>
     <strong>createStubForIntersectionOfInterfaces</strong>(array $interfaces)
         </code>
@@ -22300,7 +22393,7 @@ recorded in, in the order in which they happen.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_createConfiguredStub">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1590">at line 1590</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php#L1614">at line 1614</a></div>
         <code>final        static    protected        <a href="../../PHPUnit/Framework/MockObject/Stub.html"><abbr title="PHPUnit\Framework\MockObject\Stub">Stub</abbr></a>
     <strong>createConfiguredStub</strong>(string $type, array $configuration)
         </code>
