@@ -1912,7 +1912,7 @@ Form</a></small></div>
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_select_state">select_state</a>(int $selected = 0, $country_codeid = 0, $htmlname = &#039;state_id&#039;, $morecss = &#039;maxwidth200onsmartphone  minwidth300&#039;)
+                    <a href="#method_select_state">select_state</a>(int $selected = 0, $country_codeid = 0, $htmlname = &#039;state_id&#039;, $morecss = &#039;maxwidth200onsmartphone  minwidth300&#039;, $showempty = 0)
         
                                             <p><p>Returns the drop-down list of departments/provinces/cantons for all countries or for a given country.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -12689,9 +12689,9 @@ Thus the links with the departments are done on a department independently of it
             </div>
                     <div class="method-item">
                     <h3 id="method_select_state">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L290">at line 290</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L291">at line 291</a></div>
         <code>                    
-    <strong>select_state</strong>(int $selected = 0, $country_codeid = 0, $htmlname = &#039;state_id&#039;, $morecss = &#039;maxwidth200onsmartphone  minwidth300&#039;)
+    <strong>select_state</strong>(int $selected = 0, $country_codeid = 0, $htmlname = &#039;state_id&#039;, $morecss = &#039;maxwidth200onsmartphone  minwidth300&#039;, $showempty = 0)
         </code>
     </h3>
     <div class="details">    
@@ -12715,6 +12715,7 @@ Thus the links with the departments are done on a department independently of it
 @param    int|string    $country_codeid     Country code or id: 0=list for all countries, otherwise country code or country rowid to show
 @param    string        $htmlname           Id of department. If '', we want only the string with <option>
 @param  string      $morecss            Add more css
+@param  int         $showempty          Show an empty option even when listing all countries
 @return string                          String with HTML select
 select_country()</p></td>
             </tr>
@@ -12733,6 +12734,11 @@ select_country()</p></td>
                 <td>$morecss</td>
                 <td></td>
             </tr>
+                    <tr>
+                <td></td>
+                <td>$showempty</td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -12745,7 +12751,7 @@ select_country()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_select_state_ajax">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L403">at line 403</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L404">at line 404</a></div>
         <code>                    
     <strong>select_state_ajax</strong>(string $parent_field_id = &#039;country_id&#039;, $selected = 0, $country_codeid = 0, $htmlname = &#039;state_id&#039;, $morecss = &#039;maxwidth200onsmartphone  minwidth300&#039;)
         </code>
@@ -12807,7 +12813,7 @@ select_country()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_select_region">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L427">at line 427</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L428">at line 428</a></div>
         <code>                    
     <strong>select_region</strong>(string $selected = &#039;&#039;, $htmlname = &#039;region_id&#039;)
         </code>
@@ -12851,7 +12857,7 @@ This way the links with the regions are made independent of its name.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_select_civility">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L485">at line 485</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L486">at line 486</a></div>
         <code>                    
     <strong>select_civility</strong>($selected = &#039;&#039;, string $htmlname = &#039;civility_id&#039;, $morecss = &#039;maxwidth150&#039;, $addjscombo = 1)
         </code>
@@ -12903,7 +12909,7 @@ This way the links with the regions are made independent of its name.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_select_forme_juridique">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L546">at line 546</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L547">at line 547</a></div>
         <code>                    
     <strong>select_forme_juridique</strong>(int $selected = 0, $country_codeid = 0, $filter = &#039;&#039;)
         </code>
@@ -12952,7 +12958,7 @@ select_juridicalstatus()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_select_juridicalstatus">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L564">at line 564</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L565">at line 565</a></div>
         <code>                    
     <strong>select_juridicalstatus</strong>(int $selected = 0, $country_codeid = 0, $filter = &#039;&#039;, $htmlname = &#039;forme_juridique_code&#039;, $morecss = &#039;&#039;)
         </code>
@@ -13011,7 +13017,7 @@ select_juridicalstatus()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_selectCompaniesForNewContact">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L671">at line 671</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L672">at line 672</a></div>
         <code>                    
     <strong>selectCompaniesForNewContact</strong>($object, string $var_id, $selected = 0, $htmlname = &#039;newcompany&#039;, $limitto = [], $forceid = 0, $moreparam = &#039;&#039;, $morecss = &#039;&#039;)
         </code>
@@ -13087,7 +13093,7 @@ select_juridicalstatus()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_selectTypeContact">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L852">at line 852</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L853">at line 853</a></div>
         <code>                    
     <strong>selectTypeContact</strong>($object, string $selected, $htmlname = &#039;type&#039;, $source = &#039;internal&#039;, $sortorder = &#039;position&#039;, $showempty = 0, $morecss = &#039;&#039;, $output = 1, $forcehidetooltip = 0)
         </code>
@@ -13169,7 +13175,7 @@ select_juridicalstatus()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_showRoles">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L899">at line 899</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L900">at line 900</a></div>
         <code>                    string
     <strong>showRoles</strong>(string $htmlname, <a href="Contact.html">Contact</a> $contact, string $rendermode = &#039;view&#039;, array&lt;array{id: int}&gt; $selected = array(), string $morecss = &#039;minwidth500&#039;, string $placeholder = &#039;&#039;)
         </code>
@@ -13237,7 +13243,7 @@ select_juridicalstatus()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_select_ziptown">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L943">at line 943</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L944">at line 944</a></div>
         <code>                    
     <strong>select_ziptown</strong>($selected = &#039;&#039;, string $htmlname = &#039;zipcode&#039;, $fields = array(), $fieldsize = 0, $disableautocomplete = 0, $moreattrib = &#039;&#039;, $morecss = &#039;&#039;)
         </code>
@@ -13307,7 +13313,7 @@ select_juridicalstatus()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_get_input_id_prof">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L975">at line 975</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L976">at line 976</a></div>
         <code>                    
     <strong>get_input_id_prof</strong>($idprof, string $htmlname, $preselected, $country_code, $morecss = &#039;maxwidth200&#039;)
         </code>
@@ -13365,7 +13371,7 @@ select_juridicalstatus()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_select_localtax">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L1056">at line 1056</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L1057">at line 1057</a></div>
         <code>                    void
     <strong>select_localtax</strong>(int $local, float $selected, string $htmlname)
         </code>
@@ -13418,7 +13424,7 @@ select_juridicalstatus()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_selectProspectCustomerType">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L1095">at line 1095</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L1096">at line 1096</a></div>
         <code>                    string
     <strong>selectProspectCustomerType</strong>(int&lt;0, 4&gt;|&quot;0&quot;|&quot;2,3&quot;|&quot;1,3&quot;|&quot;4&quot; $selected, string $htmlname = &#039;client&#039;, string $htmlidname = &#039;customerprospect&#039;, string $typeinput = &#039;form&#039;, string $morecss = &#039;&#039;, string $allowempty = &#039;&#039;)
         </code>
@@ -13486,7 +13492,7 @@ select_juridicalstatus()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_formThirdpartyType">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L1160">at line 1160</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L1161">at line 1161</a></div>
         <code>                    
     <strong>formThirdpartyType</strong>($page, string $selected = &#039;&#039;, $htmlname = &#039;socid&#039;, $filter = &#039;&#039;, $nooutput = 0)
         </code>
@@ -13545,7 +13551,7 @@ select_juridicalstatus()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_selectProspectStatus">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L1201">at line 1201</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/core/class/html.formcompany.class.php#L1202">at line 1202</a></div>
         <code>                    
     <strong>selectProspectStatus</strong>($htmlname, <a href="Contact.html">Contact</a>|<a href="Client.html">Client</a>|null $prospectstatic, $statusprospect, $idprospect, $mode = &quot;html&quot;)
         </code>
