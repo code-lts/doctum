@@ -4452,6 +4452,43 @@ the current abscissa for the empty/default case).</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_repairHtmlColors">repairHtmlColors</a>(string $html)
+        
+                                            <p><p>Repair malformed hexadecimal colors in the attributes whose name ends in
+&quot;color&quot; (color, bgcolor, bordercolor), in style attributes and in style
+blocks. Text content and other attributes are left unchanged.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_repairCssColors">repairCssColors</a>(string $css)
+        
+                                            <p><p>Repair malformed hexadecimal colors in the declaration values of a CSS
+text. Selectors, quoted strings and numeric character references are
+left unchanged.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_repairHexColor">repairHexColor</a>(string $color)
+        
+                                            <p><p>Repair a malformed hexadecimal color token ('#' followed by letters and
+digits). Valid 3, 4, 6 or 8 digit values and tokens that cannot be a
+mistyped color are returned unchanged; the others are padded or
+truncated to 6 digits.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     void
                 </div>
                 <div class="col-md-8">
@@ -20019,7 +20056,7 @@ original attributes (links keep working, one annotation per piece).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_normalizeHtmlMarkup">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7648">at line 7648</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7651">at line 7651</a></div>
         <code>            protected        string
     <strong>normalizeHtmlMarkup</strong>(string $html)
         </code>
@@ -20039,8 +20076,11 @@ engine paints their backgrounds (see inheritHtmlBackgrounds());</li>
 <li>'@'-prefixed base64 image data is rewritten to a data URI;</li>
 <li>relative local image paths are made absolute (src attributes,
 CSS url() values and the legacy img| list-bullet syntax);</li>
-<li>malformed hexadecimal color tokens, silently coerced by the
-legacy parser, are repaired to valid values.</li>
+<li>legacy page anchors (href=&quot;#N&quot; or href=&quot;#N,y&quot;) become internal
+links to page N at ordinate y;</li>
+<li>malformed hexadecimal colors, silently coerced by the legacy
+parser, are repaired in color attributes and CSS declaration values
+(see repairHtmlColors()).</li>
 </ul></p>        
         </div>
         <div class="tags">
@@ -20072,8 +20112,144 @@ legacy parser, are repaired to valid values.</li>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_repairHtmlColors">
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7724">at line 7724</a></div>
+        <code>        static    protected        string
+    <strong>repairHtmlColors</strong>(string $html)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Repair malformed hexadecimal colors in the attributes whose name ends in
+&quot;color&quot; (color, bgcolor, bordercolor), in style attributes and in style
+blocks. Text content and other attributes are left unchanged.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$html</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_repairCssColors">
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7759">at line 7759</a></div>
+        <code>        static    protected        string
+    <strong>repairCssColors</strong>(string $css)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Repair malformed hexadecimal colors in the declaration values of a CSS
+text. Selectors, quoted strings and numeric character references are
+left unchanged.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$css</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_repairHexColor">
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7780">at line 7780</a></div>
+        <code>        static    protected        string
+    <strong>repairHexColor</strong>(string $color)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Repair a malformed hexadecimal color token ('#' followed by letters and
+digits). Valid 3, 4, 6 or 8 digit values and tokens that cannot be a
+mistyped color are returned unchanged; the others are padded or
+truncated to 6 digits.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$color</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_writeHtmlWithTcpdfTags">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7739">at line 7739</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7809">at line 7809</a></div>
         <code>            protected        void
     <strong>writeHtmlWithTcpdfTags</strong>(string $html, mixed $w, mixed $h, mixed $x, mixed $y, mixed $border, mixed $_ln, mixed $fill, mixed $reseth, mixed $align, mixed $autopadding)
         </code>
@@ -20169,7 +20345,7 @@ facade method when listed in K_ALLOWED_TCPDF_TAGS.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_writeHTML">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7797">at line 7797</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7867">at line 7867</a></div>
         <code>                    
     <strong>writeHTML</strong>($_html, $_ln = true, $_fill = false, $_reseth = false, $_cell = false, $_align = &#039;&#039;)
         </code>
@@ -20229,7 +20405,7 @@ facade method when listed in K_ALLOWED_TCPDF_TAGS.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setLIsymbol">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7809">at line 7809</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7879">at line 7879</a></div>
         <code>                    
     <strong>setLIsymbol</strong>($_symbol = &#039;!&#039;)
         </code>
@@ -20264,7 +20440,7 @@ facade method when listed in K_ALLOWED_TCPDF_TAGS.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setBooklet">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7814">at line 7814</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7884">at line 7884</a></div>
         <code>                    
     <strong>setBooklet</strong>($_booklet = true, $_inner = -1, $_outer = -1)
         </code>
@@ -20309,7 +20485,7 @@ facade method when listed in K_ALLOWED_TCPDF_TAGS.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setHtmlVSpace">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7826">at line 7826</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7896">at line 7896</a></div>
         <code>                    
     <strong>setHtmlVSpace</strong>($_tagvs)
         </code>
@@ -20344,7 +20520,7 @@ facade method when listed in K_ALLOWED_TCPDF_TAGS.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setListIndentWidth">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7856">at line 7856</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7926">at line 7926</a></div>
         <code>                    
     <strong>setListIndentWidth</strong>($_width)
         </code>
@@ -20379,7 +20555,7 @@ facade method when listed in K_ALLOWED_TCPDF_TAGS.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setOpenCell">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7861">at line 7861</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7931">at line 7931</a></div>
         <code>                    
     <strong>setOpenCell</strong>($_isopen)
         </code>
@@ -20414,7 +20590,7 @@ facade method when listed in K_ALLOWED_TCPDF_TAGS.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setHtmlLinksStyle">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7866">at line 7866</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7936">at line 7936</a></div>
         <code>                    
     <strong>setHtmlLinksStyle</strong>($_color = [0, 0, 255], $_fontstyle = &#039;U&#039;)
         </code>
@@ -20454,7 +20630,7 @@ facade method when listed in K_ALLOWED_TCPDF_TAGS.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getHTMLUnitToUnits">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7872">at line 7872</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7942">at line 7942</a></div>
         <code>                    
     <strong>getHTMLUnitToUnits</strong>($_htmlval, $_refsize = 1, $_defaultunit = &#039;px&#039;, $_points = false)
         </code>
@@ -20504,7 +20680,7 @@ facade method when listed in K_ALLOWED_TCPDF_TAGS.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_movePage">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7913">at line 7913</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7983">at line 7983</a></div>
         <code>                    
     <strong>movePage</strong>($_frompage, $_topage)
         </code>
@@ -20544,7 +20720,7 @@ facade method when listed in K_ALLOWED_TCPDF_TAGS.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_deletePage">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7925">at line 7925</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7995">at line 7995</a></div>
         <code>                    
     <strong>deletePage</strong>($_page)
         </code>
@@ -20579,7 +20755,7 @@ facade method when listed in K_ALLOWED_TCPDF_TAGS.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_copyPage">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7936">at line 7936</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8006">at line 8006</a></div>
         <code>                    
     <strong>copyPage</strong>($_page = 0)
         </code>
@@ -20614,7 +20790,7 @@ facade method when listed in K_ALLOWED_TCPDF_TAGS.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_addTOC">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L7960">at line 7960</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8030">at line 8030</a></div>
         <code>                    
     <strong>addTOC</strong>($_page = null, $_numbersfont = &#039;&#039;, $_filler = &#039;.&#039;, $_toc_name = &#039;TOC&#039;, $_style = &#039;&#039;, $_color = [0, 0, 0])
         </code>
@@ -20674,7 +20850,7 @@ facade method when listed in K_ALLOWED_TCPDF_TAGS.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_addHTMLTOC">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8074">at line 8074</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8144">at line 8144</a></div>
         <code>                    
     <strong>addHTMLTOC</strong>($_page = null, $_toc_name = &#039;TOC&#039;, $_templates = [], $_correct_align = true, $_style = &#039;&#039;, $_color = [0, 0, 0])
         </code>
@@ -20734,7 +20910,7 @@ facade method when listed in K_ALLOWED_TCPDF_TAGS.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_startTransaction">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8087">at line 8087</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8157">at line 8157</a></div>
         <code>                    
     <strong>startTransaction</strong>()
         </code>
@@ -20759,7 +20935,7 @@ facade method when listed in K_ALLOWED_TCPDF_TAGS.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_commitTransaction">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8116">at line 8116</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8186">at line 8186</a></div>
         <code>                    
     <strong>commitTransaction</strong>()
         </code>
@@ -20784,7 +20960,7 @@ facade method when listed in K_ALLOWED_TCPDF_TAGS.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_rollbackTransaction">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8121">at line 8121</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8191">at line 8191</a></div>
         <code>                    
     <strong>rollbackTransaction</strong>($_self = false)
         </code>
@@ -20819,7 +20995,7 @@ facade method when listed in K_ALLOWED_TCPDF_TAGS.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_equalColumnRegions">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8162">at line 8162</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8232">at line 8232</a></div>
         <code>            protected        array
     <strong>equalColumnRegions</strong>(int $numcols, float $width, float $ypos)
         </code>
@@ -20874,7 +21050,7 @@ gutters.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setEnginePageRegions">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8196">at line 8196</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8266">at line 8266</a></div>
         <code>            protected        void
     <strong>setEnginePageRegions</strong>(array $regions)
         </code>
@@ -20919,7 +21095,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_inColumnMode">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8244">at line 8244</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8314">at line 8314</a></div>
         <code>            protected        bool
     <strong>inColumnMode</strong>()
         </code>
@@ -20952,7 +21128,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setEqualColumns">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8249">at line 8249</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8319">at line 8319</a></div>
         <code>                    
     <strong>setEqualColumns</strong>($_numcols = 0, $_width = 0, $_y = null)
         </code>
@@ -20997,7 +21173,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_resetColumns">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8271">at line 8271</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8341">at line 8341</a></div>
         <code>                    
     <strong>resetColumns</strong>()
         </code>
@@ -21022,7 +21198,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setColumnsArray">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8293">at line 8293</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8363">at line 8363</a></div>
         <code>                    
     <strong>setColumnsArray</strong>($_columns)
         </code>
@@ -21057,7 +21233,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_selectColumn">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8341">at line 8341</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8411">at line 8411</a></div>
         <code>                    
     <strong>selectColumn</strong>($_col = null)
         </code>
@@ -21092,7 +21268,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getColumn">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8375">at line 8375</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8445">at line 8445</a></div>
         <code>                    
     <strong>getColumn</strong>()
         </code>
@@ -21117,7 +21293,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getNumberOfColumns">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8384">at line 8384</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8454">at line 8454</a></div>
         <code>                    
     <strong>getNumberOfColumns</strong>()
         </code>
@@ -21142,7 +21318,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setTextRenderingMode">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8397">at line 8397</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8467">at line 8467</a></div>
         <code>                    
     <strong>setTextRenderingMode</strong>($_stroke = 0, $_fill = true, $_clip = false)
         </code>
@@ -21187,7 +21363,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setTextShadow">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8406">at line 8406</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8476">at line 8476</a></div>
         <code>                    
     <strong>setTextShadow</strong>($_params = [&#039;enabled&#039; =&gt; false, &#039;depth_w&#039; =&gt; 0, &#039;depth_h&#039; =&gt; 0, &#039;color&#039; =&gt; false, &#039;opacity&#039; =&gt; 1, &#039;blend_mode&#039; =&gt; &#039;Normal&#039;])
         </code>
@@ -21222,7 +21398,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTextShadow">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8429">at line 8429</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8499">at line 8499</a></div>
         <code>                    array{enabled: bool, depth_w: int|float, depth_h: int|float, color: mixed, opacity: int|float, blend_mode: string}
     <strong>getTextShadow</strong>()
         </code>
@@ -21256,7 +21432,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hyphenateText">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8434">at line 8434</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8504">at line 8504</a></div>
         <code>                    
     <strong>hyphenateText</strong>($_text, $_patterns, $_dictionary = [], $_leftmin = 1, $_rightmin = 2, $_charmin = 1, $_charmax = 8)
         </code>
@@ -21321,7 +21497,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setRasterizeVectorImages">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8471">at line 8471</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8541">at line 8541</a></div>
         <code>                    
     <strong>setRasterizeVectorImages</strong>($_mode)
         </code>
@@ -21356,7 +21532,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setFontSubsetting">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8476">at line 8476</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8546">at line 8546</a></div>
         <code>                    
     <strong>setFontSubsetting</strong>($_enable = true)
         </code>
@@ -21391,7 +21567,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getFontSubsetting">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8484">at line 8484</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8554">at line 8554</a></div>
         <code>                    bool
     <strong>getFontSubsetting</strong>()
         </code>
@@ -21425,7 +21601,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_stringLeftTrim">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8489">at line 8489</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8559">at line 8559</a></div>
         <code>                    
     <strong>stringLeftTrim</strong>($_str, $_replace = &#039;&#039;)
         </code>
@@ -21465,7 +21641,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_stringRightTrim">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8494">at line 8494</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8564">at line 8564</a></div>
         <code>                    
     <strong>stringRightTrim</strong>($_str, $_replace = &#039;&#039;)
         </code>
@@ -21505,7 +21681,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_stringTrim">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8499">at line 8499</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8569">at line 8569</a></div>
         <code>                    
     <strong>stringTrim</strong>($_str, $_replace = &#039;&#039;)
         </code>
@@ -21545,7 +21721,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isUnicodeFont">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8504">at line 8504</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8574">at line 8574</a></div>
         <code>                    
     <strong>isUnicodeFont</strong>()
         </code>
@@ -21570,7 +21746,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getFontFamilyName">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8509">at line 8509</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8579">at line 8579</a></div>
         <code>                    
     <strong>getFontFamilyName</strong>($_fontfamily)
         </code>
@@ -21605,7 +21781,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_startTemplate">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8518">at line 8518</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8588">at line 8588</a></div>
         <code>                    
     <strong>startTemplate</strong>($_w = 0, $_h = 0, $_group = false)
         </code>
@@ -21650,7 +21826,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_endTemplate">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8532">at line 8532</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8602">at line 8602</a></div>
         <code>                    
     <strong>endTemplate</strong>()
         </code>
@@ -21675,7 +21851,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_printTemplate">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8544">at line 8544</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8614">at line 8614</a></div>
         <code>                    
     <strong>printTemplate</strong>($_id, $_x = null, $_y = null, $_w = 0, $_h = 0, $_align = &#039;&#039;, $_palign = &#039;&#039;, $_fitonpage = false)
         </code>
@@ -21745,7 +21921,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setFontStretching">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8571">at line 8571</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8641">at line 8641</a></div>
         <code>                    
     <strong>setFontStretching</strong>($_perc = 100)
         </code>
@@ -21780,7 +21956,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getFontStretching">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8580">at line 8580</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8650">at line 8650</a></div>
         <code>                    float
     <strong>getFontStretching</strong>()
         </code>
@@ -21814,7 +21990,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setFontSpacing">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8585">at line 8585</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8655">at line 8655</a></div>
         <code>                    
     <strong>setFontSpacing</strong>($_spacing = 0)
         </code>
@@ -21849,7 +22025,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getFontSpacing">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8594">at line 8594</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8664">at line 8664</a></div>
         <code>                    float
     <strong>getFontSpacing</strong>()
         </code>
@@ -21883,7 +22059,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPageRegions">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8603">at line 8603</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8673">at line 8673</a></div>
         <code>                    
     <strong>getPageRegions</strong>()
         </code>
@@ -21908,7 +22084,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setPageRegions">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8608">at line 8608</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8678">at line 8678</a></div>
         <code>                    
     <strong>setPageRegions</strong>($_regions = [])
         </code>
@@ -21943,7 +22119,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_addPageRegion">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8619">at line 8619</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8689">at line 8689</a></div>
         <code>                    
     <strong>addPageRegion</strong>($_region)
         </code>
@@ -21978,7 +22154,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_removePageRegion">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8647">at line 8647</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8717">at line 8717</a></div>
         <code>                    
     <strong>removePageRegion</strong>($_key)
         </code>
@@ -22013,7 +22189,7 @@ page settings) is written directly into the page store.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_currentPageNoWriteAreas">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8668">at line 8668</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8738">at line 8738</a></div>
         <code>            protected        array
     <strong>currentPageNoWriteAreas</strong>()
         </code>
@@ -22051,7 +22227,7 @@ content area the regions live in.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_applyNoWriteRegionsForFlow">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8703">at line 8703</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8773">at line 8773</a></div>
         <code>            protected        bool
     <strong>applyNoWriteRegionsForFlow</strong>(float $bandheight, float $cursory)
         </code>
@@ -22104,7 +22280,7 @@ on its own.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_selectRegionAtY">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8721">at line 8721</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8791">at line 8791</a></div>
         <code>            protected        void
     <strong>selectRegionAtY</strong>(float $y)
         </code>
@@ -22150,7 +22326,7 @@ above them all.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_noWriteBandFromHtml">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8747">at line 8747</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8817">at line 8817</a></div>
         <code>            protected        float
     <strong>noWriteBandFromHtml</strong>(string $html)
         </code>
@@ -22198,7 +22374,7 @@ sit in the tall merged region at the top rather than at a band boundary.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_ImageSVG">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8759">at line 8759</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8829">at line 8829</a></div>
         <code>                    
     <strong>ImageSVG</strong>($_file, $_x = null, $_y = null, $_w = 0, $_h = 0, $_link = &#039;&#039;, $_align = &#039;&#039;, $_palign = &#039;&#039;, $_border = 0, $_fitonpage = false)
         </code>
