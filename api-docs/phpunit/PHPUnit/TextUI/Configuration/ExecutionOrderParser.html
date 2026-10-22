@@ -105,18 +105,22 @@
             <p><p>Parses the comma-separated list of tokens that the --order-by CLI option and
 the executionOrder XML configuration attribute accept.</p></p>            <p><p>This is the single place where those tokens are given meaning, so that both
 configuration surfaces agree on how a value is interpreted and on which
-values are diagnosed.</p></p>        </div>
+values are rejected.</p>
+<p>Tokens are applied in the order in which they are written, so
+&quot;duration-ascending,defects&quot; sorts the tests by duration and then hoists the
+defective ones, while &quot;defects,duration-ascending&quot; does the opposite and lets
+the duration sort discard the hoist.</p></p>        </div>
             
         
             <h2>Constants</h2>    <table class="table table-condensed">
                     <tr>
                 <td>
                                                             private
-                                                                                MAIN_ORDER_TOKENS
+                                                                                RENAMED
                                     </td>
                 <td class="last">
-                    <p><em><p>Tokens that select the order in which tests are sorted. At most one of
-them is meaningful.</p></em></p>
+                    <p><em><p>Values that were supported by earlier versions of PHPUnit, mapped to what
+to tell the user to write instead.</p></em></p>
                     <p></p>
                 </td>
             </tr>
@@ -129,21 +133,10 @@ them is meaningful.</p></em></p>
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../PHPUnit/TextUI/Configuration/ExecutionOrder.html"><abbr title="PHPUnit\TextUI\Configuration\ExecutionOrder">ExecutionOrder</abbr></a>
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_parse">parse</a>(string $value, <abbr title="PHPUnit\TextUI\Configuration\ExecutionOrderSource">ExecutionOrderSource</abbr> $source, int|null $executionOrder, int|null $executionOrderDefects, bool|null $resolveDependencies)
+                    <a href="#method_parse">parse</a>(string $value, <abbr title="PHPUnit\TextUI\Configuration\ExecutionOrderSource">ExecutionOrderSource</abbr> $source)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -156,45 +149,10 @@ them is meaningful.</p></em></p>
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/TextUI/Configuration/ExecutionOrderParser.php#L53">at line 53</a></div>
-        <code>                    
-    <strong>__construct</strong>(<a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a></td>
-                <td>$emitter</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_parse">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/TextUI/Configuration/ExecutionOrderParser.php#L63">at line 63</a></div>
-        <code>                    <a href="../../../PHPUnit/TextUI/Configuration/ExecutionOrder.html"><abbr title="PHPUnit\TextUI\Configuration\ExecutionOrder">ExecutionOrder</abbr></a>
-    <strong>parse</strong>(string $value, <abbr title="PHPUnit\TextUI\Configuration\ExecutionOrderSource">ExecutionOrderSource</abbr> $source, int|null $executionOrder, int|null $executionOrderDefects, bool|null $resolveDependencies)
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/TextUI/Configuration/ExecutionOrderParser.php#L54">at line 54</a></div>
+        <code>                    array
+    <strong>parse</strong>(string $value, <abbr title="PHPUnit\TextUI\Configuration\ExecutionOrderSource">ExecutionOrderSource</abbr> $source)
         </code>
     </h3>
     <div class="details">    
@@ -213,28 +171,11 @@ them is meaningful.</p></em></p>
                     <tr>
                 <td>string</td>
                 <td>$value</td>
-                <td><p>the configured value; every token it does not give
-meaning to, including the empty token, is reported
-back to the caller</p></td>
+                <td><p>the configured value</p></td>
             </tr>
                     <tr>
                 <td><abbr title="PHPUnit\TextUI\Configuration\ExecutionOrderSource">ExecutionOrderSource</abbr></td>
                 <td>$source</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>int|null</td>
-                <td>$executionOrder</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>int|null</td>
-                <td>$executionOrderDefects</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>bool|null</td>
-                <td>$resolveDependencies</td>
                 <td></td>
             </tr>
             </table>
@@ -244,12 +185,21 @@ back to the caller</p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../PHPUnit/TextUI/Configuration/ExecutionOrder.html"><abbr title="PHPUnit\TextUI\Configuration\ExecutionOrder">ExecutionOrder</abbr></a></td>
+            <td>array</td>
             <td></td>
         </tr>
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/TextUI/Configuration/InvalidExecutionOrderException.html"><abbr title="PHPUnit\TextUI\Configuration\InvalidExecutionOrderException">InvalidExecutionOrderException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
