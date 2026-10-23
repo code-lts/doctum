@@ -434,7 +434,7 @@ dispatched.</p></p>                </div>
                 <div class="col-md-8">
                     <a href="#method_skipRemainingRepetition">skipRemainingRepetition</a>(<a href="../../PHPUnit/Event/Code/Test.html"><abbr title="PHPUnit\Event\Code\Test">Test</abbr></a> $test, int $failedRepetition, <a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter)
         
-                                            <p><p>Emits the event for a repetition that is skipped because an earlier
+                                            <p><p>Emits the events for a repetition that is skipped because an earlier
 repetition failed and returns the message the repetition is skipped with.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -457,10 +457,12 @@ repetition failed and returns the message the repetition is skipped with.</p></p
                     <a href="#method_durationOf">durationOf</a>(<a href="../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a> $events)
         
                                             <p><p>Determine the wall-clock time spent on an attempt from its collected
-events. This mirrors the way duration-aware loggers measure the time
-of a test, namely from its Prepared event to its Finished event, so
-that the durations of retried attempts can be accounted for even though
-the attempt's events themselves are not forwarded.</p></p>                </div>
+events, namely from its PreparationStarted event to its Finished event,
+so that the durations of retried attempts can be accounted for even
+though the attempt's events themselves are not forwarded. This is how
+the JUnit XML logger and the TeamCity logger measure the time of a
+test. The Open Test Reporting logger and the test run history measure
+the time of a test from its Prepared event instead.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -1800,7 +1802,7 @@ are forwarded rather than discarded.</p></p>
             
 
         <div class="method-description">
-                            <p><p>Emits the event for a repetition that is skipped because an earlier
+                            <p><p>Emits the events for a repetition that is skipped because an earlier
 repetition failed and returns the message the repetition is skipped with.</p></p>                        
         </div>
         <div class="tags">
@@ -1843,7 +1845,7 @@ repetition failed and returns the message the repetition is skipped with.</p></p
             </div>
                     <div class="method-item">
                     <h3 id="method_emitAttemptEvent">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/IterativeTestSuite.php#L173">at line 173</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/IterativeTestSuite.php#L175">at line 175</a></div>
         <code>final            protected        bool
     <strong>emitAttemptEvent</strong>(<a href="../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a> $events, <a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter)
         </code>
@@ -1892,7 +1894,7 @@ repetition failed and returns the message the repetition is skipped with.</p></p
             </div>
                     <div class="method-item">
                     <h3 id="method_durationOf">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/IterativeTestSuite.php#L216">at line 216</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/IterativeTestSuite.php#L220">at line 220</a></div>
         <code>final            protected        <a href="../../PHPUnit/Event/Telemetry/Duration.html"><abbr title="PHPUnit\Event\Telemetry\Duration">Duration</abbr></a>
     <strong>durationOf</strong>(<a href="../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a> $events)
         </code>
@@ -1904,10 +1906,12 @@ repetition failed and returns the message the repetition is skipped with.</p></p
 
         <div class="method-description">
                             <p><p>Determine the wall-clock time spent on an attempt from its collected
-events. This mirrors the way duration-aware loggers measure the time
-of a test, namely from its Prepared event to its Finished event, so
-that the durations of retried attempts can be accounted for even though
-the attempt's events themselves are not forwarded.</p></p>                        
+events, namely from its PreparationStarted event to its Finished event,
+so that the durations of retried attempts can be accounted for even
+though the attempt's events themselves are not forwarded. This is how
+the JUnit XML logger and the TeamCity logger measure the time of a
+test. The Open Test Reporting logger and the test run history measure
+the time of a test from its Prepared event instead.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
