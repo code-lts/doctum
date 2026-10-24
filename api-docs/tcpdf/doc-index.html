@@ -263,9 +263,7 @@ TCPDF::coonsPatchArray</a>() &mdash; <em>Method in class <a href="TCPDF.html">TC
 'colors' with 0-255 r/g/b keys) to the engine shape (normalized
 red/green/blue floats).</p></dd><dt><a href="TCPDF.html#method_cssBoxValues">
 TCPDF::cssBoxValues</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Parse a CSS shorthand box value (top right bottom left) into user units.</p></dd><dt><a href="TCPDF.html#method_cssSafeMarkupPath">
-TCPDF::cssSafeMarkupPath</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Return a markup resource path that survives CSS lowercasing.</p></dd><dt><a href="TCPDF.html#method_copyPage">
+                    <dd><p>Parse a CSS shorthand box value (top right bottom left) into user units.</p></dd><dt><a href="TCPDF.html#method_copyPage">
 TCPDF::copyPage</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd></dd><dt><a href="TCPDF.html#method_commitTransaction">
 TCPDF::commitTransaction</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
@@ -386,7 +384,11 @@ TCPDF::fileAllowedPaths</a>() &mdash; <em>Method in class <a href="TCPDF.html">T
                     <dd><p>Local paths the engine may read files from. The legacy API loaded
 images and fonts from application-relative locations, so in addition
 to the engine defaults this allows the configured TCPDF paths, the
-current working directory and the running script directory.</p></dd><dt><a href="TCPDF.html#method_fileOptions">
+current working directory and the running script directory.</p></dd><dt><a href="TCPDF.html#method_fileMarkupAllowedPaths">
+TCPDF::fileMarkupAllowedPaths</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Local paths resources referenced by HTML, CSS and SVG markup may be read
+from: the fileAllowedPaths() entries without the system temp directory,
+unless K_ALLOWED_PATHS lists that directory.</p></dd><dt><a href="TCPDF.html#method_fileOptions">
 TCPDF::fileOptions</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Assemble the file-access options handed to the engine's shared file
 helper (tc-lib-file). These drive the upstream security sandbox that
@@ -596,7 +598,9 @@ TCPDF#internallinks</a> &mdash; <em>Property in class <a href="TCPDF.html">TCPDF
                     <dd></dd><dt><a href="TCPDF.html#method_insertPageContent">
 TCPDF::insertPageContent</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Insert a PDF content chunk at the given position of an engine page
-content stream, so it paints behind the chunks that follow it.</p></dd><dt><a href="TCPDF.html#method_isRTLTextDir">
+content stream, so it paints behind the chunks that follow it.</p></dd><dt><a href="TCPDF.html#method_isAllowedLocalFile">
+TCPDF::isAllowedLocalFile</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Whether a local file exists inside the engine path allowlist.</p></dd><dt><a href="TCPDF.html#method_isRTLTextDir">
 TCPDF::isRTLTextDir</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd></dd><dt><a href="TCPDF.html#method_isCharDefined">
 TCPDF::isCharDefined</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
@@ -678,8 +682,9 @@ TCPDF::mergeImageAlphaMask</a>() &mdash; <em>Method in class <a href="TCPDF.html
 alpha channel, then return the merged PNG content. The engine's import
 path then splits that alpha back out into a /SMask (the only soft-mask
 mechanism tc-lib-pdf-image exposes), reproducing legacy's separate-mask
-Image() call. Returns null when the images cannot be read (caller falls
-back to the unmasked file).</p></dd><dt><a href="TCPDF.html#method_MirrorH">
+Image() call. Both files are read through the engine file helper, so the
+path allowlist applies. Returns null when the images cannot be read
+(caller falls back to the unmasked file).</p></dd><dt><a href="TCPDF.html#method_MirrorH">
 TCPDF::MirrorH</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd></dd><dt><a href="TCPDF.html#method_MirrorV">
 TCPDF::MirrorV</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
