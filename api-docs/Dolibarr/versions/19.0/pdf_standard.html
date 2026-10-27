@@ -179,7 +179,7 @@
 
     
     <p>        class
-    <strong>pdf_standard</strong>        extends <a href="ModelePDFEvaluation.html">ModelePDFEvaluation</a>        (<a href="https://github.com/dolibarr/dolibarr/blob/19.0/htdocs/core/modules/hrm/doc/pdf_standard.modules.php">View source</a>)
+    <strong>pdf_standard</strong>        extends <a href="ModelePDFSuppliersPayments.html">ModelePDFSuppliersPayments</a>        (<a href="https://github.com/dolibarr/dolibarr/blob/19.0/htdocs/core/modules/supplier_payment/doc/pdf_standard.modules.php">View source</a>)
 </p>
 
         
@@ -188,7 +188,7 @@
         
 
             <div class="description">
-            <p><p>Class to generate Evaluation Pdf based on standard model</p></p>                    </div>
+            <p><p>Class to generate the supplier invoices payment file with the standard model</p></p>                    </div>
             
         
     
@@ -646,8 +646,7 @@ CommonDocGenerator</a></small></td>
                                     </td>
                 <td>$posxtva</td>
                 <td class="last"></td>
-                <td><small>from&nbsp;<a href="CommonDocGenerator.html#property_posxtva">
-CommonDocGenerator</a></small></td>
+                <td></td>
             </tr>
                     <tr>
                 <td class="type" id="property_posxtotalht">
@@ -656,8 +655,7 @@ CommonDocGenerator</a></small></td>
                                     </td>
                 <td>$posxtotalht</td>
                 <td class="last"></td>
-                <td><small>from&nbsp;<a href="CommonDocGenerator.html#property_posxtotalht">
-CommonDocGenerator</a></small></td>
+                <td></td>
             </tr>
                     <tr>
                 <td class="type" id="property_postotalht">
@@ -666,7 +664,8 @@ CommonDocGenerator</a></small></td>
                                     </td>
                 <td>$postotalht</td>
                 <td class="last"></td>
-                <td></td>
+                <td><small>from&nbsp;<a href="CommonDocGenerator.html#property_postotalht">
+CommonDocGenerator</a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_posxunit">
@@ -749,56 +748,47 @@ CommonDocGenerator</a></small></td>
 CommonDocGenerator</a></small></td>
             </tr>
                     <tr>
-                <td class="type" id="property_posxpiece">
+                <td class="type" id="property_posxdate">
                                                                                 
                                                                                 
                                     </td>
-                <td>$posxpiece</td>
+                <td>$posxdate</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_posxskill">
+                <td class="type" id="property_posxreffacturefourn">
                                                                                 
                                                                                 
                                     </td>
-                <td>$posxskill</td>
+                <td>$posxreffacturefourn</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_posxrankemp">
+                <td class="type" id="property_posxreffacture">
                                                                                 
                                                                                 
                                     </td>
-                <td>$posxrankemp</td>
+                <td>$posxreffacture</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_posxrequiredrank">
+                <td class="type" id="property_posxtype">
                                                                                 
                                                                                 
                                     </td>
-                <td>$posxrequiredrank</td>
+                <td>$posxtype</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_posxresult">
+                <td class="type" id="property_posxtotalttc">
                                                                                 
                                                                                 
                                     </td>
-                <td>$posxresult</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_posxnotes">
-                                                                                
-                                                                                
-                                    </td>
-                <td>$posxnotes</td>
+                <td>$posxtotalttc</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -1118,39 +1108,28 @@ CommonDocGenerator</a></small></div>
                 <div class="col-md-8">
                     <a href="#method_liste_modeles">liste_modeles</a>($db, int $maxfilenamelength = 0)
         
-                                            <p><p>Return list of active generation modules</p></p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="ModelePDFEvaluation.html#method_liste_modeles">
-ModelePDFEvaluation</a></small></div>
+                                            <p><p>Return list of active generation models</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="ModelePDFSuppliersPayments.html#method_liste_modeles">
+ModelePDFSuppliersPayments</a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_write_file">write_file</a>($object, <a href="Translate.html">Translate</a> $outputlangs, $srctemplatepath = &#039;&#039;, $hidedetails = 0, $hidedesc = 0, $hideref = 0)
+                    <a href="#method_write_file">write_file</a>($object, <a href="Translate.html">Translate</a> $outputlangs = &#039;&#039;, $srctemplatepath = &#039;&#039;, $hidedetails = 0, $hidedesc = 0, $hideref = 0)
         
                                             <p><p>Function to build pdf onto disk</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    void
+                    int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_printLine">printLine</a>(TCPDF $pdf, <a href="Evaluation.html">Evaluation</a> $object, int $linenumber, int $curY, int $default_font_size, <a href="Translate.html">Translate</a> $outputlangs, int $hidedetails = 0)
+                    <a href="#method__tableau_cheque">_tableau_cheque</a>(TCPDF $pdf, <a href="PaiementFourn.html">PaiementFourn</a> $object, int $posy, <a href="Translate.html">Translate</a> $outputlangs)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-                </div>
-                <div class="col-md-8">
-                    <a href="#method__pagehead">_pagehead</a>($pdf, <a href="Evaluation.html">Evaluation</a> $object, $showaddress, $outputlangs)
-        
-                                            <p><p>Show top header of page.</p></p>                </div>
+                                            <p><p>Show total to pay</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -1168,7 +1147,17 @@ ModelePDFEvaluation</a></small></div>
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method__pagefoot">_pagefoot</a>($pdf, <a href="Evaluation.html">Evaluation</a> $object, $outputlangs, $hidefreetext = 0)
+                    <a href="#method__pagehead">_pagehead</a>($pdf, <a href="PaiementFourn.html">PaiementFourn</a> $object, $showaddress, $outputlangs)
+        
+                                            <p><p>Show top header of page.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method__pagefoot">_pagefoot</a>($pdf, <a href="PaiementFourn.html">PaiementFourn</a> $object, $outputlangs, $hidefreetext = 0)
         
                                             <p><p>Show footer of page. Need this-&gt;emetteur object</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -1181,7 +1170,7 @@ ModelePDFEvaluation</a></small></div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/19.0/htdocs/core/modules/hrm/doc/pdf_standard.modules.php#L87">at line 87</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/19.0/htdocs/core/modules/supplier_payment/doc/pdf_standard.modules.php#L87">at line 87</a></div>
         <code>                    
     <strong>__construct</strong>($db)
         </code>
@@ -1192,7 +1181,7 @@ ModelePDFEvaluation</a></small></div>
             
 
         <div class="method-description">
-                            <p>Constructor</p>                <p><p>@param      DoliDB      $db      Database handler</p></p>        
+                            <p>Constructor</p>                <p><p>@param DoliDB      $db         Database handler</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -2600,8 +2589,8 @@ This method must be implemented by the module that generate the document with it
             </div>
                     <div class="method-item">
                     <h3 id="method_liste_modeles">
-        <div class="location">in <a href="ModelePDFEvaluation.html#method_liste_modeles">
-ModelePDFEvaluation</a> <a href="https://github.com/dolibarr/dolibarr/blob/19.0/htdocs/core/modules/hrm/modules_evaluation.php#L49">at line 49</a></div>
+        <div class="location">in <a href="ModelePDFSuppliersPayments.html#method_liste_modeles">
+ModelePDFSuppliersPayments</a> <a href="https://github.com/dolibarr/dolibarr/blob/19.0/htdocs/core/modules/supplier_payment/modules_supplier_payment.php#L36">at line 36</a></div>
         <code>        static            
     <strong>liste_modeles</strong>($db, int $maxfilenamelength = 0)
         </code>
@@ -2612,7 +2601,7 @@ ModelePDFEvaluation</a> <a href="https://github.com/dolibarr/dolibarr/blob/19.0/
             
 
         <div class="method-description">
-                            <p><p>Return list of active generation modules</p></p>                <p><p>@param DoliDB  $db                 Database handler</p></p>        
+                            <p><p>Return list of active generation models</p></p>                <p><p>@param DoliDB  $db                 Database handler</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -2627,7 +2616,7 @@ ModelePDFEvaluation</a> <a href="https://github.com/dolibarr/dolibarr/blob/19.0/
                 <td>int</td>
                 <td>$maxfilenamelength</td>
                 <td><p>Max length of value to show
-@return array                       List of templates</p></td>
+@return array                       List of numbers</p></td>
             </tr>
             </table>
 
@@ -2641,9 +2630,9 @@ ModelePDFEvaluation</a> <a href="https://github.com/dolibarr/dolibarr/blob/19.0/
             </div>
                     <div class="method-item">
                     <h3 id="method_write_file">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/19.0/htdocs/core/modules/hrm/doc/pdf_standard.modules.php#L143">at line 143</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/19.0/htdocs/core/modules/supplier_payment/doc/pdf_standard.modules.php#L158">at line 158</a></div>
         <code>                    
-    <strong>write_file</strong>($object, <a href="Translate.html">Translate</a> $outputlangs, $srctemplatepath = &#039;&#039;, $hidedetails = 0, $hidedesc = 0, $hideref = 0)
+    <strong>write_file</strong>($object, <a href="Translate.html">Translate</a> $outputlangs = &#039;&#039;, $srctemplatepath = &#039;&#039;, $hidedetails = 0, $hidedesc = 0, $hideref = 0)
         </code>
     </h3>
     <div class="details">    
@@ -2652,7 +2641,7 @@ ModelePDFEvaluation</a> <a href="https://github.com/dolibarr/dolibarr/blob/19.0/
             
 
         <div class="method-description">
-                            <p><p>Function to build pdf onto disk</p></p>                <p><p>@param Evaluation      $object             Object to generate</p></p>        
+                            <p><p>Function to build pdf onto disk</p></p>                <p><p>@param     PaiementFourn       $object             Id of object to generate</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -2667,11 +2656,11 @@ ModelePDFEvaluation</a> <a href="https://github.com/dolibarr/dolibarr/blob/19.0/
                 <td><a href="Translate.html">Translate</a></td>
                 <td>$outputlangs</td>
                 <td><p>Lang output object
-@param  string          $srctemplatepath    Full path of source filename for generator using a template file
-@param  int             $hidedetails        Do not show line details
-@param  int             $hidedesc           Do not show desc
-@param  int             $hideref            Do not show ref
-@return int                                 1=OK, 0=KO</p></td>
+@param      string              $srctemplatepath    Full path of source filename for generator using a template file
+@param      int                 $hidedetails        Do not show line details
+@param      int                 $hidedesc           Do not show desc
+@param      int                 $hideref            Do not show ref
+@return     int                                     1=OK, 0=KO</p></td>
             </tr>
                     <tr>
                 <td></td>
@@ -2704,10 +2693,10 @@ ModelePDFEvaluation</a> <a href="https://github.com/dolibarr/dolibarr/blob/19.0/
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_printLine">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/19.0/htdocs/core/modules/hrm/doc/pdf_standard.modules.php#L462">at line 462</a></div>
-        <code>            protected        void
-    <strong>printLine</strong>(TCPDF $pdf, <a href="Evaluation.html">Evaluation</a> $object, int $linenumber, int $curY, int $default_font_size, <a href="Translate.html">Translate</a> $outputlangs, int $hidedetails = 0)
+                    <h3 id="method__tableau_cheque">
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/19.0/htdocs/core/modules/supplier_payment/doc/pdf_standard.modules.php#L493">at line 493</a></div>
+        <code>            protected        int
+    <strong>_tableau_cheque</strong>(TCPDF $pdf, <a href="PaiementFourn.html">PaiementFourn</a> $object, int $posy, <a href="Translate.html">Translate</a> $outputlangs)
         </code>
     </h3>
     <div class="details">    
@@ -2716,8 +2705,7 @@ ModelePDFEvaluation</a> <a href="https://github.com/dolibarr/dolibarr/blob/19.0/
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Show total to pay</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -2729,34 +2717,19 @@ ModelePDFEvaluation</a> <a href="https://github.com/dolibarr/dolibarr/blob/19.0/
                 <td><p>Object PDF</p></td>
             </tr>
                     <tr>
-                <td><a href="Evaluation.html">Evaluation</a></td>
+                <td><a href="PaiementFourn.html">PaiementFourn</a></td>
                 <td>$object</td>
-                <td><p>Object to show</p></td>
+                <td><p>Object PaiementFourn</p></td>
             </tr>
                     <tr>
                 <td>int</td>
-                <td>$linenumber</td>
-                <td><p>line number</p></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$curY</td>
-                <td><p>current y position</p></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$default_font_size</td>
-                <td><p>default siez of font</p></td>
+                <td>$posy</td>
+                <td><p>Position depart</p></td>
             </tr>
                     <tr>
                 <td><a href="Translate.html">Translate</a></td>
                 <td>$outputlangs</td>
-                <td><p>Object lang for output</p></td>
-            </tr>
-                    <tr>
-                <td>int</td>
-                <td>$hidedetails</td>
-                <td><p>Hide details (0=no, 1=yes, 2=just special lines)</p></td>
+                <td><p>Objet langs</p></td>
             </tr>
             </table>
 
@@ -2765,8 +2738,8 @@ ModelePDFEvaluation</a> <a href="https://github.com/dolibarr/dolibarr/blob/19.0/
 
                     <table class="table table-condensed">
         <tr>
-            <td>void</td>
-            <td></td>
+            <td>int</td>
+            <td><p>Position pour suite</p></td>
         </tr>
     </table>
 
@@ -2778,60 +2751,8 @@ ModelePDFEvaluation</a> <a href="https://github.com/dolibarr/dolibarr/blob/19.0/
 
             </div>
                     <div class="method-item">
-                    <h3 id="method__pagehead">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/19.0/htdocs/core/modules/hrm/doc/pdf_standard.modules.php#L526">at line 526</a></div>
-        <code>            protected        
-    <strong>_pagehead</strong>($pdf, <a href="Evaluation.html">Evaluation</a> $object, $showaddress, $outputlangs)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>Show top header of page.</p></p>                <p><p>@param TCPDF           $pdf            Object PDF</p></p>        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$pdf</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="Evaluation.html">Evaluation</a></td>
-                <td>$object</td>
-                <td><p>Object to show
-@param  int             $showaddress    0=no, 1=yes
-@param  Translate       $outputlangs    Object lang for output
-@return void</p></td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$showaddress</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$outputlangs</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method__tableau">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/19.0/htdocs/core/modules/hrm/doc/pdf_standard.modules.php#L644">at line 644</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/19.0/htdocs/core/modules/supplier_payment/doc/pdf_standard.modules.php#L559">at line 559</a></div>
         <code>            protected        
     <strong>_tableau</strong>($pdf, int $tab_top, $tab_height, $nexY, $outputlangs, $hidetop = 0, $hidebottom = 0, $currency = &#039;&#039;)
         </code>
@@ -2856,11 +2777,11 @@ ModelePDFEvaluation</a> <a href="https://github.com/dolibarr/dolibarr/blob/19.0/
                     <tr>
                 <td>int</td>
                 <td>$tab_top</td>
-                <td><p>Tab top
-@param      int         $tab_height     Tab height
-@param      int         $nexY           next y
-@param      Translate   $outputlangs    Output langs
-@param      int         $hidetop        1=Hide top bar of array and title, 0=Hide nothing, -1=Hide only title
+                <td><p>Top position of table
+@param      integer     $tab_height     Height of table (rectangle)
+@param      int         $nexY           Y (not used)
+@param      Translate   $outputlangs    Langs object
+@param      int         $hidetop        Hide top bar of array
 @param      int         $hidebottom     Hide bottom bar of array
 @param      string      $currency       Currency code
 @return void</p></td>
@@ -2906,10 +2827,10 @@ ModelePDFEvaluation</a> <a href="https://github.com/dolibarr/dolibarr/blob/19.0/
 
             </div>
                     <div class="method-item">
-                    <h3 id="method__pagefoot">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/19.0/htdocs/core/modules/hrm/doc/pdf_standard.modules.php#L716">at line 716</a></div>
+                    <h3 id="method__pagehead">
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/19.0/htdocs/core/modules/supplier_payment/doc/pdf_standard.modules.php#L602">at line 602</a></div>
         <code>            protected        
-    <strong>_pagefoot</strong>($pdf, <a href="Evaluation.html">Evaluation</a> $object, $outputlangs, $hidefreetext = 0)
+    <strong>_pagehead</strong>($pdf, <a href="PaiementFourn.html">PaiementFourn</a> $object, $showaddress, $outputlangs)
         </code>
     </h3>
     <div class="details">    
@@ -2918,7 +2839,7 @@ ModelePDFEvaluation</a> <a href="https://github.com/dolibarr/dolibarr/blob/19.0/
             
 
         <div class="method-description">
-                            <p><p>Show footer of page. Need this-&gt;emetteur object</p></p>                <p><p>@param  TCPDF          $pdf                PDF</p></p>        
+                            <p><p>Show top header of page.</p></p>                <p><p>@param TCPDF           $pdf            Object PDF</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -2930,7 +2851,59 @@ ModelePDFEvaluation</a> <a href="https://github.com/dolibarr/dolibarr/blob/19.0/
                 <td></td>
             </tr>
                     <tr>
-                <td><a href="Evaluation.html">Evaluation</a></td>
+                <td><a href="PaiementFourn.html">PaiementFourn</a></td>
+                <td>$object</td>
+                <td><p>Object to show
+@param  int             $showaddress    0=no, 1=yes
+@param  Translate       $outputlangs    Object lang for output
+@return void</p></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$showaddress</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$outputlangs</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method__pagefoot">
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/19.0/htdocs/core/modules/supplier_payment/doc/pdf_standard.modules.php#L816">at line 816</a></div>
+        <code>            protected        
+    <strong>_pagefoot</strong>($pdf, <a href="PaiementFourn.html">PaiementFourn</a> $object, $outputlangs, $hidefreetext = 0)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Show footer of page. Need this-&gt;emetteur object</p></p>                <p><pre><code>@param  TCPDF           $pdf                PDF</code></pre></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$pdf</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="PaiementFourn.html">PaiementFourn</a></td>
                 <td>$object</td>
                 <td><p>Object to show
 @param  Translate       $outputlangs        Object lang for output
