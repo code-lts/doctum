@@ -121,6 +121,27 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createPrivateDirectory">createPrivateDirectory</a>(string $directory, int $userId)
+        
+                                            <p><p>Creates a directory that only the user with the given ID can access.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;false|int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_currentUserId">currentUserId</a>()
+        
+                                            <p><p>Returns the ID of the user that owns the files that the current process
+creates in the operating system's path used for temporary files.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     static&nbsp;false|string
                 </div>
                 <div class="col-md-8">
@@ -138,7 +159,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_createDirectory">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/Filesystem.php#L27">at line 27</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/Filesystem.php#L33">at line 33</a></div>
         <code>        static            bool
     <strong>createDirectory</strong>(string $directory)
         </code>
@@ -181,8 +202,94 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_createPrivateDirectory">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/Filesystem.php#L46">at line 46</a></div>
+        <code>        static            bool
+    <strong>createPrivateDirectory</strong>(string $directory, int $userId)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates a directory that only the user with the given ID can access.</p></p>                <p><p>A directory that already exists is only accepted when it is not a
+symbolic link, is owned by the user with the given ID, and cannot be
+written to by other users. Otherwise, another user could have created
+it to control what is read from it.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$directory</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$userId</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_currentUserId">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/Filesystem.php#L70">at line 70</a></div>
+        <code>        static            false|int
+    <strong>currentUserId</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the ID of the user that owns the files that the current process
+creates in the operating system's path used for temporary files.</p></p>                <p><p>This is determined by creating a temporary file instead of by calling
+posix_geteuid() so that it does not require the POSIX extension.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>false|int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_resolveStreamOrFile">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/Filesystem.php#L37">at line 37</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/Filesystem.php#L98">at line 98</a></div>
         <code>        static            false|string
     <strong>resolveStreamOrFile</strong>(string $path)
         </code>
