@@ -1140,6 +1140,17 @@ it already exists.</p></em></p>
             </tr>
                     <tr>
                 <td>
+                                                                                                                        ER_TRUNCATED_ZIP
+                                            <i>Since: 8.4</i>
+                        <br>
+                                    </td>
+                <td class="last">
+                    <p><em><p>Possibly truncated or corrupted zip archive</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
                                                                                                                         AFL_RDONLY
                                             <i>Since: 8.0</i>
                         <br>
@@ -1275,7 +1286,7 @@ it already exists.</p></em></p>
                     int|bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_open">open</a>(string $filename, int $flags = null)
+                    <a href="#method_open">open</a>(string $filename, int $flags = 0)
         
                                             <p><p>(PHP 5 &gt;= 5.2.0, PECL zip &gt;= 1.1.0)<br/>
 Open a ZIP file archive</p></p>                </div>
@@ -1340,7 +1351,7 @@ Add a file to a ZIP archive using its contents</p></p>                </div>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_addFile">addFile</a>(string $filepath, string $entryname = null, int $start = 0, int $length = 0, int $flags = 8192)
+                    <a href="#method_addFile">addFile</a>(string $filepath, string $entryname = &#039;&#039;, int $start = 0, int $length = 0, int $flags = 8192)
         
                                             <p><p>(PHP 5 &gt;= 5.2.0, PECL zip &gt;= 1.1.0)<br/>
 Adds a file to a ZIP archive from the given path</p></p>                </div>
@@ -1406,7 +1417,7 @@ Set the comment of a ZIP archive</p></p>                </div>
                     string|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getArchiveComment">getArchiveComment</a>(int $flags = null)
+                    <a href="#method_getArchiveComment">getArchiveComment</a>(int $flags = 0)
         
                                             <p><p>(PHP 5 &gt;= 5.2.0, PECL zip &gt;= 1.1.0)<br/>
 Returns the Zip archive comment</p></p>                </div>
@@ -1490,7 +1501,7 @@ Set the comment of an entry defined by its name</p></p>                </div>
                     string|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getCommentIndex">getCommentIndex</a>(int $index, int $flags = null)
+                    <a href="#method_getCommentIndex">getCommentIndex</a>(int $index, int $flags = 0)
         
                                             <p><p>(PHP 5 &gt;= 5.2.0, PECL zip &gt;= 1.4.0)<br/>
 Returns the comment of an entry using the entry index</p></p>                </div>
@@ -1501,7 +1512,7 @@ Returns the comment of an entry using the entry index</p></p>                </d
                     string|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getCommentName">getCommentName</a>(string $name, int $flags = null)
+                    <a href="#method_getCommentName">getCommentName</a>(string $name, int $flags = 0)
         
                                             <p><p>(PHP 5 &gt;= 5.2.0, PECL zip &gt;= 1.4.0)<br/>
 Returns the comment of an entry using the entry name</p></p>                </div>
@@ -1534,7 +1545,7 @@ delete an entry in the archive using its name</p></p>                </div>
                     array|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_statName">statName</a>(string $name, int $flags = null)
+                    <a href="#method_statName">statName</a>(string $name, int $flags = 0)
         
                                             <p><p>(PHP 5 &gt;= 5.2.0, PECL zip &gt;= 1.5.0)<br/>
 Get the details of an entry defined by its name.</p></p>                </div>
@@ -1545,7 +1556,7 @@ Get the details of an entry defined by its name.</p></p>                </div>
                     array|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_statIndex">statIndex</a>(int $index, int $flags = null)
+                    <a href="#method_statIndex">statIndex</a>(int $index, int $flags = 0)
         
                                             <p><p>(PHP 5 &gt;= 5.2.0, PECL zip &gt;= 1.1.0)<br/>
 Get the details of an entry defined by its index.</p></p>                </div>
@@ -1556,7 +1567,7 @@ Get the details of an entry defined by its index.</p></p>                </div>
                     int|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_locateName">locateName</a>(string $name, int $flags = null)
+                    <a href="#method_locateName">locateName</a>(string $name, int $flags = 0)
         
                                             <p><p>(PHP 5 &gt;= 5.2.0, PECL zip &gt;= 1.5.0)<br/>
 Returns the index of the entry in the archive</p></p>                </div>
@@ -1567,7 +1578,7 @@ Returns the index of the entry in the archive</p></p>                </div>
                     string|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getNameIndex">getNameIndex</a>(int $index, int $flags = null)
+                    <a href="#method_getNameIndex">getNameIndex</a>(int $index, int $flags = 0)
         
                                             <p><p>(PHP 5 &gt;= 5.2.0, PECL zip &gt;= 1.5.0)<br/>
 Returns the name of an entry using its index</p></p>                </div>
@@ -1633,7 +1644,7 @@ Extract the archive contents</p></p>                </div>
                     string|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getFromName">getFromName</a>(string $name, int $len = 0, int $flags = null)
+                    <a href="#method_getFromName">getFromName</a>(string $name, int $len = 0, int $flags = 0)
         
                                             <p><p>(PHP 5 &gt;= 5.2.0, PECL zip &gt;= 1.1.0)<br/>
 Returns the entry contents using its name</p></p>                </div>
@@ -1644,7 +1655,7 @@ Returns the entry contents using its name</p></p>                </div>
                     string|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getFromIndex">getFromIndex</a>(int $index, int $len = 0, int $flags = null)
+                    <a href="#method_getFromIndex">getFromIndex</a>(int $index, int $len = 0, int $flags = 0)
         
                                             <p><p>(PHP 5 &gt;= 5.2.0, PECL zip &gt;= 1.3.0)<br/>
 Returns the entry contents using its index</p></p>                </div>
@@ -1677,7 +1688,7 @@ Get a file handler to the entry defined by its index (read only)</p></p>        
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setExternalAttributesName">setExternalAttributesName</a>(string $name, int $opsys, int $attr, int $flags = null)
+                    <a href="#method_setExternalAttributesName">setExternalAttributesName</a>(string $name, int $opsys, int $attr, int $flags = 0)
         
                                             <p><p>Set the external attributes of an entry defined by its name</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -1687,7 +1698,7 @@ Get a file handler to the entry defined by its index (read only)</p></p>        
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getExternalAttributesName">getExternalAttributesName</a>(string $name, int $opsys, int $attr, int $flags = null)
+                    <a href="#method_getExternalAttributesName">getExternalAttributesName</a>(string $name, int $opsys, int $attr, int $flags = 0)
         
                                             <p><p>Retrieve the external attributes of an entry defined by its name</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -1697,7 +1708,7 @@ Get a file handler to the entry defined by its index (read only)</p></p>        
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setExternalAttributesIndex">setExternalAttributesIndex</a>(int $index, int $opsys, int $attr, int $flags = null)
+                    <a href="#method_setExternalAttributesIndex">setExternalAttributesIndex</a>(int $index, int $opsys, int $attr, int $flags = 0)
         
                                             <p><p>Set the external attributes of an entry defined by its index</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -1707,7 +1718,7 @@ Get a file handler to the entry defined by its index (read only)</p></p>        
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getExternalAttributesIndex">getExternalAttributesIndex</a>(int $index, int $opsys, int $attr, int $flags = null)
+                    <a href="#method_getExternalAttributesIndex">getExternalAttributesIndex</a>(int $index, int $opsys, int $attr, int $flags = 0)
         
                                             <p><p>Retrieve the external attributes of an entry defined by its index</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -1757,7 +1768,7 @@ Get a file handler to the entry defined by its index (read only)</p></p>        
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setMtimeName">setMtimeName</a>(string $name, int $timestamp, int $flags = null)
+                    <a href="#method_setMtimeName">setMtimeName</a>(string $name, int $timestamp, int $flags = 0)
         
                                             <p><p>Set the modification time of an entry defined by its name</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -1767,7 +1778,7 @@ Get a file handler to the entry defined by its index (read only)</p></p>        
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setMtimeIndex">setMtimeIndex</a>(int $index, int $timestamp, int $flags = null)
+                    <a href="#method_setMtimeIndex">setMtimeIndex</a>(int $index, int $timestamp, int $flags = 0)
         
                                             <p><p>Set the modification time of an entry defined by its index</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -1777,7 +1788,7 @@ Get a file handler to the entry defined by its index (read only)</p></p>        
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_replaceFile">replaceFile</a>(string $filepath, int $index, int $start = null, int $length = null, int $flags = null)
+                    <a href="#method_replaceFile">replaceFile</a>(string $filepath, int $index, int $start = 0, int $length = 0, int $flags = 0)
         
                                             <p><p>Replace file in ZIP archive with a given path</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -1874,9 +1885,9 @@ Get a file handler to the entry defined by its index (read only)</p></p>        
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_open">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L775">at line 775</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L781">at line 781</a></div>
         <code>                    int|bool
-    <strong>open</strong>(string $filename, int $flags = null)
+    <strong>open</strong>(string $filename, int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -1990,7 +2001,7 @@ Returns <b>TRUE</b> on success, <b>FALSE</b> or the error code on error.
             </div>
                     <div class="method-item">
                     <h3 id="method_close">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L787">at line 787</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L793">at line 793</a></div>
         <code>                    bool
     <strong>close</strong>()
         </code>
@@ -2024,7 +2035,7 @@ Close the active archive (opened or newly created)</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L797">at line 797</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L803">at line 803</a></div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -2062,7 +2073,7 @@ The return value is cast to an integer.
             </div>
                     <div class="method-item">
                     <h3 id="method_getStatusString">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L806">at line 806</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L812">at line 812</a></div>
         <code>                    string
     <strong>getStatusString</strong>()
         </code>
@@ -2096,7 +2107,7 @@ The return value is cast to an integer.
             </div>
                     <div class="method-item">
                     <h3 id="method_addEmptyDir">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L819">at line 819</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L825">at line 825</a></div>
         <code>                    bool
     <strong>addEmptyDir</strong>(string $dirname, int $flags = 0)
         </code>
@@ -2147,7 +2158,7 @@ The directory to add.
             </div>
                     <div class="method-item">
                     <h3 id="method_addFromString">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L839">at line 839</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L845">at line 845</a></div>
         <code>                    bool
     <strong>addFromString</strong>(string $name, string $content, int $flags = 8192)
         </code>
@@ -2206,9 +2217,9 @@ safe mode.
             </div>
                     <div class="method-item">
                     <h3 id="method_addFile">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L865">at line 865</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L871">at line 871</a></div>
         <code>                    bool
-    <strong>addFile</strong>(string $filepath, string $entryname = null, int $start = 0, int $length = 0, int $flags = 8192)
+    <strong>addFile</strong>(string $filepath, string $entryname = &#039;&#039;, int $start = 0, int $length = 0, int $flags = 8192)
         </code>
     </h3>
     <div class="details">    
@@ -2278,7 +2289,7 @@ This parameter is not used but is required to extend <b>ZipArchive</b>.
             </div>
                     <div class="method-item">
                     <h3 id="method_addGlob">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L898">at line 898</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L904">at line 904</a></div>
         <code>                    array|false
     <strong>addGlob</strong>(string $pattern, int $flags = 0, array $options = [])
         </code>
@@ -2347,7 +2358,7 @@ options.
             </div>
                     <div class="method-item">
                     <h3 id="method_addPattern">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L920">at line 920</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L926">at line 926</a></div>
         <code>                    array|false
     <strong>addPattern</strong>(string $pattern, string $path = &#039;.&#039;, array $options = [])
         </code>
@@ -2407,7 +2418,7 @@ An associative array of options accepted by <b>ZipArchive::addGlob</b>.
             </div>
                     <div class="method-item">
                     <h3 id="method_renameIndex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L939">at line 939</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L945">at line 945</a></div>
         <code>                    bool
     <strong>renameIndex</strong>(int $index, string $new_name)
         </code>
@@ -2460,7 +2471,7 @@ New name.
             </div>
                     <div class="method-item">
                     <h3 id="method_renameName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L957">at line 957</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L963">at line 963</a></div>
         <code>                    bool
     <strong>renameName</strong>(string $name, string $new_name)
         </code>
@@ -2513,7 +2524,7 @@ New name.
             </div>
                     <div class="method-item">
                     <h3 id="method_setArchiveComment">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L972">at line 972</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L978">at line 978</a></div>
         <code>                    bool
     <strong>setArchiveComment</strong>(string $comment)
         </code>
@@ -2559,9 +2570,9 @@ The contents of the comment.
             </div>
                     <div class="method-item">
                     <h3 id="method_getArchiveComment">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L985">at line 985</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L991">at line 991</a></div>
         <code>                    string|false
-    <strong>getArchiveComment</strong>(int $flags = null)
+    <strong>getArchiveComment</strong>(int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -2606,7 +2617,7 @@ comment is returned.
             </div>
                     <div class="method-item">
                     <h3 id="method_setCommentIndex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1000">at line 1000</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1006">at line 1006</a></div>
         <code>                    bool
     <strong>setCommentIndex</strong>(int $index, string $comment)
         </code>
@@ -2659,7 +2670,7 @@ The contents of the comment.
             </div>
                     <div class="method-item">
                     <h3 id="method_setCommentName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1018">at line 1018</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1024">at line 1024</a></div>
         <code>                    bool
     <strong>setCommentName</strong>(string $name, string $comment)
         </code>
@@ -2712,7 +2723,7 @@ The contents of the comment.
             </div>
                     <div class="method-item">
                     <h3 id="method_setCompressionIndex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1033">at line 1033</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1039">at line 1039</a></div>
         <code>                    bool
     <strong>setCompressionIndex</strong>(int $index, int $method, int $compflags = 0)
         </code>
@@ -2766,7 +2777,7 @@ The contents of the comment.
             </div>
                     <div class="method-item">
                     <h3 id="method_setCompressionName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1046">at line 1046</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1052">at line 1052</a></div>
         <code>                    bool
     <strong>setCompressionName</strong>(string $name, int $method, int $compflags = 0)
         </code>
@@ -2821,7 +2832,7 @@ The contents of the comment.
             </div>
                     <div class="method-item">
                     <h3 id="method_setEncryptionIndex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1058">at line 1058</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1064">at line 1064</a></div>
         <code>                    bool
     <strong>setEncryptionIndex</strong>(int $index, int $method, string|null $password = null)
         </code>
@@ -2875,7 +2886,7 @@ The contents of the comment.
             </div>
                     <div class="method-item">
                     <h3 id="method_setEncryptionName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1070">at line 1070</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1076">at line 1076</a></div>
         <code>                    bool
     <strong>setEncryptionName</strong>(string $name, int $method, string|null $password = null)
         </code>
@@ -2929,7 +2940,7 @@ The contents of the comment.
             </div>
                     <div class="method-item">
                     <h3 id="method_setPassword">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1079">at line 1079</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1085">at line 1085</a></div>
         <code>                    bool
     <strong>setPassword</strong>(string $password)
         </code>
@@ -2972,9 +2983,9 @@ The contents of the comment.
             </div>
                     <div class="method-item">
                     <h3 id="method_getCommentIndex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1095">at line 1095</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1101">at line 1101</a></div>
         <code>                    string|false
-    <strong>getCommentIndex</strong>(int $index, int $flags = null)
+    <strong>getCommentIndex</strong>(int $index, int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -3026,9 +3037,9 @@ comment is returned.
             </div>
                     <div class="method-item">
                     <h3 id="method_getCommentName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1114">at line 1114</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1120">at line 1120</a></div>
         <code>                    string|false
-    <strong>getCommentName</strong>(string $name, int $flags = null)
+    <strong>getCommentName</strong>(string $name, int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -3080,7 +3091,7 @@ comment is returned.
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteIndex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1129">at line 1129</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1135">at line 1135</a></div>
         <code>                    bool
     <strong>deleteIndex</strong>(int $index)
         </code>
@@ -3126,7 +3137,7 @@ Index of the entry to delete.
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1141">at line 1141</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1147">at line 1147</a></div>
         <code>                    bool
     <strong>deleteName</strong>(string $name)
         </code>
@@ -3172,9 +3183,9 @@ Name of the entry to delete.
             </div>
                     <div class="method-item">
                     <h3 id="method_statName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1160">at line 1160</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1166">at line 1166</a></div>
         <code>                    array|false
-    <strong>statName</strong>(string $name, int $flags = null)
+    <strong>statName</strong>(string $name, int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -3229,9 +3240,9 @@ ignoring any changes made.
             </div>
                     <div class="method-item">
                     <h3 id="method_statIndex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1180">at line 1180</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1186">at line 1186</a></div>
         <code>                    array|false
-    <strong>statIndex</strong>(int $index, int $flags = null)
+    <strong>statIndex</strong>(int $index, int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -3284,9 +3295,9 @@ ignoring any changes made.
             </div>
                     <div class="method-item">
                     <h3 id="method_locateName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1200">at line 1200</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1206">at line 1206</a></div>
         <code>                    int|false
-    <strong>locateName</strong>(string $name, int $flags = null)
+    <strong>locateName</strong>(string $name, int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -3339,9 +3350,9 @@ or 0 for none of them.
             </div>
                     <div class="method-item">
                     <h3 id="method_getNameIndex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1219">at line 1219</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1225">at line 1225</a></div>
         <code>                    string|false
-    <strong>getNameIndex</strong>(int $index, int $flags = null)
+    <strong>getNameIndex</strong>(int $index, int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -3393,7 +3404,7 @@ name is returned.
             </div>
                     <div class="method-item">
                     <h3 id="method_unchangeArchive">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1231">at line 1231</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1237">at line 1237</a></div>
         <code>                    bool
     <strong>unchangeArchive</strong>()
         </code>
@@ -3427,7 +3438,7 @@ Revert all global changes done in the archive.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_unchangeAll">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1240">at line 1240</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1246">at line 1246</a></div>
         <code>                    bool
     <strong>unchangeAll</strong>()
         </code>
@@ -3461,7 +3472,7 @@ Undo all changes done in the archive</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_unchangeIndex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1252">at line 1252</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1258">at line 1258</a></div>
         <code>                    bool
     <strong>unchangeIndex</strong>(int $index)
         </code>
@@ -3507,7 +3518,7 @@ Index of the entry.
             </div>
                     <div class="method-item">
                     <h3 id="method_unchangeName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1264">at line 1264</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1270">at line 1270</a></div>
         <code>                    bool
     <strong>unchangeName</strong>(string $name)
         </code>
@@ -3553,7 +3564,7 @@ Name of the entry.
             </div>
                     <div class="method-item">
                     <h3 id="method_extractTo">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1280">at line 1280</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1286">at line 1286</a></div>
         <code>                    bool
     <strong>extractTo</strong>(string $pathto, string[]|string|null $files = null)
         </code>
@@ -3607,9 +3618,9 @@ an array of names.
             </div>
                     <div class="method-item">
                     <h3 id="method_getFromName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1304">at line 1304</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1310">at line 1310</a></div>
         <code>                    string|false
-    <strong>getFromName</strong>(string $name, int $len = 0, int $flags = null)
+    <strong>getFromName</strong>(string $name, int $len = 0, int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -3670,9 +3681,9 @@ be ORed to it.
             </div>
                     <div class="method-item">
                     <h3 id="method_getFromIndex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1331">at line 1331</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1337">at line 1337</a></div>
         <code>                    string|false
-    <strong>getFromIndex</strong>(int $index, int $len = 0, int $flags = null)
+    <strong>getFromIndex</strong>(int $index, int $len = 0, int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -3735,7 +3746,7 @@ be ORed to it.
             </div>
                     <div class="method-item">
                     <h3 id="method_getStream">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1347">at line 1347</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1353">at line 1353</a></div>
         <code>                    resource|false
     <strong>getStream</strong>(string $name)
         </code>
@@ -3781,7 +3792,7 @@ The name of the entry to use.
             </div>
                     <div class="method-item">
                     <h3 id="method_getStreamIndex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1361">at line 1361</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1367">at line 1367</a></div>
         <code>                    resource|false
     <strong>getStreamIndex</strong>(int $index, int $flags = 0)
         </code>
@@ -3834,9 +3845,9 @@ If flags is set to ZipArchive::FL_UNCHANGED, the original unchanged stream is re
             </div>
                     <div class="method-item">
                     <h3 id="method_setExternalAttributesName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1375">at line 1375</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1381">at line 1381</a></div>
         <code>                    bool
-    <strong>setExternalAttributesName</strong>(string $name, int $opsys, int $attr, int $flags = null)
+    <strong>setExternalAttributesName</strong>(string $name, int $opsys, int $attr, int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -3892,9 +3903,9 @@ If flags is set to ZipArchive::FL_UNCHANGED, the original unchanged stream is re
             </div>
                     <div class="method-item">
                     <h3 id="method_getExternalAttributesName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1392">at line 1392</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1398">at line 1398</a></div>
         <code>                    bool
-    <strong>getExternalAttributesName</strong>(string $name, int $opsys, int $attr, int $flags = null)
+    <strong>getExternalAttributesName</strong>(string $name, int $opsys, int $attr, int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -3950,9 +3961,9 @@ If flags is set to ZipArchive::FL_UNCHANGED, the original unchanged stream is re
             </div>
                     <div class="method-item">
                     <h3 id="method_setExternalAttributesIndex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1409">at line 1409</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1415">at line 1415</a></div>
         <code>                    bool
-    <strong>setExternalAttributesIndex</strong>(int $index, int $opsys, int $attr, int $flags = null)
+    <strong>setExternalAttributesIndex</strong>(int $index, int $opsys, int $attr, int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -4008,9 +4019,9 @@ If flags is set to ZipArchive::FL_UNCHANGED, the original unchanged stream is re
             </div>
                     <div class="method-item">
                     <h3 id="method_getExternalAttributesIndex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1426">at line 1426</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1432">at line 1432</a></div>
         <code>                    bool
-    <strong>getExternalAttributesIndex</strong>(int $index, int $opsys, int $attr, int $flags = null)
+    <strong>getExternalAttributesIndex</strong>(int $index, int $opsys, int $attr, int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -4066,7 +4077,7 @@ If flags is set to ZipArchive::FL_UNCHANGED, the original unchanged stream is re
             </div>
                     <div class="method-item">
                     <h3 id="method_isEncryptionMethodSupported">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1443">at line 1443</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1449">at line 1449</a></div>
         <code>        static            
     <strong>isEncryptionMethodSupported</strong>(int $method, bool $enc = true)
         </code>
@@ -4105,7 +4116,7 @@ If flags is set to ZipArchive::FL_UNCHANGED, the original unchanged stream is re
             </div>
                     <div class="method-item">
                     <h3 id="method_isCompressionMethodSupported">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1455">at line 1455</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1461">at line 1461</a></div>
         <code>        static            
     <strong>isCompressionMethodSupported</strong>(int $method, bool $enc = true)
         </code>
@@ -4144,7 +4155,7 @@ If flags is set to ZipArchive::FL_UNCHANGED, the original unchanged stream is re
             </div>
                     <div class="method-item">
                     <h3 id="method_registerCancelCallback">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1471">at line 1471</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1477">at line 1477</a></div>
         <code>                    bool
     <strong>registerCancelCallback</strong>(callable $callback)
         </code>
@@ -4188,7 +4199,7 @@ will be cancelled.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_registerProgressCallback">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1485">at line 1485</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1491">at line 1491</a></div>
         <code>                    bool
     <strong>registerProgressCallback</strong>(float $rate, callable $callback)
         </code>
@@ -4237,9 +4248,9 @@ to 1.0).</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setMtimeName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1499">at line 1499</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1505">at line 1505</a></div>
         <code>                    bool
-    <strong>setMtimeName</strong>(string $name, int $timestamp, int $flags = null)
+    <strong>setMtimeName</strong>(string $name, int $timestamp, int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -4290,9 +4301,9 @@ to 1.0).</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setMtimeIndex">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1514">at line 1514</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1520">at line 1520</a></div>
         <code>                    bool
-    <strong>setMtimeIndex</strong>(int $index, int $timestamp, int $flags = null)
+    <strong>setMtimeIndex</strong>(int $index, int $timestamp, int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -4343,9 +4354,9 @@ to 1.0).</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_replaceFile">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1535">at line 1535</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1541">at line 1541</a></div>
         <code>                    bool
-    <strong>replaceFile</strong>(string $filepath, int $index, int $start = null, int $length = null, int $flags = null)
+    <strong>replaceFile</strong>(string $filepath, int $index, int $start = 0, int $length = 0, int $flags = 0)
         </code>
     </h3>
     <div class="details">    
@@ -4410,7 +4421,7 @@ described on the ZIP constants page.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_clearError">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1548">at line 1548</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1554">at line 1554</a></div>
         <code>                    
     <strong>clearError</strong>()
         </code>
@@ -4434,7 +4445,7 @@ described on the ZIP constants page.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setArchiveFlag">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1559">at line 1559</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1565">at line 1565</a></div>
         <code>                    bool
     <strong>setArchiveFlag</strong>(int $flag, int $value)
         </code>
@@ -4483,7 +4494,7 @@ ZipArchive::AFL_WANT_TORRENTZIP ZipArchive::AFL_CREATE_OR_KEEP_FILE_FOR_EMPTY_AR
             </div>
                     <div class="method-item">
                     <h3 id="method_getArchiveFlag">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1578">at line 1578</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1584">at line 1584</a></div>
         <code>                    int
     <strong>getArchiveFlag</strong>(int $flag, int $flags = 0)
         </code>
@@ -4534,7 +4545,7 @@ returned.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getStreamName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1596">at line 1596</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1602">at line 1602</a></div>
         <code>                    void
     <strong>getStreamName</strong>(string $name, int $flags = 0)
         </code>
@@ -4584,7 +4595,7 @@ is returned.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method___serialize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1605">at line 1605</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1611">at line 1611</a></div>
         <code>                    array
     <strong>__serialize</strong>()
         </code>
@@ -4619,7 +4630,7 @@ is returned.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method___unserialize">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1612">at line 1612</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1618">at line 1618</a></div>
         <code>                    void
     <strong>__unserialize</strong>(array $data)
         </code>
@@ -4664,7 +4675,7 @@ is returned.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_closeString">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1618">at line 1618</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1624">at line 1624</a></div>
         <code>                    string|false
     <strong>closeString</strong>()
         </code>
@@ -4699,7 +4710,7 @@ is returned.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_openString">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1626">at line 1626</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/zip/zip.php#L1632">at line 1632</a></div>
         <code>                    int|bool
     <strong>openString</strong>(string $data = &#039;&#039;, int $flags = 0)
         </code>

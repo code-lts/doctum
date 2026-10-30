@@ -95,13 +95,16 @@
         
 
             <div class="description">
-            <p><p>Validates that constants declared in class stubs exist in reflection.</p></p>            <p><p>PHP reflection reports ALL constants of a class including those inherited via the
+            <p><p>Validates that the constants of a class in stubs match reflection, in both directions.</p></p>            <p><p>PHP reflection reports ALL constants of a class including those inherited via the
 parent-class chain and implemented interfaces.  Stubs only declare constants that are
-directly introduced (not inherited), so we cannot simply require every reflection
-constant to appear in the stub.</p>
-<p>For each constant declared directly in the stub, this check verifies it appears in
-reflection's full constant list (which includes all inherited ones).</p>
-<p>This catches spurious constants declared in stubs that don't exist anywhere in reflection.</p>
+directly introduced (not inherited), so the two sides are compared as follows:</p>
+<ul>
+<li>Each constant declared directly in the stub must appear in reflection's full constant
+list (which includes all inherited ones). This catches spurious stub constants.</li>
+<li>Each constant in reflection's list must be declared somewhere in the stub hierarchy
+(the class, its parents and its interfaces; enum cases count as constants). This
+catches constants missing from the stubs, or whose @since is too late.</li>
+</ul>
 <p>Visibility is validated separately by ClassConstantsVisibilityCheck.
 Values are validated separately by ClassConstantsValueCheck.</p>
 <p>For interfaces and enums, pass EntityTypeConfig::forInterface() or
@@ -975,7 +978,7 @@ EntityTypeConfig::forEnum() to override the entity-lookup and label methods.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCheckName">
-        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Constants/ClassConstantsCheck.php#L98">at line 98</a></div>
+        <div class="location"><a href="https://github.com/JetBrains/phpstorm-stubs/blob/master/tests/Framework/Validator/Classes/Constants/ClassConstantsCheck.php#L118">at line 118</a></div>
         <code>            protected        <abbr title="StubTests\Framework\Validator\KnownProblems\CheckType">CheckType</abbr>
     <strong>getCheckName</strong>()
         </code>
