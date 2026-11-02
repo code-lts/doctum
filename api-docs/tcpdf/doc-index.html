@@ -227,12 +227,7 @@ not fit below the current position.</p></dd><dt><a href="TCPDF.html#method_cellC
 TCPDF::cellCalignShift</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Legacy $calign cell vertical alignment: the amount (user units) by which
 the cell box top is shifted UP relative to the current text line. The
-font-relative modes (A/L/D) depend on $valign, mirroring getCellCode().</p></dd><dt><a href="TCPDF.html#method_cellBBoxCount">
-TCPDF::cellBBoxCount</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Number of entries currently on the engine cell bounding-box stack.</p></dd><dt><a href="TCPDF.html#method_cellBBoxBottomSince">
-TCPDF::cellBBoxBottomSince</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Lowest bottom edge (user units) among the cell bounding boxes pushed
-on the engine stack after the given index.</p></dd><dt><a href="TCPDF.html#method_cellBoxOutput">
+font-relative modes (A/L/D) depend on $valign, mirroring getCellCode().</p></dd><dt><a href="TCPDF.html#method_cellBoxOutput">
 TCPDF::cellBoxOutput</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>PDF code for a cell background fill and the requested border sides.</p></dd><dt><a href="TCPDF.html#method_cellTextRun">
 TCPDF::cellTextRun</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
@@ -270,7 +265,11 @@ TCPDF::commitTransaction</a>() &mdash; <em>Method in class <a href="TCPDF.html">
                     <dd></dd><dt><a href="TCPDF.html#method_currentPageNoWriteAreas">
 TCPDF::currentPageNoWriteAreas</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>The legacy no-write areas registered for the current page, in the engine
-setNoWriteRegions() input format (xt/yt/xb/yb/side).</p></dd>        </dl><h2 id="letterD">D</h2>
+setNoWriteRegions() input format (xt/yt/xb/yb/side).</p></dd><dt><a href="TCPDF_ENGINE.html#method_closeCellBBoxWindow">
+TCPDF_ENGINE::closeCellBBoxWindow</a>() &mdash; <em>Method in class <a href="TCPDF_ENGINE.html">TCPDF_ENGINE</a></em></dt>
+                    <dd><p>Stop counting and return the number of cell bounding boxes added since
+the window was opened, and their largest bottom edge ordinate (-INF when
+none was added).</p></dd>        </dl><h2 id="letterD">D</h2>
         <dl id="indexD"><dt>$<a href="TCPDF.html#property_docunit">
 TCPDF#docunit</a> &mdash; <em>Property in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Unit of measure ('pt', 'mm', 'cm', 'in').</p></dd><dt>$<a href="TCPDF.html#property_deforientation">
@@ -393,7 +392,9 @@ TCPDF::fileOptions</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF<
                     <dd><p>Assemble the file-access options handed to the engine's shared file
 helper (tc-lib-file). These drive the upstream security sandbox that
 governs which local paths and remote hosts external resources (images,
-fonts, SVG, ...) may be loaded from.</p></dd><dt><a href="TCPDF.html#method_forcedTextDir">
+fonts, SVG, ...) may be loaded from.</p></dd><dt><a href="TCPDF.html#method_facadeEngine">
+TCPDF::facadeEngine</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
+                    <dd><p>Return the engine instance built by engineNew().</p></dd><dt><a href="TCPDF.html#method_forcedTextDir">
 TCPDF::forcedTextDir</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Forced text direction for the engine ('' = inherit document direction).</p></dd><dt><a href="TCPDF.html#method_Footer">
 TCPDF::Footer</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
@@ -558,10 +559,7 @@ TCPDF::getFontStretching</a>() &mdash; <em>Method in class <a href="TCPDF.html">
 TCPDF::getFontSpacing</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd></dd><dt><a href="TCPDF.html#method_getPageRegions">
 TCPDF::getPageRegions</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd></dd><dt><a href="TCPDF_ENGINE.html#method_getNextBBoxList">
-TCPDF_ENGINE::getNextBBoxList</a>() &mdash; <em>Method in class <a href="TCPDF_ENGINE.html">TCPDF_ENGINE</a></em></dt>
-                    <dd><p>Keeps every bounding box in the list: the facade reads the cell boxes
-added by a call (see TCPDF::cellBBoxCount() and cellBBoxBottomSince()).</p></dd>        </dl><h2 id="letterH">H</h2>
+                    <dd></dd>        </dl><h2 id="letterH">H</h2>
         <dl id="indexH"><dt>$<a href="TCPDF.html#property_headerdata">
 TCPDF#headerdata</a> &mdash; <em>Property in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd></dd><dt>$<a href="TCPDF.html#property_headermargin">
@@ -736,7 +734,9 @@ cell width.</p></dd><dt><a href="TCPDF.html#method_Open">
 TCPDF::Open</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd></dd><dt><a href="TCPDF.html#method_Output">
 TCPDF::Output</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPDF</a></em></dt>
-                    <dd><p>Send the document to the given destination: string, local file or browser.</p></dd>        </dl><h2 id="letterP">P</h2>
+                    <dd><p>Send the document to the given destination: string, local file or browser.</p></dd><dt><a href="TCPDF_ENGINE.html#method_openCellBBoxWindow">
+TCPDF_ENGINE::openCellBBoxWindow</a>() &mdash; <em>Method in class <a href="TCPDF_ENGINE.html">TCPDF_ENGINE</a></em></dt>
+                    <dd><p>Start counting the cell bounding boxes added by the engine.</p></dd>        </dl><h2 id="letterP">P</h2>
         <dl id="indexP"><dt>$<a href="TCPDF.html#property_pdfamode">
 TCPDF#pdfamode</a> &mdash; <em>Property in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>PDF/A mode passed to the engine ('' = disabled).</p></dd><dt>$<a href="TCPDF.html#property_pdfraw">
@@ -787,7 +787,9 @@ TCPDF::printTemplate</a>() &mdash; <em>Method in class <a href="TCPDF.html">TCPD
                     <dd></dd><dt>$<a href="TCPDF_ENGINE.html#property_pagecontexthook">
 TCPDF_ENGINE#pagecontexthook</a> &mdash; <em>Property in class <a href="TCPDF_ENGINE.html">TCPDF_ENGINE</a></em></dt>
                     <dd><p>Facade callback returning the raw PDF operators for the ambient text
-state to prepend to every new page content stream.</p></dd>        </dl><h2 id="letterR">R</h2>
+state to prepend to every new page content stream.</p></dd><dt><a href="TCPDF_ENGINE.html#method_pushCellBBox">
+TCPDF_ENGINE::pushCellBBox</a>() &mdash; <em>Method in class <a href="TCPDF_ENGINE.html">TCPDF_ENGINE</a></em></dt>
+                    <dd><p>Adds the cell box to the tally of every open window.</p></dd>        </dl><h2 id="letterR">R</h2>
         <dl id="indexR"><dt>$<a href="TCPDF.html#property_rmargin">
 TCPDF#rmargin</a> &mdash; <em>Property in class <a href="TCPDF.html">TCPDF</a></em></dt>
                     <dd><p>Right margin in user units.</p></dd><dt>$<a href="TCPDF.html#property_rtlmode">
