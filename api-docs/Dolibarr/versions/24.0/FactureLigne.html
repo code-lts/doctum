@@ -4243,7 +4243,7 @@ Used by migration</p></p>                </div>
                 <div class="col-md-8">
                     <a href="#method_getAllPrevProgress">getAllPrevProgress</a>(int $invoiceid, bool $include_credit_note = true)
         
-                                            <p><p>Returns situation_percent of all the previous line. Used when INVOICE_USE_SITUATION = 2.</p></p>                </div>
+                                            <p><p>Returns cumulated situation_percent of all the previous lines. Used when INVOICE_USE_SITUATION = 2.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -4251,7 +4251,7 @@ Used by migration</p></p>                </div>
                     float
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getSituationRatio">getSituationRatio</a>()
+                    <a href="#method_getSituationRatio">getSituationRatio</a>(float|null $previousProgress = null)
         
                                             <p><p>Determines if we are using situation invoices.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -12585,7 +12585,7 @@ Used by migration</p></p>
             
 
         <div class="method-description">
-                            <p><p>Returns situation_percent of all the previous line. Used when INVOICE_USE_SITUATION = 2.</p></p>                <p><p>Warning: If invoice is a replacement invoice, this-&gt;fk_prev_id is id of the replaced line.</p></p>        
+                            <p><p>Returns cumulated situation_percent of all the previous lines. Used when INVOICE_USE_SITUATION = 2.</p></p>                <p><p>Warning: If invoice is a replacement invoice, this-&gt;fk_prev_id is id of the replaced line.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -12635,9 +12635,9 @@ Used by migration</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getSituationRatio">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/facture/class/factureligne.class.php#L1082">at line 1082</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/24.0/htdocs/compta/facture/class/factureligne.class.php#L1083">at line 1083</a></div>
         <code>                    float
-    <strong>getSituationRatio</strong>()
+    <strong>getSituationRatio</strong>(float|null $previousProgress = null)
         </code>
     </h3>
     <div class="details">    
@@ -12654,6 +12654,16 @@ and the current one. In that case, we need a ratio to convert those values.</p>
 state and the current state, so we don't need a conversion (we return 1).</p></p>        
         </div>
         <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>float|null</td>
+                <td>$previousProgress</td>
+                <td><p>Previous progress already loaded by the caller, null to fetch it</p></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
