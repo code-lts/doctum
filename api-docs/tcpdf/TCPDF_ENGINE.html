@@ -103,12 +103,72 @@
 state to prepend to every new page content stream.</p></td>
                 <td></td>
             </tr>
+                    <tr>
+                <td class="type" id="property_htmltagallowhook">
+                                                                                Closure(string): bool|null
+                                                                                
+                                    </td>
+                <td>$htmltagallowhook</td>
+                <td class="last"><p>Facade callback returning true when an HTML <tcpdf> tag may call a method.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_htmltagobjecthook">
+                                                                                <abbr title="Closure(string, array&lt;int, mixed&gt;): ?\THTMLTcpdfObject">THTMLTcpdfObject</abbr>|null
+                                                                                
+                                    </td>
+                <td>$htmltagobjecthook</td>
+                <td class="last"><p>Facade callback returning the object drawn by an HTML <tcpdf> tag, or null.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_htmltagcallhook">
+                                                                                Closure(string, array&lt;int, mixed&gt;, float, float): string|null
+                                                                                
+                                    </td>
+                <td>$htmltagcallhook</td>
+                <td class="last"><p>Facade callback running the method of an HTML <tcpdf> tag and returning its PDF code.</p></td>
+                <td></td>
+            </tr>
             </table>
 
     
             <h2>Methods</h2>
 
             <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isAllowedHTMLTcpdfMethod">isAllowedHTMLTcpdfMethod</a>(string $method)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getHTMLTcpdfTagObject">getHTMLTcpdfTagObject</a>(string $method, array $params)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_runHTMLTcpdfTagCall">runHTMLTcpdfTagCall</a>(string $method, array $params, float $posx, float $posy)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     void
@@ -118,6 +178,17 @@ state to prepend to every new page content stream.</p></td>
         
                                             <p class="no-description">No description</p>
                                     </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setTextOffsetFromRight">setTextOffsetFromRight</a>(bool $enabled)
+        
+                                            <p><p>Make the first line offset of the next text cells trim the right side
+of the line for any base direction (right-to-left cursor positions).</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -169,8 +240,160 @@ none was added).</p></p>                </div>
 
             <div id="method-details">
                     <div class="method-item">
+                    <h3 id="method_isAllowedHTMLTcpdfMethod">
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L9067">at line 9067</a></div>
+        <code>            protected        bool
+    <strong>isAllowedHTMLTcpdfMethod</strong>(string $method)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getHTMLTcpdfTagObject">
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L9077">at line 9077</a></div>
+        <code>            protected        array|null
+    <strong>getHTMLTcpdfTagObject</strong>(string $method, array $params)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$params</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_runHTMLTcpdfTagCall">
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L9095">at line 9095</a></div>
+        <code>            protected        string
+    <strong>runHTMLTcpdfTagCall</strong>(string $method, array $params, float $posx, float $posy)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$params</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$posx</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>float</td>
+                <td>$posy</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_setPageContext">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8910">at line 8910</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L9104">at line 9104</a></div>
         <code>                    void
     <strong>setPageContext</strong>(int $pid = -1)
         </code>
@@ -213,8 +436,52 @@ none was added).</p></p>                </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_setTextOffsetFromRight">
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L9138">at line 9138</a></div>
+        <code>                    void
+    <strong>setTextOffsetFromRight</strong>(bool $enabled)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Make the first line offset of the next text cells trim the right side
+of the line for any base direction (right-to-left cursor positions).</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$enabled</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_openCellBBoxWindow">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8945">at line 8945</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L9148">at line 9148</a></div>
         <code>                    int
     <strong>openCellBBoxWindow</strong>()
         </code>
@@ -247,7 +514,7 @@ none was added).</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_closeCellBBoxWindow">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8959">at line 8959</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L9162">at line 9162</a></div>
         <code>                    array
     <strong>closeCellBBoxWindow</strong>(int $window)
         </code>
@@ -292,7 +559,7 @@ none was added).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_pushCellBBox">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8972">at line 8972</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L9175">at line 9175</a></div>
         <code>            protected        void
     <strong>pushCellBBox</strong>(array $box)
         </code>
@@ -335,7 +602,7 @@ none was added).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_anchorPageRegionsToContentTop">
-        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L8993">at line 8993</a></div>
+        <div class="location"><a href="https://github.com/tecnickcom/TCPDF/blob/main/tcpdf.php#L9196">at line 9196</a></div>
         <code>            protected        void
     <strong>anchorPageRegionsToContentTop</strong>(int $pid)
         </code>
