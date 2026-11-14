@@ -307,9 +307,11 @@ class Project
     {
         unset($this->classes[$class->getName()]);
         unset($this->interfaces[$class->getName()]);
-        unset($this->namespaceClasses[$class->getNamespace()][$class->getName()]);
-        unset($this->namespaceInterfaces[$class->getNamespace()][$class->getName()]);
-        unset($this->namespaceExceptions[$class->getNamespace()][$class->getName()]);
+        if (isset($class->getNamespace())) {
+            unset($this->namespaceClasses[$class->getNamespace()][$class->getName()]);
+            unset($this->namespaceInterfaces[$class->getNamespace()][$class->getName()]);
+            unset($this->namespaceExceptions[$class->getNamespace()][$class->getName()]);
+        }
     }
 
     public function getProjectInterfaces(): array
