@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>PHPUnit\Framework\PropertyBased\FalsificationReporter | PHPUnit</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:PHPUnit_Framework_PropertyBased_FalsificationReporter" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">PHPUnit</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Framework.html">Framework</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Framework/PropertyBased.html">PropertyBased</a></li><li class="backslash">\</li><li>FalsificationReporter</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>FalsificationReporter    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>FalsificationReporter</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/FalsificationReporter.php">View source</a>)
+</p>
+
+        
+        
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;This class is not covered by the backward compatibility promise for PHPUnit</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+            <div class="description">
+            <p><p>Reports how a property was falsified: by an explicit example, whose
+failure or error is reported as it is, or by a generated example, which is
+replayed to tell whether it falsifies the property again, whose
+counterexample is shrunk, and whose minimal counterexample is replayed, as
+are the simplest counterexamples of the other ways in which the property
+was falsified while it was shrunk.</p></p>            <p><p>A generated example that falsified the property by triggering an issue,
+and that does not trigger this issue when it is replayed, was not falsified
+by the issue, which was triggered for another reason than the arguments of
+the example, because a deprecated class was loaded when the example used it
+first, for instance: the issue is reported for the property like every
+other issue of its examples. When the replays do not falsify the property,
+neither did the example. When they do, in another way, that way is the one
+for which the counterexample is shrunk and that is reported.</p></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                            private
+                                                                                MAXIMUM_NUMBER_OF_SHRINKING_ATTEMPTS_AFTER_TIMEOUT
+                                    </td>
+                <td class="last">
+                    <p><em><p>Every shrinking attempt after an example exceeded its time limit can
+take as long as the time limit, so that shrinking has to get by with
+few attempts.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                NUMBER_OF_REPLAYS_OF_FALSIFYING_EXAMPLE
+                                    </td>
+                <td class="last">
+                    <p><em><p>How often the example that first falsified a property is replayed
+before its counterexample is shrunk, to tell whether it falsifies the
+property again.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../PHPUnit/Framework/PropertyBased/ExampleRunner.html"><abbr title="PHPUnit\Framework\PropertyBased\ExampleRunner">ExampleRunner</abbr></a> $runner, <a href="../../../PHPUnit/Framework/PropertyBased/EventAggregator.html"><abbr title="PHPUnit\Framework\PropertyBased\EventAggregator">EventAggregator</abbr></a> $events, <a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter, int $seed, int $maximumNumberOfShrinkingAttempts, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $shouldStop, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $report)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_shrinkAndReport">shrinkAndReport</a>(<a href="../../../PHPUnit/Framework/PropertyBased/Derivation/GeneratorDeriver.html"><abbr title="PHPUnit\Framework\PropertyBased\Derivation\GeneratorDeriver">GeneratorDeriver</abbr></a> $deriver, array $generators, <a href="../../../PHPUnit/Event/Code/Throwable.html"><abbr title="PHPUnit\Event\Code\Throwable">Throwable</abbr></a>|null $originalFailure, <a href="../../../PHPUnit/Framework/PropertyBased/Falsification.html"><abbr title="PHPUnit\Framework\PropertyBased\Falsification">Falsification</abbr></a> $falsification, <abbr title="SebastianBergmann\ChoiceSequence\ChoiceSequence">ChoiceSequence</abbr> $sequence, int $numberOfExamplesChecked)
+        
+                                            <p><p>Replays the example that first falsified the property, shrinks its
+counterexample, and reports how the property was falsified, with the
+final replay of the minimal counterexample as the example whose events
+are reported.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_reportFalsificationByExplicitExample">reportFalsificationByExplicitExample</a>(<a href="../../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a> $example, <a href="../../../PHPUnit/Framework/PropertyBased/Falsification.html"><abbr title="PHPUnit\Framework\PropertyBased\Falsification">Falsification</abbr></a> $falsification, <a href="../../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a> $exampleEvents, <a href="../../../PHPUnit/Framework/PropertyBased/ExplicitExample.html"><abbr title="PHPUnit\Framework\PropertyBased\ExplicitExample">ExplicitExample</abbr></a> $explicitExample, array $exportedArguments)
+        
+                                            <p><p>Reports a property that was falsified by an explicit example with the
+failure or error of that example, which is not shrunk, and with its
+arguments.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/FalsificationReporter.php#L106">at line 106</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../PHPUnit/Framework/PropertyBased/ExampleRunner.html"><abbr title="PHPUnit\Framework\PropertyBased\ExampleRunner">ExampleRunner</abbr></a> $runner, <a href="../../../PHPUnit/Framework/PropertyBased/EventAggregator.html"><abbr title="PHPUnit\Framework\PropertyBased\EventAggregator">EventAggregator</abbr></a> $events, <a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter, int $seed, int $maximumNumberOfShrinkingAttempts, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $shouldStop, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $report)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Framework/PropertyBased/ExampleRunner.html"><abbr title="PHPUnit\Framework\PropertyBased\ExampleRunner">ExampleRunner</abbr></a></td>
+                <td>$runner</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Framework/PropertyBased/EventAggregator.html"><abbr title="PHPUnit\Framework\PropertyBased\EventAggregator">EventAggregator</abbr></a></td>
+                <td>$events</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a></td>
+                <td>$emitter</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$seed</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$maximumNumberOfShrinkingAttempts</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>$shouldStop</td>
+                <td><p>whether no further examples are run because the test run is aborted</p></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>$report</td>
+                <td><p>reports the property, which did not pass, with the events of an example, an error, and how it was falsified</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_shrinkAndReport">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/FalsificationReporter.php#L136">at line 136</a></div>
+        <code>                    bool
+    <strong>shrinkAndReport</strong>(<a href="../../../PHPUnit/Framework/PropertyBased/Derivation/GeneratorDeriver.html"><abbr title="PHPUnit\Framework\PropertyBased\Derivation\GeneratorDeriver">GeneratorDeriver</abbr></a> $deriver, array $generators, <a href="../../../PHPUnit/Event/Code/Throwable.html"><abbr title="PHPUnit\Event\Code\Throwable">Throwable</abbr></a>|null $originalFailure, <a href="../../../PHPUnit/Framework/PropertyBased/Falsification.html"><abbr title="PHPUnit\Framework\PropertyBased\Falsification">Falsification</abbr></a> $falsification, <abbr title="SebastianBergmann\ChoiceSequence\ChoiceSequence">ChoiceSequence</abbr> $sequence, int $numberOfExamplesChecked)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Replays the example that first falsified the property, shrinks its
+counterexample, and reports how the property was falsified, with the
+final replay of the minimal counterexample as the example whose events
+are reported.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Framework/PropertyBased/Derivation/GeneratorDeriver.html"><abbr title="PHPUnit\Framework\PropertyBased\Derivation\GeneratorDeriver">GeneratorDeriver</abbr></a></td>
+                <td>$deriver</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$generators</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/Code/Throwable.html"><abbr title="PHPUnit\Event\Code\Throwable">Throwable</abbr></a>|null</td>
+                <td>$originalFailure</td>
+                <td><p>the failure or error of the example that first falsified the property</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Framework/PropertyBased/Falsification.html"><abbr title="PHPUnit\Framework\PropertyBased\Falsification">Falsification</abbr></a></td>
+                <td>$falsification</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="SebastianBergmann\ChoiceSequence\ChoiceSequence">ChoiceSequence</abbr></td>
+                <td>$sequence</td>
+                <td><p>the choices of the example that first falsified the property</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$numberOfExamplesChecked</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>whether the property was reported, which it is not when the example falsified it by triggering an issue and does not falsify it when it is replayed, so that further examples are to be checked</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/RuntimeException.html"><abbr title="PHPUnit\Event\RuntimeException">RuntimeException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Framework/Exception.html"><abbr title="PHPUnit\Framework\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="SebastianBergmann\CodeCoverage\InvalidArgumentException">InvalidArgumentException</abbr></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/NoPreviousThrowableException.html"><abbr title="PHPUnit\Event\NoPreviousThrowableException">NoPreviousThrowableException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="SebastianBergmann\CodeCoverage\UnintentionallyCoveredCodeException">UnintentionallyCoveredCodeException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_reportFalsificationByExplicitExample">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/FalsificationReporter.php#L309">at line 309</a></div>
+        <code>                    void
+    <strong>reportFalsificationByExplicitExample</strong>(<a href="../../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a> $example, <a href="../../../PHPUnit/Framework/PropertyBased/Falsification.html"><abbr title="PHPUnit\Framework\PropertyBased\Falsification">Falsification</abbr></a> $falsification, <a href="../../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a> $exampleEvents, <a href="../../../PHPUnit/Framework/PropertyBased/ExplicitExample.html"><abbr title="PHPUnit\Framework\PropertyBased\ExplicitExample">ExplicitExample</abbr></a> $explicitExample, array $exportedArguments)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Reports a property that was falsified by an explicit example with the
+failure or error of that example, which is not shrunk, and with its
+arguments.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a></td>
+                <td>$example</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Framework/PropertyBased/Falsification.html"><abbr title="PHPUnit\Framework\PropertyBased\Falsification">Falsification</abbr></a></td>
+                <td>$falsification</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a></td>
+                <td>$exampleEvents</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Framework/PropertyBased/ExplicitExample.html"><abbr title="PHPUnit\Framework\PropertyBased\ExplicitExample">ExplicitExample</abbr></a></td>
+                <td>$explicitExample</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$exportedArguments</td>
+                <td><p>the arguments of the example, exported as PHP code</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built for the <a href="https://phpunit.de/documentation.html" rel="noreferrer noopener" target="_blank">PHPUnit</a> project.</div></div>
+    </div>
+    </body>
+
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>PHPUnit\Framework\PropertyBased\EventAggregator | PHPUnit</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:PHPUnit_Framework_PropertyBased_EventAggregator" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">PHPUnit</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Framework.html">Framework</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Framework/PropertyBased.html">PropertyBased</a></li><li class="backslash">\</li><li>EventAggregator</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>EventAggregator    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>EventAggregator</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/EventAggregator.php">View source</a>)
+</p>
+
+        
+        
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;This class is not covered by the backward compatibility promise for PHPUnit</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+            <div class="description">
+            <p><p>Aggregates the events of the examples of a property, which are collected
+rather than dispatched, into the events that are reported for the property.</p></p>            <p><p>Exactly one sequence of events from Test\PreparationStarted to
+Test\Finished is reported for a property: the one of a single example, the
+skeleton, whose Test\PreparationStarted and Test\Prepared events are
+replaced with those of the first example, so that the duration of the
+property covers all of its examples. The issues and the
+Test\ConsideredRisky events of all examples that were checked are reported
+within that sequence, those of the skeleton included, and so is the output
+that they printed, as one Test\PrintedUnexpectedOutput event. The issues of
+the examples that were rejected are reported as well, and so are the
+TestRunner\GarbageCollectionTriggered events of all examples, those of the
+shrinking attempts included. A Test\ConsideredRisky event and an issue of
+PHPUnit's own are reported once per message, and the number of assertions
+is the one that is passed in.</p>
+<p>Only the Test\AdditionalInformationProvided events of the skeleton are
+reported, and only for a property that did not pass: the additional
+information is the one that was provided for the example whose outcome is
+reported, the minimal counterexample, for instance. For a property that
+passed, it would be the additional information of an arbitrary example.</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter, <a href="../../../PHPUnit/Event/Facade.html"><abbr title="PHPUnit\Event\Facade">Facade</abbr></a> $facade, <a href="../../../PHPUnit/Event/Code/Test.html"><abbr title="PHPUnit\Event\Code\Test">Test</abbr></a> $test)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_record">record</a>(<a href="../../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a> $events, bool $checked)
+        
+                                            <p><p>Records the events of an example. Only the Test\PreparationStarted and
+Test\Prepared events, the issues, and the TestRunner\GarbageCollectionTriggered
+events of an example that was not checked, because it was rejected, are
+kept.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_recordPhpunitWarning">recordPhpunitWarning</a>(string $message)
+        
+                                            <p><p>Records a PHPUnit warning for the property, which is reported with the
+issues of its examples: like these, a message is reported once per
+property, however often it is recorded.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_recordThatGeneratorsAreNondeterministic">recordThatGeneratorsAreNondeterministic</a>()
+        
+                                            <p><p>Records a PHPUnit warning because the generators of the property did
+not generate the same arguments and values from the same choices: its
+examples can then be generated more than once, and its counterexamples
+cannot be replayed and shrunk reliably.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_recordShrinkingAttempt">recordShrinkingAttempt</a>(<a href="../../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a> $events)
+        
+                                            <p><p>Records the events of a shrinking attempt, of which only the
+TestRunner\GarbageCollectionTriggered events are kept.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_dispatch">dispatch</a>(<a href="../../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a>|null $skeleton, <a href="../../../PHPUnit/Event/Code/Throwable.html"><abbr title="PHPUnit\Event\Code\Throwable">Throwable</abbr></a>|null $error, bool $passed, <a href="../../../PHPUnit/Framework/PropertyBased/FalsificationReport.html"><abbr title="PHPUnit\Framework\PropertyBased\FalsificationReport">FalsificationReport</abbr></a>|null $falsification, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $beforeFinished, int $numberOfAssertions)
+        
+                                            <p><p>Dispatches the events that are reported for the property.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/EventAggregator.php#L98">at line 98</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter, <a href="../../../PHPUnit/Event/Facade.html"><abbr title="PHPUnit\Event\Facade">Facade</abbr></a> $facade, <a href="../../../PHPUnit/Event/Code/Test.html"><abbr title="PHPUnit\Event\Code\Test">Test</abbr></a> $test)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a></td>
+                <td>$emitter</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/Facade.html"><abbr title="PHPUnit\Event\Facade">Facade</abbr></a></td>
+                <td>$facade</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/Code/Test.html"><abbr title="PHPUnit\Event\Code\Test">Test</abbr></a></td>
+                <td>$test</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_record">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/EventAggregator.php#L115">at line 115</a></div>
+        <code>                    void
+    <strong>record</strong>(<a href="../../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a> $events, bool $checked)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Records the events of an example. Only the Test\PreparationStarted and
+Test\Prepared events, the issues, and the TestRunner\GarbageCollectionTriggered
+events of an example that was not checked, because it was rejected, are
+kept.</p></p>                <p><p>The events of the skeleton must have been recorded before they are
+dispatched.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a></td>
+                <td>$events</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$checked</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_recordPhpunitWarning">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/EventAggregator.php#L163">at line 163</a></div>
+        <code>                    void
+    <strong>recordPhpunitWarning</strong>(string $message)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Records a PHPUnit warning for the property, which is reported with the
+issues of its examples: like these, a message is reported once per
+property, however often it is recorded.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_recordThatGeneratorsAreNondeterministic">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/EventAggregator.php#L180">at line 180</a></div>
+        <code>                    void
+    <strong>recordThatGeneratorsAreNondeterministic</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Records a PHPUnit warning because the generators of the property did
+not generate the same arguments and values from the same choices: its
+examples can then be generated more than once, and its counterexamples
+cannot be replayed and shrunk reliably.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_recordShrinkingAttempt">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/EventAggregator.php#L191">at line 191</a></div>
+        <code>                    void
+    <strong>recordShrinkingAttempt</strong>(<a href="../../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a> $events)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Records the events of a shrinking attempt, of which only the
+TestRunner\GarbageCollectionTriggered events are kept.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a></td>
+                <td>$events</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dispatch">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/EventAggregator.php#L210">at line 210</a></div>
+        <code>                    void
+    <strong>dispatch</strong>(<a href="../../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a>|null $skeleton, <a href="../../../PHPUnit/Event/Code/Throwable.html"><abbr title="PHPUnit\Event\Code\Throwable">Throwable</abbr></a>|null $error, bool $passed, <a href="../../../PHPUnit/Framework/PropertyBased/FalsificationReport.html"><abbr title="PHPUnit\Framework\PropertyBased\FalsificationReport">FalsificationReport</abbr></a>|null $falsification, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $beforeFinished, int $numberOfAssertions)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Dispatches the events that are reported for the property.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a>|null</td>
+                <td>$skeleton</td>
+                <td><p>the events of the example whose sequence of events is reported, null when no example ran to its end</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/Code/Throwable.html"><abbr title="PHPUnit\Event\Code\Throwable">Throwable</abbr></a>|null</td>
+                <td>$error</td>
+                <td><p>when not null, replaces the outcome of the skeleton with a Test\Errored event</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$passed</td>
+                <td><p>whether the property passed: a Test\Passed event is dispatched when the skeleton has no outcome, and the additional information of the skeleton is not reported</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Framework/PropertyBased/FalsificationReport.html"><abbr title="PHPUnit\Framework\PropertyBased\FalsificationReport">FalsificationReport</abbr></a>|null</td>
+                <td>$falsification</td>
+                <td><p>how the property was falsified, which is reported with a Test\PropertyFalsified event before the outcome and as part of its failure or error, null when it was not falsified</p></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>$beforeFinished</td>
+                <td><p>dispatches events that precede the Test\Finished event</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$numberOfAssertions</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built for the <a href="https://phpunit.de/documentation.html" rel="noreferrer noopener" target="_blank">PHPUnit</a> project.</div></div>
+    </div>
+    </body>
+
+</html>

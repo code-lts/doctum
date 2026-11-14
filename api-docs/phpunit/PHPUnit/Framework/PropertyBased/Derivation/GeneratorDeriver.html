@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>PHPUnit\Framework\PropertyBased\Derivation\GeneratorDeriver | PHPUnit</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:PHPUnit_Framework_PropertyBased_Derivation_GeneratorDeriver" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">PHPUnit</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../../PHPUnit/Framework.html">Framework</a></li><li class="backslash">\</li><li><a href="../../../../PHPUnit/Framework/PropertyBased.html">PropertyBased</a></li><li class="backslash">\</li><li><a href="../../../../PHPUnit/Framework/PropertyBased/Derivation.html">Derivation</a></li><li class="backslash">\</li><li>GeneratorDeriver</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>GeneratorDeriver    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>GeneratorDeriver</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Derivation/GeneratorDeriver.php">View source</a>)
+</p>
+
+        
+        
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;This class is not covered by the backward compatibility promise for PHPUnit</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+            <div class="description">
+            <p><p>Derives generators from the types of parameters: from the type in the
+parameter's @param tag (including @phpstan-param and @psalm-param) if there
+is one, from the type in the @var tag (including @phpstan-var and @psalm-var)
+of the doc comment of a promoted constructor parameter that has no @param
+tag, and from its native type declaration otherwise. The tags are read from
+the source file when OPcache has discarded the doc comments.</p></p>            <p><p>A generator that the test case class registers for a class with</p>
+<h1>[GeneratorFor] is used for every value of exactly that class, including</h1>
+<p>the arguments for the constructors of other classes.</p>
+<p>Objects of other concrete classes are created with new, using arguments
+that are generated for the parameters of the constructor, recursively. A
+parameter that has a default value does not receive an argument when no
+generator can be derived for its type.</p></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        SMALLEST_TIMESTAMP
+                                    </td>
+                <td class="last">
+                    <p><em><p>The points in time from 1900-01-01 00:00:00 to 2199-12-31 23:59:59 UTC,
+the simplest of which is the Unix epoch.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        LARGEST_TIMESTAMP
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PROBABILITY_OF_RECURSION
+                                    </td>
+                <td class="last">
+                    <p><em><p>The probability that a nullable value or a collection that can contain
+an object of a class that is being constructed contains it, which is
+smaller than usual so that the recursive construction ends soon. The
+collections and nullable values that are created with Generators for
+recursive values use it, too.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                UNSUPPORTED_KEYWORDS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                KEYWORDS_THAT_CAN_BE_CLASS_NAMES
+                                    </td>
+                <td class="last">
+                    <p><em><p>The keywords of PHPDoc types that PHP does not reserve, so that a class
+can have one of them as its name. Like in PHPStan, such a name refers
+to the class when a class of that name exists in the namespace, or is
+imported in the file, of the doc comment. A class in the namespace has
+to be written as it is declared, Resource rather than resource, for
+instance, as only the name of an imported class is resolved to the
+name with which it is declared. The names that PHP reserves, such as
+int and iterable, and the ones that contain a hyphen, such as
+positive-int, cannot be the names of classes.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                KEYWORDS_OF_ARRAY_KEYS
+                                    </td>
+                <td class="last">
+                    <p><em><p>The keywords of the types whose values are integers or strings, which
+are the only values that PHP uses as the keys of an array as they are.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;float
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_probabilityOfAnotherElement">probabilityOfAnotherElement</a>(bool $recursive)
+        
+                                            <p><p>The probability that a collection gets another element, which is
+PROBABILITY_OF_RECURSION when its elements can contain values of the
+generator for the collection, so that the generated values stay small.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../../PHPUnit/Framework/PropertyBased/Derivation/GeneratorRegistry.html"><abbr title="PHPUnit\Framework\PropertyBased\Derivation\GeneratorRegistry">GeneratorRegistry</abbr></a> $registry)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../PHPUnit/Framework/PropertyBased/Generator/AbstractGenerator.html"><abbr title="PHPUnit\Framework\PropertyBased\Generator\AbstractGenerator">AbstractGenerator</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_forParameter">forParameter</a>(<a target="_blank" rel="noopener" href="https://www.php.net/ReflectionParameter">ReflectionParameter</a> $parameter)
+        
+                                            <p><p>Derives the generator for a parameter of a property.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../PHPUnit/Framework/PropertyBased/Generator/AbstractGenerator.html"><abbr title="PHPUnit\Framework\PropertyBased\Generator\AbstractGenerator">AbstractGenerator</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_forType">forType</a>(<a href="../../../../PHPUnit/Framework/PropertyBased/Type/Type.html"><abbr title="PHPUnit\Framework\PropertyBased\Type\Type">Type</abbr></a> $type, <a href="../../../../PHPUnit/Framework/PropertyBased/Type/NameScope.html"><abbr title="PHPUnit\Framework\PropertyBased\Type\NameScope">NameScope</abbr></a> $scope)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../PHPUnit/Framework/PropertyBased/Generator/AbstractGenerator.html"><abbr title="PHPUnit\Framework\PropertyBased\Generator\AbstractGenerator">AbstractGenerator</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_forClass">forClass</a>(string $className)
+        
+                                            <p><p>Derives the generator for a class: the one registered for it, the one
+for points in time, time zones, or the cases of an enumeration, or one
+that creates objects of the class with new.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../PHPUnit/Framework/PropertyBased/Generator/AbstractGenerator.html"><abbr title="PHPUnit\Framework\PropertyBased\Generator\AbstractGenerator">AbstractGenerator</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_deferred">deferred</a>(<a href="../../../../PHPUnit/Framework/PropertyBased/Generator/DeferredGenerator.html"><abbr title="PHPUnit\Framework\PropertyBased\Generator\DeferredGenerator">DeferredGenerator</abbr></a> $generator)
+        
+                                            <p><p>Returns the generator that a deferred generator is derived as with this
+deriver, deriving it the first time.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_probabilityOfAnotherElement">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Derivation/GeneratorDeriver.php#L227">at line 227</a></div>
+        <code>        static            float
+    <strong>probabilityOfAnotherElement</strong>(bool $recursive)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The probability that a collection gets another element, which is
+PROBABILITY_OF_RECURSION when its elements can contain values of the
+generator for the collection, so that the generated values stay small.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$recursive</td>
+                <td><p>whether the generator for the elements refers to a class that is being derived, directly or nested in other types such as a union or a collection, or to the generator for the collection</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>float</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Derivation/GeneratorDeriver.php#L236">at line 236</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../../PHPUnit/Framework/PropertyBased/Derivation/GeneratorRegistry.html"><abbr title="PHPUnit\Framework\PropertyBased\Derivation\GeneratorRegistry">GeneratorRegistry</abbr></a> $registry)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../PHPUnit/Framework/PropertyBased/Derivation/GeneratorRegistry.html"><abbr title="PHPUnit\Framework\PropertyBased\Derivation\GeneratorRegistry">GeneratorRegistry</abbr></a></td>
+                <td>$registry</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_forParameter">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Derivation/GeneratorDeriver.php#L249">at line 249</a></div>
+        <code>                    <a href="../../../../PHPUnit/Framework/PropertyBased/Generator/AbstractGenerator.html"><abbr title="PHPUnit\Framework\PropertyBased\Generator\AbstractGenerator">AbstractGenerator</abbr></a>
+    <strong>forParameter</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/ReflectionParameter">ReflectionParameter</a> $parameter)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Derives the generator for a parameter of a property.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/ReflectionParameter">ReflectionParameter</a></td>
+                <td>$parameter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../PHPUnit/Framework/PropertyBased/Generator/AbstractGenerator.html"><abbr title="PHPUnit\Framework\PropertyBased\Generator\AbstractGenerator">AbstractGenerator</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../PHPUnit/Framework/PropertyBased/CannotDeriveGeneratorException.html"><abbr title="PHPUnit\Framework\PropertyBased\CannotDeriveGeneratorException">CannotDeriveGeneratorException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_forType">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Derivation/GeneratorDeriver.php#L279">at line 279</a></div>
+        <code>                    <a href="../../../../PHPUnit/Framework/PropertyBased/Generator/AbstractGenerator.html"><abbr title="PHPUnit\Framework\PropertyBased\Generator\AbstractGenerator">AbstractGenerator</abbr></a>
+    <strong>forType</strong>(<a href="../../../../PHPUnit/Framework/PropertyBased/Type/Type.html"><abbr title="PHPUnit\Framework\PropertyBased\Type\Type">Type</abbr></a> $type, <a href="../../../../PHPUnit/Framework/PropertyBased/Type/NameScope.html"><abbr title="PHPUnit\Framework\PropertyBased\Type\NameScope">NameScope</abbr></a> $scope)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../PHPUnit/Framework/PropertyBased/Type/Type.html"><abbr title="PHPUnit\Framework\PropertyBased\Type\Type">Type</abbr></a></td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../PHPUnit/Framework/PropertyBased/Type/NameScope.html"><abbr title="PHPUnit\Framework\PropertyBased\Type\NameScope">NameScope</abbr></a></td>
+                <td>$scope</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../PHPUnit/Framework/PropertyBased/Generator/AbstractGenerator.html"><abbr title="PHPUnit\Framework\PropertyBased\Generator\AbstractGenerator">AbstractGenerator</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../PHPUnit/Framework/PropertyBased/CannotDeriveGeneratorException.html"><abbr title="PHPUnit\Framework\PropertyBased\CannotDeriveGeneratorException">CannotDeriveGeneratorException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_forClass">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Derivation/GeneratorDeriver.php#L316">at line 316</a></div>
+        <code>                    <a href="../../../../PHPUnit/Framework/PropertyBased/Generator/AbstractGenerator.html"><abbr title="PHPUnit\Framework\PropertyBased\Generator\AbstractGenerator">AbstractGenerator</abbr></a>
+    <strong>forClass</strong>(string $className)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Derives the generator for a class: the one registered for it, the one
+for points in time, time zones, or the cases of an enumeration, or one
+that creates objects of the class with new.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$className</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../PHPUnit/Framework/PropertyBased/Generator/AbstractGenerator.html"><abbr title="PHPUnit\Framework\PropertyBased\Generator\AbstractGenerator">AbstractGenerator</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../PHPUnit/Framework/PropertyBased/CannotDeriveGeneratorException.html"><abbr title="PHPUnit\Framework\PropertyBased\CannotDeriveGeneratorException">CannotDeriveGeneratorException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deferred">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Derivation/GeneratorDeriver.php#L375">at line 375</a></div>
+        <code>                    <a href="../../../../PHPUnit/Framework/PropertyBased/Generator/AbstractGenerator.html"><abbr title="PHPUnit\Framework\PropertyBased\Generator\AbstractGenerator">AbstractGenerator</abbr></a>
+    <strong>deferred</strong>(<a href="../../../../PHPUnit/Framework/PropertyBased/Generator/DeferredGenerator.html"><abbr title="PHPUnit\Framework\PropertyBased\Generator\DeferredGenerator">DeferredGenerator</abbr></a> $generator)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the generator that a deferred generator is derived as with this
+deriver, deriving it the first time.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../PHPUnit/Framework/PropertyBased/Generator/DeferredGenerator.html"><abbr title="PHPUnit\Framework\PropertyBased\Generator\DeferredGenerator">DeferredGenerator</abbr></a></td>
+                <td>$generator</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../PHPUnit/Framework/PropertyBased/Generator/AbstractGenerator.html"><abbr title="PHPUnit\Framework\PropertyBased\Generator\AbstractGenerator">AbstractGenerator</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../PHPUnit/Framework/PropertyBased/CannotDeriveGeneratorException.html"><abbr title="PHPUnit\Framework\PropertyBased\CannotDeriveGeneratorException">CannotDeriveGeneratorException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built for the <a href="https://phpunit.de/documentation.html" rel="noreferrer noopener" target="_blank">PHPUnit</a> project.</div></div>
+    </div>
+    </body>
+
+</html>

@@ -123,6 +123,22 @@
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                    <a href="../../PHPUnit/Framework/Attributes/CounterexampleFormatter.html"><abbr title="PHPUnit\Framework\Attributes\CounterexampleFormatter">CounterexampleFormatter</abbr></a>    </div>
+                <div class="col-md-6"><p>Specifies a public static method of the test class that describes the
+counterexample of a property: when the property is falsified, the method is
+called with the arguments of the counterexample, and the string that it
+returns is reported below these arguments, which are reported as PHP code.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../PHPUnit/Framework/Attributes/CounterexampleFormatterExternal.html"><abbr title="PHPUnit\Framework\Attributes\CounterexampleFormatterExternal">CounterexampleFormatterExternal</abbr></a>    </div>
+                <div class="col-md-6"><p>Specifies a public static method of a class that describes the
+counterexample of a property: when the property is falsified, the method is
+called with the arguments of the counterexample, and the string that it
+returns is reported below these arguments, which are reported as PHP code.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="../../PHPUnit/Framework/Attributes/CoversClass.html"><abbr title="PHPUnit\Framework\Attributes\CoversClass">CoversClass</abbr></a>    </div>
                 <div class="col-md-6"></div>
             </div>
@@ -258,6 +274,37 @@
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                    <a href="../../PHPUnit/Framework/Attributes/ForAll.html"><abbr title="PHPUnit\Framework\Attributes\ForAll">ForAll</abbr></a>    </div>
+                <div class="col-md-6"><p>Specifies the generator for a parameter of a property: either the name of a
+public static method of the test case class that returns the generator, or
+a static closure that returns it. A public static method of another class
+is specified with #[ForAllExternal].</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../PHPUnit/Framework/Attributes/ForAllExternal.html"><abbr title="PHPUnit\Framework\Attributes\ForAllExternal">ForAllExternal</abbr></a>    </div>
+                <div class="col-md-6"><p>Specifies the generator for a parameter of a property with a public static
+method of another class than the test case class that returns it, for
+instance #[ForAllExternal(MoneyGenerators::class, 'smallAmounts')].</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../PHPUnit/Framework/Attributes/FromPool.html"><abbr title="PHPUnit\Framework\Attributes\FromPool">FromPool</abbr></a>    </div>
+                <div class="col-md-6"><p>A parameter of a rule or of a method with #[InitializeStateMachine] of a
+state machine with this attribute receives one of the values that earlier
+steps added to the pool, rather than a generated value. With $consume, the
+value is removed from the pool.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../PHPUnit/Framework/Attributes/GeneratorFor.html"><abbr title="PHPUnit\Framework\Attributes\GeneratorFor">GeneratorFor</abbr></a>    </div>
+                <div class="col-md-6"><p>Registers a public static method of a test case class that returns a
+generator as the generator for every value of exactly the given class that
+a property of the test case class needs, including the values that are
+needed to create objects of other classes with new.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="../../PHPUnit/Framework/Attributes/Group.html"><abbr title="PHPUnit\Framework\Attributes\Group">Group</abbr></a>    </div>
                 <div class="col-md-6"></div>
             </div>
@@ -275,6 +322,17 @@
                 <div class="col-md-6">
                     <a href="../../PHPUnit/Framework/Attributes/IgnorePhpunitWarnings.html"><abbr title="PHPUnit\Framework\Attributes\IgnorePhpunitWarnings">IgnorePhpunitWarnings</abbr></a>    </div>
                 <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../PHPUnit/Framework/Attributes/InitializeStateMachine.html"><abbr title="PHPUnit\Framework\Attributes\InitializeStateMachine">InitializeStateMachine</abbr></a>    </div>
+                <div class="col-md-6"><p>A public method of a state machine with this attribute is called once
+before TestCase::runStateMachine() takes the steps of the state machine,
+with generated values or values that earlier methods with this attribute
+produced (#[FromPool]) as its arguments. The value that it returns is added
+to the pool that is named with $produces. The methods with this attribute
+that a parent class declares are called before those of the class that
+extends it.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -303,8 +361,23 @@
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                    <a href="../../PHPUnit/Framework/Attributes/Property.html"><abbr title="PHPUnit\Framework\Attributes\Property">Property</abbr></a>    </div>
+                <div class="col-md-6"><p>A method with this attribute is a property: a test method whose parameters
+receive generated values. The property is checked for the given number of
+examples, or the configured default number of examples when it is null.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="../../PHPUnit/Framework/Attributes/Repeat.html"><abbr title="PHPUnit\Framework\Attributes\Repeat">Repeat</abbr></a>    </div>
                 <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../PHPUnit/Framework/Attributes/RequireClassification.html"><abbr title="PHPUnit\Framework\Attributes\RequireClassification">RequireClassification</abbr></a>    </div>
+                <div class="col-md-6"><p>Requires that at least the given percentage of the examples of a property
+that are checked are classified with the given label by
+TestCase::classify(). A property for which this is not the case is
+considered risky.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -383,6 +456,26 @@
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                    <a href="../../PHPUnit/Framework/Attributes/StateMachineInvariant.html"><abbr title="PHPUnit\Framework\Attributes\StateMachineInvariant">StateMachineInvariant</abbr></a>    </div>
+                <div class="col-md-6"><p>A public method of a state machine with this attribute is an invariant:
+TestCase::runStateMachine() calls it after the methods with</p>
+<h1>[InitializeStateMachine] and after every step, or, with $atEnd, only after</h1>
+<p>the methods with #[InitializeStateMachine] and after the last step, which is
+meant for invariants that are expensive to check. An invariant does not hold
+when it fails an assertion or raises an exception.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../PHPUnit/Framework/Attributes/StateMachineRule.html"><abbr title="PHPUnit\Framework\Attributes\StateMachineRule">StateMachineRule</abbr></a>    </div>
+                <div class="col-md-6"><p>A public method of a state machine with this attribute is a rule: a step
+that TestCase::runStateMachine() can take. Its parameters receive generated
+values, or values that earlier steps produced (#[FromPool]). The rule is
+only taken while the public method of the state machine that is named as
+its precondition returns true. The value that the rule returns is added to
+the pool that is named with $produces.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="../../PHPUnit/Framework/Attributes/Test.html"><abbr title="PHPUnit\Framework\Attributes\Test">Test</abbr></a>    </div>
                 <div class="col-md-6"></div>
             </div>
@@ -415,6 +508,16 @@
                 <div class="col-md-6">
                     <a href="../../PHPUnit/Framework/Attributes/Ticket.html"><abbr title="PHPUnit\Framework\Attributes\Ticket">Ticket</abbr></a>    </div>
                 <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../PHPUnit/Framework/Attributes/UseGenerators.html"><abbr title="PHPUnit\Framework\Attributes\UseGenerators">UseGenerators</abbr></a>    </div>
+                <div class="col-md-6"><p>Uses the generators that the public static methods of the given class
+register with #[GeneratorFor] for the properties of a test case class, or
+for one property. A generator that the test case class registers takes
+precedence over one that a class used for the property registers, which
+takes precedence over one that a class used for the test case class
+registers.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">

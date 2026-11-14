@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>PHPUnit\Framework\PropertyBased\Falsification | PHPUnit</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:PHPUnit_Framework_PropertyBased_Falsification" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">PHPUnit</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Framework.html">Framework</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Framework/PropertyBased.html">PropertyBased</a></li><li class="backslash">\</li><li>Falsification</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Falsification    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>Falsification</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Falsification.php">View source</a>)
+</p>
+
+        
+        
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;This class is not covered by the backward compatibility promise for PHPUnit</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+            <div class="description">
+            <p><p>How an example falsified a property.</p></p>            <p><p>Two examples falsify a property in the same way when the throwables that
+ended them have the same class and were raised at the same location, or
+when both exceeded the time limit. The location is the one PHPUnit reports
+for a throwable: the first frame of its stack trace that is not in PHPUnit's
+own code, or else the file and line of the throwable itself. The file and
+line of the throwable alone would not do, because every failed assertion is
+raised in PHPUnit's own code.</p>
+<p>When unbounded recursion reaches the limit of PHP's call stack, or the
+limit of the nesting level of function calls of Xdebug, the error is raised
+by whichever call of the recursion exceeds the limit, which depends on how
+deep the call stack was when the recursion started, and on how much of it
+the calls use, which differs between versions of PHP. So that the same
+recursion has the same location, the location of this error is the frame of
+the recursion that comes first, by file and then by line, among the frames
+of the cycle that repeats at the top of its stack trace. The frames further
+down, of a finite recursion that led to the unbounded one, for instance,
+whose depth can depend on the example, are not considered. When no cycle
+repeats at the top of the stack trace, the frames that occur more than once
+in it are considered instead.</p>
+<p>The path of a file below the directory of the configuration file, or below
+the working directory when there is no configuration file, is relative to
+it, so that the location depends neither on where a project is checked out
+nor on the working directory of the process.</p>
+<p>The name of an anonymous class contains the path of the file in which it is
+declared and a counter that depends on the order in which anonymous classes
+are compiled, and the name of the class of a test double ends in random
+characters. So that the same failure has the same signature in every
+process, the signature names the class that the class of such a throwable
+extends, the first one that is neither anonymous nor a test double. Like
+the location, the class of the throwable itself is kept as it is.</p>
+<p>Whether two examples falsify the property in the same way is told by the
+failure signature of sebastian/choice-sequence, so that failures are
+compared in the same way wherever that library is used.</p></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                            private
+                                                                                CALL_STACK_LIMIT
+                                    </td>
+                <td class="last">
+                    <p><em><p>The message of the error that PHP raises when the call stack limit is
+reached starts with this.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                XDEBUG_NESTING_LIMIT
+                                    </td>
+                <td class="last">
+                    <p><em><p>The message of the error that Xdebug raises when the nesting level of
+function calls exceeds its limit starts with this.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                REPETITIONS_OF_CYCLE
+                                    </td>
+                <td class="last">
+                    <p><em><p>How often a cycle of frames must repeat at the top of a stack trace to
+be the cycle of the recursion that reached a limit.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                MAXIMUM_LENGTH_OF_CYCLE
+                                    </td>
+                <td class="last">
+                    <p><em><p>The longest cycle of frames that is looked for at the top of a stack
+trace, which bounds the time spent on looking for one.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../PHPUnit/Framework/PropertyBased/Falsification.html"><abbr title="PHPUnit\Framework\PropertyBased\Falsification">Falsification</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_of">of</a>(<a href="../../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a> $example)
+        
+                                            <p><p>Returns null when the example did not falsify the property, that is,
+when it neither failed nor errored nor exceeded its time limit. An
+example can also falsify the property by triggering an issue, which its
+events tell, see FalsifyingIssues.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../PHPUnit/Framework/PropertyBased/Falsification.html"><abbr title="PHPUnit\Framework\PropertyBased\Falsification">Falsification</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_ofThrowable">ofThrowable</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $throwable)
+        
+                                            <p><p>How a throwable falsified the property: the throwable that ended an
+example, or the one that was raised while its arguments were generated,
+which is a TimeoutException when the example exceeded its time limit.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../PHPUnit/Framework/PropertyBased/Falsification.html"><abbr title="PHPUnit\Framework\PropertyBased\Falsification">Falsification</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_ofIssue">ofIssue</a>(string $kind, string $file, int $line, string $message)
+        
+                                            <p><p>How an issue that an example triggered falsified the property. Two
+examples falsify a property in the same way when they trigger an issue
+of the same kind in the same line of code.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_exampleFalsifies">exampleFalsifies</a>(<a href="../../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a> $example)
+        
+                                            <p><p>Whether the example falsified the property, without describing how,
+which requires filtering the stack trace of the throwable that ended
+the example.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="SebastianBergmann\ChoiceSequence\FailureSignature">FailureSignature</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_signature">signature</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_className">className</a>()
+        
+                                            <p><p>The class of the throwable that falsified the property, null when no
+throwable did, as for an example that exceeded its time limit.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_location">location</a>()
+        
+                                            <p><p>Where the throwable that falsified the property was raised, null when
+no throwable did.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_message">message</a>()
+        
+                                            <p><p>The message of the throwable that falsified the property, or of the
+status of the example when no throwable did.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isIssue">isIssue</a>()
+        
+                                            <p><p>Whether the example falsified the property by triggering an issue
+rather than by failing, erroring, or exceeding its time limit: such an
+example has no failure or error of its own that could be reported for
+the property.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isTimeout">isTimeout</a>()
+        
+                                            <p><p>Whether the example was aborted because it exceeded its time limit.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isSameAs">isSameAs</a>(<a href="../../../PHPUnit/Framework/PropertyBased/Falsification.html"><abbr title="PHPUnit\Framework\PropertyBased\Falsification">Falsification</abbr></a> $other)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_description">description</a>()
+        
+                                            <p><p>Describes how the example falsified the property, for instance
+&quot;RuntimeException at /path/to/FooTest.php:12&quot; or &quot;exceeding the time
+limit&quot;.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_of">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Falsification.php#L129">at line 129</a></div>
+        <code>        static            <a href="../../../PHPUnit/Framework/PropertyBased/Falsification.html"><abbr title="PHPUnit\Framework\PropertyBased\Falsification">Falsification</abbr></a>|null
+    <strong>of</strong>(<a href="../../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a> $example)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns null when the example did not falsify the property, that is,
+when it neither failed nor errored nor exceeded its time limit. An
+example can also falsify the property by triggering an issue, which its
+events tell, see FalsifyingIssues.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a></td>
+                <td>$example</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../PHPUnit/Framework/PropertyBased/Falsification.html"><abbr title="PHPUnit\Framework\PropertyBased\Falsification">Falsification</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_ofThrowable">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Falsification.php#L152">at line 152</a></div>
+        <code>        static            <a href="../../../PHPUnit/Framework/PropertyBased/Falsification.html"><abbr title="PHPUnit\Framework\PropertyBased\Falsification">Falsification</abbr></a>
+    <strong>ofThrowable</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $throwable)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>How a throwable falsified the property: the throwable that ended an
+example, or the one that was raised while its arguments were generated,
+which is a TimeoutException when the example exceeded its time limit.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a></td>
+                <td>$throwable</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../PHPUnit/Framework/PropertyBased/Falsification.html"><abbr title="PHPUnit\Framework\PropertyBased\Falsification">Falsification</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_ofIssue">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Falsification.php#L178">at line 178</a></div>
+        <code>        static            <a href="../../../PHPUnit/Framework/PropertyBased/Falsification.html"><abbr title="PHPUnit\Framework\PropertyBased\Falsification">Falsification</abbr></a>
+    <strong>ofIssue</strong>(string $kind, string $file, int $line, string $message)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>How an issue that an example triggered falsified the property. Two
+examples falsify a property in the same way when they trigger an issue
+of the same kind in the same line of code.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$kind</td>
+                <td><p>the kind of the issue, for instance &quot;E_WARNING&quot;</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$file</td>
+                <td><p>the file in which the issue was triggered</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$line</td>
+                <td><p>the line in which the issue was triggered</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$message</td>
+                <td><p>the message of the issue</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../PHPUnit/Framework/PropertyBased/Falsification.html"><abbr title="PHPUnit\Framework\PropertyBased\Falsification">Falsification</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_exampleFalsifies">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Falsification.php#L196">at line 196</a></div>
+        <code>        static            bool
+    <strong>exampleFalsifies</strong>(<a href="../../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a> $example)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether the example falsified the property, without describing how,
+which requires filtering the stack trace of the throwable that ended
+the example.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a></td>
+                <td>$example</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_signature">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Falsification.php#L218">at line 218</a></div>
+        <code>                    <abbr title="SebastianBergmann\ChoiceSequence\FailureSignature">FailureSignature</abbr>
+    <strong>signature</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="SebastianBergmann\ChoiceSequence\FailureSignature">FailureSignature</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_className">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Falsification.php#L229">at line 229</a></div>
+        <code>                    string|null
+    <strong>className</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The class of the throwable that falsified the property, null when no
+throwable did, as for an example that exceeded its time limit.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_location">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Falsification.php#L240">at line 240</a></div>
+        <code>                    string|null
+    <strong>location</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Where the throwable that falsified the property was raised, null when
+no throwable did.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_message">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Falsification.php#L249">at line 249</a></div>
+        <code>                    string
+    <strong>message</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The message of the throwable that falsified the property, or of the
+status of the example when no throwable did.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isIssue">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Falsification.php#L260">at line 260</a></div>
+        <code>                    bool
+    <strong>isIssue</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether the example falsified the property by triggering an issue
+rather than by failing, erroring, or exceeding its time limit: such an
+example has no failure or error of its own that could be reported for
+the property.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isTimeout">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Falsification.php#L268">at line 268</a></div>
+        <code>                    bool
+    <strong>isTimeout</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether the example was aborted because it exceeded its time limit.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isSameAs">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Falsification.php#L273">at line 273</a></div>
+        <code>                    bool
+    <strong>isSameAs</strong>(<a href="../../../PHPUnit/Framework/PropertyBased/Falsification.html"><abbr title="PHPUnit\Framework\PropertyBased\Falsification">Falsification</abbr></a> $other)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Framework/PropertyBased/Falsification.html"><abbr title="PHPUnit\Framework\PropertyBased\Falsification">Falsification</abbr></a></td>
+                <td>$other</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_description">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/Falsification.php#L285">at line 285</a></div>
+        <code>                    string
+    <strong>description</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Describes how the example falsified the property, for instance
+&quot;RuntimeException at /path/to/FooTest.php:12&quot; or &quot;exceeding the time
+limit&quot;.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built for the <a href="https://phpunit.de/documentation.html" rel="noreferrer noopener" target="_blank">PHPUnit</a> project.</div></div>
+    </div>
+    </body>
+
+</html>

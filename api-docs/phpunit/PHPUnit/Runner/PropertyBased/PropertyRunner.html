@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>PHPUnit\Runner\PropertyBased\PropertyRunner | PHPUnit</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:PHPUnit_Runner_PropertyBased_PropertyRunner" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">PHPUnit</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner.html">Runner</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner/PropertyBased.html">PropertyBased</a></li><li class="backslash">\</li><li>PropertyRunner</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>PropertyRunner    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>PropertyRunner</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/PropertyBased/PropertyRunner.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            <div class="description">
+            <p><p>Runs the examples of the properties of a test suite one at a time, for
+tools that drive property-based tests themselves, a fuzzer that is guided
+by code coverage, for instance.</p></p>            <p><p>Everything that is passed to this API and returned by it is data: strings,
+integers, null, and arrays of these. No object of a class of one of
+PHPUnit's dependencies crosses it, so it is used in the same way whether
+PHPUnit is installed with Composer or used from its PHAR, in which the
+names of these classes are prefixed.</p>
+<p>PHPUnit is booted once per process, and it cannot be booted in a process
+in which it is already running, by a test that the test runner runs, for
+instance. A boot that fails because the configuration file cannot be found
+or read changes nothing and can be retried. A boot that fails for another
+reason cannot be retried, see boot(). The configuration file and its
+bootstrap script are loaded as for a test run, but nothing is printed, no
+code coverage is collected, nothing is logged, and no extensions are
+loaded. As nothing is printed, an error that PHPUnit triggers while it is
+booted, about a property that cannot be checked, for instance, is raised
+as an exception, as the test run fails because of it. A warning that
+PHPUnit triggers while it is booted, about a configuration file that did
+not pass validation, for instance, is raised as an exception when the test
+run fails because of it, which it does unless the configuration file sets
+failOnPhpunitWarning to false, and is discarded otherwise. This is so for
+every test in the test suite that the configuration file configures, also
+for one that the filter leaves out, as the test suite is built before it
+is filtered.</p>
+<p>As in a test run, the random number generators whose state is global to
+the process, the one that mt_rand() uses, for instance, are seeded before
+each example when a random seed is passed while PHPUnit is booted, or when
+the configuration file configures a random execution order, for which
+PHPUnit chooses a random seed itself. The seed for an example is derived
+from the random seed and the property, so that the example gets the same
+random numbers in every process that is booted with the same random seed.
+randomSeed() tells which random seed is used.</p>
+<p>An example is run with its full lifecycle, from the hook methods that are
+called before the property to the ones that are called after it, and with
+the time limit that is passed, which covers generating its arguments as
+well as running it. Its arguments are generated from choices as when
+PHPUnit checks the property, and it draws values with draw() from the same
+choices. It is neither shrunk nor reported. The issues that it triggers are
+handled as in a test run, but they are not reported either.</p>
+<p>While code of the project is run, when PHPUnit is booted, while an example
+runs, and while the hook methods of a test class that are called before
+its first test and after its last test are called, the error handlers of
+the caller are hidden: they are not called, and PHPUnit's error handler
+does not forward an issue to them. The error handlers that the bootstrap
+script of the project and these hook methods register are the ones of the
+project: as in a test run, they are registered while code of the project
+is run, and only then. Afterwards, the error handlers of the caller are
+registered as before, for the error levels that they were registered for,
+also when code of the project did not remove an error handler that it
+registered, in a generator, for instance. Only code of the project that
+removes at least two error handlers more than it registered removes error
+handlers of the caller: the one that was active is then registered again,
+for all error levels.</p>
+<p>The output that an example prints is not printed, as in a test run. Output
+buffering that code of the project started without ending it, in a
+generator, for instance, is ended afterwards, and what was buffered is
+discarded, so that the level of output buffering of the caller is the one
+from before.</p>
+<p>The time limit of an example is enforced with the SIGALRM signal. While an
+example runs, the handler of this signal, a pending alarm, and whether
+signals are handled asynchronously are PHPUnit's. Afterwards, the ones of
+the caller are restored, and an alarm of the caller is set again for the
+rest of its time: an alarm that would have gone off while the example ran
+goes off one second after it. As in a test run, an example that catches the
+exception with which it is aborted when it exceeds its time limit, as code
+that catches every throwable does, keeps running.</p>
+<p>When an example ends the process, with exit() or with a fatal error, for
+instance, its output is discarded, the handler of the SIGALRM signal, the
+alarm, and whether signals are handled asynchronously of the caller are
+restored, and the error handlers of the caller are registered as before,
+in a shutdown function that is registered when PHPUnit is booted, before
+the hook methods of the prepared test class that are called after its last
+test are called. PHPUnit prints nothing, unless one of these hook methods
+raises an exception, which is written to the standard error stream, see
+below, and the process ends with the exit status of the example. The
+shutdown functions that the caller registers after booting PHPUnit are
+called after it, and the ones that it registers before are called before
+it.</p>
+<p>As in a test run, one test class is prepared at a time. The hook methods of
+a test class that are called before its first test are called before the
+first example of one of its properties is run, and the ones that are called
+after its last test are called before an example of a property of another
+test class is run, when finish() is called, or when the process ends.
+When one of the former raises an exception, every example of a property of
+the test class is aborted with that exception, and when one of them skips
+the tests of the test class, every example is skipped. The latter are only
+called in the process that prepared the test class: a process that is
+forked from it, while an example runs or between examples, does not call
+them for this test class, but does for a test class that it prepares
+itself.</p>
+<p>When one of the hook methods that are called after the last test of a test
+class raises an exception, or marks the test as incomplete or skipped, no
+example is left to which this could be attributed: an
+AfterLastTestMethodFailedException is raised instead, by finish(), or by
+replay() or generate() for a property of another test class, before the
+test class of this property is prepared and the example is run. The test
+class that was prepared is finished then, and its hook methods are not
+called again, so that the call can be repeated, which prepares the other
+test class and runs the example. When the process ends, nothing can be
+raised: the message of the exception, followed by a line break, is written
+to the standard error stream instead, and the exit status of the process is
+not changed. Nothing is written for a test class that was finished before,
+with finish(), for instance.</p>
+<p>The result of an example tells how it ended, how it falsified the
+property, and which choices it consumed, with their spans and the maxima
+of the choices. The kind of a span, when it has one, is the name of the
+case of SpanKind of sebastian/choice-sequence in lowercase: 'bytes',
+'characters', 'element', 'requiredelement', 'referable', 'reference', or
+'consumingreference'.
+On request, the result also has the arguments
+of the example, the values that it drew with draw(), and the steps of its
+state machine, exported as PHPUnit reports them for a counterexample. They
+are null otherwise, and when no arguments were generated for the example.</p>
+<p>The signature of how an example falsified the property is the same for
+the same failure in every process, whatever its working directory, so that
+failures that are found in different processes can be compared by it. The
+path of a file below the directory of the configuration file is relative
+to it, and the signature does not name the class of an anonymous throwable
+or of a test double, whose names differ between processes, but the first
+class that it extends which is neither. The class of the throwable itself
+is kept as it is.</p>
+<p>An example that triggers an issue for which the test run fails, a warning
+when the test runner is configured to fail on warnings, for instance,
+falsifies the property like an example that fails. Its failure has no
+class, and its signature names the kind of the issue and where it was
+triggered.</p>
+<p>An example that fails or errors without checking the property is aborted
+rather than falsifying it: when a generator raises an exception while its
+arguments are generated, when it ends before its test method is called, in
+setUp(), for instance, or when its state machine cannot be run. When PHPUnit
+checks the property, such an example is the error of the property, which is
+reported without being shrunk. An example whose arguments take longer to
+generate than its time limit allows is aborted, too. The failure of an
+aborted example tells how it ended.</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../PHPUnit/Runner/PropertyBased/PropertyRunner.html"><abbr title="PHPUnit\Runner\PropertyBased\PropertyRunner">PropertyRunner</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_boot">boot</a>(string|null $configurationFile = null, string|null $filter = null, int|null $randomSeed = null)
+        
+                                            <p><p>Loads the configuration file and its bootstrap script and builds the
+test suite, with only the tests that match the filter, as with the
+--filter option of the test runner.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_properties">properties</a>()
+        
+                                            <p><p>The properties of the test suite, in the order in which the test runner
+runs them by default.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_randomSeed">randomSeed</a>()
+        
+                                            <p><p>The random seed with which the random number generators are seeded
+before each example: the one that was passed while PHPUnit was booted,
+or the one that PHPUnit chose because the configuration file configures
+a random execution order. Booting PHPUnit in another process with it
+seeds them in the same way there. Null when they are not seeded.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_replay">replay</a>(string $id, array $choices, int $timeLimit, bool $exportValues = false)
+        
+                                            <p><p>Runs an example of the property with arguments that are generated from
+the given choices.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_generate">generate</a>(string $id, int $seed, int $timeLimit, bool $exportValues = false)
+        
+                                            <p><p>Runs an example of the property with arguments that are generated from
+choices that are drawn from a random number generator that is seeded
+with the given seed. The same seed generates the same example.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_finish">finish</a>()
+        
+                                            <p><p>Calls the hook methods of the test class that was prepared last that
+are called after its last test, as they are called before an example of
+a property of another test class is run, rather than only when the
+process ends. When an example of one of its properties is run
+afterwards, the test class is prepared again.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_boot">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/PropertyBased/PropertyRunner.php#L331">at line 331</a></div>
+        <code>        static            <a href="../../../PHPUnit/Runner/PropertyBased/PropertyRunner.html"><abbr title="PHPUnit\Runner\PropertyBased\PropertyRunner">PropertyRunner</abbr></a>
+    <strong>boot</strong>(string|null $configurationFile = null, string|null $filter = null, int|null $randomSeed = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Loads the configuration file and its bootstrap script and builds the
+test suite, with only the tests that match the filter, as with the
+--filter option of the test runner.</p></p>                <p><p>Booting PHPUnit can only be retried when it failed because the
+configuration file cannot be found or read. When it failed for another
+reason, because the bootstrap script or the test suite cannot be loaded,
+or because PHPUnit triggered an error or a warning, for instance, the
+global state of PHPUnit and of PHP has been changed in ways that cannot
+be reset: the constants and settings of the configuration file are
+defined, the bootstrap script and the test classes are loaded, and
+PHPUnit is configured for this configuration file. Every further call
+then raises an AlreadyBootedException, also one with another
+configuration file or another filter, so that examples can only be run
+in another process.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$configurationFile</td>
+                <td><p>the configuration file, null to look for one in the working directory as the test runner does</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$filter</td>
+                <td><p>the filter, null for all tests</p></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$randomSeed</td>
+                <td><p>the random seed with which the random number generators are seeded before each example, as with the --random-seed option of the test runner, null to seed them only when the configuration file configures a random execution order</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../PHPUnit/Runner/PropertyBased/PropertyRunner.html"><abbr title="PHPUnit\Runner\PropertyBased\PropertyRunner">PropertyRunner</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/PropertyBased/AlreadyBootedException.html"><abbr title="PHPUnit\Runner\PropertyBased\AlreadyBootedException">AlreadyBootedException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/PropertyBased/ConfigurationFileNotFoundException.html"><abbr title="PHPUnit\Runner\PropertyBased\ConfigurationFileNotFoundException">ConfigurationFileNotFoundException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/PropertyBased/ErrorTriggeredWhileBootingException.html"><abbr title="PHPUnit\Runner\PropertyBased\ErrorTriggeredWhileBootingException">ErrorTriggeredWhileBootingException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Exception.html"><abbr title="PHPUnit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/PropertyBased/InvalidArgumentException.html"><abbr title="PHPUnit\Runner\PropertyBased\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/PropertyBased/TimeLimitCannotBeEnforcedException.html"><abbr title="PHPUnit\Runner\PropertyBased\TimeLimitCannotBeEnforcedException">TimeLimitCannotBeEnforcedException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/PropertyBased/WarningTriggeredWhileBootingException.html"><abbr title="PHPUnit\Runner\PropertyBased\WarningTriggeredWhileBootingException">WarningTriggeredWhileBootingException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_properties">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/PropertyBased/PropertyRunner.php#L523">at line 523</a></div>
+        <code>                    array
+    <strong>properties</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The properties of the test suite, in the order in which the test runner
+runs them by default.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_randomSeed">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/PropertyBased/PropertyRunner.php#L550">at line 550</a></div>
+        <code>                    int|null
+    <strong>randomSeed</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The random seed with which the random number generators are seeded
+before each example: the one that was passed while PHPUnit was booted,
+or the one that PHPUnit chose because the configuration file configures
+a random execution order. Booting PHPUnit in another process with it
+seeds them in the same way there. Null when they are not seeded.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_replay">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/PropertyBased/PropertyRunner.php#L578">at line 578</a></div>
+        <code>                    array
+    <strong>replay</strong>(string $id, array $choices, int $timeLimit, bool $exportValues = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Runs an example of the property with arguments that are generated from
+the given choices.</p></p>                <p><p>The given choices need not be the ones that an example consumes: a
+choice that is greater than the maximum of the choice that is consumed
+in its place is replaced with this maximum, a choice that is consumed
+after the last of the given choices is 0, and the given choices that
+are left when the example has consumed its choices are ignored. The
+choices of the result are the ones that the example consumed.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$id</td>
+                <td><p>the ID of the property, as properties() returns it</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$choices</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$timeLimit</td>
+                <td><p>the time limit of the example in seconds, which covers generating its arguments and running it</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$exportValues</td>
+                <td><p>whether the result has the exported arguments, drawn values, and steps of the example</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/PropertyBased/AfterLastTestMethodFailedException.html"><abbr title="PHPUnit\Runner\PropertyBased\AfterLastTestMethodFailedException">AfterLastTestMethodFailedException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Exception.html"><abbr title="PHPUnit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/PropertyBased/InvalidArgumentException.html"><abbr title="PHPUnit\Runner\PropertyBased\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/PropertyBased/PropertyDoesNotExistException.html"><abbr title="PHPUnit\Runner\PropertyBased\PropertyDoesNotExistException">PropertyDoesNotExistException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_generate">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/PropertyBased/PropertyRunner.php#L618">at line 618</a></div>
+        <code>                    array
+    <strong>generate</strong>(string $id, int $seed, int $timeLimit, bool $exportValues = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Runs an example of the property with arguments that are generated from
+choices that are drawn from a random number generator that is seeded
+with the given seed. The same seed generates the same example.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$id</td>
+                <td><p>the ID of the property, as properties() returns it</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$seed</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$timeLimit</td>
+                <td><p>the time limit of the example in seconds, which covers generating its arguments and running it</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$exportValues</td>
+                <td><p>whether the result has the exported arguments, drawn values, and steps of the example</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/PropertyBased/AfterLastTestMethodFailedException.html"><abbr title="PHPUnit\Runner\PropertyBased\AfterLastTestMethodFailedException">AfterLastTestMethodFailedException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Exception.html"><abbr title="PHPUnit\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/PropertyBased/InvalidArgumentException.html"><abbr title="PHPUnit\Runner\PropertyBased\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/PropertyBased/PropertyDoesNotExistException.html"><abbr title="PHPUnit\Runner\PropertyBased\PropertyDoesNotExistException">PropertyDoesNotExistException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_finish">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/PropertyBased/PropertyRunner.php#L648">at line 648</a></div>
+        <code>                    void
+    <strong>finish</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Calls the hook methods of the test class that was prepared last that
+are called after its last test, as they are called before an example of
+a property of another test class is run, rather than only when the
+process ends. When an example of one of its properties is run
+afterwards, the test class is prepared again.</p></p>                <p><p>Nothing is done when no test class is prepared: before the first
+example, and when the test class that was prepared last is already
+finished. As before an example of a property of another test class is
+run, the hook methods are not called when the ones that are called
+before the first test of the test class did not succeed, and not in a
+process that is forked from the one that prepared the test class.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/PropertyBased/AfterLastTestMethodFailedException.html"><abbr title="PHPUnit\Runner\PropertyBased\AfterLastTestMethodFailedException">AfterLastTestMethodFailedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built for the <a href="https://phpunit.de/documentation.html" rel="noreferrer noopener" target="_blank">PHPUnit</a> project.</div></div>
+    </div>
+    </body>
+
+</html>

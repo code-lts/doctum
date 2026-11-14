@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>PHPUnit\Framework\PropertyBased\StateMachine\StateMachineRunner | PHPUnit</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:PHPUnit_Framework_PropertyBased_StateMachine_StateMachineRunner" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">PHPUnit</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../../PHPUnit/Framework.html">Framework</a></li><li class="backslash">\</li><li><a href="../../../../PHPUnit/Framework/PropertyBased.html">PropertyBased</a></li><li class="backslash">\</li><li><a href="../../../../PHPUnit/Framework/PropertyBased/StateMachine.html">StateMachine</a></li><li class="backslash">\</li><li>StateMachineRunner</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>StateMachineRunner    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>StateMachineRunner</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/StateMachine/StateMachineRunner.php">View source</a>)
+</p>
+
+        
+        
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;This class is not covered by the backward compatibility promise for PHPUnit</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+            <div class="description">
+            <p><p>Runs a state machine with the choices of an example of a property, so that
+its steps are generated, replayed, and shrunk together with the arguments of
+the property.</p></p>            <p><p>The initializations are taken first, in the order in which they are
+declared, those of a parent class before those of the class that extends
+it. Then each step is drawn like an element of a list: a choice whether
+another step is taken (0 = stop), the index of its rule in the same order
+of the rules, and the arguments of the rule, all in one span.</p>
+<p>A value from a pool is drawn as its position among the values of the pool
+that were not consumed, counted from the value that was produced last, in
+a span of the kind Reference, or ConsumingReference when the value is
+consumed. A step that produces a value for a pool ends with a choice that is
+always 0, in a span of the kind Referable. Both spans are labelled with the
+pool, and both are drawn by Pool of sebastian/choice-sequence. They tell
+the shrinker which value a position refers to: when it deletes a step that
+produced a value for the pool, or that consumed one, it changes the
+positions that the steps after it draw, so that they take the values that
+they took before.</p>
+<p>While choices are drawn at random, only rules whose preconditions hold and
+whose pools have values are drawn, and each example enables a random subset
+of the rules (swarm testing), without drawing choices for this. When a
+choice sequence is replayed, a rule that cannot be applied is skipped and
+does not count as a step. The choices for its arguments are drawn
+nevertheless, so that the choices after them are read as the steps that
+they were drawn for: when the step that produced the only value of a pool
+is deleted, the steps that took the value are skipped, and the steps after
+them are taken as before. No more steps are taken when no rule can be
+applied.</p>
+<p>The invariants are checked after the initializations and after every step,
+except for those with #[StateMachineInvariant(atEnd: true)], which are
+checked after the initializations and after the last step.</p>
+<p>With an exporter, the steps are recorded as PHP code that calls the methods
+of the state machine, for the report of the minimal counterexample: a value
+that a step produced is assigned to a variable that is named after its pool,
+the value that another step returned is written as a comment unless it is
+null, with ?&gt; written as ?> as it would end the comment, and an invariant
+is written only when it failed.</p>
+<p>The state machine is referred to as $machine in this code. The report
+assigns the arguments of the property to variables that are named after
+its parameters before the steps, so when one of them is named machine, the
+state machine is referred to as $stateMachine, which is followed by a
+number when this name is the one of a parameter as well, and a value of a
+pool is not assigned to a variable with the name of a parameter either.</p></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                            private
+                                                                                PROBABILITY_OF_ENABLED_RULE
+                                    </td>
+                <td class="last">
+                    <p><em><p>The probability with which a rule is enabled for an example whose steps
+are drawn at random.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                LARGEST_PLANNED_NUMBER_OF_STEPS
+                                    </td>
+                <td class="last">
+                    <p><em><p>The largest number of steps that is planned for an example whose steps
+are drawn at random: a step draws at least two choices, whether it is
+taken and its rule, so no more steps can be taken before the maximum
+number of choices of an example has been drawn.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../../PHPUnit/Framework/PropertyBased/ChoiceSource.html"><abbr title="PHPUnit\Framework\PropertyBased\ChoiceSource">ChoiceSource</abbr></a> $source, <a href="../../../../PHPUnit/Framework/PropertyBased/CounterexampleExporter.html"><abbr title="PHPUnit\Framework\PropertyBased\CounterexampleExporter">CounterexampleExporter</abbr></a>|null $exporter, <a href="../../../../PHPUnit/Framework/PropertyBased/StateMachine/StateMachineDefinition.html"><abbr title="PHPUnit\Framework\PropertyBased\StateMachine\StateMachineDefinition">StateMachineDefinition</abbr></a> $definition, object $machine, array $namesOfParameters)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_run">run</a>(int $maximumNumberOfSteps)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_steps">steps</a>()
+        
+                                            <p><p>The steps that were taken, written as PHP code, in the order in which
+they were taken, with the invariant that failed, if one did. They are
+only recorded with an exporter.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_stepsExportedWith">stepsExportedWith</a>(<a href="../../../../PHPUnit/Framework/PropertyBased/CounterexampleExporter.html"><abbr title="PHPUnit\Framework\PropertyBased\CounterexampleExporter">CounterexampleExporter</abbr></a> $exporter)
+        
+                                            <p><p>The steps that were taken, as steps() returns them, followed by the step
+that is being taken or the invariant that is being checked, for the
+report of the example that was run when the PHP process ended. The
+steps that were taken without an exporter are written as PHP code with
+the given one: their arguments are exported in the state in which the
+steps left them, and the values that they returned are not written.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_numberOfSteps">numberOfSteps</a>()
+        
+                                            <p><p>The number of steps that were taken, not counting the initializations
+and the rules that were skipped.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_numberOfStepsByRule">numberOfStepsByRule</a>()
+        
+                                            <p><p>The number of steps that were taken with each rule, in the order in
+which the rules are declared.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/StateMachine/StateMachineRunner.php#L179">at line 179</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../../PHPUnit/Framework/PropertyBased/ChoiceSource.html"><abbr title="PHPUnit\Framework\PropertyBased\ChoiceSource">ChoiceSource</abbr></a> $source, <a href="../../../../PHPUnit/Framework/PropertyBased/CounterexampleExporter.html"><abbr title="PHPUnit\Framework\PropertyBased\CounterexampleExporter">CounterexampleExporter</abbr></a>|null $exporter, <a href="../../../../PHPUnit/Framework/PropertyBased/StateMachine/StateMachineDefinition.html"><abbr title="PHPUnit\Framework\PropertyBased\StateMachine\StateMachineDefinition">StateMachineDefinition</abbr></a> $definition, object $machine, array $namesOfParameters)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../PHPUnit/Framework/PropertyBased/ChoiceSource.html"><abbr title="PHPUnit\Framework\PropertyBased\ChoiceSource">ChoiceSource</abbr></a></td>
+                <td>$source</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../PHPUnit/Framework/PropertyBased/CounterexampleExporter.html"><abbr title="PHPUnit\Framework\PropertyBased\CounterexampleExporter">CounterexampleExporter</abbr></a>|null</td>
+                <td>$exporter</td>
+                <td><p>the exporter for the steps that are reported, null when they are not reported</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../PHPUnit/Framework/PropertyBased/StateMachine/StateMachineDefinition.html"><abbr title="PHPUnit\Framework\PropertyBased\StateMachine\StateMachineDefinition">StateMachineDefinition</abbr></a></td>
+                <td>$definition</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>object</td>
+                <td>$machine</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$namesOfParameters</td>
+                <td><p>the names of the parameters of the property, to which its arguments are assigned in the report</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_run">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/StateMachine/StateMachineRunner.php#L200">at line 200</a></div>
+        <code>                    void
+    <strong>run</strong>(int $maximumNumberOfSteps)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$maximumNumberOfSteps</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../PHPUnit/Framework/PropertyBased/ExampleRejectedException.html"><abbr title="PHPUnit\Framework\PropertyBased\ExampleRejectedException">ExampleRejectedException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../PHPUnit/Framework/PropertyBased/InvalidStateMachineException.html"><abbr title="PHPUnit\Framework\PropertyBased\InvalidStateMachineException">InvalidStateMachineException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_steps">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/StateMachine/StateMachineRunner.php#L228">at line 228</a></div>
+        <code>                    array
+    <strong>steps</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The steps that were taken, written as PHP code, in the order in which
+they were taken, with the invariant that failed, if one did. They are
+only recorded with an exporter.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stepsExportedWith">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/StateMachine/StateMachineRunner.php#L243">at line 243</a></div>
+        <code>                    array
+    <strong>stepsExportedWith</strong>(<a href="../../../../PHPUnit/Framework/PropertyBased/CounterexampleExporter.html"><abbr title="PHPUnit\Framework\PropertyBased\CounterexampleExporter">CounterexampleExporter</abbr></a> $exporter)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The steps that were taken, as steps() returns them, followed by the step
+that is being taken or the invariant that is being checked, for the
+report of the example that was run when the PHP process ended. The
+steps that were taken without an exporter are written as PHP code with
+the given one: their arguments are exported in the state in which the
+steps left them, and the values that they returned are not written.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../PHPUnit/Framework/PropertyBased/CounterexampleExporter.html"><abbr title="PHPUnit\Framework\PropertyBased\CounterexampleExporter">CounterexampleExporter</abbr></a></td>
+                <td>$exporter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_numberOfSteps">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/StateMachine/StateMachineRunner.php#L280">at line 280</a></div>
+        <code>                    int
+    <strong>numberOfSteps</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The number of steps that were taken, not counting the initializations
+and the rules that were skipped.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_numberOfStepsByRule">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PropertyBased/StateMachine/StateMachineRunner.php#L291">at line 291</a></div>
+        <code>                    array
+    <strong>numberOfStepsByRule</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The number of steps that were taken with each rule, in the order in
+which the rules are declared.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built for the <a href="https://phpunit.de/documentation.html" rel="noreferrer noopener" target="_blank">PHPUnit</a> project.</div></div>
+    </div>
+    </body>
+
+</html>
