@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>PHPUnit\Runner\Parallel\PersistentWorker | PHPUnit</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:PHPUnit_Runner_Parallel_PersistentWorker" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">PHPUnit</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner.html">Runner</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner/Parallel.html">Parallel</a></li><li class="backslash">\</li><li>PersistentWorker</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>PersistentWorker    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>PersistentWorker</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PersistentWorker.php">View source</a>)
+</p>
+
+        
+        
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;This class is not covered by the backward compatibility promise for PHPUnit</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+            <div class="description">
+            <p><p>A worker process that boots PHPUnit once and then executes an arbitrary
+number of tests, each in response to a command received on its control
+channel (its standard input). A unit of work is a whole test class; the
+worker reconstructs it from the dispatched command, runs it, and reports the
+result back through the filesystem (see dispatch() and poll()).</p></p>            <p><p>Unlike the SeparateProcessTestRunner, which spawns one process per test for
+isolation, a PersistentWorker amortizes the cost of bootstrapping PHPUnit
+across all of the units it runs. The tests executed by a single worker share
+one process and therefore do not get the per-test global-state isolation that
+process isolation provides; this is the trade-off that makes the worker
+suitable as a building block for parallel test execution.</p>
+<p>The result of each unit is transported back to the parent process as the same
+kind of serialized envelope that process isolation uses, which the
+ResultAggregator decodes and replays into the parent's event subsystem.</p>
+<p>The configured extensions that implement ChildProcessExtension are
+bootstrapped in the worker when it boots, once for its lifetime, and the
+subscribers they register receive the events of every unit the worker runs,
+live, inside the worker process (see WorkerExtensionBootstrapper). Every
+other extension is known to the main process only, where its subscribers
+receive the replayed events.</p>
+<p>While a unit is still running, the worker additionally streams the events of
+every test that has finished so far: it appends them, as length-prefixed
+frames, to a stream file that the parent reads incrementally on each poll.
+This is what lets the parent report progress per finished test instead of
+per finished unit. Events shipped in a frame are drained from the worker's
+event collection, so the end-of-unit envelope carries only the events that
+were emitted after the last test finished.</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../PHPUnit/Util/PHP/JobRunner.html"><abbr title="PHPUnit\Util\PHP\JobRunner">JobRunner</abbr></a> $jobRunner, int $id = 0, bool $requiresXdebug = false)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_start">start</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_restart">restart</a>()
+        
+                                            <p><p>Boot a fresh worker process in place of one that has died. The new
+process keeps the worker's ordinal identity (PHPUNIT_WORKER_ID), so
+that resources partitioned per worker stay partitioned, but receives a
+new PHPUNIT_WORKER_TOKEN, so that it cannot collide with resources that
+the dead process left behind.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_dispatch">dispatch</a>(<a href="../../../PHPUnit/Runner/Parallel/WorkUnit.html"><abbr title="PHPUnit\Runner\Parallel\WorkUnit">WorkUnit</abbr></a> $unit)
+        
+                                            <p><p>Send a unit of work to the worker without waiting for it to finish.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isBusy">isBusy</a>()
+        
+                                            <p><p>Whether the worker is currently executing a dispatched unit.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../PHPUnit/Runner/Parallel/WorkUnit.html"><abbr title="PHPUnit\Runner\Parallel\WorkUnit">WorkUnit</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_currentUnit">currentUnit</a>()
+        
+                                            <p><p>The unit the worker is currently executing; null when it is idle. The
+pool derives from this which of the units in flight is the one the
+ordered output is waiting for (see WorkerPool).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isAlive">isAlive</a>()
+        
+                                            <p><p>Whether the worker process is still usable. A worker that died while
+running a unit is no longer usable and must not be dispatched to again.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../PHPUnit/Runner/Parallel/CompletedWorkUnit.html"><abbr title="PHPUnit\Runner\Parallel\CompletedWorkUnit">CompletedWorkUnit</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_poll">poll</a>(callable $onStreamedEvents)
+        
+                                            <p><p>Check, without blocking, whether the dispatched unit has finished and, if
+so, harvest its result; if the worker has died without finishing it,
+report the unit as crashed instead.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_requestHalt">requestHalt</a>()
+        
+                                            <p><p>Ask the worker process to halt the unit it is executing, because the
+results collected so far call for the test runner to stop
+(--stop-on-*): the worker process lets the test that is running finish,
+starts no further test, and runs the methods that run after the last
+test of the class, as the sequential test runner does when it stops
+(see worker.tpl). The request is made through a file, as the commands
+are, and the worker process then reports completion as usual.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_kill">kill</a>()
+        
+                                            <p><p>Terminate the worker process immediately, abandoning the unit it is
+executing: the unit's result is neither awaited nor harvested. Used
+when the deadline of a time limit for the test run has passed, also
+while the test runner waits for a unit that it asked to halt.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../PHPUnit/Runner/Parallel/WorkUnit.html"><abbr title="PHPUnit\Runner\Parallel\WorkUnit">WorkUnit</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_abort">abort</a>(callable $onStreamedEvents)
+        
+                                            <p><p>Terminate the worker process while it is executing a unit that has to be
+abandoned because the time limit for the test run has been exceeded,
+and return that unit. The events that the worker has streamed since the
+previous poll are handed to the given callback first, so that the tests
+that finished before the worker was terminated are reported.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_stop">stop</a>()
+        
+                                            <p><p>Stop the worker process gracefully: the worker shuts down the
+extensions that were bootstrapped in it and exits. The warnings that a
+failed bootstrap or a failed shutdown of an extension produced are
+reported through a result file, whose content is trusted only when it
+carries the nonce of the stop command, and are returned: every worker
+process bootstraps the same extensions, so the caller reports each
+warning once rather than once per worker process (see WorkerPool).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PersistentWorker.php#L205">at line 205</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../PHPUnit/Util/PHP/JobRunner.html"><abbr title="PHPUnit\Util\PHP\JobRunner">JobRunner</abbr></a> $jobRunner, int $id = 0, bool $requiresXdebug = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Util/PHP/JobRunner.html"><abbr title="PHPUnit\Util\PHP\JobRunner">JobRunner</abbr></a></td>
+                <td>$jobRunner</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$id</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$requiresXdebug</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_start">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PersistentWorker.php#L216">at line 216</a></div>
+        <code>                    void
+    <strong>start</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/Parallel/WorkerException.html"><abbr title="PHPUnit\Runner\Parallel\WorkerException">WorkerException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_restart">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PersistentWorker.php#L283">at line 283</a></div>
+        <code>                    void
+    <strong>restart</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Boot a fresh worker process in place of one that has died. The new
+process keeps the worker's ordinal identity (PHPUNIT_WORKER_ID), so
+that resources partitioned per worker stay partitioned, but receives a
+new PHPUNIT_WORKER_TOKEN, so that it cannot collide with resources that
+the dead process left behind.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/Parallel/WorkerException.html"><abbr title="PHPUnit\Runner\Parallel\WorkerException">WorkerException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dispatch">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PersistentWorker.php#L302">at line 302</a></div>
+        <code>                    void
+    <strong>dispatch</strong>(<a href="../../../PHPUnit/Runner/Parallel/WorkUnit.html"><abbr title="PHPUnit\Runner\Parallel\WorkUnit">WorkUnit</abbr></a> $unit)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Send a unit of work to the worker without waiting for it to finish.</p></p>                <p><p>The command is written to the worker's standard input and dispatch()
+returns immediately; the caller is expected to poll this worker with
+poll() until it reports completion, so that a single thread of control can
+keep several workers busy at the same time.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/Parallel/WorkUnit.html"><abbr title="PHPUnit\Runner\Parallel\WorkUnit">WorkUnit</abbr></a></td>
+                <td>$unit</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/Parallel/WorkerException.html"><abbr title="PHPUnit\Runner\Parallel\WorkerException">WorkerException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isBusy">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PersistentWorker.php#L350">at line 350</a></div>
+        <code>                    bool
+    <strong>isBusy</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether the worker is currently executing a dispatched unit.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_currentUnit">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PersistentWorker.php#L360">at line 360</a></div>
+        <code>                    <a href="../../../PHPUnit/Runner/Parallel/WorkUnit.html"><abbr title="PHPUnit\Runner\Parallel\WorkUnit">WorkUnit</abbr></a>|null
+    <strong>currentUnit</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The unit the worker is currently executing; null when it is idle. The
+pool derives from this which of the units in flight is the one the
+ordered output is waiting for (see WorkerPool).</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../PHPUnit/Runner/Parallel/WorkUnit.html"><abbr title="PHPUnit\Runner\Parallel\WorkUnit">WorkUnit</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isAlive">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PersistentWorker.php#L369">at line 369</a></div>
+        <code>                    bool
+    <strong>isAlive</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether the worker process is still usable. A worker that died while
+running a unit is no longer usable and must not be dispatched to again.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_poll">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PersistentWorker.php#L395">at line 395</a></div>
+        <code>                    <a href="../../../PHPUnit/Runner/Parallel/CompletedWorkUnit.html"><abbr title="PHPUnit\Runner\Parallel\CompletedWorkUnit">CompletedWorkUnit</abbr></a>|null
+    <strong>poll</strong>(callable $onStreamedEvents)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Check, without blocking, whether the dispatched unit has finished and, if
+so, harvest its result; if the worker has died without finishing it,
+report the unit as crashed instead.</p></p>                <p><p>Either way, the events that the worker has streamed since the previous
+poll are drained first and handed, one frame at a time, to the given
+callback, so that the caller can report progress while the unit is still
+running. With the events of a frame, the callback is handed what the
+worker process wrote to its standard output, and what it wrote to its
+standard error, before it wrote the frame and after it wrote the
+previous one: what a test prints while its output is not buffered, and
+what the methods that are called before the first test of a test class
+print, for instance.</p>
+<p>Returns null while the unit is still running. The caller is expected to
+call this repeatedly, sleeping briefly between rounds, until it returns a
+completed unit.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$onStreamedEvents</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../PHPUnit/Runner/Parallel/CompletedWorkUnit.html"><abbr title="PHPUnit\Runner\Parallel\CompletedWorkUnit">CompletedWorkUnit</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_requestHalt">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PersistentWorker.php#L442">at line 442</a></div>
+        <code>                    void
+    <strong>requestHalt</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Ask the worker process to halt the unit it is executing, because the
+results collected so far call for the test runner to stop
+(--stop-on-*): the worker process lets the test that is running finish,
+starts no further test, and runs the methods that run after the last
+test of the class, as the sequential test runner does when it stops
+(see worker.tpl). The request is made through a file, as the commands
+are, and the worker process then reports completion as usual.</p></p>                <p><p>Should the file not be writable, the worker process is terminated
+instead, so that the run stops nonetheless.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_kill">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PersistentWorker.php#L457">at line 457</a></div>
+        <code>                    void
+    <strong>kill</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Terminate the worker process immediately, abandoning the unit it is
+executing: the unit's result is neither awaited nor harvested. Used
+when the deadline of a time limit for the test run has passed, also
+while the test runner waits for a unit that it asked to halt.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_abort">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PersistentWorker.php#L481">at line 481</a></div>
+        <code>                    <a href="../../../PHPUnit/Runner/Parallel/WorkUnit.html"><abbr title="PHPUnit\Runner\Parallel\WorkUnit">WorkUnit</abbr></a>
+    <strong>abort</strong>(callable $onStreamedEvents)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Terminate the worker process while it is executing a unit that has to be
+abandoned because the time limit for the test run has been exceeded,
+and return that unit. The events that the worker has streamed since the
+previous poll are handed to the given callback first, so that the tests
+that finished before the worker was terminated are reported.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$onStreamedEvents</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../PHPUnit/Runner/Parallel/WorkUnit.html"><abbr title="PHPUnit\Runner\Parallel\WorkUnit">WorkUnit</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stop">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PersistentWorker.php#L507">at line 507</a></div>
+        <code>                    array
+    <strong>stop</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Stop the worker process gracefully: the worker shuts down the
+extensions that were bootstrapped in it and exits. The warnings that a
+failed bootstrap or a failed shutdown of an extension produced are
+reported through a result file, whose content is trusted only when it
+carries the nonce of the stop command, and are returned: every worker
+process bootstraps the same extensions, so the caller reports each
+warning once rather than once per worker process (see WorkerPool).</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built for the <a href="https://phpunit.de/documentation.html" rel="noreferrer noopener" target="_blank">PHPUnit</a> project.</div></div>
+    </div>
+    </body>
+
+</html>

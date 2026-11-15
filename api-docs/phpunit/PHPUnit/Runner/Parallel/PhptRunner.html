@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>PHPUnit\Runner\Parallel\PhptRunner | PHPUnit</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:PHPUnit_Runner_Parallel_PhptRunner" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">PHPUnit</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner.html">Runner</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner/Parallel.html">Parallel</a></li><li class="backslash">\</li><li>PhptRunner</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>PhptRunner    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>PhptRunner</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PhptRunner.php">View source</a>)
+</p>
+
+        
+        
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;This class is not covered by the backward compatibility promise for PHPUnit</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+            <div class="description">
+            <p><p>Runs PHPT tests concurrently, each as its own child process, in the main
+PHPUnit process.</p></p>            <p><p>A PHPT test already runs its --SKIPIF--, --FILE--, and --CLEAN-- sections in
+child processes; routing it through a PersistentWorker would only wrap those
+children in a further process, and a child process spawned from within a
+worker hangs on Windows because it inherits the worker's control-channel
+handles. This runner therefore drives the PHPT tests directly: it advances up
+to a fixed number of them at a time, each represented by the generator that
+PhptTestCase::execute() returns, and starts the next section's child process
+for a test as soon as the previous one has finished.</p>
+<p>Because the events of a PHPT test must reach the parent's output and result
+subsystem in suite order — not in the order in which the concurrently running
+tests happen to finish — each test writes its events into its own collecting
+emitter. The collected events are handed to the caller, which replays them at
+the test's suite index through the same ResultAggregator that orders the
+worker units.</p>
+<p>The output of every child is captured in files rather than pipes: the
+--FILE-- section's child redirects its standard error onto its standard
+output, and the children of the other sections write each to a file of its
+own (see JobRunner::capturingOutputInFiles()). There is therefore no stream
+to wait on with stream_select(), so the runner polls each child's liveness
+instead, and reads its output once it has ended. A child never blocks on a
+full pipe buffer, and the runner never has to read from a pipe while the
+child is running, which blocks until the child has ended on Windows and
+would stall every other test, and the worker pool, for that long.</p>
+<p>A test may declare conflict keys with a --CONFLICTS-- section: while a test
+that conflicts with key K is running, no other test that conflicts with K is
+started. The reserved key &quot;all&quot; conflicts with every other test, so a test
+that declares it runs entirely on its own — not alongside another PHPT test,
+and not alongside a unit executing in the worker pool either. Such tests are
+ordered last and run once the others have drained, mirroring how
+run-tests.php defers them until a single worker remains.</p></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                            private
+                                                                                POLL_INTERVAL_MICROSECONDS
+                                    </td>
+                <td class="last">
+                    <p><em><p>How long run() sleeps, in microseconds, when a polling round finds that
+no child has finished, so that waiting does not spin the CPU.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                SUITE_ORDER_SLOTS
+                                    </td>
+                <td class="last">
+                    <p><em><p>How many of the runner's start slots are reserved for the suite order
+(see DispatchQueue), at most.</p></em></p>
+                    <p><p>More than the worker pool reserves, because a PHPT unit streams nothing
+while it runs: it reports its events only once it has finished, so the
+release sequence advances by one such unit per unit duration while the
+cost-ordered slots finish units several times as fast. Each reserved slot
+multiplies the rate at which the release sequence can advance; three is
+the compromise between that and the straggler protection the cost order
+provides on the remaining slots.</p>
+<p>The effective number is derived from this, so that one of the slots the
+runner can use always keeps working the cost order (see
+suiteOrderSlots()).</p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../PHPUnit/Util/PHP/JobRunner.html"><abbr title="PHPUnit\Util\PHP\JobRunner">JobRunner</abbr></a> $jobRunner, int $concurrency, <a href="../../../PHPUnit/Runner/Parallel/ProcessBudget.html"><abbr title="PHPUnit\Runner\Parallel\ProcessBudget">ProcessBudget</abbr></a> $budget, callable|null $nothingElseIsExecuting = null)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_run">run</a>(array $units, callable $onCompleted)
+        
+                                            <p><p>Run the given PHPT units to completion, invoking the callback once for
+each unit as it finishes (in completion order, not suite order) with its
+suite index and the events it collected.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_begin">begin</a>(array $units, callable $onCompleted)
+        
+                                            <p><p>Accept the units to run without running them yet: the caller is expected
+to drive the runner with tick() until isFinished() reports completion.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_tick">tick</a>(bool $mayStart = true)
+        
+                                            <p><p>Advance the runner by one polling round: start every queued unit that a
+free slot and its conflict keys allow, and harvest the children that have
+finished. Returns whether the round made progress; a caller driving the
+runner in a loop is expected to sleep briefly when it did not, so that
+polling does not spin the CPU.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isFinished">isFinished</a>()
+        
+                                            <p><p>Whether every unit accepted by begin() has finished.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasRunningTests">hasRunningTests</a>()
+        
+                                            <p><p>Whether any test is currently running.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isRunningExclusiveTest">isRunningExclusiveTest</a>()
+        
+                                            <p><p>Whether the test that is currently running conflicts with &quot;all&quot; and
+must therefore run entirely on its own. While this reports true, the
+caller must not start any other work — the worker pool must not
+dispatch units — or the promised exclusivity would be broken.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_halt">halt</a>()
+        
+                                            <p><p>Abandon the run, because the results collected so far call for the test
+runner to stop (--stop-on-*): the tests that have not been started yet
+are dropped, and the running tests are asked to halt. A halted test
+finishes the section that is running and then runs only what must
+still run — the --CLEAN-- section, when the --FILE-- section has run —
+and skips everything else, the remaining repetitions or attempts of a
+repeated or retried test included (see Interruption), so that the test
+does not leave its fixtures behind.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_kill">kill</a>()
+        
+                                            <p><p>Abandon the run without waiting for the sections that are running: the
+tests that have not been started yet are dropped, and the child
+processes of the running tests are terminated. Used when the deadline
+of a time limit for the test run passes while the test runner waits for
+the tests that it asked to halt.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PhptRunner.php#L165">at line 165</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../PHPUnit/Util/PHP/JobRunner.html"><abbr title="PHPUnit\Util\PHP\JobRunner">JobRunner</abbr></a> $jobRunner, int $concurrency, <a href="../../../PHPUnit/Runner/Parallel/ProcessBudget.html"><abbr title="PHPUnit\Runner\Parallel\ProcessBudget">ProcessBudget</abbr></a> $budget, callable|null $nothingElseIsExecuting = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Util/PHP/JobRunner.html"><abbr title="PHPUnit\Util\PHP\JobRunner">JobRunner</abbr></a></td>
+                <td>$jobRunner</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$concurrency</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/Parallel/ProcessBudget.html"><abbr title="PHPUnit\Runner\Parallel\ProcessBudget">ProcessBudget</abbr></a></td>
+                <td>$budget</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable|null</td>
+                <td>$nothingElseIsExecuting</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_run">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PhptRunner.php#L183">at line 183</a></div>
+        <code>                    void
+    <strong>run</strong>(array $units, callable $onCompleted)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Run the given PHPT units to completion, invoking the callback once for
+each unit as it finishes (in completion order, not suite order) with its
+suite index and the events it collected.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$units</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$onCompleted</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_begin">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PhptRunner.php#L203">at line 203</a></div>
+        <code>                    void
+    <strong>begin</strong>(array $units, callable $onCompleted)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Accept the units to run without running them yet: the caller is expected
+to drive the runner with tick() until isFinished() reports completion.</p></p>                <p><p>This is what lets the parallel test runner advance the PHPT tests and the
+worker pool side by side in one polling loop.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$units</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$onCompleted</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_tick">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PhptRunner.php#L241">at line 241</a></div>
+        <code>                    bool
+    <strong>tick</strong>(bool $mayStart = true)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Advance the runner by one polling round: start every queued unit that a
+free slot and its conflict keys allow, and harvest the children that have
+finished. Returns whether the round made progress; a caller driving the
+runner in a loop is expected to sleep briefly when it did not, so that
+polling does not spin the CPU.</p></p>                <p><p>When the caller passes false for $mayStart, no queued unit is started in
+this round: the tests that are already running are still advanced and
+harvested, so the runner drains. This is how the caller makes room for
+a unit that must run alone (see ParallelTestRunner).</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$mayStart</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isFinished">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PhptRunner.php#L263">at line 263</a></div>
+        <code>                    bool
+    <strong>isFinished</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether every unit accepted by begin() has finished.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasRunningTests">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PhptRunner.php#L271">at line 271</a></div>
+        <code>                    bool
+    <strong>hasRunningTests</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether any test is currently running.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isRunningExclusiveTest">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PhptRunner.php#L282">at line 282</a></div>
+        <code>                    bool
+    <strong>isRunningExclusiveTest</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether the test that is currently running conflicts with &quot;all&quot; and
+must therefore run entirely on its own. While this reports true, the
+caller must not start any other work — the worker pool must not
+dispatch units — or the promised exclusivity would be broken.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_halt">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PhptRunner.php#L301">at line 301</a></div>
+        <code>                    void
+    <strong>halt</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Abandon the run, because the results collected so far call for the test
+runner to stop (--stop-on-*): the tests that have not been started yet
+are dropped, and the running tests are asked to halt. A halted test
+finishes the section that is running and then runs only what must
+still run — the --CLEAN-- section, when the --FILE-- section has run —
+and skips everything else, the remaining repetitions or attempts of a
+repeated or retried test included (see Interruption), so that the test
+does not leave its fixtures behind.</p></p>                <p><p>The caller is expected to keep driving the runner with tick() until no
+test is running anymore. The results of the halted tests are discarded:
+they are for tests that a sequential run would not have run.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_kill">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/PhptRunner.php#L325">at line 325</a></div>
+        <code>                    void
+    <strong>kill</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Abandon the run without waiting for the sections that are running: the
+tests that have not been started yet are dropped, and the child
+processes of the running tests are terminated. Used when the deadline
+of a time limit for the test run passes while the test runner waits for
+the tests that it asked to halt.</p></p>                <p><p>A terminated test's cleanup still happens, unless it was its --CLEAN--
+section that was terminated: the test is marked as interrupted and its
+generator is driven to completion, which runs the --CLEAN-- section
+when the --FILE-- section has already run and skips everything else.
+The events the test emits while being driven go into its collector,
+which is discarded.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built for the <a href="https://phpunit.de/documentation.html" rel="noreferrer noopener" target="_blank">PHPUnit</a> project.</div></div>
+    </div>
+    </body>
+
+</html>

@@ -146,6 +146,34 @@
                     void
                 </div>
                 <div class="col-md-8">
+                    <a href="#method_reset">reset</a>()
+        
+                                            <p><p>Forget every recorded pass. Used by the parallel worker between two
+units of work, so that the result envelope of a unit carries only the
+passes that were recorded while running that unit.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../PHPUnit/TestRunner/TestResult/PassedTests.html"><abbr title="PHPUnit\TestRunner\TestResult\PassedTests">PassedTests</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_withoutReturnValues">withoutReturnValues</a>()
+        
+                                            <p><p>A copy of the recorded passes without the values that the passed tests
+returned. A parallel worker ships its passes to the main process this
+way: a value that a test returned may not survive the trip, because it
+cannot be serialized (a closure, for instance) or cannot be unserialized
+in the main process (an object that holds a test double, for instance),
+and the main process does not need it, because a test that depends on a
+test of another class runs in the main process together with that test.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
                     <a href="#method_import">import</a>(<a href="../../../PHPUnit/TestRunner/TestResult/PassedTests.html"><abbr title="PHPUnit\TestRunner\TestResult\PassedTests">PassedTests</abbr></a> $other)
         
                                             <p><p>The passes are added to the ones recorded so far rather than merged
@@ -344,8 +372,82 @@ quadratic.</p></p>                </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_reset">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestResult/PassedTests.php#L78">at line 78</a></div>
+        <code>                    void
+    <strong>reset</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Forget every recorded pass. Used by the parallel worker between two
+units of work, so that the result envelope of a unit carries only the
+passes that were recorded while running that unit.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_withoutReturnValues">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestResult/PassedTests.php#L93">at line 93</a></div>
+        <code>                    <a href="../../../PHPUnit/TestRunner/TestResult/PassedTests.html"><abbr title="PHPUnit\TestRunner\TestResult\PassedTests">PassedTests</abbr></a>
+    <strong>withoutReturnValues</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>A copy of the recorded passes without the values that the passed tests
+returned. A parallel worker ships its passes to the main process this
+way: a value that a test returned may not survive the trip, because it
+cannot be serialized (a closure, for instance) or cannot be unserialized
+in the main process (an object that holds a test double, for instance),
+and the main process does not need it, because a test that depends on a
+test of another class runs in the main process together with that test.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../PHPUnit/TestRunner/TestResult/PassedTests.html"><abbr title="PHPUnit\TestRunner\TestResult\PassedTests">PassedTests</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_import">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestResult/PassedTests.php#L80">at line 80</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestResult/PassedTests.php#L116">at line 116</a></div>
         <code>                    void
     <strong>import</strong>(<a href="../../../PHPUnit/TestRunner/TestResult/PassedTests.html"><abbr title="PHPUnit\TestRunner\TestResult\PassedTests">PassedTests</abbr></a> $other)
         </code>
@@ -392,7 +494,7 @@ quadratic.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasTestClassPassed">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestResult/PassedTests.php#L94">at line 94</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestResult/PassedTests.php#L130">at line 130</a></div>
         <code>                    bool
     <strong>hasTestClassPassed</strong>(string $className)
         </code>
@@ -436,7 +538,7 @@ quadratic.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasTestMethodPassed">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestResult/PassedTests.php#L99">at line 99</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestResult/PassedTests.php#L135">at line 135</a></div>
         <code>                    bool
     <strong>hasTestMethodPassed</strong>(string $method)
         </code>
@@ -480,7 +582,7 @@ quadratic.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isGreaterThan">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestResult/PassedTests.php#L104">at line 104</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestResult/PassedTests.php#L140">at line 140</a></div>
         <code>                    bool
     <strong>isGreaterThan</strong>(string $method, <a href="../../../PHPUnit/Framework/TestSize/TestSize.html"><abbr title="PHPUnit\Framework\TestSize\TestSize">TestSize</abbr></a> $other)
         </code>
@@ -529,7 +631,7 @@ quadratic.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasReturnValue">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestResult/PassedTests.php#L127">at line 127</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestResult/PassedTests.php#L163">at line 163</a></div>
         <code>                    bool
     <strong>hasReturnValue</strong>(string $method)
         </code>
@@ -573,7 +675,7 @@ quadratic.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_returnValue">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestResult/PassedTests.php#L134">at line 134</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestResult/PassedTests.php#L170">at line 170</a></div>
         <code>                    mixed
     <strong>returnValue</strong>(string $method)
         </code>

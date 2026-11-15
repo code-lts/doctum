@@ -113,10 +113,34 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="../../../PHPUnit/Framework/TestRunner/ChildProcessResultProcessor.html"><abbr title="PHPUnit\Framework\TestRunner\ChildProcessResultProcessor">ChildProcessResultProcessor</abbr></a> $processor, <a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter)
+                    <a href="#method___construct">__construct</a>(<a href="../../../PHPUnit/Framework/TestRunner/ChildProcessResultProcessor.html"><abbr title="PHPUnit\Framework\TestRunner\ChildProcessResultProcessor">ChildProcessResultProcessor</abbr></a> $processor, <a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|null $whileWaiting = null, bool $captureOutputInFiles = false)
         
                                             <p class="no-description">No description</p>
                                     </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../PHPUnit/Util/PHP/JobRunner.html"><abbr title="PHPUnit\Util\PHP\JobRunner">JobRunner</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_invokingWhileWaiting">invokingWhileWaiting</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $whileWaiting)
+        
+                                            <p><p>A copy of this job runner whose run() invokes the given callback while
+it waits for the process of a job (see RunningJob::waitInvoking()).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../PHPUnit/Util/PHP/JobRunner.html"><abbr title="PHPUnit\Util\PHP\JobRunner">JobRunner</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_capturingOutputInFiles">capturingOutputInFiles</a>()
+        
+                                            <p><p>A copy of this job runner that captures the standard output and the
+standard error of a process that start() or startAsync() starts in temporary files
+instead of pipes, for a caller that polls many such processes in one
+loop (see PhptRunner).</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -152,6 +176,16 @@
 standard input remains open as a control channel.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../PHPUnit/Util/PHP/RunningJob.html"><abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_startAsync">startAsync</a>(<a href="../../../PHPUnit/Util/PHP/Job.html"><abbr title="PHPUnit\Util\PHP\Job">Job</abbr></a> $job)
+        
+                                            <p><p>Start the given job as an asynchronous one-shot process.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -160,9 +194,9 @@ standard input remains open as a control channel.</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/JobRunner.php#L56">at line 56</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/JobRunner.php#L71">at line 71</a></div>
         <code>                    
-    <strong>__construct</strong>(<a href="../../../PHPUnit/Framework/TestRunner/ChildProcessResultProcessor.html"><abbr title="PHPUnit\Framework\TestRunner\ChildProcessResultProcessor">ChildProcessResultProcessor</abbr></a> $processor, <a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter)
+    <strong>__construct</strong>(<a href="../../../PHPUnit/Framework/TestRunner/ChildProcessResultProcessor.html"><abbr title="PHPUnit\Framework\TestRunner\ChildProcessResultProcessor">ChildProcessResultProcessor</abbr></a> $processor, <a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|null $whileWaiting = null, bool $captureOutputInFiles = false)
         </code>
     </h3>
     <div class="details">    
@@ -188,6 +222,16 @@ standard input remains open as a control channel.</p></p>                </div>
                 <td>$emitter</td>
                 <td></td>
             </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>|null</td>
+                <td>$whileWaiting</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$captureOutputInFiles</td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -199,8 +243,95 @@ standard input remains open as a control channel.</p></p>                </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_invokingWhileWaiting">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/JobRunner.php#L85">at line 85</a></div>
+        <code>                    <a href="../../../PHPUnit/Util/PHP/JobRunner.html"><abbr title="PHPUnit\Util\PHP\JobRunner">JobRunner</abbr></a>
+    <strong>invokingWhileWaiting</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $whileWaiting)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>A copy of this job runner whose run() invokes the given callback while
+it waits for the process of a job (see RunningJob::waitInvoking()).</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>$whileWaiting</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../PHPUnit/Util/PHP/JobRunner.html"><abbr title="PHPUnit\Util\PHP\JobRunner">JobRunner</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_capturingOutputInFiles">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/JobRunner.php#L106">at line 106</a></div>
+        <code>                    <a href="../../../PHPUnit/Util/PHP/JobRunner.html"><abbr title="PHPUnit\Util\PHP\JobRunner">JobRunner</abbr></a>
+    <strong>capturingOutputInFiles</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>A copy of this job runner that captures the standard output and the
+standard error of a process that start() or startAsync() starts in temporary files
+instead of pipes, for a caller that polls many such processes in one
+loop (see PhptRunner).</p></p>                <p><p>Reading what a process has written to a pipe so far, so that it does
+not block on a full pipe buffer, cannot be done without blocking on
+Windows: the read waits until the process has ended, and so does the
+caller's loop. A process that writes to a file neither blocks on a full
+buffer nor needs to be read from before it has ended.</p>
+<p>The output is read once the process has ended, so a process that leaves
+a process of its own running, which inherited its output, is not waited
+for, and what that process writes afterwards is not part of the output.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../PHPUnit/Util/PHP/JobRunner.html"><abbr title="PHPUnit\Util\PHP\JobRunner">JobRunner</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_runTestJob">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/JobRunner.php#L66">at line 66</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/JobRunner.php#L115">at line 115</a></div>
         <code>                    void
     <strong>runTestJob</strong>(<a href="../../../PHPUnit/Util/PHP/Job.html"><abbr title="PHPUnit\Util\PHP\Job">Job</abbr></a> $job, string $processResultFile, <a href="../../../PHPUnit/Framework/Test.html"><abbr title="PHPUnit\Framework\Test">Test</abbr></a> $test, string|null $processResultNonce = null)
         </code>
@@ -259,7 +390,7 @@ standard input remains open as a control channel.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_run">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/JobRunner.php#L93">at line 93</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/JobRunner.php#L142">at line 142</a></div>
         <code>                    <a href="../../../PHPUnit/Util/PHP/Result.html"><abbr title="PHPUnit\Util\PHP\Result">Result</abbr></a>
     <strong>run</strong>(<a href="../../../PHPUnit/Util/PHP/Job.html"><abbr title="PHPUnit\Util\PHP\Job">Job</abbr></a> $job)
         </code>
@@ -312,7 +443,7 @@ standard input remains open as a control channel.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_start">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/JobRunner.php#L142">at line 142</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/JobRunner.php#L164">at line 164</a></div>
         <code>                    <a href="../../../PHPUnit/Util/PHP/RunningJob.html"><abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr></a>
     <strong>start</strong>(<a href="../../../PHPUnit/Util/PHP/Job.html"><abbr title="PHPUnit\Util\PHP\Job">Job</abbr></a> $job)
         </code>
@@ -328,6 +459,72 @@ standard input remains open as a control channel.</p></p>                <p><p>T
 worker process; in contrast to run(), the code is not piped through
 standard input, leaving it available for the caller to send subsequent
 commands to the worker.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Util/PHP/Job.html"><abbr title="PHPUnit\Util\PHP\Job">Job</abbr></a></td>
+                <td>$job</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../PHPUnit/Util/PHP/RunningJob.html"><abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Util/PHP/PhpProcessException.html"><abbr title="PHPUnit\Util\PHP\PhpProcessException">PhpProcessException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_startAsync">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/JobRunner.php#L203">at line 203</a></div>
+        <code>                    <a href="../../../PHPUnit/Util/PHP/RunningJob.html"><abbr title="PHPUnit\Util\PHP\RunningJob">RunningJob</abbr></a>
+    <strong>startAsync</strong>(<a href="../../../PHPUnit/Util/PHP/Job.html"><abbr title="PHPUnit\Util\PHP\Job">Job</abbr></a> $job)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Start the given job as an asynchronous one-shot process.</p></p>                <p><p>The job's code is piped through the process' standard input — exactly as
+the synchronous run() does, of which this is the non-blocking half — and
+its input, if the job carries a --STDIN-- section, is run from a temporary
+file instead so that standard input remains free to deliver that section.
+Standard input is closed once written; the returned RunningJob can be
+polled for completion and reaped with wait().</p>
+<p>Feeding the code through standard input rather than from a temporary file
+(as start() does for the persistent worker, whose standard input is its
+control channel) keeps the child's <strong>FILE</strong> out of the filesystem, which
+matters to tests that, for instance, restrict open_basedir.</p>
+<p>Unlike start(), the process' standard input is not left open as a control
+channel; unlike run(), the caller is not made to block until the process
+has terminated. This lets a caller keep several such processes running at
+the same time — for instance the PHPT test runner, which runs the child
+processes of independent PHPT tests concurrently.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>

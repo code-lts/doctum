@@ -110,6 +110,55 @@ process with wait(). The synchronous JobRunner::run() is the degenerate case
 of starting one job and immediately waiting for it.</p></p>        </div>
             
         
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                            private
+                                                                                TERMINATION_GRACE_PERIOD_MICROSECONDS
+                                    </td>
+                <td class="last">
+                    <p><em><p>How long a terminated process is given to shut down on its own before
+its termination is forced, and the interval at which its liveness is
+polled while waiting.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                TERMINATION_POLL_INTERVAL_MICROSECONDS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                WAIT_POLL_INTERVAL_MICROSECONDS
+                                    </td>
+                <td class="last">
+                    <p><em><p>The interval at which the liveness of the process is polled while
+waitInvoking() waits for it.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                SIGKILL
+                                    </td>
+                <td class="last">
+                    <p><em><p>The signal used to force termination when the process has not shut down
+within the grace period. Unlike the default SIGTERM, SIGKILL cannot be
+caught or ignored by the process. On Windows, where proc_terminate()
+always terminates the process forcefully, the signal is ignored.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
     
     
             <h2>Methods</h2>
@@ -120,7 +169,7 @@ of starting one job and immediately waiting for it.</p></p>        </div>
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(mixed $process, array $pipes, mixed $mergedOutputStream, string|null $temporaryFile)
+                    <a href="#method___construct">__construct</a>(mixed $process, array $pipes, mixed $mergedOutputStream, string|null $temporaryFile, mixed $outputFile = null, mixed $errorFile = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -170,6 +219,71 @@ stream_select() to wait for the worker process to produce output.</p></p>       
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_outputLength">outputLength</a>()
+        
+                                            <p><p>The number of bytes the process has written so far to its standard
+output, for a job whose standard output is captured in a file, or to
+its standard output and its standard error, for a job whose output is
+redirected to one file. For a job whose output is read from pipes, it
+is 0. Once the process has been reaped, its output is available from
+wait() instead.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_errorOutputLength">errorOutputLength</a>()
+        
+                                            <p><p>The number of bytes the process has written to its standard error so
+far, for a job whose standard error is captured in a file of its own.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_outputBetween">outputBetween</a>(int $from, int $to)
+        
+                                            <p><p>What the process wrote between the two given offsets of what
+outputLength() measures. For a job whose output is read from pipes,
+and when the file cannot be read, it is the empty string.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_errorOutputBetween">errorOutputBetween</a>(int $from, int $to)
+        
+                                            <p><p>What the process wrote to its standard error between the two given
+offsets, for a job whose standard error is captured in a file of its
+own. For any other job, and when the file cannot be read, it is the
+empty string.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isRunning">isRunning</a>()
+        
+                                            <p><p>Whether the worker process is still executing. Once it has terminated,
+wait() can be called to reap it without blocking. Intended for callers
+that cannot wait on the process' output streams — for instance because
+its output is redirected to a file rather than a pipe — and therefore
+poll its liveness instead.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     void
                 </div>
                 <div class="col-md-8">
@@ -178,6 +292,18 @@ stream_select() to wait for the worker process to produce output.</p></p>       
                                             <p><p>Read whatever output is currently available without blocking. Intended
 to be called after stream_select() has reported one of the streams
 returned by readableStreams() as ready.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_terminate">terminate</a>()
+        
+                                            <p><p>Terminate the worker process instead of waiting for it to finish, then
+reap it. Used when the test runner stops early and abandons the work
+the process is doing.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -191,6 +317,21 @@ returned by readableStreams() as ready.</p></p>                </div>
 its accumulated output.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../PHPUnit/Util/PHP/Result.html"><abbr title="PHPUnit\Util\PHP\Result">Result</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_waitInvoking">waitInvoking</a>(callable $whileRunning)
+        
+                                            <p><p>Wait until the process has terminated, invoking the given callback each
+time its liveness is polled, then reap it and return its accumulated
+output as wait() does. This lets the caller carry on with other work
+while it waits for the process: the parallel test runner, for instance,
+advances its worker processes while a test that runs in a separate
+process waits for its child process.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -199,9 +340,9 @@ its accumulated output.</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L73">at line 73</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L121">at line 121</a></div>
         <code>                    
-    <strong>__construct</strong>(mixed $process, array $pipes, mixed $mergedOutputStream, string|null $temporaryFile)
+    <strong>__construct</strong>(mixed $process, array $pipes, mixed $mergedOutputStream, string|null $temporaryFile, mixed $outputFile = null, mixed $errorFile = null)
         </code>
     </h3>
     <div class="details">    
@@ -237,6 +378,16 @@ its accumulated output.</p></p>                </div>
                 <td>$temporaryFile</td>
                 <td></td>
             </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$outputFile</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$errorFile</td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -249,7 +400,7 @@ its accumulated output.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_write">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L95">at line 95</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L145">at line 145</a></div>
         <code>                    void
     <strong>write</strong>(string $bytes)
         </code>
@@ -292,7 +443,7 @@ its accumulated output.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_closeStdin">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L105">at line 105</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L155">at line 155</a></div>
         <code>                    void
     <strong>closeStdin</strong>()
         </code>
@@ -325,7 +476,7 @@ its accumulated output.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_stdout">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L117">at line 117</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L167">at line 167</a></div>
         <code>                    mixed
     <strong>stdout</strong>()
         </code>
@@ -359,7 +510,7 @@ its accumulated output.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_readableStreams">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L128">at line 128</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L178">at line 178</a></div>
         <code>                    array
     <strong>readableStreams</strong>()
         </code>
@@ -392,8 +543,218 @@ stream_select() to wait for the worker process to produce output.</p></p>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_outputLength">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L203">at line 203</a></div>
+        <code>                    int
+    <strong>outputLength</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The number of bytes the process has written so far to its standard
+output, for a job whose standard output is captured in a file, or to
+its standard output and its standard error, for a job whose output is
+redirected to one file. For a job whose output is read from pipes, it
+is 0. Once the process has been reaped, its output is available from
+wait() instead.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_errorOutputLength">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L223">at line 223</a></div>
+        <code>                    int
+    <strong>errorOutputLength</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The number of bytes the process has written to its standard error so
+far, for a job whose standard error is captured in a file of its own.</p></p>                <p><p>For any other job, it is 0.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_outputBetween">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L240">at line 240</a></div>
+        <code>                    string
+    <strong>outputBetween</strong>(int $from, int $to)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>What the process wrote between the two given offsets of what
+outputLength() measures. For a job whose output is read from pipes,
+and when the file cannot be read, it is the empty string.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$from</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$to</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_errorOutputBetween">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L262">at line 262</a></div>
+        <code>                    string
+    <strong>errorOutputBetween</strong>(int $from, int $to)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>What the process wrote to its standard error between the two given
+offsets, for a job whose standard error is captured in a file of its
+own. For any other job, and when the file cannot be read, it is the
+empty string.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$from</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$to</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isRunning">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L278">at line 278</a></div>
+        <code>                    bool
+    <strong>isRunning</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether the worker process is still executing. Once it has terminated,
+wait() can be called to reap it without blocking. Intended for callers
+that cannot wait on the process' output streams — for instance because
+its output is redirected to a file rather than a pipe — and therefore
+poll its liveness instead.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_consume">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L148">at line 148</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L292">at line 292</a></div>
         <code>                    void
     <strong>consume</strong>()
         </code>
@@ -427,8 +788,46 @@ returned by readableStreams() as ready.</p></p>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_terminate">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L308">at line 308</a></div>
+        <code>                    void
+    <strong>terminate</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Terminate the worker process instead of waiting for it to finish, then
+reap it. Used when the test runner stops early and abandons the work
+the process is doing.</p></p>                <p><p>The process is given a grace period to shut down in response to the
+termination signal; if it is still running afterwards — because it,
+or code it runs, installed a signal handler — its termination is
+forced. This bounds how long stopping early can take.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_wait">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L158">at line 158</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L356">at line 356</a></div>
         <code>                    <a href="../../../PHPUnit/Util/PHP/Result.html"><abbr title="PHPUnit\Util\PHP\Result">Result</abbr></a>
     <strong>wait</strong>()
         </code>
@@ -443,6 +842,57 @@ returned by readableStreams() as ready.</p></p>
 its accumulated output.</p></p>                        
         </div>
         <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../PHPUnit/Util/PHP/Result.html"><abbr title="PHPUnit\Util\PHP\Result">Result</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_waitInvoking">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L410">at line 410</a></div>
+        <code>                    <a href="../../../PHPUnit/Util/PHP/Result.html"><abbr title="PHPUnit\Util\PHP\Result">Result</abbr></a>
+    <strong>waitInvoking</strong>(callable $whileRunning)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Wait until the process has terminated, invoking the given callback each
+time its liveness is polled, then reap it and return its accumulated
+output as wait() does. This lets the caller carry on with other work
+while it waits for the process: the parallel test runner, for instance,
+advances its worker processes while a test that runs in a separate
+process waits for its child process.</p></p>                <p><p>The output that the process writes is read as it becomes available, so
+that the process does not block on an output pipe whose buffer is full.
+On Windows, where a pipe cannot be read without blocking, the process is
+waited for as wait() waits for it, and the callback is not invoked.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>callable</td>
+                <td>$whileRunning</td>
+                <td></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 

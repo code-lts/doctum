@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>PHPUnit\Runner\Parallel\ResultAggregator | PHPUnit</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:PHPUnit_Runner_Parallel_ResultAggregator" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">PHPUnit</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner.html">Runner</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner/Parallel.html">Parallel</a></li><li class="backslash">\</li><li>ResultAggregator</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ResultAggregator    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>ResultAggregator</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/ResultAggregator.php">View source</a>)
+</p>
+
+        
+        
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;This class is not covered by the backward compatibility promise for PHPUnit</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+            <div class="description">
+            <p><p>Collects the results that the workers produce and replays them into the
+parent process' event subsystem.</p></p>            <p><p>Workers finish their units out of order, but every printer, logger, and
+report assumes the suite-ordered arrival it sees in sequential mode. The
+aggregator therefore buffers each finished unit and forwards it only once all
+of the units that precede it in suite order have been forwarded; the result
+is an event stream that is byte-for-byte identical to the sequential one,
+which keeps CI diffs stable.</p>
+<p>A worker does not only report a unit when the whole unit has finished: while
+the unit is still running, it streams the events of every test that finishes,
+and those partial event streams reach the aggregator through
+addStreamedEvents(). The events streamed by the unit that is next in suite
+order are forwarded immediately — that unit is what the ordered output is
+waiting for, so its progress can be shown live — while the events streamed by
+any later unit are buffered and forwarded when their unit's turn comes. This
+is what makes progress output appear per finished test instead of stalling
+until an entire test class has finished, without giving up the ordering
+guarantee.</p>
+<p>Forwarding a unit means replaying its collected event stream through the
+parent dispatcher, importing the tests it recorded as passed, and merging its
+code coverage. Because every user-facing output is a downstream subscriber of
+these events, the parent's entire output, logging, and result subsystem works
+unchanged.</p>
+<p>Some units do not run in a worker but in the main process (see
+ParallelTestRunner): a unit attributed with #[DoNotRunInParallel], one that
+needs process isolation, or one that depends on another class. Such a unit
+is registered with its suite index, and the release sequence stops when the
+unit's index comes up: hasPendingUnit() reports the stop, and the runner
+runs the unit through runPendingUnit(). Running it there — between the
+units that precede and follow it in suite order — lets its events reach the
+dispatcher live and still in global suite order, so the ordering guarantee
+holds for every output format, not just the ones that re-sort.</p>
+<p>The release sequence does not run such a unit itself because it is driven
+by the callbacks through which the worker pool and the PHPT runner hand
+over the units they have finished: a unit that is run from there runs
+while the pool or the PHPT runner is in the middle of a polling round, and
+neither can be advanced until the unit is done. Run by the runner, between
+two polling rounds, the unit runs while both can be advanced.</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../PHPUnit/Event/Facade.html"><abbr title="PHPUnit\Event\Facade">Facade</abbr></a> $eventFacade, <a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter, <a href="../../../PHPUnit/TestRunner/TestResult/PassedTests.html"><abbr title="PHPUnit\TestRunner\TestResult\PassedTests">PassedTests</abbr></a> $passedTests, <a href="../../../PHPUnit/Runner/CodeCoverage.html"><abbr title="PHPUnit\Runner\CodeCoverage">CodeCoverage</abbr></a> $codeCoverage, callable $shouldStop, <a href="../../../PHPUnit/TextUI/Output/Printer.html"><abbr title="PHPUnit\TextUI\Output\Printer">Printer</abbr></a> $standardError)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_registerInProcessUnit">registerInProcessUnit</a>(int $index, callable $runner, bool $exclusive = false)
+        
+                                            <p><p>Register a unit that is to be run, in the main process, at the point its
+suite index comes up in the release sequence: the release sequence stops
+at its index, and the runner runs it through runPendingUnit().</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_registerCollectedUnit">registerCollectedUnit</a>(int $index, <a href="../../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a> $events)
+        
+                                            <p><p>Register the events that a unit which has already run in the main
+process — a PHPT test, run by the PHPT runner — collected, to be
+forwarded when the unit's turn in the release sequence comes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasPendingUnit">hasPendingUnit</a>()
+        
+                                            <p><p>Whether the release sequence has stopped at the index of a unit that is
+to be run in the main process: everything that precedes the unit in
+suite order has been forwarded, and the unit waits to be run through
+runPendingUnit().</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasPendingExclusiveUnit">hasPendingExclusiveUnit</a>()
+        
+                                            <p><p>Whether the unit that the release sequence has stopped at must run
+alone: it is run through runPendingUnit() only once nothing else is
+executing.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_runPendingUnit">runPendingUnit</a>()
+        
+                                            <p><p>Run the unit that the release sequence has stopped at, then resume
+releasing. The caller is responsible for calling this for an exclusive
+unit only once nothing else is executing — that is what makes the
+unit's execution exclusive.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_add">add</a>(<a href="../../../PHPUnit/Runner/Parallel/CompletedWorkUnit.html"><abbr title="PHPUnit\Runner\Parallel\CompletedWorkUnit">CompletedWorkUnit</abbr></a> $completed)
+        
+                                            <p><p>Accept a finished worker unit and release every unit that has now become
+releasable in suite order.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addStreamedEvents">addStreamedEvents</a>(int $index, <a href="../../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a> $events, string $output = &#039;&#039;, string $errorOutput = &#039;&#039;)
+        
+                                            <p><p>Accept events that a worker streamed while its unit is still running.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_discardStreamedEventsFor">discardStreamedEventsFor</a>(int $index)
+        
+                                            <p><p>Whether the unit at the given index may be re-run from scratch: true
+when none of its streamed events have been forwarded yet. The events
+that were buffered for it are discarded, so that the events of the new
+attempt take their place. The worker pool makes this call before it
+retries a crashed unit on a fresh worker, because the retry re-runs all
+of the unit's tests and must not repeat any that were already reported.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flush">flush</a>()
+        
+                                            <p><p>Release every unit that is releasable in suite order, up to the next
+unit that is to be run in the main process. Called by the runner once
+the PHPT runner has handed over the events of a PHPT test, which are
+then forwarded as their turn comes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_closeOpenEnvelopes">closeOpenEnvelopes</a>()
+        
+                                            <p><p>Close the test suite envelopes that the forwarded events of the units
+that are still executing left open. Called when the run stops early and
+those units are halted: their remaining events, which would have closed
+the envelopes, are discarded, and the consumers that reconstruct the
+suite hierarchy from paired Started/Finished events need a balanced
+stream.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/ResultAggregator.php#L184">at line 184</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../PHPUnit/Event/Facade.html"><abbr title="PHPUnit\Event\Facade">Facade</abbr></a> $eventFacade, <a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter, <a href="../../../PHPUnit/TestRunner/TestResult/PassedTests.html"><abbr title="PHPUnit\TestRunner\TestResult\PassedTests">PassedTests</abbr></a> $passedTests, <a href="../../../PHPUnit/Runner/CodeCoverage.html"><abbr title="PHPUnit\Runner\CodeCoverage">CodeCoverage</abbr></a> $codeCoverage, callable $shouldStop, <a href="../../../PHPUnit/TextUI/Output/Printer.html"><abbr title="PHPUnit\TextUI\Output\Printer">Printer</abbr></a> $standardError)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/Facade.html"><abbr title="PHPUnit\Event\Facade">Facade</abbr></a></td>
+                <td>$eventFacade</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a></td>
+                <td>$emitter</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/TestRunner/TestResult/PassedTests.html"><abbr title="PHPUnit\TestRunner\TestResult\PassedTests">PassedTests</abbr></a></td>
+                <td>$passedTests</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/CodeCoverage.html"><abbr title="PHPUnit\Runner\CodeCoverage">CodeCoverage</abbr></a></td>
+                <td>$codeCoverage</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$shouldStop</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/TextUI/Output/Printer.html"><abbr title="PHPUnit\TextUI\Output\Printer">Printer</abbr></a></td>
+                <td>$standardError</td>
+                <td><p>prints what the workers wrote to their standard error</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_registerInProcessUnit">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/ResultAggregator.php#L207">at line 207</a></div>
+        <code>                    void
+    <strong>registerInProcessUnit</strong>(int $index, callable $runner, bool $exclusive = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Register a unit that is to be run, in the main process, at the point its
+suite index comes up in the release sequence: the release sequence stops
+at its index, and the runner runs it through runPendingUnit().</p></p>                <p><p>An exclusive unit — one whose test class is attributed with</p>
+<h1>[DoNotRunInParallel] — additionally runs alone: the runner runs it only</h1>
+<p>once nothing else is executing.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$index</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$runner</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$exclusive</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_registerCollectedUnit">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/ResultAggregator.php#L235">at line 235</a></div>
+        <code>                    void
+    <strong>registerCollectedUnit</strong>(int $index, <a href="../../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a> $events)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Register the events that a unit which has already run in the main
+process — a PHPT test, run by the PHPT runner — collected, to be
+forwarded when the unit's turn in the release sequence comes.</p></p>                <p><p>They are forwarded in the groups that the unit's tests form, and the
+groups that follow the one whose results call for the run to stop are
+dropped: their tests are ones that a sequential run would not have run.
+This is what the events a worker streams are subject to as well, frame
+by frame, and it is why the repetitions of a repeated PHPT test that
+follow a failed one are not reported when a --stop-on-* option applies,
+even though the unit ran to its end before its events were released.</p>
+<p>The suite envelopes that the dropped groups would have closed are still
+forwarded, so that the loggers which reconstruct the suite hierarchy
+from these events do not see an envelope left open.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$index</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a></td>
+                <td>$events</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasPendingUnit">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/ResultAggregator.php#L250">at line 250</a></div>
+        <code>                    bool
+    <strong>hasPendingUnit</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether the release sequence has stopped at the index of a unit that is
+to be run in the main process: everything that precedes the unit in
+suite order has been forwarded, and the unit waits to be run through
+runPendingUnit().</p></p>                <p><p>While the unit runs, it is no longer pending, and the release sequence
+does not go past it: the units that finish in the meantime are held
+back until it is done.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasPendingExclusiveUnit">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/ResultAggregator.php#L260">at line 260</a></div>
+        <code>                    bool
+    <strong>hasPendingExclusiveUnit</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether the unit that the release sequence has stopped at must run
+alone: it is run through runPendingUnit() only once nothing else is
+executing.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_runPendingUnit">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/ResultAggregator.php#L271">at line 271</a></div>
+        <code>                    void
+    <strong>runPendingUnit</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Run the unit that the release sequence has stopped at, then resume
+releasing. The caller is responsible for calling this for an exclusive
+unit only once nothing else is executing — that is what makes the
+unit's execution exclusive.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_add">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/ResultAggregator.php#L290">at line 290</a></div>
+        <code>                    void
+    <strong>add</strong>(<a href="../../../PHPUnit/Runner/Parallel/CompletedWorkUnit.html"><abbr title="PHPUnit\Runner\Parallel\CompletedWorkUnit">CompletedWorkUnit</abbr></a> $completed)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Accept a finished worker unit and release every unit that has now become
+releasable in suite order.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/Parallel/CompletedWorkUnit.html"><abbr title="PHPUnit\Runner\Parallel\CompletedWorkUnit">CompletedWorkUnit</abbr></a></td>
+                <td>$completed</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addStreamedEvents">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/ResultAggregator.php#L315">at line 315</a></div>
+        <code>                    void
+    <strong>addStreamedEvents</strong>(int $index, <a href="../../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a> $events, string $output = &#039;&#039;, string $errorOutput = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Accept events that a worker streamed while its unit is still running.</p></p>                <p><p>The events of the unit that is next in suite order are forwarded
+immediately: every event that precedes them has already been forwarded,
+so showing them live cannot violate the ordering guarantee. The events
+of any later unit are buffered and forwarded when its turn comes.</p>
+<p>What the worker wrote to its standard output, and to its standard
+error, before it streamed the events, and after it streamed the
+previous ones, is printed before the events are forwarded, to the
+standard output and to the standard error of this process: this is
+where a sequential run prints what a test prints while its output is
+not buffered, or what a method that is called before the first test of
+a test class prints, for instance.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$index</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a></td>
+                <td>$events</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$output</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$errorOutput</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_discardStreamedEventsFor">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/ResultAggregator.php#L342">at line 342</a></div>
+        <code>                    bool
+    <strong>discardStreamedEventsFor</strong>(int $index)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether the unit at the given index may be re-run from scratch: true
+when none of its streamed events have been forwarded yet. The events
+that were buffered for it are discarded, so that the events of the new
+attempt take their place. The worker pool makes this call before it
+retries a crashed unit on a fresh worker, because the retry re-runs all
+of the unit's tests and must not repeat any that were already reported.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$index</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flush">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/ResultAggregator.php#L359">at line 359</a></div>
+        <code>                    void
+    <strong>flush</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Release every unit that is releasable in suite order, up to the next
+unit that is to be run in the main process. Called by the runner once
+the PHPT runner has handed over the events of a PHPT test, which are
+then forwarded as their turn comes.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_closeOpenEnvelopes">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/ResultAggregator.php#L372">at line 372</a></div>
+        <code>                    void
+    <strong>closeOpenEnvelopes</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Close the test suite envelopes that the forwarded events of the units
+that are still executing left open. Called when the run stops early and
+those units are halted: their remaining events, which would have closed
+the envelopes, are discarded, and the consumers that reconstruct the
+suite hierarchy from paired Started/Finished events need a balanced
+stream.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built for the <a href="https://phpunit.de/documentation.html" rel="noreferrer noopener" target="_blank">PHPUnit</a> project.</div></div>
+    </div>
+    </body>
+
+</html>

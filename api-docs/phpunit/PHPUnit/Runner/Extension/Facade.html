@@ -128,6 +128,28 @@
                     void
                 </div>
                 <div class="col-md-8">
+                    <a href="#method_registerSubscribersForEventsOfThisProcess">registerSubscribersForEventsOfThisProcess</a>(<a href="../../../PHPUnit/Event/Subscriber.html"><abbr title="PHPUnit\Event\Subscriber">Subscriber</abbr></a> ...$subscribers)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_registerSubscriberForEventsOfThisProcess">registerSubscriberForEventsOfThisProcess</a>(<a href="../../../PHPUnit/Event/Subscriber.html"><abbr title="PHPUnit\Event\Subscriber">Subscriber</abbr></a> $subscriber)
+        
+                                            <p><p>Register a subscriber that is notified only of the events that were
+emitted in this process.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
                     <a href="#method_registerTracer">registerTracer</a>(<a href="../../../PHPUnit/Event/Tracer/Tracer.html"><abbr title="PHPUnit\Event\Tracer\Tracer">Tracer</abbr></a> $tracer)
         
                                             <p class="no-description">No description</p>
@@ -299,8 +321,135 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_registerSubscribersForEventsOfThisProcess">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Extension/Facade.php#L38">at line 38</a></div>
+        <code>                    void
+    <strong>registerSubscribersForEventsOfThisProcess</strong>(<a href="../../../PHPUnit/Event/Subscriber.html"><abbr title="PHPUnit\Event\Subscriber">Subscriber</abbr></a> ...$subscribers)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/Subscriber.html"><abbr title="PHPUnit\Event\Subscriber">Subscriber</abbr></a></td>
+                <td>...$subscribers</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/EventFacadeIsSealedException.html"><abbr title="PHPUnit\Event\EventFacadeIsSealedException">EventFacadeIsSealedException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/UnknownSubscriberTypeException.html"><abbr title="PHPUnit\Event\UnknownSubscriberTypeException">UnknownSubscriberTypeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_registerSubscriberForEventsOfThisProcess">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Extension/Facade.php#L63">at line 63</a></div>
+        <code>                    void
+    <strong>registerSubscriberForEventsOfThisProcess</strong>(<a href="../../../PHPUnit/Event/Subscriber.html"><abbr title="PHPUnit\Event\Subscriber">Subscriber</abbr></a> $subscriber)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Register a subscriber that is notified only of the events that were
+emitted in this process.</p></p>                <p><p>The events of a test that ran in a parallel worker process or in a
+separate process are emitted there and replayed in this process: a
+subscriber registered with registerSubscriber() receives them, a
+subscriber registered with this method does not. This is what a
+subscriber needs that acts on a test in the process that runs it, such
+as one that wraps every test in a database transaction, when the
+extension also registers it in the child processes that run tests (see
+ChildProcessExtension).</p>
+<p>An event is considered to be emitted in this process when the process
+ID in its telemetry information (see Telemetry\Info::processId()) is
+that of this process. This includes the events that the test runner
+emits in this process on behalf of tests that did not run here, for
+instance the &quot;test errored&quot; and &quot;test finished&quot; events of the tests of a
+parallel worker process that crashed.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/Subscriber.html"><abbr title="PHPUnit\Event\Subscriber">Subscriber</abbr></a></td>
+                <td>$subscriber</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/EventFacadeIsSealedException.html"><abbr title="PHPUnit\Event\EventFacadeIsSealedException">EventFacadeIsSealedException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/UnknownSubscriberTypeException.html"><abbr title="PHPUnit\Event\UnknownSubscriberTypeException">UnknownSubscriberTypeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_registerTracer">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Extension/Facade.php#L37">at line 37</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Extension/Facade.php#L68">at line 68</a></div>
         <code>                    void
     <strong>registerTracer</strong>(<a href="../../../PHPUnit/Event/Tracer/Tracer.html"><abbr title="PHPUnit\Event\Tracer\Tracer">Tracer</abbr></a> $tracer)
         </code>
@@ -353,7 +502,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_replaceOutput">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Extension/Facade.php#L39">at line 39</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Extension/Facade.php#L70">at line 70</a></div>
         <code>                    void
     <strong>replaceOutput</strong>()
         </code>
@@ -387,7 +536,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_replaceProgressOutput">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Extension/Facade.php#L41">at line 41</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Extension/Facade.php#L72">at line 72</a></div>
         <code>                    void
     <strong>replaceProgressOutput</strong>()
         </code>
@@ -421,7 +570,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_replaceResultOutput">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Extension/Facade.php#L43">at line 43</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Extension/Facade.php#L74">at line 74</a></div>
         <code>                    void
     <strong>replaceResultOutput</strong>()
         </code>
@@ -455,7 +604,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_requireCodeCoverageCollection">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Extension/Facade.php#L45">at line 45</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Extension/Facade.php#L76">at line 76</a></div>
         <code>                    void
     <strong>requireCodeCoverageCollection</strong>()
         </code>

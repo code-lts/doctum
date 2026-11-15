@@ -127,7 +127,11 @@
                     <a href="#method_testRunnerExecutionFinished">testRunnerExecutionFinished</a>()
         
                                             <p><p>The test run history is persisted when the test runner has finished
-executing the test suite.</p></p>                </div>
+executing the test suite, and not when the outermost test suite
+finishes: when tests are run in parallel, the events of each unit of
+work are replayed as a self-contained test suite, so an outermost test
+suite finishes once per unit; persisting the history that often would
+be prohibitively expensive.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -293,7 +297,7 @@ executing the test suite.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_testRunnerExecutionFinished">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L63">at line 63</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L67">at line 67</a></div>
         <code>                    void
     <strong>testRunnerExecutionFinished</strong>()
         </code>
@@ -305,7 +309,11 @@ executing the test suite.</p></p>                </div>
 
         <div class="method-description">
                             <p><p>The test run history is persisted when the test runner has finished
-executing the test suite.</p></p>                        
+executing the test suite, and not when the outermost test suite
+finishes: when tests are run in parallel, the events of each unit of
+work are replayed as a self-contained test suite, so an outermost test
+suite finishes once per unit; persisting the history that often would
+be prohibitively expensive.</p></p>                        
         </div>
         <div class="tags">
             
@@ -327,7 +335,7 @@ executing the test suite.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_testRunnerExecutionAborted">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L72">at line 72</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L76">at line 76</a></div>
         <code>                    void
     <strong>testRunnerExecutionAborted</strong>()
         </code>
@@ -361,7 +369,7 @@ executing the test suite.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_testPrepared">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L79">at line 79</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L83">at line 83</a></div>
         <code>                    void
     <strong>testPrepared</strong>(<a href="../../../PHPUnit/Event/Test/Prepared.html"><abbr title="PHPUnit\Event\Test\Prepared">Prepared</abbr></a> $event)
         </code>
@@ -405,7 +413,7 @@ executing the test suite.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_testMarkedIncomplete">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L85">at line 85</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L89">at line 89</a></div>
         <code>                    void
     <strong>testMarkedIncomplete</strong>(<a href="../../../PHPUnit/Event/Test/MarkedIncomplete.html"><abbr title="PHPUnit\Event\Test\MarkedIncomplete">MarkedIncomplete</abbr></a> $event)
         </code>
@@ -449,7 +457,7 @@ executing the test suite.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_testConsideredRisky">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L93">at line 93</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L97">at line 97</a></div>
         <code>                    void
     <strong>testConsideredRisky</strong>(<a href="../../../PHPUnit/Event/Test/ConsideredRisky.html"><abbr title="PHPUnit\Event\Test\ConsideredRisky">ConsideredRisky</abbr></a> $event)
         </code>
@@ -493,7 +501,7 @@ executing the test suite.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_testErrored">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L101">at line 101</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L105">at line 105</a></div>
         <code>                    void
     <strong>testErrored</strong>(<a href="../../../PHPUnit/Event/Test/Errored.html"><abbr title="PHPUnit\Event\Test\Errored">Errored</abbr></a> $event)
         </code>
@@ -537,7 +545,7 @@ executing the test suite.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_testFailed">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L109">at line 109</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L113">at line 113</a></div>
         <code>                    void
     <strong>testFailed</strong>(<a href="../../../PHPUnit/Event/Test/Failed.html"><abbr title="PHPUnit\Event\Test\Failed">Failed</abbr></a> $event)
         </code>
@@ -581,7 +589,7 @@ executing the test suite.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_testPassed">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L117">at line 117</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L121">at line 121</a></div>
         <code>                    void
     <strong>testPassed</strong>(<a href="../../../PHPUnit/Event/Test/Passed.html"><abbr title="PHPUnit\Event\Test\Passed">Passed</abbr></a> $event)
         </code>
@@ -625,7 +633,7 @@ executing the test suite.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_testPropertyFalsified">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L134">at line 134</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L138">at line 138</a></div>
         <code>                    void
     <strong>testPropertyFalsified</strong>(<a href="../../../PHPUnit/Event/Test/PropertyFalsified.html"><abbr title="PHPUnit\Event\Test\PropertyFalsified">PropertyFalsified</abbr></a> $event)
         </code>
@@ -669,7 +677,7 @@ executing the test suite.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_testSkipped">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L158">at line 158</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L162">at line 162</a></div>
         <code>                    void
     <strong>testSkipped</strong>(<a href="../../../PHPUnit/Event/Test/Skipped.html"><abbr title="PHPUnit\Event\Test\Skipped">Skipped</abbr></a> $event)
         </code>
@@ -713,7 +721,7 @@ executing the test suite.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_testFinished">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L172">at line 172</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestRunHistory/TestRunHistoryHandler.php#L176">at line 176</a></div>
         <code>                    void
     <strong>testFinished</strong>(<a href="../../../PHPUnit/Event/Test/Finished.html"><abbr title="PHPUnit\Event\Test\Finished">Finished</abbr></a> $event)
         </code>

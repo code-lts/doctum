@@ -105,7 +105,13 @@
             <p><p>A test suite that aggregates the repetitions or attempts of a single PHPT
 test. Unlike the repetitions and attempts of a test method, a PHPT test does
 not track its own status, so the outcome of each run is determined from the
-events it emits.</p></p>                    </div>
+events it emits.</p></p>            <p><p>Each run of the test is a generator of the child process jobs its sections
+need, so the suite's orchestration is a generator as well: it advances one
+run at a time and examines the run's events before deciding on the next one.
+A sequential run drives that generator to completion here, one job after
+another; a parallel run drives it through the PHPT runner, which interleaves
+it with the other tests it advances. Both therefore make the same decisions
+about which run happens and which of its events are reported.</p></p>        </div>
             
         
     
@@ -123,6 +129,20 @@ events it emits.</p></p>                    </div>
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../PHPUnit/Framework/TestSuite.html#method_empty">
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../PHPUnit/Framework/TestSuite.html"><abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_forTestClass">forTestClass</a>(string $className, <a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter)
+        
+                                            <p><p>Creates an empty test suite for the given test class, to which tests of
+that class are then added one by one. Used where the tests of the class
+have already been selected, as for a work unit of a parallel test run,
+rather than found by reflecting on the class.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../PHPUnit/Framework/TestSuite.html#method_forTestClass">
 <abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -269,6 +289,21 @@ only those that the test selection has selected.</p></p>                </div>
         
                                             <p><p>Set tests of the test suite.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../PHPUnit/Framework/TestSuite.html#method_setTests">
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_removeTests">removeTests</a>()
+        
+                                            <p><p>Remove the tests from the test suite without running them, for a caller
+that runs them in a different way (see ParallelTestRunner). Like run(),
+which takes the tests out of the test suite before it runs them, this
+lets each test object be destructed as soon as it has run and its
+caller has let go of it (see #5875).</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../PHPUnit/Framework/TestSuite.html#method_removeTests">
 <abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -449,8 +484,7 @@ dispatched.</p></p>                </div>
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../PHPUnit/Framework/IterativeTestSuite.html#method_execute">
-<abbr title="PHPUnit\Framework\IterativeTestSuite">IterativeTestSuite</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -471,8 +505,10 @@ repetition failed and returns the message the repetition is skipped with.</p></p
                 <div class="col-md-8">
                     <a href="#method_emitAttemptEvent">emitAttemptEvent</a>(<a href="../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a> $events, <a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Synthesize a test attempt event from the events an attempt collected, so
+that a failed or errored attempt that is going to be retried is reported
+as an attempt rather than as the test's final outcome. Returns whether
+such an event could be determined from the collected events.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../PHPUnit/Framework/IterativeTestSuite.html#method_emitAttemptEvent">
 <abbr title="PHPUnit\Framework\IterativeTestSuite">IterativeTestSuite</abbr></a></small></div>
             </div>
@@ -495,6 +531,41 @@ the time of a test from its Prepared event instead.</p></p>                </div
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/Generator">Generator</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_executeInterleaved">executeInterleaved</a>(<a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter, <a href="../../PHPUnit/Event/EventCollector.html"><abbr title="PHPUnit\Event\EventCollector">EventCollector</abbr></a> $collector, <a href="../../PHPUnit/Runner/Phpt/Interruption.html"><abbr title="PHPUnit\Runner\Phpt\Interruption">Interruption</abbr></a>|null $interruption = null)
+        
+                                            <p><p>The suite as one generator of the jobs its runs need, for a caller that
+advances several tests side by side: the events the runs emit, and the
+suite envelope around them, go into the collector the caller reads them
+back from once the generator has finished.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/Generator">Generator</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_iterate">iterate</a>(array $tests, <a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter, <a href="../../PHPUnit/Event/EventCollector.html"><abbr title="PHPUnit\Event\EventCollector">EventCollector</abbr></a> $collector, <a href="../../PHPUnit/Runner/Phpt/Interruption.html"><abbr title="PHPUnit\Runner\Phpt\Interruption">Interruption</abbr></a>|null $interruption = null)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/Generator">Generator</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_executeCollectingEvents">executeCollectingEvents</a>(<a href="../../PHPUnit/Runner/Phpt/TestCase.html"><abbr title="PHPUnit\Runner\Phpt\TestCase">TestCase</abbr></a> $test, <a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter, <a href="../../PHPUnit/Event/EventCollector.html"><abbr title="PHPUnit\Event\EventCollector">EventCollector</abbr></a> $collector, <a href="../../PHPUnit/Runner/Phpt/Interruption.html"><abbr title="PHPUnit\Runner\Phpt\Interruption">Interruption</abbr></a>|null $interruption)
+        
+                                            <p><p>Run a single repetition or attempt with its events collected instead of
+processed, and return them.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
                 </div>
                 <div class="col-md-8">
@@ -502,6 +573,20 @@ the time of a test from its Prepared event instead.</p></p>                </div
         
                                             <p><p>Whether the events collected for a single run of a PHPT test indicate
 that the run failed or errored.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_shouldStop">shouldStop</a>(<a href="../../PHPUnit/Runner/Phpt/Interruption.html"><abbr title="PHPUnit\Runner\Phpt\Interruption">Interruption</abbr></a>|null $interruption)
+        
+                                            <p><p>Whether the run must not go on to the next repetition or attempt: either
+the caller has abandoned this test — which is how a parallel run stops
+the test it is advancing, its results being released by the aggregator
+rather than collected here — or the results collected so far call for
+the test runner to stop.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -561,9 +646,61 @@ that the run failed or errored.</p></p>                </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_forTestClass">
+        <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_forTestClass">
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L129">at line 129</a></div>
+        <code>        static            <a href="../../PHPUnit/Framework/TestSuite.html"><abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a>
+    <strong>forTestClass</strong>(string $className, <a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates an empty test suite for the given test class, to which tests of
+that class are then added one by one. Used where the tests of the class
+have already been selected, as for a work unit of a parallel test run,
+rather than found by reflecting on the class.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$className</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a></td>
+                <td>$emitter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../PHPUnit/Framework/TestSuite.html"><abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_fromClassReflector">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_fromClassReflector">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L127">at line 127</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L144">at line 144</a></div>
         <code>        static            <a href="../../PHPUnit/Framework/TestSuite.html"><abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a>
     <strong>fromClassReflector</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a> $class, <a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter, array $groups = [], int $numberOfRuns = 1, int $maxAttempts = 1)
         </code>
@@ -628,7 +765,7 @@ that the run failed or errored.</p></p>                </div>
                     <div class="method-item">
                     <h3 id="method_addTest">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_addTest">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L179">at line 179</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L196">at line 196</a></div>
         <code>                    void
     <strong>addTest</strong>(<a href="../../PHPUnit/Framework/Test.html"><abbr title="PHPUnit\Framework\Test">Test</abbr></a> $test, array $groups = [])
         </code>
@@ -677,7 +814,7 @@ that the run failed or errored.</p></p>                </div>
                     <div class="method-item">
                     <h3 id="method_addTestSuite">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_addTestSuite">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L220">at line 220</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L237">at line 237</a></div>
         <code>                    void
     <strong>addTestSuite</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a> $testClass, array $groups = [], int $numberOfRuns = 1, int $maxAttempts = 1)
         </code>
@@ -745,7 +882,7 @@ that the run failed or errored.</p></p>                </div>
                     <div class="method-item">
                     <h3 id="method_addTestFile">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_addTestFile">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L260">at line 260</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L277">at line 277</a></div>
         <code>                    void
     <strong>addTestFile</strong>(string $filename, array $groups = [], int $numberOfRuns = 1, int $maxAttempts = 1)
         </code>
@@ -816,7 +953,7 @@ leaving the current test run untouched.</p></p>
                     <div class="method-item">
                     <h3 id="method_count">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_count">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L299">at line 299</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L316">at line 316</a></div>
         <code>                    int
     <strong>count</strong>()
         </code>
@@ -850,7 +987,7 @@ leaving the current test run untouched.</p></p>
                     <div class="method-item">
                     <h3 id="method_isEmpty">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_isEmpty">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L310">at line 310</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L327">at line 327</a></div>
         <code>                    bool
     <strong>isEmpty</strong>()
         </code>
@@ -885,7 +1022,7 @@ leaving the current test run untouched.</p></p>
                     <div class="method-item">
                     <h3 id="method_name">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_name">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L324">at line 324</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L341">at line 341</a></div>
         <code>                    string
     <strong>name</strong>()
         </code>
@@ -920,7 +1057,7 @@ leaving the current test run untouched.</p></p>
                     <div class="method-item">
                     <h3 id="method_groups">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_groups">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L340">at line 340</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L357">at line 357</a></div>
         <code>                    array
     <strong>groups</strong>()
         </code>
@@ -958,7 +1095,7 @@ work for tests that are never run.</p></p>                <p><p>The name of a gr
                     <div class="method-item">
                     <h3 id="method_collect">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_collect">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L366">at line 366</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L383">at line 383</a></div>
         <code>                    array
     <strong>collect</strong>()
         </code>
@@ -996,7 +1133,7 @@ IterativeTestSuite must be treated as an atomic unit.</p></p>
                     <div class="method-item">
                     <h3 id="method_run">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_run">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L392">at line 392</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L409">at line 409</a></div>
         <code>                    void
     <strong>run</strong>()
         </code>
@@ -1056,7 +1193,7 @@ IterativeTestSuite must be treated as an atomic unit.</p></p>
                     <div class="method-item">
                     <h3 id="method_tests">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_tests">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L452">at line 452</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L469">at line 469</a></div>
         <code>                    array
     <strong>tests</strong>()
         </code>
@@ -1098,7 +1235,7 @@ that the selection has emptied.</p></p>
                     <div class="method-item">
                     <h3 id="method_setTests">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_setTests">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L462">at line 462</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L479">at line 479</a></div>
         <code>                    void
     <strong>setTests</strong>(array $tests)
         </code>
@@ -1140,9 +1277,47 @@ that the selection has emptied.</p></p>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_removeTests">
+        <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_removeTests">
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L491">at line 491</a></div>
+        <code>                    void
+    <strong>removeTests</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Remove the tests from the test suite without running them, for a caller
+that runs them in a different way (see ParallelTestRunner). Like run(),
+which takes the tests out of the test suite before it runs them, this
+lets each test object be destructed as soon as it has run and its
+caller has let go of it (see #5875).</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getIterator">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_getIterator">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L470">at line 470</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L501">at line 501</a></div>
         <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/Iterator">Iterator</a>
     <strong>getIterator</strong>()
         </code>
@@ -1177,7 +1352,7 @@ that the selection has emptied.</p></p>
                     <div class="method-item">
                     <h3 id="method_injectFilter">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_injectFilter">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L482">at line 482</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L513">at line 513</a></div>
         <code>                    void
     <strong>injectFilter</strong>(<a href="../../PHPUnit/Runner/Filter/Factory.html"><abbr title="PHPUnit\Runner\Filter\Factory">Factory</abbr></a> $filter)
         </code>
@@ -1327,7 +1502,7 @@ that the selection has emptied.</p></p>
                     <div class="method-item">
                     <h3 id="method_isForTestClass">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_isForTestClass">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L610">at line 610</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L641">at line 641</a></div>
         <code>                    bool
     <strong>isForTestClass</strong>()
         </code>
@@ -1362,7 +1537,7 @@ that the selection has emptied.</p></p>
                     <div class="method-item">
                     <h3 id="method_invokeMethodsBeforeFirstExample">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_invokeMethodsBeforeFirstExample">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L625">at line 625</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L656">at line 656</a></div>
         <code>                    null|string|<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a>
     <strong>invokeMethodsBeforeFirstExample</strong>()
         </code>
@@ -1411,7 +1586,7 @@ outside of a test run rather than when its tests are run.</p></p>
                     <div class="method-item">
                     <h3 id="method_invokeMethodsAfterLastExample">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_invokeMethodsAfterLastExample">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L637">at line 637</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L668">at line 668</a></div>
         <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a>|null
     <strong>invokeMethodsAfterLastExample</strong>()
         </code>
@@ -1447,7 +1622,7 @@ of a test run, after the last of these examples.</p></p>
                     <div class="method-item">
                     <h3 id="method_emitter">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_emitter">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L645">at line 645</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L676">at line 676</a></div>
         <code>final            protected        <a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a>
     <strong>emitter</strong>()
         </code>
@@ -1556,7 +1731,7 @@ of a test run, after the last of these examples.</p></p>
                     <div class="method-item">
                     <h3 id="method_addTestMethod">
         <div class="location">in <a href="../../PHPUnit/Framework/TestSuite.html#method_addTestMethod">
-<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L690">at line 690</a></div>
+<abbr title="PHPUnit\Framework\TestSuite">TestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestSuite.php#L721">at line 721</a></div>
         <code>            protected        void
     <strong>addTestMethod</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/ReflectionClass">ReflectionClass</a> $class, <a target="_blank" rel="noopener" href="https://www.php.net/ReflectionMethod">ReflectionMethod</a> $method, array $groups, int $numberOfRuns = 1, int $maxAttempts = 1)
         </code>
@@ -1763,9 +1938,8 @@ dispatched.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_execute">
-        <div class="location">in <a href="../../PHPUnit/Framework/IterativeTestSuite.html#method_execute">
-<abbr title="PHPUnit\Framework\IterativeTestSuite">IterativeTestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/IterativeTestSuite.php#L136">at line 136</a></div>
-        <code>    abstract        protected        void
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PhptIterativeTestSuite.php#L71">at line 71</a></div>
+        <code>final            protected        void
     <strong>execute</strong>(array $tests, <a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter)
         </code>
     </h3>
@@ -1810,22 +1984,6 @@ dispatched.</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../PHPUnit/Event/RuntimeException.html"><abbr title="PHPUnit\Event\RuntimeException">RuntimeException</abbr></a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../PHPUnit/Framework/Exception.html"><abbr title="PHPUnit\Framework\Exception">Exception</abbr></a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="SebastianBergmann\CodeCoverage\InvalidArgumentException">InvalidArgumentException</abbr></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../PHPUnit/Event/NoPreviousThrowableException.html"><abbr title="PHPUnit\Event\NoPreviousThrowableException">NoPreviousThrowableException</abbr></a></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="SebastianBergmann\CodeCoverage\UnintentionallyCoveredCodeException">UnintentionallyCoveredCodeException</abbr></td>
                 <td></td>
             </tr>
             </table>
@@ -1894,7 +2052,7 @@ repetition failed and returns the message the repetition is skipped with.</p></p
                     <div class="method-item">
                     <h3 id="method_emitAttemptEvent">
         <div class="location">in <a href="../../PHPUnit/Framework/IterativeTestSuite.html#method_emitAttemptEvent">
-<abbr title="PHPUnit\Framework\IterativeTestSuite">IterativeTestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/IterativeTestSuite.php#L158">at line 158</a></div>
+<abbr title="PHPUnit\Framework\IterativeTestSuite">IterativeTestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/IterativeTestSuite.php#L164">at line 164</a></div>
         <code>final            protected        bool
     <strong>emitAttemptEvent</strong>(<a href="../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a> $events, <a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter)
         </code>
@@ -1905,8 +2063,10 @@ repetition failed and returns the message the repetition is skipped with.</p></p
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Synthesize a test attempt event from the events an attempt collected, so
+that a failed or errored attempt that is going to be retried is reported
+as an attempt rather than as the test's final outcome. Returns whether
+such an event could be determined from the collected events.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1944,7 +2104,7 @@ repetition failed and returns the message the repetition is skipped with.</p></p
                     <div class="method-item">
                     <h3 id="method_durationOf">
         <div class="location">in <a href="../../PHPUnit/Framework/IterativeTestSuite.html#method_durationOf">
-<abbr title="PHPUnit\Framework\IterativeTestSuite">IterativeTestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/IterativeTestSuite.php#L203">at line 203</a></div>
+<abbr title="PHPUnit\Framework\IterativeTestSuite">IterativeTestSuite</abbr></a> <a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/IterativeTestSuite.php#L209">at line 209</a></div>
         <code>final            protected        <a href="../../PHPUnit/Event/Telemetry/Duration.html"><abbr title="PHPUnit\Event\Telemetry\Duration">Duration</abbr></a>
     <strong>durationOf</strong>(<a href="../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a> $events)
         </code>
@@ -1992,8 +2152,212 @@ the time of a test from its Prepared event instead.</p></p>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_executeInterleaved">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PhptIterativeTestSuite.php#L55">at line 55</a></div>
+        <code>final                    <a target="_blank" rel="noopener" href="https://www.php.net/Generator">Generator</a>
+    <strong>executeInterleaved</strong>(<a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter, <a href="../../PHPUnit/Event/EventCollector.html"><abbr title="PHPUnit\Event\EventCollector">EventCollector</abbr></a> $collector, <a href="../../PHPUnit/Runner/Phpt/Interruption.html"><abbr title="PHPUnit\Runner\Phpt\Interruption">Interruption</abbr></a>|null $interruption = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The suite as one generator of the jobs its runs need, for a caller that
+advances several tests side by side: the events the runs emit, and the
+suite envelope around them, go into the collector the caller reads them
+back from once the generator has finished.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a></td>
+                <td>$emitter</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../PHPUnit/Event/EventCollector.html"><abbr title="PHPUnit\Event\EventCollector">EventCollector</abbr></a></td>
+                <td>$collector</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../PHPUnit/Runner/Phpt/Interruption.html"><abbr title="PHPUnit\Runner\Phpt\Interruption">Interruption</abbr></a>|null</td>
+                <td>$interruption</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/Generator">Generator</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../PHPUnit/Event/RuntimeException.html"><abbr title="PHPUnit\Event\RuntimeException">RuntimeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_iterate">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PhptIterativeTestSuite.php#L102">at line 102</a></div>
+        <code>    abstract        protected        <a target="_blank" rel="noopener" href="https://www.php.net/Generator">Generator</a>
+    <strong>iterate</strong>(array $tests, <a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter, <a href="../../PHPUnit/Event/EventCollector.html"><abbr title="PHPUnit\Event\EventCollector">EventCollector</abbr></a> $collector, <a href="../../PHPUnit/Runner/Phpt/Interruption.html"><abbr title="PHPUnit\Runner\Phpt\Interruption">Interruption</abbr></a>|null $interruption = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$tests</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a></td>
+                <td>$emitter</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../PHPUnit/Event/EventCollector.html"><abbr title="PHPUnit\Event\EventCollector">EventCollector</abbr></a></td>
+                <td>$collector</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../PHPUnit/Runner/Phpt/Interruption.html"><abbr title="PHPUnit\Runner\Phpt\Interruption">Interruption</abbr></a>|null</td>
+                <td>$interruption</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/Generator">Generator</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../PHPUnit/Event/RuntimeException.html"><abbr title="PHPUnit\Event\RuntimeException">RuntimeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_executeCollectingEvents">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PhptIterativeTestSuite.php#L117">at line 117</a></div>
+        <code>final            protected        <a target="_blank" rel="noopener" href="https://www.php.net/Generator">Generator</a>
+    <strong>executeCollectingEvents</strong>(<a href="../../PHPUnit/Runner/Phpt/TestCase.html"><abbr title="PHPUnit\Runner\Phpt\TestCase">TestCase</abbr></a> $test, <a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter, <a href="../../PHPUnit/Event/EventCollector.html"><abbr title="PHPUnit\Event\EventCollector">EventCollector</abbr></a> $collector, <a href="../../PHPUnit/Runner/Phpt/Interruption.html"><abbr title="PHPUnit\Runner\Phpt\Interruption">Interruption</abbr></a>|null $interruption)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Run a single repetition or attempt with its events collected instead of
+processed, and return them.</p></p>                <p><p>The collection is stopped even when running the test throws, because a
+destination that is left collecting events swallows every event that is
+emitted afterwards. The events collected before the throwable was raised
+are forwarded rather than discarded.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../PHPUnit/Runner/Phpt/TestCase.html"><abbr title="PHPUnit\Runner\Phpt\TestCase">TestCase</abbr></a></td>
+                <td>$test</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a></td>
+                <td>$emitter</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../PHPUnit/Event/EventCollector.html"><abbr title="PHPUnit\Event\EventCollector">EventCollector</abbr></a></td>
+                <td>$collector</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../PHPUnit/Runner/Phpt/Interruption.html"><abbr title="PHPUnit\Runner\Phpt\Interruption">Interruption</abbr></a>|null</td>
+                <td>$interruption</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/Generator">Generator</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_failedOrErrored">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PhptIterativeTestSuite.php#L31">at line 31</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PhptIterativeTestSuite.php#L136">at line 136</a></div>
         <code>final            protected        bool
     <strong>failedOrErrored</strong>(<a href="../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a> $events)
         </code>
@@ -2014,6 +2378,53 @@ that the run failed or errored.</p></p>
                     <tr>
                 <td><a href="../../PHPUnit/Event/EventCollection.html"><abbr title="PHPUnit\Event\EventCollection">EventCollection</abbr></a></td>
                 <td>$events</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_shouldStop">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/PhptIterativeTestSuite.php#L154">at line 154</a></div>
+        <code>final            protected        bool
+    <strong>shouldStop</strong>(<a href="../../PHPUnit/Runner/Phpt/Interruption.html"><abbr title="PHPUnit\Runner\Phpt\Interruption">Interruption</abbr></a>|null $interruption)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether the run must not go on to the next repetition or attempt: either
+the caller has abandoned this test — which is how a parallel run stops
+the test it is advancing, its results being released by the aggregator
+rather than collected here — or the results collected so far call for
+the test runner to stop.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../PHPUnit/Runner/Phpt/Interruption.html"><abbr title="PHPUnit\Runner\Phpt\Interruption">Interruption</abbr></a>|null</td>
+                <td>$interruption</td>
                 <td></td>
             </tr>
             </table>

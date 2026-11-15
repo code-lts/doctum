@@ -124,10 +124,12 @@
                     static&nbsp;void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_initForIsolation">initForIsolation</a>()
+                    <a href="#method_initForIsolation">initForIsolation</a>(<a href="../../../PHPUnit/Event/CollectingDispatcher.html"><abbr title="PHPUnit\Event\CollectingDispatcher">CollectingDispatcher</abbr></a> $dispatcher)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Prepares the collector for a process that runs tests in isolation from
+the main process and forwards their events to it: the child process of
+a test that runs in process isolation, or a worker process of a
+parallel test run.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -171,7 +173,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_init">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/DeprecationCollector/Facade.php#L28">at line 28</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/DeprecationCollector/Facade.php#L29">at line 29</a></div>
         <code>        static            void
     <strong>init</strong>()
         </code>
@@ -205,9 +207,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_initForIsolation">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/DeprecationCollector/Facade.php#L33">at line 33</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/DeprecationCollector/Facade.php#L53">at line 53</a></div>
         <code>        static            void
-    <strong>initForIsolation</strong>()
+    <strong>initForIsolation</strong>(<a href="../../../PHPUnit/Event/CollectingDispatcher.html"><abbr title="PHPUnit\Event\CollectingDispatcher">CollectingDispatcher</abbr></a> $dispatcher)
         </code>
     </h3>
     <div class="details">    
@@ -216,10 +218,29 @@
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Prepares the collector for a process that runs tests in isolation from
+the main process and forwards their events to it: the child process of
+a test that runs in process isolation, or a worker process of a
+parallel test run.</p></p>                <p><p>A worker process runs more than one test, so the deprecations that the
+expectations of a test are verified against are forgotten when the next
+test is prepared, as they are in the main process.</p>
+<p>A worker process also runs the attempts of a retried test, whose events
+are collected instead of being dispatched. The expectations of an attempt
+are verified while it is running, so its deprecations must be seen while
+its events are collected rather than when they are forwarded, as they
+are in the main process.</p></p>        
         </div>
         <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/CollectingDispatcher.html"><abbr title="PHPUnit\Event\CollectingDispatcher">CollectingDispatcher</abbr></a></td>
+                <td>$dispatcher</td>
+                <td></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
@@ -231,6 +252,19 @@
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/EventFacadeIsSealedException.html"><abbr title="PHPUnit\Event\EventFacadeIsSealedException">EventFacadeIsSealedException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Event/UnknownSubscriberTypeException.html"><abbr title="PHPUnit\Event\UnknownSubscriberTypeException">UnknownSubscriberTypeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -239,7 +273,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_deprecations">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/DeprecationCollector/Facade.php#L43">at line 43</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/DeprecationCollector/Facade.php#L70">at line 70</a></div>
         <code>        static            array
     <strong>deprecations</strong>()
         </code>
@@ -273,7 +307,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_filteredDeprecations">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/DeprecationCollector/Facade.php#L51">at line 51</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/DeprecationCollector/Facade.php#L78">at line 78</a></div>
         <code>        static            array
     <strong>filteredDeprecations</strong>()
         </code>
@@ -307,7 +341,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_collector">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/DeprecationCollector/Facade.php#L60">at line 60</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/DeprecationCollector/Facade.php#L96">at line 96</a></div>
         <code>        static            <a href="../../../PHPUnit/Runner/DeprecationCollector/Collector.html"><abbr title="PHPUnit\Runner\DeprecationCollector\Collector">Collector</abbr></a>|<a href="../../../PHPUnit/Runner/DeprecationCollector/InIsolationCollector.html"><abbr title="PHPUnit\Runner\DeprecationCollector\InIsolationCollector">InIsolationCollector</abbr></a>
     <strong>collector</strong>()
         </code>

@@ -159,6 +159,39 @@ test runner has finished.</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_deadlineHasPassed">deadlineHasPassed</a>()
+        
+                                            <p><p>Whether a time limit is configured for the test run and its deadline
+has passed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_timeLimitExceeded">timeLimitExceeded</a>()
+        
+                                            <p><p>Emits the event that tells the test runner that the time limit for the
+test run was exceeded, unless it has already been emitted.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_messageForAbortedTest">messageForAbortedTest</a>()
+        
+                                            <p><p>The message that a test is aborted with when the time limit for the
+test run is exceeded while the test runs.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     void
                 </div>
                 <div class="col-md-8">
@@ -176,7 +209,7 @@ test runner has finished.</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_init">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TimeLimit/TimeLimitHandler.php#L53">at line 53</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TimeLimit/TimeLimitHandler.php#L54">at line 54</a></div>
         <code>        static            void
     <strong>init</strong>(<a href="../../../PHPUnit/Event/Facade.html"><abbr title="PHPUnit\Event\Facade">Facade</abbr></a> $facade, int $timeLimit)
         </code>
@@ -225,7 +258,7 @@ test runner has finished.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_armAlarm">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TimeLimit/TimeLimitHandler.php#L63">at line 63</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TimeLimit/TimeLimitHandler.php#L64">at line 64</a></div>
         <code>        static            void
     <strong>armAlarm</strong>()
         </code>
@@ -260,7 +293,7 @@ when the pcntl extension is not available.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_disarmAlarm">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TimeLimit/TimeLimitHandler.php#L72">at line 72</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TimeLimit/TimeLimitHandler.php#L73">at line 73</a></div>
         <code>        static            void
     <strong>disarmAlarm</strong>()
         </code>
@@ -294,7 +327,7 @@ test runner has finished.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_deadlineReached">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TimeLimit/TimeLimitHandler.php#L84">at line 84</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TimeLimit/TimeLimitHandler.php#L85">at line 85</a></div>
         <code>        static            bool
     <strong>deadlineReached</strong>()
         </code>
@@ -328,8 +361,113 @@ deadline is otherwise only checked when a test has finished.</p></p>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_deadlineHasPassed">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TimeLimit/TimeLimitHandler.php#L103">at line 103</a></div>
+        <code>        static            bool
+    <strong>deadlineHasPassed</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether a time limit is configured for the test run and its deadline
+has passed.</p></p>                <p><p>The parallel test runner checks this while it waits for its worker
+processes, rather than only when a test finishes: the tests that a
+worker process runs are not stopped by the alarm of this process, and
+their results arrive in suite order, if at all.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_timeLimitExceeded">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TimeLimit/TimeLimitHandler.php#L116">at line 116</a></div>
+        <code>        static            void
+    <strong>timeLimitExceeded</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Emits the event that tells the test runner that the time limit for the
+test run was exceeded, unless it has already been emitted.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_messageForAbortedTest">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TimeLimit/TimeLimitHandler.php#L125">at line 125</a></div>
+        <code>        static            string
+    <strong>messageForAbortedTest</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The message that a test is aborted with when the time limit for the
+test run is exceeded while the test runs.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_testFinished">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TimeLimit/TimeLimitHandler.php#L109">at line 109</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TimeLimit/TimeLimitHandler.php#L148">at line 148</a></div>
         <code>                    void
     <strong>testFinished</strong>()
         </code>

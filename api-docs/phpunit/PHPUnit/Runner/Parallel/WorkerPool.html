@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>PHPUnit\Runner\Parallel\WorkerPool | PHPUnit</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:PHPUnit_Runner_Parallel_WorkerPool" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">PHPUnit</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner.html">Runner</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner/Parallel.html">Parallel</a></li><li class="backslash">\</li><li>WorkerPool</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>WorkerPool    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>WorkerPool</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/WorkerPool.php">View source</a>)
+</p>
+
+        
+        
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;This class is not covered by the backward compatibility promise for PHPUnit</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+            <div class="description">
+            <p><p>A fixed-size pool of PersistentWorkers across which units of work are
+distributed.</p></p>            <p><p>Distribution is a dynamic work-stealing queue rather than a static
+pre-partitioning of the units: whenever a worker becomes idle it pulls the
+next unit from the queue, which self-balances the load against stragglers.</p>
+<p>The queue hands out its units in the order in which they are to be
+dispatched: longest first, except on the slot that is reserved for the suite
+order, which dispatches the unit the ordered output is waiting for, so that
+the results keep flowing (see SUITE_ORDER_SLOTS and DispatchQueue).</p>
+<p>A single thread of control keeps all of the workers busy by polling them in
+rounds: each round it drains the events that the busy workers have streamed
+so far, harvests every worker that has finished its unit, hands both to the
+caller-supplied callbacks, tops the idle workers up with more work, and
+sleeps briefly before the next round if none finished.
+A worker signals completion through the filesystem (see PersistentWorker),
+which is polled rather than waited on with stream_select() because the latter
+does not work on the workers' output pipes on Windows.</p>
+<p>If a worker dies, the unit it was running is retried once, on a fresh worker
+process booted in place of the dead one — the crash may have been caused by
+the state the dead process had accumulated, so the retry gets a pristine
+environment. A unit whose retry also crashes, or that cannot be retried
+because some of its results were already reported, is reported to the
+callback as a crashed unit. A worker whose process died is booted afresh
+once another unit is to be dispatched to it, so that the units that come
+after a crashed one run as they would have run without the crash.</p></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                            private
+                                                                                POLL_INTERVAL_MICROSECONDS
+                                    </td>
+                <td class="last">
+                    <p><em><p>How long to sleep, in microseconds, when a polling round finds that no
+worker has finished, so that waiting on the workers does not spin the CPU.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                SUITE_ORDER_SLOTS
+                                    </td>
+                <td class="last">
+                    <p><em><p>How many of the pool's dispatch slots are reserved for the suite order
+(see DispatchQueue).</p></em></p>
+                    <p><p>One is enough here: a worker streams the events of every test of its unit
+as that test finishes, so the unit the ordered output is waiting for
+advances the release sequence while it is still executing. A second
+reserved slot would therefore buy the output next to nothing, and would
+cost the straggler protection that the cost order provides on it. The
+PHPT runner, whose units report only once they have finished, reserves
+more.</p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(array $workers, <a href="../../../PHPUnit/Runner/Parallel/ProcessBudget.html"><abbr title="PHPUnit\Runner\Parallel\ProcessBudget">ProcessBudget</abbr></a> $budget, int $numberOfUnitsBeforeRecycling = 0)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_start">start</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_run">run</a>(array $units, callable $onCompleted, callable $onStreamedEvents, callable $onCrashedUnitRetry)
+        
+                                            <p><p>Run all of the given units across the pool, invoking the completion
+callback once for each unit as it finishes (in completion order, not
+suite order).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_begin">begin</a>(array $units, callable $onCompleted, callable $onStreamedEvents, callable $onCrashedUnitRetry)
+        
+                                            <p><p>Accept the units to run without running them yet: the caller is expected
+to drive the pool with tick() until isFinished() reports completion. This
+is what lets the parallel test runner advance the worker pool and the
+PHPT runner side by side in one polling loop.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_tick">tick</a>(bool $mayDispatch = true)
+        
+                                            <p><p>Advance the pool by one polling round: top the idle workers up with
+queued units, drain the events the busy workers have streamed, and
+harvest every worker that has finished its unit. Returns whether the
+round made progress; a caller driving the pool in a loop is expected to
+sleep briefly when it did not, so that polling does not spin the CPU.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isFinished">isFinished</a>()
+        
+                                            <p><p>Whether every unit accepted by begin() has finished.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasExecutingUnits">hasExecutingUnits</a>()
+        
+                                            <p><p>Whether any worker is currently executing a unit.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_abort">abort</a>(string $message)
+        
+                                            <p><p>Abandon the units that are queued and the units that are executing,
+because the time limit for the test run has been exceeded: the queued
+units are dropped, as halt() drops them, and the executing units are
+terminated and handed to the completion callback as aborted, so that
+the test that each of them was running is reported as aborted with the
+given message, as the sequential test runner reports the test that it
+aborts.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_halt">halt</a>()
+        
+                                            <p><p>Abandon the run, because the results collected so far call for the
+test runner to stop (--stop-on-*): the units that have not been
+dispatched yet are dropped, and every worker that is busy executing a
+unit is asked to halt it as the sequential test runner stops — the test
+that is running finishes, no further test of the unit is started, and
+the methods that run after the last test of the class, such as
+tearDownAfterClass(), are run, so that the unit does not leave its
+fixtures behind.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_kill">kill</a>()
+        
+                                            <p><p>Abandon the run without waiting for the units that are executing: the
+units that have not been dispatched yet are dropped, and every worker
+that is busy executing a unit is terminated without waiting for its
+result. Used when the deadline of a time limit for the test run passes
+while the test runner waits for the units that it asked to halt, and
+when the pool is stopped while units are executing; the workers that
+are idle stay alive and are shut down by stop() as usual.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_stop">stop</a>()
+        
+                                            <p><p>Shut every worker down gracefully, once the run has ended.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/WorkerPool.php#L173">at line 173</a></div>
+        <code>                    
+    <strong>__construct</strong>(array $workers, <a href="../../../PHPUnit/Runner/Parallel/ProcessBudget.html"><abbr title="PHPUnit\Runner\Parallel\ProcessBudget">ProcessBudget</abbr></a> $budget, int $numberOfUnitsBeforeRecycling = 0)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$workers</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/Parallel/ProcessBudget.html"><abbr title="PHPUnit\Runner\Parallel\ProcessBudget">ProcessBudget</abbr></a></td>
+                <td>$budget</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$numberOfUnitsBeforeRecycling</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_start">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/WorkerPool.php#L184">at line 184</a></div>
+        <code>                    void
+    <strong>start</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/Parallel/WorkerException.html"><abbr title="PHPUnit\Runner\Parallel\WorkerException">WorkerException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_run">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/WorkerPool.php#L207">at line 207</a></div>
+        <code>                    void
+    <strong>run</strong>(array $units, callable $onCompleted, callable $onStreamedEvents, callable $onCrashedUnitRetry)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Run all of the given units across the pool, invoking the completion
+callback once for each unit as it finishes (in completion order, not
+suite order).</p></p>                <p><p>While a unit is still running, the events that its worker has streamed
+so far are handed to the streamed-events callback as they arrive, so
+that the caller can report progress per finished test instead of per
+finished unit. The events of a unit are always delivered before its
+completion.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$units</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$onCompleted</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$onStreamedEvents</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$onCrashedUnitRetry</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_begin">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/WorkerPool.php#L233">at line 233</a></div>
+        <code>                    void
+    <strong>begin</strong>(array $units, callable $onCompleted, callable $onStreamedEvents, callable $onCrashedUnitRetry)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Accept the units to run without running them yet: the caller is expected
+to drive the pool with tick() until isFinished() reports completion. This
+is what lets the parallel test runner advance the worker pool and the
+PHPT runner side by side in one polling loop.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$units</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$onCompleted</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$onStreamedEvents</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$onCrashedUnitRetry</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_tick">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/WorkerPool.php#L258">at line 258</a></div>
+        <code>                    bool
+    <strong>tick</strong>(bool $mayDispatch = true)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Advance the pool by one polling round: top the idle workers up with
+queued units, drain the events the busy workers have streamed, and
+harvest every worker that has finished its unit. Returns whether the
+round made progress; a caller driving the pool in a loop is expected to
+sleep briefly when it did not, so that polling does not spin the CPU.</p></p>                <p><p>When the caller passes false for $mayDispatch, no queued unit is handed
+to a worker in this round: the units that are already executing are
+still polled and harvested, so the pool drains. This is how the caller
+makes room for a unit that must run alone (see ParallelTestRunner).</p>
+<p>Once halt() has been called, a round only harvests the workers whose
+units have halted.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$mayDispatch</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isFinished">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/WorkerPool.php#L311">at line 311</a></div>
+        <code>                    bool
+    <strong>isFinished</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether every unit accepted by begin() has finished.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasExecutingUnits">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/WorkerPool.php#L319">at line 319</a></div>
+        <code>                    bool
+    <strong>hasExecutingUnits</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether any worker is currently executing a unit.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_abort">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/WorkerPool.php#L335">at line 335</a></div>
+        <code>                    void
+    <strong>abort</strong>(string $message)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Abandon the units that are queued and the units that are executing,
+because the time limit for the test run has been exceeded: the queued
+units are dropped, as halt() drops them, and the executing units are
+terminated and handed to the completion callback as aborted, so that
+the test that each of them was running is reported as aborted with the
+given message, as the sequential test runner reports the test that it
+aborts.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$message</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_halt">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/WorkerPool.php#L376">at line 376</a></div>
+        <code>                    void
+    <strong>halt</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Abandon the run, because the results collected so far call for the
+test runner to stop (--stop-on-*): the units that have not been
+dispatched yet are dropped, and every worker that is busy executing a
+unit is asked to halt it as the sequential test runner stops — the test
+that is running finishes, no further test of the unit is started, and
+the methods that run after the last test of the class, such as
+tearDownAfterClass(), are run, so that the unit does not leave its
+fixtures behind.</p></p>                <p><p>The caller is expected to keep driving the pool with tick() until no
+unit is executing anymore. The results of the halted units, and the
+events that their workers stream until then, are discarded: they are
+for tests that a sequential run would not have run. The workers stay
+alive and are shut down by stop() as usual.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_kill">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/WorkerPool.php#L396">at line 396</a></div>
+        <code>                    void
+    <strong>kill</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Abandon the run without waiting for the units that are executing: the
+units that have not been dispatched yet are dropped, and every worker
+that is busy executing a unit is terminated without waiting for its
+result. Used when the deadline of a time limit for the test run passes
+while the test runner waits for the units that it asked to halt, and
+when the pool is stopped while units are executing; the workers that
+are idle stay alive and are shut down by stop() as usual.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stop">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/Parallel/WorkerPool.php#L417">at line 417</a></div>
+        <code>                    void
+    <strong>stop</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Shut every worker down gracefully, once the run has ended.</p></p>                <p><p>A unit that is still executing then is abandoned, because an exception
+ended the run: its worker is terminated, and the unit's files are
+deleted, rather than waited for until it has finished the unit and
+picks up the command to shut down.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built for the <a href="https://phpunit.de/documentation.html" rel="noreferrer noopener" target="_blank">PHPUnit</a> project.</div></div>
+    </div>
+    </body>
+
+</html>
