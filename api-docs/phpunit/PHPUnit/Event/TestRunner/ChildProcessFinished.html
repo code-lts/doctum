@@ -106,7 +106,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="../../../PHPUnit/Event/Telemetry/Info.html"><abbr title="PHPUnit\Event\Telemetry\Info">Info</abbr></a> $telemetryInfo, <abbr title="PHPUnit\Event\TestRunner\ChildProcessReason">ChildProcessReason</abbr> $reason, string $stdout, string $stderr)
+                    <a href="#method___construct">__construct</a>(<a href="../../../PHPUnit/Event/Telemetry/Info.html"><abbr title="PHPUnit\Event\Telemetry\Info">Info</abbr></a> $telemetryInfo, <abbr title="PHPUnit\Event\TestRunner\ChildProcessReason">ChildProcessReason</abbr> $reason, string $stdout, string $stderr, int|null $exitCode, int|null $signal)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -158,6 +158,28 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    int|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_exitCode">exitCode</a>()
+        
+                                            <p><p>The exit code of the child process, or null when the child process was
+terminated by a signal or when it is not known how it ended.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_signal">signal</a>()
+        
+                                            <p><p>The signal that terminated the child process, or null when the child
+process was not terminated by a signal.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     string
                 </div>
                 <div class="col-md-8">
@@ -175,9 +197,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Event/Events/TestRunner/ChildProcessFinished.php#L31">at line 31</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Event/Events/TestRunner/ChildProcessFinished.php#L33">at line 33</a></div>
         <code>                    
-    <strong>__construct</strong>(<a href="../../../PHPUnit/Event/Telemetry/Info.html"><abbr title="PHPUnit\Event\Telemetry\Info">Info</abbr></a> $telemetryInfo, <abbr title="PHPUnit\Event\TestRunner\ChildProcessReason">ChildProcessReason</abbr> $reason, string $stdout, string $stderr)
+    <strong>__construct</strong>(<a href="../../../PHPUnit/Event/Telemetry/Info.html"><abbr title="PHPUnit\Event\Telemetry\Info">Info</abbr></a> $telemetryInfo, <abbr title="PHPUnit\Event\TestRunner\ChildProcessReason">ChildProcessReason</abbr> $reason, string $stdout, string $stderr, int|null $exitCode, int|null $signal)
         </code>
     </h3>
     <div class="details">    
@@ -220,6 +242,16 @@
                 <td>$stderr</td>
                 <td></td>
             </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$exitCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$signal</td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -232,7 +264,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_telemetryInfo">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Event/Events/TestRunner/ChildProcessFinished.php#L39">at line 39</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Event/Events/TestRunner/ChildProcessFinished.php#L43">at line 43</a></div>
         <code>                    <a href="../../../PHPUnit/Event/Telemetry/Info.html"><abbr title="PHPUnit\Event\Telemetry\Info">Info</abbr></a>
     <strong>telemetryInfo</strong>()
         </code>
@@ -266,7 +298,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_reason">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Event/Events/TestRunner/ChildProcessFinished.php#L44">at line 44</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Event/Events/TestRunner/ChildProcessFinished.php#L48">at line 48</a></div>
         <code>                    <abbr title="PHPUnit\Event\TestRunner\ChildProcessReason">ChildProcessReason</abbr>
     <strong>reason</strong>()
         </code>
@@ -300,7 +332,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_stdout">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Event/Events/TestRunner/ChildProcessFinished.php#L49">at line 49</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Event/Events/TestRunner/ChildProcessFinished.php#L53">at line 53</a></div>
         <code>                    string
     <strong>stdout</strong>()
         </code>
@@ -334,7 +366,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_stderr">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Event/Events/TestRunner/ChildProcessFinished.php#L54">at line 54</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Event/Events/TestRunner/ChildProcessFinished.php#L58">at line 58</a></div>
         <code>                    string
     <strong>stderr</strong>()
         </code>
@@ -367,8 +399,76 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_exitCode">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Event/Events/TestRunner/ChildProcessFinished.php#L67">at line 67</a></div>
+        <code>                    int|null
+    <strong>exitCode</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The exit code of the child process, or null when the child process was
+terminated by a signal or when it is not known how it ended.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_signal">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Event/Events/TestRunner/ChildProcessFinished.php#L76">at line 76</a></div>
+        <code>                    int|null
+    <strong>signal</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The signal that terminated the child process, or null when the child
+process was not terminated by a signal.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_asString">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Event/Events/TestRunner/ChildProcessFinished.php#L62">at line 62</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Event/Events/TestRunner/ChildProcessFinished.php#L84">at line 84</a></div>
         <code>                    string
     <strong>asString</strong>()
         </code>

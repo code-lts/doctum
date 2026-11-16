@@ -117,7 +117,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_process">process</a>(<a href="../../../PHPUnit/Framework/Test.html"><abbr title="PHPUnit\Framework\Test">Test</abbr></a> $test, string $serializedProcessResult, string $stderr, string|null $processResultNonce = null)
+                    <a href="#method_process">process</a>(<a href="../../../PHPUnit/Framework/Test.html"><abbr title="PHPUnit\Framework\Test">Test</abbr></a> $test, string $serializedProcessResult, string $stderr, int|null $exitCode, int|null $signal, string|null $processResultNonce = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -181,9 +181,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_process">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestRunner/ChildProcessResultProcessor.php#L54">at line 54</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestRunner/ChildProcessResultProcessor.php#L56">at line 56</a></div>
         <code>                    void
-    <strong>process</strong>(<a href="../../../PHPUnit/Framework/Test.html"><abbr title="PHPUnit\Framework\Test">Test</abbr></a> $test, string $serializedProcessResult, string $stderr, string|null $processResultNonce = null)
+    <strong>process</strong>(<a href="../../../PHPUnit/Framework/Test.html"><abbr title="PHPUnit\Framework\Test">Test</abbr></a> $test, string $serializedProcessResult, string $stderr, int|null $exitCode, int|null $signal, string|null $processResultNonce = null)
         </code>
     </h3>
     <div class="details">    
@@ -213,6 +213,16 @@
                 <td>string</td>
                 <td>$stderr</td>
                 <td></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$exitCode</td>
+                <td><p>the exit code of the child process, or null when it was terminated by a signal</p></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$signal</td>
+                <td><p>the signal that terminated the child process, or null when it was not terminated by a signal</p></td>
             </tr>
                     <tr>
                 <td>string|null</td>

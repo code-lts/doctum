@@ -101,6 +101,16 @@
                 &nbsp;
     
 
+            <div class="description">
+            <p><p>Shuffles the tests of a test suite using a random number generator of its
+own, so that the order of the tests does not depend on the state of the
+random number generator that is global to the PHP process, which is seeded
+for, and used by, the code under test.</p></p>            <p><p>The Mt19937 engine is used because it shuffles exactly like shuffle() does
+after mt_srand() was called with the same seed, which is how tests were
+shuffled before: a seed results in the same order as it did then.</p>
+<p>All test suites of a test run are shuffled by the same object, one after
+the other, so the order of the tests of a test suite depends on the test
+suites that were shuffled before it.</p></p>        </div>
             
         
     
@@ -108,6 +118,17 @@
             <h2>Methods</h2>
 
             <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(int $seed)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     array
@@ -137,8 +158,43 @@
 
             <div id="method-details">
                     <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/ExecutionOrder/Stage/Randomize.php#L40">at line 40</a></div>
+        <code>                    
+    <strong>__construct</strong>(int $seed)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$seed</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_apply">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/ExecutionOrder/Stage/Randomize.php#L29">at line 29</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/ExecutionOrder/Stage/Randomize.php#L50">at line 50</a></div>
         <code>                    array
     <strong>apply</strong>(array $tests, <a href="../../../../PHPUnit/Runner/ExecutionOrder/Context.html"><abbr title="PHPUnit\Runner\ExecutionOrder\Context">Context</abbr></a> $context)
         </code>
@@ -187,7 +243,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_name">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/ExecutionOrder/Stage/Randomize.php#L39">at line 39</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/ExecutionOrder/Stage/Randomize.php#L58">at line 58</a></div>
         <code>                    string
     <strong>name</strong>()
         </code>

@@ -157,6 +157,30 @@ always terminates the process forcefully, the signal is ignored.</p></em></p>
                     <p></p>
                 </td>
             </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                INITIAL_POLL_INTERVAL_MICROSECONDS
+                                    </td>
+                <td class="last">
+                    <p><em><p>How long wait() sleeps before it checks for the first time, and at
+most, whether the process has ended. The interval doubles from the
+former to the latter, so that a process that ends right away is not
+waited for longer than necessary and a process that runs for long is
+not checked more often than necessary.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                MAXIMUM_POLL_INTERVAL_MICROSECONDS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
             </table>
 
     
@@ -314,7 +338,8 @@ the process is doing.</p></p>                </div>
                     <a href="#method_wait">wait</a>()
         
                                             <p><p>Block until the worker process has terminated, then reap it and return
-its accumulated output.</p></p>                </div>
+its accumulated output together with how it ended: its exit code or
+the signal that terminated it.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -340,7 +365,7 @@ process waits for its child process.</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L121">at line 121</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L133">at line 133</a></div>
         <code>                    
     <strong>__construct</strong>(mixed $process, array $pipes, mixed $mergedOutputStream, string|null $temporaryFile, mixed $outputFile = null, mixed $errorFile = null)
         </code>
@@ -400,7 +425,7 @@ process waits for its child process.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_write">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L145">at line 145</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L157">at line 157</a></div>
         <code>                    void
     <strong>write</strong>(string $bytes)
         </code>
@@ -443,7 +468,7 @@ process waits for its child process.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_closeStdin">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L155">at line 155</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L167">at line 167</a></div>
         <code>                    void
     <strong>closeStdin</strong>()
         </code>
@@ -476,7 +501,7 @@ process waits for its child process.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_stdout">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L167">at line 167</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L179">at line 179</a></div>
         <code>                    mixed
     <strong>stdout</strong>()
         </code>
@@ -510,7 +535,7 @@ process waits for its child process.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_readableStreams">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L178">at line 178</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L190">at line 190</a></div>
         <code>                    array
     <strong>readableStreams</strong>()
         </code>
@@ -544,7 +569,7 @@ stream_select() to wait for the worker process to produce output.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_outputLength">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L203">at line 203</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L215">at line 215</a></div>
         <code>                    int
     <strong>outputLength</strong>()
         </code>
@@ -582,7 +607,7 @@ wait() instead.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_errorOutputLength">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L223">at line 223</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L235">at line 235</a></div>
         <code>                    int
     <strong>errorOutputLength</strong>()
         </code>
@@ -616,7 +641,7 @@ far, for a job whose standard error is captured in a file of its own.</p></p>   
             </div>
                     <div class="method-item">
                     <h3 id="method_outputBetween">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L240">at line 240</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L252">at line 252</a></div>
         <code>                    string
     <strong>outputBetween</strong>(int $from, int $to)
         </code>
@@ -666,7 +691,7 @@ and when the file cannot be read, it is the empty string.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_errorOutputBetween">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L262">at line 262</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L274">at line 274</a></div>
         <code>                    string
     <strong>errorOutputBetween</strong>(int $from, int $to)
         </code>
@@ -717,7 +742,7 @@ empty string.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isRunning">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L278">at line 278</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L290">at line 290</a></div>
         <code>                    bool
     <strong>isRunning</strong>()
         </code>
@@ -754,7 +779,7 @@ poll its liveness instead.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_consume">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L292">at line 292</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L304">at line 304</a></div>
         <code>                    void
     <strong>consume</strong>()
         </code>
@@ -789,7 +814,7 @@ returned by readableStreams() as ready.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_terminate">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L308">at line 308</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L320">at line 320</a></div>
         <code>                    void
     <strong>terminate</strong>()
         </code>
@@ -827,7 +852,7 @@ forced. This bounds how long stopping early can take.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_wait">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L356">at line 356</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L369">at line 369</a></div>
         <code>                    <a href="../../../PHPUnit/Util/PHP/Result.html"><abbr title="PHPUnit\Util\PHP\Result">Result</abbr></a>
     <strong>wait</strong>()
         </code>
@@ -839,7 +864,8 @@ forced. This bounds how long stopping early can take.</p></p>
 
         <div class="method-description">
                             <p><p>Block until the worker process has terminated, then reap it and return
-its accumulated output.</p></p>                        
+its accumulated output together with how it ended: its exit code or
+the signal that terminated it.</p></p>                        
         </div>
         <div class="tags">
             
@@ -861,7 +887,7 @@ its accumulated output.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_waitInvoking">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L410">at line 410</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Util/PHP/RunningJob.php#L433">at line 433</a></div>
         <code>                    <a href="../../../PHPUnit/Util/PHP/Result.html"><abbr title="PHPUnit\Util\PHP\Result">Result</abbr></a>
     <strong>waitInvoking</strong>(callable $whileRunning)
         </code>
