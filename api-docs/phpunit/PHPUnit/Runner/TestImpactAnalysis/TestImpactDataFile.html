@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>PHPUnit\Runner\TestImpactAnalysis\TestImpactDataFile | PHPUnit</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+    </head>
+
+    <body id="class" data-name="class:PHPUnit_Runner_TestImpactAnalysis_TestImpactDataFile" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">PHPUnit</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../PHPUnit.html">PHPUnit</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner.html">Runner</a></li><li class="backslash">\</li><li><a href="../../../PHPUnit/Runner/TestImpactAnalysis.html">TestImpactAnalysis</a></li><li class="backslash">\</li><li>TestImpactDataFile</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>TestImpactDataFile    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>TestImpactDataFile</strong>        (<a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestImpactAnalysis/TestImpactDataFile.php">View source</a>)
+</p>
+
+        
+        
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;This class is not covered by the backward compatibility promise for PHPUnit</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+            <div class="description">
+            <p><p>The file the source files that were executed by each test are kept in.</p></p>            <p><p>Each test refers to the version of a source file it executed, and a version
+is a source file together with the hash of its contents at the time the test
+executed it. That is what makes the data usable later: a test whose files
+all still hash the same executed the code that is there now, and a test that
+refers to a version that no longer exists executed code that has changed
+since. A test that ran in a process of its own also refers to the versions
+of the source files that process loaded.</p>
+<p>The versions of the source files that were executed outside of any test,
+while PHPUnit was bootstrapped or while the tests were loaded, for instance,
+are kept once, and not for each test: every test depends on them.</p>
+<p>The file also records where what is in it comes from: what a test executed
+and what a test declares that it covers and uses are different claims, and
+the file is discarded rather than added to when it was written from the
+other one.</p>
+<p>The file records what everything in it rests on as well: the version of
+PHPUnit and the version of PHP, which decide what the data means, and the
+assumptions about the configuration, the code that is first-party code, and
+the packages that are installed. The file is discarded, and not merged with,
+when any of them does not match.</p>
+<p>The file names every file relative to the base directory, so that what is
+recorded in one checkout of a project can be used in another: in the
+checkout of another CI runner, for instance, which is somewhere else on the
+same machine or on another machine altogether.</p></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                            private
+                                                                                VERSION
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            private
+                                                                                DEFAULT_FILENAME
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(string $filepath, <a href="../../../PHPUnit/Runner/TestImpactAnalysis/BaseDirectory.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\BaseDirectory">BaseDirectory</abbr></a> $baseDirectory, <a href="../../../PHPUnit/Runner/TestImpactAnalysis/Assumptions.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\Assumptions">Assumptions</abbr></a> $assumptions, <a href="../../../PHPUnit/Runner/TestImpactAnalysis/PathHasher.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\PathHasher">PathHasher</abbr></a>|null $hasher = null)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../PHPUnit/Runner/TestImpactAnalysis/RecordedTests.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\RecordedTests">RecordedTests</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testsThatDependOn">testsThatDependOn</a>(string $file)
+        
+                                            <p><p>The tests that are recorded as having executed the source file.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../PHPUnit/Runner/TestImpactAnalysis/Recording.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\Recording">Recording</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_recording">recording</a>(<abbr title="PHPUnit\Runner\TestImpactAnalysis\Provenance">Provenance</abbr> $provenance)
+        
+                                            <p><p>What was recorded, in the form the selection of tests needs it, or null
+when there is nothing usable.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="PHPUnit\Runner\TestImpactAnalysis\Provenance">Provenance</abbr>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_provenance">provenance</a>()
+        
+                                            <p><p>Where what is recorded comes from, or null when nothing is recorded.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="PHPUnit\Runner\TestImpactAnalysis\DiscardReason">DiscardReason</abbr>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_discardReason">discardReason</a>()
+        
+                                            <p><p>Why what was recorded is not used, or null when it is used or when
+nothing was recorded.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_persist">persist</a>(<a href="../../../PHPUnit/Runner/TestImpactAnalysis/TestImpactData.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\TestImpactData">TestImpactData</abbr></a> $data, <abbr title="PHPUnit\Runner\TestImpactAnalysis\Provenance">Provenance</abbr> $provenance, array $sourceFiles, array $filesReachedThroughChanges)
+        
+                                            <p><p>What an earlier test run recorded for a test that was not run again is
+written back unchanged: a run that did not run a test did not learn
+anything about it and must not cause what is known about it to be
+forgotten.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_persistAndPrune">persistAndPrune</a>(<a href="../../../PHPUnit/Runner/TestImpactAnalysis/TestImpactData.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\TestImpactData">TestImpactData</abbr></a> $data, <abbr title="PHPUnit\Runner\TestImpactAnalysis\Provenance">Provenance</abbr> $provenance, array $sourceFiles)
+        
+                                            <p><p>Keeps only what this test run recorded, so that the entry of a test that
+no longer exists is forgotten instead of being kept for ever.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestImpactAnalysis/TestImpactDataFile.php#L91">at line 91</a></div>
+        <code>                    
+    <strong>__construct</strong>(string $filepath, <a href="../../../PHPUnit/Runner/TestImpactAnalysis/BaseDirectory.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\BaseDirectory">BaseDirectory</abbr></a> $baseDirectory, <a href="../../../PHPUnit/Runner/TestImpactAnalysis/Assumptions.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\Assumptions">Assumptions</abbr></a> $assumptions, <a href="../../../PHPUnit/Runner/TestImpactAnalysis/PathHasher.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\PathHasher">PathHasher</abbr></a>|null $hasher = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$filepath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/TestImpactAnalysis/BaseDirectory.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\BaseDirectory">BaseDirectory</abbr></a></td>
+                <td>$baseDirectory</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/TestImpactAnalysis/Assumptions.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\Assumptions">Assumptions</abbr></a></td>
+                <td>$assumptions</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/TestImpactAnalysis/PathHasher.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\PathHasher">PathHasher</abbr></a>|null</td>
+                <td>$hasher</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testsThatDependOn">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestImpactAnalysis/TestImpactDataFile.php#L118">at line 118</a></div>
+        <code>                    <a href="../../../PHPUnit/Runner/TestImpactAnalysis/RecordedTests.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\RecordedTests">RecordedTests</abbr></a>
+    <strong>testsThatDependOn</strong>(string $file)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The tests that are recorded as having executed the source file.</p></p>                <p><p>A file that cannot be hashed, because it is no longer there, is treated
+as a file that changed: every test that executed it executed a version
+of it that no longer exists.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$file</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../PHPUnit/Runner/TestImpactAnalysis/RecordedTests.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\RecordedTests">RecordedTests</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_recording">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestImpactAnalysis/TestImpactDataFile.php#L181">at line 181</a></div>
+        <code>                    <a href="../../../PHPUnit/Runner/TestImpactAnalysis/Recording.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\Recording">Recording</abbr></a>|null
+    <strong>recording</strong>(<abbr title="PHPUnit\Runner\TestImpactAnalysis\Provenance">Provenance</abbr> $provenance)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>What was recorded, in the form the selection of tests needs it, or null
+when there is nothing usable.</p></p>                <p><p>What a test executed and what a test declares that it covers and uses
+are different claims, and one cannot answer for the other: what was
+recorded from the one is of no use to a test run that records the other,
+which is also why such a test run discards it instead of adding to it.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="PHPUnit\Runner\TestImpactAnalysis\Provenance">Provenance</abbr></td>
+                <td>$provenance</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../PHPUnit/Runner/TestImpactAnalysis/Recording.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\Recording">Recording</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_provenance">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestImpactAnalysis/TestImpactDataFile.php#L197">at line 197</a></div>
+        <code>                    <abbr title="PHPUnit\Runner\TestImpactAnalysis\Provenance">Provenance</abbr>|null
+    <strong>provenance</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Where what is recorded comes from, or null when nothing is recorded.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="PHPUnit\Runner\TestImpactAnalysis\Provenance">Provenance</abbr>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_discardReason">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestImpactAnalysis/TestImpactDataFile.php#L206">at line 206</a></div>
+        <code>                    <abbr title="PHPUnit\Runner\TestImpactAnalysis\DiscardReason">DiscardReason</abbr>|null
+    <strong>discardReason</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Why what was recorded is not used, or null when it is used or when
+nothing was recorded.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="PHPUnit\Runner\TestImpactAnalysis\DiscardReason">DiscardReason</abbr>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_persist">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestImpactAnalysis/TestImpactDataFile.php#L222">at line 222</a></div>
+        <code>                    void
+    <strong>persist</strong>(<a href="../../../PHPUnit/Runner/TestImpactAnalysis/TestImpactData.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\TestImpactData">TestImpactData</abbr></a> $data, <abbr title="PHPUnit\Runner\TestImpactAnalysis\Provenance">Provenance</abbr> $provenance, array $sourceFiles, array $filesReachedThroughChanges)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>What an earlier test run recorded for a test that was not run again is
+written back unchanged: a run that did not run a test did not learn
+anything about it and must not cause what is known about it to be
+forgotten.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/TestImpactAnalysis/TestImpactData.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\TestImpactData">TestImpactData</abbr></a></td>
+                <td>$data</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="PHPUnit\Runner\TestImpactAnalysis\Provenance">Provenance</abbr></td>
+                <td>$provenance</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$sourceFiles</td>
+                <td><p>the files that are subject to code coverage analysis, and the files that are watched</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$filesReachedThroughChanges</td>
+                <td><p>the files that, when they are added, can only affect a test through a file that was changed to use them</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/Exception.html"><abbr title="PHPUnit\Runner\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_persistAndPrune">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/TestImpactAnalysis/TestImpactDataFile.php#L239">at line 239</a></div>
+        <code>                    void
+    <strong>persistAndPrune</strong>(<a href="../../../PHPUnit/Runner/TestImpactAnalysis/TestImpactData.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\TestImpactData">TestImpactData</abbr></a> $data, <abbr title="PHPUnit\Runner\TestImpactAnalysis\Provenance">Provenance</abbr> $provenance, array $sourceFiles)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Keeps only what this test run recorded, so that the entry of a test that
+no longer exists is forgotten instead of being kept for ever.</p></p>                <p><p>This must only be used when the test run ran every test there is: what
+is dropped is everything the run did not record, and nothing tells a
+test that is gone apart from a test that was merely not run.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/TestImpactAnalysis/TestImpactData.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\TestImpactData">TestImpactData</abbr></a></td>
+                <td>$data</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="PHPUnit\Runner\TestImpactAnalysis\Provenance">Provenance</abbr></td>
+                <td>$provenance</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$sourceFiles</td>
+                <td><p>the files that are subject to code coverage analysis, and the files that are watched</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../PHPUnit/Runner/Exception.html"><abbr title="PHPUnit\Runner\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>This documentation is built for the <a href="https://phpunit.de/documentation.html" rel="noreferrer noopener" target="_blank">PHPUnit</a> project.</div></div>
+    </div>
+    </body>
+
+</html>

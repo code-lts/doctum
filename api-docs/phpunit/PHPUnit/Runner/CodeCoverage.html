@@ -154,6 +154,174 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_startRecordingWhatIsExecutedOutsideOfTests">startRecordingWhatIsExecutedOutsideOfTests</a>(<a href="../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a> $configuration, <a href="../../PHPUnit/TextUI/Configuration/CodeCoverageFilterRegistry.html"><abbr title="PHPUnit\TextUI\Configuration\CodeCoverageFilterRegistry">CodeCoverageFilterRegistry</abbr></a> $codeCoverageFilterRegistry)
+        
+                                            <p><p>What is executed outside of the tests is recorded from as early as
+possible: before the bootstrap script is loaded, when the code coverage
+driver is available then. A code coverage driver that is configured
+by the name of its class may only be available once the bootstrap
+script has registered an autoloader, which is why this is tried again
+after the bootstrap script was loaded.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_stopRecordingWhatIsExecutedOutsideOfTests">stopRecordingWhatIsExecutedOutsideOfTests</a>()
+        
+                                            <p><p>What was executed outside of the tests is added to what the tests
+executed before what was recorded is persisted, and only when test
+impact data is recorded: a test run that ends up not recording it, for
+instance because the source filter matches no files, stops collecting
+and discards what it collected.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_pauseRecordingWhatIsExecutedOutsideOfTests">pauseRecordingWhatIsExecutedOutsideOfTests</a>()
+        
+                                            <p><p>What is executed while recording is paused is not recorded for any
+test, see TestRunner::runExampleOfProperty().</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resumeRecordingWhatIsExecutedOutsideOfTests">resumeRecordingWhatIsExecutedOutsideOfTests</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_enterTestClass">enterTestClass</a>(string $className)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_leaveTestClass">leaveTestClass</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_enterDataProvider">enterDataProvider</a>(string $className, string $methodName)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_leaveDataProvider">leaveDataProvider</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setTestRunConsistsOfASingleTest">setTestRunConsistsOfASingleTest</a>(bool $testRunConsistsOfASingleTest)
+        
+                                            <p><p>A test run that consists of a single test gives that test a process of
+its own, and what that process loaded is then what the test depends on,
+see recordTestImpactDataFor().</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testRunConsistsOfASingleTest">testRunConsistsOfASingleTest</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_recordTestImpactDataOf">recordTestImpactDataOf</a>(<a href="../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a> $test, string $recordedTest, array $files)
+        
+                                            <p><p>What a test that was run in a process of its own executed is recorded
+in that process, and is recorded here for the test that was run.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_recordTestImpactDataOfTestRunInWorker">recordTestImpactDataOfTestRunInWorker</a>(string $className, string $methodName, string $recordedTest, array $files)
+        
+                                            <p><p>What a test that was run in a worker process of a parallel test run
+executed is recorded in that process, together with what was executed
+there for its test class and for its data provider, and is recorded
+here for the test that was run. What the main process executed for its
+data provider, when it built the test suite, is added to it as it is
+added to what a test executed that was run in the main process.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_recordExecutedOutsideOfTestsInWorker">recordExecutedOutsideOfTestsInWorker</a>(array $files)
+        
+                                            <p><p>What a worker process of a parallel test run executed outside of the
+tests it ran is recorded in that process, and is recorded here as
+executed outside of the tests.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_collectedTestImpactData">collectedTestImpactData</a>()
+        
+                                            <p><p>What was recorded since this was last asked for: what the main process
+records when a worker process of a parallel test run ships it with the
+result of the tests of a test class it ran.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
                 </div>
                 <div class="col-md-8">
@@ -203,10 +371,12 @@ worker process ships the code coverage of a unit it ran.</p></p>                
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_start">start</a>(<a href="../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a> $test)
+                    <a href="#method_start">start</a>(<a href="../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a> $test, bool $forTestImpactDataOnly = false)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>A test that opted out of code coverage is only collected so that the
+source files it executed can be recorded. Nothing it executed may reach
+the code coverage report, which is why the driver is used directly for
+such a test and the code coverage object never sees its data.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -216,8 +386,8 @@ worker process ships the code coverage of a unit it ran.</p></p>                
                 <div class="col-md-8">
                     <a href="#method_stop">stop</a>(bool $append, null|false|<abbr title="SebastianBergmann\CodeCoverage\Test\Target\TargetCollection">TargetCollection</abbr> $covers = null, <abbr title="SebastianBergmann\CodeCoverage\Test\Target\TargetCollection">TargetCollection</abbr>|null $uses = null)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>What is executed outside of the tests is recorded again once the test
+is no longer collected for, whatever happened while it was.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -255,6 +425,29 @@ required or no data was appended.</p></p>                </div>
                                             <p><p>Discards the code coverage data that was held back for the examples of a
 property, like the data of a test that is considered risky because it
 did not perform any assertions.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isRecordingTestImpactData">isRecordingTestImpactData</a>()
+        
+                                            <p><p>Recording depends on the code coverage driver, so it stops when the
+driver does: the source filter that matches no files, for instance,
+deactivates code coverage after it was activated.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../PHPUnit/Runner/TestImpactAnalysis/TestImpactData.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\TestImpactData">TestImpactData</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_testImpactData">testImpactData</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -328,10 +521,13 @@ did not perform any assertions.</p></p>                </div>
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_warnIfFilterIsNotConfigured">warnIfFilterIsNotConfigured</a>(<a href="../../PHPUnit/TextUI/Configuration/CodeCoverageFilterRegistry.html"><abbr title="PHPUnit\TextUI\Configuration\CodeCoverageFilterRegistry">CodeCoverageFilterRegistry</abbr></a> $codeCoverageFilterRegistry, <a href="../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a> $configuration)
+                    <a href="#method_warnIfFilterIsNotConfigured">warnIfFilterIsNotConfigured</a>(<a href="../../PHPUnit/TextUI/Configuration/CodeCoverageFilterRegistry.html"><abbr title="PHPUnit\TextUI\Configuration\CodeCoverageFilterRegistry">CodeCoverageFilterRegistry</abbr></a> $codeCoverageFilterRegistry, <a href="../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a> $configuration, bool $forTestImpactDataOnly = false)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Which files are first-party code is what test impact analysis records
+what each test depends on in terms of, just as it is what code coverage
+is processed for. A run that only needs the source filter for test
+impact data is therefore told what it will not get, and not told about
+code coverage it never asked for.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -342,7 +538,7 @@ did not perform any assertions.</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_instance">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L92">at line 92</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L119">at line 119</a></div>
         <code>        static            <a href="../../PHPUnit/Runner/CodeCoverage.html"><abbr title="PHPUnit\Runner\CodeCoverage">CodeCoverage</abbr></a>
     <strong>instance</strong>()
         </code>
@@ -376,7 +572,7 @@ did not perform any assertions.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_unintentionallyCoveredCodeMessage">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L104">at line 104</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L131">at line 131</a></div>
         <code>        static            string
     <strong>unintentionallyCoveredCodeMessage</strong>(<abbr title="SebastianBergmann\CodeCoverage\UnintentionallyCoveredCodeException">UnintentionallyCoveredCodeException</abbr> $e)
         </code>
@@ -420,7 +616,7 @@ did not perform any assertions.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L110">at line 110</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L137">at line 137</a></div>
         <code>                    
     <strong>__construct</strong>(<a href="../../PHPUnit/Event/Emitter.html"><abbr title="PHPUnit\Event\Emitter">Emitter</abbr></a> $emitter)
         </code>
@@ -455,7 +651,7 @@ did not perform any assertions.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_init">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L115">at line 115</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L142">at line 142</a></div>
         <code>                    <abbr title="PHPUnit\Runner\CodeCoverageInitializationStatus">CodeCoverageInitializationStatus</abbr>
     <strong>init</strong>(<a href="../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a> $configuration, <a href="../../PHPUnit/TextUI/Configuration/CodeCoverageFilterRegistry.html"><abbr title="PHPUnit\TextUI\Configuration\CodeCoverageFilterRegistry">CodeCoverageFilterRegistry</abbr></a> $codeCoverageFilterRegistry, bool $extensionRequiresCodeCoverageCollection)
         </code>
@@ -508,8 +704,606 @@ did not perform any assertions.</p></p>                </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_startRecordingWhatIsExecutedOutsideOfTests">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L276">at line 276</a></div>
+        <code>                    void
+    <strong>startRecordingWhatIsExecutedOutsideOfTests</strong>(<a href="../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a> $configuration, <a href="../../PHPUnit/TextUI/Configuration/CodeCoverageFilterRegistry.html"><abbr title="PHPUnit\TextUI\Configuration\CodeCoverageFilterRegistry">CodeCoverageFilterRegistry</abbr></a> $codeCoverageFilterRegistry)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>What is executed outside of the tests is recorded from as early as
+possible: before the bootstrap script is loaded, when the code coverage
+driver is available then. A code coverage driver that is configured
+by the name of its class may only be available once the bootstrap
+script has registered an autoloader, which is why this is tried again
+after the bootstrap script was loaded.</p></p>                <p><p>This only ever happens for a test run that records test impact data,
+and nothing is said about a code coverage driver that is not available
+or about a source filter that matches no files: init() does that, as it
+does for a test run that records test impact data without this.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a></td>
+                <td>$configuration</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../PHPUnit/TextUI/Configuration/CodeCoverageFilterRegistry.html"><abbr title="PHPUnit\TextUI\Configuration\CodeCoverageFilterRegistry">CodeCoverageFilterRegistry</abbr></a></td>
+                <td>$codeCoverageFilterRegistry</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stopRecordingWhatIsExecutedOutsideOfTests">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L340">at line 340</a></div>
+        <code>                    void
+    <strong>stopRecordingWhatIsExecutedOutsideOfTests</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>What was executed outside of the tests is added to what the tests
+executed before what was recorded is persisted, and only when test
+impact data is recorded: a test run that ends up not recording it, for
+instance because the source filter matches no files, stops collecting
+and discards what it collected.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_pauseRecordingWhatIsExecutedOutsideOfTests">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L357">at line 357</a></div>
+        <code>                    void
+    <strong>pauseRecordingWhatIsExecutedOutsideOfTests</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>What is executed while recording is paused is not recorded for any
+test, see TestRunner::runExampleOfProperty().</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resumeRecordingWhatIsExecutedOutsideOfTests">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L366">at line 366</a></div>
+        <code>                    void
+    <strong>resumeRecordingWhatIsExecutedOutsideOfTests</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_enterTestClass">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L378">at line 378</a></div>
+        <code>                    void
+    <strong>enterTestClass</strong>(string $className)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$className</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_leaveTestClass">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L387">at line 387</a></div>
+        <code>                    void
+    <strong>leaveTestClass</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_enterDataProvider">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L400">at line 400</a></div>
+        <code>                    void
+    <strong>enterDataProvider</strong>(string $className, string $methodName)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$className</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$methodName</td>
+                <td><p>the test method the data is provided for</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_leaveDataProvider">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L409">at line 409</a></div>
+        <code>                    void
+    <strong>leaveDataProvider</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTestRunConsistsOfASingleTest">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L423">at line 423</a></div>
+        <code>                    void
+    <strong>setTestRunConsistsOfASingleTest</strong>(bool $testRunConsistsOfASingleTest)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>A test run that consists of a single test gives that test a process of
+its own, and what that process loaded is then what the test depends on,
+see recordTestImpactDataFor().</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$testRunConsistsOfASingleTest</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testRunConsistsOfASingleTest">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L428">at line 428</a></div>
+        <code>                    bool
+    <strong>testRunConsistsOfASingleTest</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_recordTestImpactDataOf">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L440">at line 440</a></div>
+        <code>                    void
+    <strong>recordTestImpactDataOf</strong>(<a href="../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a> $test, string $recordedTest, array $files)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>What a test that was run in a process of its own executed is recorded
+in that process, and is recorded here for the test that was run.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a></td>
+                <td>$test</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$recordedTest</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$files</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_recordTestImpactDataOfTestRunInWorker">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L460">at line 460</a></div>
+        <code>                    void
+    <strong>recordTestImpactDataOfTestRunInWorker</strong>(string $className, string $methodName, string $recordedTest, array $files)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>What a test that was run in a worker process of a parallel test run
+executed is recorded in that process, together with what was executed
+there for its test class and for its data provider, and is recorded
+here for the test that was run. What the main process executed for its
+data provider, when it built the test suite, is added to it as it is
+added to what a test executed that was run in the main process.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$className</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$methodName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$recordedTest</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$files</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_recordExecutedOutsideOfTestsInWorker">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L478">at line 478</a></div>
+        <code>                    void
+    <strong>recordExecutedOutsideOfTestsInWorker</strong>(array $files)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>What a worker process of a parallel test run executed outside of the
+tests it ran is recorded in that process, and is recorded here as
+executed outside of the tests.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$files</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_collectedTestImpactData">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L494">at line 494</a></div>
+        <code>                    array
+    <strong>collectedTestImpactData</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>What was recorded since this was last asked for: what the main process
+records when a worker process of a parallel test run ships it with the
+result of the tests of a test class it ran.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_isActive">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L200">at line 200</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L513">at line 513</a></div>
         <code>                    bool
     <strong>isActive</strong>()
         </code>
@@ -543,7 +1337,7 @@ did not perform any assertions.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_codeCoverage">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L205">at line 205</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L518">at line 518</a></div>
         <code>                    <abbr title="SebastianBergmann\CodeCoverage\CodeCoverage">CodeCoverage</abbr>
     <strong>codeCoverage</strong>()
         </code>
@@ -577,7 +1371,7 @@ did not perform any assertions.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_collectedCodeCoverage">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L224">at line 224</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L537">at line 537</a></div>
         <code>                    <abbr title="SebastianBergmann\CodeCoverage\CodeCoverage">CodeCoverage</abbr>
     <strong>collectedCodeCoverage</strong>()
         </code>
@@ -617,7 +1411,7 @@ than the data that was collected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_driverNameAndVersion">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L239">at line 239</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L552">at line 552</a></div>
         <code>                    string
     <strong>driverNameAndVersion</strong>()
         </code>
@@ -651,9 +1445,9 @@ than the data that was collected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_start">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L253">at line 253</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L572">at line 572</a></div>
         <code>                    void
-    <strong>start</strong>(<a href="../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a> $test)
+    <strong>start</strong>(<a href="../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a> $test, bool $forTestImpactDataOnly = false)
         </code>
     </h3>
     <div class="details">    
@@ -662,8 +1456,10 @@ than the data that was collected.</p></p>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>A test that opted out of code coverage is only collected so that the
+source files it executed can be recorded. Nothing it executed may reach
+the code coverage report, which is why the driver is used directly for
+such a test and the code coverage object never sees its data.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -672,6 +1468,11 @@ than the data that was collected.</p></p>
                     <tr>
                 <td><a href="../../PHPUnit/Framework/TestCase.html"><abbr title="PHPUnit\Framework\TestCase">TestCase</abbr></a></td>
                 <td>$test</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$forTestImpactDataOnly</td>
                 <td></td>
             </tr>
             </table>
@@ -695,7 +1496,7 @@ than the data that was collected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_stop">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L273">at line 273</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L609">at line 609</a></div>
         <code>                    void
     <strong>stop</strong>(bool $append, null|false|<abbr title="SebastianBergmann\CodeCoverage\Test\Target\TargetCollection">TargetCollection</abbr> $covers = null, <abbr title="SebastianBergmann\CodeCoverage\Test\Target\TargetCollection">TargetCollection</abbr>|null $uses = null)
         </code>
@@ -706,8 +1507,8 @@ than the data that was collected.</p></p>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>What is executed outside of the tests is recorded again once the test
+is no longer collected for, whatever happened while it was.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -749,7 +1550,7 @@ than the data that was collected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_stopAndHoldBack">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L309">at line 309</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L633">at line 633</a></div>
         <code>                    void
     <strong>stopAndHoldBack</strong>(null|false|<abbr title="SebastianBergmann\CodeCoverage\Test\Target\TargetCollection">TargetCollection</abbr> $covers, <abbr title="SebastianBergmann\CodeCoverage\Test\Target\TargetCollection">TargetCollection</abbr>|null $uses)
         </code>
@@ -762,7 +1563,9 @@ than the data that was collected.</p></p>
         <div class="method-description">
                             <p><p>Stops collecting code coverage data for the current test, an example of
 a property that passed without performing assertions, and holds the
-data back instead of appending it, see appendHeldBack().</p></p>                        
+data back instead of appending it, see appendHeldBack().</p></p>                <p><p>What the example executed is recorded all the same: the property
+depends on it, whether the data ends up in the code coverage report or
+not.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -799,7 +1602,7 @@ data back instead of appending it, see appendHeldBack().</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_appendHeldBack">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L346">at line 346</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L681">at line 681</a></div>
         <code>                    bool|null
     <strong>appendHeldBack</strong>(string $id)
         </code>
@@ -846,7 +1649,7 @@ by this, they are those of the examples that were appended before.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_discardHeldBack">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L403">at line 403</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L738">at line 738</a></div>
         <code>                    void
     <strong>discardHeldBack</strong>(string $id)
         </code>
@@ -890,8 +1693,77 @@ did not perform any assertions.</p></p>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_isRecordingTestImpactData">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L748">at line 748</a></div>
+        <code>                    bool
+    <strong>isRecordingTestImpactData</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Recording depends on the code coverage driver, so it stops when the
+driver does: the source filter that matches no files, for instance,
+deactivates code coverage after it was activated.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_testImpactData">
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L753">at line 753</a></div>
+        <code>                    <a href="../../PHPUnit/Runner/TestImpactAnalysis/TestImpactData.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\TestImpactData">TestImpactData</abbr></a>
+    <strong>testImpactData</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../PHPUnit/Runner/TestImpactAnalysis/TestImpactData.html"><abbr title="PHPUnit\Runner\TestImpactAnalysis\TestImpactData">TestImpactData</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_lastTestContributedToCoverage">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L408">at line 408</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L762">at line 762</a></div>
         <code>                    bool
     <strong>lastTestContributedToCoverage</strong>()
         </code>
@@ -925,7 +1797,7 @@ did not perform any assertions.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_deactivate">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L413">at line 413</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L767">at line 767</a></div>
         <code>                    void
     <strong>deactivate</strong>()
         </code>
@@ -959,7 +1831,7 @@ did not perform any assertions.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_collectsBranchCoverage">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L422">at line 422</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L776">at line 776</a></div>
         <code>                    bool
     <strong>collectsBranchCoverage</strong>()
         </code>
@@ -993,7 +1865,7 @@ did not perform any assertions.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_collectsPathCoverage">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L427">at line 427</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L781">at line 781</a></div>
         <code>                    bool
     <strong>collectsPathCoverage</strong>()
         </code>
@@ -1027,7 +1899,7 @@ did not perform any assertions.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_generateReports">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L432">at line 432</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L786">at line 786</a></div>
         <code>                    void
     <strong>generateReports</strong>(<a href="../../PHPUnit/TextUI/Output/Printer.html"><abbr title="PHPUnit\TextUI\Output\Printer">Printer</abbr></a> $printer, <a href="../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a> $configuration)
         </code>
@@ -1076,7 +1948,7 @@ did not perform any assertions.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_warnAboutFilesThatCouldNotBeParsed">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L619">at line 619</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L973">at line 973</a></div>
         <code>                    void
     <strong>warnAboutFilesThatCouldNotBeParsed</strong>()
         </code>
@@ -1110,9 +1982,9 @@ did not perform any assertions.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_warnIfFilterIsNotConfigured">
-        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L636">at line 636</a></div>
+        <div class="location"><a href="https://github.com/sebastianbergmann/phpunit/blob/main/src/Runner/CodeCoverage.php#L997">at line 997</a></div>
         <code>                    void
-    <strong>warnIfFilterIsNotConfigured</strong>(<a href="../../PHPUnit/TextUI/Configuration/CodeCoverageFilterRegistry.html"><abbr title="PHPUnit\TextUI\Configuration\CodeCoverageFilterRegistry">CodeCoverageFilterRegistry</abbr></a> $codeCoverageFilterRegistry, <a href="../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a> $configuration)
+    <strong>warnIfFilterIsNotConfigured</strong>(<a href="../../PHPUnit/TextUI/Configuration/CodeCoverageFilterRegistry.html"><abbr title="PHPUnit\TextUI\Configuration\CodeCoverageFilterRegistry">CodeCoverageFilterRegistry</abbr></a> $codeCoverageFilterRegistry, <a href="../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a> $configuration, bool $forTestImpactDataOnly = false)
         </code>
     </h3>
     <div class="details">    
@@ -1121,8 +1993,11 @@ did not perform any assertions.</p></p>
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Which files are first-party code is what test impact analysis records
+what each test depends on in terms of, just as it is what code coverage
+is processed for. A run that only needs the source filter for test
+impact data is therefore told what it will not get, and not told about
+code coverage it never asked for.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1136,6 +2011,11 @@ did not perform any assertions.</p></p>
                     <tr>
                 <td><a href="../../PHPUnit/TextUI/Configuration/Configuration.html"><abbr title="PHPUnit\TextUI\Configuration\Configuration">Configuration</abbr></a></td>
                 <td>$configuration</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$forTestImpactDataOnly</td>
                 <td></td>
             </tr>
             </table>
