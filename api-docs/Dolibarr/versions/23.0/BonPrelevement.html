@@ -3882,6 +3882,16 @@ TODO delete params banque and agence when not necessary</li>
                     static&nbsp;string
                 </div>
                 <div class="col-md-8">
+                    <a href="#method_sepaEscapeXML">sepaEscapeXML</a>(string $str)
+        
+                                            <p><p>Restrict a string to the SEPA Latin character set then escape it for XML.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
                     <a href="#method_buildRumNumber">buildRumNumber</a>(string $row_code_client, int $row_datec, string $row_drum)
         
                                             <p><p>Generate dynamically a RUM number for a customer bank account</p></p>                </div>
@@ -12889,8 +12899,52 @@ File is generated with name this-&gt;filename</li>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_buildRumNumber">
+                    <h3 id="method_sepaEscapeXML">
         <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2249">at line 2249</a></div>
+        <code>        static            string
+    <strong>sepaEscapeXML</strong>(string $str)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Restrict a string to the SEPA Latin character set then escape it for XML.</p></p>                <p><p>Allowed chars are: a-z A-Z 0-9 / - ? : ( ) . , ' + and space. '&amp;' is converted into '+', other chars into space.
+The input string is expected to be already unaccented.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$str</td>
+                <td><p>String to clean</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>String compliant with SEPA character set, escaped for XML</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildRumNumber">
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2266">at line 2266</a></div>
         <code>        static            string
     <strong>buildRumNumber</strong>(string $row_code_client, int $row_datec, string $row_drum)
         </code>
@@ -12943,7 +12997,7 @@ File is generated with name this-&gt;filename</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_EnregDestinataire">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2277">at line 2277</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2294">at line 2294</a></div>
         <code>                    void
     <strong>EnregDestinataire</strong>(int $rowid, string $client_nom, string $rib_banque, string $rib_guichet, string $rib_number, float $amount, string $ref, int $facid, $rib_dom = &#039;&#039;, $type = &#039;direct-debit&#039;)
         </code>
@@ -13033,7 +13087,7 @@ File is generated with name this-&gt;filename</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_EnregDestinataireSEPA">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2361">at line 2361</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2378">at line 2378</a></div>
         <code>                    string
     <strong>EnregDestinataireSEPA</strong>(string $row_code_client, string $row_nom, string $row_address, string $row_zip, $row_town, string $row_country_code, string $row_cb, string $row_cg, string $row_cc, float $row_somme, string $row_ref, int $row_idfac, string $row_iban, string $row_bic, int $row_datec, string $row_drum, $row_rum, $type = &#039;direct-debit&#039;, $row_comment = &#039;&#039;)
         </code>
@@ -13171,7 +13225,7 @@ EnregDestinataire()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_EnregEmetteur">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2530">at line 2530</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2547">at line 2547</a></div>
         <code>                    void
     <strong>EnregEmetteur</strong>(string $type = &#039;direct-debit&#039;)
         </code>
@@ -13214,7 +13268,7 @@ EnregDestinataire()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_EnregEmetteurSEPA">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2607">at line 2607</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2624">at line 2624</a></div>
         <code>                    string
     <strong>EnregEmetteurSEPA</strong>(<a href="Conf.html">Conf</a> $configuration, int $ladate, int $nombre, float $total, string $CrLf = &#039;\n&#039;, $format = &#039;FRST&#039;, $type = &#039;direct-debit&#039;, $fk_bank_account = 0)
         </code>
@@ -13295,7 +13349,7 @@ EnregDestinataire()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_EnregTotal">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2799">at line 2799</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2816">at line 2816</a></div>
         <code>                    void
     <strong>EnregTotal</strong>(int $total)
         </code>
@@ -13338,7 +13392,7 @@ EnregDestinataire()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getLibStatut">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2861">at line 2861</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2878">at line 2878</a></div>
         <code>                    string
     <strong>getLibStatut</strong>($mode = 0)
         </code>
@@ -13381,7 +13435,7 @@ EnregDestinataire()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_LibStatut">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2874">at line 2874</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2891">at line 2891</a></div>
         <code>                    
     <strong>LibStatut</strong>($status, int $mode = 0)
         </code>
@@ -13421,7 +13475,7 @@ EnregDestinataire()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_load_board">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2912">at line 2912</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2929">at line 2929</a></div>
         <code>                    
     <strong>load_board</strong>($user, string $mode)
         </code>
@@ -13461,7 +13515,7 @@ EnregDestinataire()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getKanbanView">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L2983">at line 2983</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L3000">at line 3000</a></div>
         <code>                    
     <strong>getKanbanView</strong>(string $option = &#039;&#039;, $arraydata = null)
         </code>
@@ -13502,7 +13556,7 @@ EnregDestinataire()</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_checkIfSalaryBonPrelevement">
-        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L3017">at line 3017</a></div>
+        <div class="location"><a href="https://github.com/dolibarr/dolibarr/blob/23.0/htdocs/compta/prelevement/class/bonprelevement.class.php#L3034">at line 3034</a></div>
         <code>                    int
     <strong>checkIfSalaryBonPrelevement</strong>()
         </code>
