@@ -108,6 +108,9 @@ argument:
         'default_opened_level' => 2, // optional, 2 is the default value
     ]);
 
+**Note:** The ``remote_repository`` key and ``GitHubRemoteRepository`` class are primarily for *linking*
+to the source file in a remote repository. This configuration key *does not* fetch a remote repository for you.
+
 And here is how you can configure different versions:
 
 .. code-block:: php

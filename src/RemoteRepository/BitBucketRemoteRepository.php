@@ -13,6 +13,9 @@ declare(strict_types = 1);
 
 namespace Doctum\RemoteRepository;
 
+/**
+ * Helps link parsed functions and objects back to a BitBucket repository.
+ */
 class BitBucketRemoteRepository extends AbstractRemoteRepository
 {
 
