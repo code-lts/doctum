@@ -142,6 +142,7 @@ class NodeVisitor extends NodeVisitorAbstract
         $function->setDocComment($docComment);
         $function->setShortDesc($comment->getShortDesc());
         $function->setLongDesc($comment->getLongDesc());
+        $function->setRawDesc($comment->getRawDesc());
         $function->setSee($this->resolveSee($comment->getTag('see')));
         if (!$errors = $comment->getErrors()) {
             $errors = $this->updateMethodParametersFromTags($function, $comment->getTag('param'));
@@ -285,6 +286,7 @@ class NodeVisitor extends NodeVisitorAbstract
         $class->setDocComment($docComment);
         $class->setShortDesc($comment->getShortDesc());
         $class->setLongDesc($comment->getLongDesc());
+        $class->setRawDesc($comment->getRawDesc());
         $class->setSee($this->resolveSee($comment->getTag('see')));
         if ($errors = $comment->getErrors()) {
             $class->setErrors($errors);
@@ -353,6 +355,7 @@ class NodeVisitor extends NodeVisitorAbstract
         $method->setDocComment($docComment);
         $method->setShortDesc($comment->getShortDesc());
         $method->setLongDesc($comment->getLongDesc());
+        $method->setRawDesc($comment->getRawDesc());
         $method->setSee($this->resolveSee($comment->getTag('see')));
         if (!$errors = $comment->getErrors()) {
             $errors = $this->updateMethodParametersFromTags($method, $comment->getTag('param'));
@@ -493,6 +496,7 @@ class NodeVisitor extends NodeVisitorAbstract
         $property->setDocComment($docComment);
         $property->setShortDesc($comment->getShortDesc());
         $property->setLongDesc($comment->getLongDesc());
+        $property->setRawDesc($comment->getRawDesc());
         $property->setSee($this->resolveSee($comment->getTag('see')));
 
         $this->manageHint($node->type, $property);
@@ -529,6 +533,7 @@ class NodeVisitor extends NodeVisitorAbstract
             $constant->setDocComment($docComment);
             $constant->setShortDesc($comment->getShortDesc());
             $constant->setLongDesc($comment->getLongDesc());
+            $constant->setRawDesc($comment->getRawDesc());
             $constant->setTags($comment->getOtherTags());
             $constant->setModifiers($node->flags);
             $constant->setModifiersFromTags();

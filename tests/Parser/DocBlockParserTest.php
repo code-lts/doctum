@@ -251,6 +251,7 @@ class DocBlockParserTest extends TestCase
                     'pure' => [
                         'shortDesc' => '',
                         'longDesc' => '',
+                        'rawDesc' => '',
                         'tags' => [
                             'param' => [ // Array from found tags.
                                 [ // First found tag.
@@ -264,6 +265,7 @@ class DocBlockParserTest extends TestCase
                     'namespace' => [
                         'shortDesc' => '',
                         'longDesc' => '',
+                        'rawDesc' => '',
                         'tags' => [
                             'param' => [ // Array from found tags.
                                 [ // First found tag.
@@ -300,6 +302,7 @@ class DocBlockParserTest extends TestCase
                     'pure' => [
                         'shortDesc' => '',
                         'longDesc' => '',
+                        'rawDesc' => '',
                         'tags' => [
                             'throws' => [ // Array from found tags.
                                 [ // First found tag.
@@ -316,6 +319,7 @@ class DocBlockParserTest extends TestCase
                     'namespace' => [
                         'shortDesc' => '',
                         'longDesc' => '',
+                        'rawDesc' => '',
                         'tags' => [
                             'throws' => [ // Array from found tags.
                                 [ // First found tag.
@@ -332,6 +336,7 @@ class DocBlockParserTest extends TestCase
                     'namespaceAndAlias' => [
                         'shortDesc' => '',
                         'longDesc' => '',
+                        'rawDesc' => '',
                         'tags' => [
                             'throws' => [ // Array from found tags.
                                 [ // First found tag.
@@ -358,6 +363,7 @@ class DocBlockParserTest extends TestCase
                     [
                         'shortDesc' => '',
                         'longDesc' => '',
+                        'rawDesc' => '',
                         'tags' => [
                             'throws' => [
                                 [
@@ -437,6 +443,7 @@ class DocBlockParserTest extends TestCase
                     'pure' => [
                         'shortDesc' => '',
                         'longDesc' => '',
+                        'rawDesc' => '',
                         'tags' => [
                             'author' => ['Author Name'],
                             'covers' => ['\SomeClass::SomeMethod'],
@@ -492,6 +499,7 @@ class DocBlockParserTest extends TestCase
                     'namespace' => [
                         'shortDesc' => '',
                         'longDesc' => '',
+                        'rawDesc' => '',
                         'tags' => [
                             'author' => ['Author Name'],
                             'covers' => [self::NAMESPACE . 'SomeClass::SomeMethod'],
@@ -552,6 +560,7 @@ class DocBlockParserTest extends TestCase
                     'namespaceAndAlias' => [
                         'shortDesc' => '',
                         'longDesc' => '',
+                        'rawDesc' => '',
                         'tags' => [
                             'author' => ['Author Name'],
                             'covers' => [self::ALIASES['SomeClass'] . '::SomeMethod'],
@@ -622,6 +631,7 @@ class DocBlockParserTest extends TestCase
                 [[
                     'shortDesc' => 'Saves the display field for a table.',
                     'longDesc' => '',
+                    'rawDesc' => 'Saves the display field for a table.',
                     'tags' => [
                         'param' => [
                             [
@@ -662,6 +672,7 @@ class DocBlockParserTest extends TestCase
                 [[
                     'shortDesc' => "Prepares queries for adding users and\nalso create database and return query and message",
                     'longDesc' => '',
+                    'rawDesc' => 'Prepares queries for adding users and\nalso create database and return query and message',
                     'tags' => [
                         'param' => [
                             [

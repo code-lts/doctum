@@ -41,6 +41,7 @@ class ConstantReflection extends Reflection
             'line' => $this->line,
             'short_desc' => $this->shortDesc,
             'long_desc' => $this->longDesc,
+            'raw_desc' => $this->rawDesc,
             'modifiers' => $this->modifiers,
             'tags' => $this->tags,
         ];
@@ -54,6 +55,7 @@ class ConstantReflection extends Reflection
         $constant            = new self($array['name'], $array['line']);
         $constant->shortDesc = $array['short_desc'];
         $constant->longDesc  = $array['long_desc'];
+        $constant->rawDesc   = $array['raw_desc'];
         $constant->modifiers = $array['modifiers'] ?? 0;// New in 5.4.0
         $constant->tags      = $array['tags'] ?? [];// New in 5.4.0
 

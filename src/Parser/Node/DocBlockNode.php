@@ -19,6 +19,8 @@ class DocBlockNode
     protected $shortDesc;
     /** @var string */
     protected $longDesc;
+    /**  @var string */
+    protected $rawDesc;
     /** @var array<string,array> */
     protected $tags = [];
     /** @var string[] */
@@ -105,6 +107,19 @@ class DocBlockNode
     public function setLongDesc($longDesc): void
     {
         $this->longDesc = $longDesc;
+    }
+
+    /**
+     * @param string $rawDesc
+     */
+    public function setRawDesc($rawDesc): void
+    {
+        $this->rawDesc = $rawDesc;
+    }
+
+    public function getRawDesc()
+    {
+        return $this->rawDesc;
     }
 
     public function getDesc(): string

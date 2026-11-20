@@ -73,6 +73,7 @@ class DocBlockParser
 
         $result->setShortDesc($docBlock->getSummary());
         $result->setLongDesc($docBlock->getDescription()->__toString());
+        $result->setRawDesc($comment);
 
         foreach ($docBlock->getTags() as $tag) {
             $tagName = $tag->getName();
