@@ -59,6 +59,20 @@ class LazyClassReflection extends ClassReflection
         throw new \LogicException('A LazyClassReflection instance is read-only.');
     }
 
+    public function getRawDesc()
+    {
+        if (false === $this->loaded) {
+            $this->load();
+        }
+
+        return parent::getRawDesc();
+    }
+
+    public function setRawDesc($rawDesc)
+    {
+        throw new \LogicException('A LazyClassReflection instance is read-only.');
+    }
+
     public function getHint()
     {
         if (false === $this->loaded) {

@@ -92,7 +92,8 @@ class PropertyReflection extends Reflection
             'line' => $this->line,
             'short_desc' => $this->shortDesc,
             'long_desc' => $this->longDesc,
-            'hint' => $this->hint,
+            'raw_desc' => $this->rawDesc,
+             'hint' => $this->hint,
             'hint_desc' => $this->hintDesc,
             'tags' => $this->tags,
             'modifiers' => $this->modifiers,
@@ -112,6 +113,7 @@ class PropertyReflection extends Reflection
         $property            = new self($array['name'], $array['line']);
         $property->shortDesc = $array['short_desc'];
         $property->longDesc  = $array['long_desc'];
+        $property->rawDesc   = $array['raw_desc'];
         $property->hint      = $array['hint'];
         $property->hintDesc  = $array['hint_desc'];
         $property->tags      = $array['tags'];

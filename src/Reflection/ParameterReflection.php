@@ -139,6 +139,7 @@ class ParameterReflection extends Reflection
             'line' => $this->line,
             'short_desc' => $this->shortDesc,
             'long_desc' => $this->longDesc,
+            'raw_desc' => $this->rawDesc,
             'hint' => $this->hint,
             'tags' => $this->tags,
             'modifiers' => $this->modifiers,
@@ -158,6 +159,7 @@ class ParameterReflection extends Reflection
         $parameter                     = new self($array['name'], $array['line']);
         $parameter->shortDesc          = $array['short_desc'];
         $parameter->longDesc           = $array['long_desc'];
+        $parameter->rawDesc            = $array['raw_desc'];
         $parameter->hint               = $array['hint'];
         $parameter->tags               = $array['tags'];
         $parameter->modifiers          = $array['modifiers'];

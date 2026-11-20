@@ -34,6 +34,8 @@ abstract class Reflection
     protected $shortDesc;
     /** @var string */
     protected $longDesc;
+    /** @var string */
+    protected $rawDesc;
     /** @var string|null|array<int,mixed> */
     protected $hint;
     /** @var string */
@@ -206,6 +208,23 @@ abstract class Reflection
     public function setLongDesc($longDesc)
     {
         $this->longDesc = $longDesc;
+    }
+
+     /**
+     * @return string
+     */
+    public function getRawDesc()
+    {
+        return $this->rawDesc;
+    }
+
+    /**
+     * @param string $rawDesc
+     * @return void
+     */
+    public function setRawDesc($rawDesc)
+    {
+        $this->rawDesc = $rawDesc;
     }
 
     /**

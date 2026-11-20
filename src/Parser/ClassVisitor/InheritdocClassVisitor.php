@@ -66,6 +66,12 @@ class InheritdocClassVisitor implements ClassVisitorInterface
                     $modified = true;
                 }
 
+
+                if ($method->getExceptions() !== $parentMethod->getRawDesc()) {
+                    $method->setRawDesc($parentMethod->getRawDesc());
+                    $modified = true;
+                }
+
                 if ($method->getExceptions() != $parentMethod->getRawExceptions()) {
                     $method->setExceptions($parentMethod->getRawExceptions());
                     $modified = true;

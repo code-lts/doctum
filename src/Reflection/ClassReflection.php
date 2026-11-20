@@ -513,6 +513,7 @@ class ClassReflection extends Reflection
             'line' => $this->line,
             'short_desc' => $this->shortDesc,
             'long_desc' => $this->longDesc,
+            'raw_desc' => $this->rawDesc,
             'hint' => $this->hint,
             'tags' => $this->tags,
             'namespace' => $this->namespace,
@@ -557,6 +558,7 @@ class ClassReflection extends Reflection
         $class                   = new self($array['name'], $array['line']);
         $class->shortDesc        = $array['short_desc'];
         $class->longDesc         = $array['long_desc'];
+        $class->rawDesc          = $array['raw_desc'];
         $class->hint             = $array['hint'];
         $class->tags             = $array['tags'];
         $class->namespace        = $array['namespace'];

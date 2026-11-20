@@ -211,6 +211,7 @@ class FunctionReflection extends Reflection
             'relative_file' => $this->relativeFilePath,
             'short_desc' => $this->shortDesc,
             'long_desc' => $this->longDesc,
+            'raw_desc' => $thos->rawDesc,
             'hint' => $this->hint,
             'hint_desc' => $this->hintDesc,
             'tags' => $this->tags,
@@ -236,6 +237,7 @@ class FunctionReflection extends Reflection
         $method                   = new self($array['name'], $array['line']);
         $method->shortDesc        = $array['short_desc'];
         $method->longDesc         = $array['long_desc'];
+        $method->rawDesc          = $array['raw_desc'];
         $method->hint             = $array['hint'];
         $method->hintDesc         = $array['hint_desc'];
         $method->tags             = $array['tags'];
