@@ -17,6 +17,11 @@ use Symfony\Component\Finder\Glob;
 use Symfony\Component\Process\Process;
 use Closure;
 
+/**
+ * A version collection type for managing a local git repo.
+ *
+ * May contain multiple branches or tags, as defined by config.
+ */
 class GitVersionCollection extends VersionCollection
 {
     /**

@@ -15,6 +15,9 @@ namespace Doctum\Reflection;
 
 use Doctum\Project;
 
+/**
+ * A class for reflecting class parameters.
+ */
 class ParameterReflection extends Reflection
 {
     /** @var FunctionReflection */

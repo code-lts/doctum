@@ -15,6 +15,9 @@ namespace Doctum\Renderer;
 
 use Doctum\Project;
 
+/**
+ * Discovers identical files and reduces duplicate rendering.
+ */
 class Diff
 {
     /** @var Project */

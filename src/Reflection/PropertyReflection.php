@@ -15,6 +15,9 @@ namespace Doctum\Reflection;
 
 use Doctum\Project;
 
+/**
+ * A class for reflecting class properties.
+ */
 class PropertyReflection extends Reflection
 {
     protected $class;

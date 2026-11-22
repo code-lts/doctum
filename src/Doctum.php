@@ -46,6 +46,14 @@ use Wdes\phpI18nL10n\plugins\MoReader;
 use Wdes\phpI18nL10n\Launcher;
 
 /**
+ * The doctum configuration and management class.
+ *
+ * When running the doctum command line tool,
+ * the configuration script passed to doctum must
+ * return an instance of this class. The properties
+ * are exposed as array indexes and can be overridden
+ * to some degree by the end user.
+ *
  * @implements \ArrayAccess<string,mixed>
  */
 class Doctum implements ArrayAccess

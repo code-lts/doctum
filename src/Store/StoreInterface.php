@@ -17,6 +17,9 @@ use Doctum\Project;
 use Doctum\Reflection\ClassReflection;
 use Doctum\Reflection\FunctionReflection;
 
+/**
+ * Defines an interface for storing parsed oject information.
+ */
 interface StoreInterface
 {
 

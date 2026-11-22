@@ -14,6 +14,8 @@ declare(strict_types = 1);
 namespace Doctum;
 
 /**
+ * A management class for defining program states.
+ *
  * @author Fabien Potencier <fabien@symfony.com>
  */
 class Message

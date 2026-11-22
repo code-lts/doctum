@@ -15,6 +15,9 @@ namespace Doctum\Reflection;
 
 use Doctum\Project;
 
+/**
+ * A class for reflecting classes.
+ */
 class ClassReflection extends Reflection
 {
     private const CATEGORY_CLASS     = 1;

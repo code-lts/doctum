@@ -20,6 +20,13 @@ use Exception;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
+/**
+ * Stores parsed object information in JSON files.
+ *
+ * This is the default storage method.
+ *
+ * @see Doctum::$cache_dir
+ */
 class JsonStore implements StoreInterface
 {
     private const JSON_PRETTY_PRINT = 128;

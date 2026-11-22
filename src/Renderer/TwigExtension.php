@@ -24,6 +24,9 @@ use Twig\TwigFunction;
 use Twig\TwigFilter;
 use Parsedown;
 
+/**
+ * Doctum's own in-house twig theming tools.
+ */
 class TwigExtension extends AbstractExtension
 {
     /** @var Parsedown */

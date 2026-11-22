@@ -17,6 +17,9 @@ use Doctum\Reflection\ClassReflection;
 use Doctum\Parser\ClassVisitorInterface;
 use Doctum\RemoteRepository\AbstractRemoteRepository;
 
+/**
+ * Builds a link back to the source code repository.
+ */
 class ViewSourceClassVisitor implements ClassVisitorInterface
 {
     /** @var AbstractRemoteRepository */

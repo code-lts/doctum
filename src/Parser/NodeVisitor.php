@@ -43,6 +43,9 @@ use PhpParser\Node\Stmt\PropertyProperty;
 use PhpParser\Node\UnionType;
 use PhpParser\Node\IntersectionType;
 
+/**
+ * An extension of PhpParser's node visitor behavior.
+ */
 class NodeVisitor extends NodeVisitorAbstract
 {
     protected $context;

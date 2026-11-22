@@ -7,6 +7,8 @@ namespace Doctum\Parser;
 use Doctum\Reflection\FunctionReflection;
 
 /**
+ * Defines a function visitor.
+ *
  * @author William Desportes <williamdes@wdes.fr>
  */
 interface FunctionVisitorInterface

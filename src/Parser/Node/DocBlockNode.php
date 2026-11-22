@@ -13,6 +13,9 @@ declare(strict_types = 1);
 
 namespace Doctum\Parser\Node;
 
+/**
+ * Stores information about a docblock.
+ */
 class DocBlockNode
 {
     /** @var string */

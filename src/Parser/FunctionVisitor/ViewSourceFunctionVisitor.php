@@ -17,6 +17,9 @@ use Doctum\Reflection\FunctionReflection;
 use Doctum\Parser\FunctionVisitorInterface;
 use Doctum\RemoteRepository\AbstractRemoteRepository;
 
+/**
+ * Finds the remote repository link for a function.
+ */
 class ViewSourceFunctionVisitor implements FunctionVisitorInterface
 {
     /** @var AbstractRemoteRepository */

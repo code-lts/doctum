@@ -17,6 +17,9 @@ use Doctum\Reflection\ClassReflection;
 use Doctum\Reflection\MethodReflection;
 use Doctum\Reflection\PropertyReflection;
 
+/**
+ * A filter that documents everything.
+ */
 class TrueFilter implements FilterInterface
 {
 

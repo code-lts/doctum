@@ -16,6 +16,9 @@ namespace Doctum\Parser;
 use Doctum\Project;
 use Doctum\Reflection\ClassReflection;
 
+/**
+ * A single write-to-memory operation per store object.
+ */
 class Transaction
 {
     protected $hashes;

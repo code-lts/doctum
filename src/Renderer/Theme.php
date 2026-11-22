@@ -13,6 +13,9 @@ declare(strict_types = 1);
 
 namespace Doctum\Renderer;
 
+/**
+ * A utility class for managing theme metadata.
+ */
 class Theme
 {
     protected $name;

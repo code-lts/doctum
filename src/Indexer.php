@@ -13,6 +13,9 @@ declare(strict_types = 1);
 
 namespace Doctum;
 
+/**
+ * A utility class for building the search index.
+ */
 class Indexer
 {
     private const TYPE_CLASS     = 1;

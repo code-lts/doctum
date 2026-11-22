@@ -15,6 +15,9 @@ namespace Doctum;
 
 use Wdes\phpI18nL10n\Launcher;
 
+/**
+ * Builds a namespace tree for each object in the project.
+ */
 class Tree
 {
 

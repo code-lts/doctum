@@ -13,6 +13,9 @@ declare(strict_types = 1);
 
 namespace Doctum\Version;
 
+/**
+ * Stores version information for a single branch or tag.
+ */
 class Version
 {
 

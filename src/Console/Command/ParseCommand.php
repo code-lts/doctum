@@ -17,6 +17,9 @@ use Doctum\Doctum;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Defines Doctum's parsing commands.
+ */
 class ParseCommand extends Command
 {
 

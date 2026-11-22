@@ -22,6 +22,11 @@ use Doctum\Store\StoreInterface;
 use Symfony\Component\Finder\Finder;
 use SplObjectStorage;
 
+/**
+ * Uses reflection tools to extract information about a file and store it.
+ *
+ * @see Doctum::$parser
+ */
 class Parser
 {
     /** @var StoreInterface */

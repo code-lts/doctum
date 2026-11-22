@@ -34,6 +34,9 @@ use Symfony\Component\Console\Output\ConsoleOutputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
+/**
+ * Creates Doctum's CLI interface.
+ */
 abstract class Command extends BaseCommand
 {
     private const PARSE_ERROR = 64;
