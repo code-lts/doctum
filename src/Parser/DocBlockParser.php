@@ -35,6 +35,11 @@ use phpDocumentor\Reflection\DocBlock\Tags\Version;
 use phpDocumentor\Reflection\DocBlockFactory;
 use phpDocumentor\Reflection\Types\Context;
 
+/**
+ * Maps parsed docblock data into keyed arrays.
+ *
+ * Also does some light postprocessing and tag extraction.
+ */
 class DocBlockParser
 {
 

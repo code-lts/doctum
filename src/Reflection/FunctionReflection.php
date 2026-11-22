@@ -13,6 +13,9 @@ namespace Doctum\Reflection;
 
 use Doctum\Project;
 
+/**
+ * A class for reflecting functions.
+ */
 class FunctionReflection extends Reflection
 {
     protected $namespace;

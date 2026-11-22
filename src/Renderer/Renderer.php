@@ -20,6 +20,9 @@ use Doctum\Reflection\ClassReflection;
 use Doctum\Tree;
 use Symfony\Component\Filesystem\Filesystem;
 
+/**
+ * Handles rendering reflected objects into HTML using twig.
+ */
 class Renderer
 {
     protected $twig;

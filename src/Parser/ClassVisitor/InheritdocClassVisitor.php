@@ -16,6 +16,9 @@ namespace Doctum\Parser\ClassVisitor;
 use Doctum\Parser\ClassVisitorInterface;
 use Doctum\Reflection\ClassReflection;
 
+/**
+ * A class visitor that resolves inheritdoc tags.
+ */
 class InheritdocClassVisitor implements ClassVisitorInterface
 {
 

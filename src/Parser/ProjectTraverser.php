@@ -16,6 +16,9 @@ namespace Doctum\Parser;
 use Doctum\Project;
 use SplObjectStorage;
 
+/**
+ * Loops over the objects in a project, assigns visitors for each, visting parents first.
+ */
 class ProjectTraverser
 {
     /**

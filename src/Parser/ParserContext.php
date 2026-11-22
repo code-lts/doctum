@@ -17,6 +17,11 @@ use Doctum\Parser\Filter\FilterInterface;
 use Doctum\Reflection\ClassReflection;
 use Doctum\Reflection\FunctionReflection;
 
+/**
+ * Retains context about a parsed file.
+ *
+ * @see Doctum\Parser\CodeParser
+ */
 class ParserContext
 {
     protected $filter;

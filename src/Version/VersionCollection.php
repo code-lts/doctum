@@ -16,6 +16,8 @@ namespace Doctum\Version;
 use Doctum\Project;
 
 /**
+ * Stores a list of configured versions and handles version switching.
+ *
  * @implements \Iterator<Version>
  */
 abstract class VersionCollection implements \Iterator, \Countable

@@ -15,6 +15,9 @@ namespace Doctum\Parser;
 
 use Doctum\Reflection\ClassReflection;
 
+/**
+ * Defines a class visitor.
+ */
 interface ClassVisitorInterface
 {
 

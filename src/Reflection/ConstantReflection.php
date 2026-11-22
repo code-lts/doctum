@@ -15,6 +15,9 @@ namespace Doctum\Reflection;
 
 use Doctum\Project;
 
+/**
+ * A class for reflecting constants.
+ */
 class ConstantReflection extends Reflection
 {
     protected $class;

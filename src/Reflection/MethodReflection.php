@@ -15,6 +15,9 @@ namespace Doctum\Reflection;
 
 use Doctum\Project;
 
+/**
+ * A class for reflecting class methods.
+ */
 class MethodReflection extends Reflection
 {
     /** @var ClassReflection */

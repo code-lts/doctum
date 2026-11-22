@@ -13,6 +13,9 @@ namespace Doctum\Parser;
 
 use CodeLts\CliTools\Error;
 
+/**
+ * Defines an error thrown during parsing.
+ */
 final class ParseError extends Error
 {
 

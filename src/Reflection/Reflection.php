@@ -15,6 +15,12 @@ namespace Doctum\Reflection;
 
 use Doctum\Project;
 
+/**
+ * A base class for implementing code reflection.
+ *
+ * Can be extended into specific tooling for classes
+ * functions, and more.
+ */
 abstract class Reflection
 {
     // Constants from: vendor/nikic/php-parser/lib/PhpParser/Node/Stmt/Class_.php

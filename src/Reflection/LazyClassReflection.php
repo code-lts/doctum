@@ -13,6 +13,9 @@ declare(strict_types = 1);
 
 namespace Doctum\Reflection;
 
+/**
+ * A class for reflecting classes that are already reflected.
+ */
 class LazyClassReflection extends ClassReflection
 {
     protected $loaded = false;

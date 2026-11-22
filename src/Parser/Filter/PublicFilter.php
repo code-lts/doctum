@@ -16,6 +16,9 @@ namespace Doctum\Parser\Filter;
 use Doctum\Reflection\MethodReflection;
 use Doctum\Reflection\PropertyReflection;
 
+/**
+ * A filter that only allows public methods and properties.
+ */
 class PublicFilter extends TrueFilter
 {
 

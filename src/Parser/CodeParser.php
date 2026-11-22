@@ -17,6 +17,9 @@ use PhpParser\Error;
 use PhpParser\NodeTraverser;
 use PhpParser\Parser as PhpParser;
 
+/**
+ * Points the parsing engine at traversed nodes and preserves parse context.
+ */
 class CodeParser
 {
     /** @var PhpParser */

@@ -13,6 +13,9 @@ declare(strict_types = 1);
 
 namespace Doctum\Reflection;
 
+/**
+ * A class for reflecting type hints.
+ */
 class HintReflection
 {
     protected $name;

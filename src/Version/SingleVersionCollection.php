@@ -13,6 +13,9 @@ declare(strict_types = 1);
 
 namespace Doctum\Version;
 
+/**
+ * A version collection type for a single tag or branch.
+ */
 class SingleVersionCollection extends VersionCollection
 {
 

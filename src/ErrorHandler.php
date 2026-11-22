@@ -28,6 +28,9 @@ use const E_USER_NOTICE;
 use const E_USER_DEPRECATED;
 use const E_RECOVERABLE_ERROR;
 
+/**
+ * A utility class for managing errors within the program.
+ */
 final class ErrorHandler
 {
     private const ERROR_LEVELS = [

@@ -15,6 +15,9 @@ namespace Doctum\Renderer;
 
 use Doctum\Project;
 
+/**
+ * A utility class for translating classes into serial data.
+ */
 class Index implements \Serializable
 {
     protected $classes;

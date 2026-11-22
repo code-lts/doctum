@@ -16,6 +16,9 @@ namespace Doctum\Parser\Filter;
 use Doctum\Reflection\MethodReflection;
 use Doctum\Reflection\PropertyReflection;
 
+/**
+ * A filter that accecpts only methods and properties.
+ */
 class DefaultFilter extends TrueFilter
 {
 

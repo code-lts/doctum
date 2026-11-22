@@ -24,6 +24,9 @@ use Symfony\Component\Console\Application as BaseApplication;
 use function function_exists;
 use function error_reporting;
 
+/**
+ * Defines the CLI application.
+ */
 class Application extends BaseApplication
 {
 
